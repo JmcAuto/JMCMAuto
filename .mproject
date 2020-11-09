@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 1.0.0?><mproject storage_type_id="com.huawei.ide.mdc.core.XmlMProjectDescriptionStorage">
+	<BasicDescription>
+		<projecttype>com.huawei.ide.mdc.project.type.exe</projecttype>
+		<projectTemplate>helloworld_template</projectTemplate>
+		<autosar>AUTOSAR 00046</autosar>
+		<cmProtocol>SOME/IP</cmProtocol>
+		<chipAndOS>Hi1910 with Ubuntu</chipAndOS>
+		<remotePath>Empty Path</remotePath>
+		<remotecomboindex>2</remotecomboindex>
+		<mdcProject>YES</mdcProject>
+		<mdcProjectVersion>1.0.0</mdcProjectVersion>
+		<sdk_version>1.0.2.7</sdk_version>
+	</BasicDescription>
+</mproject>

@@ -1,0 +1,24 @@
+#test file
+Debug
+Binaries
+bin
+
+#build file
+*.tar.gz
+*.zip
+Archives
+Includes
+include
+lib
+share
+
+# temporary files
+*.swp
+*.swo
+.DS_Store
+*~
+
+# Logs
+*.stdout
+*.stderr
+nohup.out
