@@ -15,54 +15,50 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.debug.1923615912" name="Debug" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.debug">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.debug.1923615912" name="Debug" optionalBuildProperties="" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.debug">
 					<folderInfo id="com.huawei.ide.managedbuilder.mdc.configuration.exe.debug.1923615912." name="/" resourcePath="">
 						<toolChain id="com.huawei.ide.managedbuilder.mdc.toolchain.exe.debug.1516902102" name="MDC GCC" superClass="com.huawei.ide.managedbuilder.mdc.toolchain.exe.debug">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.huawei.ide.managedbuilder.mdc.platform.base.2040930146" name="Debug Platform" osList="win32" superClass="com.huawei.ide.managedbuilder.mdc.platform.base"/>
-							<builder buildPath="${workspace_loc:/jmcauto}/Debug" id="com.huawei.ide.managedbuilder.mdc.builder.base.177256712" managedBuildOn="true" name="MDC CMake Builder.Debug" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
+							<builder buildPath="${workspace_loc:/jmcauto}/Debug" id="com.huawei.ide.managedbuilder.mdc.builder.base.177256712" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="MDC CMake Builder" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.compiler.base.113934996" name="MDC C Compiler" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.base">
-								<option defaultValue="com.huawei.ide.managedbuilder.mdc.c.compiler.optimization.level.none" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level.458741170" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1131599628" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.max" valueType="enumerated"/>
-								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.952699543" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.1030755916" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option defaultValue="com.huawei.ide.managedbuilder.mdc.c.compiler.optimization.level.none" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level.458741170" name="Optimization Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1131599628" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.max" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.1030755916" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.1688147746" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.1688147746" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.952699543" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.base.491234909" name="MDC C++ Compiler" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.base">
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level.1457438770" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level" useByScannerDiscovery="false"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level.1364596835" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.debug.level.max" valueType="enumerated"/>
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.628909612" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.186849994" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level.1457438770" name="Optimization Level" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level" useByScannerDiscovery="false"/>
+								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level.1364596835" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.debug.level.max" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.186849994" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1111911325" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1111911325" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.628909612" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.linker.base.1359642305" name="MDC C Linker" superClass="com.huawei.ide.managedbuilder.mdc.c.linker.base"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.linker.base.743471626" name="MDC C++ Linker" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.base">
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.1996414153" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
-									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
-								</inputType>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.1085140758" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.1085140758" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib64"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib/aarch64-linux-gnu"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.484448041" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.484448041" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="ara_com"/>
 									<listOptionValue builtIn="false" value="ara_per"/>
 									<listOptionValue builtIn="false" value="ara_exec"/>
@@ -94,6 +90,10 @@
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.1996414153" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.assembler.base.1227869611" name="MDC Assembler" superClass="com.huawei.ide.managedbuilder.mdc.assembler.base">
 								<inputType id="com.huawei.ide.managedbuilder.mdc.assembler.input.585808481" superClass="com.huawei.ide.managedbuilder.mdc.assembler.input"/>
@@ -123,50 +123,46 @@
 					<folderInfo id="com.huawei.ide.managedbuilder.mdc.configuration.exe.release.1634223384." name="/" resourcePath="">
 						<toolChain id="com.huawei.ide.managedbuilder.mdc.toolchain.exe.release.1099870582" name="MDC GCC" superClass="com.huawei.ide.managedbuilder.mdc.toolchain.exe.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.huawei.ide.managedbuilder.mdc.platform.base.1528683210" name="Debug Platform" osList="win32" superClass="com.huawei.ide.managedbuilder.mdc.platform.base"/>
-							<builder buildPath="${workspace_loc:/jmcauto}/Release" id="com.huawei.ide.managedbuilder.mdc.builder.base.807645264" managedBuildOn="true" name="MDC CMake Builder.Release" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
+							<builder buildPath="${workspace_loc:/jmcauto}/Release" id="com.huawei.ide.managedbuilder.mdc.builder.base.807645264" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="MDC CMake Builder" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.compiler.base.233942000" name="MDC C Compiler" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.base">
-								<option defaultValue="com.huawei.ide.managedbuilder.mdc.c.compiler.optimization.level.optimize" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level.1341096108" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1343285142" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.none" valueType="enumerated"/>
-								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.1309685554" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.713437252" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option defaultValue="com.huawei.ide.managedbuilder.mdc.c.compiler.optimization.level.optimize" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level.1341096108" name="Optimization Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1343285142" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.none" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.713437252" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.338114475" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.338114475" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.1309685554" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.base.1808405010" name="MDC C++ Compiler" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.base">
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level.1462331928" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.optimization.level.optimize" valueType="enumerated"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level.1107596381" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.debug.level.none" valueType="enumerated"/>
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.1038318228" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.1816082467" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level.1462331928" name="Optimization Level" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.optimization.level.optimize" valueType="enumerated"/>
+								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level.1107596381" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.cpp.compiler.debug.level.none" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.1816082467" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1401643724" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1401643724" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.1038318228" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.linker.base.1902856513" name="MDC C Linker" superClass="com.huawei.ide.managedbuilder.mdc.c.linker.base"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.linker.base.101553482" name="MDC C++ Linker" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.base">
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.234406341" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
-									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
-								</inputType>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.63449828" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.63449828" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib64"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib/aarch64-linux-gnu"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.2011234772" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.2011234772" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="ara_com"/>
 									<listOptionValue builtIn="false" value="ara_per"/>
 									<listOptionValue builtIn="false" value="ara_exec"/>
@@ -198,6 +194,10 @@
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.234406341" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.assembler.base.595490585" name="MDC Assembler" superClass="com.huawei.ide.managedbuilder.mdc.assembler.base">
 								<inputType id="com.huawei.ide.managedbuilder.mdc.assembler.input.339845605" superClass="com.huawei.ide.managedbuilder.mdc.assembler.input"/>
@@ -227,48 +227,44 @@
 					<folderInfo id="com.huawei.ide.managedbuilder.mdc.configuration.exe.test.1625686825." name="/" resourcePath="">
 						<toolChain id="com.huawei.ide.managedbuilder.mdc.toolchain.exe.test.1279366772" name="MDC GCC" superClass="com.huawei.ide.managedbuilder.mdc.toolchain.exe.test">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.huawei.ide.managedbuilder.mdc.platform.base.2058178930" name="Debug Platform" osList="win32" superClass="com.huawei.ide.managedbuilder.mdc.platform.base"/>
-							<builder buildPath="${workspace_loc:/jmcauto}/UnitTest" id="com.huawei.ide.managedbuilder.mdc.builder.base.388052245" managedBuildOn="true" name="MDC CMake Builder.UnitTest" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
+							<builder buildPath="${workspace_loc:/jmcauto}/UnitTest" id="com.huawei.ide.managedbuilder.mdc.builder.base.388052245" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="MDC CMake Builder" superClass="com.huawei.ide.managedbuilder.mdc.builder.base"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.compiler.exe.test.302924240" name="MDC C Compiler" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.exe.test">
-								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.1639627032" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.567569616" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.567569616" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.test.1626540876" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.test" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.test.1626540876" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.preprocessor.def.symbols.test" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 									<listOptionValue builtIn="false" value="MDC_TEST"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.c.compiler.input.1639627032" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.exe.test.42687831" name="MDC C++ Compiler" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.exe.test">
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.534711651" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.496625759" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.496625759" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/generated/includes}"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.test.1008790861" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.test" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.test.1008790861" name="Defined symbols (-D)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.preprocessor.def.test" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="HAS_VSOMEIP_BINDING"/>
 									<listOptionValue builtIn="false" value="MDC_TEST"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input.534711651" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.input"/>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.linker.exe.test.407610033" name="MDC C Linker" superClass="com.huawei.ide.managedbuilder.mdc.c.linker.exe.test"/>
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.linker.exe.test.958868880" name="MDC C++ Linker" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.exe.test">
-								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.2144726144" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
-									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
-								</inputType>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.1039625237" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths.1039625237" name="Library search path (-L)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib64"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/lib/aarch64-linux-gnu"/>
 								</option>
-								<option id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.881756684" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs.881756684" name="Libraries (-l)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="ara_com"/>
 									<listOptionValue builtIn="false" value="ara_per"/>
 									<listOptionValue builtIn="false" value="ara_exec"/>
@@ -300,6 +296,10 @@
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
 								</option>
+								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.2144726144" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
 							</tool>
 							<tool id="com.huawei.ide.managedbuilder.mdc.assembler.base.956379163" name="MDC Assembler" superClass="com.huawei.ide.managedbuilder.mdc.assembler.base">
 								<inputType id="com.huawei.ide.managedbuilder.mdc.assembler.input.777599998" superClass="com.huawei.ide.managedbuilder.mdc.assembler.input"/>
