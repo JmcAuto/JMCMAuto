@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="b83e4045-80af-4da0-8285-99df993561c6">
+      <SHORT-NAME>HuaweiMDC</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>PlatFormServices</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusAbstractConsumerToApp</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/HuaweiMDC/PlatFormServices/CanbusAbstractServiceConsumer/CanbusAbstractSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>5000</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/HuaweiMDC/PlatformServices/CanbusAbstractExecutable/CanbusAbstractExecutable/CanbusAbstractRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/HuaweiMDC/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent/CanbusAbstractRPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/HuaweiMDC/PlatformServices/CanbusAbstractProcess/CanbusAbstractProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/HuaweiMDC/PlatFormServices/CanbusAbstractServiceConsumer/CanbusAbstractSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusAbstractProviderToApp</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/HuaweiMDC/PlatFormServices/CanbusAbstractServiceProvider/CanbusAbstractSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>6000</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/HuaweiMDC/PlatformServices/CanbusAbstractExecutable/CanbusAbstractExecutable/CanbusAbstractRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/HuaweiMDC/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent/CanbusAbstractPPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/HuaweiMDC/PlatformServices/CanbusAbstractProcess/CanbusAbstractProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/HuaweiMDC/PlatFormServices/CanbusAbstractServiceProvider/CanbusAbstractSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusAbstractServiceConsumer</SHORT-NAME>
+              <ELEMENTS>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>CanbusAbstractSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <REQUIRED-EVENT-GROUPS>
+                    <SOMEIP-REQUIRED-EVENT-GROUP>
+                      <SHORT-NAME>CanbusAbstractEventGroup</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventGroup</EVENT-GROUP-REF>
+                    </SOMEIP-REQUIRED-EVENT-GROUP>
+                  </REQUIRED-EVENT-GROUPS>
+                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusAbstractServiceProvider</SHORT-NAME>
+              <ELEMENTS>
+                <PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>CanbusAbstractSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <PROVIDED-EVENT-GROUPS>
+                    <SOMEIP-PROVIDED-EVENT-GROUP>
+                      <SHORT-NAME>CanbusAbstractEventGroup</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventGroup</EVENT-GROUP-REF>
+                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
+                    </SOMEIP-PROVIDED-EVENT-GROUP>
+                  </PROVIDED-EVENT-GROUPS>
+                  <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
+                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,2 +1,2 @@
-#JMCAuto with MDC
+# JMCAuto with MDC
 > v0.001

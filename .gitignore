@@ -11,6 +11,8 @@ Includes
 include
 lib
 share
+generated
+outputJson
 
 # temporary files
 *.swp
