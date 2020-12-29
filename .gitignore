@@ -13,6 +13,7 @@ lib
 share
 generated
 outputJson
+.settings/org.eclipse.cdt.managedbuilder.core.prefs
 
 # temporary files
 *.swp
