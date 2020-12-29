@@ -29,7 +29,8 @@ INCLUDE_DIRECTORIES(${MODULESDIRS})
 #把对应目录下的c和c++所有源文件分别保存在变量中
 file(GLOB_RECURSE  C_SOURCE src/*.c generated/*.c)
 file(GLOB_RECURSE  CXX_SOURCE src/*.cxx src/*.cpp src/*.cc generated/*.cxx generated/*.cpp generated/*.cc)
-file(GLOB_RECURSE  TESTSOURCE modules/test/*.c modules/test/*.cpp)
+file(GLOB_RECURSE  TESTSOURCE modules/test/*.c modules/test/*.cc modules/test/*.cpp)
+file(GLOB_RECURSE  CANBUSSOURCE modules/canbus/*.c modules/canbus/*.cc modules/canbus/*.cpp)
 
 #默认依赖，用户不可修改
 include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
