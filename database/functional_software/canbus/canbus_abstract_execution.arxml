@@ -2,7 +2,7 @@
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
   <AR-PACKAGES>
     <AR-PACKAGE UUID="2b01310c-39fd-44d5-9f83-0e1b4f4fd3c9">
-      <SHORT-NAME>HuaweiMDC</SHORT-NAME>
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
           <SHORT-NAME>PlatformServices</SHORT-NAME>
@@ -12,7 +12,7 @@
               <ELEMENTS>
                 <PROCESS>
                   <SHORT-NAME>CanbusAbstractProcess</SHORT-NAME>
-                  <EXECUTABLE-REF DEST="EXECUTABLE">/HuaweiMDC/PlatformServices/CanbusAbstractExecutable/CanbusAbstractExecutable</EXECUTABLE-REF>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/PlatformServices/CanbusAbstractExecutable/CanbusAbstractExecutable</EXECUTABLE-REF>
                   <MODE-DEPENDENT-STARTUP-CONFIGS>
                     <MODE-DEPENDENT-STARTUP-CONFIG>
                       <FUNCTION-GROUP-MODE-IREFS>
@@ -31,7 +31,7 @@
                         </MACHINE-MODE-IREF>
                       </MACHINE-MODE-IREFS>
                       <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/HuaweiMDC/Machine/Dmini0Machine/Dmini0_OS/Dmini0ResourceLimitationGroup1</RESOURCE-GROUP-REF>
-                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/HuaweiMDC/PlatformServices/CanbusAbstractStartupConfig/CanbusAbstractStartupConfigSet/CanbusAbstractStartupConfig</STARTUP-CONFIG-REF>
+                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/jmc_auto/PlatformServices/CanbusAbstractStartupConfig/CanbusAbstractStartupConfigSet/CanbusAbstractStartupConfig</STARTUP-CONFIG-REF>
                     </MODE-DEPENDENT-STARTUP-CONFIG>
                   </MODE-DEPENDENT-STARTUP-CONFIGS>
                 </PROCESS>

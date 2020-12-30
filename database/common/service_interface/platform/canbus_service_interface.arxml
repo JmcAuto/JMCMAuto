@@ -2,7 +2,7 @@
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
   <AR-PACKAGES>
     <AR-PACKAGE UUID="55b47585-4646-4f03-bb35-f6f89fd358d9">
-      <SHORT-NAME>HuaweiMDC</SHORT-NAME>
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
           <SHORT-NAME>Platform</SHORT-NAME>
@@ -16,7 +16,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/chassis/Chassis</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/Chassis</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -42,7 +42,7 @@
                   <EVENTS>
                     <VARIABLE-DATA-PROTOTYPE>
                       <SHORT-NAME>ChassisEvent</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/Platform/ChassisMsgDateType/ChassisMsg</TYPE-TREF>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisMsgDateType/ChassisMsg</TYPE-TREF>
                     </VARIABLE-DATA-PROTOTYPE>
                   </EVENTS>
                   <METHODS>
@@ -51,7 +51,7 @@
                       <ARGUMENTS>
                         <ARGUMENT-DATA-PROTOTYPE>
                           <SHORT-NAME>ChassisData</SHORT-NAME>
-                          <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/Platform/ChassisMsgDateType/ChassisMsg</TYPE-TREF>
+                          <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisMsgDateType/ChassisMsg</TYPE-TREF>
                           <DIRECTION>OUT</DIRECTION>
                         </ARGUMENT-DATA-PROTOTYPE>
                       </ARGUMENTS>
@@ -63,7 +63,7 @@
                   <EVENT-DEPLOYMENTS>
                     <SOMEIP-EVENT-DEPLOYMENT>
                       <SHORT-NAME>ChassisEventDeployment</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
                       <EVENT-ID>1001</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
@@ -71,18 +71,18 @@
                   <METHOD-DEPLOYMENTS>
                     <SOMEIP-METHOD-DEPLOYMENT>
                       <SHORT-NAME>ChassisMethodDeployment</SHORT-NAME>
-                      <METHOD-REF DEST="CLIENT-SERVER-OPERATION">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisSetMethod</METHOD-REF>
+                      <METHOD-REF DEST="CLIENT-SERVER-OPERATION">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisSetMethod</METHOD-REF>
                       <METHOD-ID>1</METHOD-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-METHOD-DEPLOYMENT>
                   </METHOD-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisServiceInterface</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</SERVICE-INTERFACE-REF>
                   <EVENT-GROUPS>
                     <SOMEIP-EVENT-GROUP>
                       <SHORT-NAME>ChassisEventGroup</SHORT-NAME>
                       <EVENT-GROUP-ID>104</EVENT-GROUP-ID>
                       <EVENT-REFS>
-                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
+                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
                       </EVENT-REFS>
                     </SOMEIP-EVENT-GROUP>
                   </EVENT-GROUPS>

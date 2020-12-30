@@ -2,7 +2,7 @@
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
   <AR-PACKAGES>
     <AR-PACKAGE UUID="a9a4a301-5959-4e70-a8f8-8b487f31f288">
-      <SHORT-NAME>HuaweiMDC</SHORT-NAME>
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
           <SHORT-NAME>PlatformServices</SHORT-NAME>
@@ -15,11 +15,11 @@
                   <PORTS>
                     <P-PORT-PROTOTYPE>
                       <SHORT-NAME>CanbusAbstractPPort</SHORT-NAME>
-                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisServiceInterface</PROVIDED-INTERFACE-TREF>
+                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</PROVIDED-INTERFACE-TREF>
                     </P-PORT-PROTOTYPE>
                     <R-PORT-PROTOTYPE>
                       <SHORT-NAME>CanbusAbstractRPort</SHORT-NAME>
-                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/ChassisServiceInterface/ChassisServiceInterface</REQUIRED-INTERFACE-TREF>
+                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</REQUIRED-INTERFACE-TREF>
                     </R-PORT-PROTOTYPE>
                   </PORTS>
                 </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
@@ -32,7 +32,7 @@
                   <SHORT-NAME>CanbusAbstractExecutable</SHORT-NAME>
                   <ROOT-SW-COMPONENT-PROTOTYPE>
                     <SHORT-NAME>CanbusAbstractRootSwComponent</SHORT-NAME>
-                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/HuaweiMDC/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent</APPLICATION-TYPE-TREF>
+                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent</APPLICATION-TYPE-TREF>
                   </ROOT-SW-COMPONENT-PROTOTYPE>
                 </EXECUTABLE>
               </ELEMENTS>
