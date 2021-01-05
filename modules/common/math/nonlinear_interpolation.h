@@ -14,35 +14,34 @@
  * limitations under the License.
  *****************************************************************************/
 
-#include "modules/canbus/vehicle/vehicle_factory.h"
+/**
+ * @file
+ * @brief Nonlinear interpolation functions.
+ */
 
-#include "gtest/gtest.h"
+#ifndef MODULES_COMMON_MATH_NONLINEAR_INTERPOLATION_H_
+#define MODULES_COMMON_MATH_NONLINEAR_INTERPOLATION_H_
 
-#include "modules/canbus/proto/vehicle_parameter.pb.h"
+#include "modules/common/proto/pnc_point.pb.h"
+
+/**
+ * @namespace jmc_auto::common::math
+ * @brief jmc_auto::common::math
+ */
 
 namespace jmc_auto {
-namespace canbus {
+namespace common {
+namespace math {
 
-class VehicleFactoryTest : public ::testing::Test {
- public:
-  virtual void SetUp() { factory_.RegisterVehicleFactory(); }
+PathPoint SplineInterpolate(const PathPoint &p0, const PathPoint &p1,
+                            const double s);
 
- protected:
-  VehicleFactory factory_;
-};
+TrajectoryPoint SplineInterpolate(const TrajectoryPoint &tp0,
+                                  const TrajectoryPoint &tp1,
+                                  const double t);
 
-TEST_F(VehicleFactoryTest, CreateVehicle) {
-  VehicleParameter parameter;
-
-  parameter.set_brand(VehicleParameter::GEM);
-  EXPECT_NE(factory_.CreateVehicle(parameter), nullptr);
-
-  parameter.set_brand(VehicleParameter::LINCOLN_MKZ);
-  EXPECT_NE(factory_.CreateVehicle(parameter), nullptr);
-
-  parameter.set_brand(VehicleParameter::CH);
-  EXPECT_NE(factory_.CreateVehicle(parameter), nullptr);
-}
-
-}  // namespace canbus
+}  // namespace math
+}  // namespace common
 }  // namespace jmc_auto
+
+#endif  // MODULES_COMMON_MATH_NONLINEAR_INTERPOLATION_H_

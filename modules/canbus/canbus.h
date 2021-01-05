@@ -26,22 +26,19 @@
 #include <utility>
 #include <vector>
 
-#include "ros/include/ros/ros.h"
+#include "jmc_auto/canbus/chassisserviceinterface_common.h"
+#include "jmc_auto/canbus/chassisserviceinterface_proxy.h"
+#include "jmc_auto/canbus/chassisserviceinterface_skeleton.h"
 
-#include "modules/canbus/proto/chassis_detail.pb.h"
+#include "impl_type_chassisdetail.h"
 
 #include "modules/canbus/vehicle/vehicle_controller.h"
 #include "modules/common/jmc_auto_app.h"
 #include "modules/common/macro.h"
 #include "modules/common/monitor_log/monitor_log_buffer.h"
-#include "modules/control/proto/control_cmd.pb.h"
-#include "modules/drivers/canbus/can_client/can_client.h"
-#include "modules/drivers/canbus/can_comm/can_receiver.h"
-#include "modules/drivers/canbus/can_comm/can_sender.h"
-#include "modules/drivers/canbus/can_comm/message_manager.h"
-#include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
-#include "modules/remotecontrol/proto/remote_control.pb.h"
+#include "impl_type_controlcommand.h"
+
 //#include "modules/guardian/proto/guardian.pb.h"
 
 /**

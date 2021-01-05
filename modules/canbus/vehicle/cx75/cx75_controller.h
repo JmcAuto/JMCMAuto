@@ -22,12 +22,12 @@
 
 #include "modules/canbus/vehicle/vehicle_controller.h"
 
-#include "modules/canbus/proto/canbus_conf.pb.h"
-#include "modules/canbus/proto/chassis.pb.h"
-#include "modules/canbus/proto/vehicle_parameter.pb.h"
+#include "impl_type_canbusconf.h"
+#include "impl_type_chassis.h"
+#include "impl_type_vehicleparameter.h"
 #include "modules/common/macro.h"
 #include "modules/common/proto/error_code.pb.h"
-#include "modules/control/proto/control_cmd.pb.h"
+#include "impl_type_controlcommand.h"
 
 #include "modules/canbus/vehicle/cx75/protocol/pam_0x270_270.h"
 #include "modules/canbus/vehicle/cx75/protocol/pam_0x271_271.h"

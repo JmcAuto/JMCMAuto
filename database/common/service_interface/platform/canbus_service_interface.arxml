@@ -31,8 +31,8 @@
                   <IS-SERVICE>true</IS-SERVICE>
                   <NAMESPACES>
                     <SYMBOL-PROPS>
-                      <SHORT-NAME>mdc</SHORT-NAME>
-                      <SYMBOL>mdc</SYMBOL>
+                      <SHORT-NAME>jmc_auto</SHORT-NAME>
+                      <SYMBOL>jmc_auto</SYMBOL>
                     </SYMBOL-PROPS>
                     <SYMBOL-PROPS>
                       <SHORT-NAME>canbus</SHORT-NAME>
