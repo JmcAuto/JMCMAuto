@@ -150,3 +150,6 @@ DEFINE_string(heading_topic, "/jmc_auto/sensor/gnss/heading",
 DEFINE_string(rtcm_data_topic, "/jmc_auto/sensor/gnss/rtcm_data",
               "gnss rtcm data topic name");
 DEFINE_string(remote_control_topic, "/jmc_auto/remote/remote_control", "REMOTE CONTROL topic name");
+DEFINE_string(leoa_topic, "/jmc_auto/leo/leo_a", "Leos topic name");
+DEFINE_string(leob_topic, "/jmc_auto/leo/leo_b", "Leos topic name");
+DEFINE_string(leoc_topic, "/jmc_auto/leo/leo_c", "Leos topic name");

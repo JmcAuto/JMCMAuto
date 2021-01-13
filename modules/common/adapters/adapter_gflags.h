@@ -90,4 +90,11 @@ DECLARE_string(guardian_topic);
 
 //for remotecontrol
 DECLARE_string(remote_control_topic);
+
+//for test
+DECLARE_string(leoa_topic);
+DECLARE_string(leob_topic);
+DECLARE_string(leoc_topic);
+
+
 #endif  // MODULES_COMMON_ADAPTERS_ADAPTER_GFLAGS_H_

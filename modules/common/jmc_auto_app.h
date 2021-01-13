@@ -113,15 +113,19 @@ void jmc_auto_app_sigint_handler(int signal_num);
 }  // namespace common
 }  // namespace jmc_auto
 
-#define JMC_AUTO_MAIN(APP)                                       \
-  int main(int argc, char **argv) {                            \
-    google::InitGoogleLogging(argv[0]);                        \
-    google::ParseCommandLineFlags(&argc, &argv, true);         \
-    signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler); \
-    APP jmc_auto_app_;                                           \
-    ros::init(argc, argv, jmc_auto_app_.Name());                 \
-    jmc_auto_app_.Spin();                                        \
-    return 0;                                                  \
+#define JMC_AUTO_MAIN(APP)
+  int main(int argc, char **argv) {
+    //注册glog
+    google::InitGoogleLogging(argv[0]);
+    //注册gflag
+    google::ParseCommandLineFlags(&argc, &argv, true);
+    //csignal函数，捕获到终端信号后执行jmc_auto_app_sigint_handler
+    //signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler);
+    APP jmc_auto_app_;
+    //注册，Name()返回值为gflags文件中配置的模块名
+    //ros::init(argc, argv, jmc_auto_app_.Name());
+    jmc_auto_app_.Spin();
+    return 0;
   }
 
 #endif  // MODULES_COMMON_JMC_AUTO_APP_H_

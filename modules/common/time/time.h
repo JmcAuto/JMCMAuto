@@ -160,6 +160,7 @@ class Clock {
    * @return a Timestamp object representing the current time.
    */
   static Timestamp Now() {
+    /*
     switch (mode()) {
       case ClockMode::SYSTEM:
         return SystemNow();
@@ -169,6 +170,8 @@ class Clock {
         return From(ros::Time::now().toSec());
       default:
         AFATAL << "Unsupported clock mode: " << mode();
+    */
+      return SystemNow(); 
     }
     return From(ros::Time::now().toSec());
   }

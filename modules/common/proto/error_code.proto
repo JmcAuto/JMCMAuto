@@ -62,6 +62,9 @@ enum ErrorCode {
   // Driver error codes.
   DRIVER_ERROR_GNSS = 12000;
   DRIVER_ERROR_VELODYNE = 13000; 
+
+  //Leo error codes for test
+  LEO_ERROR = 14000;
 }
 
 message StatusPb {

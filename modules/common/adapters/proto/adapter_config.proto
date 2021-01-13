@@ -71,6 +71,9 @@ message AdapterConfig {
     CONTI_RADAR_FRONT = 64;
     CONTI_RADAR_LEFT = 65;
     CONTI_RADAR_RIGHT = 66;
+    LEOA = 67;
+    LEOB = 68;
+    LEOC = 69;
   }
   enum Mode {
     RECEIVE_ONLY = 0;

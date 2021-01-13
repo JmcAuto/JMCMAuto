@@ -38,6 +38,7 @@ void AdapterManager::Reset() {
   instance()->observers_.clear();
 }
 
+//读取config配置，待修改
 void AdapterManager::Init(const std::string &adapter_config_filename) {
   // Parse config file
   AdapterManagerConfig configs;
@@ -53,9 +54,10 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
   }
 
   instance()->initialized_ = true;
-  if (configs.is_ros()) {
-    instance()->node_handle_.reset(new ros::NodeHandle());
-  }
+  //ROS_node_handle重置，MDC中暂未有相关代码
+  //if (configs.is_ros()) {
+  //  instance()->node_handle_.reset(new ros::NodeHandle());
+  //}
 
   for (const auto &config : configs.config()) {
     switch (config.type()) {
@@ -257,6 +259,12 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
       case AdapterConfig::REMOTE_CONTROL:
         EnableRemoteControl(FLAGS_remote_control_topic, config);
         break;
+      case AdapterConfig::LEOA:
+        EnableLeoa(FLAGS_leoa_topic, config);
+      case AdapterConfig::LEOB:
+        EnableLeob(FLAGS_leob_topic, config);
+      case AdapterConfig::LEOC:
+        EnableLeoc(FLAGS_leoc_topic, config);
       default:
         AERROR << "Unknown adapter config type!";
         break;

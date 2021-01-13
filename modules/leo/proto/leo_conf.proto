@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+package jmc_auto.leo;
+
+message LeoConf {
+  optional bool enable_headerlog = 1 [default = false];
+}

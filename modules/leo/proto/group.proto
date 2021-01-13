@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package jmc_auto.leo;
+
+message Group {
+  optional double sap_number = 1;
+  optional string name = 2;
+  optional double phone_number = 3 ;
+}

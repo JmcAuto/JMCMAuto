@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package jmc_auto.leo;
+
+import "modules/common/proto/header.proto";
+
+message Leob {
+    optional jmc_auto.common.Header header = 1;
+    optional string node_name = 2;
+    optional bool whether = 3;
+    optional double phone = 4;
+}

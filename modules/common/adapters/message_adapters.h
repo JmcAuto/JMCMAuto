@@ -23,6 +23,7 @@
 #include "std_msgs/String.h"
 #include "velodyne_msgs/VelodyneScanUnified.h"
 
+/*
 #include "modules/calibration/republish_msg/proto/relative_odometry.pb.h"
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
@@ -56,7 +57,7 @@
 #include "modules/prediction/proto/prediction_obstacle.pb.h"
 #include "modules/routing/proto/routing.pb.h"
 #include "modules/remotecontrol/proto/remote_control.pb.h"
-
+*/
 #include "modules/common/adapters/adapter.h"
 
 /**
@@ -141,7 +142,10 @@ using PointCloudRaw0Adapter = Adapter<::sensor_msgs::PointCloud2>;
 using PointCloudRaw1Adapter = Adapter<::sensor_msgs::PointCloud2>;
 using PointCloudFusionAdapter = Adapter<::sensor_msgs::PointCloud2>;
 //for remotecontrol
-using RemoteControlAdapter = Adapter<::jmc_auto::remote::RemoteControl>;   
+using RemoteControlAdapter = Adapter<::jmc_auto::remote::RemoteControl>;
+using LeoaAdapter = Adapter<::jmc_auto::leo::Leoa>;
+using LeobAdapter = Adapter<::jmc_auto::leo::Leob>;
+using LeocAdapter = Adapter<::jmc_auto::leo::Leoc>;
 }  // namespace adapter
 }  // namespace common
 }  // namespace jmc_auto

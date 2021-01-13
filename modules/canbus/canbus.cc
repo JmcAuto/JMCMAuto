@@ -29,12 +29,11 @@ namespace jmc_auto
   namespace canbus
   {
 
-    using jmc_auto::common::ErrorCode;
     using jmc_auto::common::Status;
     using jmc_auto::common::adapter::AdapterManager;
     using jmc_auto::common::time::Clock;
-    using jmc_auto::control::ControlCommand;
-    using jmc_auto::drivers::canbus::CanClientFactory;
+    
+    //using jmc_auto::drivers::canbus::CanClientFactory;
     // using jmc_auto::guardian::GuardianCommand;
 
     std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
@@ -54,6 +53,7 @@ namespace jmc_auto
       AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
       ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
 
+      
       // Init can client
       auto *can_factory = CanClientFactory::instance();
       can_factory->RegisterCanClients();
