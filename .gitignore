@@ -11,7 +11,7 @@ Includes
 include
 lib
 share
-generated
+#generated
 outputJson
 .settings/org.eclipse.cdt.managedbuilder.core.prefs
 

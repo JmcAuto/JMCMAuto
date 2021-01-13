@@ -34,10 +34,6 @@
                       <SHORT-NAME>jmc_auto</SHORT-NAME>
                       <SYMBOL>jmc_auto</SYMBOL>
                     </SYMBOL-PROPS>
-                    <SYMBOL-PROPS>
-                      <SHORT-NAME>canbus</SHORT-NAME>
-                      <SYMBOL>canbus</SYMBOL>
-                    </SYMBOL-PROPS>
                   </NAMESPACES>
                   <EVENTS>
                     <VARIABLE-DATA-PROTOTYPE>
