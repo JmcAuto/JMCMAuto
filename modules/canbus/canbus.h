@@ -56,8 +56,8 @@ namespace canbus {
  */
 class Canbus : public jmc_auto::common::JmcAutoApp {
  public:
-  Canbus()
-      : monitorger_(jmc_auto::common::monitor::MonitorMessageItem::CANBUS) {}
+  //Canbus()
+  //    : monitorger_(jmc_auto::common::monitor::MonitorMessageItem::CANBUS) {}
 
   /**
    * @brief obtain module name
@@ -86,33 +86,33 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
   void PublishChassis();
   void PublishChassisDetail();
   void OnTimer(const ros::TimerEvent &event);
-  void OnControlCommand(const jmc_auto::control::ControlCommand &control_command);
+  void OnControlCommand(const ControlCommand &control_command);
 
 
-void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
-  jmc_auto::control::ControlCommand RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
+//void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
+//  jmc_auto::control::ControlCommand RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
 //   void OnGuardianCommand(
 //       const jmc_auto::guardian::GuardianCommand &guardian_command);
   jmc_auto::common::Status OnError(const std::string &error_msg);
-  void RegisterCanClients();
+  //void RegisterCanClients();
   void setControlcmd(const ros::TimerEvent &event);
 
   CanbusConf canbus_conf_;
-  std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
+  //std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
   CanSender<ChassisDetail> can_sender_;
-  jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
+  //jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
   std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
       message_manager_;
   std::unique_ptr<VehicleController> vehicle_controller_;
   bool IS_STOP_MODE = false;
   bool IS_VEHCILE_STOP = false;
-  jmc_auto::control::ControlCommand control_command_;
+  ControlCommand control_command_;
 
   bool IS_Remote_MODE=false;
   int64_t last_timestamp_ = 0;
   ros::Timer timer_;
   ros::Timer sent_cmd_timer_;
-  jmc_auto::common::monitor::MonitorLogger monitorger_;
+  //jmc_auto::common::monitor::MonitorLogger monitorger_;
 };
 
 }  // namespace canbus

@@ -22,10 +22,12 @@
 
 #include <memory>
 
-#include "modules/canbus/proto/chassis_detail.pb.h"
-#include "modules/canbus/proto/vehicle_parameter.pb.h"
+//#include "modules/canbus/proto/chassis_detail.pb.h"
+#include "impl_type_chassisdetail.h"
+//#include "modules/canbus/proto/vehicle_parameter.pb.h"
+#include "impl_type_vehicleparameter.h"
 #include "modules/canbus/vehicle/vehicle_controller.h"
-#include "modules/drivers/canbus/can_comm/message_manager.h"
+//#include "modules/drivers/canbus/can_comm/message_manager.h"
 
 /**
  * @namespace jmc_auto::canbus

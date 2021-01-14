@@ -19,10 +19,11 @@
 #include "modules/canbus/common/canbus_gflags.h"
 #include "modules/canbus/vehicle/vehicle_factory.h"
 #include "modules/common/adapters/adapter_manager.h"
-#include "modules/common/adapters/proto/adapter_config.pb.h"
+//#include "modules/common/adapters/proto/adapter_config.pb.h"
+#include "impl_type_adaptermanagerconfig.h"
 #include "modules/common/time/time.h"
 #include "modules/common/util/util.h"
-#include "modules/drivers/canbus/can_client/can_client_factory.h"
+//#include "modules/drivers/canbus/can_client/can_client_factory.h"
 
 namespace jmc_auto
 {

@@ -23,16 +23,21 @@
 
 #include <unordered_map>
 
-#include "modules/canbus/proto/canbus_conf.pb.h"
-#include "modules/canbus/proto/chassis.pb.h"
-#include "modules/canbus/proto/chassis_detail.pb.h"
-#include "modules/control/proto/control_cmd.pb.h"
+//#include "modules/canbus/proto/canbus_conf.pb.h"
+//#include "modules/canbus/proto/chassis.pb.h"
+//#include "modules/canbus/proto/chassis_detail.pb.h"
+//#include "modules/control/proto/control_cmd.pb.h"
+#include "impl_type_canbusconf.h"
+#include "impl_type_chassis.h"
+#include "impl_type_chassisdetail.h"
+#include "impl_type_controlcommand.h"
 
 #include "modules/common/configs/vehicle_config_helper.h"
-#include "modules/common/proto/error_code.pb.h"
-#include "modules/drivers/canbus/can_comm/can_sender.h"
-#include "modules/drivers/canbus/can_comm/message_manager.h"
-#include "modules/drivers/canbus/can_comm/protocol_data.h"
+//#include "modules/common/proto/error_code.pb.h"
+#include "impl_type_errorcode.h"
+//#include "modules/drivers/canbus/can_comm/can_sender.h"
+//#include "modules/drivers/canbus/can_comm/message_manager.h"
+//#include "modules/drivers/canbus/can_comm/protocol_data.h"
 
 /**
  * @namespace jmc_auto::canbus
@@ -105,13 +110,13 @@ class VehicleController {
    */
   virtual void Emergency() = 0;
 
-  virtual common::ErrorCode EnableAutoMode() = 0;
-  virtual common::ErrorCode DisableAutoMode() = 0;
-  virtual common::ErrorCode EnableSteeringOnlyMode() = 0;
-  virtual common::ErrorCode EnableSpeedOnlyMode() = 0;
-  virtual common::ErrorCode EnableRemoteMode() = 0;
-  virtual common::ErrorCode EnableAPAMode() = 0;
-  virtual common::ErrorCode DisableAPAMode() = 0;
+  virtual ErrorCode EnableAutoMode() = 0;
+  virtual ErrorCode DisableAutoMode() = 0;
+  virtual ErrorCode EnableSteeringOnlyMode() = 0;
+  virtual ErrorCode EnableSpeedOnlyMode() = 0;
+  virtual ErrorCode EnableRemoteMode() = 0;
+  virtual ErrorCode EnableAPAMode() = 0;
+  virtual ErrorCode DisableAPAMode() = 0;
   /*
    * @brief NEUTRAL, REVERSE, DRIVE
    */

@@ -23,17 +23,17 @@ namespace jmc_auto
 namespace canbus
 {
 
-using common::ErrorCode;
-using control::ControlCommand;
+//using common::ErrorCode;
+//using control::ControlCommand;
 
-Chassis::DrivingMode VehicleController::driving_mode()
+DrivingMode VehicleController::driving_mode()
 {
   std::lock_guard<std::mutex> lock(mode_mutex_);
   return driving_mode_;
 }
 
 void VehicleController::set_driving_mode(
-    const Chassis::DrivingMode &driving_mode)
+    const DrivingMode &driving_mode)
 {
   std::lock_guard<std::mutex> lock(mode_mutex_);
   driving_mode_ = driving_mode;
@@ -42,15 +42,15 @@ void VehicleController::set_driving_mode(
 ErrorCode VehicleController::SetDrivingMode(
     const Chassis::DrivingMode &driving_mode)
 {
-  if (driving_mode == Chassis::EMERGENCY_MODE)
+  if (driving_mode == DrivingMode::EMERGENCY_MODE)
   {
     AINFO << "Can't set vehicle to EMERGENCY_MODE driving mode.";
     return ErrorCode::CANBUS_ERROR;
   }
 
   // vehicle in emergency mode only response to manual mode to reset.
-  if (driving_mode_ == Chassis::EMERGENCY_MODE &&
-      !(driving_mode == Chassis::COMPLETE_MANUAL||driving_mode == Chassis::AUTO_SPEED_ONLY))
+  if (driving_mode_ == DrivingMode::EMERGENCY_MODE &&
+      !(driving_mode == DrivingMode::COMPLETE_MANUAL||driving_mode == DrivingMode::AUTO_SPEED_ONLY))
   {
     AINFO
         << "Vehicle in EMERGENCY_MODE, only response to COMPLETE_MANUAL mode or REMOTE_MODE.";
@@ -67,7 +67,7 @@ ErrorCode VehicleController::SetDrivingMode(
  
   switch (driving_mode)
   {
-  case Chassis::COMPLETE_AUTO_DRIVE:
+  case DrivingMode::COMPLETE_AUTO_DRIVE:
   {
     if (EnableAutoMode() != ErrorCode::OK)
     {
@@ -76,7 +76,7 @@ ErrorCode VehicleController::SetDrivingMode(
     }
     break;
   }
-  case Chassis::COMPLETE_MANUAL:
+  case DrivingMode::COMPLETE_MANUAL:
   {
     if (DisableAutoMode() != ErrorCode::OK)
     {
