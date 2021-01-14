@@ -9,17 +9,21 @@
 
 
 
+
 #include "impl_type_double.h"
 #include "impl_type_int32.h"
+#include "impl_type_drivingmode.h"
+#include "impl_type_vehiclebrand.h"
 
 
 struct VehicleParameter {
-    ::Double brand;
+    ::VehicleBrand brand;
     
     ::Double max_engine_pedal;
     
     ::Int32 max_enable_fail_attempt;
     
+    ::DrivingMode driving_mode;
     
 
     static bool IsPlane()
@@ -34,6 +38,7 @@ struct VehicleParameter {
         fun(brand);
         fun(max_engine_pedal);
         fun(max_enable_fail_attempt);
+        fun(driving_mode);
     }
 
     template<typename F>
@@ -42,10 +47,11 @@ struct VehicleParameter {
         fun(brand);
         fun(max_engine_pedal);
         fun(max_enable_fail_attempt);
+        fun(driving_mode);
     }
 
     bool operator == (const ::VehicleParameter& t) const {
-        return (brand == t.brand) && (max_engine_pedal == t.max_engine_pedal) && (max_enable_fail_attempt == t.max_enable_fail_attempt);
+        return (brand == t.brand) && (max_engine_pedal == t.max_engine_pedal) && (max_enable_fail_attempt == t.max_enable_fail_attempt) && (driving_mode == t.driving_mode);
     }
 };
 

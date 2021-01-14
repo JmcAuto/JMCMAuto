@@ -31,13 +31,13 @@
 #include "impl_type_bool.h"
 #include "impl_type_turnsignal.h"
 #include "impl_type_int32.h"
-#include "impl_type_header.h"
 #include "impl_type_latencystats.h"
+#include "impl_type_comheader.h"
 #include "impl_type_debug.h"
 
 
 struct ControlCommand {
-    ::Header header;
+    ::ComHeader header;
     
     ::Double steering_target;
     

@@ -17,7 +17,7 @@
 
 #include "impl_type_float.h"
 #include "impl_type_bool.h"
-#include "impl_type_header.h"
+#include "impl_type_comheader.h"
 
 
 struct Shift_cmd_65 {
@@ -35,7 +35,7 @@ struct Shift_cmd_65 {
     
     ::Float steering_percentage;
     
-    ::Header header;
+    ::ComHeader header;
     
     ::Bool engine_started;
     

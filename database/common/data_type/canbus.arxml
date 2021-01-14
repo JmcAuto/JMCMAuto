@@ -17,7 +17,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_parameter/VehicleParameter</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -318,7 +318,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/ErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/ChassisErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -973,6 +973,18 @@
               </SUB-ELEMENTS>
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>ChassisErrorCode</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/chassis/ErrorCodeEnum</COMPU-METHOD-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChassisGPS</SHORT-NAME>
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
@@ -1267,18 +1279,6 @@
                 </COMPU-SCALES>
               </COMPU-INTERNAL-TO-PHYS>
             </COMPU-METHOD>
-            <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>ErrorCode</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SW-DATA-DEF-PROPS>
-                <SW-DATA-DEF-PROPS-VARIANTS>
-                  <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/chassis/ErrorCodeEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                  </SW-DATA-DEF-PROPS-CONDITIONAL>
-                </SW-DATA-DEF-PROPS-VARIANTS>
-              </SW-DATA-DEF-PROPS>
-            </IMPLEMENTATION-DATA-TYPE>
             <COMPU-METHOD>
               <SHORT-NAME>ErrorCodeEnum</SHORT-NAME>
               <CATEGORY>TEXTTABLE</CATEGORY>
@@ -3955,7 +3955,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis_detail/Ems  Type</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis_detail/EmsType</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -4051,19 +4051,19 @@
               </SUB-ELEMENTS>
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>Ems  Type</SHORT-NAME>
+              <SHORT-NAME>EmsType</SHORT-NAME>
               <CATEGORY>TYPE_REFERENCE</CATEGORY>
               <SW-DATA-DEF-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/chassis_detail/Ems  TypeEnum</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/chassis_detail/EmsTypeEnum</COMPU-METHOD-REF>
                     <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </SW-DATA-DEF-PROPS>
             </IMPLEMENTATION-DATA-TYPE>
             <COMPU-METHOD>
-              <SHORT-NAME>Ems  TypeEnum</SHORT-NAME>
+              <SHORT-NAME>EmsTypeEnum</SHORT-NAME>
               <CATEGORY>TEXTTABLE</CATEGORY>
               <COMPU-INTERNAL-TO-PHYS>
                 <COMPU-SCALES>
@@ -4840,7 +4840,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/Platform/CameraRosTypes/CameraHeader</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -4862,7 +4862,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -4880,75 +4880,6 @@
                 </IMPLEMENTATION-DATA-TYPE-ELEMENT>
               </SUB-ELEMENTS>
             </IMPLEMENTATION-DATA-TYPE>
-            <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>GearPosition</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SW-DATA-DEF-PROPS>
-                <SW-DATA-DEF-PROPS-VARIANTS>
-                  <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/chassis_detail/GearPositionEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                  </SW-DATA-DEF-PROPS-CONDITIONAL>
-                </SW-DATA-DEF-PROPS-VARIANTS>
-              </SW-DATA-DEF-PROPS>
-            </IMPLEMENTATION-DATA-TYPE>
-            <COMPU-METHOD>
-              <SHORT-NAME>GearPositionEnum</SHORT-NAME>
-              <CATEGORY>TEXTTABLE</CATEGORY>
-              <COMPU-INTERNAL-TO-PHYS>
-                <COMPU-SCALES>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>0</LOWER-LIMIT>
-                    <UPPER-LIMIT>0</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_NEUTRAL</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>1</LOWER-LIMIT>
-                    <UPPER-LIMIT>1</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_DRIVE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>2</LOWER-LIMIT>
-                    <UPPER-LIMIT>2</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_REVERSE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>3</LOWER-LIMIT>
-                    <UPPER-LIMIT>3</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_PARKING</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>4</LOWER-LIMIT>
-                    <UPPER-LIMIT>4</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_LOW</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>5</LOWER-LIMIT>
-                    <UPPER-LIMIT>5</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_INVALID</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>6</LOWER-LIMIT>
-                    <UPPER-LIMIT>6</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_NONE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                </COMPU-SCALES>
-              </COMPU-INTERNAL-TO-PHYS>
-            </COMPU-METHOD>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Gem</SHORT-NAME>
               <CATEGORY>STRUCTURE</CATEGORY>
@@ -6102,7 +6033,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/Header</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/ComHeader</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -6984,7 +6915,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/Header</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/ComHeader</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -7294,7 +7225,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/Header</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/ComHeader</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -26034,199 +25965,6 @@
           <SHORT-NAME>vehicle_chassis</SHORT-NAME>
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>DrivingMode</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SW-DATA-DEF-PROPS>
-                <SW-DATA-DEF-PROPS-VARIANTS>
-                  <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_chassis/GearPositionEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                  </SW-DATA-DEF-PROPS-CONDITIONAL>
-                </SW-DATA-DEF-PROPS-VARIANTS>
-              </SW-DATA-DEF-PROPS>
-            </IMPLEMENTATION-DATA-TYPE>
-            <COMPU-METHOD>
-              <SHORT-NAME>DrivingModeEnum</SHORT-NAME>
-              <CATEGORY>TEXTTABLE</CATEGORY>
-              <COMPU-INTERNAL-TO-PHYS>
-                <COMPU-SCALES>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>0</LOWER-LIMIT>
-                    <UPPER-LIMIT>0</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>COMPLETE_MANUAL</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>1</LOWER-LIMIT>
-                    <UPPER-LIMIT>1</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>COMPLETE_AUTO_DRIVE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>2</LOWER-LIMIT>
-                    <UPPER-LIMIT>2</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>AUTO_STEER_ONLY</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>3</LOWER-LIMIT>
-                    <UPPER-LIMIT>3</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>AUTO_SPEED_ONLY</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>4</LOWER-LIMIT>
-                    <UPPER-LIMIT>4</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>REMOTE_DRIVE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>5</LOWER-LIMIT>
-                    <UPPER-LIMIT>5</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>EMERGENCY_MODE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                </COMPU-SCALES>
-              </COMPU-INTERNAL-TO-PHYS>
-            </COMPU-METHOD>
-            <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>ErrorCode</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SW-DATA-DEF-PROPS>
-                <SW-DATA-DEF-PROPS-VARIANTS>
-                  <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_chassis/ErrorCodeEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                  </SW-DATA-DEF-PROPS-CONDITIONAL>
-                </SW-DATA-DEF-PROPS-VARIANTS>
-              </SW-DATA-DEF-PROPS>
-            </IMPLEMENTATION-DATA-TYPE>
-            <COMPU-METHOD>
-              <SHORT-NAME>ErrorCodeEnum</SHORT-NAME>
-              <CATEGORY>TEXTTABLE</CATEGORY>
-              <COMPU-INTERNAL-TO-PHYS>
-                <COMPU-SCALES>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>0</LOWER-LIMIT>
-                    <UPPER-LIMIT>0</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>NO_ERROR</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>1</LOWER-LIMIT>
-                    <UPPER-LIMIT>1</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>CMD_NOT_IN_PERIOD</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>2</LOWER-LIMIT>
-                    <UPPER-LIMIT>2</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>CHASSIS_ERROR</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>3</LOWER-LIMIT>
-                    <UPPER-LIMIT>3</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>MANUAL_INTERVENTION</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>4</LOWER-LIMIT>
-                    <UPPER-LIMIT>4</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>CHASSIS_CAN_NOT_IN_PERIOD</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>5</LOWER-LIMIT>
-                    <UPPER-LIMIT>5</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>UNKNOWN_ERROR</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                </COMPU-SCALES>
-              </COMPU-INTERNAL-TO-PHYS>
-            </COMPU-METHOD>
-            <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>GearPosition</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SW-DATA-DEF-PROPS>
-                <SW-DATA-DEF-PROPS-VARIANTS>
-                  <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_chassis/GearPositionEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                  </SW-DATA-DEF-PROPS-CONDITIONAL>
-                </SW-DATA-DEF-PROPS-VARIANTS>
-              </SW-DATA-DEF-PROPS>
-            </IMPLEMENTATION-DATA-TYPE>
-            <COMPU-METHOD>
-              <SHORT-NAME>GearPositionEnum</SHORT-NAME>
-              <CATEGORY>TEXTTABLE</CATEGORY>
-              <COMPU-INTERNAL-TO-PHYS>
-                <COMPU-SCALES>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>0</LOWER-LIMIT>
-                    <UPPER-LIMIT>0</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_NEUTRAL</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>1</LOWER-LIMIT>
-                    <UPPER-LIMIT>1</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_DRIVE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>2</LOWER-LIMIT>
-                    <UPPER-LIMIT>2</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_REVERSE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>3</LOWER-LIMIT>
-                    <UPPER-LIMIT>3</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_PARKING</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>4</LOWER-LIMIT>
-                    <UPPER-LIMIT>4</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_LOW</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>5</LOWER-LIMIT>
-                    <UPPER-LIMIT>5</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_INVALID</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>6</LOWER-LIMIT>
-                    <UPPER-LIMIT>6</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>GEAR_NONE</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                </COMPU-SCALES>
-              </COMPU-INTERNAL-TO-PHYS>
-            </COMPU-METHOD>
-            <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Vehicle_Chassis</SHORT-NAME>
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
@@ -26297,23 +26035,12 @@
                   </SW-DATA-DEF-PROPS>
                 </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>steering_percentage</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Float</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>header</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/Header</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/CommonDataTypes/ComHeader</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -26325,6 +26052,39 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>driving_mode</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>error_code</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/ChassisErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>gear_location</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -26401,7 +26161,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_parameter/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -26434,7 +26194,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/Platform/CameraRosTypes/CameraHeader</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/chassis/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>

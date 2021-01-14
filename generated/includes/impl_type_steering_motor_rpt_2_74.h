@@ -11,13 +11,13 @@
 
 #include "impl_type_double.h"
 #include "impl_type_int32.h"
-#include "impl_type_header.h"
+#include "impl_type_comheader.h"
 
 
 struct Steering_motor_rpt_2_74 {
     ::Int32 encoder_temperature;
     
-    ::Header motor_temperature;
+    ::ComHeader motor_temperature;
     
     ::Double angular_speed;
     

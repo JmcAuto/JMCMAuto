@@ -18,9 +18,9 @@
 
 
 #include "impl_type_double.h"
-#include "impl_type_ems  type.h"
 #include "impl_type_bool.h"
 #include "impl_type_int32.h"
+#include "impl_type_emstype.h"
 
 
 struct Ems {
@@ -28,7 +28,7 @@ struct Ems {
     
     ::Bool is_engine_acc_error;
     
-    ::Ems  Type engine_state;
+    ::EmsType engine_state;
     
     ::Double max_engine_torq_percent;
     

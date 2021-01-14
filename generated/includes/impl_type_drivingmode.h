@@ -10,13 +10,13 @@
 
 enum class DrivingMode : UInt8
 {
-    GEAR_NEUTRAL = 0,
-    GEAR_DRIVE = 1,
-    GEAR_REVERSE = 2,
-    GEAR_PARKING = 3,
-    GEAR_LOW = 4,
-    GEAR_INVALID = 5,
-    GEAR_NONE = 6
+    COMPLETE_MANUAL = 0,
+    COMPLETE_AUTO_DRIVE = 1,
+    AUTO_STEER_ONLY = 2,
+    AUTO_SPEED_ONLY = 3,
+    EMERGENCY_MODE = 4,
+    REMOTE_MODE = 5,
+    APA_MODE = 6
 };
 
 #endif // impl_type_drivingmode_h

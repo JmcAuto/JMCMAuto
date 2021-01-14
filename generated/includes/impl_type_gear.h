@@ -10,16 +10,19 @@
 
 
 
+
+#include "impl_type_gearposition.h"
 #include "impl_type_bool.h"
 
 
 struct Gear {
     ::Bool is_shift_position_valid;
     
+    ::GearPosition gear_state;
     
     ::Bool driver_override;
     
-    ::Bool gear_cmd;
+    ::GearPosition gear_cmd;
     
     ::Bool canbus_fault;
     
@@ -34,6 +37,7 @@ struct Gear {
     void enumerate(F& fun)
     {
         fun(is_shift_position_valid);
+        fun(gear_state);
         fun(driver_override);
         fun(gear_cmd);
         fun(canbus_fault);
@@ -43,13 +47,14 @@ struct Gear {
     void enumerate(F& fun) const
     {
         fun(is_shift_position_valid);
+        fun(gear_state);
         fun(driver_override);
         fun(gear_cmd);
         fun(canbus_fault);
     }
 
     bool operator == (const ::Gear& t) const {
-        return (is_shift_position_valid == t.is_shift_position_valid) && (driver_override == t.driver_override) && (gear_cmd == t.gear_cmd) && (canbus_fault == t.canbus_fault);
+        return (is_shift_position_valid == t.is_shift_position_valid) && (gear_state == t.gear_state) && (driver_override == t.driver_override) && (gear_cmd == t.gear_cmd) && (canbus_fault == t.canbus_fault);
     }
 };
 

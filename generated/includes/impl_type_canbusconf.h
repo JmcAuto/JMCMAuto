@@ -10,12 +10,12 @@
 
 
 
-#include "impl_type_double.h"
+#include "impl_type_vehicleparameter.h"
 #include "impl_type_bool.h"
 
 
 struct CanbusConf {
-    ::Double vehicle_parameter;
+    ::VehicleParameter vehicle_parameter;
     
     ::Bool enable_debug_mode;
     

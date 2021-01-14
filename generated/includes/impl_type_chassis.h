@@ -89,7 +89,7 @@
 #include "impl_type_float.h"
 #include "impl_type_int32.h"
 #include "impl_type_drivingmode.h"
-#include "impl_type_errorcode.h"
+#include "impl_type_chassiserrorcode.h"
 #include "impl_type_wheel_speed_rpt_7a.h"
 
 
@@ -130,7 +130,7 @@ struct Chassis {
     
     ::DrivingMode driving_mode;
     
-    ::ErrorCode error_code;
+    ::ChassisErrorCode error_code;
     
     ::GearPosition gear_location;
     

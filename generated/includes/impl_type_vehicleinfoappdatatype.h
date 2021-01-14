@@ -31,12 +31,12 @@
 #include "impl_type_float.h"
 #include "impl_type_wheelspeedst.h"
 #include "impl_type_autonomymodest.h"
-#include "impl_type_header.h"
+#include "impl_type_comheader.h"
 #include "impl_type_uint8.h"
 
 
 struct VehicleInfoAppDataType {
-    ::Header header;
+    ::ComHeader header;
     
     ::UInt8 gear;
     

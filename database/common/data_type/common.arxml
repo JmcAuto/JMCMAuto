@@ -615,53 +615,6 @@
                   </SUB-ELEMENTS>
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
-                  <SHORT-NAME>VehicleBrand</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/configs/vehicle_config/VehicleBrandEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE>
-                <COMPU-METHOD>
-                  <SHORT-NAME>VehicleBrandEnum</SHORT-NAME>
-                  <COMPU-INTERNAL-TO-PHYS>
-                    <COMPU-SCALES>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>0</LOWER-LIMIT>
-                        <UPPER-LIMIT>0</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>LINCOLN_MKZ</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>1</LOWER-LIMIT>
-                        <UPPER-LIMIT>1</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>GEM</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>2</LOWER-LIMIT>
-                        <UPPER-LIMIT>2</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>CH</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>3</LOWER-LIMIT>
-                        <UPPER-LIMIT>3</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>TESHUN</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                    </COMPU-SCALES>
-                  </COMPU-INTERNAL-TO-PHYS>
-                </COMPU-METHOD>
-                <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>VehicleConfig</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SUB-ELEMENTS>
@@ -704,17 +657,6 @@
                   <SHORT-NAME>VehicleParam</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SUB-ELEMENTS>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>brand</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>front_edge_to_center</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
@@ -2873,7 +2815,24 @@
               </COMPU-INTERNAL-TO-PHYS>
             </COMPU-METHOD>
             <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>Header</SHORT-NAME>
+              <SHORT-NAME>Index</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>indexes</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/record/SingleIndex</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>RecordHeader</SHORT-NAME>
               <CATEGORY>TYPE_REFERENCE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
@@ -3030,23 +2989,6 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt64</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-              </SUB-ELEMENTS>
-            </IMPLEMENTATION-DATA-TYPE>
-            <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>Index</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
-              <SUB-ELEMENTS>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>indexes</SHORT-NAME>
-                  <CATEGORY>VECTOR</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/record/SingleIndex</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>

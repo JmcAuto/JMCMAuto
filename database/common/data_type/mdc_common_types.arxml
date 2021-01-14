@@ -8,7 +8,7 @@
           <SHORT-NAME>CommonDataTypes</SHORT-NAME>
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>Header</SHORT-NAME>
+              <SHORT-NAME>ComHeader</SHORT-NAME>
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
