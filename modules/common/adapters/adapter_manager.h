@@ -29,10 +29,11 @@
 
 #include "modules/common/adapters/adapter.h"
 #include "modules/common/adapters/message_adapters.h"
+#include "impl_type_adaptermanagerconfig.h"
 //#include "modules/common/adapters/proto/adapter_config.pb.h"
 #include "modules/common/log.h"
 #include "modules/common/macro.h"
-#include "modules/common/transform_listener/transform_listener.h"
+//#include "modules/common/transform_listener/transform_listener.h"
 
 
 /**
@@ -54,11 +55,11 @@ namespace jmc_auto
 /// true, `callback`(if there's one)) in AdapterManager.
 #define REGISTER_ADAPTER(name)
     public:
-      static void Enable##name(const std::string &topic_name, const AdapterConfig &config)
+      static void Enable##name(const uint32_t &instance_id, const AdapterConfig &config)
       {
         CHECK(config.message_history_limit() > 0)
             << "Message history limit must be greater than 0";
-        instance()->InternalEnable##name(topic_name, config);
+        instance()->InternalEnable##name(instance_id, config);
       }
       static name##Adapter *Get##name()
       {
@@ -311,6 +312,7 @@ namespace jmc_auto
         /// The following code registered all the adapters of interest.
         REGISTER_ADAPTER(Chassis);
         REGISTER_ADAPTER(ChassisDetail);
+        /*
         REGISTER_ADAPTER(ControlCommand);
         REGISTER_ADAPTER(Gps);
         REGISTER_ADAPTER(Imu);
@@ -376,9 +378,7 @@ namespace jmc_auto
 
         //for remotecontrol
         REGISTER_ADAPTER(RemoteControl);
-        REGISTER_ADAPTER(Leoa);
-        REGISTER_ADAPTER(Leob);
-        REGISTER_ADAPTER(Leoc);
+        */
         DECLARE_SINGLETON(AdapterManager);
       };
 

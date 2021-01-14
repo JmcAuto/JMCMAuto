@@ -31,22 +31,24 @@
 #include <vector>
 
 #include "glog/logging.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/message.h"
+//#include "google/protobuf/descriptor.h"
+//#include "google/protobuf/message.h"
 
 #include "modules/common/adapters/adapter_gflags.h"
-#include "modules/common/proto/header.pb.h"
+//#include "modules/common/proto/header.pb.h"
+#include "impl_type_header.h"
 #include "modules/common/time/time.h"
 #include "modules/common/util/file.h"
 #include "modules/common/util/string_util.h"
 #include "modules/common/util/util.h"
 
+/*
 #include "sensor_msgs/CompressedImage.h"
 #include "sensor_msgs/Image.h"
 #include "sensor_msgs/PointCloud2.h"
 #include "std_msgs/String.h"
 #include "velodyne_msgs/VelodyneScanUnified.h"
-
+*/
 /**
  * @namespace jmc_auto::common::adapter
  * @brief jmc_auto::common::adapter

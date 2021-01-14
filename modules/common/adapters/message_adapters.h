@@ -16,12 +16,15 @@
 
 #ifndef MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 #define MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
-
+/*
 #include "sensor_msgs/CompressedImage.h"
 #include "sensor_msgs/Image.h"
 #include "sensor_msgs/PointCloud2.h"
 #include "std_msgs/String.h"
 #include "velodyne_msgs/VelodyneScanUnified.h"
+*/
+#include "impl_type_chassis.h"
+#include "impl_type_chassisdetail.h"
 
 /*
 #include "modules/calibration/republish_msg/proto/relative_odometry.pb.h"
@@ -70,8 +73,9 @@ namespace jmc_auto {
 namespace common {
 namespace adapter {
 
-using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
-using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
+using ChassisAdapter = Adapter<::Chassis>;
+using ChassisDetailAdapter = Adapter<::ChassisDetail>;
+/*
 using ControlCommandAdapter = Adapter<control::ControlCommand>;
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
@@ -146,6 +150,7 @@ using RemoteControlAdapter = Adapter<::jmc_auto::remote::RemoteControl>;
 using LeoaAdapter = Adapter<::jmc_auto::leo::Leoa>;
 using LeobAdapter = Adapter<::jmc_auto::leo::Leob>;
 using LeocAdapter = Adapter<::jmc_auto::leo::Leoc>;
+*/
 }  // namespace adapter
 }  // namespace common
 }  // namespace jmc_auto
