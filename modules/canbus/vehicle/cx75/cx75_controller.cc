@@ -56,8 +56,8 @@ namespace jmc_auto
           return ErrorCode::CANBUS_ERROR;
         }
 
-        params_.CopyFrom(params);
-        if (!params_.has_driving_mode())
+        //params_.CopyFrom(params);
+        if ( params->driving_mode = null)
         {
           AERROR << "Vehicle conf pb not set driving_mode.";
           return ErrorCode::CANBUS_ERROR;

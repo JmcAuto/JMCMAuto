@@ -26,7 +26,7 @@ namespace canbus
 //using common::ErrorCode;
 //using control::ControlCommand;
 
-DrivingMode VehicleController::driving_mode()
+Chassis::DrivingMode VehicleController::driving_mode()
 {
   std::lock_guard<std::mutex> lock(mode_mutex_);
   return driving_mode_;
@@ -85,7 +85,7 @@ ErrorCode VehicleController::SetDrivingMode(
     }
     break;
   }
-  case Chassis::AUTO_STEER_ONLY:
+  case Chassis::DrivingMode::AUTO_STEER_ONLY:
   {
     if (EnableSteeringOnlyMode() != ErrorCode::OK)
     {

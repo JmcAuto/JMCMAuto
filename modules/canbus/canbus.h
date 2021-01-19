@@ -38,6 +38,8 @@
 #include "modules/common/monitor_log/monitor_log_buffer.h"
 
 #include "impl_type_controlcommand.h"
+const unsigned int CAN_NUM = 12;
+const int CAN_VALIDLEN = 8;
 
 //#include "modules/guardian/proto/guardian.pb.h"
 
@@ -56,6 +58,8 @@ namespace canbus {
  */
 class Canbus : public jmc_auto::common::JmcAutoApp {
  public:
+    using CanRxProxy = mdc::sensor::proxy::CanRxServiceInterfaceProxy;
+    using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
   //Canbus()
   //    : monitorger_(jmc_auto::common::monitor::MonitorMessageItem::CANBUS) {}
 
@@ -77,6 +81,8 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
    */
   jmc_auto::common::Status Start() override;
 
+
+  jmc_auto::common::Status Canbus::CheckInput()
   /**
    * @brief module stop function
    */
@@ -110,9 +116,18 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
 
   bool IS_Remote_MODE=false;
   int64_t last_timestamp_ = 0;
-  ros::Timer timer_;
-  ros::Timer sent_cmd_timer_;
+  //ros::Timer timer_;
+  //ros::Timer sent_cmd_timer_;
   //jmc_auto::common::monitor::MonitorLogger monitorger_;
+  // canbus_config.json中的ChannelId
+  int m_channelId;
+  // instance ID
+  int m_instance;
+    std::mutex m_canReadMutex;
+    std::unique_ptr<CanRxProxy> m_proxy[CAN_NUM];
+    std::mutex m_canSendMutex;
+    std::unique_ptr<CanTxSkeleton> m_skeleton[CAN_NUM];
+    std::unique_ptr<std::thread> m_canMethodThread[CAN_NUM];
 };
 
 }  // namespace canbus

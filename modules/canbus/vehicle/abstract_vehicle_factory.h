@@ -61,7 +61,7 @@ class AbstractVehicleFactory {
    * @brief the interface of creating a MessageManager class
    * @returns a unique pointer that points to the created MessageManager object.
    */
-  virtual std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
+  virtual std::unique_ptr<MessageManager<ChassisDetail>>
   CreateMessageManager() = 0;
 
   /**

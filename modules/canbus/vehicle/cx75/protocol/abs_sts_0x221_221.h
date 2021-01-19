@@ -19,13 +19,13 @@
 
 #include "modules/drivers/canbus/can_comm/protocol_data.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
+#include "impl_type_chassisdetail.h"
 
 namespace jmc_auto {
 namespace canbus {
 namespace cx75 {
 
-class Abssts0x221221 : public ::jmc_auto::drivers::canbus::ProtocolData<
-                    ::jmc_auto::canbus::ChassisDetail> {
+class Abssts0x221221 : public ::jmc_auto::drivers::canbus::ProtocolData<ChassisDetail> {
  public:
   static const int32_t ID;
   Abssts0x221221();
