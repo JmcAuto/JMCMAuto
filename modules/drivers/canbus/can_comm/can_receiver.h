@@ -69,7 +69,8 @@ class CanReceiver {
    * @param enable_log If log the essential information during running.
    * @return An error code indicating the status of this initialization.
    */
-  common::ErrorCode Init(MessageManager<SensorType> *pt_manager,
+  common::ErrorCode Init(CanClient *can_client,
+                         MessageManager<SensorType> *pt_manager,
                          bool enable_log);
 
   /**
@@ -99,7 +100,7 @@ class CanReceiver {
   std::unique_ptr<std::thread> thread_;
   bool is_running_ = false;
   // CanClient, MessageManager pointer life is managed by outer program
-  //CanClient *can_client_ = nullptr;
+  CanClient *can_client_ = nullptr;
   MessageManager<SensorType> *pt_manager_ = nullptr;
   bool enable_log_ = false;
   bool is_init_ = false;
@@ -109,15 +110,15 @@ class CanReceiver {
 
 template <typename SensorType>
 ::jmc_auto::common::ErrorCode CanReceiver<SensorType>::Init(
-    MessageManager<SensorType> *pt_manager,
+    CanClient *can_client, MessageManager<SensorType> *pt_manager,
     bool enable_log) {
-  //can_client_ = can_client;
+  can_client_ = can_client;
   pt_manager_ = pt_manager;
   enable_log_ = enable_log;
-  //if (can_client_ == nullptr) {
-  //  AERROR << "Invalid can client.";
-  //  return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
-  //}
+  if (can_client_ == nullptr) {
+    AERROR << "Invalid can client.";
+    return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
+  }
   if (pt_manager_ == nullptr) {
     AERROR << "Invalid protocol manager.";
     return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
@@ -129,7 +130,7 @@ template <typename SensorType>
 template <typename SensorType>
 void CanReceiver<SensorType>::RecvThreadFunc() {
   AINFO << "Can client receiver thread starts.";
-  //CHECK_NOTNULL(can_client_);
+  CHECK_NOTNULL(can_client_);
   CHECK_NOTNULL(pt_manager_);
 
   int32_t receive_error_count = 0;

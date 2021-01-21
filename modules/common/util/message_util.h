@@ -27,7 +27,7 @@
 #include "absl/strings/str_cat.h"
 #include "modules/common/util/file.h"
 #include "google/protobuf/message.h"
-#include "modules/common/time/jmcauto_time.h"
+#include "modules/common/time/time.h"
 
 /**
  * @namespace jmc_auto::common::util

@@ -1,0 +1,13 @@
+
+œ
+!modules/common/proto/header.protojmc_auto.common%modules/common/proto/error_code.proto"¾
+Header#
+timestamp_sec (RtimestampSec
+module_name (	R
+moduleName!
+sequence_num (RsequenceNum'
+lidar_timestamp (RlidarTimestamp)
+camera_timestamp (RcameraTimestamp'
+radar_timestamp (RradarTimestamp
+version (:1Rversion1
+status (2.jmc_auto.common.StatusPbRstatus

@@ -23,10 +23,8 @@
 
 #include <string>
 
-//#include "google/protobuf/descriptor.h"
-//#include "modules/common/proto/error_code.pb.h"
-#include "impl_type_errorcode.h"
-#include "impl_type_statuspb.h"
+#include "google/protobuf/descriptor.h"
+#include "modules/common/proto/error_code.pb.h"
 
 /**
  * @namespace jmc_auto::common
@@ -110,7 +108,7 @@ class Status {
     if (ok()) {
       return "OK";
     }
-    return msg_;
+    return ErrorCode_Name(code_) + ": " + msg_;
   }
 
   /**
@@ -121,9 +119,9 @@ class Status {
     if (!status_pb) {
       return;
     }
-    status_pb->error_code = code_;
+    status_pb->set_error_code(code_);
     if (!msg_.empty()) {
-      status_pb->msg = msg_;
+      status_pb->set_msg(msg_);
     }
   }
 

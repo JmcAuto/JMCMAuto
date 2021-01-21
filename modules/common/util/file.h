@@ -32,10 +32,10 @@
 #include <string>
 #include <vector>
 
-//#include "google/protobuf/io/zero_copy_stream_impl.h"
-//#include "google/protobuf/text_format.h"
+#include "google/protobuf/io/zero_copy_stream_impl.h"
+#include "google/protobuf/text_format.h"
 #include "modules/common/log.h"
-//#include "modules/common/util/string_util.h"
+#include "modules/common/util/string_util.h"
 
 /**
  * @namespace jmc_auto::common::util
@@ -45,21 +45,21 @@ namespace jmc_auto {
 namespace common {
 namespace util {
 
-//template <typename MessageType>
-//bool SetProtoToASCIIFile(const MessageType &message, int file_descriptor) {
-//  using google::protobuf::TextFormat;
-//  using google::protobuf::io::FileOutputStream;
-//  using google::protobuf::io::ZeroCopyOutputStream;
-//  if (file_descriptor < 0) {
-//    AERROR << "Invalid file descriptor.";
-//    return false;
-//  }
-//  ZeroCopyOutputStream *output = new FileOutputStream(file_descriptor);
-//  bool success = TextFormat::Print(message, output);
-//  delete output;
-//  close(file_descriptor);
-//  return success;
-//}
+template <typename MessageType>
+bool SetProtoToASCIIFile(const MessageType &message, int file_descriptor) {
+  using google::protobuf::TextFormat;
+  using google::protobuf::io::FileOutputStream;
+  using google::protobuf::io::ZeroCopyOutputStream;
+  if (file_descriptor < 0) {
+    AERROR << "Invalid file descriptor.";
+    return false;
+  }
+  ZeroCopyOutputStream *output = new FileOutputStream(file_descriptor);
+  bool success = TextFormat::Print(message, output);
+  delete output;
+  close(file_descriptor);
+  return success;
+}
 
 /**
  * @brief Sets the content of the file specified by the file_name to be the
@@ -68,7 +68,6 @@ namespace util {
  * @param file_name The name of the target file to set the content.
  * @return If the action is successful.
  */
-/*
 template <typename MessageType>
 bool SetProtoToASCIIFile(const MessageType &message,
                          const std::string &file_name) {
@@ -88,7 +87,6 @@ bool SetProtoToASCIIFile(const MessageType &message,
  * @param message The proto to carry the parsed content in the specified file.
  * @return If the action is successful.
  */
-/*
 template <typename MessageType>
 bool GetProtoFromASCIIFile(const std::string &file_name, MessageType *message) {
   using google::protobuf::TextFormat;
@@ -110,7 +108,7 @@ bool GetProtoFromASCIIFile(const std::string &file_name, MessageType *message) {
   close(file_descriptor);
   return success;
 }
-*/
+
 /**
  * @brief Sets the content of the file specified by the file_name to be the
  *        binary representation of the input protobuf.
@@ -118,7 +116,6 @@ bool GetProtoFromASCIIFile(const std::string &file_name, MessageType *message) {
  * @param file_name The name of the target file to set the content.
  * @return If the action is successful.
  */
-/*
 template <typename MessageType>
 bool SetProtoToBinaryFile(const MessageType &message,
                           const std::string &file_name) {
@@ -135,7 +132,6 @@ bool SetProtoToBinaryFile(const MessageType &message,
  * @param message The proto to carry the parsed content in the specified file.
  * @return If the action is successful.
  */
-/*
 template <typename MessageType>
 bool GetProtoFromBinaryFile(const std::string &file_name,
                             MessageType *message) {
@@ -159,7 +155,6 @@ bool GetProtoFromBinaryFile(const std::string &file_name,
  * @param message The proto to carry the parsed content in the specified file.
  * @return If the action is successful.
  */
-/*
 template <typename MessageType>
 bool GetProtoFromFile(const std::string &file_name, MessageType *message) {
   // Try the binary parser first if it's much likely a binary proto.
@@ -171,7 +166,7 @@ bool GetProtoFromFile(const std::string &file_name, MessageType *message) {
   return GetProtoFromASCIIFile(file_name, message) ||
          GetProtoFromBinaryFile(file_name, message);
 }
-*/
+
 /**
  * @brief Get file content as string.
  * @param file_name The name of the file to read content.

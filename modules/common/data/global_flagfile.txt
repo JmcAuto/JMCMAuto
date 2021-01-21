@@ -14,3 +14,15 @@
 --map_dir=/jmcauto/modules/map/data/demo
 
 --map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
+
+--map_dir=/jmcauto/modules/map/data/demo
+
+--map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
+
+--map_dir=/jmcauto/modules/map/data/parking
+
+--map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
+
+--map_dir=/jmcauto/modules/map/data/parking
+
+--map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2

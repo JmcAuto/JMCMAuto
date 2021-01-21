@@ -1,6 +1,6 @@
 vehicle_param {
-  front_edge_to_center: 2.443
-  back_edge_to_center: 2.443
+  front_edge_to_center: 3.886
+  back_edge_to_center: 0.9
   left_edge_to_center: 0.965
   right_edge_to_center: 0.965
 
@@ -15,6 +15,6 @@ vehicle_param {
   min_steer_angle_rate:0
   steer_ratio: 16
   wheel_base: 2.2
-  wheel_rolling_radius: 0.302
+  wheel_rolling_radius: 0.352
   max_abs_speed_when_stopped :0.01
 }

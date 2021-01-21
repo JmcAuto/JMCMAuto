@@ -1,0 +1,3284 @@
+control_period: 0.01
+trajectory_period: 0.1
+chassis_period: 0.01
+localization_period: 0.01
+max_status_interval_sec: 0.5
+max_planning_interval_sec: 0.15
+max_planning_delay_threshold: 8
+action: STOP
+soft_estop_brake: 0.0
+active_controllers: LON_CONTROLLER
+active_controllers: LAT_CONTROLLER
+max_steering_percentage_allowed: 100
+minimum_speed_resolution: 0.2
+query_relative_time: 0.8
+minimum_speed_protection: 0.1
+lat_controller_conf {
+  ts: 0.01
+  preview_window: 0
+  cf: 155493.663
+  cr: 155493.663
+  mass_fl: 55
+  mass_fr: 55
+  mass_rl: 65
+  mass_rr: 65
+  eps: 0.01
+  matrix_q: 0.07
+  matrix_q: 0.0
+  matrix_q: 1.2
+  matrix_q: 0.0
+  cutoff_freq: 10
+  mean_filter_window_size: 10
+  max_iteration: 100
+  max_lateral_acceleration: 5.0
+  lat_err_gain_scheduler {
+    scheduler {
+      speed: 2.0
+      ratio: 1.0
+    }
+    scheduler {
+      speed: 2.9
+      ratio: 0.6
+    }
+    scheduler {
+      speed: 4.0
+      ratio: 0.2
+    }
+    scheduler {
+      speed: 5.0
+      ratio: 0.1
+    }
+    scheduler {
+      speed: 6.0
+      ratio: 0.05
+    }
+  }
+  heading_err_gain_scheduler {
+    scheduler {
+      speed: 4.0
+      ratio: 1.0
+    }
+    scheduler {
+      speed: 8.0
+      ratio: 0.6
+    }
+    scheduler {
+      speed: 12.0
+      ratio: 0.4
+    }
+    scheduler {
+      speed: 20.0
+      ratio: 0.2
+    }
+    scheduler {
+      speed: 25.0
+      ratio: 0.1
+    }
+  }
+  steer_calibration_table{
+    steer_calibration{
+      speed : 0
+      angle : -480 
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 0
+      angle : -300  
+      torque : -2.4626 
+    }
+    steer_calibration{
+      speed : 0
+      angle : -240 
+      torque : -2.2226 
+    }
+    steer_calibration{
+      speed : 0
+      angle : -180 
+      torque : -1.6826 
+    }
+    steer_calibration{
+      speed : 0
+      angle : -120 
+      torque : -1.1426
+    }
+    steer_calibration{
+      speed : 0
+      angle : -60 
+      torque : -0.6026
+    }
+    steer_calibration{
+      speed : 0
+      angle : 0
+      torque : 0
+    }
+    steer_calibration{
+      speed : 0
+      angle : 60
+      torque :0.4774 
+    }
+    steer_calibration{
+      speed : 0
+      angle : 120
+      torque : 1.0174
+    }
+    steer_calibration{
+      speed : 0
+      angle : 180
+      torque : 1.5574
+    }
+    steer_calibration{
+      speed : 0
+      angle : 240
+      torque : 2.0974
+    }
+    steer_calibration{
+      speed : 0
+      angle : 300
+      torque : 2.2374
+    }
+    steer_calibration{
+      speed : 0
+      angle : 480
+      torque : 2.9
+    } 
+    steer_calibration{
+      speed : 0.52
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed :  0.52
+      angle : -300
+      torque : -2.371
+
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : -240
+      torque : -2.1831
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : -180
+      torque : -1.6191
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : -120
+      torque : -1.0551
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : -60
+      torque : -0.4911
+    }
+    steer_calibration{
+      speed : 0
+      angle : 0
+      torque : 0
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 60
+      torque : 0.6369
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 120
+      torque : 1.2009
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 180
+      torque : 1.7649
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 240
+      torque : 2.2289
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 300
+      torque : 2.3929
+    }
+    steer_calibration{
+      speed : 0.52
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 1
+      angle : -180
+      torque : -1.2599
+    }
+    steer_calibration{
+      speed : 1
+      angle : -150
+      torque : -1.5465
+    }
+    steer_calibration{
+      speed : 1
+      angle :30
+      torque : 0.2999
+    }
+steer_calibration{
+      speed : 1
+      angle : 60
+      torque : 0.755
+    }
+    steer_calibration{
+      speed : 1
+      angle : 90
+      torque : 0.7945
+    }
+    steer_calibration{
+      speed : 1
+      angle : 180
+      torque : 1.54
+}
+    steer_calibration{
+      speed : 1
+      angle : 300
+      torque : 1.4023
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -480
+      torque : -2.9
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : -330
+      torque : -1.4737
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -300
+      torque : -1.16
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : -270
+      torque : -0.7699
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -240
+      torque : -0.42
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : -210
+      torque : 0.32
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -180
+      torque : 0.57
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : -150
+      torque : 0.7799
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -120
+      torque : 0.965
+    }
+  steer_calibration{
+      speed : 1.8
+      angle :-90
+      torque : 1.085
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : -60
+      torque : 1.26
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : -30
+      torque : 1.32
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 0
+      torque : 0
+    }
+  steer_calibration{
+      speed : 1.8
+      angle : 30
+      torque : 0.82
+    }
+
+    steer_calibration{
+      speed : 1.8
+      angle : 60
+      torque : -0.03833
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 90
+      torque : -0.14056
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 120
+      torque : -0.04
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 150
+      torque : 0.3564
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 180
+      torque : 1.4898
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 210
+      torque : 1.6
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 240
+      torque : 1.5785
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 270
+      torque : 1.495
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 300
+      torque : 1.1423
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 330
+      torque : 1.655
+    }
+steer_calibration{
+      speed : 1.8
+      angle : 360
+      torque : 1.5855
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 390
+      torque : 1.8234
+    }
+    steer_calibration{
+      speed : 1.8
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 2
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 2
+      angle : -390
+      torque : -1.745
+    }
+    steer_calibration{
+      speed : 2
+      angle : -360
+      torque : -1.735
+    }
+    steer_calibration{
+      speed : 2
+      angle : -330
+      torque : -1.2144
+    }
+    steer_calibration{
+      speed : 2
+      angle : -300
+      torque : -1.2999
+    }
+    steer_calibration{
+      speed : 2
+      angle : -270
+      torque : -1.8201
+    }
+    steer_calibration{
+      speed : 2
+      angle : -240
+      torque : -1.635
+    }
+    steer_calibration{
+      speed : 2
+      angle : -210
+      torque : -1.5735
+    }
+    steer_calibration{
+      speed : 2
+      angle : -180
+      torque : -1.6243
+    }
+    steer_calibration{
+      speed : 2
+      angle : -150
+      torque : -1.405
+    }
+    steer_calibration{
+      speed : 2
+      angle : -120
+      torque : -1.2699
+    }
+    steer_calibration{
+      speed : 2
+      angle : -60
+      torque : -0.16
+    }
+    steer_calibration{
+      speed : 2
+      angle : 0
+      torque : 1.21
+    }
+    steer_calibration{
+      speed : 2
+      angle : 30
+      torque : 1.4568
+    }
+    steer_calibration{
+      speed : 2
+      angle : 60
+      torque :1.4123
+    }
+    steer_calibration{
+      speed : 2
+      angle : 90
+      torque : 1.385
+    }
+    steer_calibration{
+      speed : 2
+      angle : 120
+      torque : 1.355
+    }
+    steer_calibration{
+      speed : 2
+      angle : 150
+      torque : 1.51
+    }
+    steer_calibration{
+      speed : 2
+      angle : 180
+      torque : 1.515
+    }
+steer_calibration{
+      speed : 2
+      angle : 210
+      torque : 1.5999
+    }
+    steer_calibration{
+      speed : 2
+      angle : 240
+      torque : 1.6124
+    }
+steer_calibration{
+      speed : 2
+      angle : 270
+      torque : 1.805
+    }
+    steer_calibration{
+      speed : 2
+      angle : 300
+      torque : 1.8111
+    }
+steer_calibration{
+      speed : 2
+      angle : 330
+      torque : 1.8333
+    }
+steer_calibration{
+      speed : 2
+      angle : 360
+      torque : 1.4999
+    }
+    steer_calibration{
+      speed : 2
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -480
+      torque : -2.9
+    }
+
+    steer_calibration{
+      speed : 2.3
+      angle : -390
+      torque : -1.6945
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -360
+      torque : -1.5978
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -330
+      torque : -1.5643
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -300
+      torque : -2.4334
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -240
+      torque : -1.7999
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -210
+      torque : -1.7654
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -180
+      torque : -1.7001
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -150
+      torque : -1.6554
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -120
+      torque : -1.2474
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : -60
+      torque : -0.5854
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 0
+      torque : 0.4845
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 30
+      torque : 1.0099
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 60
+      torque : 1.3456
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 120
+      torque : 1.206
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 180
+      torque : 1.7626
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 240
+      torque : 1.6542
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 270
+      torque : 1.1654
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 300
+      torque : 1.3201
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 330
+      torque : 1.70554
+    }
+    steer_calibration{
+      speed : 2.3
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -360
+      torque : -1.7021
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -330
+      torque : -1.585
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -300
+      torque : 1.3345
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -240
+      torque : -1.2555
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -180
+      torque : -1.17143
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -150
+      torque : -1.1235
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -120
+      torque : -0.3845
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -90
+      torque : 1.0546
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -60
+      torque : 1.2899
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : -30
+      torque : 1.4456
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 0
+      torque : 1.6845
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 30
+      torque : 0.6234
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 60
+      torque : 1.25
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 90
+      torque : 1.7235
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 120
+      torque : 1.7854
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 150
+      torque : -0.665
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 180
+      torque : -0.8889
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 240
+      torque : 1.1456
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 300
+      torque : 1.845
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 330
+      torque : 1.8845
+    }
+    steer_calibration{
+      speed : 2.5
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -360
+      torque : -1.5599
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -330
+      torque : -1.2678
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -300
+      torque : -1.0756
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -240
+      torque : -2.112
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -180
+      torque : -1.8392
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -120
+      torque : -1.23
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : -60
+      torque : -0.54
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 0
+      torque : 0.2633
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 30
+      torque : 1.4654
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 60
+      torque : 1.6
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 90
+      torque : 1.6278
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 120
+      torque : 1.7256
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 150
+      torque : 1.76
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 180
+      torque : 1.7555
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 240
+      torque : 1.2999
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 270
+      torque : 0.4199
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 300
+      torque : 1.5
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 330
+      torque : 1.4231
+    }
+    steer_calibration{
+      speed : 2.7
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 
+      torque : 
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -300
+      torque : -2.56
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -270
+      torque : -1.2499
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -240
+      torque : -2.208
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -180
+      torque : -1.856
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -120
+      torque : -1.204
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -60
+      torque : -0.652
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : -30
+      torque : -1.0888
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 0
+      torque : 0.1036
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 30
+      torque : 1.1205
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 60
+      torque : 0.652
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 120
+      torque : 1.204
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 180
+      torque : 1.2023
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 210
+      torque : 1.2414
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 240
+      torque : 2.208
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 300
+      torque : 1.4389
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 330
+      torque : 1.3312
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 360
+      torque : 2.3456
+    }
+    steer_calibration{
+      speed : 2.9
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -480
+      torque : -3.56
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -450
+      torque : -3.186
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -420
+      torque : -3.2345
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -360
+      torque : -2.9545
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -300
+      torque : -2.6485
+    }
+    steer_calibration{
+      speed : 3.1
+      angle : -270
+      torque : -2.5455
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -240
+      torque : -2.445
+    }
+    steer_calibration{
+      speed : 3.1
+      angle : -210
+      torque : -2.0545
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -180
+      torque : -2.345
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -150
+      torque : -1.795
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -120
+      torque : -1.7565
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -90
+      torque : -1.7215
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -60
+      torque : -1.6158
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : -30
+      torque : -1.48
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 0
+      torque : -1.1232
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 30
+      torque : 1.465
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 60
+      torque : 1.3757
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 90
+      torque : 1.71
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 120
+      torque : 1.7845
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 150
+      torque : 1.8078
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 180
+      torque : 1.8755
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 240
+      torque : 2.1335
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 300
+      torque : 2.17
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 330
+      torque : 2.3045
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 360
+      torque : 2.8765
+    }
+    steer_calibration{
+      speed : 3.15
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -300
+      torque : -2.3376
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -240
+      torque : -1.3672
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -210
+      torque : -2.0454
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -180
+      torque : -2.0289
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -150
+      torque : -2.0578
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -120
+      torque : -1.9687
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -90
+      torque : -1.8234
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -60
+      torque : -1.6614
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : -30
+      torque : -2.2065
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 0
+      torque : 0.085
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 30
+      torque : 1.6699
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 60
+      torque : 1.724
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 90
+      torque : 1.7988
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 120
+      torque : 1.8275
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 150
+      torque : 1.7109
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 180
+      torque : 1.824
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 240
+      torque : 2.2124
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 300
+      torque : 2.5624
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 330
+      torque : 2.24
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 360
+      torque : 2.6575
+    }
+    steer_calibration{
+      speed : 3.3
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -300
+      torque : -2.5111
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -240
+      torque : -2.2611
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -180
+      torque : -1.8111
+    }
+    steer_calibration{
+      speed : 3.49
+      angle :-120
+       torque : 0.4958
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -90
+      torque : 0.8655
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -60
+      torque : 1.2505
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : -30
+      torque : 1.2954
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 0
+      torque : 1.1564
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 30
+      torque : 1.5236
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 60
+      torque : 1.7733
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 90
+      torque : 1.6973
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 120
+      torque : 1.6453
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 150
+      torque : 2.0461
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 180
+      torque : 0.8725
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 210
+      torque : 1.248
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 240
+      torque : 2.303
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 270
+      torque : 2.1199
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 300
+      torque : 2.5889
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 330
+      torque : 2.5033
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 360
+      torque : 2.6005
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 390
+      torque : 2.7654
+    }
+    steer_calibration{
+      speed : 3.49
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -450
+      torque : -3.201
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -360
+      torque : -1.47
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -330
+      torque : -1.59
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -300
+      torque : -1.2
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -240
+      torque : -0.9985
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -210
+      torque : -1.0562
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -180
+      torque : -1.1275
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -150
+      torque : -0.705
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -120
+      torque : -1.2114
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : -60
+      torque : -0.6434
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 0
+      torque : 0
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 60
+      torque : 1.315
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 90
+      torque : 1.3472
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 120
+      torque : 1.866
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 150
+      torque : 1.789
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 180
+      torque : 0.032
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 210
+      torque : 0.654
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 240
+      torque : 2.308
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 270
+      torque : 2.482
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 300
+      torque : 2.6395
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 330
+      torque : 2.065
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 360
+      torque : 2.15
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 390
+      torque : 2.265
+    }
+    steer_calibration{
+      speed : 3.69
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -450
+      torque : -2.51308
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -420
+      torque : -2.25
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -360
+      torque : -2.298
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -300
+      torque : -1.095
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -270
+      torque : -0.9116
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -240
+      torque : -1.2855
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -180
+      torque : -0.41
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -150
+      torque : -0.2392
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -120
+      torque : 0.0666
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -90
+      torque : 0.01
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -60
+      torque : 0.17
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : -30
+      torque : 0.003
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 0
+      torque : 0
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 30
+      torque : 0.8173
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 60
+      torque : 1.3035
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 120
+      torque : 1.29
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 180
+       torque : 0.5562
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 210
+      torque : 0.844
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 240
+      torque : 1.0463
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 270
+      torque : 1.1713
+    }
+    steer_calibration{
+      speed :3.9
+      angle :300
+      torque : 2.6030
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 330
+      torque : 2.7376
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 360
+      torque : 2.956
+    }
+    steer_calibration{
+      speed : 3.9
+      angle : 480
+      torque : 2.9145
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -360
+      torque : -2.672
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -330
+      torque : -2.6394
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -300
+      torque : -2.5307
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -270
+      torque : -2.2205
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -240
+      torque : -2.7378
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -210
+      torque : -2.5785
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -180
+      torque : -2.27
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -150
+      torque : -2.1371
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -120
+      torque : -1.2931
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -90
+      torque : -1.548
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -60
+      torque : -1.7065
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : -30
+      torque : -1.6687
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 0
+      torque : -1.5793
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 30
+      torque : 0.8587
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 60
+      torque :1.2010
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 90
+      torque : 2.0088
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 120
+      torque : 2.2633
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 180
+      torque : 2.3123
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 210
+      torque : 2.42
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 240
+      torque :2.2589
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 270
+      torque : 2.1177
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 300
+      torque : 2.5363
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 330
+      torque : 2.3302
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 360
+      torque : 2.7829
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 390
+      torque : 2.6878
+    }
+    steer_calibration{
+      speed : 4.1
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -390
+      torque : -2.4689
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -360
+      torque : -2.0007
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -330
+      torque : -2.0389
+    }   
+    steer_calibration{
+      speed : 4.29
+      angle : -300
+      torque : -1.835
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -240
+      torque : -2.2134
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -180
+      torque : -2.065
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -150
+      torque : -2.1533
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : -120
+      torque : -2.0653
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -90
+      torque : -1.3864
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : -60
+      torque :-0.8266
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : -30
+      torque : -0.288
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 0
+      torque :0.5641
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 30
+      torque : 1.0181
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 60
+      torque :1.3306
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 90
+      torque : -0.12
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 120
+      torque : 0.743
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 150
+      torque : 1.8152
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 180
+      torque : 2.0388
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 210
+      torque : 2.1257
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 240
+      torque : 2.1796
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 270
+      torque : 2.257
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 300
+      torque : 21245
+    }
+    steer_calibration{
+      speed : 4.29
+      angle : 330
+      torque : 2.4154
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 360
+      torque : 2.1961
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 390
+      torque : 2.2278
+    } 
+    steer_calibration{
+      speed : 4.29
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -480
+      torque :-2.9
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -360
+      torque : -2.9233
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -330
+      torque : -2.506
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -300
+      torque : -1.96
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -270
+      torque : -1.125
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -240
+      torque :-0.9433
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -210
+      torque : 0.6322
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -180
+      torque : -0.225
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -150
+      torque : -0.02625
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -120
+      torque : -0.0444
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -90
+      torque : 1.0053
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : -60
+      torque : 1.3374
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : -30
+      torque : 1.305
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : 0
+      torque :1.9224
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 30
+      torque : 1.8742
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : 60
+      torque : 1.6385
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 90
+      torque : 1.9933
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : 120
+      torque : 1.2692
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 180
+      torque :1.8612
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 240
+      torque : 2.2532
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 300
+      torque : 2.54
+    }
+    steer_calibration{
+      speed : 4.51
+      angle : 330
+      torque : 2.4068
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : 360
+      torque : 2.981
+    } 
+    steer_calibration{
+      speed : 4.51
+      angle : 480
+      torque : 2.9
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -480
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -360
+      torque : -2.9046
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -330
+      torque : -2.7118
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -300
+      torque : -2.5321
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -240
+      torque : -2.7249
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -210
+      torque : -2.5839
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -180
+      torque : -2.1918
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -150
+      torque : -2.2501
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -120
+      torque : -2.168
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -90
+      torque : -2.0547
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -60
+      torque : -1.8987
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : -30
+      torque : -0.8481
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 0
+      torque : 0.6962
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 30
+      torque : 1.3292
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 60
+      torque :0.6359
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 120
+      torque :1.26
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 180
+      torque :1.819
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 240
+      torque : 2.2199
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 300
+      torque : 2.5479
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 360
+      torque : 3.0801
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 390
+      torque : 3.0704
+    }
+    steer_calibration{
+      speed : 4.6
+      angle : 480
+      torque : 3.1
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : -360
+      torque : -2.9
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : -330
+      torque : -2.8887
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : -300
+      torque : -2.8978
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : -270
+      torque : -2.7608
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : -240
+      torque : -2.709
+    }
+    steer_calibration{
+      speed : 4.9
+      angle : 0
+      torque : 0.1216
+    }
+  }
+}
+lon_controller_conf {
+  ts: 0.01
+  brake_deadzone: 10
+  throttle_deadzone: 10.0
+  speed_controller_input_limit: 2.0
+  station_error_limit: 2.0
+  preview_window: 20.0
+  standstill_acceleration: -0.2
+  station_pid_conf {
+    integrator_enable: false
+    integrator_saturation_level: 0.3
+    kp: 0.3
+    ki: 0.0
+    kd: 0.0
+  }
+  low_speed_pid_conf {
+    integrator_enable: true
+    integrator_saturation_level: 0.3
+    kp: 0.2
+    ki: 0.0005
+    kd: 0.0
+  }
+  high_speed_pid_conf {
+    integrator_enable: true
+    integrator_saturation_level: 0.3
+    kp: 0.3
+    ki: 0.1
+    kd: 0.0
+  }
+  switch_speed: 6.0
+  pitch_angle_filter_conf {
+    cutoff_freq: 5
+  }
+  calibration_table {
+   calibration {
+      speed: 0.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 0.21
+      command: 13.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 0.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 0.21
+      command: 13.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 0.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 0.21
+      command: 13.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 0.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 0.21
+      command: 13.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 0.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 0.21
+      command: 13.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 0.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -0.74
+      command: -15.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: -0.44
+      command: -11.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 0.3
+      command: 15.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 1.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 1.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 1.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 1.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 1.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: -0.97
+      command: -16.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: 0.42
+      command: 18.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 2.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 2.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 2.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 2.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 2.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: 0.62
+      command: 21.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 3.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: -1.35
+      command: -18.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 3.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 3.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 3.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: 0.83
+      command: 25.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 3.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 4.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 4.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 4.0
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 4.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 4.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 4.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 4.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 4.2
+      acceleration: -1.58
+      command: -20.0
+    }
+    calibration {
+      speed: 4.2
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 4.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 4.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 4.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 4.4
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 4.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 4.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 4.6
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 4.6
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 4.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 4.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 4.8
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 4.8
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 4.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 5.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 5.0
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 5.0
+      acceleration: 1.12
+      command: 29.0
+    }
+    calibration {
+      speed: 5.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 5.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 5.2
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 5.2
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 5.4
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 5.4
+      acceleration: -1.84
+      command: -23.0
+    }
+    calibration {
+      speed: 5.4
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 5.6
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 5.6
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 5.8
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 5.8
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 6.0
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 6.0
+      acceleration: 1.29
+      command: 33.0
+    }
+    calibration {
+      speed: 6.2
+      acceleration: -2.51
+      command: -28.0
+    }
+    calibration {
+      speed: 6.4
+      acceleration: -2.51
+      command: -28.0
+    }
+  }
+}

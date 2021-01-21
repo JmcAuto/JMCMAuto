@@ -32,7 +32,7 @@
 #include "modules/common/configs/config_gflags.h"
 #include "modules/common/log.h"
 #include "modules/common/macro.h"
-//#include "ros/include/ros/ros.h"
+#include "ros/include/ros/ros.h"
 
 /**
  * @namespace jmc_auto::common::time
@@ -160,7 +160,6 @@ class Clock {
    * @return a Timestamp object representing the current time.
    */
   static Timestamp Now() {
-    /*
     switch (mode()) {
       case ClockMode::SYSTEM:
         return SystemNow();
@@ -170,10 +169,8 @@ class Clock {
         return From(ros::Time::now().toSec());
       default:
         AFATAL << "Unsupported clock mode: " << mode();
-    */
-      return SystemNow(); 
-    //}
-    //return From(ros::Time::now().toSec());
+    }
+    return From(ros::Time::now().toSec());
   }
 
   /**
@@ -240,9 +237,9 @@ class Clock {
   DECLARE_SINGLETON(Clock);
 };
 
-//inline Clock::Clock(){
-//    mode_ = FLAGS_use_ros_time ? ClockMode::ROS : ClockMode::SYSTEM;
-//}
+inline Clock::Clock(){
+    mode_ = FLAGS_use_ros_time ? ClockMode::ROS : ClockMode::SYSTEM;
+}
 
 // Measure run time of a code block, mostly for debugging purpose.
 // Example usage:

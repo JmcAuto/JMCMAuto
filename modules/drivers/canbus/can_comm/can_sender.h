@@ -169,7 +169,7 @@ namespace jmc_auto
    * @param enable_log whether enable record the send can frame log
    * @return An error code indicating the status of this initialization.
    */
-        common::ErrorCode Init(bool enable_log);
+        common::ErrorCode Init(CanClient *can_client, bool enable_log);
 
         /**
    * @brief Add a message with its ID, protocol data.
@@ -199,7 +199,7 @@ namespace jmc_auto
    */
         jmc_auto::common::ErrorCode Start();
         /**
-   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return 
+   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return 
    */
         void rolling_counter(uint8_t *data, const SenderMessage<SensorType> &msg);
         /*
@@ -230,7 +230,7 @@ namespace jmc_auto
         bool is_init_ = false;
         bool is_running_ = false;
 
-        //CanClient *can_client_ = nullptr; // Owned by global canbus.cc
+        CanClient *can_client_ = nullptr; // Owned by global canbus.cc
         std::vector<SenderMessage<SensorType>> send_messages_;
         std::unique_ptr<std::thread> thread_;
         bool enable_log_ = false;
@@ -356,7 +356,7 @@ namespace jmc_auto
       template <typename SensorType>
       void CanSender<SensorType>::PowerSendThreadFunc()
       {
-        //CHECK_NOTNULL(can_client_);
+        CHECK_NOTNULL(can_client_);
         sched_param sch;
         sch.sched_priority = 99;
         pthread_setschedparam(pthread_self(), SCHED_FIFO, &sch);
@@ -390,7 +390,7 @@ namespace jmc_auto
 
             std::vector<CanFrame> can_frames;
             CanFrame can_frame = message.CanFrame();
-            //进行计数和校�?            if (message.count_byte_ > 0)
+            //进行计数和校�?            if (message.count_byte_ > 0)
             {
               message.rolling_count_++;
               if (message.rolling_count_ > 15)
@@ -401,10 +401,10 @@ namespace jmc_auto
             }
 
             can_frames.push_back(can_frame);
-            //if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
-            //{
-            //  AERROR << "Send msg failed:" << can_frame.CanFrameString();
-            //}
+            if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
+            {
+              AERROR << "Send msg failed:" << can_frame.CanFrameString();
+            }
             if (enable_log())
             {
               ADEBUG << "send_can_frame#" << can_frame.CanFrameString();
@@ -430,20 +430,21 @@ namespace jmc_auto
       }
 
       template <typename SensorType>
-      common::ErrorCode CanSender<SensorType>::Init(bool enable_log)
+      common::ErrorCode CanSender<SensorType>::Init(CanClient *can_client,
+                                                    bool enable_log)
       {
         if (is_init_)
         {
           AERROR << "Duplicated Init request.";
           return common::ErrorCode::CANBUS_ERROR;
         }
-        //if (can_client == nullptr)
-        //{
-        //  AERROR << "Invalid can client.";
-        //  return common::ErrorCode::CANBUS_ERROR;
-        //}
+        if (can_client == nullptr)
+        {
+          AERROR << "Invalid can client.";
+          return common::ErrorCode::CANBUS_ERROR;
+        }
         is_init_ = true;
-        //can_client_ = can_client;
+        can_client_ = can_client;
         enable_log_ = enable_log;
         return common::ErrorCode::OK;
       }

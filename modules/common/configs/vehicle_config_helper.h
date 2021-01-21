@@ -23,12 +23,10 @@
 
 #include <string>
 
-//#include "modules/common/configs/proto/vehicle_config.pb.h"
-#include "impl_type_vehicleconfig.h"
+#include "modules/common/configs/proto/vehicle_config.pb.h"
 #include "modules/common/macro.h"
 #include "modules/common/math/box2d.h"
-//#include "modules/common/proto/pnc_point.pb.h"
-#include "impl_type_pathpoint.h"
+#include "modules/common/proto/pnc_point.pb.h"
 
 /**
  * @namespace jmc_auto::common
@@ -111,7 +109,7 @@ class VehicleConfigHelper {
 
   static double MinSafeTurnRadius();
 
-  static jmc_auto::common::math::Box2d GetBoundingBox(const PathPoint &path_point);
+  static jmc_auto::common::math::Box2d GetBoundingBox(const common::PathPoint &path_point);
 
  private:
   static VehicleConfig vehicle_config_;

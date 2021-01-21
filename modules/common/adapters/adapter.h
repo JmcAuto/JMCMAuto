@@ -31,24 +31,22 @@
 #include <vector>
 
 #include "glog/logging.h"
-//#include "google/protobuf/descriptor.h"
-//#include "google/protobuf/message.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/message.h"
 
 #include "modules/common/adapters/adapter_gflags.h"
-//#include "modules/common/proto/header.pb.h"
-#include "impl_type_header.h"
-#include "modules/common/time/jmcauto_time.h"
+#include "modules/common/proto/header.pb.h"
+#include "modules/common/time/time.h"
 #include "modules/common/util/file.h"
 #include "modules/common/util/string_util.h"
 #include "modules/common/util/util.h"
 
-/*
 #include "sensor_msgs/CompressedImage.h"
 #include "sensor_msgs/Image.h"
 #include "sensor_msgs/PointCloud2.h"
 #include "std_msgs/String.h"
 #include "velodyne_msgs/VelodyneScanUnified.h"
-*/
+
 /**
  * @namespace jmc_auto::common::adapter
  * @brief jmc_auto::common::adapter
@@ -72,7 +70,7 @@ class AdapterBase {
   /**
    * @brief returns the topic name that this adapter listens to.
    */
-  virtual const uint32_t& instance_id() const = 0;
+  virtual const std::string& topic_name() const = 0;
 
   /**
    * @brief Create a view of data up to the call time for the user.
@@ -155,14 +153,13 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
    * error messages when something bad happens, to help people get an
    * idea which adapter goes wrong.
    * @param topic_name the topic that the adapter listens to.
-   * @param instance_id the id that mdc adapter listens to.
    * @param message_num the number of historical messages that the
    * adapter stores. Older messages will be removed upon calls to
    * Adapter::RosCallback().
    */
-  Adapter(const std::string& adapter_name, const uint32_t& instance_id,
+  Adapter(const std::string& adapter_name, const std::string& topic_name,
           size_t message_num, const std::string& dump_dir = "/tmp")
-      : instance_id_(instance_id),
+      : topic_name_(topic_name),
         message_num_(message_num),
         enable_dump_(FLAGS_enable_adapter_dump),
         dump_path_(dump_dir + "/" + adapter_name) {
@@ -186,7 +183,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
   /**
    * @brief returns the topic name that this adapter listens to.
    */
-  const uint32_t& instance_id() const override { return instance_id_; }
+  const std::string& topic_name() const override { return topic_name_; }
 
   /**
    * @brief reads the proto message from the file, and push it into
@@ -255,7 +252,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     DCHECK(!observed_queue_.empty())
         << "The view of data queue is empty. No data is received yet or you "
            "forgot to call Observe()"
-        << ":" << instance_id_;
+        << ":" << topic_name_;
     return *observed_queue_.front();
   }
   /**
@@ -270,7 +267,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     DCHECK(!observed_queue_.empty())
         << "The view of data queue is empty. No data is received yet or you "
            "forgot to call Observe()"
-        << ":" << instance_id_;
+        << ":" << topic_name_;
     return observed_queue_.front();
   }
 
@@ -280,7 +277,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     DCHECK(!observed_queue_.empty())
         << "The view of data queue is empty. No data is received yet or you "
            "forgot to call Observe()"
-        << ":" << instance_id_;
+        << ":" << topic_name_;
     return to_std(observed_queue_.front());
   }
   /**
@@ -373,8 +370,8 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
   void ClearData() override {
     // Lock the queue.
     std::lock_guard<std::mutex> lock(mutex_);
-    data_queue_ = null;
-    observed_queue_ = null;
+    data_queue_.clear();
+    observed_queue_.clear();
   }
 
   /**
@@ -386,7 +383,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
       return DumpMessage<D>(msg);
     }
 
-    AWARN << "Unable to dump message with instance " << instance_id_
+    AWARN << "Unable to dump message with topic " << topic_name_
           << ". No message received.";
     return false;
   }
@@ -537,7 +534,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
   }
 
   /// The topic name that the adapter listens to.
-  uint32_t instance_id_;
+  std::string topic_name_;
 
   /// The maximum size of data_queue_ and observed_queue_
   size_t message_num_ = 0;

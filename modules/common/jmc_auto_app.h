@@ -28,16 +28,14 @@
 #include "modules/common/log.h"
 #include "modules/common/status/status.h"
 
-//#include "ros/include/ros/ros.h"
+#include "ros/include/ros/ros.h"
 
 /**
  * @namespace jmc_auto::common
  * @brief jmc_auto::common
  */
-namespace jmc_auto
-{
-namespace common
-{
+namespace jmc_auto {
+namespace common {
 
 /**
  * @class JmcAutoApp
@@ -48,9 +46,8 @@ namespace common
  * of JmcAuto apps. The JMC_AUTO_MAIN macro helps developer to setup glog, gflag
  * and ROS in one line.
  */
-class JmcAutoApp
-{
-public:
+class JmcAutoApp {
+ public:
   /**
    * @brief module name. It is used to uniquely identify the app.
    */
@@ -73,7 +70,7 @@ public:
    */
   void SetCallbackThreadNumber(uint32_t callback_thread_num);
 
-protected:
+ protected:
   /**
    * @brief The module initialization function. This is the first function being
    * called when the App starts. Usually this function loads the configurations,
@@ -104,7 +101,7 @@ protected:
    */
   uint32_t callback_thread_num_ = 1;
 
-private:
+ private:
   /**
    * @brief Export flag values to <FLAGS_log_dir>/<name>.flags.
    */
@@ -113,23 +110,18 @@ private:
 
 void jmc_auto_app_sigint_handler(int signal_num);
 
-} // namespace common
-} // namespace jmc_auto
+}  // namespace common
+}  // namespace jmc_auto
 
-#define JMC_AUTO_MAIN(APP)        \
-  int main(int argc, char **argv) \
-  {                               \
-/*注册glog*/\
-google::InitGoogleLogging(argv[0]);\
-/*注册gflag*/\
-google::ParseCommandLineFlags(&argc, &argv, true);\
-/*csignal函数，捕获到终端信号后执行jmc_auto_app_sigint_handler\
-signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler);*/\
-APP jmc_auto_app_;\
-/*注册，Name()返回值为gflags文件中配置的模块名*/\
-/*ros::init(argc, argv, jmc_auto_app_.Name());*/\
-jmc_auto_app_.Spin();\
-return 0;\
-}
+#define JMC_AUTO_MAIN(APP)                                       \
+  int main(int argc, char **argv) {                            \
+    google::InitGoogleLogging(argv[0]);                        \
+    google::ParseCommandLineFlags(&argc, &argv, true);         \
+    signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler); \
+    APP jmc_auto_app_;                                           \
+    ros::init(argc, argv, jmc_auto_app_.Name());                 \
+    jmc_auto_app_.Spin();                                        \
+    return 0;                                                  \
+  }
 
-#endif // MODULES_COMMON_JMC_AUTO_APP_H_
+#endif  // MODULES_COMMON_JMC_AUTO_APP_H_
