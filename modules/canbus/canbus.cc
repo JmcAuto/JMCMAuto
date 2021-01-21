@@ -33,8 +33,8 @@ namespace jmc_auto
     using jmc_auto::common::Status;
     using jmc_auto::common::adapter::AdapterManager;
     using jmc_auto::common::time::Clock;
-    using jmc_auto::control::ControlCommand;
-    using jmc_auto::drivers::canbus::CanClientFactory;
+    //using jmc_auto::control::ControlCommand;
+    //using jmc_auto::drivers::canbus::CanClientFactory;
 
     std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
 
@@ -141,7 +141,7 @@ namespace jmc_auto
     }
 
     void Canbus::ServiceAvailabilityCallbackcanData(ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
-                                             ara::com::FindServiceHandle handler)
+                                                    ara::com::FindServiceHandle handler)
     {
       if (handles.size() > 0)
       {
