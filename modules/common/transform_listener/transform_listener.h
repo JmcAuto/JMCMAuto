@@ -21,7 +21,6 @@
 #include <thread>
 
 #include "ros/include/ros/callback_queue.h"
-#include "ros/include/ros/ros.h"
 #include "ros/include/tf2_msgs/TFMessage.h"
 #include "ros/include/tf2_ros/buffer.h"
 

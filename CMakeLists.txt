@@ -30,7 +30,7 @@ INCLUDE_DIRECTORIES(${MODULESDIRS})
 file(GLOB_RECURSE  C_SOURCE src/*.c generated/*.c)
 file(GLOB_RECURSE  CXX_SOURCE src/*.cxx src/*.cpp src/*.cc generated/*.cxx generated/*.cpp generated/*.cc)
 file(GLOB_RECURSE  TESTSOURCE modules/test/*.c modules/test/*.cc modules/test/*.cpp)
-file(GLOB_RECURSE  COMMONSOURCE modules/common/*.c modules/common/*.cc modules/common/*.cpp)
+#file(GLOB_RECURSE  COMMONSOURCE modules/common/*.c modules/common/*.cc modules/common/*.cpp)
 file(GLOB_RECURSE  DRIVERSSOURCE modules/drivers/*.c modules/drivers/*.cc modules/drivers/*.cpp)
 file(GLOB_RECURSE  CANBUSSOURCE modules/canbus/*.c modules/canbus/*.cc modules/canbus/*.cpp)
 
@@ -63,7 +63,7 @@ add_executable(canbus ${CANBUSSOURCE})
 #add_dependencies(addition gflags)
 #target_link_libraries(addition ${COMMON_LIB} -lgflags)
 #add_dependencies(canbus gflags glog)
-target_link_libraries(canbus ${COMMON_LIB} -lgflags -lglog)
+target_link_libraries(canbus ${COMMON_LIB} -lgflags -lglog -lprotobuf)
 
 #用户可在此添加链接参数
 #set_target_properties(addition PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

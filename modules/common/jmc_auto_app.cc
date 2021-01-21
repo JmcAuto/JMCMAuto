@@ -26,7 +26,6 @@
 #include "modules/common/status/status.h"
 #include "modules/common/util/string_util.h"
 
-#include "ros/include/ros/ros.h"
 
 DECLARE_string(log_dir);
 
@@ -60,25 +59,13 @@ int JmcAutoApp::Spin() {
     return -1;
   }
 
-  std::unique_ptr<ros::AsyncSpinner> spinner;
-  if (callback_thread_num_ > 1) {
-    spinner = std::unique_ptr<ros::AsyncSpinner>(
-        new ros::AsyncSpinner(callback_thread_num_));
-  }
-
   status = Start();
   if (!status.ok()) {
     AERROR << Name() << " Start failed: " << status;
     return -2;
   }
   ExportFlags();
-  if (spinner) {
-    spinner->start();
-  } else {
-    ros::spin();
-  }
-  ros::waitForShutdown();
-  Stop();
+  //Stop();
   AINFO << Name() << " exited.";
   return 0;
 }
@@ -93,7 +80,6 @@ void jmc_auto_app_sigint_handler(int signal_num) {
     return;
   }
   is_stopping = true;
-  ros::shutdown();
 }
 
 }  // namespace common

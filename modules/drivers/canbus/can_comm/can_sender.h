@@ -35,7 +35,7 @@
 #include "modules/common/log.h"
 #include "modules/common/macro.h"
 #include "modules/common/proto/error_code.pb.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/drivers/canbus/can_client/can_client.h"
 #include "modules/drivers/canbus/can_comm/protocol_data.h"
 #include "modules/drivers/canbus/common/byte.h"
@@ -199,7 +199,7 @@ namespace jmc_auto
    */
         jmc_auto::common::ErrorCode Start();
         /**
-   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return 
+   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return 
    */
         void rolling_counter(uint8_t *data, const SenderMessage<SensorType> &msg);
         /*
@@ -390,7 +390,7 @@ namespace jmc_auto
 
             std::vector<CanFrame> can_frames;
             CanFrame can_frame = message.CanFrame();
-            //进行计数和校�?            if (message.count_byte_ > 0)
+            //进行计数和校�?            if (message.count_byte_ > 0)
             {
               message.rolling_count_++;
               if (message.rolling_count_ > 15)

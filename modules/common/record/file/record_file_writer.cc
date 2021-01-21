@@ -19,7 +19,7 @@
 #include <fcntl.h>
 
 #include "modules/common/util/file.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 
 namespace jmc_auto {
 namespace common {

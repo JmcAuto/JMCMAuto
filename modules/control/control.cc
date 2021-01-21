@@ -7,7 +7,7 @@
 #include "ros/include/std_msgs/String.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/log.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/common/vehicle_state/vehicle_state_provider.h"
 #include "modules/control/common/control_gflags.h"
 

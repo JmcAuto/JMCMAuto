@@ -31,7 +31,7 @@
 #include "modules/common/log.h"
 #include "modules/common/record/file/record_file_base.h"
 #include "modules/common/record/file/section.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 
 namespace jmc_auto {
 namespace common {

@@ -28,7 +28,6 @@
 #include "modules/common/log.h"
 #include "modules/common/status/status.h"
 
-#include "ros/include/ros/ros.h"
 
 /**
  * @namespace jmc_auto::common
@@ -113,15 +112,14 @@ void jmc_auto_app_sigint_handler(int signal_num);
 }  // namespace common
 }  // namespace jmc_auto
 
-#define JMC_AUTO_MAIN(APP)                                       \
-  int main(int argc, char **argv) {                            \
-    google::InitGoogleLogging(argv[0]);                        \
-    google::ParseCommandLineFlags(&argc, &argv, true);         \
-    signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler); \
-    APP jmc_auto_app_;                                           \
-    ros::init(argc, argv, jmc_auto_app_.Name());                 \
-    jmc_auto_app_.Spin();                                        \
-    return 0;                                                  \
+#define JMC_AUTO_MAIN(APP)                                                    \
+  int main(int argc, char **argv) {                                           \
+    google::InitGoogleLogging(argv[0]);                                       \
+    google::ParseCommandLineFlags(&argc, &argv, true);                        \
+    /*signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler);*/        \
+    APP jmc_auto_app_;                                                        \
+    jmc_auto_app_.Spin();                                                     \
+    return 0;                                                                 \
   }
 
 #endif  // MODULES_COMMON_JMC_AUTO_APP_H_

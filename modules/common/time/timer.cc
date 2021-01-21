@@ -17,7 +17,7 @@
 #include "modules/common/time/timer.h"
 
 #include "modules/common/log.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 
 namespace jmc_auto {
 namespace common {

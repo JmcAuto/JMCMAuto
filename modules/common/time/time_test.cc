@@ -14,7 +14,7 @@
  * limitations under the License.
  *****************************************************************************/
 
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
