@@ -6,8 +6,53 @@
 #ifndef impl_type_transform_h
 #define impl_type_transform_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Transform;
+
+
+
+#include "impl_type_quaternion.h"
+#include "impl_type_bytearray.h"
+#include "impl_type_point3d.h"
+
+
+struct Transform {
+    ::ByteArray source_frame;
+    
+    ::ByteArray target_frame;
+    
+    ::Point3D translation;
+    
+    ::Quaternion rotation;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(source_frame);
+        fun(target_frame);
+        fun(translation);
+        fun(rotation);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(source_frame);
+        fun(target_frame);
+        fun(translation);
+        fun(rotation);
+    }
+
+    bool operator == (const ::Transform& t) const {
+        return (source_frame == t.source_frame) && (target_frame == t.target_frame) && (translation == t.translation) && (rotation == t.rotation);
+    }
+};
+
 
 #endif // impl_type_transform_h

@@ -23,9 +23,9 @@
 
 #include "impl_type_tpms_lf_pressure_warningtype.h"
 #include "impl_type_tire_positiontype.h"
-#include "impl_type_tpms_rf_pressure_warningtype.h"
 #include "impl_type_tpms_system_statustype.h"
 #include "impl_type_tpms_temperature_warningtype.h"
+#include "impl_type_tpms_rf_pressure_warningtype.h"
 #include "impl_type_tpms_lamp_statustype.h"
 #include "impl_type_tpms_resrvedtype.h"
 #include "impl_type_double.h"

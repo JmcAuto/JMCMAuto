@@ -6,8 +6,48 @@
 #ifndef impl_type_channelcache_h
 #define impl_type_channelcache_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid ChannelCache;
+
+
+#include "impl_type_uint64.h"
+#include "impl_type_string.h"
+
+
+struct ChannelCache {
+    ::UInt64 message_number;
+    
+    ::String name;
+    
+    ::String message_type;
+    
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(message_number);
+        fun(name);
+        fun(message_type);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(message_number);
+        fun(name);
+        fun(message_type);
+    }
+
+    bool operator == (const ::ChannelCache& t) const {
+        return (message_number == t.message_number) && (name == t.name) && (message_type == t.message_type);
+    }
+};
+
 
 #endif // impl_type_channelcache_h

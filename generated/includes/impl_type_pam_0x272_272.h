@@ -26,8 +26,8 @@
 #include "impl_type_sdg_objectsts_frstype.h"
 #include "impl_type_apa_recover_int_indicationtype.h"
 #include "impl_type_apa_selectedsidetype.h"
-#include "impl_type_sod_blis_displaytype.h"
 #include "impl_type_apa_quit_indicationtype.h"
+#include "impl_type_sod_blis_displaytype.h"
 
 
 struct Pam_0x272_272 {

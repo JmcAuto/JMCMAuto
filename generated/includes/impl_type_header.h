@@ -6,8 +6,75 @@
 #ifndef impl_type_header_h
 #define impl_type_header_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Header;
+
+
+
+
+
+
+
+#include "impl_type_uint64.h"
+#include "impl_type_double.h"
+#include "impl_type_uint32.h"
+#include "impl_type_string.h"
+#include "impl_type_statuspb.h"
+
+
+struct Header {
+    ::Double timestamp_sec;
+    
+    ::String module_name;
+    
+    ::UInt32 sequence_num;
+    
+    ::UInt64 lidar_timestamp;
+    
+    ::UInt64 camera_timestamp;
+    
+    ::UInt64 radar_timestamp;
+    
+    ::UInt32 version;
+    
+    ::StatusPb status;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(timestamp_sec);
+        fun(module_name);
+        fun(sequence_num);
+        fun(lidar_timestamp);
+        fun(camera_timestamp);
+        fun(radar_timestamp);
+        fun(version);
+        fun(status);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(timestamp_sec);
+        fun(module_name);
+        fun(sequence_num);
+        fun(lidar_timestamp);
+        fun(camera_timestamp);
+        fun(radar_timestamp);
+        fun(version);
+        fun(status);
+    }
+
+    bool operator == (const ::Header& t) const {
+        return (timestamp_sec == t.timestamp_sec) && (module_name == t.module_name) && (sequence_num == t.sequence_num) && (lidar_timestamp == t.lidar_timestamp) && (camera_timestamp == t.camera_timestamp) && (radar_timestamp == t.radar_timestamp) && (version == t.version) && (status == t.status);
+    }
+};
+
 
 #endif // impl_type_header_h

@@ -4,7 +4,7 @@
 
 #此处可以为c和c++配置不同的编译选项
 set(CMAKE_C_FLAGS "")
-set(CMAKE_CXX_FLAGS "")
+set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_LINK_FLAGS "")
 
 #把Debug和Release状态下默认的编译选项设置为空，避免和用户的设置重复

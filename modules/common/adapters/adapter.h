@@ -37,7 +37,7 @@
 #include "modules/common/adapters/adapter_gflags.h"
 //#include "modules/common/proto/header.pb.h"
 #include "impl_type_header.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/common/util/file.h"
 #include "modules/common/util/string_util.h"
 #include "modules/common/util/util.h"
@@ -373,8 +373,8 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
   void ClearData() override {
     // Lock the queue.
     std::lock_guard<std::mutex> lock(mutex_);
-    data_queue_.clear();
-    observed_queue_.clear();
+    data_queue_ = null;
+    observed_queue_ = null;
   }
 
   /**

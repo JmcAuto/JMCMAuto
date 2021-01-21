@@ -6,8 +6,42 @@
 #ifndef impl_type_statuspb_h
 #define impl_type_statuspb_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid StatusPb;
+
+#include "impl_type_string.h"
+#include "impl_type_errorcode.h"
+
+
+struct StatusPb {
+    ::ErrorCode error_code;
+    
+    ::String msg;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(error_code);
+        fun(msg);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(error_code);
+        fun(msg);
+    }
+
+    bool operator == (const ::StatusPb& t) const {
+        return (error_code == t.error_code) && (msg == t.msg);
+    }
+};
+
 
 #endif // impl_type_statuspb_h

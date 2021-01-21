@@ -6,8 +6,46 @@
 #ifndef impl_type_pointllh_h
 #define impl_type_pointllh_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid PointLLH;
+
+
+#include "impl_type_double.h"
+
+
+struct PointLLH {
+    ::Double lon;
+    
+    ::Double lat;
+    
+    ::Double height;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(lon);
+        fun(lat);
+        fun(height);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(lon);
+        fun(lat);
+        fun(height);
+    }
+
+    bool operator == (const ::PointLLH& t) const {
+        return (lon == t.lon) && (lat == t.lat) && (height == t.height);
+    }
+};
+
 
 #endif // impl_type_pointllh_h

@@ -28,8 +28,10 @@
 
 
 
+
 #include "impl_type_bool.h"
 #include "impl_type_int32.h"
+#include "impl_type_drivingmode.h"
 
 
 struct Safety {
@@ -77,6 +79,7 @@ struct Safety {
     
     ::Int32 rear_right_tire_press;
     
+    ::DrivingMode car_driving_mode;
     
 
     static bool IsPlane()
@@ -110,6 +113,7 @@ struct Safety {
         fun(front_right_tire_press);
         fun(rear_left_tire_press);
         fun(rear_right_tire_press);
+        fun(car_driving_mode);
     }
 
     template<typename F>
@@ -137,10 +141,11 @@ struct Safety {
         fun(front_right_tire_press);
         fun(rear_left_tire_press);
         fun(rear_right_tire_press);
+        fun(car_driving_mode);
     }
 
     bool operator == (const ::Safety& t) const {
-        return (is_driver_car_door_close == t.is_driver_car_door_close) && (is_driver_buckled == t.is_driver_buckled) && (emergency_button == t.emergency_button) && (has_error == t.has_error) && (is_motor_invertor_fault == t.is_motor_invertor_fault) && (is_system_fault == t.is_system_fault) && (is_power_battery_fault == t.is_power_battery_fault) && (is_motor_invertor_over_temperature == t.is_motor_invertor_over_temperature) && (is_small_battery_charge_discharge_fault == t.is_small_battery_charge_discharge_fault) && (driving_mode == t.driving_mode) && (is_passenger_door_open == t.is_passenger_door_open) && (is_rearleft_door_open == t.is_rearleft_door_open) && (is_rearright_door_open == t.is_rearright_door_open) && (is_hood_open == t.is_hood_open) && (is_trunk_open == t.is_trunk_open) && (is_passenger_detected == t.is_passenger_detected) && (is_passenger_airbag_enabled == t.is_passenger_airbag_enabled) && (is_passenger_buckled == t.is_passenger_buckled) && (front_left_tire_press == t.front_left_tire_press) && (front_right_tire_press == t.front_right_tire_press) && (rear_left_tire_press == t.rear_left_tire_press) && (rear_right_tire_press == t.rear_right_tire_press);
+        return (is_driver_car_door_close == t.is_driver_car_door_close) && (is_driver_buckled == t.is_driver_buckled) && (emergency_button == t.emergency_button) && (has_error == t.has_error) && (is_motor_invertor_fault == t.is_motor_invertor_fault) && (is_system_fault == t.is_system_fault) && (is_power_battery_fault == t.is_power_battery_fault) && (is_motor_invertor_over_temperature == t.is_motor_invertor_over_temperature) && (is_small_battery_charge_discharge_fault == t.is_small_battery_charge_discharge_fault) && (driving_mode == t.driving_mode) && (is_passenger_door_open == t.is_passenger_door_open) && (is_rearleft_door_open == t.is_rearleft_door_open) && (is_rearright_door_open == t.is_rearright_door_open) && (is_hood_open == t.is_hood_open) && (is_trunk_open == t.is_trunk_open) && (is_passenger_detected == t.is_passenger_detected) && (is_passenger_airbag_enabled == t.is_passenger_airbag_enabled) && (is_passenger_buckled == t.is_passenger_buckled) && (front_left_tire_press == t.front_left_tire_press) && (front_right_tire_press == t.front_right_tire_press) && (rear_left_tire_press == t.rear_left_tire_press) && (rear_right_tire_press == t.rear_right_tire_press) && (car_driving_mode == t.car_driving_mode);
     }
 };
 

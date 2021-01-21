@@ -6,8 +6,46 @@
 #ifndef impl_type_point3d_h
 #define impl_type_point3d_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Point3D;
+
+
+#include "impl_type_double.h"
+
+
+struct Point3D {
+    ::Double x;
+    
+    ::Double y;
+    
+    ::Double z;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(x);
+        fun(y);
+        fun(z);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(x);
+        fun(y);
+        fun(z);
+    }
+
+    bool operator == (const ::Point3D& t) const {
+        return (x == t.x) && (y == t.y) && (z == t.z);
+    }
+};
+
 
 #endif // impl_type_point3d_h

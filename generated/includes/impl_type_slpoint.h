@@ -6,8 +6,41 @@
 #ifndef impl_type_slpoint_h
 #define impl_type_slpoint_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid SLPoint;
+
+#include "impl_type_double.h"
+
+
+struct SLPoint {
+    ::Double s;
+    
+    ::Double l;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(s);
+        fun(l);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(s);
+        fun(l);
+    }
+
+    bool operator == (const ::SLPoint& t) const {
+        return (s == t.s) && (l == t.l);
+    }
+};
+
 
 #endif // impl_type_slpoint_h

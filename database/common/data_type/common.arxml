@@ -497,7 +497,7 @@
               <ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>Extrinsics</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>tansforms</SHORT-NAME>
@@ -505,7 +505,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt64</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/Transform</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -513,69 +513,17 @@
                   </SUB-ELEMENTS>
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
-                  <SHORT-NAME>SectionType</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/HuaweiMDC/record/SectionTypeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE>
-                <COMPU-METHOD>
-                  <SHORT-NAME>SectionTypeEnum</SHORT-NAME>
-                  <COMPU-INTERNAL-TO-PHYS>
-                    <COMPU-SCALES>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>0</LOWER-LIMIT>
-                        <UPPER-LIMIT>0</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>SECTION_HEADER</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>1000</LOWER-LIMIT>
-                        <UPPER-LIMIT>1000</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>SECTION_CHUNK_HEADER</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>2</LOWER-LIMIT>
-                        <UPPER-LIMIT>2</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>SECTION_CHUNK_BODY</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>3</LOWER-LIMIT>
-                        <UPPER-LIMIT>3</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>SECTION_INDEX</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>4</LOWER-LIMIT>
-                        <UPPER-LIMIT>4</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>SECTION_CHANNEL</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                    </COMPU-SCALES>
-                  </COMPU-INTERNAL-TO-PHYS>
-                </COMPU-METHOD>
-                <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>Transform</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>source_frame</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/ByteArray</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
@@ -585,7 +533,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/String</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/ByteArray</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -596,7 +544,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/Point3D</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/geometry/Point3D</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -607,7 +555,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/Quaternion</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/geometry/Quaternion</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -616,7 +564,7 @@
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>VehicleConfig</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>header</SHORT-NAME>
@@ -624,7 +572,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt64</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/header/Header</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -655,7 +603,7 @@
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>VehicleParam</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>front_edge_to_center</SHORT-NAME>
@@ -674,7 +622,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -685,7 +633,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -696,7 +644,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -707,7 +655,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -718,7 +666,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -729,7 +677,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -740,7 +688,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -751,7 +699,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -762,7 +710,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -773,7 +721,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -784,7 +732,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -795,7 +743,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -806,7 +754,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -817,7 +765,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -828,7 +776,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/configs/vehicle_config/VehicleBrand</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -947,7 +895,7 @@
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
                     <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/error_code/ErrorCodeEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </SW-DATA-DEF-PROPS>
@@ -1192,7 +1140,7 @@
             </COMPU-METHOD>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>StatusPb</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>error_code</SHORT-NAME>
@@ -1225,7 +1173,7 @@
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Point2D</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>x</SHORT-NAME>
@@ -1253,7 +1201,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Point3D</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>x</SHORT-NAME>
@@ -1292,7 +1240,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>PointENU</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>x</SHORT-NAME>
@@ -1331,7 +1279,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>PointLLH</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>lon</SHORT-NAME>
@@ -1370,7 +1318,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Polygon</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>c</SHORT-NAME>
@@ -1387,7 +1335,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Quaternion</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>qx</SHORT-NAME>
@@ -1395,7 +1343,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/ErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1406,7 +1354,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/ErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1417,7 +1365,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/ErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1428,7 +1376,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/geometry/ErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1442,7 +1390,7 @@
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Header</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>timestamp_sec</SHORT-NAME>
@@ -1527,7 +1475,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/error_code/StatusPb</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/error_code/StatusPb</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1715,7 +1663,35 @@
                 </COMPU-METHOD>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>MonitorMessage</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SUB-ELEMENTS>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>header</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/header/Header</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>item</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/monitor_log/monitor_log/MonitorMessageItem</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </IMPLEMENTATION-DATA-TYPE>
+                <IMPLEMENTATION-DATA-TYPE>
+                  <SHORT-NAME>MonitorMessageItem</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>source</SHORT-NAME>
@@ -1752,32 +1728,6 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   </SUB-ELEMENTS>
                 </IMPLEMENTATION-DATA-TYPE>
-                <IMPLEMENTATION-DATA-TYPE>
-                  <SHORT-NAME>MonitorMessageItem</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SUB-ELEMENTS>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>header</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL/>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>item</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/monitor_log/monitor_log/MonitorMessageItem</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  </SUB-ELEMENTS>
-                </IMPLEMENTATION-DATA-TYPE>
               </ELEMENTS>
             </AR-PACKAGE>
           </AR-PACKAGES>
@@ -1787,7 +1737,7 @@
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>FrenetFramePoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>s</SHORT-NAME>
@@ -1837,7 +1787,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>GaussianInfo</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>sigma_x</SHORT-NAME>
@@ -1920,7 +1870,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Path</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>name</SHORT-NAME>
@@ -1948,7 +1898,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>PathPoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>x</SHORT-NAME>
@@ -2053,7 +2003,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>SLPoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>s</SHORT-NAME>
@@ -2081,7 +2031,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>SpeedPoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>s</SHORT-NAME>
@@ -2142,7 +2092,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Trajectory</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>name</SHORT-NAME>
@@ -2161,7 +2111,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/vehicle_chassis/Vehicle_Chassis</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/pnc_point/VehicleMotionPoint</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -2170,7 +2120,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>TrajectoryPoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>path_point</SHORT-NAME>
@@ -2253,7 +2203,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>VehicleMotion</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>name</SHORT-NAME>
@@ -2281,7 +2231,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>VehicleMotionPoint</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>trajectory_point</SHORT-NAME>
@@ -2314,7 +2264,7 @@
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ProtoDesc</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>desc</SHORT-NAME>
@@ -2322,7 +2272,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/chassis_detail/BeamLampType</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/ByteArray</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -2347,7 +2297,7 @@
           <ELEMENTS>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Channel</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>name</SHORT-NAME>
@@ -2384,7 +2334,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChannelCache</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>message_number</SHORT-NAME>
@@ -2432,7 +2382,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChunkBody</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>messages</SHORT-NAME>
@@ -2449,7 +2399,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChunkBodyCache</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>message_number</SHORT-NAME>
@@ -2466,7 +2416,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChunkHeader</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>begin_time</SHORT-NAME>
@@ -2516,7 +2466,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>ChunkHeaderCache</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>message_number</SHORT-NAME>
@@ -2816,7 +2766,7 @@
             </COMPU-METHOD>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>Index</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>indexes</SHORT-NAME>
@@ -2833,7 +2783,7 @@
             </IMPLEMENTATION-DATA-TYPE>
             <IMPLEMENTATION-DATA-TYPE>
               <SHORT-NAME>RecordHeader</SHORT-NAME>
-              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>major_version</SHORT-NAME>
@@ -2915,6 +2865,13 @@
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>channel_number</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt64</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
                 </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>begin_time</SHORT-NAME>
@@ -3126,7 +3083,7 @@
               <ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>ComCenteredDynamicBicycleModelConfig</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>dt</SHORT-NAME>
@@ -3143,7 +3100,7 @@
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>MlpModelConfig</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>dt</SHORT-NAME>
@@ -3165,7 +3122,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_model/vehicle_model_config/ModelTypeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -3200,7 +3157,7 @@
                 </COMPU-METHOD>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>RearCenteredKinematicBicycleModelConfig</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>dt</SHORT-NAME>
@@ -3217,7 +3174,7 @@
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>VehicleModelConfig</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>model_type</SHORT-NAME>
@@ -3343,7 +3300,7 @@
               <ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>VehicleState</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>x</SHORT-NAME>

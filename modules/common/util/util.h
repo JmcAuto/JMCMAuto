@@ -30,11 +30,13 @@
 #include <utility>
 #include <vector>
 
-#include "google/protobuf/util/message_differencer.h"
+//#include "google/protobuf/util/message_differencer.h"
 
-#include "modules/common/proto/geometry.pb.h"
-#include "modules/common/proto/pnc_point.pb.h"
-#include "modules/perception/proto/perception_obstacle.pb.h"
+//#include "modules/common/proto/geometry.pb.h"
+//#include "modules/common/proto/pnc_point.pb.h"
+//#include "modules/perception/proto/perception_obstacle.pb.h"
+#include "impl_type_pointenu.h"
+#include "impl_type_pathpoint.h"
 
 #include "modules/common/math/vec2d.h"
 

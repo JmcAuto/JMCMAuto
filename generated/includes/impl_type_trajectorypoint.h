@@ -6,8 +6,68 @@
 #ifndef impl_type_trajectorypoint_h
 #define impl_type_trajectorypoint_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid TrajectoryPoint;
+
+
+
+
+
+
+#include "impl_type_double.h"
+#include "impl_type_gaussianinfo.h"
+#include "impl_type_pathpoint.h"
+
+
+struct TrajectoryPoint {
+    ::PathPoint path_point;
+    
+    ::Double v;
+    
+    ::Double a;
+    
+    ::Double relative_time;
+    
+    ::Double da;
+    
+    ::Double steer;
+    
+    ::GaussianInfo gaussian_info;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(path_point);
+        fun(v);
+        fun(a);
+        fun(relative_time);
+        fun(da);
+        fun(steer);
+        fun(gaussian_info);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(path_point);
+        fun(v);
+        fun(a);
+        fun(relative_time);
+        fun(da);
+        fun(steer);
+        fun(gaussian_info);
+    }
+
+    bool operator == (const ::TrajectoryPoint& t) const {
+        return (path_point == t.path_point) && (v == t.v) && (a == t.a) && (relative_time == t.relative_time) && (da == t.da) && (steer == t.steer) && (gaussian_info == t.gaussian_info);
+    }
+};
+
 
 #endif // impl_type_trajectorypoint_h

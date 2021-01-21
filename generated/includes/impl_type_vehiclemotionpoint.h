@@ -6,8 +6,42 @@
 #ifndef impl_type_vehiclemotionpoint_h
 #define impl_type_vehiclemotionpoint_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid VehicleMotionPoint;
+
+#include "impl_type_double.h"
+#include "impl_type_trajectorypoint.h"
+
+
+struct VehicleMotionPoint {
+    ::TrajectoryPoint trajectory_point;
+    
+    ::Double steer;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(trajectory_point);
+        fun(steer);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(trajectory_point);
+        fun(steer);
+    }
+
+    bool operator == (const ::VehicleMotionPoint& t) const {
+        return (trajectory_point == t.trajectory_point) && (steer == t.steer);
+    }
+};
+
 
 #endif // impl_type_vehiclemotionpoint_h

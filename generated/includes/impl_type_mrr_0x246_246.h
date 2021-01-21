@@ -35,9 +35,9 @@
 #include "impl_type_int32.h"
 #include "impl_type_aeb_statetype.h"
 #include "impl_type_mrr_fcw_sensitivetype.h"
+#include "impl_type_textinfotype.h"
 #include "impl_type_acc_startstop_infortype.h"
 #include "impl_type_fcw_latentwarningtype.h"
-#include "impl_type_textinfotype.h"
 
 
 struct Mrr_0x246_246 {

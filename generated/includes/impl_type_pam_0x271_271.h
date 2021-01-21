@@ -31,8 +31,8 @@
 #include "impl_type_pam_chimecmdsoundcadencetype.h"
 #include "impl_type_pam_parkingbarststype.h"
 #include "impl_type_pam_objectstsfrmtype.h"
-#include "impl_type_pam_objectstsrrctype.h"
 #include "impl_type_pam_objectstsrlmtype.h"
+#include "impl_type_pam_objectstsrrctype.h"
 #include "impl_type_pam_chimecmdsoundstatustype.h"
 
 

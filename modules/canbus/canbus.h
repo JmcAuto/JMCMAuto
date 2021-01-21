@@ -26,16 +26,22 @@
 #include <utility>
 #include <vector>
 
-#include "jmc_auto/canbus/chassisserviceinterface_common.h"
-#include "jmc_auto/canbus/chassisserviceinterface_proxy.h"
-#include "jmc_auto/canbus/chassisserviceinterface_skeleton.h"
+#include "jmc_auto/chassisserviceinterface_common.h"
+#include "jmc_auto/chassisserviceinterface_proxy.h"
+#include "jmc_auto/chassisserviceinterface_skeleton.h"
+
+#include "mdc/sensor/cantxserviceinterface_skeleton.h"
+#include "mdc/sensor/canrxserviceinterface_common.h"
+#include "mdc/sensor/cantxserviceinterface_common.h"
+#include "mdc/sensor/canrxserviceinterface_proxy.h"
 
 #include "impl_type_chassisdetail.h"
+#include "impl_type_canbusconf.h"
 
-#include "modules/canbus/vehicle/vehicle_controller.h"
+//#include "modules/canbus/vehicle/vehicle_controller.h"
 #include "modules/common/jmc_auto_app.h"
 #include "modules/common/macro.h"
-#include "modules/common/monitor_log/monitor_log_buffer.h"
+//#include "modules/common/monitor_log/monitor_log_buffer.h"
 
 #include "impl_type_controlcommand.h"
 const unsigned int CAN_NUM = 12;
@@ -82,7 +88,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
   jmc_auto::common::Status Start() override;
 
 
-  jmc_auto::common::Status Canbus::CheckInput()
+  jmc_auto::common::Status CheckInput();
   /**
    * @brief module stop function
    */
@@ -91,8 +97,8 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
  private:
   void PublishChassis();
   void PublishChassisDetail();
-  void OnTimer(const ros::TimerEvent &event);
-  void OnControlCommand(const ControlCommand &control_command);
+  //void OnTimer(const ros::TimerEvent &event);
+  //void OnControlCommand(const ControlCommand &control_command);
 
 
 //void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
@@ -101,15 +107,15 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
 //       const jmc_auto::guardian::GuardianCommand &guardian_command);
   jmc_auto::common::Status OnError(const std::string &error_msg);
   //void RegisterCanClients();
-  void setControlcmd(const ros::TimerEvent &event);
+  //void setControlcmd(const ros::TimerEvent &event);
 
   CanbusConf canbus_conf_;
   //std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
-  CanSender<ChassisDetail> can_sender_;
+  //CanSender<ChassisDetail> can_sender_;
   //jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
-  std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
-      message_manager_;
-  std::unique_ptr<VehicleController> vehicle_controller_;
+  //std::unique_ptr<MessageManager<ChassisDetail>>
+  //    message_manager_;
+  //std::unique_ptr<VehicleController> vehicle_controller_;
   bool IS_STOP_MODE = false;
   bool IS_VEHCILE_STOP = false;
   ControlCommand control_command_;

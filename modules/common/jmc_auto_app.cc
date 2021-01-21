@@ -11,7 +11,7 @@
 #include "modules/common/status/status.h"
 #include "modules/common/util/string_util.h"
 
-#include "ros/include/ros/ros.h"
+//#include "ros/include/ros/ros.h"
 
 DECLARE_string(log_dir);
 

@@ -6,8 +6,51 @@
 #ifndef impl_type_chunkheadercache_h
 #define impl_type_chunkheadercache_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid ChunkHeaderCache;
+
+
+
+#include "impl_type_uint64.h"
+
+
+struct ChunkHeaderCache {
+    ::UInt64 message_number;
+    
+    ::UInt64 begin_time;
+    
+    ::UInt64 end_time;
+    
+    ::UInt64 raw_size;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(message_number);
+        fun(begin_time);
+        fun(end_time);
+        fun(raw_size);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(message_number);
+        fun(begin_time);
+        fun(end_time);
+        fun(raw_size);
+    }
+
+    bool operator == (const ::ChunkHeaderCache& t) const {
+        return (message_number == t.message_number) && (begin_time == t.begin_time) && (end_time == t.end_time) && (raw_size == t.raw_size);
+    }
+};
+
 
 #endif // impl_type_chunkheadercache_h

@@ -6,9 +6,9 @@
 #ifndef impl_type_modeltype_h
 #define impl_type_modeltype_h
 
-#include "impl_type_uint8.h"
+#include "impl_type_uint32.h"
 
-enum class ModelType : UInt8
+enum class ModelType : UInt32
 {
     REAR_CENTERED_KINEMATIC_BICYCLE_MODEL = 0,
     COM_CENTERED_DYNAMIC_BICYCLE_MODEL = 1,

@@ -8,14 +8,18 @@
 
 
 
-#include "impl_type_float.h"
+
+#include "impl_type_horn_rpt_79commanded_valuetype.h"
+#include "impl_type_horn_cmd_78.h"
+#include "impl_type_horn_rpt_79output_valuetype.h"
 
 
 struct Horn_rpt_79 {
+    ::Horn_rpt_79Output_valueType output_value;
     
-    ::Float commanded_value;
+    ::Horn_rpt_79Commanded_valueType commanded_value;
     
-    ::Float manual_input;
+    ::Horn_cmd_78 manual_input;
     
 
     static bool IsPlane()
@@ -27,6 +31,7 @@ struct Horn_rpt_79 {
     template<typename F>
     void enumerate(F& fun)
     {
+        fun(output_value);
         fun(commanded_value);
         fun(manual_input);
     }
@@ -34,12 +39,13 @@ struct Horn_rpt_79 {
     template<typename F>
     void enumerate(F& fun) const
     {
+        fun(output_value);
         fun(commanded_value);
         fun(manual_input);
     }
 
     bool operator == (const ::Horn_rpt_79& t) const {
-        return (commanded_value == t.commanded_value) && (manual_input == t.manual_input);
+        return (output_value == t.output_value) && (commanded_value == t.commanded_value) && (manual_input == t.manual_input);
     }
 };
 

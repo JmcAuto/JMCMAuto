@@ -38,7 +38,7 @@ file(GLOB_RECURSE  CANBUSSOURCE modules/canbus/*.c modules/canbus/*.cc modules/c
 include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
 
 #用户可在此添加头文件路径
-include_directories(${COMMON_INCLUDE} include)
+include_directories(${COMMON_INCLUDE} include ${CMAKE_CURRENT_SOURCE_DIR})
 
 #用户可在此添加库文件路径
 link_directories(${COMMON_LINK_DIR} lib)
@@ -51,19 +51,20 @@ add_compile_options(${COMMON_COMPILE})
 
 #添加第三方依赖
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
-include(gflags)
-include(eigen)
-include(glog)
+#include(gflags)
+#include(eigen)
+#include(glog)
 
 #默认编译c和c++文件生成可执行文件
-add_executable(addition ${TESTSOURCE})
-add_executable(canbus ${CANBUSSOURCE} ${COMMONSOURCE} ${DRIVERSSOURCE})
+#add_executable(addition ${TESTSOURCE})
+add_executable(canbus ${CANBUSSOURCE})
 
 #用户可在此添加链接库
-add_dependencies(addition gflags)
-target_link_libraries(addition ${COMMON_LIB} -lgflags)
-add_dependencies(canbus gflags glog)
-target_link_libraries(canbubs ${COMMON_LIB} -lgflags -lglog)
+#add_dependencies(addition gflags)
+#target_link_libraries(addition ${COMMON_LIB} -lgflags)
+#add_dependencies(canbus gflags glog)
+target_link_libraries(canbus ${COMMON_LIB} -lgflags -lglog)
 
 #用户可在此添加链接参数
-set_target_properties(addition PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
+#set_target_properties(addition PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
+set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

@@ -25,12 +25,11 @@
 
 
 
-
 #include "impl_type_ems.h"
 #include "impl_type_gear.h"
-#include "impl_type_bool.h"
 #include "impl_type_deceleration.h"
 #include "impl_type_safety.h"
+#include "impl_type_cx75.h"
 #include "impl_type_chassisdetailtype.h"
 #include "impl_type_gem.h"
 #include "impl_type_epstype.h"
@@ -83,10 +82,7 @@ struct ChassisDetail {
     
     ::Gem gem;
     
-    
-    ::Bool teshun;
-    
-    ::Bool cx75;
+    ::Cx75 cx75;
     
 
     static bool IsPlane()
@@ -116,7 +112,6 @@ struct ChassisDetail {
         fun(license);
         fun(surround);
         fun(gem);
-        fun(teshun);
         fun(cx75);
     }
 
@@ -141,12 +136,11 @@ struct ChassisDetail {
         fun(license);
         fun(surround);
         fun(gem);
-        fun(teshun);
         fun(cx75);
     }
 
     bool operator == (const ::ChassisDetail& t) const {
-        return (car_type == t.car_type) && (basic == t.basic) && (safety == t.safety) && (gear == t.gear) && (ems == t.ems) && (esp == t.esp) && (gas == t.gas) && (epb == t.epb) && (brake == t.brake) && (deceleration == t.deceleration) && (vehicle_spd == t.vehicle_spd) && (eps == t.eps) && (light == t.light) && (battery == t.battery) && (check_response == t.check_response) && (license == t.license) && (surround == t.surround) && (gem == t.gem) && (teshun == t.teshun) && (cx75 == t.cx75);
+        return (car_type == t.car_type) && (basic == t.basic) && (safety == t.safety) && (gear == t.gear) && (ems == t.ems) && (esp == t.esp) && (gas == t.gas) && (epb == t.epb) && (brake == t.brake) && (deceleration == t.deceleration) && (vehicle_spd == t.vehicle_spd) && (eps == t.eps) && (light == t.light) && (battery == t.battery) && (check_response == t.check_response) && (license == t.license) && (surround == t.surround) && (gem == t.gem) && (cx75 == t.cx75);
     }
 };
 

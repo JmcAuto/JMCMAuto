@@ -18,8 +18,8 @@
 
 
 #include "impl_type_gearposition.h"
-#include "impl_type_float.h"
 #include "impl_type_bool.h"
+#include "impl_type_float.h"
 #include "impl_type_drivingmode.h"
 #include "impl_type_chassiserrorcode.h"
 #include "impl_type_comheader.h"

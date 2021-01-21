@@ -6,8 +6,42 @@
 #ifndef impl_type_protodesc_h
 #define impl_type_protodesc_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid ProtoDesc;
+
+#include "impl_type_protodesc.h"
+#include "impl_type_bytearray.h"
+
+
+struct ProtoDesc {
+    ::ByteArray desc;
+    
+    ::ProtoDesc dependencies;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(desc);
+        fun(dependencies);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(desc);
+        fun(dependencies);
+    }
+
+    bool operator == (const ::ProtoDesc& t) const {
+        return (desc == t.desc) && (dependencies == t.dependencies);
+    }
+};
+
 
 #endif // impl_type_protodesc_h

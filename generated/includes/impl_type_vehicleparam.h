@@ -6,8 +6,117 @@
 #ifndef impl_type_vehicleparam_h
 #define impl_type_vehicleparam_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid VehicleParam;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "impl_type_double.h"
+#include "impl_type_float.h"
+
+
+struct VehicleParam {
+    ::Double front_edge_to_center;
+    
+    ::Double back_edge_to_center;
+    
+    ::Double left_edge_to_center;
+    
+    ::Double right_edge_to_center;
+    
+    ::Double length;
+    
+    ::Double width;
+    
+    ::Double height;
+    
+    ::Double min_turn_radius;
+    
+    ::Double max_acceleration;
+    
+    ::Double max_deceleration;
+    
+    ::Double max_steer_angle;
+    
+    ::Double max_steer_angle_rate;
+    
+    ::Double min_steer_angle_rate;
+    
+    ::Double steer_ratio;
+    
+    ::Double wheel_base;
+    
+    ::Double wheel_rolling_radius;
+    
+    ::Float max_abs_speed_when_stopped;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(front_edge_to_center);
+        fun(back_edge_to_center);
+        fun(left_edge_to_center);
+        fun(right_edge_to_center);
+        fun(length);
+        fun(width);
+        fun(height);
+        fun(min_turn_radius);
+        fun(max_acceleration);
+        fun(max_deceleration);
+        fun(max_steer_angle);
+        fun(max_steer_angle_rate);
+        fun(min_steer_angle_rate);
+        fun(steer_ratio);
+        fun(wheel_base);
+        fun(wheel_rolling_radius);
+        fun(max_abs_speed_when_stopped);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(front_edge_to_center);
+        fun(back_edge_to_center);
+        fun(left_edge_to_center);
+        fun(right_edge_to_center);
+        fun(length);
+        fun(width);
+        fun(height);
+        fun(min_turn_radius);
+        fun(max_acceleration);
+        fun(max_deceleration);
+        fun(max_steer_angle);
+        fun(max_steer_angle_rate);
+        fun(min_steer_angle_rate);
+        fun(steer_ratio);
+        fun(wheel_base);
+        fun(wheel_rolling_radius);
+        fun(max_abs_speed_when_stopped);
+    }
+
+    bool operator == (const ::VehicleParam& t) const {
+        return (front_edge_to_center == t.front_edge_to_center) && (back_edge_to_center == t.back_edge_to_center) && (left_edge_to_center == t.left_edge_to_center) && (right_edge_to_center == t.right_edge_to_center) && (length == t.length) && (width == t.width) && (height == t.height) && (min_turn_radius == t.min_turn_radius) && (max_acceleration == t.max_acceleration) && (max_deceleration == t.max_deceleration) && (max_steer_angle == t.max_steer_angle) && (max_steer_angle_rate == t.max_steer_angle_rate) && (min_steer_angle_rate == t.min_steer_angle_rate) && (steer_ratio == t.steer_ratio) && (wheel_base == t.wheel_base) && (wheel_rolling_radius == t.wheel_rolling_radius) && (max_abs_speed_when_stopped == t.max_abs_speed_when_stopped);
+    }
+};
+
 
 #endif // impl_type_vehicleparam_h

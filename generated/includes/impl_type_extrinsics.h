@@ -6,8 +6,36 @@
 #ifndef impl_type_extrinsics_h
 #define impl_type_extrinsics_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Extrinsics;
+#include "impl_type_transform.h"
+
+
+struct Extrinsics {
+    ::Transform tansforms;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(tansforms);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(tansforms);
+    }
+
+    bool operator == (const ::Extrinsics& t) const {
+        return (tansforms == t.tansforms);
+    }
+};
+
 
 #endif // impl_type_extrinsics_h

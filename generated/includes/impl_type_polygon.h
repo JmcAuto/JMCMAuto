@@ -6,8 +6,36 @@
 #ifndef impl_type_polygon_h
 #define impl_type_polygon_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Polygon;
+#include "impl_type_point3d.h"
+
+
+struct Polygon {
+    ::Point3D c;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(c);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(c);
+    }
+
+    bool operator == (const ::Polygon& t) const {
+        return (c == t.c);
+    }
+};
+
 
 #endif // impl_type_polygon_h

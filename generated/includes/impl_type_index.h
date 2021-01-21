@@ -6,8 +6,36 @@
 #ifndef impl_type_index_h
 #define impl_type_index_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Index;
+#include "impl_type_singleindex.h"
+
+
+struct Index {
+    ::SingleIndex indexes;
+    
+
+    static bool IsPlane()
+    {
+        return ;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(indexes);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(indexes);
+    }
+
+    bool operator == (const ::Index& t) const {
+        return (indexes == t.indexes);
+    }
+};
+
 
 #endif // impl_type_index_h

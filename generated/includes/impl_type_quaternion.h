@@ -6,8 +6,51 @@
 #ifndef impl_type_quaternion_h
 #define impl_type_quaternion_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Quaternion;
+
+
+
+#include "impl_type_double.h"
+
+
+struct Quaternion {
+    ::Double qx;
+    
+    ::Double qy;
+    
+    ::Double qz;
+    
+    ::Double qw;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(qx);
+        fun(qy);
+        fun(qz);
+        fun(qw);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(qx);
+        fun(qy);
+        fun(qz);
+        fun(qw);
+    }
+
+    bool operator == (const ::Quaternion& t) const {
+        return (qx == t.qx) && (qy == t.qy) && (qz == t.qz) && (qw == t.qw);
+    }
+};
+
 
 #endif // impl_type_quaternion_h

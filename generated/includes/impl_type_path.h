@@ -6,8 +6,42 @@
 #ifndef impl_type_path_h
 #define impl_type_path_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid Path;
+
+#include "impl_type_double.h"
+#include "impl_type_string.h"
+
+
+struct Path {
+    ::String name;
+    
+    ::Double path_point;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(name);
+        fun(path_point);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(name);
+        fun(path_point);
+    }
+
+    bool operator == (const ::Path& t) const {
+        return (name == t.name) && (path_point == t.path_point);
+    }
+};
+
 
 #endif // impl_type_path_h

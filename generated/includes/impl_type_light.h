@@ -14,7 +14,6 @@
 
 
 
-
 #include "impl_type_float.h"
 #include "impl_type_bool.h"
 #include "impl_type_comheader.h"
@@ -30,8 +29,6 @@ struct Light {
     ::Float throttle_percentage;
     
     ::Float brake_percentage;
-    
-    ::Float steering_percentage;
     
     ::Float steering_percentage;
     
@@ -55,7 +52,6 @@ struct Light {
         fun(throttle_percentage);
         fun(brake_percentage);
         fun(steering_percentage);
-        fun(steering_percentage);
         fun(header);
         fun(engine_started);
     }
@@ -69,13 +65,12 @@ struct Light {
         fun(throttle_percentage);
         fun(brake_percentage);
         fun(steering_percentage);
-        fun(steering_percentage);
         fun(header);
         fun(engine_started);
     }
 
     bool operator == (const ::Light& t) const {
-        return (SOC == t.SOC) && (speed_mps == t.speed_mps) && (ACC_Speed == t.ACC_Speed) && (throttle_percentage == t.throttle_percentage) && (brake_percentage == t.brake_percentage) && (steering_percentage == t.steering_percentage) && (steering_percentage == t.steering_percentage) && (header == t.header) && (engine_started == t.engine_started);
+        return (SOC == t.SOC) && (speed_mps == t.speed_mps) && (ACC_Speed == t.ACC_Speed) && (throttle_percentage == t.throttle_percentage) && (brake_percentage == t.brake_percentage) && (steering_percentage == t.steering_percentage) && (header == t.header) && (engine_started == t.engine_started);
     }
 };
 

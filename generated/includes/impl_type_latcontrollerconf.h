@@ -18,8 +18,10 @@
 
 
 
+
 #include "impl_type_double.h"
 #include "impl_type_int32.h"
+#include "impl_type_matrixq.h"
 
 
 struct LatControllerConf {
@@ -37,6 +39,7 @@ struct LatControllerConf {
     
     ::Int32 mass_rl;
     
+    ::MatrixQ matrix_q;
     
     ::Int32 mass_rr;
     
@@ -54,7 +57,7 @@ struct LatControllerConf {
 
     static bool IsPlane()
     {
-        return true;
+        return false;
     }
 
     using IsEnumerableTag = void;
@@ -68,6 +71,7 @@ struct LatControllerConf {
         fun(mass_fl);
         fun(mass_fr);
         fun(mass_rl);
+        fun(matrix_q);
         fun(mass_rr);
         fun(eps);
         fun(cutoff_freq);
@@ -85,6 +89,7 @@ struct LatControllerConf {
         fun(mass_fl);
         fun(mass_fr);
         fun(mass_rl);
+        fun(matrix_q);
         fun(mass_rr);
         fun(eps);
         fun(cutoff_freq);
@@ -93,7 +98,7 @@ struct LatControllerConf {
     }
 
     bool operator == (const ::LatControllerConf& t) const {
-        return (ts == t.ts) && (preview_window == t.preview_window) && (cf == t.cf) && (cr == t.cr) && (mass_fl == t.mass_fl) && (mass_fr == t.mass_fr) && (mass_rl == t.mass_rl) && (mass_rr == t.mass_rr) && (eps == t.eps) && (cutoff_freq == t.cutoff_freq) && (mean_filter_window_size == t.mean_filter_window_size) && (max_iteration == t.max_iteration);
+        return (ts == t.ts) && (preview_window == t.preview_window) && (cf == t.cf) && (cr == t.cr) && (mass_fl == t.mass_fl) && (mass_fr == t.mass_fr) && (mass_rl == t.mass_rl) && (matrix_q == t.matrix_q) && (mass_rr == t.mass_rr) && (eps == t.eps) && (cutoff_freq == t.cutoff_freq) && (mean_filter_window_size == t.mean_filter_window_size) && (max_iteration == t.max_iteration);
     }
 };
 

@@ -6,8 +6,77 @@
 #ifndef impl_type_pathpoint_h
 #define impl_type_pathpoint_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid PathPoint;
+
+
+
+
+
+
+
+
+#include "impl_type_double.h"
+#include "impl_type_string.h"
+
+
+struct PathPoint {
+    ::Double x;
+    
+    ::Double y;
+    
+    ::Double z;
+    
+    ::Double theta;
+    
+    ::Double kappa;
+    
+    ::Double s;
+    
+    ::Double dkappa;
+    
+    ::Double ddkappa;
+    
+    ::String lane_id;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(x);
+        fun(y);
+        fun(z);
+        fun(theta);
+        fun(kappa);
+        fun(s);
+        fun(dkappa);
+        fun(ddkappa);
+        fun(lane_id);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(x);
+        fun(y);
+        fun(z);
+        fun(theta);
+        fun(kappa);
+        fun(s);
+        fun(dkappa);
+        fun(ddkappa);
+        fun(lane_id);
+    }
+
+    bool operator == (const ::PathPoint& t) const {
+        return (x == t.x) && (y == t.y) && (z == t.z) && (theta == t.theta) && (kappa == t.kappa) && (s == t.s) && (dkappa == t.dkappa) && (ddkappa == t.ddkappa) && (lane_id == t.lane_id);
+    }
+};
+
 
 #endif // impl_type_pathpoint_h

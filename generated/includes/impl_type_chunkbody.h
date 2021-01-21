@@ -6,8 +6,36 @@
 #ifndef impl_type_chunkbody_h
 #define impl_type_chunkbody_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid ChunkBody;
+#include "impl_type_singlemessage.h"
+
+
+struct ChunkBody {
+    ::SingleMessage messages;
+    
+
+    static bool IsPlane()
+    {
+        return ;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(messages);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(messages);
+    }
+
+    bool operator == (const ::ChunkBody& t) const {
+        return (messages == t.messages);
+    }
+};
+
 
 #endif // impl_type_chunkbody_h

@@ -6,8 +6,54 @@
 #ifndef impl_type_vehiclemodelconfig_h
 #define impl_type_vehiclemodelconfig_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid VehicleModelConfig;
+
+
+
+#include "impl_type_rearcenteredkinematicbicyclemodelconfig.h"
+#include "impl_type_mlpmodelconfig.h"
+#include "impl_type_comcentereddynamicbicyclemodelconfig.h"
+#include "impl_type_modeltype.h"
+
+
+struct VehicleModelConfig {
+    ::ModelType model_type;
+    
+    ::RearCenteredKinematicBicycleModelConfig rc_kinematic_bicycle_model;
+    
+    ::ComCenteredDynamicBicycleModelConfig comc_dynamic_bicycle_model;
+    
+    ::MlpModelConfig mlp_model;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(model_type);
+        fun(rc_kinematic_bicycle_model);
+        fun(comc_dynamic_bicycle_model);
+        fun(mlp_model);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(model_type);
+        fun(rc_kinematic_bicycle_model);
+        fun(comc_dynamic_bicycle_model);
+        fun(mlp_model);
+    }
+
+    bool operator == (const ::VehicleModelConfig& t) const {
+        return (model_type == t.model_type) && (rc_kinematic_bicycle_model == t.rc_kinematic_bicycle_model) && (comc_dynamic_bicycle_model == t.comc_dynamic_bicycle_model) && (mlp_model == t.mlp_model);
+    }
+};
+
 
 #endif // impl_type_vehiclemodelconfig_h

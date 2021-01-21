@@ -6,8 +6,36 @@
 #ifndef impl_type_comcentereddynamicbicyclemodelconfig_h
 #define impl_type_comcentereddynamicbicyclemodelconfig_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid ComCenteredDynamicBicycleModelConfig;
+#include "impl_type_double.h"
+
+
+struct ComCenteredDynamicBicycleModelConfig {
+    ::Double dt;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(dt);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(dt);
+    }
+
+    bool operator == (const ::ComCenteredDynamicBicycleModelConfig& t) const {
+        return (dt == t.dt);
+    }
+};
+
 
 #endif // impl_type_comcentereddynamicbicyclemodelconfig_h

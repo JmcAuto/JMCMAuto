@@ -6,8 +6,51 @@
 #ifndef impl_type_frenetframepoint_h
 #define impl_type_frenetframepoint_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid FrenetFramePoint;
+
+
+
+#include "impl_type_double.h"
+
+
+struct FrenetFramePoint {
+    ::Double s;
+    
+    ::Double l;
+    
+    ::Double dl;
+    
+    ::Double ddl;
+    
+
+    static bool IsPlane()
+    {
+        return true;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(s);
+        fun(l);
+        fun(dl);
+        fun(ddl);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(s);
+        fun(l);
+        fun(dl);
+        fun(ddl);
+    }
+
+    bool operator == (const ::FrenetFramePoint& t) const {
+        return (s == t.s) && (l == t.l) && (dl == t.dl) && (ddl == t.ddl);
+    }
+};
+
 
 #endif // impl_type_frenetframepoint_h

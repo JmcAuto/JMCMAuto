@@ -6,8 +6,42 @@
 #ifndef impl_type_monitormessage_h
 #define impl_type_monitormessage_h
 
-#include "impl_type_invalid.h"
 
-typedef invalid MonitorMessage;
+
+#include "impl_type_monitormessageitem.h"
+#include "impl_type_header.h"
+
+
+struct MonitorMessage {
+    ::Header header;
+    
+    ::MonitorMessageItem item;
+    
+
+    static bool IsPlane()
+    {
+        return false;
+    }
+
+    using IsEnumerableTag = void;
+    template<typename F>
+    void enumerate(F& fun)
+    {
+        fun(header);
+        fun(item);
+    }
+
+    template<typename F>
+    void enumerate(F& fun) const
+    {
+        fun(header);
+        fun(item);
+    }
+
+    bool operator == (const ::MonitorMessage& t) const {
+        return (header == t.header) && (item == t.item);
+    }
+};
+
 
 #endif // impl_type_monitormessage_h
