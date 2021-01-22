@@ -34,7 +34,7 @@
 #include "modules/common/macro.h"
 //#include "modules/common/transform_listener/transform_listener.h"
 
-#include "ros/include/ros/ros.h"
+//#include "ros/include/ros/ros.h"
 
 /**
  * @namespace jmc_auto::common::adapter

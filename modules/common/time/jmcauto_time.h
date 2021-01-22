@@ -32,7 +32,6 @@
 #include "modules/common/configs/config_gflags.h"
 #include "modules/common/log.h"
 #include "modules/common/macro.h"
-#include "ros/include/ros/ros.h"
 
 /**
  * @namespace jmc_auto::common::time
@@ -160,9 +159,10 @@ class Clock {
    * @return a Timestamp object representing the current time.
    */
   static Timestamp Now() {
-    switch (mode()) {
-      case ClockMode::SYSTEM:
+    //switch (mode()) {
+      //case ClockMode::SYSTEM:
         return SystemNow();
+        /*
       case ClockMode::MOCK:
         return instance()->mock_now_;
       case ClockMode::ROS:
@@ -171,6 +171,7 @@ class Clock {
         AFATAL << "Unsupported clock mode: " << mode();
     }
     return From(ros::Time::now().toSec());
+    */
   }
 
   /**

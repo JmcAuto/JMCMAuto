@@ -23,6 +23,7 @@
 #include "modules/common/time/jmcauto_time.h"
 #include "modules/common/util/util.h"
 #include "modules/drivers/canbus/can_client/can_client_factory.h"
+#include "impl_type_chassis.h"
 
 namespace jmc_auto
 {
@@ -44,14 +45,14 @@ namespace jmc_auto
       AINFO << "The adapter manager is successfully initialized.";
 
       // load conf
-      if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file, &canbus_conf_))
-      {
-        return OnError("Unable to load canbus conf file: " +
-                       FLAGS_canbus_conf_file);
-      }
+      //if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file, &canbus_conf_))
+      //{
+      //  return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file: " +
+      //                 FLAGS_canbus_conf_file);
+      //}
 
       AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
-      ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
+      //ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
 
 /*
       // Init can client
@@ -127,14 +128,14 @@ namespace jmc_auto
       m_channelId = 5;
       m_instance = m_channelId + 1;
       // 提供服务
-      m_skeleton[channelId] = std::make_unique<CanTxSkeleton>(ara::com::InstanceIdentifier(m_instance),
+      m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(ara::com::InstanceIdentifier(m_instance),
                                                               ara::com::MethodCallProcessingMode::kPoll);
-      m_skeleton[channelId]->OfferService();
+      m_skeleton[m_channelId]->OfferService();
 
       // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
       CanRxProxy::StartFindService(
           [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles, ara::com::FindServiceHandle handler) {
-            McuApInterface::ServiceAvailabilityCallbackcanData(std::move(handles), handler);
+            Canbus::ServiceAvailabilityCallbackcanData(std::move(handles), handler);
           },
           m_instance);
       return Status::OK();
@@ -157,9 +158,9 @@ namespace jmc_auto
           {
             // 注册接收MCU上传CAN帧的回调函数
             m_proxy[channelID] = std::make_unique<CanRxProxy>(handles[i]);
-            m_proxy[channelID]->CanDataRxEvent.Subscribe(ara::com::EventCacheUpdatePolicy::kNewestN, BUFFER_DEPTH);
+            m_proxy[channelID]->CanDataRxEvent.Subscribe(ara::com::EventCacheUpdatePolicy::kNewestN, 100);
             m_proxy[channelID]->CanDataRxEvent.SetReceiveHandler(
-                [this, channelID]() { McuApInterface::CanDataEventCallback(channelID); });
+                [this, channelID]() { Canbus::CanDataEventCallback(channelID); });
           }
         }
       }
@@ -239,7 +240,8 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
 
     void Canbus::PublishChassis()
     {
-      Chassis chassis = vehicle_controller_->chassis();
+      jmc_auto::canbus::Chassis chassis_ ;
+      struct mdc::Chassis chassis;
       AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
       AdapterManager::PublishChassis(chassis);
 
@@ -269,14 +271,15 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
 
     void Canbus::Stop()
     {
-      timer_.stop();
+      AINFO << "stop";
+      //timer_.stop();
       //can_sender_.Stop();
       //can_receiver_.Stop();
       //can_client_->Stop();
       //vehicle_controller_->Stop();
     }
+/*
 
-    /*
     ControlCommand Canbus::RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl &RemoteControlCommand)
     {
       ControlCommand control_command;
@@ -400,13 +403,6 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
     //   OnControlCommand(control_command);
     // }
 
-    // Send the error to monitor and return it
-    Status Canbus::OnError(const std::string &error_msg)
-    {
-      jmc_auto::common::monitor::MonitorLogBuffer buffer(&monitorger_);
-      buffer.ERROR(error_msg);
-      return Status(ErrorCode::CANBUS_ERROR, error_msg);
-    }
 
 */
 
