@@ -26,19 +26,19 @@
 #include <utility>
 #include <vector>
 
-#include "modules/canbus/proto/chassis_detail.pb.h"
+#include "impl_type_canbusdataparam.h"
+#include "impl_type_cansetdataresult.h"
 #include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
-#include "mdc/sensor/cantxserviceinterface_skeleton.h"
 #include "mdc/sensor/canrxserviceinterface_common.h"
-#include "mdc/sensor/cantxserviceinterface_common.h"
 #include "mdc/sensor/canrxserviceinterface_proxy.h"
-#include "impl_type_cansetdataresult.h"
-#include "impl_type_canbusdataparam.h"
-
+#include "mdc/sensor/cantxserviceinterface_common.h"
+#include "mdc/sensor/cantxserviceinterface_skeleton.h"
+#include "modules/canbus/proto/chassis_detail.pb.h"
 
 #include "modules/canbus/vehicle/vehicle_controller.h"
+#include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/jmc_auto_app.h"
 #include "modules/common/macro.h"
 #include "modules/common/monitor_log/monitor_log_buffer.h"
@@ -48,7 +48,6 @@
 #include "modules/drivers/canbus/can_comm/can_sender.h"
 #include "modules/drivers/canbus/can_comm/message_manager.h"
 #include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
-#include "modules/common/adapters/adapter_manager.h"
 
 //#include "modules/remotecontrol/proto/remote_control.pb.h"
 //#include "modules/guardian/proto/guardian.pb.h"
@@ -72,69 +71,72 @@ using CanRxProxy = mdc::sensor::proxy::CanRxServiceInterfaceProxy;
 using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
 
 class Canbus : public jmc_auto::common::JmcAutoApp {
- public:
+  public:
+    // Canbus()
+    //    : monitorger_(jmc_auto::common::monitor::MonitorMessageItem::CANBUS)
+    //    {}
 
-  //Canbus()
-  //    : monitorger_(jmc_auto::common::monitor::MonitorMessageItem::CANBUS) {}
+    /**
+     * @brief obtain module name
+     * @return module name
+     */
+    std::string Name() const override;
 
-  /**
-   * @brief obtain module name
-   * @return module name
-   */
-  std::string Name() const override;
+    /**
+     * @brief module initialization function
+     * @return initialization status
+     */
+    jmc_auto::common::Status Init() override;
 
-  /**
-   * @brief module initialization function
-   * @return initialization status
-   */
-  jmc_auto::common::Status Init() override;
+    /**
+     * @brief module start function
+     * @return start status
+     */
+    jmc_auto::common::Status Start() override;
 
-  /**
-   * @brief module start function
-   * @return start status
-   */
-  jmc_auto::common::Status Start() override;
+    /**
+     * @brief module stop function
+     */
+    void Stop() override;
 
-  /**
-   * @brief module stop function
-   */
-  void Stop() override;
+  private:
+    void PublishChassis();
+    void ServiceAvailabilityCallbackcanData(
+        ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
+        ara::com::FindServiceHandle handler);
+    void CanDataEventCallback(unsigned char channelID);
+    // void PublishChassisDetail();
+    // void OnTimer(const ros::TimerEvent &event);
+    // void OnControlCommand(const jmc_auto::control::ControlCommand
+    // &control_command);
 
- private:
-  void PublishChassis();
-  void ServiceAvailabilityCallbackcanData(ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
-                                                      ara::com::FindServiceHandle handler);
-  void CanDataEventCallback(unsigned char channelID);
-  //void PublishChassisDetail();
-  //void OnTimer(const ros::TimerEvent &event);
-  //void OnControlCommand(const jmc_auto::control::ControlCommand &control_command);
+    // void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl
+    // &RemoteControlCommand); jmc_auto::control::ControlCommand
+    // RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl
+    // &RemoteControlCommand);
+    //   void OnGuardianCommand(
+    //       const jmc_auto::guardian::GuardianCommand &guardian_command);
+    // jmc_auto::common::Status OnError(const std::string &error_msg);
+    // void RegisterCanClients();
+    // void setControlcmd(const ros::TimerEvent &event);
 
+    // CanbusConf canbus_conf_;
+    // std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
+    // CanSender<ChassisDetail> can_sender_;
+    // jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
+    std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
+        message_manager_;
+    // std::unique_ptr<VehicleController> vehicle_controller_;
+    bool IS_STOP_MODE = false;
+    bool IS_VEHCILE_STOP = false;
+    // jmc_auto::control::ControlCommand control_command_;
 
-  //void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
-  //jmc_auto::control::ControlCommand RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl &RemoteControlCommand);
-//   void OnGuardianCommand(
-//       const jmc_auto::guardian::GuardianCommand &guardian_command);
-  //jmc_auto::common::Status OnError(const std::string &error_msg);
-  //void RegisterCanClients();
-  //void setControlcmd(const ros::TimerEvent &event);
-
-  //CanbusConf canbus_conf_;
-  //std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
-  //CanSender<ChassisDetail> can_sender_;
-  //jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
-  std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
-      message_manager_;
-  //std::unique_ptr<VehicleController> vehicle_controller_;
-  bool IS_STOP_MODE = false;
-  bool IS_VEHCILE_STOP = false;
-  //jmc_auto::control::ControlCommand control_command_;
-
-  bool IS_Remote_MODE=false;
-  int64_t last_timestamp_ = 0;
-  // canbus_config.json中的ChannelId
-  int m_channelId = 5;
-  // instance ID
-  int m_instance = m_channelId + 1;
+    bool IS_Remote_MODE = false;
+    int64_t last_timestamp_ = 0;
+    // canbus_config.json中的ChannelId
+    int m_channelId = 5;
+    // instance ID
+    int m_instance = m_channelId + 1;
     std::mutex m_canReadMutex;
     std::unique_ptr<CanRxProxy> m_proxy[CAN_NUM];
     std::mutex m_canSendMutex;
@@ -142,7 +144,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     std::unique_ptr<std::thread> m_canMethodThread[CAN_NUM];
 };
 
-}  // namespace canbus
-}  // namespace jmc_auto
+} // namespace canbus
+} // namespace jmc_auto
 
-#endif  // MODULES_CANBUS_CANBUS_H_
+#endif // MODULES_CANBUS_CANBUS_H_

@@ -26,49 +26,49 @@ namespace adapter {
 AdapterManager::AdapterManager() {}
 
 void AdapterManager::Observe() {
-  for (const auto observe : instance()->observers_) {
-    observe();
-  }
+    for (const auto observe : instance()->observers_) {
+        observe();
+    }
 }
 
 bool AdapterManager::Initialized() { return instance()->initialized_; }
 
 void AdapterManager::Reset() {
-  instance()->initialized_ = false;
-  instance()->observers_.clear();
+    instance()->initialized_ = false;
+    instance()->observers_.clear();
 }
 
 void AdapterManager::Init(const std::string &adapter_config_filename) {
-  // Parse config file
-  AdapterManagerConfig configs;
-  CHECK(util::GetProtoFromFile(adapter_config_filename, &configs))
-      << "Unable to parse adapter config file " << adapter_config_filename;
-  AINFO << "Init AdapterManger config:" << configs.DebugString();
-  Init(configs);
+    // Parse config file
+    AdapterManagerConfig configs;
+    CHECK(util::GetProtoFromFile(adapter_config_filename, &configs))
+        << "Unable to parse adapter config file " << adapter_config_filename;
+    AINFO << "Init AdapterManger config:" << configs.DebugString();
+    Init(configs);
 }
 
 void AdapterManager::Init(const AdapterManagerConfig &configs) {
-  if (Initialized()) {
-    return;
-  }
-
-  instance()->initialized_ = true;
-
-  for (const auto &config : configs.config()) {
-    switch (config.type()) {
-      case AdapterConfig::CHASSIS:
-        EnableChassis(FLAGS_chassis_instance_id, config);
-        break;
-      case AdapterConfig::CHASSIS_DETAIL:
-        EnableChassisDetail(FLAGS_chassis_detail_instance_id, config);
-        break;
-      default:
-        AERROR << "Unknown adapter config type!";
-        break;
+    if (Initialized()) {
+        return;
     }
-  }
+
+    instance()->initialized_ = true;
+
+    for (const auto &config : configs.config()) {
+        switch (config.type()) {
+        case AdapterConfig::CHASSIS:
+            EnableChassis(FLAGS_chassis_instance_id, config);
+            break;
+        case AdapterConfig::CHASSIS_DETAIL:
+            EnableChassisDetail(FLAGS_chassis_detail_instance_id, config);
+            break;
+        default:
+            AERROR << "Unknown adapter config type!";
+            break;
+        }
+    }
 }
 
-}  // namespace adapter
-}  // namespace common
-}  // namespace jmc_auto
+} // namespace adapter
+} // namespace common
+} // namespace jmc_auto

@@ -16,6 +16,7 @@
 
 #include "modules/canbus/canbus.h"
 
+#include "impl_type_chassis.h"
 #include "modules/canbus/common/canbus_gflags.h"
 #include "modules/canbus/vehicle/vehicle_factory.h"
 #include "modules/common/adapters/adapter_manager.h"
@@ -23,151 +24,159 @@
 #include "modules/common/time/jmcauto_time.h"
 #include "modules/common/util/util.h"
 #include "modules/drivers/canbus/can_client/can_client_factory.h"
-#include "impl_type_chassis.h"
 
-namespace jmc_auto
-{
-  namespace canbus
-  {
+namespace jmc_auto {
+namespace canbus {
 
-    using jmc_auto::common::ErrorCode;
-    using jmc_auto::common::Status;
-    using jmc_auto::common::adapter::AdapterManager;
-    using jmc_auto::common::time::Clock;
-    //using jmc_auto::control::ControlCommand;
-    //using jmc_auto::drivers::canbus::CanClientFactory;
+using jmc_auto::common::ErrorCode;
+using jmc_auto::common::Status;
+using jmc_auto::common::adapter::AdapterManager;
+using jmc_auto::common::time::Clock;
+// using jmc_auto::control::ControlCommand;
+// using jmc_auto::drivers::canbus::CanClientFactory;
 
-    std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
+std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
 
-    Status Canbus::Init()
-    {
-      AdapterManager::Init(FLAGS_canbus_adapter_config_filename);
-      AINFO << "The adapter manager is successfully initialized.";
+Status Canbus::Init() {
+    AdapterManager::Init(FLAGS_canbus_adapter_config_filename);
+    AINFO << "The adapter manager is successfully initialized.";
 
-      // load conf
-      //if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file, &canbus_conf_))
-      //{
-      //  return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file: " +
-      //                 FLAGS_canbus_conf_file);
-      //}
+    // load conf
+    // if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file,
+    // &canbus_conf_))
+    //{
+    //  return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file:
+    //  " +
+    //                 FLAGS_canbus_conf_file);
+    //}
 
-      AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
-      //ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
+    AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
+    // ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
 
-/*
-      // Init can client
-      auto *can_factory = CanClientFactory::instance();
-      can_factory->RegisterCanClients();
-      can_client_ = can_factory->CreateCANClient(canbus_conf_.can_card_parameter());
-      if (!can_client_)
-      {
-        return OnError("Failed to create can client.");
-      }
-      AINFO << "Can client is successfully created.";
-
-      VehicleFactory vehicle_factory;
-      vehicle_factory.RegisterVehicleFactory();
-      auto vehicle_object =
-          vehicle_factory.CreateVehicle(canbus_conf_.vehicle_parameter());
-      if (!vehicle_object)
-      {
-        return OnError("Failed to create vehicle:");
-      }
-
-      message_manager_ = vehicle_object->CreateMessageManager();
-      if (message_manager_ == nullptr)
-      {
-        return OnError("Failed to create message manager.");
-      }
-      AINFO << "Message manager is successfully created.";
-
-      if (can_receiver_.Init(can_client_.get(), message_manager_.get(),
-                             canbus_conf_.enable_receiver_log()) != ErrorCode::OK)
-      {
-        return OnError("Failed to init can receiver.");
-      }
-      AINFO << "The can receiver is successfully initialized.";
-
-      if (can_sender_.Init(can_client_.get(), canbus_conf_.enable_sender_log()) !=
-          ErrorCode::OK)
-      {
-        return OnError("Failed to init can sender.");
-      }
-      AINFO << "The can sender is successfully initialized.";
-
-      vehicle_controller_ = vehicle_object->CreateVehicleController();
-      if (vehicle_controller_ == nullptr)
-      {
-        return OnError("Failed to create vehicle controller.");
-      }
-      AINFO << "The vehicle controller is successfully created.";
-
-      if (vehicle_controller_->Init(canbus_conf_.vehicle_parameter(), &can_sender_,
-                                    message_manager_.get()) != ErrorCode::OK)
-      {
-        return OnError("Failed to init vehicle controller.");
-      }
-      AINFO << "The vehicle controller is successfully initialized.";
-
-      CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
-      // CHECK(AdapterManager::GetGuardian()) << "Guardian is not initialized.";
-      // TODO(QiL) : depreacte this
-      if (!FLAGS_receive_guardian)
-      {
-        // AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand, this);
-        AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand, this);
-        AdapterManager::AddRemoteControlCallback(&Canbus::OnRemoteControlCommand, this);
-      }
-      else
-      {
-        // AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
-      }
-*/
-
-      //test for mdc
-      m_channelId = 5;
-      m_instance = m_channelId + 1;
-      // 提供服务
-      m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(ara::com::InstanceIdentifier(m_instance),
-                                                              ara::com::MethodCallProcessingMode::kPoll);
-      m_skeleton[m_channelId]->OfferService();
-
-      // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
-      CanRxProxy::StartFindService(
-          [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles, ara::com::FindServiceHandle handler) {
-            Canbus::ServiceAvailabilityCallbackcanData(std::move(handles), handler);
-          },
-          m_instance);
-      return Status::OK();
-    }
-
-    void Canbus::ServiceAvailabilityCallbackcanData(ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
-                                                    ara::com::FindServiceHandle handler)
-    {
-      if (handles.size() > 0)
-      {
-        for (unsigned int i = 0; i < handles.size(); i++)
-        {
-          int instanceId = static_cast<uint16_t>(handles[i].GetInstanceId());
-          int channelID = m_channelId;
-          if (instanceId != m_instance)
+    /*
+          // Init can client
+          auto *can_factory = CanClientFactory::instance();
+          can_factory->RegisterCanClients();
+          can_client_ =
+       can_factory->CreateCANClient(canbus_conf_.can_card_parameter()); if
+       (!can_client_)
           {
-            continue;
+            return OnError("Failed to create can client.");
           }
-          if (m_proxy[channelID] == nullptr)
+          AINFO << "Can client is successfully created.";
+
+          VehicleFactory vehicle_factory;
+          vehicle_factory.RegisterVehicleFactory();
+          auto vehicle_object =
+              vehicle_factory.CreateVehicle(canbus_conf_.vehicle_parameter());
+          if (!vehicle_object)
           {
-            // 注册接收MCU上传CAN帧的回调函数
-            m_proxy[channelID] = std::make_unique<CanRxProxy>(handles[i]);
-            m_proxy[channelID]->CanDataRxEvent.Subscribe(ara::com::EventCacheUpdatePolicy::kNewestN, 100);
-            m_proxy[channelID]->CanDataRxEvent.SetReceiveHandler(
-                [this, channelID]() { Canbus::CanDataEventCallback(channelID); });
+            return OnError("Failed to create vehicle:");
           }
+
+          message_manager_ = vehicle_object->CreateMessageManager();
+          if (message_manager_ == nullptr)
+          {
+            return OnError("Failed to create message manager.");
+          }
+          AINFO << "Message manager is successfully created.";
+
+          if (can_receiver_.Init(can_client_.get(), message_manager_.get(),
+                                 canbus_conf_.enable_receiver_log()) !=
+       ErrorCode::OK)
+          {
+            return OnError("Failed to init can receiver.");
+          }
+          AINFO << "The can receiver is successfully initialized.";
+
+          if (can_sender_.Init(can_client_.get(),
+       canbus_conf_.enable_sender_log()) != ErrorCode::OK)
+          {
+            return OnError("Failed to init can sender.");
+          }
+          AINFO << "The can sender is successfully initialized.";
+
+          vehicle_controller_ = vehicle_object->CreateVehicleController();
+          if (vehicle_controller_ == nullptr)
+          {
+            return OnError("Failed to create vehicle controller.");
+          }
+          AINFO << "The vehicle controller is successfully created.";
+
+          if (vehicle_controller_->Init(canbus_conf_.vehicle_parameter(),
+       &can_sender_, message_manager_.get()) != ErrorCode::OK)
+          {
+            return OnError("Failed to init vehicle controller.");
+          }
+          AINFO << "The vehicle controller is successfully initialized.";
+
+          CHECK(AdapterManager::GetControlCommand()) << "Control is not
+       initialized.";
+          // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
+       initialized.";
+          // TODO(QiL) : depreacte this
+          if (!FLAGS_receive_guardian)
+          {
+            //
+       AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+       this);
+            AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+       this);
+            AdapterManager::AddRemoteControlCallback(&Canbus::OnRemoteControlCommand,
+       this);
+          }
+          else
+          {
+            // AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand,
+       this);
+          }
+    */
+
+    // test for mdc
+    m_channelId = 5;
+    m_instance = m_channelId + 1;
+    // 提供服务
+    m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
+        ara::com::InstanceIdentifier(m_instance),
+        ara::com::MethodCallProcessingMode::kPoll);
+    m_skeleton[m_channelId]->OfferService();
+
+    // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
+    CanRxProxy::StartFindService(
+        [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
+               ara::com::FindServiceHandle handler) {
+            Canbus::ServiceAvailabilityCallbackcanData(std::move(handles),
+                                                       handler);
+        },
+        m_instance);
+    return Status::OK();
+}
+
+void Canbus::ServiceAvailabilityCallbackcanData(
+    ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
+    ara::com::FindServiceHandle handler) {
+    if (handles.size() > 0) {
+        for (unsigned int i = 0; i < handles.size(); i++) {
+            int instanceId = static_cast<uint16_t>(handles[i].GetInstanceId());
+            int channelID = m_channelId;
+            if (instanceId != m_instance) {
+                continue;
+            }
+            if (m_proxy[channelID] == nullptr) {
+                // 注册接收MCU上传CAN帧的回调函数
+                m_proxy[channelID] = std::make_unique<CanRxProxy>(handles[i]);
+                m_proxy[channelID]->CanDataRxEvent.Subscribe(
+                    ara::com::EventCacheUpdatePolicy::kNewestN, 100);
+                m_proxy[channelID]->CanDataRxEvent.SetReceiveHandler(
+                    [this, channelID]() {
+                        Canbus::CanDataEventCallback(channelID);
+                    });
+            }
         }
-      }
     }
+}
 
-void Canbus::CanDataEventCallback(unsigned char channelID)
-{
+void Canbus::CanDataEventCallback(unsigned char channelID) {
     if (channelID < 0 || channelID > CAN_NUM) {
         return;
     }
@@ -180,74 +189,73 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
     std::unique_lock<std::mutex> lockread(m_canReadMutex);
     // 接收CAN帧
     m_proxy[channelID]->CanDataRxEvent.Update();
-    const auto &canMsgSamples = m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
+    const auto &canMsgSamples =
+        m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
     for (const auto &canData : canMsgSamples) {
-    for (unsigned int i = 0; i < canData->elementList.size(); i++) {
-        printf("canId: %x, canDLC: %u\n", canData.elementList[i].canId, canData.elementList[i].validLen);
-        for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-            printf("%x ", canData.elementList[i].data[j]);
+        for (unsigned int i = 0; i < canData->elementList.size(); i++) {
+            printf("canId: %x, canDLC: %u\n", canData.elementList[i].canId,
+                   canData.elementList[i].validLen);
+            for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
+                printf("%x ", canData.elementList[i].data[j]);
+            }
+            printf("\n");
         }
-        printf("\n");
-    }
     }
     // 解锁
     lockread.unlock();
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
 }
 
-    Status Canbus::Start()
-    {
+Status Canbus::Start() {
 
-/*
-      // 1. init and start the can card hardware
-      if (can_client_->Start() != ErrorCode::OK)
-      {
-        return OnError("Failed to start can client");
-      }
-      AINFO << "Can client is started.";
+    /*
+          // 1. init and start the can card hardware
+          if (can_client_->Start() != ErrorCode::OK)
+          {
+            return OnError("Failed to start can client");
+          }
+          AINFO << "Can client is started.";
 
-      // 2. start receive first then send
-      if (can_receiver_.Start() != ErrorCode::OK)
-      {
-        return OnError("Failed to start can receiver.");
-      }
-      AINFO << "Can receiver is started.";
+          // 2. start receive first then send
+          if (can_receiver_.Start() != ErrorCode::OK)
+          {
+            return OnError("Failed to start can receiver.");
+          }
+          AINFO << "Can receiver is started.";
 
-      // 3. start send
-      if (can_sender_.Start() != ErrorCode::OK)
-      {
-        return OnError("Failed to start can sender.");
-      }
+          // 3. start send
+          if (can_sender_.Start() != ErrorCode::OK)
+          {
+            return OnError("Failed to start can sender.");
+          }
 
-      // 4. start controller
-      if (vehicle_controller_->Start() == false)
-      {
-        return OnError("Failed to start vehicle controller.");
-      }
+          // 4. start controller
+          if (vehicle_controller_->Start() == false)
+          {
+            return OnError("Failed to start vehicle controller.");
+          }
 
-*/
+    */
 
-      // 5. set timer to triger publish info periodly
-      const double duration = 1.0 / FLAGS_chassis_freq;
-      while (1)
-      {
+    // 5. set timer to triger publish info periodly
+    const double duration = 1.0 / FLAGS_chassis_freq;
+    while (1) {
         Canbus::PublishChassis();
         sleep(duration);
-      }
-
-      return Status::OK();
     }
 
-    void Canbus::PublishChassis()
-    {
-      jmc_auto::canbus::Chassis chassis_ ;
-      struct mdc::Chassis chassis;
-      AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
-      AdapterManager::PublishChassis(chassis);
+    return Status::OK();
+}
 
-      AINFO << chassis.DebugString();
-      ADEBUG << chassis.ShortDebugString();
-    }
+void Canbus::PublishChassis() {
+    jmc_auto::canbus::Chassis chassis_;
+    struct mdc::Chassis chassis;
+    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
+    AdapterManager::PublishChassis(chassis);
+
+    AINFO << chassis.DebugString();
+    ADEBUG << chassis.ShortDebugString();
+}
 
 /*
     void Canbus::PublishChassisDetail()
@@ -269,18 +277,18 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
     }
 */
 
-    void Canbus::Stop()
-    {
-      AINFO << "stop";
-      //timer_.stop();
-      //can_sender_.Stop();
-      //can_receiver_.Stop();
-      //can_client_->Stop();
-      //vehicle_controller_->Stop();
-    }
+void Canbus::Stop() {
+    AINFO << "stop";
+    // timer_.stop();
+    // can_sender_.Stop();
+    // can_receiver_.Stop();
+    // can_client_->Stop();
+    // vehicle_controller_->Stop();
+}
 /*
 
-    ControlCommand Canbus::RemoteCmdToControlCmd(const jmc_auto::remote::RemoteControl &RemoteControlCommand)
+    ControlCommand Canbus::RemoteCmdToControlCmd(const
+   jmc_auto::remote::RemoteControl &RemoteControlCommand)
     {
       ControlCommand control_command;
       if (RemoteControlCommand.has_pedal_throttle_percent())
@@ -313,13 +321,15 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
 
       return control_command;
     }
-    void Canbus::OnRemoteControlCommand(const jmc_auto::remote::RemoteControl  &RemoteControlCommand)
+    void Canbus::OnRemoteControlCommand(const jmc_auto::remote::RemoteControl
+   &RemoteControlCommand)
     {
       AINFO << "RemoteControlCommand:" + RemoteControlCommand.DebugString();
       // int64_t current_timestamp =
-      //     jmc_auto::common::time::AsInt64<common::time::micros>(Clock::Now());
+      // jmc_auto::common::time::AsInt64<common::time::micros>(Clock::Now());
       // if command coming too soon, just ignore it.
-      // if (current_timestamp - last_timestamp_ < FLAGS_min_cmd_interval * 1000) {
+      // if (current_timestamp - last_timestamp_ < FLAGS_min_cmd_interval *
+   1000) {
       //   ADEBUG << "Control command comes too soon. Ignore.\n Required "
       //             "FLAGS_min_cmd_interval["
       //          << FLAGS_min_cmd_interval << "], actual time interval["
@@ -331,8 +341,9 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
       // ADEBUG << "Control_sequence_number:"
       //        << control_command.header().sequence_num() << ", Time_of_delay:"
       //        << current_timestamp - control_command.header().timestamp_sec();
-     
-      ControlCommand control_command = RemoteCmdToControlCmd(RemoteControlCommand);
+
+      ControlCommand control_command =
+   RemoteCmdToControlCmd(RemoteControlCommand);
 
       AINFO<<"control_command:"<<control_command.DebugString();
       if (control_command.has_driving_mode())
@@ -348,18 +359,18 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
           IS_Remote_MODE = true;
         }
       }
-      
-      
 
-      if (IS_Remote_MODE && vehicle_controller_->chassis().driving_mode() != Chassis::COMPLETE_AUTO_DRIVE)
+
+
+      if (IS_Remote_MODE && vehicle_controller_->chassis().driving_mode() !=
+   Chassis::COMPLETE_AUTO_DRIVE)
       {
         // setControlcmd();
         AINFO<<"REMOTE CONTROL";
         if (vehicle_controller_->Update(control_command) != ErrorCode::OK)
         {
-          AERROR << "Failed to process callback function OnControlCommand because "
-                    "vehicle_controller_->Update error.";
-          return;
+          AERROR << "Failed to process callback function OnControlCommand
+   because " "vehicle_controller_->Update error."; return;
         }
         //can_sender_.Update();
       }
@@ -384,13 +395,15 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
              << control_command.header().sequence_num() << ", Time_of_delay:"
              << current_timestamp - control_command.header().timestamp_sec();
 
-      if (!IS_Remote_MODE && (vehicle_controller_->chassis().driving_mode() == Chassis::COMPLETE_AUTO_DRIVE||vehicle_controller_->chassis().driving_mode() == Chassis::COMPLETE_MANUAL||vehicle_controller_->chassis().driving_mode() == Chassis::AUTO_SPEED_ONLY))
+      if (!IS_Remote_MODE && (vehicle_controller_->chassis().driving_mode() ==
+   Chassis::COMPLETE_AUTO_DRIVE||vehicle_controller_->chassis().driving_mode()
+   == Chassis::COMPLETE_MANUAL||vehicle_controller_->chassis().driving_mode() ==
+   Chassis::AUTO_SPEED_ONLY))
       {
         if (vehicle_controller_->Update(control_command) != ErrorCode::OK)
         {
-          AERROR << "Failed to process callback function OnControlCommand because "
-                    "vehicle_controller_->Update error.";
-          return;
+          AERROR << "Failed to process callback function OnControlCommand
+   because " "vehicle_controller_->Update error."; return;
         }
 
         can_sender_.Update();
@@ -406,5 +419,5 @@ void Canbus::CanDataEventCallback(unsigned char channelID)
 
 */
 
-  } // namespace canbus
+} // namespace canbus
 } // namespace jmc_auto
