@@ -82,12 +82,12 @@ public:
     void OfferService()
     {
         InitializeEvent(ChassisEvent);
-        RegisterMethod(&ChassisServiceInterfaceSkeleton::ChassisSetMethod, *this, methods::ChassisSetMethodId);
-        InitializeMethod(methods::ChassisSetMethodId);
+        //RegisterMethod(&ChassisServiceInterfaceSkeleton::ChassisSetMethod, *this, methods::ChassisSetMethodId);
+        //InitializeMethod(methods::ChassisSetMethodId);
         ara::com::internal::skeleton::SkeletonAdapter::OfferService();
     }
 
-    virtual ara::core::Future<ChassisSetMethodOutput> ChassisSetMethod() = 0;
+    //virtual ara::core::Future<ChassisSetMethodOutput> ChassisSetMethod() = 0;
 
     events::ChassisEvent ChassisEvent;
 };

@@ -13,6 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
+#include <dirent.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <bits/c++io.h>
+#include <bits/basic_file.h>
+#include <fstream>
+#include "google/protobuf/io/zero_copy_stream.h"
+#include "google/protobuf/stubs/stl_util.h"
+#include "google/protobuf/io/zero_copy_stream_impl_lite.h"
+#include "google/protobuf/io/zero_copy_stream_impl.h"
+#include "google/protobuf/text_format.h"
+#include "modules/common/log.h"
+#include "modules/common/util/string_util.h"
+#include "modules/common/util/file.h"
+#include "google/protobuf/protobuf.h"
 
 #include "modules/canbus/canbus.h"
 #include "modules/canbus/common/canbus_gflags.h"

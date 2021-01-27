@@ -30,6 +30,7 @@
 #include <type_traits>
 #include <vector>
 
+#include <boost/make_shared.hpp>
 #include "glog/logging.h"
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"
@@ -44,7 +45,7 @@
 //#include "sensor_msgs/CompressedImage.h"
 //#include "sensor_msgs/Image.h"
 //#include "sensor_msgs/PointCloud2.h"
-#include "std_msgs/String.h"
+//#include "std_msgs/String.h"
 //#include "velodyne_msgs/VelodyneScanUnified.h"
 
 /**
@@ -70,7 +71,7 @@ class AdapterBase {
   /**
    * @brief returns the topic name that this adapter listens to.
    */
-  virtual const std::string& instance_id() const = 0;
+  virtual const unsigned int& instance_id() const = 0;
 
   /**
    * @brief Create a view of data up to the call time for the user.
@@ -157,7 +158,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
    * adapter stores. Older messages will be removed upon calls to
    * Adapter::RosCallback().
    */
-  Adapter(const std::string& adapter_name, const std::string& instance_id,
+  Adapter(const std::string& adapter_name, const unsigned int& instance_id,
           size_t message_num, const std::string& dump_dir = "/tmp")
       : instance_id_(instance_id),
         message_num_(message_num),
@@ -183,7 +184,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
   /**
    * @brief returns the topic name that this adapter listens to.
    */
-  const std::string& instance_id() const override { return instance_id_; }
+  const unsigned int& instance_id() const override { return instance_id_; }
 
   /**
    * @brief reads the proto message from the file, and push it into
@@ -402,6 +403,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     FeedData(data);
     return true;
   }
+  /*
   bool FeedFile(const std::string& message_file,
                 IdentifierType<::sensor_msgs::PointCloud2>) {
     return false;
@@ -414,6 +416,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
                 IdentifierType<::sensor_msgs::Image>) {
     return false;
   }
+
   bool FeedFile(const std::string& message_file,
                 IdentifierType<::std_msgs::String>) {
     return false;
@@ -422,6 +425,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
                 IdentifierType<velodyne_msgs::VelodyneScanUnified>) {
     return false;
   }
+  */
   // HasSequenceNumber returns false for non-proto-message data types.
   template <typename InputMessageType>
   static bool HasSequenceNumber(
@@ -533,7 +537,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     data_queue_.push_front(data);
   }
 
-  uint32_t instance_id_;
+  unsigned int instance_id_;
   /// The maximum size of data_queue_ and observed_queue_
   size_t message_num_ = 0;
 

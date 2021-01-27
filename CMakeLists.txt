@@ -20,11 +20,11 @@ endmacro()
 
 #调用函数，把generated和modules下的子目录分别保存在变量中
 LISTSUBDIR(GENERATEDDIRS generated)
-LISTSUBDIR(MODULESDIRS modules)
+#LISTSUBDIR(MODULESDIRS modules)
 
 #包含src和generated目录下的头文件路径
 INCLUDE_DIRECTORIES(${GENERATEDDIRS})
-INCLUDE_DIRECTORIES(${MODULESDIRS})
+#INCLUDE_DIRECTORIES(${MODULESDIRS})
 
 #把对应目录下的c和c++所有源文件分别保存在变量中
 file(GLOB_RECURSE  C_SOURCE src/*.c generated/*.c)
@@ -32,7 +32,6 @@ file(GLOB_RECURSE  CXX_SOURCE src/*.cxx src/*.cpp src/*.cc generated/*.cxx gener
 file(GLOB_RECURSE  TESTSOURCE modules/test/*.c modules/test/*.cc modules/test/*.cpp)
 #file(GLOB_RECURSE  COMMONSOURCE modules/common/*.c modules/common/*.cc modules/common/*.cpp)
 file(GLOB_RECURSE  DRIVERSSOURCE modules/drivers/*.c modules/drivers/*.cc modules/drivers/*.cpp)
-file(GLOB_RECURSE  CANBUSSOURCE modules/canbus/main.cc)
 
 #默认依赖，用户不可修改
 include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
@@ -57,7 +56,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #默认编译c和c++文件生成可执行文件
 #add_executable(addition ${TESTSOURCE})
-add_executable(canbus ${CANBUSSOURCE})
+add_executable(canbus modules/canbus/main.cc)
 
 #用户可在此添加链接库
 #add_dependencies(addition gflags)
@@ -67,4 +66,4 @@ target_link_libraries(canbus ${COMMON_LIB} -lgflags -lglog -lprotobuf -lpthread)
 
 #用户可在此添加链接参数
 #set_target_properties(addition PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
-set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
+#set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

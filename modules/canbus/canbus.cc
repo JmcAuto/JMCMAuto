@@ -249,12 +249,12 @@ Status Canbus::Start() {
 
 void Canbus::PublishChassis() {
     jmc_auto::canbus::Chassis chassis_;
-    struct mdc::Chassis chassis;
-    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
+    ::Chassis chassis;
+    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis_);
     AdapterManager::PublishChassis(chassis);
 
-    AINFO << chassis.DebugString();
-    ADEBUG << chassis.ShortDebugString();
+    AINFO << chassis_.DebugString();
+    ADEBUG << chassis_.ShortDebugString();
 }
 
 /*

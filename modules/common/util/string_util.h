@@ -22,7 +22,7 @@
 #ifndef MODULES_COMMON_UTIL_STRING_UTIL_H_
 #define MODULES_COMMON_UTIL_STRING_UTIL_H_
 
-//#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string.hpp>
 
 #include <functional>
 #include <sstream>

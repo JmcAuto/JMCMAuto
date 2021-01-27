@@ -19,9 +19,9 @@
 DEFINE_bool(enable_adapter_dump, false,
             "Whether enable dumping the messages to "
             "/tmp/adapters/<instance_id_name>/<seq_num>.txt for debugging purposes.");
-DEFINE_uint32_t(gps_instance_id, 102, "GPS instance_id");
-DEFINE_uint32_t(imu_instance_id, 103, "IMU instance_id");
-DEFINE_uint32_t(chassis_instance_id, 104, "chassis instance_id");
-DEFINE_uint32_t(chassis_detail_instance_id, 113,"chassis detail instance_id");
+DEFINE_uint32(gps_instance_id, 102, "GPS instance_id");
+DEFINE_uint32(imu_instance_id, 103, "IMU instance_id");
+DEFINE_uint32(chassis_instance_id, 104, "chassis instance_id");
+DEFINE_uint32(chassis_detail_instance_id, 113,"chassis detail instance_id");
 
-DEFINE_uint32_t(remote_control_instance_id, 148, "REMOTE CONTROL topic name");
+DEFINE_uint32(remote_control_instance_id, 148, "REMOTE CONTROL topic name");

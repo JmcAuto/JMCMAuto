@@ -20,13 +20,13 @@
 #include "gflags/gflags.h"
 
 DECLARE_bool(enable_adapter_dump);
-DECLARE_uint32_t(gps_instance_id);
-DECLARE_uint32_t(imu_instance_id);
-DECLARE_uint32_t(chassis_instance_id);
-DECLARE_uint32_t(chassis_detail_instance_id);
+DECLARE_uint32(gps_instance_id);
+DECLARE_uint32(imu_instance_id);
+DECLARE_uint32(chassis_instance_id);
+DECLARE_uint32(chassis_detail_instance_id);
 
 
 //for remotecontrol
-DECLARE_uint32_t(remote_control_instance_id)
+DECLARE_uint32(remote_control_instance_id)
 
 #endif  // MODULES_COMMON_ADAPTERS_ADAPTER_GFLAGS_H_
