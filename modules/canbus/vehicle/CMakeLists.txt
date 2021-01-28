@@ -1,32 +1,34 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+add_subdirectory(
+  cx75)
 
 add_library(vehicle_controller_base
   vehicle_controller.cc
   vehicle_controller.h)
 target_link_libraries(vehicle_controller_base
-  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/configs/vehicle_config_helper
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/error_code_proto
-  ${PROJECT_SOURCE_DIR}/modules/control/proto/control_proto
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_client
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/can_sender
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common)
+  modules/canbus/proto/canbus_proto
+  modules/common/configs/vehicle_config_helper
+  modules/common/proto/error_code_proto
+  modules/control/proto/control_proto
+  modules/drivers/canbus/can_client
+  modules/drivers/canbus/can_comm/can_sender
+  modules/drivers/canbus/can_comm/message_manager_base
+  modules/drivers/canbus/common/canbus_common)
 add_library(abstract_vehicle_factory
   abstract_vehicle_factory.cc
   abstract_vehicle_factory.h)
 target_link_libraries(abstract_vehicle_factory
-  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/vehicle_controller_base
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common)
+  modules/canbus/proto/canbus_proto
+  modules/canbus/vehicle/vehicle_controller_base
+  modules/drivers/canbus/can_comm/message_manager_base
+  modules/drivers/canbus/common/canbus_common)
 add_library(vehicle_factory
   vehicle_factory.cc
   vehicle_factory.h)
 target_link_libraries(vehicle_factory
   #modules/canbus/vehicle/ch/ch_vehicle_factory
   #modules/canbus/vehicle/teshun/teshun_vehicle_factory
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/cx75/cx75_vehicle_factory
-  ${PROJECT_SOURCE_DIR}/modules/common/util/factory)
+  modules/canbus/vehicle/cx75/cx75_vehicle_factory
+  modules/common/util/factory)

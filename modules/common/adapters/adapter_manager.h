@@ -58,27 +58,11 @@ namespace adapter {
             << "Message history limit must be greater than 0";                 \
         instance()->InternalEnable##name(instance_id, config);                 \
     }                                                                          \
-    static name Get##name() {                                        \
-        return instance()->InternalGet##name();                                \
-    }                                                                          \
+    static name Get##name() { return instance()->InternalGet##name(); }        \
     static AdapterConfig &Get##name##Config() {                                \
         return instance()->name##config_;                                      \
     }                                                                          \
-    /*static void Feed##name##Data(const name##Adapter::DataType &data) {        \
-        if (!instance()->name##_) {                                            \
-            AERROR << "Initialize adapter before feeding protobuf";            \
-            return;                                                            \
-        }                                                                      \
-        Get##name()->FeedData(data);                                           \
-    }                                                                          \
-    static bool Feed##name##File(const std::string &proto_file) {              \
-        if (!instance()->name##_) {                                            \
-            AERROR << "Initialize adapter before feeding protobuf";            \
-            return false;                                                      \
-        }                                                                      \
-        return Get##name()->FeedFile(proto_file);                              \
-    } */                                                                         \
-    static void Publish##name(const name &data) {           \
+    static void Publish##name(const name &data) {                              \
         instance()->InternalPublish##name(data);                               \
     }                                                                          \
     template <typename T>                                                      \
@@ -114,17 +98,18 @@ namespace adapter {
         name##skeleton = nullptr;                                              \
     std::unique_ptr<jmc_auto::proxy::name##ServiceInterfaceProxy>              \
         name##proxy = nullptr;                                                 \
-    std::unique_ptr<std::thread> name##thread;\
+    std::unique_ptr<std::thread> name##thread;                                 \
     AdapterConfig name##config_;                                               \
     void InternalEnable##name(const unsigned int &instance_id,                 \
                               const AdapterConfig &config) {                   \
-    	msg_limit = config.message_history_limit();                            \
+        msg_limit = config.message_history_limit();                            \
         name##_.reset(new name##Adapter(#name, instance_id,                    \
                                         config.message_history_limit()));      \
         if (config.mode() != AdapterConfig::PUBLISH_ONLY) {                    \
             jmc_auto::proxy::name##ServiceInterfaceProxy::StartFindService(    \
                 [this](ara::com::ServiceHandleContainer<                       \
-             jmc_auto::proxy::name##ServiceInterfaceProxy::HandleType>         \
+                           jmc_auto::proxy::name##ServiceInterfaceProxy::      \
+                               HandleType>                                     \
                            handles,                                            \
                        ara::com::FindServiceHandle handler) {                  \
                     instance()->ServiceAvailabilityCallback##name(             \
@@ -133,11 +118,11 @@ namespace adapter {
                 instance_id);                                                  \
         }                                                                      \
         if (config.mode() != AdapterConfig::RECEIVE_ONLY) {                    \
-                name##skeleton = std::make_unique<                             \
-                    jmc_auto::skeleton::name##ServiceInterfaceSkeleton>(       \
-                    ara::com::InstanceIdentifier(instance_id),                 \
-                    ara::com::MethodCallProcessingMode::kPoll);                \
-                name##skeleton->OfferService();                                \
+            name##skeleton = std::make_unique<                                 \
+                jmc_auto::skeleton::name##ServiceInterfaceSkeleton>(           \
+                ara::com::InstanceIdentifier(instance_id),                     \
+                ara::com::MethodCallProcessingMode::kPoll);                    \
+            name##skeleton->OfferService();                                    \
         }                                                                      \
         name##config_ = config;                                                \
     }                                                                          \
@@ -162,7 +147,7 @@ namespace adapter {
             }                                                                  \
         }                                                                      \
     }                                                                          \
-	name MsgData; \
+    name MsgData;                                                              \
     void name##PublishEventCallback() {                                        \
         if (name##proxy == nullptr) {                                          \
             return;                                                            \
@@ -171,20 +156,20 @@ namespace adapter {
         const auto &name##MsgSamples =                                         \
             name##proxy->name##Event.GetCachedSamples();                       \
         /*name##_->OnReceive(name##MsgSamples);*/                              \
-		for (const auto &testdata : name##MsgSamples){\
-			std::cout << "test";\
-			/*name *MsgPtr = &MsgData;*/\
-			MsgData = *testdata;\
-		}\
+        for (const auto &testdata : name##MsgSamples) {                        \
+            std::cout << "test";                                               \
+            /*name *MsgPtr = &MsgData;*/                                       \
+            MsgData = *testdata;                                               \
+        }                                                                      \
         name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
-	name InternalGet##name() {return MsgData; }               \
-    void InternalPublish##name(const name &data) {          \
+    name InternalGet##name() { return MsgData; }                               \
+    void InternalPublish##name(const name &data) {                             \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
-        name##skeleton->name##Event.Send(std::move(data));                    \
-        /*name##_->SetLatestPublished(data); */                                    \
+        name##skeleton->name##Event.Send(std::move(data));                     \
+        /*name##_->SetLatestPublished(data); */                                \
     }
 
 /**
@@ -235,12 +220,12 @@ class AdapterManager {
     /**
      * @brief Returns whether AdapterManager is running ROS mode.
      */
-    //static bool IsRos() { return instance()->node_handle_ != nullptr; }
+    // static bool IsRos() { return instance()->node_handle_ != nullptr; }
 
     /**
      * @brief Returns a reference to static tf2 buffer.
      */
-    //static tf2_ros::Buffer &Tf2Buffer() {
+    // static tf2_ros::Buffer &Tf2Buffer() {
     //    static tf2_ros::Buffer tf2_buffer;
     //    static TransformListener tf2Listener(&tf2_buffer,
     //                                         instance()->node_handle_.get());
@@ -276,7 +261,7 @@ class AdapterManager {
   private:
     /// The node handler of ROS, owned by the \class AdapterManager
     /// singleton.
-    //std::unique_ptr<ros::NodeHandle> node_handle_;
+    // std::unique_ptr<ros::NodeHandle> node_handle_;
 
     /// Observe() callbacks that will be used to to call the Observe()
     /// of enabled adapters.
@@ -286,7 +271,7 @@ class AdapterManager {
 
     /// The following code registered all the adapters of interest.
     REGISTER_ADAPTER(Chassis);
-    //REGISTER_ADAPTER(ChassisDetail);
+    // REGISTER_ADAPTER(ChassisDetail);
     /*
     REGISTER_ADAPTER(ControlCommand);
     REGISTER_ADAPTER(Gps);

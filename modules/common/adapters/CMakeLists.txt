@@ -1,6 +1,9 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+add_subdirectory(
+  proto)
+
 add_library(adapter_gflags
   adapter_gflags.cc
   adapter_gflags.h)
@@ -12,29 +15,29 @@ add_library(adapter_manager
 target_link_libraries(adapter_manager
   adapter_gflags
   message_adapters
-  ${PROJECT_SOURCE_DIR}/modules/common
-  ${PROJECT_SOURCE_DIR}/modules/common/adapters/proto/adapter_config_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/monitor_log/proto/monitor_log_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/transform_listener
-  ${PROJECT_SOURCE_DIR}/modules/common/util
+  modules/common
+  modules/common/adapters/proto/adapter_config_proto
+  modules/common/monitor_log/proto/monitor_log_proto
+  modules/common/transform_listener
+  modules/common/util
   glog)
 add_library(adapter
   adapter.h)
 target_link_libraries(adapter
   adapter_gflags
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/common_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/time
-  ${PROJECT_SOURCE_DIR}/modules/common/util
+  modules/common/proto/common_proto
+  modules/common/time
+  modules/common/util
   protobuf
   glog)
 add_library(message_adapters
   message_adapters.h)
 target_link_libraries(message_adapters
   adapter
-  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/monitor_log/proto/monitor_log_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/drive_event_proto
-  ${PROJECT_SOURCE_DIR}/modules/control/proto/control_proto
+  modules/canbus/proto/canbus_proto
+  modules/common/monitor_log/proto/monitor_log_proto
+  modules/common/proto/drive_event_proto
+  modules/control/proto/control_proto
   glog)
 
 

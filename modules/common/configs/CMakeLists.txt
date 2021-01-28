@@ -1,6 +1,9 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+add_subdirectory(
+  proto)
+
 add_library(config_gflags
   config_gflags.cc
   config_gflags.h)
@@ -11,9 +14,9 @@ add_library(vehicle_config_helper
   vehicle_config_helper.h)
 target_link_libraries(vehicle_config_helper
   config_gflags
-  ${PROJECT_SOURCE_DIR}/modules/common
-  ${PROJECT_SOURCE_DIR}/modules/common/configs/proto/vehicle_config_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/util
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/pnc_point_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/math
+  modules/common
+  modules/common/configs/proto/vehicle_config_proto
+  modules/common/util
+  modules/common/proto/pnc_point_proto
+  modules/common/math
   glog)

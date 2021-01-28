@@ -6,6 +6,6 @@ file(GLOB_RECURSE  canbus_proto_lib *.cc *.h)
 add_library(canbus_proto
   canbus_proto_lib)
 target_link_libraries(canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/common_proto
-  ${PROJECT_SOURCE_DIR}/modules/common/proto/header_proto
+  modules/common/proto/common_proto
+  modules/common/proto/header_proto
   protobuf)

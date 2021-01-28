@@ -115,7 +115,6 @@ void jmc_auto_app_sigint_handler(int signal_num);
     int main(int argc, char **argv) {                                          \
         google::InitGoogleLogging(argv[0]);                                    \
         google::ParseCommandLineFlags(&argc, &argv, true);                     \
-        /*signal(SIGINT, jmc_auto::common::jmc_auto_app_sigint_handler);*/     \
         APP jmc_auto_app_;                                                     \
         jmc_auto_app_.Spin();                                                  \
         return 0;                                                              \

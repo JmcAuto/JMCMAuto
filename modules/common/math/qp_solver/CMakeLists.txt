@@ -16,7 +16,7 @@ add_library(active_set_qp_solver
   active_set_qp_solver.h)
 target_link_libraries(active_set_qp_solver
   qp_solver
-  ${PROJECT_SOURCE_DIR}/modules/common/log
-  ${PROJECT_SOURCE_DIR}/modules/common/math/qp_solver/qp_solver_gflags
+  modules/common/log
+  modules/common/math/qp_solver/qp_solver_gflags
   eigen
   qpOASES)

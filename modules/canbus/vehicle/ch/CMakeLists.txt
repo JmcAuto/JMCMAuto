@@ -7,23 +7,23 @@ add_library(ch_vehicle_factory
 target_link_libraries(ch_vehicle_factory
   ch_controller
   ch_message_manager
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/abstract_vehicle_factory)
+  modules/canbus/vehicle/abstract_vehicle_factory)
 add_library(ch_message_manager
   ch_message_manager.cc
   ch_message_manager.h)
 target_link_libraries(ch_message_manager
-  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common)
+  modules/canbus/proto/canbus_proto
+  modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
+  modules/drivers/canbus/can_comm/message_manager_base
+  modules/drivers/canbus/common/canbus_common)
 add_library(ch_controller
   ch_controller.cc
   ch_controller.h)
 target_link_libraries(ch_controller
   ch_message_manager
-  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/vehicle_controller_base
-  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/can_sender
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
-  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common)
+  modules/canbus/proto/canbus_proto
+  modules/canbus/vehicle/vehicle_controller_base
+  modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
+  modules/drivers/canbus/can_comm/can_sender
+  modules/drivers/canbus/can_comm/message_manager_base
+  modules/drivers/canbus/common/canbus_common)

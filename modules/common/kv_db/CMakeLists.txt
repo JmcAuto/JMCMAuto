@@ -6,5 +6,5 @@ add_library(kv_db
   kv_db.h)
 target_link_libraries(kv_db
   gflags
-  ${PROJECT_SOURCE_DIR}/modules/common/log
-  ${PROJECT_SOURCE_DIR}/modules/common/util)
+  modules/common/log
+  modules/common/util)
