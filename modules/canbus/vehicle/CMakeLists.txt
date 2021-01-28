@@ -30,5 +30,3 @@ target_link_libraries(vehicle_factory
   #/modules/canbus/vehicle/teshun:teshun_vehicle_factory
   /modules/canbus/vehicle/cx75:cx75_vehicle_factory
   /modules/common/util:factory)
-
-

@@ -1,6 +1,3 @@
-load("//tools:cpplint.bzl", "cpplint")
-
-package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "status",
@@ -25,4 +22,3 @@ cc_test(
     ],
 )
 
-cpplint()

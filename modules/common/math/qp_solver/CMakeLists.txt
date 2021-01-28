@@ -1,0 +1,22 @@
+include_directories(.)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(qp_solver_gflags
+  qp_solver_gflags.cc
+  qp_solver_gflags.h)
+target_link_libraries(qp_solver_gflags
+  gflags)
+add_library(qp_solver
+  qp_solver.cc
+  qp_solver.h)
+target_link_libraries(qp_solver
+  eigen)
+add_library(active_set_qp_solver
+  active_set_qp_solver.cc
+  active_set_qp_solver.h)
+target_link_libraries(active_set_qp_solver
+  qp_solver
+  /modules/common:log
+  /modules/common/math/qp_solver:qp_solver_gflags
+  eigen
+  qpOASES)

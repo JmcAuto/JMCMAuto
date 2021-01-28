@@ -1,0 +1,19 @@
+include_directories(.)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(config_gflags
+  config_gflags.cc
+  config_gflags.h)
+target_link_libraries(config_gflags
+  gflags)
+add_library(vehicle_config_helper
+  vehicle_config_helper.cc
+  vehicle_config_helper.h)
+target_link_libraries(vehicle_config_helper
+  config_gflags
+  /modules/common
+  /modules/common/configs/proto:vehicle_config_proto
+  /modules/common/util
+  /modules/common/proto:pnc_point_proto
+  /modules/common/math
+  glog)

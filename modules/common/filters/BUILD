@@ -1,6 +1,3 @@
-load("//tools:cpplint.bzl", "cpplint")
-
-package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "digital_filter",
@@ -87,4 +84,3 @@ cc_test(
     ],
 )
 
-cpplint()

@@ -1,4 +1,3 @@
-load("//tools:cpplint.bzl", "cpplint")
 
 
 cc_library(

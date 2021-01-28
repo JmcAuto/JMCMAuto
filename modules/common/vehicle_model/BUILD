@@ -1,6 +1,3 @@
-load("//tools:cpplint.bzl", "cpplint")
-
-package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "vehicle_model",
@@ -16,4 +13,3 @@ cc_library(
     ],
 )
 
-cpplint()
