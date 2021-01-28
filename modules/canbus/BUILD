@@ -1,6 +1,5 @@
 load("//tools:cpplint.bzl", "cpplint")
 
-package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "canbus_lib",
@@ -45,9 +44,4 @@ cc_binary(
     ],
 )
 
-filegroup(
-    name = "canbus_testdata",
-    srcs = glob(["testdata/**"]),
-)
 
-cpplint()

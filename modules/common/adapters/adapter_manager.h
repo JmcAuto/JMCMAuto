@@ -123,8 +123,8 @@ namespace adapter {
                                         config.message_history_limit()));      \
         if (config.mode() != AdapterConfig::PUBLISH_ONLY) {                    \
             jmc_auto::proxy::name##ServiceInterfaceProxy::StartFindService(    \
-                [this](ara::com::ServiceHandleContainer                        \
-            <jmc_auto::proxy::name##ServiceInterfaceProxy::HandleType>         \
+                [this](ara::com::ServiceHandleContainer<                       \
+             jmc_auto::proxy::name##ServiceInterfaceProxy::HandleType>         \
                            handles,                                            \
                        ara::com::FindServiceHandle handler) {                  \
                     instance()->ServiceAvailabilityCallback##name(             \
