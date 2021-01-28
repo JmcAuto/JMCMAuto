@@ -18,7 +18,7 @@ endforeach()
 set(${result} ${dirlist})
 endmacro()
 
-#调用函数，把generated和modules下的子目录分别保存在变量中
+#调用函数，把generat下的子目录保存在变量中
 LISTSUBDIR(GENERATEDDIRS generated)
 
 #包含src和generated目录下的头文件路径
@@ -35,17 +35,16 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
 include_directories(${COMMON_INCLUDE} include ${CMAKE_CURRENT_SOURCE_DIR})
 
 #用户可在此添加库文件路径
-link_directories(${COMMON_LINK_DIR} lib)
+link_directories(${COMMON_LINK_DIR} lib ${CMAKE_CURRENT_SOURCE_DIR})
 
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
 
 #用户可在此添加编译选项
 add_compile_options(${COMMON_COMPILE})
-add_subdirectory(modules/canbus)
 
 #添加第三方依赖
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+#set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #默认编译c和c++文件生成可执行文件
 add_executable(canbus modules/canbus/main.cc)
@@ -55,11 +54,11 @@ target_link_libraries(canbus
   canbus_lib
   ${COMMON_LIB}
   gflags
-  /modules/canbus/common:canbus_common
-  /modules/common:log
-  /modules/common/monitor_log
-  /modules/drivers/canbus/can_client
-  /modules/drivers/canbus/common:canbus_common)
+  modules/canbus/common:canbus_common
+  modules/common:log
+  modules/common/monitor_log
+  modules/drivers/canbus/can_client
+  modules/drivers/canbus/common:canbus_common)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

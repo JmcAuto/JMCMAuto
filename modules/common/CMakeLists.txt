@@ -15,5 +15,5 @@ add_library(jmc_auto_app
   jmc_auto_app.h)
 target_link_libraries(jmc_auto_app
   log
-  /modules/common/status
-  /modules/common/util:string_util)
+  modules/common/status
+  modules/common/util:string_util)

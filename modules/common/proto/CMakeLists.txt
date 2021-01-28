@@ -33,7 +33,7 @@ add_library(drive_event_proto
   drive_event.pb.cc)
 target_link_libraries(drive_event_proto
   header_proto
-  /modules/localization/proto:pose_proto
+  modules/localization/proto:pose_proto
   protobuf)
 
 
