@@ -1,8 +1,7 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(
-  proto)
+add_subdirectory(proto)
 
 add_library(config_gflags
   config_gflags.cc

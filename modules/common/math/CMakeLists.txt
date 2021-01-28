@@ -1,8 +1,7 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(
-  qp_solver)
+add_subdirectory(qp_solver)
 
 add_library(math INTERFACE)
 target_link_libraries(math INTERFACE

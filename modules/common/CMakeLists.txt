@@ -1,20 +1,19 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(
-  adapters
-  configs
-  filters
-  kv_db
-  math
-  monitor_log
-  proto
-  status
-  time
-  transform_listener
-  util
-  vehicle_model
-  vehicle_state)
+add_subdirectory(adapters)
+add_subdirectory(configs)
+add_subdirectory(filters)
+add_subdirectory(kv_db)
+add_subdirectory(math)
+add_subdirectory(monitor_log)
+add_subdirectory(proto)
+add_subdirectory(status)
+add_subdirectory(time)
+add_subdirectory(transform_listener)
+add_subdirectory(util)
+add_subdirectory(vehicle_model）
+add_subdirectory(vehicle_state)
 
 add_library(common INTERFACE)
 target_link_libraries(common INTERFACE

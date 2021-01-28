@@ -1,10 +1,9 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(
-  common
-  proto
-  vehicle)
+add_subdirectory(common)
+add_subdirectory(proto)
+add_subdirectory(vehicle)
 
 add_library(canbus_lib
   canbus.cc

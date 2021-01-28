@@ -1,8 +1,7 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(
-  cx75)
+add_subdirectory(cx75)
 
 add_library(vehicle_controller_base
   vehicle_controller.cc
