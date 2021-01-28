@@ -32,10 +32,10 @@ file(GLOB_RECURSE  CXX_SOURCE src/*.cxx src/*.cpp src/*.cc generated/*.cxx gener
 include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
 
 #用户可在此添加头文件路径
-include_directories(${COMMON_INCLUDE} include ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${COMMON_INCLUDE} include)
 
 #用户可在此添加库文件路径
-link_directories(${COMMON_LINK_DIR} lib ${CMAKE_CURRENT_SOURCE_DIR})
+link_directories(${COMMON_LINK_DIR} lib)
 
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
@@ -47,18 +47,18 @@ add_compile_options(${COMMON_COMPILE})
 #set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #默认编译c和c++文件生成可执行文件
-add_executable(canbus modules/canbus/main.cc)
+add_executable(canbus ${PROJECT_SOURCE_DIR}/modules/canbus/main.cc)
 
 #用户可在此添加链接库
 target_link_libraries(canbus
-  canbus_lib
   ${COMMON_LIB}
-  gflags
-  modules/canbus/common:canbus_common
-  modules/common:log
-  modules/common/monitor_log
-  modules/drivers/canbus/can_client
-  modules/drivers/canbus/common:canbus_common)
+  ${PROJECT_SOURCE_DIR}/modules/canbus/canbus_lib
+  ${PROJECT_SOURCE_DIR}/modules/canbus/common/canbus_common
+  ${PROJECT_SOURCE_DIR}/modules/common/log
+  ${PROJECT_SOURCE_DIR}/modules/common/monitor_log
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_client
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common
+  gflags)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

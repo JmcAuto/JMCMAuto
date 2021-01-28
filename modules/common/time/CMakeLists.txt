@@ -7,6 +7,6 @@ add_library(time
   time_util.h
   timer.h)
 get_link_libraries(time
-  modules/common:log
-  modules/common:macro
-  modules/common/configs:config_gflags)
+  ${PROJECT_SOURCE_DIR}/modules/common/log
+  ${PROJECT_SOURCE_DIR}/modules/common/macro
+  ${PROJECT_SOURCE_DIR}/modules/common/configs/config_gflags)

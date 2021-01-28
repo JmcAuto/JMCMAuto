@@ -10,10 +10,10 @@ add_library(sensor_canbus_lib
   sensor_canbus.h)
 target_link_libraries(sensor_canbus_lib
   sensor_gflags
-  modules/common
-  modules/common:jmc_auto_app
-  modules/common/adapters:adapter_manager
-  modules/common/monitor_log
-  modules/drivers/canbus/can_client:can_client_factory
-  modules/drivers/canbus/can_comm:can_receiver
-  modules/drivers/canbus/can_comm:message_manager_base)
+  ${PROJECT_SOURCE_DIR}/modules/common
+  ${PROJECT_SOURCE_DIR}/modules/common/jmc_auto_app
+  ${PROJECT_SOURCE_DIR}/modules/common/adapters/adapter_manager
+  ${PROJECT_SOURCE_DIR}/modules/common/monitor_log
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_client/can_client_factory
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/can_receiver
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base)

@@ -7,23 +7,23 @@ add_library(teshun_vehicle_factory
 target_link_libraries(teshun_vehicle_factory
   teshun_controller
   teshun_message_manager
-  modules/canbus/vehicle:abstract_vehicle_factory)
+  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/abstract_vehicle_factory)
 add_library(teshun_message_manager
   teshun_message_manager.cc
   teshun_message_manager.h)
 target_link_libraries(teshun_message_manager
-  modules/drivers/canbus/common:canbus_common
-  modules/canbus/proto:canbus_proto
-  modules/drivers/canbus/can_comm:message_manager_base
-  modules/canbus/vehicle/teshun/protocol:canbus_teshun_protocol)
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common
+  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
+  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/teshun/protocol/canbus_teshun_protocol)
 add_library(teshun_controller
   teshun_controller.cc
   teshun_controller.h)
 target_link_libraries(teshun_controller
   teshun_message_manager
-  modules/drivers/canbus/can_comm:can_sender
-  modules/drivers/canbus/common:canbus_common
-  modules/canbus/proto:canbus_proto
-  modules/drivers/canbus/can_comm:message_manager_base
-  modules/canbus/vehicle:vehicle_controller_base
-  modules/canbus/vehicle/teshun/protocol:canbus_teshun_protocol)
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/can_sender
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/common/canbus_common
+  ${PROJECT_SOURCE_DIR}/modules/canbus/proto/canbus_proto
+  ${PROJECT_SOURCE_DIR}/modules/drivers/canbus/can_comm/message_manager_base
+  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/vehicle_controller_base
+  ${PROJECT_SOURCE_DIR}/modules/canbus/vehicle/teshun/protocol/canbus_teshun_protocol)
