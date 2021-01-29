@@ -1,9 +1,9 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_library(canbus_common
+add_library(drivers_canbus_common
   byte.cc
   byte.h
   canbus_consts.h)
-target_link_libraries(canbus_common
+target_link_libraries(drivers_canbus_common
   )

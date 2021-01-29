@@ -163,6 +163,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLongitudinalDebug, current_station_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLongitudinalDebug, path_remain_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLongitudinalDebug, preview_kappa_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLongitudinalDebug, match_acceleration_reference_),
   0,
   1,
   2,
@@ -178,11 +179,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   12,
   13,
   14,
-  18,
+  19,
   15,
   16,
   17,
-  19,
+  18,
+  20,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLateralDebug, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SimpleLateralDebug, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -253,10 +255,10 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, 8, sizeof(LatencyStats)},
   { 11, 46, sizeof(ControlCommand)},
-  { 76, 101, sizeof(SimpleLongitudinalDebug)},
-  { 121, 145, sizeof(SimpleLateralDebug)},
-  { 164, 172, sizeof(InputDebug)},
-  { 175, 183, sizeof(Debug)},
+  { 76, 102, sizeof(SimpleLongitudinalDebug)},
+  { 123, 147, sizeof(SimpleLateralDebug)},
+  { 166, 174, sizeof(InputDebug)},
+  { 177, 185, sizeof(Debug)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -387,7 +389,7 @@ void AddDescriptorsImpl() {
       "ing_torque\030\034 \001(\001\022\035\n\025pam_esp_stop_distanc"
       "e\030\035 \001(\005\022\031\n\021ACC_StandstillReq\030\036 \001(\010\022\026\n\016st"
       "eering_angle\030\037 \001(\001\022\025\n\rparking_brake\030! \001("
-      "\010\"\317\004\n\027SimpleLongitudinalDebug\022\031\n\021station"
+      "\010\"\365\004\n\027SimpleLongitudinalDebug\022\031\n\021station"
       "_reference\030\001 \001(\001\022\025\n\rstation_error\030\002 \001(\001\022"
       "\035\n\025station_error_limited\030\003 \001(\001\022\035\n\025previe"
       "w_station_error\030\004 \001(\001\022\027\n\017speed_reference"
@@ -401,35 +403,36 @@ void AddDescriptorsImpl() {
       "(\001\022\031\n\021calibration_value\030\017 \001(\001\022\024\n\014is_full"
       "_stop\030\022 \001(\010\022!\n\031slope_offset_compensation"
       "\030\023 \001(\001\022\027\n\017current_station\030\024 \001(\001\022\023\n\013path_"
-      "remain\030\025 \001(\001\022\025\n\rpreview_kappa\030\026 \001(\001\"\301\004\n\022"
-      "SimpleLateralDebug\022\025\n\rlateral_error\030\001 \001("
-      "\001\022\023\n\013ref_heading\030\002 \001(\001\022\017\n\007heading\030\003 \001(\001\022"
-      "\025\n\rheading_error\030\004 \001(\001\022\032\n\022heading_error_"
-      "rate\030\005 \001(\001\022\032\n\022lateral_error_rate\030\006 \001(\001\022\021"
-      "\n\tcurvature\030\007 \001(\001\022\023\n\013steer_angle\030\010 \001(\001\022\037"
-      "\n\027steer_angle_feedforward\030\t \001(\001\022(\n steer"
-      "_angle_lateral_contribution\030\n \001(\001\022-\n%ste"
-      "er_angle_lateral_rate_contribution\030\013 \001(\001"
-      "\022(\n steer_angle_heading_contribution\030\014 \001"
-      "(\001\022-\n%steer_angle_heading_rate_contribut"
-      "ion\030\r \001(\001\022\034\n\024steer_angle_feedback\030\016 \001(\001\022"
-      "\031\n\021steering_position\030\017 \001(\001\022\021\n\tref_speed\030"
-      "\020 \001(\001\022\033\n\023steer_angle_limited\030\021 \001(\001\022\"\n\032st"
-      "eer_targe_position_error\030\022 \001(\001\022\027\n\017steeri"
-      "ng_torque\030\023 \001(\001\"\246\001\n\nInputDebug\0224\n\023locali"
-      "zation_header\030\001 \001(\0132\027.jmc_auto.common.He"
-      "ader\022.\n\rcanbus_header\030\002 \001(\0132\027.jmc_auto.c"
-      "ommon.Header\0222\n\021trajectory_header\030\003 \001(\0132"
-      "\027.jmc_auto.common.Header\"\277\001\n\005Debug\022C\n\020si"
-      "mple_lon_debug\030\001 \001(\0132).jmc_auto.control."
-      "SimpleLongitudinalDebug\022>\n\020simple_lat_de"
-      "bug\030\002 \001(\0132$.jmc_auto.control.SimpleLater"
-      "alDebug\0221\n\013input_debug\030\003 \001(\0132\034.jmc_auto."
-      "control.InputDebug*:\n\nTurnSignal\022\r\n\tTURN"
-      "_NONE\020\000\022\r\n\tTURN_LEFT\020\001\022\016\n\nTURN_RIGHT\020\002"
+      "remain\030\025 \001(\001\022\025\n\rpreview_kappa\030\026 \001(\001\022$\n\034m"
+      "atch_acceleration_reference\030\027 \001(\001\"\301\004\n\022Si"
+      "mpleLateralDebug\022\025\n\rlateral_error\030\001 \001(\001\022"
+      "\023\n\013ref_heading\030\002 \001(\001\022\017\n\007heading\030\003 \001(\001\022\025\n"
+      "\rheading_error\030\004 \001(\001\022\032\n\022heading_error_ra"
+      "te\030\005 \001(\001\022\032\n\022lateral_error_rate\030\006 \001(\001\022\021\n\t"
+      "curvature\030\007 \001(\001\022\023\n\013steer_angle\030\010 \001(\001\022\037\n\027"
+      "steer_angle_feedforward\030\t \001(\001\022(\n steer_a"
+      "ngle_lateral_contribution\030\n \001(\001\022-\n%steer"
+      "_angle_lateral_rate_contribution\030\013 \001(\001\022("
+      "\n steer_angle_heading_contribution\030\014 \001(\001"
+      "\022-\n%steer_angle_heading_rate_contributio"
+      "n\030\r \001(\001\022\034\n\024steer_angle_feedback\030\016 \001(\001\022\031\n"
+      "\021steering_position\030\017 \001(\001\022\021\n\tref_speed\030\020 "
+      "\001(\001\022\033\n\023steer_angle_limited\030\021 \001(\001\022\"\n\032stee"
+      "r_targe_position_error\030\022 \001(\001\022\027\n\017steering"
+      "_torque\030\023 \001(\001\"\246\001\n\nInputDebug\0224\n\023localiza"
+      "tion_header\030\001 \001(\0132\027.jmc_auto.common.Head"
+      "er\022.\n\rcanbus_header\030\002 \001(\0132\027.jmc_auto.com"
+      "mon.Header\0222\n\021trajectory_header\030\003 \001(\0132\027."
+      "jmc_auto.common.Header\"\277\001\n\005Debug\022C\n\020simp"
+      "le_lon_debug\030\001 \001(\0132).jmc_auto.control.Si"
+      "mpleLongitudinalDebug\022>\n\020simple_lat_debu"
+      "g\030\002 \001(\0132$.jmc_auto.control.SimpleLateral"
+      "Debug\0221\n\013input_debug\030\003 \001(\0132\034.jmc_auto.co"
+      "ntrol.InputDebug*:\n\nTurnSignal\022\r\n\tTURN_N"
+      "ONE\020\000\022\r\n\tTURN_LEFT\020\001\022\016\n\nTURN_RIGHT\020\002"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2918);
+      descriptor, 2956);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/control/proto/control_cmd.proto", &protobuf_RegisterTypes);
   ::jmc_auto::canbus::protobuf_modules_2fcanbus_2fproto_2fchassis_2eproto::AddDescriptors();
@@ -3128,6 +3131,7 @@ const int SimpleLongitudinalDebug::kSlopeOffsetCompensationFieldNumber;
 const int SimpleLongitudinalDebug::kCurrentStationFieldNumber;
 const int SimpleLongitudinalDebug::kPathRemainFieldNumber;
 const int SimpleLongitudinalDebug::kPreviewKappaFieldNumber;
+const int SimpleLongitudinalDebug::kMatchAccelerationReferenceFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SimpleLongitudinalDebug::SimpleLongitudinalDebug()
@@ -3145,15 +3149,15 @@ SimpleLongitudinalDebug::SimpleLongitudinalDebug(const SimpleLongitudinalDebug& 
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&station_reference_, &from.station_reference_,
-    reinterpret_cast<char*>(&preview_kappa_) -
-    reinterpret_cast<char*>(&station_reference_) + sizeof(preview_kappa_));
+    reinterpret_cast<char*>(&match_acceleration_reference_) -
+    reinterpret_cast<char*>(&station_reference_) + sizeof(match_acceleration_reference_));
   // @@protoc_insertion_point(copy_constructor:jmc_auto.control.SimpleLongitudinalDebug)
 }
 
 void SimpleLongitudinalDebug::SharedCtor() {
   _cached_size_ = 0;
-  ::memset(&station_reference_, 0, reinterpret_cast<char*>(&preview_kappa_) -
-    reinterpret_cast<char*>(&station_reference_) + sizeof(preview_kappa_));
+  ::memset(&station_reference_, 0, reinterpret_cast<char*>(&match_acceleration_reference_) -
+    reinterpret_cast<char*>(&station_reference_) + sizeof(match_acceleration_reference_));
 }
 
 SimpleLongitudinalDebug::~SimpleLongitudinalDebug() {
@@ -3197,9 +3201,9 @@ void SimpleLongitudinalDebug::Clear() {
     ::memset(&preview_speed_error_, 0, reinterpret_cast<char*>(&slope_offset_compensation_) -
       reinterpret_cast<char*>(&preview_speed_error_) + sizeof(slope_offset_compensation_));
   }
-  if (_has_bits_[16 / 32] & 983040u) {
-    ::memset(&current_station_, 0, reinterpret_cast<char*>(&preview_kappa_) -
-      reinterpret_cast<char*>(&current_station_) + sizeof(preview_kappa_));
+  if (_has_bits_[16 / 32] & 2031616u) {
+    ::memset(&current_station_, 0, reinterpret_cast<char*>(&match_acceleration_reference_) -
+      reinterpret_cast<char*>(&current_station_) + sizeof(match_acceleration_reference_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -3495,6 +3499,20 @@ bool SimpleLongitudinalDebug::MergePartialFromCodedStream(
         break;
       }
 
+      // optional double match_acceleration_reference = 23;
+      case 23: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(185u)) {
+          set_has_match_acceleration_reference();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &match_acceleration_reference_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0 ||
@@ -3600,7 +3618,7 @@ void SimpleLongitudinalDebug::SerializeWithCachedSizes(
   }
 
   // optional bool is_full_stop = 18;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(18, this->is_full_stop(), output);
   }
 
@@ -3620,8 +3638,13 @@ void SimpleLongitudinalDebug::SerializeWithCachedSizes(
   }
 
   // optional double preview_kappa = 22;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(22, this->preview_kappa(), output);
+  }
+
+  // optional double match_acceleration_reference = 23;
+  if (cached_has_bits & 0x00100000u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(23, this->match_acceleration_reference(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3714,7 +3737,7 @@ void SimpleLongitudinalDebug::SerializeWithCachedSizes(
   }
 
   // optional bool is_full_stop = 18;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(18, this->is_full_stop(), target);
   }
 
@@ -3734,8 +3757,13 @@ void SimpleLongitudinalDebug::SerializeWithCachedSizes(
   }
 
   // optional double preview_kappa = 22;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(22, this->preview_kappa(), target);
+  }
+
+  // optional double match_acceleration_reference = 23;
+  if (cached_has_bits & 0x00100000u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(23, this->match_acceleration_reference(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3839,7 +3867,7 @@ size_t SimpleLongitudinalDebug::ByteSizeLong() const {
     }
 
   }
-  if (_has_bits_[16 / 32] & 983040u) {
+  if (_has_bits_[16 / 32] & 2031616u) {
     // optional double current_station = 20;
     if (has_current_station()) {
       total_size += 2 + 8;
@@ -3850,13 +3878,18 @@ size_t SimpleLongitudinalDebug::ByteSizeLong() const {
       total_size += 2 + 8;
     }
 
+    // optional double preview_kappa = 22;
+    if (has_preview_kappa()) {
+      total_size += 2 + 8;
+    }
+
     // optional bool is_full_stop = 18;
     if (has_is_full_stop()) {
       total_size += 2 + 1;
     }
 
-    // optional double preview_kappa = 22;
-    if (has_preview_kappa()) {
+    // optional double match_acceleration_reference = 23;
+    if (has_match_acceleration_reference()) {
       total_size += 2 + 8;
     }
 
@@ -3945,7 +3978,7 @@ void SimpleLongitudinalDebug::MergeFrom(const SimpleLongitudinalDebug& from) {
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 983040u) {
+  if (cached_has_bits & 2031616u) {
     if (cached_has_bits & 0x00010000u) {
       current_station_ = from.current_station_;
     }
@@ -3953,10 +3986,13 @@ void SimpleLongitudinalDebug::MergeFrom(const SimpleLongitudinalDebug& from) {
       path_remain_ = from.path_remain_;
     }
     if (cached_has_bits & 0x00040000u) {
-      is_full_stop_ = from.is_full_stop_;
+      preview_kappa_ = from.preview_kappa_;
     }
     if (cached_has_bits & 0x00080000u) {
-      preview_kappa_ = from.preview_kappa_;
+      is_full_stop_ = from.is_full_stop_;
+    }
+    if (cached_has_bits & 0x00100000u) {
+      match_acceleration_reference_ = from.match_acceleration_reference_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -4003,8 +4039,9 @@ void SimpleLongitudinalDebug::InternalSwap(SimpleLongitudinalDebug* other) {
   std::swap(slope_offset_compensation_, other->slope_offset_compensation_);
   std::swap(current_station_, other->current_station_);
   std::swap(path_remain_, other->path_remain_);
-  std::swap(is_full_stop_, other->is_full_stop_);
   std::swap(preview_kappa_, other->preview_kappa_);
+  std::swap(is_full_stop_, other->is_full_stop_);
+  std::swap(match_acceleration_reference_, other->match_acceleration_reference_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -4380,13 +4417,13 @@ void SimpleLongitudinalDebug::set_calibration_value(double value) {
 
 // optional bool is_full_stop = 18;
 bool SimpleLongitudinalDebug::has_is_full_stop() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 void SimpleLongitudinalDebug::set_has_is_full_stop() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 void SimpleLongitudinalDebug::clear_has_is_full_stop() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 void SimpleLongitudinalDebug::clear_is_full_stop() {
   is_full_stop_ = false;
@@ -4476,13 +4513,13 @@ void SimpleLongitudinalDebug::set_path_remain(double value) {
 
 // optional double preview_kappa = 22;
 bool SimpleLongitudinalDebug::has_preview_kappa() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 void SimpleLongitudinalDebug::set_has_preview_kappa() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 void SimpleLongitudinalDebug::clear_has_preview_kappa() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 void SimpleLongitudinalDebug::clear_preview_kappa() {
   preview_kappa_ = 0;
@@ -4496,6 +4533,30 @@ void SimpleLongitudinalDebug::set_preview_kappa(double value) {
   set_has_preview_kappa();
   preview_kappa_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.control.SimpleLongitudinalDebug.preview_kappa)
+}
+
+// optional double match_acceleration_reference = 23;
+bool SimpleLongitudinalDebug::has_match_acceleration_reference() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+void SimpleLongitudinalDebug::set_has_match_acceleration_reference() {
+  _has_bits_[0] |= 0x00100000u;
+}
+void SimpleLongitudinalDebug::clear_has_match_acceleration_reference() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+void SimpleLongitudinalDebug::clear_match_acceleration_reference() {
+  match_acceleration_reference_ = 0;
+  clear_has_match_acceleration_reference();
+}
+double SimpleLongitudinalDebug::match_acceleration_reference() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.control.SimpleLongitudinalDebug.match_acceleration_reference)
+  return match_acceleration_reference_;
+}
+void SimpleLongitudinalDebug::set_match_acceleration_reference(double value) {
+  set_has_match_acceleration_reference();
+  match_acceleration_reference_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.control.SimpleLongitudinalDebug.match_acceleration_reference)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

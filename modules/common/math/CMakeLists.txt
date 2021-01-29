@@ -43,14 +43,12 @@ add_library(angle
   angle.h)
 target_link_libraries(angle
   sin_table)
-add_library(euler_angles_zxy
-  euler_angles_zxy.h)
-target_link_libraries(euler_angles_zxy
+add_library(euler_angles_zxy INTERFACE)
+target_link_libraries(euler_angles_zxy INTERFACE
   geometry
   eigen)
-add_library(quaternion
-  quaternion.h)
-target_link_libraries(quaternion
+add_library(quaternion INTERFACE)
+target_link_libraries(quaternion INTERFACE
   euler_angles_zxy
   geometry
   modules/common/proto/common_proto
@@ -61,20 +59,17 @@ add_library(matrix_operations
 target_link_libraries(matrix_operations
   eigen
   modules/common/log)
-add_library(kalman_filter
-  kalman_filter.h)
-target_link_libraries(kalman_filter
+add_library(kalman_filter INTERFACE)
+target_link_libraries(kalman_filter INTERFACE
   modules/common/log
   modules/common/math/matrix_operations
   eigen)
-add_library(extended_kalman_filter
-  extended_kalman_filter.h)
-target_link_libraries(extended_kalman_filter
+add_library(extended_kalman_filter INTERFACE)
+target_link_libraries(extended_kalman_filter INTERFACE
   modules/common/log
   modules/common/math/matrix_operations
   eigen)
-add_library(factorial
-  factorial.h)
+add_library(factorial INTERFACE)
 target_link_libraries(factorial
   )
 add_library(path_matcher
@@ -128,7 +123,6 @@ target_link_libraries(cartesian_frenet_conversion
   geometry
   modules/common/log
   eigen)
-add_library(hermite_spline
-  hermite_spline.h)
-target_link_libraries(hermite_spline
+add_library(hermite_spline INTERFACE)
+target_link_libraries(hermite_spline INTERFACE
   modules/common/log)

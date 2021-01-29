@@ -12,7 +12,7 @@ add_subdirectory(status)
 add_subdirectory(time)
 add_subdirectory(transform_listener)
 add_subdirectory(util)
-add_subdirectory(vehicle_model）
+add_subdirectory(vehicle_model)
 add_subdirectory(vehicle_state)
 
 add_library(common INTERFACE)
@@ -20,13 +20,10 @@ target_link_libraries(common INTERFACE
   log
   macro
   macros)
-add_library(macro
-  macro.h)
-add_library(macros
-  macros.h)
-add_library(log
-  log.h)
-target_link_libraries(log
+add_library(macro INTERFACE)
+add_library(macros INTERFACE)
+add_library(log INTERFACE)
+target_link_libraries(log INTERFACE
   glog)
 add_library(jmc_auto_app
   jmc_auto_app.cc

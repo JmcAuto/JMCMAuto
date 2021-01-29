@@ -20,18 +20,16 @@ target_link_libraries(adapter_manager
   modules/common/transform_listener
   modules/common/util
   glog)
-add_library(adapter
-  adapter.h)
-target_link_libraries(adapter
+add_library(adapter INTERFACE)
+target_link_libraries(adapter INTERFACE
   adapter_gflags
   modules/common/proto/common_proto
   modules/common/time
   modules/common/util
   protobuf
   glog)
-add_library(message_adapters
-  message_adapters.h)
-target_link_libraries(message_adapters
+add_library(message_adapters INTERFACE)
+target_link_libraries(message_adapters INTERFACE
   adapter
   modules/canbus/proto/canbus_proto
   modules/common/monitor_log/proto/monitor_log_proto

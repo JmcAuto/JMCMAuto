@@ -4,7 +4,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_library(error_code_proto
   error_code.pb.cc
   error_code.pb.h)
-target_link_libraries(error_code
+target_link_libraries(error_code_proto
   protobuf)
 
 add_library(header_proto

@@ -11,9 +11,8 @@ add_library(sensor_gflags
   sensor_gflags.h)
 target_link_libraries(sensor_gflags
   gflags)
-add_library(sensor_canbus_lib 
-  sensor_canbus.h)
-target_link_libraries(sensor_canbus_lib
+add_library(sensor_canbus_lib INTERFACE)
+target_link_libraries(sensor_canbus_lib INTERFACE
   sensor_gflags
   modules/common
   modules/common/jmc_auto_app

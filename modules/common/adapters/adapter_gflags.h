@@ -27,6 +27,6 @@ DECLARE_uint32(chassis_detail_instance_id);
 
 
 //for remotecontrol
-DECLARE_uint32(remote_control_instance_id)
+DECLARE_uint32(remote_control_instance_id);
 
 #endif  // MODULES_COMMON_ADAPTERS_ADAPTER_GFLAGS_H_

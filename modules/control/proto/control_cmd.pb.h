@@ -842,6 +842,13 @@ class SimpleLongitudinalDebug : public ::google::protobuf::Message /* @@protoc_i
   double path_remain() const;
   void set_path_remain(double value);
 
+  // optional double preview_kappa = 22;
+  bool has_preview_kappa() const;
+  void clear_preview_kappa();
+  static const int kPreviewKappaFieldNumber = 22;
+  double preview_kappa() const;
+  void set_preview_kappa(double value);
+
   // optional bool is_full_stop = 18;
   bool has_is_full_stop() const;
   void clear_is_full_stop();
@@ -849,12 +856,12 @@ class SimpleLongitudinalDebug : public ::google::protobuf::Message /* @@protoc_i
   bool is_full_stop() const;
   void set_is_full_stop(bool value);
 
-  // optional double preview_kappa = 22;
-  bool has_preview_kappa() const;
-  void clear_preview_kappa();
-  static const int kPreviewKappaFieldNumber = 22;
-  double preview_kappa() const;
-  void set_preview_kappa(double value);
+  // optional double match_acceleration_reference = 23;
+  bool has_match_acceleration_reference() const;
+  void clear_match_acceleration_reference();
+  static const int kMatchAccelerationReferenceFieldNumber = 23;
+  double match_acceleration_reference() const;
+  void set_match_acceleration_reference(double value);
 
   // @@protoc_insertion_point(class_scope:jmc_auto.control.SimpleLongitudinalDebug)
  private:
@@ -898,6 +905,8 @@ class SimpleLongitudinalDebug : public ::google::protobuf::Message /* @@protoc_i
   void clear_has_path_remain();
   void set_has_preview_kappa();
   void clear_has_preview_kappa();
+  void set_has_match_acceleration_reference();
+  void clear_has_match_acceleration_reference();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -920,8 +929,9 @@ class SimpleLongitudinalDebug : public ::google::protobuf::Message /* @@protoc_i
   double slope_offset_compensation_;
   double current_station_;
   double path_remain_;
-  bool is_full_stop_;
   double preview_kappa_;
+  bool is_full_stop_;
+  double match_acceleration_reference_;
   friend struct protobuf_modules_2fcontrol_2fproto_2fcontrol_5fcmd_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -2737,13 +2747,13 @@ inline void SimpleLongitudinalDebug::set_calibration_value(double value) {
 
 // optional bool is_full_stop = 18;
 inline bool SimpleLongitudinalDebug::has_is_full_stop() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void SimpleLongitudinalDebug::set_has_is_full_stop() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 inline void SimpleLongitudinalDebug::clear_has_is_full_stop() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void SimpleLongitudinalDebug::clear_is_full_stop() {
   is_full_stop_ = false;
@@ -2833,13 +2843,13 @@ inline void SimpleLongitudinalDebug::set_path_remain(double value) {
 
 // optional double preview_kappa = 22;
 inline bool SimpleLongitudinalDebug::has_preview_kappa() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void SimpleLongitudinalDebug::set_has_preview_kappa() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void SimpleLongitudinalDebug::clear_has_preview_kappa() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void SimpleLongitudinalDebug::clear_preview_kappa() {
   preview_kappa_ = 0;
@@ -2853,6 +2863,30 @@ inline void SimpleLongitudinalDebug::set_preview_kappa(double value) {
   set_has_preview_kappa();
   preview_kappa_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.control.SimpleLongitudinalDebug.preview_kappa)
+}
+
+// optional double match_acceleration_reference = 23;
+inline bool SimpleLongitudinalDebug::has_match_acceleration_reference() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+inline void SimpleLongitudinalDebug::set_has_match_acceleration_reference() {
+  _has_bits_[0] |= 0x00100000u;
+}
+inline void SimpleLongitudinalDebug::clear_has_match_acceleration_reference() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+inline void SimpleLongitudinalDebug::clear_match_acceleration_reference() {
+  match_acceleration_reference_ = 0;
+  clear_has_match_acceleration_reference();
+}
+inline double SimpleLongitudinalDebug::match_acceleration_reference() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.control.SimpleLongitudinalDebug.match_acceleration_reference)
+  return match_acceleration_reference_;
+}
+inline void SimpleLongitudinalDebug::set_match_acceleration_reference(double value) {
+  set_has_match_acceleration_reference();
+  match_acceleration_reference_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.control.SimpleLongitudinalDebug.match_acceleration_reference)
 }
 
 // -------------------------------------------------------------------
