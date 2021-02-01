@@ -26,7 +26,7 @@
 
 #include <cmath>
 
-#include "Eigen/Geometry"
+#include "eigen3/Eigen/Geometry"
 
 #include "modules/common/math/math_utils.h"
 

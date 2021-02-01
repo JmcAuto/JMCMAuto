@@ -10,8 +10,10 @@
 
 enum class Bcm_doorstsrearleType : UInt32
 {
-    EBA_REQ_NO_DEMAND = 0,
-    EBA_REQ_DEMAND = 1
+    BCM_DOORSTSREARLE_NO_USED = 0,
+    BCM_DOORSTSREARLE_CLOSED = 1,
+    BCM_DOORSTSREARLE_OPEN = 2,
+    BCM_DOORSTSREARLE_FAULT = 3
 };
 
 #endif // impl_type_bcm_doorstsrearletype_h

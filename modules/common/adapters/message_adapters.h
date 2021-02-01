@@ -17,12 +17,16 @@
 #ifndef MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 #define MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 
-#include "impl_type_chassis.h"
 //#include "impl_type_chassisdetail.h"
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
 
 #include "modules/common/adapters/adapter.h"
+
+#include "impl_type_chassis.h"
+#include "chassisserviceinterface_common.h"
+#include "jmc_auto/chassisserviceinterface_proxy.h"
+#include "jmc_auto/chassisserviceinterface_skeleton.h"
 
 /**
  * @file message_adapters.h

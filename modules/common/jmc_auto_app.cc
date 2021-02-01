@@ -16,6 +16,7 @@
 
 #include "modules/common/jmc_auto_app.h"
 
+#include <fstream>
 #include <csignal>
 #include <memory>
 #include <string>

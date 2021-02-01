@@ -11,7 +11,7 @@
 enum class Swm_menu_leftType : UInt32
 {
     SWM_MENU_LEFT_RELEASED = 0,
-    SWM_MENU_LEFT_RESERVED = 1,
+    SWM_MENU_LEFT_PRESSED = 1,
     SWM_MENU_LEFT_RESERVED = 2,
     SWM_MENU_LEFT_INVALID = 3
 };

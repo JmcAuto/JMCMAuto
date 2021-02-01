@@ -28,8 +28,8 @@
 
 #include <cmath>
 
-#include "Eigen/Dense"
-#include "Eigen/Geometry"
+#include "eigen3/Eigen/Dense"
+#include "eigen3/Eigen/Geometry"
 
 #include "modules/common/math/euler_angles_zxy.h"
 #include "modules/common/math/math_utils.h"

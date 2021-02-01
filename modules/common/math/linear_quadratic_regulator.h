@@ -22,7 +22,7 @@
 #ifndef MODULES_COMMON_MATH_LINEAR_QUADRATIC_REGULATOR_H_
 #define MODULES_COMMON_MATH_LINEAR_QUADRATIC_REGULATOR_H_
 
-#include "Eigen/Core"
+#include "eigen3/Eigen/Core"
 
 /**
  * @namespace jmc_auto::common::math

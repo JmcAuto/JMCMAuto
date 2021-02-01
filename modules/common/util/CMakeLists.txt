@@ -11,10 +11,10 @@ add_library(util
   util.h)
 target_link_libraries(util
   string_util
-  modules/common/math
-  modules/common/proto/pnc_point_proto
-  modules/common/time
-  modules/perception/proto/perception_proto)
+  math
+  pnc_point_proto
+  time
+  perception_proto)
 add_library(disjoint_set INTERFACE)
 add_library(lru_cache INTERFACE)
 add_library(threadpool INTERFACE)

@@ -26,17 +26,6 @@
 #include <utility>
 #include <vector>
 
-#include "impl_type_canbusdataparam.h"
-#include "impl_type_cansetdataresult.h"
-#include "jmc_auto/chassisserviceinterface_common.h"
-#include "jmc_auto/chassisserviceinterface_proxy.h"
-#include "jmc_auto/chassisserviceinterface_skeleton.h"
-#include "mdc/sensor/canrxserviceinterface_common.h"
-#include "mdc/sensor/canrxserviceinterface_proxy.h"
-#include "mdc/sensor/cantxserviceinterface_common.h"
-#include "mdc/sensor/cantxserviceinterface_skeleton.h"
-#include "modules/canbus/proto/chassis_detail.pb.h"
-
 #include "modules/canbus/vehicle/vehicle_controller.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/jmc_auto_app.h"
@@ -48,6 +37,17 @@
 #include "modules/drivers/canbus/can_comm/can_sender.h"
 #include "modules/drivers/canbus/can_comm/message_manager.h"
 #include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
+
+#include "impl_type_canbusdataparam.h"
+#include "impl_type_cansetdataresult.h"
+#include "jmc_auto/chassisserviceinterface_common.h"
+#include "jmc_auto/chassisserviceinterface_proxy.h"
+#include "jmc_auto/chassisserviceinterface_skeleton.h"
+//#include "mdc/sensor/canrxserviceinterface_common.h"
+//#include "mdc/sensor/canrxserviceinterface_proxy.h"
+//#include "mdc/sensor/cantxserviceinterface_common.h"
+//#include "mdc/sensor/cantxserviceinterface_skeleton.h"
+#include "modules/canbus/proto/chassis_detail.pb.h"
 
 //#include "modules/remotecontrol/proto/remote_control.pb.h"
 //#include "modules/guardian/proto/guardian.pb.h"
@@ -67,8 +67,8 @@ namespace canbus {
  * @brief canbus module main class.
  * It processes the control data to send protocol messages to can card.
  */
-using CanRxProxy = mdc::sensor::proxy::CanRxServiceInterfaceProxy;
-using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
+//using CanRxProxy = mdc::sensor::proxy::CanRxServiceInterfaceProxy;
+//using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
 
 class Canbus : public jmc_auto::common::JmcAutoApp {
   public:
@@ -101,10 +101,10 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
 
   private:
     void PublishChassis();
-    void ServiceAvailabilityCallbackcanData(
-        ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
-        ara::com::FindServiceHandle handler);
-    void CanDataEventCallback(unsigned char channelID);
+//    void ServiceAvailabilityCallbackcanData(
+//        ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
+//        ara::com::FindServiceHandle handler);
+//    void CanDataEventCallback(unsigned char channelID);
     // void PublishChassisDetail();
     // void OnTimer(const ros::TimerEvent &event);
     // void OnControlCommand(const jmc_auto::control::ControlCommand
@@ -124,8 +124,8 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     // std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
     // CanSender<ChassisDetail> can_sender_;
     // jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
-    std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
-        message_manager_;
+//    std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
+ //       message_manager_;
     // std::unique_ptr<VehicleController> vehicle_controller_;
     bool IS_STOP_MODE = false;
     bool IS_VEHCILE_STOP = false;
@@ -138,9 +138,9 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     // instance ID
     int m_instance = m_channelId + 1;
     std::mutex m_canReadMutex;
-    std::unique_ptr<CanRxProxy> m_proxy[CAN_NUM];
+//    std::unique_ptr<CanRxProxy> m_proxy[CAN_NUM];
     std::mutex m_canSendMutex;
-    std::unique_ptr<CanTxSkeleton> m_skeleton[CAN_NUM];
+//    std::unique_ptr<CanTxSkeleton> m_skeleton[CAN_NUM];
     std::unique_ptr<std::thread> m_canMethodThread[CAN_NUM];
 };
 

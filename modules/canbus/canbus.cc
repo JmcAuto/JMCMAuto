@@ -16,7 +16,6 @@
 
 #include "modules/canbus/canbus.h"
 
-#include "impl_type_chassis.h"
 #include "modules/canbus/common/canbus_gflags.h"
 #include "modules/canbus/vehicle/vehicle_factory.h"
 #include "modules/common/adapters/adapter_manager.h"
@@ -24,6 +23,8 @@
 #include "modules/common/time/jmcauto_time.h"
 #include "modules/common/util/util.h"
 #include "modules/drivers/canbus/can_client/can_client_factory.h"
+
+#include "impl_type_chassis.h"
 
 namespace jmc_auto {
 namespace canbus {
@@ -136,7 +137,7 @@ Status Canbus::Init() {
     m_channelId = 5;
     m_instance = m_channelId + 1;
     // 提供服务
-    m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
+/*    m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
         ara::com::InstanceIdentifier(m_instance),
         ara::com::MethodCallProcessingMode::kPoll);
     m_skeleton[m_channelId]->OfferService();
@@ -148,10 +149,10 @@ Status Canbus::Init() {
             Canbus::ServiceAvailabilityCallbackcanData(std::move(handles),
                                                        handler);
         },
-        m_instance);
+        m_instance);*/
     return Status::OK();
 }
-
+/*
 void Canbus::ServiceAvailabilityCallbackcanData(
     ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
     ara::com::FindServiceHandle handler) {
@@ -205,7 +206,7 @@ void Canbus::CanDataEventCallback(unsigned char channelID) {
     lockread.unlock();
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
 }
-
+*/
 Status Canbus::Start() {
 
     /*

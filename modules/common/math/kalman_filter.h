@@ -25,7 +25,7 @@
 #include <sstream>
 #include <string>
 
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 
 #include "modules/common/log.h"
 #include "modules/common/math/matrix_operations.h"

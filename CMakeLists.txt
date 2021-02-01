@@ -36,9 +36,9 @@ include_directories(${COMMON_INCLUDE} include ${PROJECT_SOURCE_DIR})
 
 #用户可在此添加库文件路径
 link_directories(${COMMON_LINK_DIR} lib)
-#add_subdirectory(modules/common)
-#add_subdirectory(modules/canbus)
-#add_subdirectory(modules/drivers/canbus)
+add_subdirectory(modules/common)
+add_subdirectory(modules/canbus)
+add_subdirectory(modules/drivers/canbus)
 
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
@@ -47,7 +47,8 @@ add_definitions(${COMMON_DEFINITIONS})
 add_compile_options(${COMMON_COMPILE})
 
 #添加第三方依赖
-#set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+include(eigen)
 
 #默认编译c和c++文件生成可执行文件
 add_executable(canbus modules/canbus/main.cc)
@@ -55,13 +56,13 @@ add_executable(canbus modules/canbus/main.cc)
 #用户可在此添加链接库
 target_link_libraries(canbus
   ${COMMON_LIB}
-  #canbus_lib
-  #canbus_common
-  #log
+  canbus_lib
+  canbus_common
+  log
   #monitor_log
-  #can_client
-  #canbus_common
-  gflags glog protobuf -lpthread)
+  can_client
+  drivers_canbus_common
+  -lpthread)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

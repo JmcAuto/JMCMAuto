@@ -25,8 +25,8 @@
 #include <cmath>
 #include <utility>
 #include <vector>
-#include "Eigen/Dense"
-#include "Eigen/SVD"
+#include "eigen3/Eigen/Dense"
+#include "eigen3/Eigen/SVD"
 
 #include "modules/common/log.h"
 

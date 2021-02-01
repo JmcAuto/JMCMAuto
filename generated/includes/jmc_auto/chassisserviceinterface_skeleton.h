@@ -23,7 +23,6 @@ namespace events
 
 namespace methods
 {
-    static constexpr ara::com::internal::EntityId ChassisSetMethodId = 15946; //ChassisSetMethod_method_hash
 }
 
 namespace fields
@@ -32,34 +31,6 @@ namespace fields
 
 class ChassisServiceInterfaceSkeleton : public ara::com::internal::skeleton::SkeletonAdapter {
 public:
-    
-    struct ChassisSetMethodOutput {
-        ::ChassisMsg ChassisData;
-    
-        static bool IsPlane()
-        {
-            return true;
-        }
-    
-        using IsEnumerableTag = void;
-        template<typename F>
-        void enumerate(F& fun)
-        {
-            fun(ChassisData);
-        }
-    
-        template<typename F>
-        void enumerate(F& fun) const
-        {
-            fun(ChassisData);
-        }
-    
-        bool operator == (const ChassisSetMethodOutput& t) const
-        {
-            return (ChassisData == t.ChassisData);
-        }
-    };
-    
 
     explicit ChassisServiceInterfaceSkeleton(ara::com::InstanceIdentifier instanceId,
                            ara::com::MethodCallProcessingMode mode = ara::com::MethodCallProcessingMode::kEvent)
@@ -82,12 +53,9 @@ public:
     void OfferService()
     {
         InitializeEvent(ChassisEvent);
-        //RegisterMethod(&ChassisServiceInterfaceSkeleton::ChassisSetMethod, *this, methods::ChassisSetMethodId);
-        //InitializeMethod(methods::ChassisSetMethodId);
         ara::com::internal::skeleton::SkeletonAdapter::OfferService();
     }
 
-    //virtual ara::core::Future<ChassisSetMethodOutput> ChassisSetMethod() = 0;
 
     events::ChassisEvent ChassisEvent;
 };

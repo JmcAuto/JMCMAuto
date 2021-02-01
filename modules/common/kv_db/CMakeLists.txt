@@ -3,8 +3,9 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(kv_db
   kv_db.cc
-  kv_db.h)
+  kv_db.h
+  )
 target_link_libraries(kv_db
   gflags
-  modules/common/log
-  modules/common/util)
+  log
+  util)

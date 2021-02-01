@@ -18,7 +18,7 @@
 
 #include <cmath>
 
-#include "Eigen/Core"
+#include "eigen3/Eigen/Core"
 
 #include "modules/common/configs/config_gflags.h"
 #include "modules/common/log.h"

@@ -26,8 +26,8 @@
 #ifndef MODULES_COMMON_MATH_QP_SOLVER_QP_SOLVER_H_
 #define MODULES_COMMON_MATH_QP_SOLVER_QP_SOLVER_H_
 
-#include "Eigen/Core"
-#include "Eigen/LU"
+#include "eigen3/Eigen/Core"
+#include "eigen3/Eigen/LU"
 
 namespace jmc_auto {
 namespace common {

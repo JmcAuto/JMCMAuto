@@ -1,29 +1,31 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+add_subdirectory(protocol)
+
 add_library(cx75_vehicle_factory
   cx75_vehicle_factory.cc
   cx75_vehicle_factory.h)
 target_link_libraries(cx75_vehicle_factory
   cx75_controller
   cx75_message_manager
-  modules/canbus/vehicle/abstract_vehicle_factory)
+  abstract_vehicle_factory)
 add_library(cx75_message_manager
   cx75_message_manager.cc
   cx75_message_manager.h)
 target_link_libraries(cx75_message_manager
-  modules/drivers/canbus/common/canbus_common
-  modules/canbus/proto/canbus_proto
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/canbus/vehicle/cx75/protocol/canbus_cx75_protocol)
+  canbus_common
+  canbus_proto
+  message_manager_base
+  canbus_cx75_protocol)
 add_library(cx75_controller
   cx75_controller.cc
   cx75_controller.h)
 target_link_libraries(cx75_controller
   cx75_message_manager
-  modules/drivers/canbus/can_comm/can_sender
-  modules/drivers/canbus/common/canbus_common
-  modules/canbus/proto/canbus_proto
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/canbus/vehicle/vehicle_controller_base
-  modules/canbus/vehicle/cx75/protocol/canbus_cx75_protocol)
+  can_sender
+  canbus_common
+  canbus_proto
+  message_manager_base
+  vehicle_controller_base
+  canbus_cx75_protocol)

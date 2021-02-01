@@ -14,10 +14,10 @@ target_link_libraries(sensor_gflags
 add_library(sensor_canbus_lib INTERFACE)
 target_link_libraries(sensor_canbus_lib INTERFACE
   sensor_gflags
-  modules/common
-  modules/common/jmc_auto_app
-  modules/common/adapters/adapter_manager
-  modules/common/monitor_log
-  modules/drivers/canbus/can_client/can_client_factory
-  modules/drivers/canbus/can_comm/can_receiver
-  modules/drivers/canbus/can_comm/message_manager_base)
+  common
+  jmc_auto_app
+  adapter_manager
+  #modules/common/monitor_log
+  can_client_factory
+  can_receiver
+  message_manager_base)

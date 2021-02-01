@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
-  <AR-PACKAGES>
+	<AR-PACKAGES>
     <AR-PACKAGE UUID="fcf2c90c-eca4-4296-b22d-171d1d4bb8b9">
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
@@ -11070,7 +11070,7 @@
               <SW-DATA-DEF-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/cx75/Eba_reqTypeEnum</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/cx75/Bcm_doorstsrearleTypeEnum</COMPU-METHOD-REF>
                     <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
@@ -11113,7 +11113,7 @@
               </COMPU-INTERNAL-TO-PHYS>
             </COMPU-METHOD>
             <IMPLEMENTATION-DATA-TYPE>
-              <SHORT-NAME>Bcm_doorstsrearriType </SHORT-NAME>
+              <SHORT-NAME>Bcm_doorstsrearriType</SHORT-NAME>
               <CATEGORY>TYPE_REFERENCE</CATEGORY>
               <SW-DATA-DEF-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
@@ -19735,17 +19735,6 @@
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>bcm_doorstsrearri</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/cx75/Bcm_doorstsrearriType </IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>bcm_doorlockstsrearle</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SW-DATA-DEF-PROPS>
@@ -19973,7 +19962,18 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/cx75/Bcm_doorlockstsrearriType</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/cx75/Bcm_doorstsrearriType</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>bcm_doorstsrearri</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/cx75/Bcm_doorstsrearriType</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -33695,7 +33695,7 @@
                     <LOWER-LIMIT>1</LOWER-LIMIT>
                     <UPPER-LIMIT>1</UPPER-LIMIT>
                     <COMPU-CONST>
-                      <VT>SWM_MENU_LEFT_RESERVED</VT>
+                      <VT>SWM_MENU_LEFT_PRESSED</VT>
                     </COMPU-CONST>
                   </COMPU-SCALE>
                   <COMPU-SCALE>
@@ -35130,13 +35130,6 @@
                     <UPPER-LIMIT>3</UPPER-LIMIT>
                     <COMPU-CONST>
                       <VT>TCU_DRIVING_MODE_REQ_SPORT</VT>
-                    </COMPU-CONST>
-                  </COMPU-SCALE>
-                  <COMPU-SCALE>
-                    <LOWER-LIMIT>4</LOWER-LIMIT>
-                    <UPPER-LIMIT>4</UPPER-LIMIT>
-                    <COMPU-CONST>
-                      <VT>TCU_DRIVING_MODE_REQ_ECO</VT>
                     </COMPU-CONST>
                   </COMPU-SCALE>
                   <COMPU-SCALE>

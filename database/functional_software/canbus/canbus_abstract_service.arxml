@@ -57,12 +57,6 @@
                 <REQUIRED-SOMEIP-SERVICE-INSTANCE>
                   <SHORT-NAME>CanbusAbstractSomeipServiceInstance</SHORT-NAME>
                   <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
-                  <REQUIRED-EVENT-GROUPS>
-                    <SOMEIP-REQUIRED-EVENT-GROUP>
-                      <SHORT-NAME>CanbusAbstractEventGroup</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventGroup</EVENT-GROUP-REF>
-                    </SOMEIP-REQUIRED-EVENT-GROUP>
-                  </REQUIRED-EVENT-GROUPS>
                   <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
                 </REQUIRED-SOMEIP-SERVICE-INSTANCE>
               </ELEMENTS>
@@ -73,13 +67,11 @@
                 <PROVIDED-SOMEIP-SERVICE-INSTANCE>
                   <SHORT-NAME>CanbusAbstractSomeipServiceInstance</SHORT-NAME>
                   <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
-                  <PROVIDED-EVENT-GROUPS>
-                    <SOMEIP-PROVIDED-EVENT-GROUP>
-                      <SHORT-NAME>CanbusAbstractEventGroup</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventGroup</EVENT-GROUP-REF>
-                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
-                    </SOMEIP-PROVIDED-EVENT-GROUP>
-                  </PROVIDED-EVENT-GROUPS>
+                  <EVENT-PROPSS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                  </EVENT-PROPSS>
                   <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
                 </PROVIDED-SOMEIP-SERVICE-INSTANCE>
               </ELEMENTS>

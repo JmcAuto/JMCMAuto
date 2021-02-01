@@ -27,6 +27,7 @@
 
 
 
+
 #include "impl_type_bcm_plg_driverswtype.h"
 #include "impl_type_bcm_doorstsrearletype.h"
 #include "impl_type_bcm_doorlockstsfrntritype.h"
@@ -38,7 +39,7 @@
 #include "impl_type_bcm_rearwiperststype.h"
 #include "impl_type_bcm_doorstsfrntritype.h"
 #include "impl_type_int32.h"
-#include "impl_type_bcm_doorlockstsrearritype.h"
+#include "impl_type_bcm_doorstsrearritype.h"
 #include "impl_type_bcm_turnindicatorststype.h"
 #include "impl_type_bcm_doorlockstsfrntletype.h"
 #include "impl_type_bcm_trunkdoorpreunlockststype.h"
@@ -50,7 +51,6 @@
 
 
 struct Gw_bcm_door_0x310_310 {
-    
     ::Bcm_doorlockstsrearleType bcm_doorlockstsrearle;
     
     ::Bcm_doorlockstsfrntriType bcm_doorlockstsfrntri;
@@ -91,7 +91,9 @@ struct Gw_bcm_door_0x310_310 {
     
     ::Bcm_doorstsfrntleType bcm_doorstsfrntle;
     
-    ::Bcm_doorlockstsrearriType bcm_doorlockstsrearri;
+    ::Bcm_doorstsrearriType bcm_doorlockstsrearri;
+    
+    ::Bcm_doorstsrearriType bcm_doorstsrearri;
     
 
     static bool IsPlane()
@@ -124,6 +126,7 @@ struct Gw_bcm_door_0x310_310 {
         fun(bcm_checksum_0x310);
         fun(bcm_doorstsfrntle);
         fun(bcm_doorlockstsrearri);
+        fun(bcm_doorstsrearri);
     }
 
     template<typename F>
@@ -150,10 +153,11 @@ struct Gw_bcm_door_0x310_310 {
         fun(bcm_checksum_0x310);
         fun(bcm_doorstsfrntle);
         fun(bcm_doorlockstsrearri);
+        fun(bcm_doorstsrearri);
     }
 
     bool operator == (const ::Gw_bcm_door_0x310_310& t) const {
-        return (bcm_doorlockstsrearle == t.bcm_doorlockstsrearle) && (bcm_doorlockstsfrntri == t.bcm_doorlockstsfrntri) && (bcm_doorlockstsfrntle == t.bcm_doorlockstsfrntle) && (bcm_antitheftsts == t.bcm_antitheftsts) && (bcm_loadsensitivity == t.bcm_loadsensitivity) && (bcm_lockunlockfeedback == t.bcm_lockunlockfeedback) && (bcm_doorlockststrunk == t.bcm_doorlockststrunk) && (bcm_doorststrunk == t.bcm_doorststrunk) && (bcm_trunkdoorpreunlocksts == t.bcm_trunkdoorpreunlocksts) && (bcm_doorstsrearle == t.bcm_doorstsrearle) && (bcm_frontwipersts == t.bcm_frontwipersts) && (bcm_enginehoodsts == t.bcm_enginehoodsts) && (bcm_plg_driversw == t.bcm_plg_driversw) && (bcm_windowscmd == t.bcm_windowscmd) && (bcm_rearwipersts == t.bcm_rearwipersts) && (bcm_doorstsfrntri == t.bcm_doorstsfrntri) && (bcm_rolling_counter_0x310 == t.bcm_rolling_counter_0x310) && (bcm_turnindicatorsts == t.bcm_turnindicatorsts) && (bcm_checksum_0x310 == t.bcm_checksum_0x310) && (bcm_doorstsfrntle == t.bcm_doorstsfrntle) && (bcm_doorlockstsrearri == t.bcm_doorlockstsrearri);
+        return (bcm_doorlockstsrearle == t.bcm_doorlockstsrearle) && (bcm_doorlockstsfrntri == t.bcm_doorlockstsfrntri) && (bcm_doorlockstsfrntle == t.bcm_doorlockstsfrntle) && (bcm_antitheftsts == t.bcm_antitheftsts) && (bcm_loadsensitivity == t.bcm_loadsensitivity) && (bcm_lockunlockfeedback == t.bcm_lockunlockfeedback) && (bcm_doorlockststrunk == t.bcm_doorlockststrunk) && (bcm_doorststrunk == t.bcm_doorststrunk) && (bcm_trunkdoorpreunlocksts == t.bcm_trunkdoorpreunlocksts) && (bcm_doorstsrearle == t.bcm_doorstsrearle) && (bcm_frontwipersts == t.bcm_frontwipersts) && (bcm_enginehoodsts == t.bcm_enginehoodsts) && (bcm_plg_driversw == t.bcm_plg_driversw) && (bcm_windowscmd == t.bcm_windowscmd) && (bcm_rearwipersts == t.bcm_rearwipersts) && (bcm_doorstsfrntri == t.bcm_doorstsfrntri) && (bcm_rolling_counter_0x310 == t.bcm_rolling_counter_0x310) && (bcm_turnindicatorsts == t.bcm_turnindicatorsts) && (bcm_checksum_0x310 == t.bcm_checksum_0x310) && (bcm_doorstsfrntle == t.bcm_doorstsfrntle) && (bcm_doorlockstsrearri == t.bcm_doorlockstsrearri) && (bcm_doorstsrearri == t.bcm_doorstsrearri);
     }
 };
 

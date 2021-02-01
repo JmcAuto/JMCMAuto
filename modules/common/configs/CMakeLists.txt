@@ -13,9 +13,9 @@ add_library(vehicle_config_helper
   vehicle_config_helper.h)
 target_link_libraries(vehicle_config_helper
   config_gflags
-  modules/common
-  modules/common/configs/proto/vehicle_config_proto
-  modules/common/util
-  modules/common/proto/pnc_point_proto
-  modules/common/math
+  common
+  vehicle_config_proto
+  util
+  pnc_point_proto
+  math
   glog)

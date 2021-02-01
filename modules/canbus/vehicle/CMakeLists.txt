@@ -7,27 +7,27 @@ add_library(vehicle_controller_base
   vehicle_controller.cc
   vehicle_controller.h)
 target_link_libraries(vehicle_controller_base
-  modules/canbus/proto/canbus_proto
-  modules/common/configs/vehicle_config_helper
-  modules/common/proto/error_code_proto
-  modules/control/proto/control_proto
-  modules/drivers/canbus/can_client
-  modules/drivers/canbus/can_comm/can_sender
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/drivers/canbus/common/canbus_common)
+  canbus_proto
+  vehicle_config_helper
+  error_code_proto
+  control_proto
+  can_client
+  can_sender
+  message_manager_base
+  canbus_common)
 add_library(abstract_vehicle_factory
   abstract_vehicle_factory.cc
   abstract_vehicle_factory.h)
 target_link_libraries(abstract_vehicle_factory
-  modules/canbus/proto/canbus_proto
-  modules/canbus/vehicle/vehicle_controller_base
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/drivers/canbus/common/canbus_common)
+  canbus_proto
+  vehicle_controller_base
+  message_manager_base
+  canbus_common)
 add_library(vehicle_factory
   vehicle_factory.cc
   vehicle_factory.h)
 target_link_libraries(vehicle_factory
   #modules/canbus/vehicle/ch/ch_vehicle_factory
   #modules/canbus/vehicle/teshun/teshun_vehicle_factory
-  modules/canbus/vehicle/cx75/cx75_vehicle_factory
-  modules/common/util/factory)
+  cx75_vehicle_factory
+  factory)

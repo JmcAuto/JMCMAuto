@@ -25,58 +25,7 @@ namespace fields {
 }
 
 namespace methods {
-static constexpr ara::com::internal::EntityId ChassisSetMethodId = 15946; //ChassisSetMethod_method_hash
 
-
-class ChassisSetMethod {
-public:
-    struct Output {
-        ::ChassisMsg ChassisData;
-
-        static bool IsPlane()
-        {
-            return true;
-        }
-
-        using IsEnumerableTag = void;
-        template<typename F>
-        void enumerate(F& fun)
-        {
-            fun(ChassisData);
-        }
-
-        template<typename F>
-        void enumerate(F& fun) const
-        {
-            fun(ChassisData);
-        }
-
-        bool operator == (const Output& t) const
-        {
-           return (ChassisData == t.ChassisData);
-        }
-    };
-
-    ChassisSetMethod(std::shared_ptr<vrtf::vcc::Proxy>& proxy, ara::com::internal::EntityId entityId): method_(proxy, entityId){}
-    std::shared_ptr<vrtf::vcc::Proxy>& GetProxy() { return method_.GetProxy();}
-    void Initialize(std::shared_ptr<vrtf::vcc::Proxy>& proxy, ara::com::internal::EntityId entityId)
-    {
-        method_.Initialize(proxy, entityId);
-    }
-
-    ara::core::Future<Output> operator()()
-    {
-        return method_();
-    }
-
-    ara::com::internal::proxy::method::MethodAdapter<Output> GetMethod()
-    {
-        return method_;
-    }
-
-private:
-    ara::com::internal::proxy::method::MethodAdapter<Output> method_;
-};
 } // namespace methods
 
 class ChassisServiceInterfaceProxy :public ara::com::internal::proxy::ProxyAdapter {
@@ -89,9 +38,7 @@ public:
 
     explicit ChassisServiceInterfaceProxy(const HandleType &handle)
         :ara::com::internal::proxy::ProxyAdapter(::jmc_auto::ChassisServiceInterface::ServiceIdentifier, handle),
-        ChassisEvent(GetProxy(), events::ChassisEventId, handle, ::jmc_auto::ChassisServiceInterface::ServiceIdentifier),
-        ChassisSetMethod(GetProxy(), methods::ChassisSetMethodId){            InitializeMethod<methods::ChassisSetMethod::Output>(methods::ChassisSetMethodId);
-        }
+        ChassisEvent(GetProxy(), events::ChassisEventId, handle, ::jmc_auto::ChassisServiceInterface::ServiceIdentifier){        }
 
     ChassisServiceInterfaceProxy(const ChassisServiceInterfaceProxy&) = delete;
     ChassisServiceInterfaceProxy& operator=(const ChassisServiceInterfaceProxy&) = delete;
@@ -114,7 +61,6 @@ public:
     }
 
     events::ChassisEvent ChassisEvent;
-    methods::ChassisSetMethod ChassisSetMethod;
 };
 } // namespace proxy
 } // namespace jmc_auto
