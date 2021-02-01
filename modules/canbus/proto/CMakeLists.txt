@@ -10,5 +10,4 @@ target_link_libraries(canbus_proto
   drive_state_proto
   header_proto
   vehicle_signal_proto
-  canbus_proto
   protobuf)

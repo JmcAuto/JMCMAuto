@@ -16,8 +16,8 @@ target_link_libraries(adapter_manager
   message_adapters
   common
   adapter_config_proto
-  monitor_log_proto
-  transform_listener
+  #monitor_log_proto
+  #transform_listener
   util
   glog)
 add_library(adapter INTERFACE)
@@ -25,14 +25,14 @@ target_link_libraries(adapter INTERFACE
   adapter_gflags
   common_proto
   time
-  common/util
+  util
   protobuf
   glog)
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
   adapter
   canbus_proto
-  monitor_log_proto
+  #monitor_log_proto
   drive_event_proto
   control_proto
   glog)

@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_compile_options(-fPIC)
 
 add_subdirectory(adapters)
 add_subdirectory(configs)

@@ -10,7 +10,7 @@ add_library(qp_solver
   qp_solver.cc
   qp_solver.h)
 target_link_libraries(qp_solver
-  eigen)
+  )
 add_library(active_set_qp_solver
   active_set_qp_solver.cc
   active_set_qp_solver.h)
@@ -18,5 +18,4 @@ target_link_libraries(active_set_qp_solver
   qp_solver
   log
   qp_solver_gflags
-  eigen
   qpOASES)

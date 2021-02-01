@@ -46,29 +46,28 @@ target_link_libraries(angle
 add_library(euler_angles_zxy INTERFACE)
 target_link_libraries(euler_angles_zxy INTERFACE
   geometry
-  eigen)
+  )
 add_library(quaternion INTERFACE)
 target_link_libraries(quaternion INTERFACE
   euler_angles_zxy
   geometry
   common_proto
-  eigen)
+  )
 add_library(matrix_operations
   matrix_operations.cc
   matrix_operations.h)
 target_link_libraries(matrix_operations
-  eigen
   log)
 add_library(kalman_filter INTERFACE)
 target_link_libraries(kalman_filter INTERFACE
   log
   matrix_operations
-  eigen)
+  )
 add_library(extended_kalman_filter INTERFACE)
 target_link_libraries(extended_kalman_filter INTERFACE
   log
   matrix_operations
-  eigen)
+  )
 add_library(factorial INTERFACE)
 target_link_libraries(factorial
   )
@@ -107,7 +106,7 @@ add_library(lqr
   linear_quadratic_regulator.h)
 target_link_libraries(lqr
   log
-  eigen)
+  )
 add_library(mpc
   mpc_solver.cc
   mpc_solver.h)
@@ -115,14 +114,14 @@ target_link_libraries(mpc
   log
   qp_solver
   active_set_qp_solver
-  eigen)
+  )
 add_library(cartesian_frenet_conversion
   cartesian_frenet_conversion.cc
   cartesian_frenet_conversion.h)
 target_link_libraries(cartesian_frenet_conversion
   geometry
   log
-  eigen)
+  )
 add_library(hermite_spline INTERFACE)
 target_link_libraries(hermite_spline INTERFACE
   log)

@@ -39,16 +39,17 @@ link_directories(${COMMON_LINK_DIR} lib)
 add_subdirectory(modules/common)
 add_subdirectory(modules/canbus)
 add_subdirectory(modules/drivers/canbus)
+add_subdirectory(modules/control/proto)
 
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
 
 #用户可在此添加编译选项
 add_compile_options(${COMMON_COMPILE})
+add_compile_options(-fPIC)
 
 #添加第三方依赖
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
-include(eigen)
 
 #默认编译c和c++文件生成可执行文件
 add_executable(canbus modules/canbus/main.cc)

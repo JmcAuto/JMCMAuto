@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_compile_options(-fPIC)
 
 add_subdirectory(common)
 add_subdirectory(proto)
@@ -18,4 +19,5 @@ target_link_libraries(canbus_lib
   can_client_factory
   can_receiver
   can_sender
-  remotecontrol_proto)
+  #remotecontrol_proto
+  )

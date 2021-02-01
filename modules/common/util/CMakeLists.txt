@@ -14,7 +14,7 @@ target_link_libraries(util
   math
   pnc_point_proto
   time
-  perception_proto)
+  )
 add_library(disjoint_set INTERFACE)
 add_library(lru_cache INTERFACE)
 add_library(threadpool INTERFACE)

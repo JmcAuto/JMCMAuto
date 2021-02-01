@@ -1,4 +1,3 @@
-# This file was generated from BUILD using tools/make_cmakelists.py.
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
@@ -14,4 +13,4 @@ target_link_libraries(vehicle_state_provider
   status
   vehicle_state_proto
   localization_common
-  eigen)
+  )
