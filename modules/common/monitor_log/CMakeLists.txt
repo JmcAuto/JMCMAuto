@@ -9,8 +9,8 @@ add_library(monitor_log
   monitor_log_buffer.h
   monitor_logger.h)
 target_link_libraries(monitor_log
-  modules/common/log
-  modules/common/adapters/adapter_manager
-  modules/common/monitor_log/proto/monitor_log_proto
-  modules/common/proto/common_proto
-  modules/common/time)
+  log
+  adapter_manager
+  monitor_log_proto
+  common_proto
+  time)

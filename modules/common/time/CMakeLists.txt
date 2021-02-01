@@ -7,6 +7,6 @@ add_library(time
   time_util.h
   timer.h)
 target_link_libraries(time
-  modules/common/log
-  modules/common/macro
-  modules/common/configs/config_gflags)
+  log
+  macro
+  config_gflags)

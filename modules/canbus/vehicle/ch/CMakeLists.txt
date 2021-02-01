@@ -7,23 +7,23 @@ add_library(ch_vehicle_factory
 target_link_libraries(ch_vehicle_factory
   ch_controller
   ch_message_manager
-  modules/canbus/vehicle/abstract_vehicle_factory)
+  abstract_vehicle_factory)
 add_library(ch_message_manager
   ch_message_manager.cc
   ch_message_manager.h)
 target_link_libraries(ch_message_manager
-  modules/canbus/proto/canbus_proto
-  modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/drivers/canbus/common/canbus_common)
+  canbus_proto
+  canbus_ch_protocol
+  message_manager_base
+  canbus_common)
 add_library(ch_controller
   ch_controller.cc
   ch_controller.h)
 target_link_libraries(ch_controller
   ch_message_manager
-  modules/canbus/proto/canbus_proto
-  modules/canbus/vehicle/vehicle_controller_base
-  modules/canbus/vehicle/ch/protocol/canbus_ch_protocol
-  modules/drivers/canbus/can_comm/can_sender
-  modules/drivers/canbus/can_comm/message_manager_base
-  modules/drivers/canbus/common/canbus_common)
+  canbus_proto
+  vehicle_controller_base
+  canbus_ch_protocol
+  can_sender
+  message_manager_base
+  canbus_common)

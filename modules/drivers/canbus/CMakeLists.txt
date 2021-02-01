@@ -17,7 +17,7 @@ target_link_libraries(sensor_canbus_lib INTERFACE
   common
   jmc_auto_app
   adapter_manager
-  #modules/common/monitor_log
+  #monitor_log
   can_client_factory
   can_receiver
   message_manager_base)

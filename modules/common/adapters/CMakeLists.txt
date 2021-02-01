@@ -25,16 +25,16 @@ target_link_libraries(adapter INTERFACE
   adapter_gflags
   common_proto
   time
-  modules/common/util
+  common/util
   protobuf
   glog)
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
   adapter
-  modules/canbus/proto/canbus_proto
-  modules/common/monitor_log/proto/monitor_log_proto
-  modules/common/proto/drive_event_proto
-  modules/control/proto/control_proto
+  canbus_proto
+  monitor_log_proto
+  drive_event_proto
+  control_proto
   glog)
 
 

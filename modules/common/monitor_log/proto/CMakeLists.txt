@@ -6,6 +6,6 @@ file(GLOB_RECURSE  monitor_log_proto_lib *.cc *.h)
 add_library(monitor_log_proto
   ${monitor_log_proto_lib})
 target_link_libraries(monitor_log_proto
-  modules/common/proto/common_proto
-  modules/common/proto/header_proto
+  common_proto
+  header_proto
   protobuf)

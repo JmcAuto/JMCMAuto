@@ -30,25 +30,25 @@ target_link_libraries(map_util INTERFACE
   protobuf)
 add_library(factory INTERFACE)
 target_link_libraries(factory INTERFACE
-  modules/common/log)
+  log)
 add_library(points_downsampler INTERFACE)
 target_link_libraries(points_downsampler INTERFACE
-  modules/common/log
-  modules/common/math/geometry)
+  log
+  geometry)
 add_library(json_util
   json_util.cc
   json_util.h)
 target_link_libraries(json_util
-  modules/common/log
+  log
   third_party/json
   protobuf)
 add_library(http_client
   http_client.cc
   http_client.h)
 target_link_libraries(http_client
-  modules/common/log
-  modules/common/status
-  modules/common/util/string_util
+  log
+  status
+  string_util
   third_party/json
   curlpp)
 add_library(future INTERFACE)
@@ -59,12 +59,12 @@ target_link_libraries(future INTERFACE
   absl/utility)
 add_library(message_util INTERFACE)
 target_link_libraries(message_util INTERFACE
-  modules/common/time
+  time
   absl/strings
   protobuf)
 add_library(point_factory INTERFACE)
 target_link_libraries(point_factory INTERFACE
-  modules/common/math/geometry
-  modules/common/proto/pnc_point_proto)
+  geometry
+  pnc_point_proto)
 
 

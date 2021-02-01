@@ -27,7 +27,7 @@ add_library(vehicle_factory
   vehicle_factory.cc
   vehicle_factory.h)
 target_link_libraries(vehicle_factory
-  #modules/canbus/vehicle/ch/ch_vehicle_factory
-  #modules/canbus/vehicle/teshun/teshun_vehicle_factory
+  #ch_vehicle_factory
+  #teshun_vehicle_factory
   cx75_vehicle_factory
   factory)

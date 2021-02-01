@@ -6,12 +6,12 @@ add_library(vehicle_state_provider
   vehicle_state_provider.cc
   vehicle_state_provider.h)
 target_link_libraries(vehicle_state_provider
-  modules/common/log
-  modules/common/macro
-  modules/common/configs/config_gflags
-  modules/common/math/geometry
-  modules/common/math/quaternion
-  modules/common/status
-  modules/common/vehicle_state/proto/vehicle_state_proto
-  modules/localization/common/localization_common
+  log
+  macro
+  config_gflags
+  geometry
+  quaternion
+  status
+  vehicle_state_proto
+  localization_common
   eigen)

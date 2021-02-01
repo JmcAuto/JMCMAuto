@@ -11,11 +11,11 @@ add_library(canbus_lib
 target_link_libraries(canbus_lib
   canbus_common
   vehicle_factory
-  modules/common
-  modules/common/jmc_auto_app
-  modules/common/adapters/adapter_manager
-  #modules/common/monitor_log
-  modules/drivers/canbus/can_client/can_client_factory
-  modules/drivers/canbus/can_comm/can_receiver
-  modules/drivers/canbus/can_comm/can_sender
-  modules/remotecontrol/proto/remotecontrol_proto)
+  common
+  jmc_auto_app
+  adapter_manager
+  #monitor_log
+  can_client_factory
+  can_receiver
+  can_sender
+  remotecontrol_proto)
