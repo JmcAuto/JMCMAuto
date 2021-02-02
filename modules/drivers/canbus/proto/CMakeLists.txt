@@ -6,6 +6,7 @@ file(GLOB_RECURSE  drivers_canbus_proto_lib *.cc *.h)
 add_library(drivers_canbus_proto
   ${drivers_canbus_proto_lib})
 target_link_libraries(drivers_canbus_proto
+${COMMON_LIB}
   common_proto
   header_proto
   protobuf)

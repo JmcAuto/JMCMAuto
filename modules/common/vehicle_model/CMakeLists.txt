@@ -5,6 +5,7 @@ add_library(vehicle_model
   vehicle_model.cc
   vehicle_model.h)
 target_link_libraries(vehicle_model
+${COMMON_LIB}
   util
   jmcauto_log
   config_gflags

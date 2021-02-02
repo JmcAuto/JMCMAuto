@@ -6,6 +6,7 @@ file(GLOB_RECURSE  control_proto_lib *.cc *.h)
 add_library(control_proto
   ${control_proto_lib})
 target_link_libraries(control_proto
+${COMMON_LIB}
   canbus_proto
   common_proto
   drive_state_proto

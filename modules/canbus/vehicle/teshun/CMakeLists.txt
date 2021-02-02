@@ -5,6 +5,7 @@ add_library(teshun_vehicle_factory
   teshun_vehicle_factory.cc
   teshun_vehicle_factory.h)
 target_link_libraries(teshun_vehicle_factory
+${COMMON_LIB}
   teshun_controller
   teshun_message_manager
   abstract_vehicle_factory)
@@ -12,6 +13,7 @@ add_library(teshun_message_manager
   teshun_message_manager.cc
   teshun_message_manager.h)
 target_link_libraries(teshun_message_manager
+${COMMON_LIB}
   canbus_common
   canbus_proto
   message_manager_base
@@ -20,6 +22,7 @@ add_library(teshun_controller
   teshun_controller.cc
   teshun_controller.h)
 target_link_libraries(teshun_controller
+${COMMON_LIB}
   teshun_message_manager
   can_sender
   canbus_common

@@ -3,6 +3,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(canbus_ch_protocol INTERFACE)
 target_link_libraries(canbus_ch_protocol INTERFACE
+${COMMON_LIB}
   brake_command_111
   brake_status__511
   control_command_115
@@ -21,6 +22,7 @@ add_library(brake_command_111
   brake_command_111.cc
   brake_command_111.h)
 target_link_libraries(brake_command_111
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -28,6 +30,7 @@ add_library(brake_status__511
   brake_status__511.cc
   brake_status__511.h)
 target_link_libraries(brake_status__511
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -35,6 +38,7 @@ add_library(control_command_115
   control_command_115.cc
   control_command_115.h)
 target_link_libraries(control_command_115
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -42,6 +46,7 @@ add_library(ecu_status_1_515
   ecu_status_1_515.cc
   ecu_status_1_515.h)
 target_link_libraries(ecu_status_1_515
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -49,6 +54,7 @@ add_library(ecu_status_2_516
   ecu_status_2_516.cc
   ecu_status_2_516.h)
 target_link_libraries(ecu_status_2_516
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -56,6 +62,7 @@ add_library(ecu_status_3_517
   ecu_status_3_517.cc
   ecu_status_3_517.h)
 target_link_libraries(ecu_status_3_517
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -63,6 +70,7 @@ add_library(gear_command_114
   gear_command_114.cc
   gear_command_114.h)
 target_link_libraries(gear_command_114
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -70,6 +78,7 @@ add_library(gear_status_514
   gear_status_514.cc
   gear_status_514.h)
 target_link_libraries(gear_status_514
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -77,6 +86,7 @@ add_library(steer_command_112
   steer_command_112.cc
   steer_command_112.h)
 target_link_libraries(steer_command_112
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -84,6 +94,7 @@ add_library(steer_status__512
   steer_status__512.cc
   steer_status__512.h)
 target_link_libraries(steer_status__512
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -91,6 +102,7 @@ add_library(throttle_command_110
   throttle_command_110.cc
   throttle_command_110.h)
 target_link_libraries(throttle_command_110
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -98,6 +110,7 @@ add_library(throttle_status__510
   throttle_status__510.cc
   throttle_status__510.h)
 target_link_libraries(throttle_status__510
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -105,6 +118,7 @@ add_library(turnsignal_command_113
   turnsignal_command_113.cc
   turnsignal_command_113.h)
 target_link_libraries(turnsignal_command_113
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)
@@ -112,6 +126,7 @@ add_library(turnsignal_status__513
   turnsignal_status__513.cc
   turnsignal_status__513.h)
 target_link_libraries(turnsignal_status__513
+${COMMON_LIB}
   canbus_proto
   message_manager_base
   canbus_common)

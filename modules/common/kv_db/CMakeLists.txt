@@ -6,6 +6,7 @@ add_library(kv_db
   kv_db.h
   )
 target_link_libraries(kv_db
+${COMMON_LIB}
   gflags
   jmcauto_log
   util)
