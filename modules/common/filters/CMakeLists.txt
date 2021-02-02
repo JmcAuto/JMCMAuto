@@ -6,12 +6,12 @@ add_library(digital_filter
   digital_filter.h)
 target_link_libraries(digital_filter
   digital_filter_coefficients
-  log)
+  jmcauto_log)
 add_library(mean_filter
   mean_filter.cc
   mean_filter.h)
 target_link_libraries(mean_filter
-  log)
+jmcauto_log)
 add_library(digital_filter_coefficients
   digital_filter_coefficients.cc
   digital_filter_coefficients.h)

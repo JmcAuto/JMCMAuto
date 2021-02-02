@@ -6,7 +6,7 @@ add_library(vehicle_model
   vehicle_model.h)
 target_link_libraries(vehicle_model
   util
-  log
+  jmcauto_log
   config_gflags
   vehicle_config_helper
   vehicle_model_config_proto

@@ -30,23 +30,23 @@ target_link_libraries(map_util INTERFACE
   protobuf)
 add_library(factory INTERFACE)
 target_link_libraries(factory INTERFACE
-  log)
+jmcauto_log)
 add_library(points_downsampler INTERFACE)
 target_link_libraries(points_downsampler INTERFACE
-  log
+jmcauto_log
   geometry)
 add_library(json_util
   json_util.cc
   json_util.h)
 target_link_libraries(json_util
-  log
+jmcauto_log
   third_party/json
   protobuf)
 add_library(http_client
   http_client.cc
   http_client.h)
 target_link_libraries(http_client
-  log
+jmcauto_log
   status
   string_util
   third_party/json

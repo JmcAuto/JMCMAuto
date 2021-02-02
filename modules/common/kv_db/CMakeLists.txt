@@ -7,5 +7,5 @@ add_library(kv_db
   )
 target_link_libraries(kv_db
   gflags
-  log
+  jmcauto_log
   util)

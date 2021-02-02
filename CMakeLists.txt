@@ -59,7 +59,7 @@ target_link_libraries(canbus
   ${COMMON_LIB}
   canbus_lib
   canbus_common
-  log
+  jmcauto_log
   #monitor_log
   can_client
   drivers_canbus_common

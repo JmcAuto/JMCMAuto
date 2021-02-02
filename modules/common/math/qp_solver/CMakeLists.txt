@@ -16,6 +16,6 @@ add_library(active_set_qp_solver
   active_set_qp_solver.h)
 target_link_libraries(active_set_qp_solver
   qp_solver
-  log
+  jmcauto_log
   qp_solver_gflags
   qpOASES)

@@ -18,18 +18,18 @@ add_subdirectory(vehicle_state)
 
 add_library(common INTERFACE)
 target_link_libraries(common INTERFACE
-  log
+  jmcauto_log
   macro
   macros)
 add_library(macro INTERFACE)
 add_library(macros INTERFACE)
-add_library(log INTERFACE)
-target_link_libraries(log INTERFACE
+add_library(jmcauto_log INTERFACE)
+target_link_libraries(jmcauto_log INTERFACE
   glog)
 add_library(jmc_auto_app
   jmc_auto_app.cc
   jmc_auto_app.h)
 target_link_libraries(jmc_auto_app
-  log
+jmcauto_log
   status
   string_util)

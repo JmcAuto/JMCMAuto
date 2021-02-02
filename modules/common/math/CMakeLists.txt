@@ -33,7 +33,7 @@ add_library(geometry
   polygon2d.h
   vec2d.h)
 target_link_libraries(geometry
-  log
+jmcauto_log
   string_util)
 add_library(sin_table
   sin_table.cc
@@ -57,15 +57,15 @@ add_library(matrix_operations
   matrix_operations.cc
   matrix_operations.h)
 target_link_libraries(matrix_operations
-  log)
+jmcauto_log)
 add_library(kalman_filter INTERFACE)
 target_link_libraries(kalman_filter INTERFACE
-  log
+jmcauto_log
   matrix_operations
   )
 add_library(extended_kalman_filter INTERFACE)
 target_link_libraries(extended_kalman_filter INTERFACE
-  log
+jmcauto_log
   matrix_operations
   )
 add_library(factorial INTERFACE)
@@ -100,18 +100,18 @@ add_library(integral
   integral.cc
   integral.h)
 target_link_libraries(integral
-  log)
+jmcauto_log)
 add_library(lqr
   linear_quadratic_regulator.cc
   linear_quadratic_regulator.h)
 target_link_libraries(lqr
-  log
+jmcauto_log
   )
 add_library(mpc
   mpc_solver.cc
   mpc_solver.h)
 target_link_libraries(mpc
-  log
+jmcauto_log
   qp_solver
   active_set_qp_solver
   )
@@ -120,8 +120,8 @@ add_library(cartesian_frenet_conversion
   cartesian_frenet_conversion.h)
 target_link_libraries(cartesian_frenet_conversion
   geometry
-  log
+  jmcauto_log
   )
 add_library(hermite_spline INTERFACE)
 target_link_libraries(hermite_spline INTERFACE
-  log)
+jmcauto_log)
