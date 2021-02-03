@@ -77,7 +77,7 @@ jmcauto_log
   matrix_operations
   )
 add_library(factorial INTERFACE)
-target_link_libraries(factorial
+target_link_libraries(factorial INTERFACE
   ${COMMON_LIB}
   )
 add_library(path_matcher
