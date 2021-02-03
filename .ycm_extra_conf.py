@@ -48,6 +48,12 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+'-isystem',
+'/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot/usr/include',
+'-isystem',
+'/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot/usr/local/include',
+'-isystem',
+'./',
 ]
 
 

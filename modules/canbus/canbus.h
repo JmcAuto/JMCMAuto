@@ -38,8 +38,8 @@
 #include "modules/drivers/canbus/can_comm/message_manager.h"
 #include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
-#include "impl_type_canbusdataparam.h"
-#include "impl_type_cansetdataresult.h"
+//#include "impl_type_canbusdataparam.h"
+//#include "impl_type_cansetdataresult.h"
 #include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"

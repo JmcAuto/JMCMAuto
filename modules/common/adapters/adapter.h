@@ -30,7 +30,9 @@
 #include <type_traits>
 #include <vector>
 
+#include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
 #include "glog/logging.h"
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"
@@ -145,7 +147,7 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
     return
         std::shared_ptr<T>(
                 const_cast<T*>(&(*p)));
-//                boost::bind(&do_release<T>, p, _1));
+                //boost::bind(&do_release<T>, p, _1));
 
 }
   /**
@@ -202,9 +204,9 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
    * the adapter.
    * @param data the input data.
    */
-  //void FeedData(const D& data) {
-  //  EnqueueData(boost::make_shared<D const>(data));
-  //}
+  void FeedData(const D& data) {
+    EnqueueData(boost::make_shared<D const>(data));
+  }
 
   /**
    * @brief Data callback when receiving a message. Under the hood it calls
@@ -212,9 +214,9 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
    * behavior when there's not a ROS.
    * @param message the input data.
    */
-  //void OnReceive(const D& message) {
-  //  RosCallback(boost::make_shared<D const>(message));
-  //}
+  void OnReceive(const D& message) {
+    RosCallback(boost::make_shared<D const>(message));
+  }
 
   /**
    * @brief copy the data_queue_ into the observing queue to create a

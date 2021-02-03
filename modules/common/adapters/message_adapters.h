@@ -25,6 +25,7 @@
 
 #include "impl_type_chassis.h"
 #include "chassisserviceinterface_common.h"
+#include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
 

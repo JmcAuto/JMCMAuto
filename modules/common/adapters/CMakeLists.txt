@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+file(GLOB_RECURSE  GENERATED_SOURCE ${PROJECT_SOURCE_DIR}/generated/*.cpp)
 
 add_subdirectory(proto)
 
@@ -11,7 +12,10 @@ target_link_libraries(adapter_gflags
   gflags)
 add_library(adapter_manager
   adapter_manager.cc
-  adapter_manager.h)
+  adapter_manager.h
+  ${GENERATED_SOURCE}
+  )
+
 target_link_libraries(adapter_manager
   ${COMMON_LIB}
   adapter_gflags

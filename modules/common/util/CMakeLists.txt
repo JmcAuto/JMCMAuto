@@ -8,13 +8,16 @@ add_library(util
   blocking_queue.h
   file.h
   string_tokenizer.h
-  util.h)
+  util.h
+  )
 target_link_libraries(util
   ${COMMON_LIB}
   string_util
   math
   pnc_point_proto
   time
+  boost_filesystem
+  boost_system
   )
 add_library(disjoint_set INTERFACE)
 add_library(lru_cache INTERFACE)
