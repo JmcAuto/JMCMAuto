@@ -6,13 +6,14 @@ bin
 #build file
 *.tar.gz
 *.zip
+build
 Archives
 Includes
 include
 lib
 share
 #generated
-outputJson
+#outputJson
 .settings/org.eclipse.cdt.managedbuilder.core.prefs
 
 # temporary files
