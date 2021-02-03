@@ -1,0 +1,38 @@
+{
+  "applicationName": "/jmc_auto/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent/CanbusAbstractProcess",
+  "services": [
+    {
+      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "serviceId": 102,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "ChassisEvent",
+          "id": 32374,
+          "dataType": "/jmc_auto/Platform/ChassisMsgDateType/ChassisMsg",
+          "eventId": 1001,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "instance": 104,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/CanbusAbstractServiceConsumer/CanbusAbstractSomeipServiceInstance",
+          "unreliable": 5000
+        },
+        {
+          "instance": 104,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanbusAbstractServiceProvider/CanbusAbstractSomeipServiceInstance",
+          "unreliable": 6000
+        }
+      ]
+    }
+  ]
+}

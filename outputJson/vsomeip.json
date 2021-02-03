@@ -1,0 +1,54 @@
+{
+  "logging": {
+    "level": "info",
+    "console": "false",
+    "file": {
+      "enable": "false",
+      "path": "/var/log/vsomeip.log"
+    },
+    "syslog": {
+      "enable": "true",
+      "ident": "someip_jmc_auto_PlatformServices_CanbusAbstractApplication_CanbusAbstractSwComponent_CanbusAbstractProcess"
+    },
+    "dlt": "false"
+  },
+  "routing": "someipd",
+  "unicast": "192.168.1.6",
+  "netmask": "255.255.255.0",
+  "applications": [
+    {
+      "name": "/jmc_auto/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent/CanbusAbstractProcess",
+      "id": "46237"
+    }
+  ],
+  "services": [
+    {
+      "service": "102",
+      "instance": "104",
+      "unreliable": "6000",
+      "events": [
+        {
+          "event": "1001",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": []
+    }
+  ],
+  "clients": [
+    {
+      "service": "102",
+      "instance": "104",
+      "unreliable": [
+        "5000"
+      ]
+    }
+  ],
+  "service-discovery": {
+    "enable": "true",
+    "multicast": "239.192.255.251",
+    "port": "30491",
+    "protocol": "udp"
+  }
+}
