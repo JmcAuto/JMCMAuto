@@ -5,6 +5,7 @@ add_library(ch_vehicle_factory
   ch_vehicle_factory.cc
   ch_vehicle_factory.h)
 target_link_libraries(ch_vehicle_factory
+  ${COMMON_LIB}
   ch_controller
   ch_message_manager
   abstract_vehicle_factory)
@@ -12,6 +13,7 @@ add_library(ch_message_manager
   ch_message_manager.cc
   ch_message_manager.h)
 target_link_libraries(ch_message_manager
+  ${COMMON_LIB}
   canbus_proto
   canbus_ch_protocol
   message_manager_base
@@ -20,6 +22,7 @@ add_library(ch_controller
   ch_controller.cc
   ch_controller.h)
 target_link_libraries(ch_controller
+  ${COMMON_LIB}
   ch_message_manager
   canbus_proto
   vehicle_controller_base

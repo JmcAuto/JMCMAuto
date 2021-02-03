@@ -7,13 +7,13 @@ add_library(config_gflags
   config_gflags.cc
   config_gflags.h)
 target_link_libraries(config_gflags
-${COMMON_LIB}
+  ${COMMON_LIB}
   gflags)
 add_library(vehicle_config_helper
   vehicle_config_helper.cc
   vehicle_config_helper.h)
 target_link_libraries(vehicle_config_helper
-${COMMON_LIB}
+  ${COMMON_LIB}
   config_gflags
   common
   vehicle_config_proto

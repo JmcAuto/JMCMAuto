@@ -5,7 +5,7 @@ add_library(can_client_factory
   can_client_factory.cc
   can_client_factory.h)
 target_link_libraries(can_client_factory
-${COMMON_LIB}
+  ${COMMON_LIB}
   can_client
   canbus_common
   canbus_proto
@@ -16,7 +16,7 @@ ${COMMON_LIB}
   )
 add_library(can_client INTERFACE)
 target_link_libraries(can_client INTERFACE
-${COMMON_LIB}
+  ${COMMON_LIB}
   util
   canbus_common
   canbus_proto)

@@ -5,19 +5,19 @@ add_library(qp_solver_gflags
   qp_solver_gflags.cc
   qp_solver_gflags.h)
 target_link_libraries(qp_solver_gflags
-${COMMON_LIB}
+  ${COMMON_LIB}
   gflags)
 add_library(qp_solver
   qp_solver.cc
   qp_solver.h)
 target_link_libraries(qp_solver
-${COMMON_LIB}
+  ${COMMON_LIB}
   )
 add_library(active_set_qp_solver
   active_set_qp_solver.cc
   active_set_qp_solver.h)
 target_link_libraries(active_set_qp_solver
-${COMMON_LIB}
+  ${COMMON_LIB}
   qp_solver
   jmcauto_log
   qp_solver_gflags

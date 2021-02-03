@@ -7,6 +7,7 @@ add_library(cx75_vehicle_factory
   cx75_vehicle_factory.cc
   cx75_vehicle_factory.h)
 target_link_libraries(cx75_vehicle_factory
+  ${COMMON_LIB}
   cx75_controller
   cx75_message_manager
   abstract_vehicle_factory)
@@ -14,6 +15,7 @@ add_library(cx75_message_manager
   cx75_message_manager.cc
   cx75_message_manager.h)
 target_link_libraries(cx75_message_manager
+  ${COMMON_LIB}
   canbus_common
   canbus_proto
   message_manager_base
@@ -22,6 +24,7 @@ add_library(cx75_controller
   cx75_controller.cc
   cx75_controller.h)
 target_link_libraries(cx75_controller
+  ${COMMON_LIB}
   cx75_message_manager
   can_sender
   canbus_common

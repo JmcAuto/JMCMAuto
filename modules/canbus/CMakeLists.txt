@@ -10,6 +10,7 @@ add_library(canbus_lib
   canbus.cc
   canbus.h)
 target_link_libraries(canbus_lib
+  ${COMMON_LIB}
   canbus_common
   vehicle_factory
   common
