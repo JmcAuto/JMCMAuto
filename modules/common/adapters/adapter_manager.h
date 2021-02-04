@@ -32,6 +32,7 @@
 #include "modules/common/adapters/proto/adapter_config.pb.h"
 #include "modules/common/log.h"
 #include "modules/common/macro.h"
+#include "modules/common/util/PbConvertor.h"
 
 //#include "modules/common/transform_listener/transform_listener.h"
 
@@ -59,12 +60,13 @@ namespace adapter {
             << "Message history limit must be greater than 0";                 \
         instance()->InternalEnable##name(instance_id, config);                 \
     }                                                                          \
-    static name Get##name() { return instance()->InternalGet##name(); }        \
+    static name##Adapter *Get##name() {                                        \
+        return instance()->InternalGet##name(); }                              \
     static AdapterConfig &Get##name##Config() {                                \
         return instance()->name##config_;                                      \
     }                                                                          \
-    static void Publish##name(const name &data) {                              \
-        instance()->InternalPublish##name(data);                               \
+    static void Publish##name(const name##Adapter::DataType &pbdata) {         \
+        instance()->InternalPublish##name(pbdata);                             \
     }                                                                          \
     template <typename T>                                                      \
     static void Fill##name##Header(const std::string &module_name, T *data) {  \
@@ -148,29 +150,33 @@ namespace adapter {
             }                                                                  \
         }                                                                      \
     }                                                                          \
-    name MsgData;                                                              \
     void name##PublishEventCallback() {                                        \
+        name MsgData;                                                          \
+        name##Adapter::DataType &PbMsgData                                     \
         if (name##proxy == nullptr) {                                          \
             return;                                                            \
         }                                                                      \
         name##proxy->name##Event.Update();                                     \
         const auto &name##MsgSamples =                                         \
             name##proxy->name##Event.GetCachedSamples();                       \
-        /*name##_->OnReceive(name##MsgSamples);*/                              \
         for (const auto &testdata : name##MsgSamples) {                        \
-            std::cout << "test";                                               \
-            /*name *MsgPtr = &MsgData;*/                                       \
             MsgData = *testdata;                                               \
+            jmc_auto::common::util::struct2Pb((const char *)&MsgData, name##_);\
         }                                                                      \
         name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
-    name InternalGet##name() { return MsgData; }                               \
-    void InternalPublish##name(const name &data) {                             \
+    name##Adapter *InternalGet##name() { return name##_.get(); }               \
+    /*name##Adapter *InternalGet##name() {                                       \
+        jmc_auto::common::util::struct2Pb((const char *)&MsgData, name##_);    \
+        return name##_.get(); }*/                                                \
+    void InternalPublish##name(const name##Adapter::DataType &pbdata) {        \
+        name data;                                                             \  
+        jmc_auto::common::util::pb2struct(pbdata, data);                       \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
         name##skeleton->name##Event.Send(std::move(data));                     \
-        /*name##_->SetLatestPublished(data); */                                \
+        name##_->SetLatestPublished(pbdata);                                   \
     }
 
 /**

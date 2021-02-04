@@ -15,7 +15,6 @@ add_library(adapter_manager
   adapter_manager.h
   ${GENERATED_SOURCE}
   )
-
 target_link_libraries(adapter_manager
   ${COMMON_LIB}
   adapter_gflags
@@ -25,7 +24,8 @@ target_link_libraries(adapter_manager
   #monitor_log_proto
   #transform_listener
   util
-  glog)
+  glog
+  pb_convertor)
 add_library(adapter INTERFACE)
 target_link_libraries(adapter INTERFACE
   ${COMMON_LIB}

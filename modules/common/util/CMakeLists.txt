@@ -79,5 +79,12 @@ target_link_libraries(point_factory INTERFACE
   ${COMMON_LIB}
   geometry
   pnc_point_proto)
+add_library(pb_convertor
+  PbConvertor.cpp
+  PbConvertor.h)
+target_link_libraries(pb_convertor
+  protobuf
+)
+
 
 
