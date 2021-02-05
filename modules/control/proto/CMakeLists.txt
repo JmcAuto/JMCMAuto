@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+find_package(Protobuf REQUIRED)
 
 PROTOBUF_GENERATE_CPP(control_proto_lib PROTO_HDRS
   calibration_table.proto

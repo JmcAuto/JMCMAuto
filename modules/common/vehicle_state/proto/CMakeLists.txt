@@ -1,5 +1,6 @@
 include_directories(PROJECT_SOURCE_DIR)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+find_package(Protobuf REQUIRED)
 
 PROTOBUF_GENERATE_CPP(vehicle_state_proto_lib PROTO_HDRS
   vehicle_state.proto)

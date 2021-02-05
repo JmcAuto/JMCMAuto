@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+find_package(Protobuf REQUIRED)
 
 PROTOBUF_GENERATE_CPP(error_code_proto_lib PROTO_HDRS
   error_code.proto)

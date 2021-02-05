@@ -1,5 +1,6 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+find_package(Protobuf REQUIRED)
 
 PROTOBUF_GENERATE_CPP(canbus_proto_lib PROTO_HDRS
   canbus_conf.proto
