@@ -1,4 +1,4 @@
-include_directories(PROJECT_SOURCE_DIR)
+include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 file(GLOB_RECURSE  canbus_cx75_protocol_lib *.cc *.h)
