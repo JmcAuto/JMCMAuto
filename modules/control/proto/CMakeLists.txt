@@ -1,19 +1,25 @@
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-find_package(Protobuf REQUIRED)
 
-PROTOBUF_GENERATE_CPP(control_proto_lib PROTO_HDRS
-  calibration_table.proto
-  control_cmd.proto
-  control_conf.proto
-  gain_scheduler_conf.proto
-  lat_controller_conf.proto
-  lon_controller_conf.proto
-  pad_msg.proto
-  pid_conf.proto
-  steer_torque_calibration.proto)
 add_library(control_proto
-  ${control_proto_lib})
+  calibration_table.pb.cc
+  calibration_table.pb.h
+  control_cmd.pb.cc
+  control_cmd.pb.h
+  control_conf.pb.cc
+  control_conf.pb.h
+  gain_scheduler_conf.pb.cc
+  gain_scheduler_conf.pb.h
+  lat_controller_conf.pb.cc
+  lat_controller_conf.pb.h
+  lon_controller_conf.pb.cc
+  lon_controller_conf.pb.h
+  pad_msg.pb.cc
+  pad_msg.pb.h
+  pid_conf.pb.cc
+  pid_conf.pb.h
+  steer_torque_calibration.pb.cc
+  steer_torque_calibration.pb.h)
 target_link_libraries(control_proto
   ${COMMON_LIB}
   canbus_proto

@@ -1,18 +1,23 @@
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-find_package(Protobuf REQUIRED)
 
-PROTOBUF_GENERATE_CPP(canbus_proto_lib PROTO_HDRS
-  canbus_conf.proto
-  ch.proto
-  chassis.proto
-  chassis_detail.proto
-  cx75.proto
-  teshun.proto
-  vehicle_chassis.proto
-  vehicle_parameter.proto)
 add_library(canbus_proto
-  ${canbus_proto_lib})
+  canbus_conf.pb.cc
+  canbus_conf.pb.h
+  ch.pb.cc
+  ch.pb.h
+  chassis.pb.cc
+  chassis.pb.h
+  chassis_detail.pb.cc
+  chassis_detail.pb.h
+  cx75.pb.cc
+  cx75.pb.h
+  teshun.pb.cc
+  teshun.pb.h
+  vehicle_chassis.pb.cc
+  vehicle_chassis.pb.h
+  vehicle_parameter.pb.cc
+  vehicle_parameter.pb.h)
 target_link_libraries(canbus_proto
   ${COMMON_LIB}
   common_proto

@@ -1,11 +1,9 @@
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-find_package(Protobuf REQUIRED)
 
-PROTOBUF_GENERATE_CPP(drivers_canbus_proto_lib PROTO_HDRS
-  sensor_canbus_conf.proto)
 add_library(drivers_canbus_proto
-  ${drivers_canbus_proto_lib})
+  sensor_canbus_conf.pb.cc
+  sensor_canbus_conf.pb.h)
 target_link_libraries(drivers_canbus_proto
   ${COMMON_LIB}
   common_proto
