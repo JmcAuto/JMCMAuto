@@ -42,14 +42,11 @@ Status Canbus::Init() {
     AdapterManager::Init(FLAGS_canbus_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";
 
-    // load conf
-    // if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file,
-    // &canbus_conf_))
-    //{
-    //  return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file:
-    //  " +
-    //                 FLAGS_canbus_conf_file);
-    //}
+     //load conf
+    if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file, &canbus_conf_))
+    {
+      return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file:" + FLAGS_canbus_conf_file);
+    }
 
     AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
     // ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
@@ -249,13 +246,13 @@ Status Canbus::Start() {
 }
 
 void Canbus::PublishChassis() {
-    jmc_auto::canbus::Chassis chassis_;
-    ::Chassis chassis;
-    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis_);
+    jmc_auto::canbus::Chassis chassis;
+    //::Chassis chassis;
+    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
     AdapterManager::PublishChassis(chassis);
 
-    AINFO << chassis_.DebugString();
-    ADEBUG << chassis_.ShortDebugString();
+    AINFO << chassis.DebugString();
+    ADEBUG << chassis.ShortDebugString();
 }
 
 /*

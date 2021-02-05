@@ -36,7 +36,6 @@
 #include "modules/drivers/canbus/can_comm/can_receiver.h"
 #include "modules/drivers/canbus/can_comm/can_sender.h"
 #include "modules/drivers/canbus/can_comm/message_manager.h"
-#include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
 //#include "impl_type_canbusdataparam.h"
 //#include "impl_type_cansetdataresult.h"
@@ -67,8 +66,6 @@ namespace canbus {
  * @brief canbus module main class.
  * It processes the control data to send protocol messages to can card.
  */
-//using CanRxProxy = mdc::sensor::proxy::CanRxServiceInterfaceProxy;
-//using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
 
 class Canbus : public jmc_auto::common::JmcAutoApp {
   public:
@@ -120,7 +117,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     // void RegisterCanClients();
     // void setControlcmd(const ros::TimerEvent &event);
 
-    // CanbusConf canbus_conf_;
+    CanbusConf canbus_conf_;
     // std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
     // CanSender<ChassisDetail> can_sender_;
     // jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;

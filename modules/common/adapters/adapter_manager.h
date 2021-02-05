@@ -151,8 +151,8 @@ namespace adapter {
         }                                                                      \
     }                                                                          \
     void name##PublishEventCallback() {                                        \
-        name MsgData;                                                          \
-        name##Adapter::DataType &PbMsgData                                     \
+        const name* strData;                                                   \
+        name##Adapter::DataType pbData;                                        \
         if (name##proxy == nullptr) {                                          \
             return;                                                            \
         }                                                                      \
@@ -160,8 +160,10 @@ namespace adapter {
         const auto &name##MsgSamples =                                         \
             name##proxy->name##Event.GetCachedSamples();                       \
         for (const auto &testdata : name##MsgSamples) {                        \
-            MsgData = *testdata;                                               \
-            jmc_auto::common::util::struct2Pb((const char *)&MsgData, name##_);\
+            strData = testdata.get();                                          \
+            jmc_auto::common::util::PbConvertor::struct2Pb(                    \
+            		(const char *&)strData, &pbData);                          \
+            		name##_->SetLatestPublished(pbData);                       \
         }                                                                      \
         name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
@@ -170,12 +172,14 @@ namespace adapter {
         jmc_auto::common::util::struct2Pb((const char *)&MsgData, name##_);    \
         return name##_.get(); }*/                                                \
     void InternalPublish##name(const name##Adapter::DataType &pbdata) {        \
-        name data;                                                             \  
-        jmc_auto::common::util::pb2struct(pbdata, data);                       \
+        jmc_auto::common::util::PbConvertor::MemTree stru;                     \
+        jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
+        name *data = (name *)stru.pMem;                                        \
+        stru.release();                                                        \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
-        name##skeleton->name##Event.Send(std::move(data));                     \
+        name##skeleton->name##Event.Send(*data);                               \
         name##_->SetLatestPublished(pbdata);                                   \
     }
 
