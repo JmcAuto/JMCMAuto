@@ -50,6 +50,13 @@ add_compile_options(-fPIC)
 
 #添加第三方依赖
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+# Find required protobuf package
+find_package(Protobuf REQUIRED)
+if(PROTOBUF_FOUND)
+    message(STATUS "protobuf library found")
+else()
+    message(FATAL_ERROR "protobuf library is needed but cant be found")
+endif()
 
 #默认编译c和c++文件生成可执行文件
 add_executable(canbus modules/canbus/main.cc)

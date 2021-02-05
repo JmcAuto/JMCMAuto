@@ -1,8 +1,16 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-file(GLOB_RECURSE  control_proto_lib *.cc *.h)
-
+PROTOBUF_GENERATE_CPP(control_proto_lib PROTO_HDRS
+  calibration_table.proto
+  control_cmd.proto
+  control_conf.proto
+  gain_scheduler_conf.proto
+  lat_controller_conf.proto
+  lon_controller_conf.proto
+  pad_msg.proto
+  pid_conf.proto
+  steer_torque_calibration.proto)
 add_library(control_proto
   ${control_proto_lib})
 target_link_libraries(control_proto

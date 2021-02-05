@@ -89,6 +89,7 @@ message SimpleLongitudinalDebug {
   optional double current_station = 20;
   optional double path_remain = 21;
   optional double preview_kappa = 22;
+  optional double match_acceleration_reference = 23 ;
 }
 
 message SimpleLateralDebug {

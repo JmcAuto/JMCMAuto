@@ -1,3 +1,4 @@
+package(default_visibility = ["//visibility:public"])
 
 cc_proto_library(
     name = "canbus_proto",

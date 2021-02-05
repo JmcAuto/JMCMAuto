@@ -1,8 +1,15 @@
 include_directories(.)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-file(GLOB_RECURSE  canbus_proto_lib *.cc *.h)
-
+PROTOBUF_GENERATE_CPP(canbus_proto_lib PROTO_HDRS
+  canbus_conf.proto
+  ch.proto
+  chassis.proto
+  chassis_detail.proto
+  cx75.proto
+  teshun.proto
+  vehicle_chassis.proto
+  vehicle_parameter.proto)
 add_library(canbus_proto
   ${canbus_proto_lib})
 target_link_libraries(canbus_proto
