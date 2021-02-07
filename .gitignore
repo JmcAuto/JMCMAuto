@@ -15,6 +15,8 @@ share
 #generated
 #outputJson
 .settings/org.eclipse.cdt.managedbuilder.core.prefs
+*.pb.cc
+*.pb.h
 
 # temporary files
 *.swp
