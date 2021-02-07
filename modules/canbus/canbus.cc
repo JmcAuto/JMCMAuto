@@ -22,7 +22,7 @@
 #include "modules/common/adapters/proto/adapter_config.pb.h"
 #include "modules/common/time/jmcauto_time.h"
 #include "modules/common/util/util.h"
-//#include "modules/drivers/canbus/can_client/can_client_factory.h"
+#include "modules/drivers/canbus/can_client/can_client_factory.h"
 
 #include "impl_type_chassis.h"
 

@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package jmc_auto.drivers.canbus;
+
+message CANCardParameter {
+  enum CANCardBrand {
+    FAKE_CAN = 0;
+    MDC_CAN = 1;
+  }
+
+  enum CANCardType {
+    PCI_CARD = 0;
+    USB_CARD = 1;
+  }
+
+  optional CANCardBrand brand = 1;
+  optional CANCardType type = 2;
+  optional int channel_id = 3;
+}

@@ -36,16 +36,11 @@
 #include "modules/drivers/canbus/can_comm/can_receiver.h"
 #include "modules/drivers/canbus/can_comm/can_sender.h"
 #include "modules/drivers/canbus/can_comm/message_manager.h"
+#include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
-//#include "impl_type_canbusdataparam.h"
-//#include "impl_type_cansetdataresult.h"
 #include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
-//#include "mdc/sensor/canrxserviceinterface_common.h"
-//#include "mdc/sensor/canrxserviceinterface_proxy.h"
-//#include "mdc/sensor/cantxserviceinterface_common.h"
-//#include "mdc/sensor/cantxserviceinterface_skeleton.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
 
 //#include "modules/remotecontrol/proto/remote_control.pb.h"

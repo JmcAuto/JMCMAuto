@@ -31,7 +31,7 @@
 #include "modules/common/log.h"
 #include "modules/common/proto/error_code.pb.h"
 #include "modules/drivers/canbus/common/byte.h"
-//#include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
+#include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
 /**
  * @namespace jmc_auto::drivers::canbus
@@ -106,7 +106,7 @@ class CanClient {
    * @param parameter CAN card parameters to initialize the CAN client.
    * @return If the initialization is successful.
    */
-  //virtual bool Init(const CANCardParameter &parameter) = 0;
+  virtual bool Init(const CANCardParameter &parameter) = 0;
 
   /**
    * @brief Start the CAN client.

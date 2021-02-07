@@ -17,7 +17,7 @@ target_link_libraries(canbus_lib
   jmc_auto_app
   adapter_manager
   #monitor_log
-  #can_client_factory
+  can_client_factory
   can_receiver
   can_sender
   #remotecontrol_proto

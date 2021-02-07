@@ -36,18 +36,10 @@ CanClientFactory::CanClientFactory() {}
 
 void CanClientFactory::RegisterCanClients() {
   AINFO << "CanClientFactory::RegisterCanClients";
+  Register(CANCardParameter::MDC_CAN,
+           []() -> CanClient* { return new can::MdcCanClient(); });
   Register(CANCardParameter::FAKE_CAN,
            []() -> CanClient* { return new can::FakeCanClient(); });
-#if USE_ESD_CAN
-  AINFO << "register can: " << CANCardParameter::ESD_CAN;
-  Register(CANCardParameter::ESD_CAN,
-           []() -> CanClient* { return new can::EsdCanClient(); });
-#endif
-  Register(CANCardParameter::SOCKET_CAN_RAW,
-           []() -> CanClient* { return new can::SocketCanClientRaw(); });
-
-  Register(CANCardParameter::HERMES_CAN,
-           []() -> CanClient* { return new can::HermesCanClient(); });
 }
 
 std::unique_ptr<CanClient> CanClientFactory::CreateCANClient(

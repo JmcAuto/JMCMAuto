@@ -4,6 +4,12 @@ vehicle_parameter {
   driving_mode: COMPLETE_AUTO_DRIVE
 }
 
+can_card_parameter {
+  brand: MDC_CAN
+  type: PCI_CARD
+  channel_id: 1
+}
+
 enable_debug_mode: true
 enable_receiver_log: true
 enable_sender_log: true
