@@ -17,13 +17,6 @@
 #include "modules/drivers/canbus/can_client/can_client_factory.h"
 
 #include "modules/drivers/canbus/can_client/fake/fake_can_client.h"
-#if USE_ESD_CAN
-#include "modules/drivers/canbus/can_client/esd/esd_can_client.h"
-#endif
-
-#include "modules/drivers/canbus/can_client/socket/socket_can_client_raw.h"
-
-#include "modules/drivers/canbus/can_client/hermes_can/hermes_can_client.h"
 
 #include "modules/common/log.h"
 #include "modules/common/util/util.h"
@@ -36,8 +29,8 @@ CanClientFactory::CanClientFactory() {}
 
 void CanClientFactory::RegisterCanClients() {
   AINFO << "CanClientFactory::RegisterCanClients";
-  Register(CANCardParameter::MDC_CAN,
-           []() -> CanClient* { return new can::MdcCanClient(); });
+//  Register(CANCardParameter::MDC_CAN,
+//           []() -> CanClient* { return new can::MdcCanClient(); });
   Register(CANCardParameter::FAKE_CAN,
            []() -> CanClient* { return new can::FakeCanClient(); });
 }

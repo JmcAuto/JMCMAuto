@@ -52,6 +52,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CanbusConf, vehicle_parameter_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CanbusConf, can_card_parameter_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CanbusConf, enable_debug_mode_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CanbusConf, enable_receiver_log_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CanbusConf, enable_sender_log_),
@@ -59,10 +60,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   1,
   2,
   3,
+  4,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, 9, sizeof(CanbusConf)},
+  { 0, 10, sizeof(CanbusConf)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -101,10 +103,13 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
+  ::jmc_auto::drivers::canbus::protobuf_modules_2fdrivers_2fcanbus_2fproto_2fcan_5fcard_5fparameter_2eproto::InitDefaults();
   ::jmc_auto::canbus::protobuf_modules_2fcanbus_2fproto_2fvehicle_5fparameter_2eproto::InitDefaults();
   _CanbusConf_default_instance_.DefaultConstruct();
   _CanbusConf_default_instance_.get_mutable()->vehicle_parameter_ = const_cast< ::jmc_auto::canbus::VehicleParameter*>(
       ::jmc_auto::canbus::VehicleParameter::internal_default_instance());
+  _CanbusConf_default_instance_.get_mutable()->can_card_parameter_ = const_cast< ::jmc_auto::drivers::canbus::CANCardParameter*>(
+      ::jmc_auto::drivers::canbus::CANCardParameter::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -115,18 +120,22 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
       "\n&modules/canbus/proto/canbus_conf.proto"
-      "\022\017jmc_auto.canbus\032,modules/canbus/proto/"
-      "vehicle_parameter.proto\"\262\001\n\nCanbusConf\022<"
-      "\n\021vehicle_parameter\030\001 \001(\0132!.jmc_auto.can"
-      "bus.VehicleParameter\022 \n\021enable_debug_mod"
-      "e\030\002 \001(\010:\005false\022\"\n\023enable_receiver_log\030\003 "
-      "\001(\010:\005false\022 \n\021enable_sender_log\030\004 \001(\010:\005f"
-      "alse"
+      "\022\017jmc_auto.canbus\0325modules/drivers/canbu"
+      "s/proto/can_card_parameter.proto\032,module"
+      "s/canbus/proto/vehicle_parameter.proto\"\371"
+      "\001\n\nCanbusConf\022<\n\021vehicle_parameter\030\001 \001(\013"
+      "2!.jmc_auto.canbus.VehicleParameter\022E\n\022c"
+      "an_card_parameter\030\002 \001(\0132).jmc_auto.drive"
+      "rs.canbus.CANCardParameter\022 \n\021enable_deb"
+      "ug_mode\030\003 \001(\010:\005false\022\"\n\023enable_receiver_"
+      "log\030\004 \001(\010:\005false\022 \n\021enable_sender_log\030\005 "
+      "\001(\010:\005false"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 284);
+      descriptor, 410);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/canbus/proto/canbus_conf.proto", &protobuf_RegisterTypes);
+  ::jmc_auto::drivers::canbus::protobuf_modules_2fdrivers_2fcanbus_2fproto_2fcan_5fcard_5fparameter_2eproto::AddDescriptors();
   ::jmc_auto::canbus::protobuf_modules_2fcanbus_2fproto_2fvehicle_5fparameter_2eproto::AddDescriptors();
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
 }
@@ -149,6 +158,7 @@ struct StaticDescriptorInitializer {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CanbusConf::kVehicleParameterFieldNumber;
+const int CanbusConf::kCanCardParameterFieldNumber;
 const int CanbusConf::kEnableDebugModeFieldNumber;
 const int CanbusConf::kEnableReceiverLogFieldNumber;
 const int CanbusConf::kEnableSenderLogFieldNumber;
@@ -173,6 +183,11 @@ CanbusConf::CanbusConf(const CanbusConf& from)
   } else {
     vehicle_parameter_ = NULL;
   }
+  if (from.has_can_card_parameter()) {
+    can_card_parameter_ = new ::jmc_auto::drivers::canbus::CANCardParameter(*from.can_card_parameter_);
+  } else {
+    can_card_parameter_ = NULL;
+  }
   ::memcpy(&enable_debug_mode_, &from.enable_debug_mode_,
     reinterpret_cast<char*>(&enable_sender_log_) -
     reinterpret_cast<char*>(&enable_debug_mode_) + sizeof(enable_sender_log_));
@@ -193,6 +208,9 @@ CanbusConf::~CanbusConf() {
 void CanbusConf::SharedDtor() {
   if (this != internal_default_instance()) {
     delete vehicle_parameter_;
+  }
+  if (this != internal_default_instance()) {
+    delete can_card_parameter_;
   }
 }
 
@@ -221,11 +239,17 @@ CanbusConf* CanbusConf::New(::google::protobuf::Arena* arena) const {
 
 void CanbusConf::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.canbus.CanbusConf)
-  if (has_vehicle_parameter()) {
-    GOOGLE_DCHECK(vehicle_parameter_ != NULL);
-    vehicle_parameter_->::jmc_auto::canbus::VehicleParameter::Clear();
+  if (_has_bits_[0 / 32] & 3u) {
+    if (has_vehicle_parameter()) {
+      GOOGLE_DCHECK(vehicle_parameter_ != NULL);
+      vehicle_parameter_->::jmc_auto::canbus::VehicleParameter::Clear();
+    }
+    if (has_can_card_parameter()) {
+      GOOGLE_DCHECK(can_card_parameter_ != NULL);
+      can_card_parameter_->::jmc_auto::drivers::canbus::CANCardParameter::Clear();
+    }
   }
-  if (_has_bits_[0 / 32] & 14u) {
+  if (_has_bits_[0 / 32] & 28u) {
     ::memset(&enable_debug_mode_, 0, reinterpret_cast<char*>(&enable_sender_log_) -
       reinterpret_cast<char*>(&enable_debug_mode_) + sizeof(enable_sender_log_));
   }
@@ -255,10 +279,22 @@ bool CanbusConf::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool enable_debug_mode = 2 [default = false];
+      // optional .jmc_auto.drivers.canbus.CANCardParameter can_card_parameter = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u)) {
+            static_cast< ::google::protobuf::uint8>(18u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_can_card_parameter()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional bool enable_debug_mode = 3 [default = false];
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u)) {
           set_has_enable_debug_mode();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -269,10 +305,10 @@ bool CanbusConf::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool enable_receiver_log = 3 [default = false];
-      case 3: {
+      // optional bool enable_receiver_log = 4 [default = false];
+      case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u)) {
+            static_cast< ::google::protobuf::uint8>(32u)) {
           set_has_enable_receiver_log();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -283,10 +319,10 @@ bool CanbusConf::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool enable_sender_log = 4 [default = false];
-      case 4: {
+      // optional bool enable_sender_log = 5 [default = false];
+      case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u)) {
+            static_cast< ::google::protobuf::uint8>(40u)) {
           set_has_enable_sender_log();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -332,19 +368,25 @@ void CanbusConf::SerializeWithCachedSizes(
       1, *this->vehicle_parameter_, output);
   }
 
-  // optional bool enable_debug_mode = 2 [default = false];
+  // optional .jmc_auto.drivers.canbus.CANCardParameter can_card_parameter = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->enable_debug_mode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->can_card_parameter_, output);
   }
 
-  // optional bool enable_receiver_log = 3 [default = false];
+  // optional bool enable_debug_mode = 3 [default = false];
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->enable_receiver_log(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->enable_debug_mode(), output);
   }
 
-  // optional bool enable_sender_log = 4 [default = false];
+  // optional bool enable_receiver_log = 4 [default = false];
   if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->enable_sender_log(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->enable_receiver_log(), output);
+  }
+
+  // optional bool enable_sender_log = 5 [default = false];
+  if (cached_has_bits & 0x00000010u) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->enable_sender_log(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -368,19 +410,26 @@ void CanbusConf::SerializeWithCachedSizes(
         1, *this->vehicle_parameter_, deterministic, target);
   }
 
-  // optional bool enable_debug_mode = 2 [default = false];
+  // optional .jmc_auto.drivers.canbus.CANCardParameter can_card_parameter = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->enable_debug_mode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *this->can_card_parameter_, deterministic, target);
   }
 
-  // optional bool enable_receiver_log = 3 [default = false];
+  // optional bool enable_debug_mode = 3 [default = false];
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->enable_receiver_log(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->enable_debug_mode(), target);
   }
 
-  // optional bool enable_sender_log = 4 [default = false];
+  // optional bool enable_receiver_log = 4 [default = false];
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->enable_sender_log(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->enable_receiver_log(), target);
+  }
+
+  // optional bool enable_sender_log = 5 [default = false];
+  if (cached_has_bits & 0x00000010u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->enable_sender_log(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -400,7 +449,7 @@ size_t CanbusConf::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 15u) {
+  if (_has_bits_[0 / 32] & 31u) {
     // optional .jmc_auto.canbus.VehicleParameter vehicle_parameter = 1;
     if (has_vehicle_parameter()) {
       total_size += 1 +
@@ -408,17 +457,24 @@ size_t CanbusConf::ByteSizeLong() const {
           *this->vehicle_parameter_);
     }
 
-    // optional bool enable_debug_mode = 2 [default = false];
+    // optional .jmc_auto.drivers.canbus.CANCardParameter can_card_parameter = 2;
+    if (has_can_card_parameter()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->can_card_parameter_);
+    }
+
+    // optional bool enable_debug_mode = 3 [default = false];
     if (has_enable_debug_mode()) {
       total_size += 1 + 1;
     }
 
-    // optional bool enable_receiver_log = 3 [default = false];
+    // optional bool enable_receiver_log = 4 [default = false];
     if (has_enable_receiver_log()) {
       total_size += 1 + 1;
     }
 
-    // optional bool enable_sender_log = 4 [default = false];
+    // optional bool enable_sender_log = 5 [default = false];
     if (has_enable_sender_log()) {
       total_size += 1 + 1;
     }
@@ -454,17 +510,20 @@ void CanbusConf::MergeFrom(const CanbusConf& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 15u) {
+  if (cached_has_bits & 31u) {
     if (cached_has_bits & 0x00000001u) {
       mutable_vehicle_parameter()->::jmc_auto::canbus::VehicleParameter::MergeFrom(from.vehicle_parameter());
     }
     if (cached_has_bits & 0x00000002u) {
-      enable_debug_mode_ = from.enable_debug_mode_;
+      mutable_can_card_parameter()->::jmc_auto::drivers::canbus::CANCardParameter::MergeFrom(from.can_card_parameter());
     }
     if (cached_has_bits & 0x00000004u) {
-      enable_receiver_log_ = from.enable_receiver_log_;
+      enable_debug_mode_ = from.enable_debug_mode_;
     }
     if (cached_has_bits & 0x00000008u) {
+      enable_receiver_log_ = from.enable_receiver_log_;
+    }
+    if (cached_has_bits & 0x00000010u) {
       enable_sender_log_ = from.enable_sender_log_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -495,6 +554,7 @@ void CanbusConf::Swap(CanbusConf* other) {
 }
 void CanbusConf::InternalSwap(CanbusConf* other) {
   std::swap(vehicle_parameter_, other->vehicle_parameter_);
+  std::swap(can_card_parameter_, other->can_card_parameter_);
   std::swap(enable_debug_mode_, other->enable_debug_mode_);
   std::swap(enable_receiver_log_, other->enable_receiver_log_);
   std::swap(enable_sender_log_, other->enable_sender_log_);
@@ -556,15 +616,60 @@ void CanbusConf::set_allocated_vehicle_parameter(::jmc_auto::canbus::VehiclePara
   // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.CanbusConf.vehicle_parameter)
 }
 
-// optional bool enable_debug_mode = 2 [default = false];
-bool CanbusConf::has_enable_debug_mode() const {
+// optional .jmc_auto.drivers.canbus.CANCardParameter can_card_parameter = 2;
+bool CanbusConf::has_can_card_parameter() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void CanbusConf::set_has_enable_debug_mode() {
+void CanbusConf::set_has_can_card_parameter() {
   _has_bits_[0] |= 0x00000002u;
 }
-void CanbusConf::clear_has_enable_debug_mode() {
+void CanbusConf::clear_has_can_card_parameter() {
   _has_bits_[0] &= ~0x00000002u;
+}
+void CanbusConf::clear_can_card_parameter() {
+  if (can_card_parameter_ != NULL) can_card_parameter_->::jmc_auto::drivers::canbus::CANCardParameter::Clear();
+  clear_has_can_card_parameter();
+}
+const ::jmc_auto::drivers::canbus::CANCardParameter& CanbusConf::can_card_parameter() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.CanbusConf.can_card_parameter)
+  return can_card_parameter_ != NULL ? *can_card_parameter_
+                         : *::jmc_auto::drivers::canbus::CANCardParameter::internal_default_instance();
+}
+::jmc_auto::drivers::canbus::CANCardParameter* CanbusConf::mutable_can_card_parameter() {
+  set_has_can_card_parameter();
+  if (can_card_parameter_ == NULL) {
+    can_card_parameter_ = new ::jmc_auto::drivers::canbus::CANCardParameter;
+  }
+  // @@protoc_insertion_point(field_mutable:jmc_auto.canbus.CanbusConf.can_card_parameter)
+  return can_card_parameter_;
+}
+::jmc_auto::drivers::canbus::CANCardParameter* CanbusConf::release_can_card_parameter() {
+  // @@protoc_insertion_point(field_release:jmc_auto.canbus.CanbusConf.can_card_parameter)
+  clear_has_can_card_parameter();
+  ::jmc_auto::drivers::canbus::CANCardParameter* temp = can_card_parameter_;
+  can_card_parameter_ = NULL;
+  return temp;
+}
+void CanbusConf::set_allocated_can_card_parameter(::jmc_auto::drivers::canbus::CANCardParameter* can_card_parameter) {
+  delete can_card_parameter_;
+  can_card_parameter_ = can_card_parameter;
+  if (can_card_parameter) {
+    set_has_can_card_parameter();
+  } else {
+    clear_has_can_card_parameter();
+  }
+  // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.CanbusConf.can_card_parameter)
+}
+
+// optional bool enable_debug_mode = 3 [default = false];
+bool CanbusConf::has_enable_debug_mode() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void CanbusConf::set_has_enable_debug_mode() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void CanbusConf::clear_has_enable_debug_mode() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 void CanbusConf::clear_enable_debug_mode() {
   enable_debug_mode_ = false;
@@ -580,15 +685,15 @@ void CanbusConf::set_enable_debug_mode(bool value) {
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.CanbusConf.enable_debug_mode)
 }
 
-// optional bool enable_receiver_log = 3 [default = false];
+// optional bool enable_receiver_log = 4 [default = false];
 bool CanbusConf::has_enable_receiver_log() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 void CanbusConf::set_has_enable_receiver_log() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 void CanbusConf::clear_has_enable_receiver_log() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 void CanbusConf::clear_enable_receiver_log() {
   enable_receiver_log_ = false;
@@ -604,15 +709,15 @@ void CanbusConf::set_enable_receiver_log(bool value) {
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.CanbusConf.enable_receiver_log)
 }
 
-// optional bool enable_sender_log = 4 [default = false];
+// optional bool enable_sender_log = 5 [default = false];
 bool CanbusConf::has_enable_sender_log() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 void CanbusConf::set_has_enable_sender_log() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 void CanbusConf::clear_has_enable_sender_log() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 void CanbusConf::clear_enable_sender_log() {
   enable_sender_log_ = false;

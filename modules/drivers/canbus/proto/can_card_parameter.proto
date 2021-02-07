@@ -5,7 +5,9 @@ package jmc_auto.drivers.canbus;
 message CANCardParameter {
   enum CANCardBrand {
     FAKE_CAN = 0;
-    MDC_CAN = 1;
+    ESD_CAN = 1;
+    SOCKET_CAN_RAW = 2;
+    HERMES_CAN = 3;
   }
 
   enum CANCardType {
@@ -13,7 +15,14 @@ message CANCardParameter {
     USB_CARD = 1;
   }
 
+  enum CANChannelId {
+    CHANNEL_ID_ZERO = 0;
+    CHANNEL_ID_ONE = 1;
+    CHANNEL_ID_TWO = 2;
+    CHANNEL_ID_THREE = 3;
+  }
+
   optional CANCardBrand brand = 1;
   optional CANCardType type = 2;
-  optional int channel_id = 3;
+  optional CANChannelId channel_id = 3;
 }
