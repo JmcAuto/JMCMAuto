@@ -14,7 +14,7 @@
 #include "mdc/sensor/cantxserviceinterface_skeleton.h"
 
 #include "impl_type_cansetdataresult.h"
-#include "impl_type_canbusdataparam.h
+#include "impl_type_canbusdataparam.h"
 
 /**
  * @namespace jmc_auto::drivers::canbus::can
@@ -31,10 +31,10 @@ class MdcCanClient : public CanClient {
     using CanTxSkeleton = mdc::sensor::skeleton::CanTxServiceInterfaceSkeleton;
     /// Interval of sleeping
 
-    const unsigned int CAN_NUM = 12;
-    const int CAN_VALIDLEN = 8;
+    static const unsigned int CAN_NUM = 12;
+    static const int CAN_VALIDLEN = 8;
 
-    bool Init(const CANCardParameter &param) override;
+    bool Init(const CANCardParameter &parameter) override;
 
     virtual ~MdcCanClient() = default;
 
@@ -66,10 +66,10 @@ class MdcCanClient : public CanClient {
      * @brief Get the error string.
      * @param status The status to get the error string.
      */
-    std::string GetErrorString(const int32_t status) override;
+    //std::string GetErrorString(const int32_t status) override;
 
   private:
-    CanBusDataParam *canRevDataParm;
+    CanBusDataParam canRevDataParm;
     std::stringstream frame_info_;
 
     // canbus_config.json中的ChannelId

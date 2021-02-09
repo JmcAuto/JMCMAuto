@@ -17,7 +17,7 @@ namespace can {
 
 using jmc_auto::common::ErrorCode;
 
-bool MdcCanClient::Init(const CANCardParameter &param) {
+bool MdcCanClient::Init(const CANCardParameter &parameter) {
     if (!parameter.has_channel_id()) {
         AERROR << "Init CAN failed: parameter does not have channel id. The "
                   "parameter is "
@@ -43,16 +43,16 @@ ErrorCode MdcCanClient::Start() {
     }
 
     // 提供服务
-    m_skeleton[channelId] = std::make_unique<CanTxSkeleton>(
+    m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
         ara::com::InstanceIdentifier(m_instance),
         ara::com::MethodCallProcessingMode::kPoll);
-    m_skeleton[channelId]->OfferService();
+    m_skeleton[m_channelId]->OfferService();
 
     // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
     CanRxProxy::StartFindService(
         [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
                ara::com::FindServiceHandle handler) {
-            McuApInterface::ServiceAvailabilityCallback(std::move(handles),
+    		MdcCanClient::ServiceAvailabilityCallback(std::move(handles),
                                                         handler);
         },
         m_instance);
@@ -74,21 +74,21 @@ void MdcCanClient::ServiceAvailabilityCallback(
                 // 注册接收MCU上传CAN帧的回调函数
                 m_proxy[channelID] = std::make_unique<CanRxProxy>(handles[i]);
                 m_proxy[channelID]->CanDataRxEvent.Subscribe(
-                    ara::com::EventCacheUpdatePolicy::kNewestN, BUFFER_DEPTH);
+                    ara::com::EventCacheUpdatePolicy::kNewestN, 40);
                 m_proxy[channelID]->CanDataRxEvent.SetReceiveHandler(
                     [this, channelID]() {
-                        McuApInterface::CanDataEventCallback();
+                		MdcCanClient::CanDataEventCallback(channelID);
                     });
 
                 // 开启method发送线程
-                m_canMethodThread[channelID] = std::make_unique<std::thread>(
-                    &McuApInterface::CanMehodSend, this, channelID);
+                //m_canMethodThread[channelID] = std::make_unique<std::thread>(
+                //    &MdcCanClient::Send, this, channelID);
             }
         }
     }
 }
 
-void MdcCanClient::CanDataEventCallback() {
+void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     if (channelID < 0 || channelID > CAN_NUM) {
         return;
     }
@@ -103,43 +103,35 @@ void MdcCanClient::CanDataEventCallback() {
     m_proxy[channelID]->CanDataRxEvent.Update();
     const auto &canMsgSamples =
         m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
-    canRevDataParam = canMsgSamples.get();
-    /*for (const auto &canData : canMsgSamples) {
-    for (unsigned int i = 0; i < canData->elementList.size(); i++) {
-        printf("canId: %x, canDLC: %u\n", canData.elementList[i].canId,
-    canData.elementList[i].validLen); for (unsigned int j = 0; j < CAN_VALIDLEN;
-    j++) { printf("%x ", canData.elementList[i].data[j]);
-        }
-        printf("\n");
-    }
-    }*/
+    //canRevDataParm = (&canMsgSamples)->get();
+    for (const auto &canRevDataParm : canMsgSamples);
     // 解锁
     lockread.unlock();
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
 }
 
-void MdcCanClient::Stop() {}
+void MdcCanClient::Stop() {return;}
 
 ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
                              int32_t *const frame_num) {
 
     if (m_proxy[m_channelId] == nullptr) {
-        return;
+        return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
 
     CanBusDataParam canSendDataParm;
-    canSendDataParm.elementList.resize(frame_num);
-    for (int i = 0; i < frame_num; i++) {
+    canSendDataParm.elementList.resize(*frame_num);
+    for (int i = 0; i < *frame_num; i++) {
         struct Element canRawdata;
 
-        canRawdata.timeStamp.second = frames.timestamp.tv_sec;
-        canRawdata.timeStamp.nsecond = frames.timestamp.tv_usec;
+        canRawdata.timeStamp.second = frames[i].timestamp.tv_sec;
+        canRawdata.timeStamp.nsecond = frames[i].timestamp.tv_usec;
 
         // 下发的CAN帧，需要在canbus_config.json中配置，比如CanId、DataLength
         // 可参照canbus_config_ars408.json中 ChannelId 1 进行配置
         canRawdata.canId = frames[i].id;
         canRawdata.validLen = frames[i].len;
-        canSendDataParm.elementList[i].data.resize(DATA_SIZE);
+        canSendDataParm.elementList[i].data.resize(canRawdata.validLen);
 
         for (int j = 0; j < CAN_VALIDLEN; i++) {
             canRawdata.data.push_back(frames[i].data[j]);
@@ -163,18 +155,18 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
     frames->resize(*frame_num);
     for (size_t i = 0; i < frames->size(); ++i) {
         for (int j = 0; j < CAN_VALIDLEN; ++j) {
-            (*frames)[i].data[j] = (*canRevDataParm).elementList[i].data[j];
+            (*frames)[i].data[j] = canRevDataParm.elementList[i].data[j];
         }
-        (*frames)[i].id = (*canRevDataParm).elementList[i].canId;
-        (*frames)[i].len = (*canRevDataParm).elementList[i].validLen;
+        (*frames)[i].id = canRevDataParm.elementList[i].canId;
+        (*frames)[i].len = canRevDataParm.elementList[i].validLen;
         ADEBUG << (*frames)[i].CanFrameString() << "frame_num[" << i << "]";
     }
     return ErrorCode::OK;
 }
 
-std::string MdcCanClient::GetErrorString(const int32_t /*status*/) {
-    return "";
-}
+//std::string MdcCanClient::GetErrorString(const int32_t /*status*/) {
+//    return "";
+//}
 
 } // namespace can
 } // namespace canbus
