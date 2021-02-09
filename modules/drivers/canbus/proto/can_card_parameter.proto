@@ -5,9 +5,7 @@ package jmc_auto.drivers.canbus;
 message CANCardParameter {
   enum CANCardBrand {
     FAKE_CAN = 0;
-    ESD_CAN = 1;
-    SOCKET_CAN_RAW = 2;
-    HERMES_CAN = 3;
+    MDC_CAN = 1;
   }
 
   enum CANCardType {

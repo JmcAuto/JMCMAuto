@@ -164,9 +164,9 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
     return ErrorCode::OK;
 }
 
-//std::string MdcCanClient::GetErrorString(const int32_t /*status*/) {
-//    return "";
-//}
+std::string MdcCanClient::GetErrorString(const int32_t /*status*/) {
+    return "";
+}
 
 } // namespace can
 } // namespace canbus

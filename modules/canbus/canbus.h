@@ -93,10 +93,6 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
 
   private:
     void PublishChassis();
-//    void ServiceAvailabilityCallbackcanData(
-//        ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
-//        ara::com::FindServiceHandle handler);
-//    void CanDataEventCallback(unsigned char channelID);
     // void PublishChassisDetail();
     // void OnTimer(const ros::TimerEvent &event);
     // void OnControlCommand(const jmc_auto::control::ControlCommand
@@ -113,27 +109,18 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     // void setControlcmd(const ros::TimerEvent &event);
 
     CanbusConf canbus_conf_;
-    // std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
-    // CanSender<ChassisDetail> can_sender_;
-    // jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
-//    std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
- //       message_manager_;
-    // std::unique_ptr<VehicleController> vehicle_controller_;
+     std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
+     CanSender<ChassisDetail> can_sender_;
+     jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
+    //std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
+    //   message_manager_;
+     std::unique_ptr<VehicleController> vehicle_controller_;
     bool IS_STOP_MODE = false;
     bool IS_VEHCILE_STOP = false;
     // jmc_auto::control::ControlCommand control_command_;
 
     bool IS_Remote_MODE = false;
     int64_t last_timestamp_ = 0;
-    // canbus_config.json中的ChannelId
-    int m_channelId = 5;
-    // instance ID
-    int m_instance = m_channelId + 1;
-    std::mutex m_canReadMutex;
-//    std::unique_ptr<CanRxProxy> m_proxy[CAN_NUM];
-    std::mutex m_canSendMutex;
-//    std::unique_ptr<CanTxSkeleton> m_skeleton[CAN_NUM];
-    std::unique_ptr<std::thread> m_canMethodThread[CAN_NUM];
 };
 
 } // namespace canbus

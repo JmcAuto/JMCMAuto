@@ -16,8 +16,8 @@
 
 #include "modules/canbus/vehicle/vehicle_factory.h"
 #include "modules/canbus/proto/vehicle_parameter.pb.h"
-#include "modules/canbus/vehicle/ch/ch_vehicle_factory.h"
-#include "modules/canbus/vehicle/teshun/teshun_vehicle_factory.h"
+//#include "modules/canbus/vehicle/ch/ch_vehicle_factory.h"
+//#include "modules/canbus/vehicle/teshun/teshun_vehicle_factory.h"
 #include "modules/canbus/vehicle/cx75/cx75_vehicle_factory.h"
 // #include "modules/canbus/vehicle/gem/gem_vehicle_factory.h"
 // #include "modules/canbus/vehicle/gem/gem_vehicle_factory.h"
@@ -33,13 +33,13 @@ void VehicleFactory::RegisterVehicleFactory() {
   // Register(VehicleParameter::GEM, []() -> AbstractVehicleFactory * {
   //   return new GemVehicleFactory();
   // });
-  Register(VehicleParameter::CH, []() -> AbstractVehicleFactory * {
-    return new ChVehicleFactory();
-  });
+  //Register(VehicleParameter::CH, []() -> AbstractVehicleFactory * {
+  //  return new ChVehicleFactory();
+  //});
 
-  Register(VehicleParameter::TESHUN, []() -> AbstractVehicleFactory * {
-    return new TeshunVehicleFactory();
-  });
+  //Register(VehicleParameter::TESHUN, []() -> AbstractVehicleFactory * {
+  //  return new TeshunVehicleFactory();
+  //});
     Register(VehicleParameter::CX75, []() -> AbstractVehicleFactory * {
     return new Cx75VehicleFactory();
   });

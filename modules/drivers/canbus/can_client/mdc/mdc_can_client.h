@@ -66,7 +66,7 @@ class MdcCanClient : public CanClient {
      * @brief Get the error string.
      * @param status The status to get the error string.
      */
-    //std::string GetErrorString(const int32_t status) override;
+    std::string GetErrorString(const int32_t status) override;
 
   private:
     CanBusDataParam canRevDataParm;
