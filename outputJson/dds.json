@@ -1,20 +1,3 @@
 {
-  "services": [
-    {
-      "service": "/HuaweiMDC/Platform/VehicleInfoToAppServiceInterface/VehicleInfoToApp",
-      "serviceId": 12,
-      "protocolIdUsed": false,
-      "events": [
-        {
-          "event": "CarReportEvent",
-          "id": 5251,
-          "dataType": "/HuaweiMDC/Platform/VehicleInfoToAppMsgDataType/VehicleInfoAppDataType",
-          "topicName": "VehicleInfoDdsEvent"
-        }
-      ],
-      "fields": [],
-      "methods": [],
-      "instances": []
-    }
-  ]
+  "services": []
 }

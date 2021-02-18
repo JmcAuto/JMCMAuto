@@ -42,13 +42,13 @@ ErrorCode MdcCanClient::Start() {
     if (is_started_) {
         return ErrorCode::OK;
     }
-    AINFO << "start 提供服务";
+    std::cout << "start 提供服务" << std::endl;
     // 提供服务
     m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
         ara::com::InstanceIdentifier(m_instance),
         ara::com::MethodCallProcessingMode::kPoll);
     m_skeleton[m_channelId]->OfferService();
-    AINFO << "start 注册服务发现的回调函数";
+    std::cout << "start 注册服务发现的回调函数" << std::endl;
     // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
     CanRxProxy::StartFindService(
         [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
@@ -64,7 +64,7 @@ ErrorCode MdcCanClient::Start() {
 void MdcCanClient::ServiceAvailabilityCallback(
     ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
     ara::com::FindServiceHandle handler) {
-	AINFO << "start 回调函数";
+	std::cout << "start 回调函数" << std::endl;
     if (handles.size() > 0) {
         for (unsigned int i = 0; i < handles.size(); i++) {
             int instanceId = static_cast<uint16_t>(handles[i].GetInstanceId());
@@ -100,7 +100,7 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     	AERROR << "channelid null";
         return;
     }
-    AINFO << "start 接收data";
+    std::cout << "start 接收data" << std::endl;
     // 加锁防止重入
     //std::unique_lock<std::mutex> lockread(m_canReadMutex);
     // 接收CAN帧
@@ -109,9 +109,9 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     for (const auto &sample : canMsgSamples) {
         // 接收转入CAN帧处理回调函数
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
-            AINFO << "canId: %x, canDLC: %u\n" << sample->elementList[i].canId << sample->elementList[i].validLen;
+            printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId, sample->elementList[i].validLen);
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-                AINFO << "%x " << sample->elementList[i].data[j];
+                printf("%x ", sample->elementList[i].data[j]);
             }
             printf("\n");
         }

@@ -42,7 +42,6 @@
 #include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
-#include "modules/drivers/canbus/can_client/mdc/mdc_can_client.h"
 
 //#include "modules/remotecontrol/proto/remote_control.pb.h"
 //#include "modules/guardian/proto/guardian.pb.h"
@@ -110,8 +109,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     // void setControlcmd(const ros::TimerEvent &event);
 
     CanbusConf canbus_conf_;
-    //std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
-    jmc_auto::drivers::canbus::can::MdcCanClient can_client_;
+    std::unique_ptr<jmc_auto::drivers::canbus::CanClient> can_client_;
     jmc_auto::drivers::canbus::CanSender<ChassisDetail> can_sender_;
     jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
     std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>

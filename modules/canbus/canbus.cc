@@ -51,8 +51,6 @@ Status Canbus::Init() {
     //AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
     // ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
 
-    can_client_.Init(canbus_conf_.can_card_parameter());
-    /*test
           // Init can client
           auto *can_factory = CanClientFactory::instance();
           can_factory->RegisterCanClients();
@@ -108,7 +106,7 @@ Status Canbus::Init() {
             return Status(ErrorCode::CANBUS_ERROR, "Failed to init vehicle controller.");
           }
           //AINFO << "The vehicle controller is successfully initialized.";
-*/
+
 /*
           CHECK(AdapterManager::GetControlCommand()) << "Control is not
        initialized.";
@@ -136,9 +134,8 @@ Status Canbus::Init() {
 }
 
 Status Canbus::Start() {
-	can_client_.Start();
-	/*
           // 1. init and start the can card hardware
+		  std::cout << "start";
           if (can_client_->Start() != ErrorCode::OK)
           {
             return Status(ErrorCode::CANBUS_ERROR, "Failed to start can client");
@@ -167,13 +164,13 @@ Status Canbus::Start() {
           }
           AINFO << "vehicle controller is started.";
 
-*/
+
     // 5. set timer to triger publish info periodly
     const double duration = 1.0 / FLAGS_chassis_freq;
     while (1) {
         //Canbus::PublishChassis();
     	AINFO << "publishchassis()";
-        sleep(00);
+        sleep(10000);
     }
 
     return Status::OK();

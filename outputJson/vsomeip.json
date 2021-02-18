@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_PlatformServices_CanbusAbstractApplication_CanbusAbstractSwComponent_CanbusAbstractProcess"
+      "ident": "someip_HuaweiMDC_PlatformServices_McuSensorsAbstractApplication_McuSensorsAbstractApplicationSwComponent_McuSensorsAbstractProcess"
     },
     "dlt": "false"
   },
@@ -17,31 +17,335 @@
   "netmask": "255.255.255.0",
   "applications": [
     {
-      "name": "/jmc_auto/PlatformServices/CanbusAbstractApplication/CanbusAbstractSwComponent/CanbusAbstractProcess",
-      "id": "46237"
+      "name": "/HuaweiMDC/PlatformServices/McuSensorsAbstractApplication/McuSensorsAbstractApplicationSwComponent/McuSensorsAbstractProcess",
+      "id": "44416"
     }
   ],
   "services": [
     {
-      "service": "102",
-      "instance": "104",
+      "service": "209",
+      "instance": "1",
       "unreliable": "6000",
       "events": [
         {
-          "event": "1001",
+          "event": "32769",
           "is_field": "false",
           "is_reliable": "false"
         }
       ],
-      "eventgroups": []
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "2",
+      "unreliable": "6001",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "3",
+      "unreliable": "6002",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "4",
+      "unreliable": "6003",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "5",
+      "unreliable": "6004",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "6",
+      "unreliable": "6005",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "7",
+      "unreliable": "6006",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "8",
+      "unreliable": "6007",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "9",
+      "unreliable": "6008",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "10",
+      "unreliable": "6009",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "11",
+      "unreliable": "6010",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "12",
+      "unreliable": "6011",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
     }
   ],
   "clients": [
     {
-      "service": "102",
-      "instance": "104",
+      "service": "208",
+      "instance": "1",
       "unreliable": [
         "5000"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "2",
+      "unreliable": [
+        "5001"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "3",
+      "unreliable": [
+        "5002"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "4",
+      "unreliable": [
+        "5003"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "5",
+      "unreliable": [
+        "5004"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "6",
+      "unreliable": [
+        "5005"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "7",
+      "unreliable": [
+        "5006"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "8",
+      "unreliable": [
+        "5007"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "9",
+      "unreliable": [
+        "5008"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "10",
+      "unreliable": [
+        "5009"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "11",
+      "unreliable": [
+        "5010"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "12",
+      "unreliable": [
+        "5011"
       ]
     }
   ],

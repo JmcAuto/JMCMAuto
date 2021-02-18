@@ -2,7 +2,7 @@
   {
     "key": "application_name",
     "value": {
-      "string": "CanbusAbstractSwComponent"
+      "string": "McuSensorsAbstractApplicationSwComponent"
     },
     "checksum": "1639651689"
   },
@@ -32,13 +32,13 @@
     "value": {
       "object[]": [
         {
-          "key": "CanbusAbstractProcess",
+          "key": "McuSensorsAbstractProcess",
           "value": {
             "object[]": [
               {
                 "key": "executable",
                 "value": {
-                  "string": "CanbusAbstractExecutable"
+                  "string": "McuSensorsAbstractExecutable"
                 },
                 "checksum": "1139441680"
               },

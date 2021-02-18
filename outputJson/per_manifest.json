@@ -4,52 +4,52 @@
     "value": {
       "object[]": [
         {
-          "key": "P-PORT-PROTOTYPE",
-          "value": {
-            "object[]": [
-              {
-                "key": "SHORT-NAME",
-                "value": {
-                  "string": "CanbusAbstractPPort"
-                },
-                "checksum": 999868619
-              },
-              {
-                "key": "PROVIDED-INTERFACE-TREF",
-                "value": {
-                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
-                },
-                "checksum": 2021491952
-              }
-            ]
-          },
-          "checksum": 1737816693
-        },
-        {
           "key": "R-PORT-PROTOTYPE",
           "value": {
             "object[]": [
               {
                 "key": "SHORT-NAME",
                 "value": {
-                  "string": "CanbusAbstractRPort"
+                  "string": "CanRxPort"
                 },
-                "checksum": 2042482614
+                "checksum": 3524509000
               },
               {
                 "key": "REQUIRED-INTERFACE-TREF",
                 "value": {
-                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                  "string": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface"
                 },
-                "checksum": 2841392543
+                "checksum": 1368699532
               }
             ]
           },
-          "checksum": 866455341
+          "checksum": 910830540
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "CanTxPort"
+                },
+                "checksum": 2701771970
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface"
+                },
+                "checksum": 3311466626
+              }
+            ]
+          },
+          "checksum": 3140611265
         }
       ]
     },
-    "checksum": 3096108860
+    "checksum": 3063918389
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",
