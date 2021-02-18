@@ -12,14 +12,3 @@ add_library(sensor_gflags
 target_link_libraries(sensor_gflags
   ${COMMON_LIB}
   gflags)
-add_library(sensor_canbus_lib INTERFACE)
-target_link_libraries(sensor_canbus_lib INTERFACE
-  ${COMMON_LIB}
-  sensor_gflags
-  common
-  jmc_auto_app
-  adapter_manager
-  #monitor_log
-  can_client_factory
-  can_receiver
-  message_manager_base)

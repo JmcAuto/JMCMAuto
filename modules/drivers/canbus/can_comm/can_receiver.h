@@ -116,11 +116,11 @@ template <typename SensorType>
   pt_manager_ = pt_manager;
   enable_log_ = enable_log;
   if (can_client_ == nullptr) {
-    AERROR << "Invalid can client.";
+    //AERROR << "Invalid can client.";
     return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
   }
   if (pt_manager_ == nullptr) {
-    AERROR << "Invalid protocol manager.";
+    //AERROR << "Invalid protocol manager.";
     return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
   }
   is_init_ = true;
@@ -129,7 +129,7 @@ template <typename SensorType>
 
 template <typename SensorType>
 void CanReceiver<SensorType>::RecvThreadFunc() {
-  AINFO << "Can client receiver thread starts.";
+  //AINFO << "Can client receiver thread starts.";
   CHECK_NOTNULL(can_client_);
   CHECK_NOTNULL(pt_manager_);
 
@@ -152,9 +152,9 @@ void CanReceiver<SensorType>::RecvThreadFunc() {
     receive_error_count = 0;
 
     if (buf.size() != static_cast<size_t>(frame_num)) {
-      AERROR_EVERY(100) << "Receiver buf size [" << buf.size()
-                        << "] does not match can_client returned length["
-                        << frame_num << "].";
+      //AERROR_EVERY(100) << "Receiver buf size [" << buf.size()
+      //                  << "] does not match can_client returned length["
+      //                  << frame_num << "].";
     }
 
     if (frame_num == 0) {
@@ -172,12 +172,12 @@ void CanReceiver<SensorType>::RecvThreadFunc() {
       const uint8_t *data = frame.data;
       pt_manager_->Parse(uid, data, len);
       if (enable_log_) {
-        ADEBUG << "recv_can_frame#" << frame.CanFrameString();
+        //ADEBUG << "recv_can_frame#" << frame.CanFrameString();
       }
     }
     std::this_thread::yield();
   }
-  AINFO << "Can client receiver thread stopped.";
+  //AINFO << "Can client receiver thread stopped.";
 }
 
 template <typename SensorType>
@@ -194,7 +194,7 @@ template <typename SensorType>
 
   thread_.reset(new std::thread([this] { RecvThreadFunc(); }));
   if (thread_ == nullptr) {
-    AERROR << "Unable to create can client receiver thread.";
+    //AERROR << "Unable to create can client receiver thread.";
     return ::jmc_auto::common::ErrorCode::CANBUS_ERROR;
   }
   return ::jmc_auto::common::ErrorCode::OK;
@@ -203,16 +203,16 @@ template <typename SensorType>
 template <typename SensorType>
 void CanReceiver<SensorType>::Stop() {
   if (IsRunning()) {
-    AINFO << "Stopping can client receiver ...";
+    //AINFO << "Stopping can client receiver ...";
     is_running_ = false;
     if (thread_ != nullptr && thread_->joinable()) {
       thread_->join();
     }
     thread_.reset();
   } else {
-    AINFO << "Can client receiver is not running.";
+    //AINFO << "Can client receiver is not running.";
   }
-  AINFO << "Can client receiver stopped [ok].";
+  //AINFO << "Can client receiver stopped [ok].";
 }
 
 }  // namespace canbus

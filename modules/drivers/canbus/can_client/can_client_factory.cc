@@ -29,9 +29,9 @@ namespace canbus {
 CanClientFactory::CanClientFactory() {}
 
 void CanClientFactory::RegisterCanClients() {
-  AINFO << "CanClientFactory::RegisterCanClients";
-  Register(CANCardParameter::FAKE_CAN,
-           []() -> CanClient* { return new can::FakeCanClient(); });
+  //AINFO << "CanClientFactory::RegisterCanClients";
+  //Register(CANCardParameter::FAKE_CAN,
+  //         []() -> CanClient* { return new can::FakeCanClient(); });
   Register(CANCardParameter::MDC_CAN,
            []() -> CanClient* { return new can::MdcCanClient(); });
 }
@@ -40,11 +40,11 @@ std::unique_ptr<CanClient> CanClientFactory::CreateCANClient(
     const CANCardParameter& parameter) {
   auto factory = CreateObject(parameter.brand());
   if (!factory) {
-    AERROR << "Failed to create CAN client with parameter: "
-           << parameter.DebugString();
+    //AERROR << "Failed to create CAN client with parameter: "
+    //       << parameter.DebugString();
   } else if (!factory->Init(parameter)) {
-    AERROR << "Failed to initialize CAN card with parameter: "
-           << parameter.DebugString();
+    //AERROR << "Failed to initialize CAN card with parameter: "
+    //       << parameter.DebugString();
   }
   return factory;
 }

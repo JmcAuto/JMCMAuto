@@ -170,8 +170,8 @@ ProtocolData<SensorType>
     *MessageManager<SensorType>::GetMutableProtocolDataById(
         const uint32_t message_id) {
   if (protocol_data_map_.find(message_id) == protocol_data_map_.end()) {
-    ADEBUG << "Unable to get protocol data because of invalid message_id:"
-           << Byte::byte_to_hex(message_id);
+    //ADEBUG << "Unable to get protocol data because of invalid message_id:"
+    //       << Byte::byte_to_hex(message_id);
     return nullptr;
   }
   return protocol_data_map_[message_id];
@@ -221,7 +221,7 @@ template <typename SensorType>
 ErrorCode MessageManager<SensorType>::GetSensorData(
     SensorType *const sensor_data) {
   if (sensor_data == nullptr) {
-    AERROR << "Failed to get sensor_data due to nullptr.";
+    //AERROR << "Failed to get sensor_data due to nullptr.";
     return ErrorCode::CANBUS_ERROR;
   }
   std::lock_guard<std::mutex> lock(sensor_data_mutex_);
@@ -233,7 +233,7 @@ template <typename SensorType>
 void MessageManager<SensorType>::ResetSendMessages() {
   for (auto &protocol_data : send_protocol_data_) {
     if (protocol_data == nullptr) {
-      AERROR << "Invalid protocol data.";
+      //AERROR << "Invalid protocol data.";
     } else {
       protocol_data->Reset();
     }

@@ -46,7 +46,7 @@ add_definitions(${COMMON_DEFINITIONS})
 
 #用户可在此添加编译选项
 add_compile_options(${COMMON_COMPILE})
-add_compile_options(-fPIC)
+#add_compile_options(-fPIC)
 
 #添加第三方依赖
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")

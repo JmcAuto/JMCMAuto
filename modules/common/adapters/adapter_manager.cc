@@ -53,7 +53,7 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
     }
 
     instance()->initialized_ = true;
-    AINFO << "start to enable";
+    //AINFO << "start to enable";
     for (const auto &config : configs.config()) {
         switch (config.type()) {
         case AdapterConfig::CHASSIS:

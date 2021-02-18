@@ -69,7 +69,7 @@ class MdcCanClient : public CanClient {
     std::string GetErrorString(const int32_t status) override;
 
   private:
-    CanBusDataParam canRevDataParm;
+    const CanBusDataParam *canRevDataParm;
     std::stringstream frame_info_;
 
     // canbus_config.json中的ChannelId
@@ -82,12 +82,9 @@ class MdcCanClient : public CanClient {
     std::mutex m_canSendMutex;
     std::unique_ptr<CanTxSkeleton> m_skeleton[CAN_NUM];
     std::unique_ptr<std::thread> m_canMethodThread[CAN_NUM];
-
-    // 服务发现回调
     void ServiceAvailabilityCallback(
         ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
         ara::com::FindServiceHandle handler);
-    // 接收数据回调
     void CanDataEventCallback(unsigned char channelID);
 };
 

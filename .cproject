@@ -119,7 +119,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.release.1634223384" name="Release" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.release">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.release.1634223384" name="Release" optionalBuildProperties="" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.release">
 					<folderInfo id="com.huawei.ide.managedbuilder.mdc.configuration.exe.release.1634223384." name="/" resourcePath="">
 						<toolChain id="com.huawei.ide.managedbuilder.mdc.toolchain.exe.release.1099870582" name="MDC GCC" superClass="com.huawei.ide.managedbuilder.mdc.toolchain.exe.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.huawei.ide.managedbuilder.mdc.platform.base.1528683210" name="Debug Platform" osList="win32" superClass="com.huawei.ide.managedbuilder.mdc.platform.base"/>
@@ -223,7 +223,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.test" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.test.1625686825" name="UnitTest" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.test">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.test" cleanCommand="rm -rf" description="" id="com.huawei.ide.managedbuilder.mdc.configuration.exe.test.1625686825" name="UnitTest" optionalBuildProperties="" parent="com.huawei.ide.managedbuilder.mdc.configuration.exe.test">
 					<folderInfo id="com.huawei.ide.managedbuilder.mdc.configuration.exe.test.1625686825." name="/" resourcePath="">
 						<toolChain id="com.huawei.ide.managedbuilder.mdc.toolchain.exe.test.1279366772" name="MDC GCC" superClass="com.huawei.ide.managedbuilder.mdc.toolchain.exe.test">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.huawei.ide.managedbuilder.mdc.platform.base.2058178930" name="Debug Platform" osList="win32" superClass="com.huawei.ide.managedbuilder.mdc.platform.base"/>
@@ -320,4 +320,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

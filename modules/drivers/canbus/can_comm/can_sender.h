@@ -312,7 +312,7 @@ namespace jmc_auto
       {
         if (protocol_data_ == nullptr)
         {
-          AERROR << "Attention: ProtocolData is nullptr!";
+          //AERROR << "Attention: ProtocolData is nullptr!";
           return;
         }
         protocol_data_->UpdateData(can_frame_to_update_.data);
@@ -369,7 +369,7 @@ namespace jmc_auto
         int64_t tm_end = 0;
         int64_t sleep_interval = 0;
 
-        AINFO << "Can client sender thread starts.";
+        //AINFO << "Can client sender thread starts.";
 
         while (is_running_)
         {
@@ -401,14 +401,14 @@ namespace jmc_auto
             }
 
             can_frames.push_back(can_frame);
-            if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
+            /*if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
             {
               AERROR << "Send msg failed:" << can_frame.CanFrameString();
             }
             if (enable_log())
             {
               ADEBUG << "send_can_frame#" << can_frame.CanFrameString();
-            }
+            }*/
           }
           delta_period = new_delta_period;
           tm_end = common::time::AsInt64<common::time::micros>(
@@ -419,14 +419,14 @@ namespace jmc_auto
           {
             std::this_thread::sleep_for(std::chrono::microseconds(sleep_interval));
           }
-          else
+          /*else
           {
             // do not sleep
             AWARN << "Too much time for calculation: " << tm_end - tm_start
                   << "us is more than minimum period: " << delta_period << "us";
-          }
+          }*/
         }
-        AINFO << "Can client sender thread stopped!";
+        //AINFO << "Can client sender thread stopped!";
       }
 
       template <typename SensorType>
@@ -435,12 +435,12 @@ namespace jmc_auto
       {
         if (is_init_)
         {
-          AERROR << "Duplicated Init request.";
+          //AERROR << "Duplicated Init request.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         if (can_client == nullptr)
         {
-          AERROR << "Invalid can client.";
+          //AERROR << "Invalid can client.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         is_init_ = true;
@@ -456,12 +456,12 @@ namespace jmc_auto
       {
         if (protocol_data == nullptr)
         {
-          AERROR << "invalid protocol data.";
+          //AERROR << "invalid protocol data.";
           return;
         }
         send_messages_.emplace_back(
             SenderMessage<SensorType>(message_id, protocol_data, init_with_one));
-        AINFO << "Add send message:" << std::hex << message_id;
+        //AINFO << "Add send message:" << std::hex << message_id;
       }
 
       template <typename SensorType>
@@ -471,12 +471,12 @@ namespace jmc_auto
       {
         if (protocol_data == nullptr)
         {
-          AERROR << "invalid protocol data.";
+          //AERROR << "invalid protocol data.";
           return;
         }
         send_messages_.emplace_back(
             SenderMessage<SensorType>(message_id, protocol_data, init_with_one, count_byte));
-        AINFO << "Add send message:" << std::hex << message_id;
+        //AINFO << "Add send message:" << std::hex << message_id;
       }
 
       template <typename SensorType>
@@ -484,7 +484,7 @@ namespace jmc_auto
       {
         if (is_running_)
         {
-          AERROR << "Cansender has already started.";
+          //AERROR << "Cansender has already started.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         is_running_ = true;
@@ -507,7 +507,7 @@ namespace jmc_auto
       {
         if (is_running_)
         {
-          AINFO << "Stopping can sender ...";
+          //AINFO << "Stopping can sender ...";
           is_running_ = false;
           if (thread_ != nullptr && thread_->joinable())
           {
@@ -517,10 +517,10 @@ namespace jmc_auto
         }
         else
         {
-          AERROR << "CanSender is not running.";
+          //AERROR << "CanSender is not running.";
         }
 
-        AINFO << "Can client sender stopped [ok].";
+        //AINFO << "Can client sender stopped [ok].";
       }
 
       template <typename SensorType>
