@@ -109,7 +109,6 @@ namespace adapter {
         name##_.reset(new name##Adapter(#name, instance_id,                    \
                                         config.message_history_limit()));      \
         if (config.mode() != AdapterConfig::PUBLISH_ONLY) {                    \
-        	AINFO << "注册接收服务";\
             jmc_auto::proxy::name##ServiceInterfaceProxy::StartFindService(    \
                 [this](ara::com::ServiceHandleContainer<                       \
                            jmc_auto::proxy::name##ServiceInterfaceProxy::      \
@@ -122,7 +121,6 @@ namespace adapter {
                 instance_id);                                                  \
         }                                                                      \
         if (config.mode() != AdapterConfig::RECEIVE_ONLY) {                    \
-        	AINFO << "注册发送服务";\
             name##skeleton = std::make_unique<                                 \
                 jmc_auto::skeleton::name##ServiceInterfaceSkeleton>(           \
                 ara::com::InstanceIdentifier(instance_id),                     \
@@ -139,7 +137,6 @@ namespace adapter {
         if (handles.size() > 0) {                                              \
             for (unsigned int i = 0; i < handles.size(); i++) {                \
                 if (name##proxy == nullptr) {                                  \
-                	AINFO << "获取服务处理的句柄";\
                     name##proxy = std::make_unique<                            \
                         jmc_auto::proxy::name##ServiceInterfaceProxy>(         \
                         handles[i]);                                           \
@@ -162,7 +159,6 @@ namespace adapter {
         name##proxy->name##Event.Update();                                     \
         const auto &name##MsgSamples =                                         \
             name##proxy->name##Event.GetCachedSamples();                       \
-            AINFO << "接收到消息";\
         for (const auto &testdata : name##MsgSamples) {                        \
             strData = testdata.get();                                          \
             jmc_auto::common::util::PbConvertor::struct2Pb(                    \

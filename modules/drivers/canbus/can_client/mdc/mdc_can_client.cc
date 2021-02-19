@@ -33,8 +33,8 @@ bool MdcCanClient::Init(const CANCardParameter &parameter) {
 
     m_channelId = parameter.channel_id();
     m_instance = m_channelId + 1;
-    AINFO << "channelId: " << m_channelId;
-    AINFO << "instanceId: " << m_instance;
+    //AINFO << "channelId: " << m_channelId;
+    //AINFO << "instanceId: " << m_instance;
     return true;
 }
 
@@ -42,13 +42,11 @@ ErrorCode MdcCanClient::Start() {
     if (is_started_) {
         return ErrorCode::OK;
     }
-    std::cout << "start 提供服务" << std::endl;
     // 提供服务
     m_skeleton[m_channelId] = std::make_unique<CanTxSkeleton>(
         ara::com::InstanceIdentifier(m_instance),
         ara::com::MethodCallProcessingMode::kPoll);
     m_skeleton[m_channelId]->OfferService();
-    std::cout << "start 注册服务发现的回调函数" << std::endl;
     // 注册服务发现的回调函数，，当发现服务的时候，会回调该函数
     CanRxProxy::StartFindService(
         [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
@@ -64,7 +62,6 @@ ErrorCode MdcCanClient::Start() {
 void MdcCanClient::ServiceAvailabilityCallback(
     ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
     ara::com::FindServiceHandle handler) {
-	std::cout << "start 回调函数" << std::endl;
     if (handles.size() > 0) {
         for (unsigned int i = 0; i < handles.size(); i++) {
             int instanceId = static_cast<uint16_t>(handles[i].GetInstanceId());
@@ -95,29 +92,31 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
         AERROR << "channelid error";
     	return;
     }
-
     if (m_proxy[channelID] == nullptr) {
     	AERROR << "channelid null";
         return;
     }
-    std::cout << "start 接收data" << std::endl;
+
     // 加锁防止重入
-    //std::unique_lock<std::mutex> lockread(m_canReadMutex);
+    std::unique_lock<std::mutex> lockread(m_canReadMutex);
     // 接收CAN帧
     m_proxy[channelID]->CanDataRxEvent.Update();
     const auto &canMsgSamples = m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
     for (const auto &sample : canMsgSamples) {
         // 接收转入CAN帧处理回调函数
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
-            printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId, sample->elementList[i].validLen);
+        	cf.id = (*sample).elementList[i].canId;
+        	cf.len = (*sample).elementList[i].validLen;
+            //printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId, sample->elementList[i].validLen);
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-                printf("%x ", sample->elementList[i].data[j]);
+            	cf.data[j] = (*sample).elementList[i].data[j];
+                //printf("%x ", sample->elementList[i].data[j]);
             }
-            printf("\n");
+            //printf("\n");
         }
     }
     // 解锁
- //   lockread.unlock();
+    lockread.unlock();
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
 }
 
@@ -164,14 +163,9 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
     frames->resize(*frame_num);
-    //for (size_t i = 0; i < frames->size(); ++i) {
-    	//CanFrame cf;
-    	//cf.id = (*canRevDataParm).elementList[i].canId;
-    	//cf.len = (*canRevDataParm).elementList[i].validLen;
-    	//for (int j = 0; j < CAN_VALIDLEN; ++j) {
-    	//	cf.data[j] = (*canRevDataParm).elementList[i].data[j];
-    	//}
-    	//frames->push_back(cf);}
+    for (size_t i = 0; i < frames->size(); ++i) {
+    	(*frames)[i] = cf;
+    	}
     return ErrorCode::OK;
 }
 

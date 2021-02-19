@@ -69,7 +69,7 @@ class MdcCanClient : public CanClient {
     std::string GetErrorString(const int32_t status) override;
 
   private:
-    const CanBusDataParam *canRevDataParm;
+    CanFrame cf;
     std::stringstream frame_info_;
 
     // canbus_config.json中的ChannelId
