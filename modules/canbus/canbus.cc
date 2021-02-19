@@ -34,7 +34,7 @@ using jmc_auto::common::Status;
 using jmc_auto::common::adapter::AdapterManager;
 using jmc_auto::common::time::Clock;
 // using jmc_auto::control::ControlCommand;
- using jmc_auto::drivers::canbus::CanClientFactory;
+using jmc_auto::drivers::canbus::CanClientFactory;
 
 std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
 
@@ -42,132 +42,126 @@ Status Canbus::Init() {
     AdapterManager::Init(FLAGS_canbus_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";
 
-     //load conf
-    if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file, &canbus_conf_))
-    {
-      return Status(ErrorCode::CANBUS_ERROR, "Unable to load canbus conf file:" + FLAGS_canbus_conf_file);
+    // load conf
+    if (!common::util::GetProtoFromFile(FLAGS_canbus_conf_file,
+                                        &canbus_conf_)) {
+        return Status(ErrorCode::CANBUS_ERROR,
+                      "Unable to load canbus conf file:" +
+                          FLAGS_canbus_conf_file);
     }
 
     AINFO << "The canbus conf file is loaded: " << FLAGS_canbus_conf_file;
     // ADEBUG << "Canbus_conf:" << canbus_conf_.ShortDebugString();
 
-          // Init can client
-          auto *can_factory = CanClientFactory::instance();
-          can_factory->RegisterCanClients();
-          can_client_ =
-       can_factory->CreateCANClient(canbus_conf_.can_card_parameter());
-          if (!can_client_)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to create can client.");
-          }
-          AINFO << "Can client is successfully created.";
+    // Init can client
+    auto *can_factory = CanClientFactory::instance();
+    can_factory->RegisterCanClients();
+    can_client_ =
+        can_factory->CreateCANClient(canbus_conf_.can_card_parameter());
+    if (!can_client_) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to create can client.");
+    }
+    AINFO << "Can client is successfully created.";
 
-          VehicleFactory vehicle_factory;
-          vehicle_factory.RegisterVehicleFactory();
-          auto vehicle_object =
-              vehicle_factory.CreateVehicle(canbus_conf_.vehicle_parameter());
-          if (!vehicle_object)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to create vehicle:");
-          }
+    VehicleFactory vehicle_factory;
+    vehicle_factory.RegisterVehicleFactory();
+    auto vehicle_object =
+        vehicle_factory.CreateVehicle(canbus_conf_.vehicle_parameter());
+    if (!vehicle_object) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to create vehicle:");
+    }
 
-          message_manager_ = vehicle_object->CreateMessageManager();
-          if (message_manager_ == nullptr)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to create message manager.");
-          }
-          AINFO << "Message manager is successfully created.";
+    message_manager_ = vehicle_object->CreateMessageManager();
+    if (message_manager_ == nullptr) {
+        return Status(ErrorCode::CANBUS_ERROR,
+                      "Failed to create message manager.");
+    }
+    AINFO << "Message manager is successfully created.";
 
-          if (can_receiver_.Init(can_client_.get(),message_manager_.get(),
-                                 canbus_conf_.enable_receiver_log()) !=
-                                		 ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to init can receiver.");
-          }
-          AINFO << "The can receiver is successfully initialized.";
+    if (can_receiver_.Init(can_client_.get(), message_manager_.get(),
+        canbus_conf_.enable_receiver_log()) !=
+        ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to init can receiver.");
+    }
+    AINFO << "The can receiver is successfully initialized.";
 
-          if (can_sender_.Init(can_client_.get(),
-        		  canbus_conf_.enable_sender_log()) != ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to init can sender.");
-          }
-          AINFO << "The can sender is successfully initialized.";
+    if (can_sender_.Init(can_client_.get(), canbus_conf_.enable_sender_log()) !=
+        ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to init can sender.");
+    }
+    AINFO << "The can sender is successfully initialized.";
 
-          vehicle_controller_ = vehicle_object->CreateVehicleController();
-          if (vehicle_controller_ == nullptr)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to create vehicle controller.");
-          }
-          AINFO << "The vehicle controller is successfully created.";
+    vehicle_controller_ = vehicle_object->CreateVehicleController();
+    if (vehicle_controller_ == nullptr) {
+        return Status(ErrorCode::CANBUS_ERROR,
+                      "Failed to create vehicle controller.");
+    }
+    AINFO << "The vehicle controller is successfully created.";
 
-          if (vehicle_controller_->Init(canbus_conf_.vehicle_parameter(),
-        		  &can_sender_, message_manager_.get()) != ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to init vehicle controller.");
-          }
-          AINFO << "The vehicle controller is successfully initialized.";
+    if (vehicle_controller_->Init(canbus_conf_.vehicle_parameter(),
+                                  &can_sender_,
+                                  message_manager_.get()) != ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR,
+                      "Failed to init vehicle controller.");
+    }
+    AINFO << "The vehicle controller is successfully initialized.";
 
-/*
-          CHECK(AdapterManager::GetControlCommand()) << "Control is not
-       initialized.";
-          // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
-       initialized.";
-          // TODO(QiL) : depreacte this
-          if (!FLAGS_receive_guardian)
-          {
-            //
-       AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-       this);
-            AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-       this);
-            AdapterManager::AddRemoteControlCallback(&Canbus::OnRemoteControlCommand,
-       this);
-          }
-          else
-          {
-            // AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand,
-       this);
-          }
-    */
+    /*
+              CHECK(AdapterManager::GetControlCommand()) << "Control is not
+           initialized.";
+              // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
+           initialized.";
+              // TODO(QiL) : depreacte this
+              if (!FLAGS_receive_guardian)
+              {
+                //
+           AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+           this);
+                AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+           this);
+                AdapterManager::AddRemoteControlCallback(&Canbus::OnRemoteControlCommand,
+           this);
+              }
+              else
+              {
+                //
+       AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
+              }
+        */
 
     return Status::OK();
 }
 
 Status Canbus::Start() {
-          // 1. init and start the can card hardware
-		  std::cout << "start";
-          if (can_client_->Start() != ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to start can client");
-          }
-          AINFO << "Can client is started.";
+    // 1. init and start the can card hardware
+    if (can_client_->Start() != ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to start can client");
+    }
+    AINFO << "Can client is started.";
 
-          // 2. start receive first then send
-          if (can_receiver_.Start() != ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to start can receiver.");
-          }
-          AINFO << "Can receiver is started.";
+    // 2. start receive first then send
+    if (can_receiver_.Start() != ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to start can receiver.");
+    }
+    AINFO << "Can receiver is started.";
 
-          // 3. start send
-          if (can_sender_.Start() != ErrorCode::OK)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to start can sender.");
-          }
-          AINFO << "Can sender is started.";
+    // 3. start send
+    if (can_sender_.Start() != ErrorCode::OK) {
+        return Status(ErrorCode::CANBUS_ERROR, "Failed to start can sender.");
+    }
+    AINFO << "Can sender is started.";
 
-          // 4. start controller
+    // 4. start controller
 
-          if (vehicle_controller_->Start() == false)
-          {
-            return Status(ErrorCode::CANBUS_ERROR, "Failed to start vehicle controller.");
-          }
-          AINFO << "vehicle controller is started.";
-
+    if (vehicle_controller_->Start() == false) {
+        return Status(ErrorCode::CANBUS_ERROR,
+                      "Failed to start vehicle controller.");
+    }
+    AINFO << "vehicle controller is started.";
 
     // 5. set timer to triger publish info periodly
     const double duration = 1.0 / FLAGS_chassis_freq;
-    //Canbus::PublishChassis();
+    // Canbus::PublishChassis();
     while (1) {
         Canbus::PublishChassis();
         sleep(duration);
@@ -177,14 +171,13 @@ Status Canbus::Start() {
 }
 
 void Canbus::PublishChassis() {
-	//jmc_auto::canbus::Chassis chassis;
+    // jmc_auto::canbus::Chassis chassis;
     jmc_auto::canbus::Chassis chassis = vehicle_controller_->chassis();
     AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
-    //AINFO << "start to publish";
-    //AdapterManager::PublishChassis(chassis);
+    // AdapterManager::PublishChassis(chassis);
 
     AINFO << chassis.DebugString();
-    //ADEBUG << chassis.ShortDebugString();
+    // ADEBUG << chassis.ShortDebugString();
 }
 
 /*
@@ -209,11 +202,11 @@ void Canbus::PublishChassis() {
 
 void Canbus::Stop() {
     AINFO << "stop";
-     //timer_.stop();
-     can_sender_.Stop();
-     can_receiver_.Stop();
-     can_client_->Stop();
-     vehicle_controller_->Stop();
+    // timer_.stop();
+    can_sender_.Stop();
+    can_receiver_.Stop();
+    can_client_->Stop();
+    vehicle_controller_->Stop();
 }
 /*
 

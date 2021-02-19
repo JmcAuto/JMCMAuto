@@ -43,29 +43,30 @@ namespace canbus {
  */
 class CanClientFactory
     : public jmc_auto::common::util::Factory<CANCardParameter::CANCardBrand,
-                                           CanClient> {
- public:
-  /**
-   * @brief Register the CAN clients of all brands. This function call the
-   *        Function jmc_auto::common::util::Factory::Register() for all of the
-   *        CAN clients.
-   */
-  void RegisterCanClients();
+                                             CanClient> {
+  public:
+    /**
+     * @brief Register the CAN clients of all brands. This function call the
+     *        Function jmc_auto::common::util::Factory::Register() for all of
+     * the CAN clients.
+     */
+    void RegisterCanClients();
 
-  /**
-   * @brief Create a pointer to a specified brand of CAN client. The brand is
-   *        set in the parameter.
-   * @param parameter The parameter to create the CAN client.
-   * @return A pointer to the created CAN client.
-   */
-  std::unique_ptr<CanClient> CreateCANClient(const CANCardParameter &parameter);
+    /**
+     * @brief Create a pointer to a specified brand of CAN client. The brand is
+     *        set in the parameter.
+     * @param parameter The parameter to create the CAN client.
+     * @return A pointer to the created CAN client.
+     */
+    std::unique_ptr<CanClient>
+    CreateCANClient(const CANCardParameter &parameter);
 
- private:
-  DECLARE_SINGLETON(CanClientFactory);
+  private:
+    DECLARE_SINGLETON(CanClientFactory);
 };
 
-}  // namespace canbus
-}  // namespace drivers
-}  // namespace jmc_auto
+} // namespace canbus
+} // namespace drivers
+} // namespace jmc_auto
 
-#endif  // MODULES_DRIVERS_CANBUS_CAN_CLIENT_CAN_CLIENT_FACTORY_H_
+#endif // MODULES_DRIVERS_CANBUS_CAN_CLIENT_CAN_CLIENT_FACTORY_H_

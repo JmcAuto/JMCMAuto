@@ -61,12 +61,13 @@ namespace adapter {
         instance()->InternalEnable##name(instance_id, config);                 \
     }                                                                          \
     static name##Adapter *Get##name() {                                        \
-        return instance()->InternalGet##name(); }                              \
+        return instance()->InternalGet##name();                                \
+    }                                                                          \
     static AdapterConfig &Get##name##Config() {                                \
         return instance()->name##config_;                                      \
     }                                                                          \
     static void Publish##name(const name##Adapter::DataType &pbdata) {         \
-		instance()->InternalPublish##name(pbdata);                             \
+        instance()->InternalPublish##name(pbdata);                             \
     }                                                                          \
     template <typename T>                                                      \
     static void Fill##name##Header(const std::string &module_name, T *data) {  \
@@ -151,7 +152,7 @@ namespace adapter {
         }                                                                      \
     }                                                                          \
     void name##PublishEventCallback() {                                        \
-        const name* strData;                                                   \
+        const name *strData;                                                   \
         name##Adapter::DataType pbData;                                        \
         if (name##proxy == nullptr) {                                          \
             return;                                                            \
@@ -162,15 +163,15 @@ namespace adapter {
         for (const auto &testdata : name##MsgSamples) {                        \
             strData = testdata.get();                                          \
             jmc_auto::common::util::PbConvertor::struct2Pb(                    \
-            		(const char *&)strData, &pbData);                          \
-            		name##_->SetLatestPublished(pbData);                       \
+                (const char *&)strData, &pbData);                              \
+            name##_->SetLatestPublished(pbData);                               \
         }                                                                      \
         name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
     name##Adapter *InternalGet##name() { return name##_.get(); }               \
-    /*name##Adapter *InternalGet##name() {                                       \
+    /*name##Adapter *InternalGet##name() {                                     \
         jmc_auto::common::util::struct2Pb((const char *)&MsgData, name##_);    \
-        return name##_.get(); }*/                                                \
+        return name##_.get(); }*/                                              \
     void InternalPublish##name(const name##Adapter::DataType &pbdata) {        \
         jmc_auto::common::util::PbConvertor::MemTree stru;                     \
         jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \

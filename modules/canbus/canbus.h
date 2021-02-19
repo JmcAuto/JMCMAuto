@@ -113,7 +113,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     jmc_auto::drivers::canbus::CanSender<ChassisDetail> can_sender_;
     jmc_auto::drivers::canbus::CanReceiver<ChassisDetail> can_receiver_;
     std::unique_ptr<MessageManager<::jmc_auto::canbus::ChassisDetail>>
-       message_manager_;
+        message_manager_;
     std::unique_ptr<VehicleController> vehicle_controller_;
     bool IS_STOP_MODE = false;
     bool IS_VEHCILE_STOP = false;

@@ -33,8 +33,6 @@ bool MdcCanClient::Init(const CANCardParameter &parameter) {
 
     m_channelId = parameter.channel_id();
     m_instance = m_channelId + 1;
-    //AINFO << "channelId: " << m_channelId;
-    //AINFO << "instanceId: " << m_instance;
     return true;
 }
 
@@ -51,8 +49,8 @@ ErrorCode MdcCanClient::Start() {
     CanRxProxy::StartFindService(
         [this](ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
                ara::com::FindServiceHandle handler) {
-    		MdcCanClient::ServiceAvailabilityCallback(std::move(handles),
-                                                        handler);
+            MdcCanClient::ServiceAvailabilityCallback(std::move(handles),
+                                                      handler);
         },
         m_instance);
     is_started_ = true;
@@ -76,11 +74,11 @@ void MdcCanClient::ServiceAvailabilityCallback(
                     ara::com::EventCacheUpdatePolicy::kNewestN, 40);
                 m_proxy[channelID]->CanDataRxEvent.SetReceiveHandler(
                     [this, channelID]() {
-                		MdcCanClient::CanDataEventCallback(channelID);
+                        MdcCanClient::CanDataEventCallback(channelID);
                     });
 
                 // 开启method发送线程
-                //m_canMethodThread[channelID] = std::make_unique<std::thread>(
+                // m_canMethodThread[channelID] = std::make_unique<std::thread>(
                 //    &MdcCanClient::Send, this, channelID);
             }
         }
@@ -90,10 +88,10 @@ void MdcCanClient::ServiceAvailabilityCallback(
 void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     if (channelID < 0 || channelID > CAN_NUM) {
         AERROR << "channelid error";
-    	return;
+        return;
     }
     if (m_proxy[channelID] == nullptr) {
-    	AERROR << "channelid null";
+        AERROR << "channelid null";
         return;
     }
 
@@ -101,18 +99,20 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     std::unique_lock<std::mutex> lockread(m_canReadMutex);
     // 接收CAN帧
     m_proxy[channelID]->CanDataRxEvent.Update();
-    const auto &canMsgSamples = m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
+    const auto &canMsgSamples =
+        m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
     for (const auto &sample : canMsgSamples) {
         // 接收转入CAN帧处理回调函数
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
-        	cf.id = (*sample).elementList[i].canId;
-        	cf.len = (*sample).elementList[i].validLen;
-            //printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId, sample->elementList[i].validLen);
+            cf.id = (*sample).elementList[i].canId;
+            cf.len = (*sample).elementList[i].validLen;
+            // printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId,
+            // sample->elementList[i].validLen);
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-            	cf.data[j] = (*sample).elementList[i].data[j];
-                //printf("%x ", sample->elementList[i].data[j]);
+                cf.data[j] = (*sample).elementList[i].data[j];
+                // printf("%x ", sample->elementList[i].data[j]);
             }
-            //printf("\n");
+            // printf("\n");
         }
     }
     // 解锁
@@ -120,7 +120,7 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
 }
 
-void MdcCanClient::Stop() {return;}
+void MdcCanClient::Stop() { return; }
 
 ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
                              int32_t *const frame_num) {
@@ -159,13 +159,13 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
 ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
                                 int32_t *const frame_num) {
     if (frame_num == nullptr || frames == nullptr) {
-        //AERROR << "frames or frame_num pointer is null";
+        AERROR << "frames or frame_num pointer is null";
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
     frames->resize(*frame_num);
     for (size_t i = 0; i < frames->size(); ++i) {
-    	(*frames)[i] = cf;
-    	}
+        (*frames)[i] = cf;
+    }
     return ErrorCode::OK;
 }
 

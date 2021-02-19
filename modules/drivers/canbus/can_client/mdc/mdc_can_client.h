@@ -13,8 +13,8 @@
 #include "mdc/sensor/cantxserviceinterface_common.h"
 #include "mdc/sensor/cantxserviceinterface_skeleton.h"
 
-#include "impl_type_cansetdataresult.h"
 #include "impl_type_canbusdataparam.h"
+#include "impl_type_cansetdataresult.h"
 
 /**
  * @namespace jmc_auto::drivers::canbus::can

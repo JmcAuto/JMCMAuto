@@ -43,7 +43,7 @@ void AdapterManager::Init(const std::string &adapter_config_filename) {
     AdapterManagerConfig configs;
     CHECK(util::GetProtoFromFile(adapter_config_filename, &configs))
         << "Unable to parse adapter config file " << adapter_config_filename;
-    //AINFO << "Init AdapterManger config:" << configs.DebugString();
+    // AINFO << "Init AdapterManger config:" << configs.DebugString();
     Init(configs);
 }
 
@@ -53,13 +53,13 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
     }
 
     instance()->initialized_ = true;
-    //AINFO << "start to enable";
+    // AINFO << "start to enable";
     for (const auto &config : configs.config()) {
         switch (config.type()) {
         case AdapterConfig::CHASSIS:
             EnableChassis(FLAGS_chassis_instance_id, config);
             break;
-        //case AdapterConfig::CHASSIS_DETAIL:
+        // case AdapterConfig::CHASSIS_DETAIL:
         //    EnableChassisDetail(FLAGS_chassis_detail_instance_id, config);
         //    break;
         default:

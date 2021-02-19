@@ -167,7 +167,7 @@ namespace jmc_auto
         //can_sender_->AddMessage(Ipmrightline0x490490::ID, ipm_rightline_0x490_490_, false);
 
         // need sleep to ensure all messages received
-        //AINFO << "Cx75Controller is initialized.";
+        AINFO << "Cx75Controller is initialized.";
 
         is_initialized_ = true;
         return ErrorCode::OK;
@@ -227,9 +227,9 @@ namespace jmc_auto
         chassis_.set_engine_started(true);
         /* ADD YOUR OWN CAR CHASSIS OPERATION
   */			
-		//AINFO<<"EPS_LKAControlStatus:"<<chassis_detail.cx75().eps_advanced_0x176_176().eps_lkacontrolstatus();
-		//AINFO<<"ESP_VLC_Active:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_active();
-		//AINFO<<"ESP_VLC_Available:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_available();
+		AINFO<<"EPS_LKAControlStatus:"<<chassis_detail.cx75().eps_advanced_0x176_176().eps_lkacontrolstatus();
+		AINFO<<"ESP_VLC_Active:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_active();
+		AINFO<<"ESP_VLC_Available:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_available();
         //ABS_SPEED
         if (chassis_detail.cx75().has_abs_sts_0x221_221() && chassis_detail.cx75().abs_sts_0x221_221().has_abs_vehspdlgt() &&
             chassis_detail.cx75().abs_sts_0x221_221().abs_vehspdlgtstatus() == Abs_sts_0x221_221::ABS_VEHSPDLGTSTATUS_VALID)
