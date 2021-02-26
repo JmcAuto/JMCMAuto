@@ -39,7 +39,7 @@ link_directories(${COMMON_LINK_DIR} lib)
 add_subdirectory(modules/common)
 add_subdirectory(modules/canbus)
 add_subdirectory(modules/drivers/canbus)
-add_subdirectory(modules/control/proto)
+add_subdirectory(modules/control)
 
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})

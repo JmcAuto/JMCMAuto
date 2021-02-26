@@ -1,6 +1,9 @@
-include_directories(.)
+include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+add_subdirectory(common)
+add_subdirectory(proto)
+add_subdirectory(controller)
 
 add_library(lib_pad_terminal INTERFACE)
 target_link_libraries(lib_pad_terminal INTERFACE

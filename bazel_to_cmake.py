@@ -236,7 +236,7 @@ class Converter(object):
       set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fsanitize=address")
     endif()
 
-    include_directories(.)
+    include_directories(${PROJECT_SOURCE_DIR})
     include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
     if(APPLE)

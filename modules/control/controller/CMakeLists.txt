@@ -1,7 +1,8 @@
-include_directories(.)
+include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_library(controller_interface INTERFACE)
+add_library(controller_interface INTERFACE
+  controller.h)
 target_link_libraries(controller_interface INTERFACE
   )
 add_library(lat_controller
@@ -65,5 +66,3 @@ target_link_libraries(controller_agent
   factory
   control_proto
   planning_proto)
-
-
