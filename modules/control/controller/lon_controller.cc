@@ -21,7 +21,7 @@
 #include "modules/common/configs/vehicle_config_helper.h"
 #include "modules/common/log.h"
 #include "modules/common/math/math_utils.h"
-#include "modules/common/time/jmcauto_time.h"
+#include "modules/common/time/time.h"
 #include "modules/common/util/string_util.h"
 #include "modules/control/common/control_gflags.h"
 #include "modules/localization/common/localization_gflags.h"
@@ -65,7 +65,7 @@ LonController::LonController()
               "acceleration_cmd_closeloop,"
               "acceleration_cmd,"
               "acceleration_lookup,"
-              "speed_lookup,"
+              "speed_real,"
               "is_full_stop,"
               "\r\n");
       fflush(speed_log_file_);
@@ -172,6 +172,7 @@ Status LonController::ComputeControlCommand(
     AERROR << error_msg;
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, error_msg);
   }
+  // 计算纵向误差
   ComputeLongitudinalErrors(trajectory_analyzer_.get(), preview_time, debug);
 
   double station_error_limit = lon_controller_conf.station_error_limit();
@@ -184,112 +185,112 @@ Status LonController::ComputeControlCommand(
     station_error_limited = common::math::Clamp(
         debug->station_error(), -station_error_limit, station_error_limit);
   }
-     if(station_error_limited < 0.1){
-         station_error_limited = 0 ;
-     }
+  double station_error_diff = station_error_limited - previous_station_error ;
+  previous_station_error = station_error_limited ;
+//     if(station_error_limited < 1.0 && station_error_diff < 0){
+//         station_pid_controller_.SetPID(lon_controller_conf.high_speed_pid_conf()) ;
+//     }
+//  ADEBUG << "station error" << station_error_limited << " PID coeff "<< lon_controller_conf.high_speed_pid_conf().kp() ;
+if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
+    station_pid_controller_.SetPID(
+        lon_controller_conf.reverse_station_pid_conf());
+    speed_pid_controller_.SetPID(lon_controller_conf.reverse_speed_pid_conf());
+}
   double speed_offset =
       station_pid_controller_.Control(station_error_limited, ts);
-  AINFO << "Station PID speed_offset = " << speed_offset ;
-  double speed_controller_input = 0.0;
-  double speed_controller_input_limit =
-      lon_controller_conf.speed_controller_input_limit();
-  double speed_controller_input_limited = 0.0;
-  if (FLAGS_enable_speed_station_preview) {
-    speed_controller_input = speed_offset + debug->preview_speed_error();
-  } else {
-    speed_controller_input = speed_offset + debug->speed_error();
-  }
-  speed_controller_input_limited =
-      common::math::Clamp(speed_controller_input, -speed_controller_input_limit,
-                          speed_controller_input_limit);
-     if(speed_controller_input_limited < 0.2){
-         speed_controller_input_limited = 0 ;
-     }
-  AINFO << "speed_controller_input_limited: "<< speed_controller_input_limited;
+  ADEBUG << "Station PID speed_offset = " << speed_offset ;
+  double speed_cmd =speed_offset + debug->preview_speed_reference();
 
-  double acceleration_cmd_closeloop = 0.0;
-  if (VehicleStateProvider::instance()->linear_velocity() <=
-      lon_controller_conf.switch_speed()) 
-  {
-    AINFO << "Vehicle speed:" << VehicleStateProvider::instance()->linear_velocity() ;
-    AINFO << "Switch speed:" << lon_controller_conf.switch_speed() ; 
-    speed_pid_controller_.SetPID(lon_controller_conf.low_speed_pid_conf());
-    acceleration_cmd_closeloop =
-        speed_pid_controller_.Control(speed_controller_input_limited, ts);
-    AINFO << "acceleration_cmd_closeloop = "<< acceleration_cmd_closeloop ;
-  } 
-  else 
-  {
-    speed_pid_controller_.SetPID(lon_controller_conf.high_speed_pid_conf());
-    acceleration_cmd_closeloop =
-        speed_pid_controller_.Control(speed_controller_input_limited, ts);
-  }
+  // double speed_controller_input = 0.0;
+  // double speed_controller_input_limit =
+  //     lon_controller_conf.speed_controller_input_limit();
+  // double speed_controller_input_limited = 0.0;
+  // if (FLAGS_enable_speed_station_preview) {
+  //   speed_controller_input = speed_offset + debug->preview_speed_error();
+  // } else {
+  //   speed_controller_input = speed_offset + debug->speed_error();
+  // }
+  // speed_controller_input_limited =
+  //     common::math::Clamp(speed_controller_input, -speed_controller_input_limit,
+  //                         speed_controller_input_limit);
+  //    if(speed_controller_input_limited < 0.2){
+  //        speed_controller_input_limited = 0 ;
+  //    }
+  // AINFO << "speed_controller_input_limited: "<< speed_controller_input_limited;
 
-  double slope_offset_compenstaion = digital_filter_pitch_angle_.Filter(
-      GRA_ACC * std::sin(VehicleStateProvider::instance()->pitch()));
-  if (isnan(slope_offset_compenstaion)) {
-      slope_offset_compenstaion = 0;
-  }
-  debug->set_slope_offset_compensation(slope_offset_compenstaion);
+  // double acceleration_cmd_closeloop = 0.0;
+  //   AINFO << "Vehicle speed:" << VehicleStateProvider::instance()->linear_velocity() ; 
+  //   speed_pid_controller_.SetPID(lon_controller_conf.low_speed_pid_conf());
+  //   acceleration_cmd_closeloop =
+  //       speed_pid_controller_.Control(speed_controller_input_limited, ts);
+  //   AINFO << "acceleration_cmd_closeloop = "<< acceleration_cmd_closeloop ;
+  
+  // acceleration_cmd_closeloop = common::math::Clamp(acceleration_cmd_closeloop,-1.0,2.0);
+  // double slope_offset_compenstaion = digital_filter_pitch_angle_.Filter(
+  //     GRA_ACC * std::sin(VehicleStateProvider::instance()->pitch()));
+  // if (isnan(slope_offset_compenstaion)) {
+  //     slope_offset_compenstaion = 0;
+  // }
+  // debug->set_slope_offset_compensation(slope_offset_compenstaion);
 
-  double acceleration_cmd =
-      acceleration_cmd_closeloop + debug->preview_acceleration_reference() +
-      FLAGS_enable_slope_offset * debug->slope_offset_compensation();
-  AINFO << "acceleration_cmd_closeloop = " << acceleration_cmd_closeloop ;
-  AINFO << "preview_acceleration_reference = " << debug->preview_acceleration_reference();
+  // double acceleration_cmd =
+  //     acceleration_cmd_closeloop + debug->preview_acceleration_reference() +
+  //     FLAGS_enable_slope_offset * debug->slope_offset_compensation();
+  // AINFO << "acceleration_cmd_closeloop = " << acceleration_cmd_closeloop ;
+  // AINFO << "match_acceleration_reference = " << debug->match_acceleration_reference();
   debug->set_is_full_stop(false);
-  if (acceleration_cmd < -0.2 && (debug->preview_kappa() > 0.03 || debug->preview_kappa() < -0.02) )
+  //TODO
+  if (speed_cmd < 3 && (debug->preview_kappa() > 0.03 || debug->preview_kappa() < -0.02) )
   {
-    acceleration_cmd = 0.2 * acceleration_cmd ;
-    AINFO << "Turnning ,acceleration_cmd = " << acceleration_cmd ;
+    //acceleration_cmd = 0.25 * acceleration_cmd ;
+    AINFO << "Turnning ,speed_cmd = " << speed_cmd ;
   }
   GetPathRemain(debug);
-  if (std::fabs(debug->preview_acceleration_reference()) <=
-           FLAGS_max_acceleration_when_stopped &&
-       std::fabs(debug->preview_speed_reference()) <=
+  if (std::fabs(debug->preview_speed_reference()) <=
            FLAGS_max_abs_speed_when_stopped ||
-      (debug->path_remain() < FLAGS_stop_path_remain)) {
-    acceleration_cmd = lon_controller_conf.standstill_acceleration();
+      (std::fabs(debug->path_remain()) < FLAGS_stop_path_remain)) {
+    speed_cmd = 0 ;
     AINFO << "Stop location reached";
     debug->set_is_full_stop(true);
   } else {
      AINFO << "NOT reached Stop location" ;
-     acceleration_cmd = common::math::Clamp(acceleration_cmd,-0.5,5);
+    // speed_cmd = common::math::Clamp(speed_cmd,-0.3,3.0);
   }
+    //  if(debug->preview_station_error < -2.0 && station_error_diff < 0){
+    //     acceleration_cmd = 0.5 * acceleration_cmd ;
+//}
+//  if(FLAGS_enable_csv_debug && speed_log_file_ != nullptr) {
+//    fprintf(speed_log_file_,
+//            "%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f,"
+//            "%.6f, %.6f, %.6f, %.6f, %d,\r\n",
+//            debug->station_reference(), debug->station_error(),
+//            station_error_limited, debug->preview_station_error(),
+//            debug->speed_reference(), debug->speed_error(),
+//            speed_controller_input_limited, debug->preview_speed_reference(),
+//            debug->preview_speed_error(),
+//            debug->preview_acceleration_reference(), acceleration_cmd_closeloop,
+//            acceleration_cmd, debug->acceleration_lookup(),
+//            debug->speed_real(), debug->is_full_stop());
+//  }
+//  speed_cmd = lon_acc_filter_.Update(speed_cmd) ;
 
-  debug->set_station_error_limited(station_error_limited);
-  debug->set_speed_controller_input_limited(speed_controller_input_limited);
-  debug->set_acceleration_cmd(acceleration_cmd);
- // debug->set_acceleration_lookup(acceleration_cmd);
-  debug->set_speed_lookup(chassis_->speed_mps());
-  debug->set_acceleration_cmd_closeloop(acceleration_cmd_closeloop);
-
-  if (FLAGS_enable_csv_debug && speed_log_file_ != nullptr) {
-    fprintf(speed_log_file_,
-            "%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f,"
-            "%.6f, %.6f, %.6f, %.6f, %d,\r\n",
-            debug->station_reference(), debug->station_error(),
-            station_error_limited, debug->preview_station_error(),
-            debug->speed_reference(), debug->speed_error(),
-            speed_controller_input_limited, debug->preview_speed_reference(),
-            debug->preview_speed_error(),
-            debug->preview_acceleration_reference(), acceleration_cmd_closeloop,
-            acceleration_cmd, debug->acceleration_lookup(),
-            debug->speed_lookup(), debug->is_full_stop());
-  }
-  acceleration_cmd = lon_acc_filter_.Update(acceleration_cmd) ;
-  cmd->set_acceleration(acceleration_cmd) ;
-  AINFO << "PPPPlanning speed is :" << debug->preview_speed_reference() ;
-  AINFO << "PPPPlanning acceleration is :" << debug->preview_acceleration_reference();
-  AINFO << "AAAAcceleration command is :" << acceleration_cmd ;
+  //档位控制，只有停车状态或者空档状态下才能换档
   if (std::fabs(VehicleStateProvider::instance()->linear_velocity()) <=FLAGS_max_abs_speed_when_stopped ||
       chassis->gear_location() == trajectory_message_->gear() ||
       chassis->gear_location() == canbus::Chassis::GEAR_NEUTRAL) {
     cmd->set_gear_location(trajectory_message_->gear());
+    ADEBUG <<"换档" ;
   } else {
     cmd->set_gear_location(chassis->gear_location());
+    ADEBUG << "保持档位" ;
   }
-
+  cmd->set_speed(speed_cmd*3.6);
+  cmd->set_pam_esp_stop_distance(debug->path_remain()*100);
+  AINFO << "PPPPlanning speed is :" << debug->preview_speed_reference() ;
+ // AINFO << "PPPPlanning acceleration is :" << debug->preview_acceleration_reference();
+  AINFO << "speed command is :" << speed_cmd ;
+  debug->set_speed_offset(speed_offset);
+  debug->set_speed_real(chassis_->speed_mps());
   return Status::OK();
 }
 
@@ -348,6 +349,7 @@ void LonController::ComputeLongitudinalErrors(
   debug->set_preview_acceleration_reference(preview_point.a());
   debug->set_current_station(s_matched);
   debug->set_preview_kappa(preview_point.path_point().kappa());
+  debug->set_match_acceleration_reference(reference_point.a());
 }
 
 void LonController::SetDigitalFilter(double ts, double cutoff_freq,
@@ -359,27 +361,48 @@ void LonController::SetDigitalFilter(double ts, double cutoff_freq,
 }
 
 void LonController::GetPathRemain(SimpleLongitudinalDebug *debug) {
-  int stop_index = 0;
-  while (stop_index < trajectory_message_->trajectory_point_size()) {
-    if (fabs(trajectory_message_->trajectory_point(stop_index).v()) < 1e-3 &&
-        trajectory_message_->trajectory_point(stop_index).a() > -0.01 &&
-        trajectory_message_->trajectory_point(stop_index).a() < 0.0) {
-      break;
-    } else {
+    int stop_index = 0;
+  static constexpr double kSpeedThreshold = 1e-3;
+  static constexpr double kForwardAccThreshold = -1e-2;
+  static constexpr double kBackwardAccThreshold = 1e-1;
+  static constexpr double kParkingSpeed = 0.1;
+
+  if (trajectory_message_->gear() == canbus::Chassis::GEAR_DRIVE) {
+    while (stop_index < trajectory_message_->trajectory_point_size()) {
+      auto &current_trajectory_point =
+          trajectory_message_->trajectory_point(stop_index);
+      if (fabs(current_trajectory_point.v()) < kSpeedThreshold &&
+          current_trajectory_point.a() > kForwardAccThreshold &&
+          current_trajectory_point.a() < 0.0) {
+        break;
+      }
+      ++stop_index;
+    }
+  } else {
+    while (stop_index < trajectory_message_->trajectory_point_size()) {
+      auto &current_trajectory_point =
+          trajectory_message_->trajectory_point(stop_index);
+      if (current_trajectory_point.v() < kSpeedThreshold &&
+          current_trajectory_point.a() < kBackwardAccThreshold &&
+          current_trajectory_point.a() > 0.0) {
+        break;
+      }
       ++stop_index;
     }
   }
   if (stop_index == trajectory_message_->trajectory_point_size()) {
     --stop_index;
-    if (fabs(trajectory_message_->trajectory_point(stop_index).v()) < 0.01) {
-      AINFO << "the last point is selected as parking point";
-      debug->set_path_remain(trajectory_message_->trajectory_point(stop_index).path_point().s() - 
-		      debug->current_station()) ;
+    if (fabs(trajectory_message_->trajectory_point(stop_index).v()) <
+        kParkingSpeed) {
+      ADEBUG << "the last point is selected as parking point";
     } else {
-      AINFO << "the last point found in path and speed > speed_deadzone";
+      ADEBUG << "the last point found in path and speed > speed_deadzone";
       debug->set_path_remain(10000);
     }
   }
+  debug->set_path_remain(
+      trajectory_message_->trajectory_point(stop_index).path_point().s() -
+      debug->current_station());
 }
 
 }  // namespace control

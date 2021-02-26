@@ -106,28 +106,18 @@ Status Canbus::Init() {
     }
     AINFO << "The vehicle controller is successfully initialized.";
 
-    /*
-              CHECK(AdapterManager::GetControlCommand()) << "Control is not
-           initialized.";
-              // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
-           initialized.";
-              // TODO(QiL) : depreacte this
-              if (!FLAGS_receive_guardian)
-              {
-                //
-           AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-           this);
-                AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-           this);
-                AdapterManager::AddRemoteControlCallback(&Canbus::OnRemoteControlCommand,
-           this);
-              }
-              else
-              {
-                //
-       AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
-              }
-        */
+    CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
+    // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
+    // initialized.";
+    // TODO(QiL) : depreacte this
+    if (!FLAGS_receive_guardian) {
+        AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+                                                  this);
+        //AdapterManager::AddRemoteControlCallback(
+        //    &Canbus::OnRemoteControlCommand, this);
+    } else {
+        AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
+    }
 
     return Status::OK();
 }
@@ -161,7 +151,6 @@ Status Canbus::Start() {
 
     // 5. set timer to triger publish info periodly
     const double duration = 1.0 / FLAGS_chassis_freq;
-    // Canbus::PublishChassis();
     while (1) {
         Canbus::PublishChassis();
         sleep(duration);
@@ -298,40 +287,39 @@ void Canbus::Stop() {
         //can_sender_.Update();
       }
     }
-    void Canbus::OnControlCommand(const ControlCommand &control_command)
-    {
-      AINFO << "control_command:" + control_command.DebugString();
-      int64_t current_timestamp =
-          jmc_auto::common::time::AsInt64<common::time::micros>(Clock::Now());
-      // if command coming too soon, just ignore it.
-      if (current_timestamp - last_timestamp_ < FLAGS_min_cmd_interval * 1000)
-      {
+    */
+void Canbus::OnControlCommand(const ControlCommand &control_command) {
+    AINFO << "control_command:" + control_command.DebugString();
+    int64_t current_timestamp =
+        jmc_auto::common::time::AsInt64<common::time::micros>(Clock::Now());
+    // if command coming too soon, just ignore it.
+    if (current_timestamp - last_timestamp_ < FLAGS_min_cmd_interval * 1000) {
         ADEBUG << "Control command comes too soon. Ignore.\n Required "
                   "FLAGS_min_cmd_interval["
                << FLAGS_min_cmd_interval << "], actual time interval["
                << current_timestamp - last_timestamp_ << "].";
         return;
-      }
+    }
 
-      last_timestamp_ = current_timestamp;
-      ADEBUG << "Control_sequence_number:"
-             << control_command.header().sequence_num() << ", Time_of_delay:"
-             << current_timestamp - control_command.header().timestamp_sec();
+    last_timestamp_ = current_timestamp;
+    ADEBUG << "Control_sequence_number:"
+           << control_command.header().sequence_num() << ", Time_of_delay:"
+           << current_timestamp - control_command.header().timestamp_sec();
 
-      if (!IS_Remote_MODE && (vehicle_controller_->chassis().driving_mode() ==
-   Chassis::COMPLETE_AUTO_DRIVE||vehicle_controller_->chassis().driving_mode()
-   == Chassis::COMPLETE_MANUAL||vehicle_controller_->chassis().driving_mode() ==
-   Chassis::AUTO_SPEED_ONLY))
-      {
-        if (vehicle_controller_->Update(control_command) != ErrorCode::OK)
-        {
-          AERROR << "Failed to process callback function OnControlCommand
-   because " "vehicle_controller_->Update error."; return;
+    if (!IS_Remote_MODE && (vehicle_controller_->chassis().driving_mode() ==
+                                Chassis::COMPLETE_AUTO_DRIVE ||
+                            vehicle_controller_->chassis().driving_mode() ==
+                                Chassis::COMPLETE_MANUAL ||
+                            vehicle_controller_->chassis().driving_mode() ==
+                                Chassis::AUTO_SPEED_ONLY)) {
+        if (vehicle_controller_->Update(control_command) != ErrorCode::OK) {
+            AERROR << "Failed to process callback function OnControlCommand
+                      because " " vehicle_controller_->Update error."; return;
         }
 
         can_sender_.Update();
-      }
     }
+}
 
     // void Canbus::OnGuardianCommand(const GuardianCommand &guardian_command) {
     //   jmc_auto::control::ControlCommand control_command;
@@ -339,8 +327,6 @@ void Canbus::Stop() {
     //   OnControlCommand(control_command);
     // }
 
-
-*/
 
 } // namespace canbus
 } // namespace jmc_auto

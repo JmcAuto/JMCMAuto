@@ -95,8 +95,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     void PublishChassis();
     // void PublishChassisDetail();
     // void OnTimer(const ros::TimerEvent &event);
-    // void OnControlCommand(const jmc_auto::control::ControlCommand
-    // &control_command);
+    void OnControlCommand(const jmc_auto::control::ControlCommand &control_command);
 
     // void OnRemoteControlCommand(const jmc_auto::remote::RemoteControl
     // &RemoteControlCommand); jmc_auto::control::ControlCommand
@@ -117,7 +116,7 @@ class Canbus : public jmc_auto::common::JmcAutoApp {
     std::unique_ptr<VehicleController> vehicle_controller_;
     bool IS_STOP_MODE = false;
     bool IS_VEHCILE_STOP = false;
-    // jmc_auto::control::ControlCommand control_command_;
+    jmc_auto::control::ControlCommand control_command_;
 
     bool IS_Remote_MODE = false;
     int64_t last_timestamp_ = 0;

@@ -5,6 +5,7 @@ add_compile_options(-fPIC)
 add_subdirectory(common)
 add_subdirectory(proto)
 add_subdirectory(vehicle)
+add_subdirectory(tools)
 
 add_library(canbus_lib
   canbus.cc

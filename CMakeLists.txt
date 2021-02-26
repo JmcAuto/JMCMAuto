@@ -53,6 +53,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 #默认编译c和c++文件生成可执行文件
 add_executable(canbus modules/canbus/main.cc)
+add_executable(control modules/control/main.cc)
 
 #用户可在此添加链接库
 target_link_libraries(canbus
@@ -64,6 +65,12 @@ target_link_libraries(canbus
   can_client
   drivers_canbus_common
   -lpthread)
+target_link_libraries(control
+  ${COMMON_LIB}
+  control_lib
+  common
+  gflags)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
+set_target_properties(control PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

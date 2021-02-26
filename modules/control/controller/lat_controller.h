@@ -104,6 +104,9 @@ class LatController : public Controller {
   std::string Name() const override;
 
  protected:
+ // logic for reverse driving mode
+  void UpdateDrivingOrientation();
+  
   void UpdateState(SimpleLateralDebug *debug);
 
   void UpdateMatrix();
@@ -114,6 +117,7 @@ class LatController : public Controller {
 
   void ComputeLateralErrors(const double x, const double y, const double theta,
                             const double linear_v, const double angular_v,
+                            const double linear_a ,
                             const TrajectoryAnalyzer &trajectory_analyzer,
                             SimpleLateralDebug *debug);
   bool LoadControlConf(const ControlConf *control_conf);
@@ -126,6 +130,7 @@ class LatController : public Controller {
   void CloseLogFile();
 
   // vehicle parameter
+  const ControlConf *control_conf_ = nullptr;
   common::VehicleParam vehicle_param_;
   std::unique_ptr<Interpolation1D> steer_torque_interpolation_;
 
@@ -211,15 +216,25 @@ class LatController : public Controller {
   const std::string name_;
 
   double pre_steer_angle_ = 0.0;
+  double previous_steer_angle_feedback = 0.0 ;
 
   double minimum_speed_protection_ = 0.1;
   double steering_torque_ = 0.0 ; 
-  double previous_steer_angle = 0.0 ;
   PIDController steering_pid_controller_ ; //转向PID定义
+  double previous_steering_angle = 0.0 ;
   //double current_trajectory_timestamp_ = -1.0;
 
-  //double init_vehicle_x_ = 0.0;
+  //5.5
+  double lookahead_station_ = 0.0 ;
+  double lookback_station_ = 0.0 ;
+  double driving_orientation_ = 0.0 ;
+  double previous_lateral_acceleration_ = 0.0;
 
+  double previous_heading_rate_ = 0.0;
+  double previous_ref_heading_rate_ = 0.0;
+
+  double previous_heading_acceleration_ = 0.0;
+  double previous_ref_heading_acceleration_ = 0.0;
   //double init_vehicle_y_ = 0.0;
 
   //double init_vehicle_heading_ = 0.0;

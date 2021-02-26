@@ -123,8 +123,7 @@ class LonController : public Controller {
   std::unique_ptr<Interpolation2D> control_interpolation_;
   const planning::ADCTrajectory *trajectory_message_ = nullptr;
   std::unique_ptr<TrajectoryAnalyzer> trajectory_analyzer_;
-//unique $)AN*R;8vV8Uk@`D#0e#,=+TWwN*J5@};/4+Hk@`D#0eVPPN3IV8Uk@`#,44=(Ub
-//$)A8vV8Uk@`6TOstrajectory_analyzer_
+
   std::string name_;
   bool controller_initialized_ = false;
 
@@ -136,7 +135,7 @@ class LonController : public Controller {
   common::DigitalFilter digital_filter_pitch_angle_;
   common::MeanFilter lon_acc_filter_ ;
   const ControlConf *control_conf_ = nullptr;
-
+  double previous_station_error = 0.0 ;
   // vehicle parameter
   common::VehicleParam vehicle_param_;
 };

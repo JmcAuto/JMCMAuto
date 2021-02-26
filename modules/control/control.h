@@ -11,7 +11,7 @@
 #include "modules/control/proto/control_cmd.pb.h"
 #include "modules/control/proto/control_conf.pb.h"
 #include "modules/control/proto/pad_msg.pb.h"
-#include "modules/planning/proto/planning.pb.h"
+//#include "modules/planning/proto/planning.pb.h"
 
 #include "modules/common/jmc_auto_app.h"
 #include "modules/common/util/util.h"
@@ -34,8 +34,8 @@ class Control : public jmc_auto::common::JmcAutoApp {
   friend class ControlTestBase;
 
  public:
-  Control()
-      : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::CONTROL) {}
+  //Control()
+  //   : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::CONTROL) {}
 
   /**
    * @brief module name
@@ -68,10 +68,10 @@ class Control : public jmc_auto::common::JmcAutoApp {
   // Upon receiving pad message
   void OnPad(const jmc_auto::control::PadMessage &pad);
   // Upon receiving monitor message
-  void OnMonitor(
-      const jmc_auto::common::monitor::MonitorMessage &monitor_message);
+  //void OnMonitor(
+  //    const jmc_auto::common::monitor::MonitorMessage &monitor_message);
   // Watch dog timer
-  void OnTimer(const ros::TimerEvent &);
+  //void OnTimer(const ros::TimerEvent &);
   common::Status ProduceControlCommand(ControlCommand *control_command);
   common::Status CheckInput();
   common::Status CheckTimestamp();
@@ -89,7 +89,7 @@ class Control : public jmc_auto::common::JmcAutoApp {
   bool estop_ = false;
   std::string estop_reason_;
   bool pad_received_ = false;
-  ros::Timer timer_;
+  //ros::Timer timer_;
 };
 
 }  // namespace control

@@ -24,10 +24,10 @@
 #include "modules/common/adapters/adapter.h"
 
 #include "impl_type_chassis.h"
-#include "chassisserviceinterface_common.h"
+#include "impl_type_controlcommand.h"
+
 #include "jmc_auto/chassisserviceinterface_common.h"
-#include "jmc_auto/chassisserviceinterface_proxy.h"
-#include "jmc_auto/chassisserviceinterface_skeleton.h"
+#include "jmc_auto/controlcommandserviceinterface_common.h"
 
 /**
  * @file message_adapters.h
@@ -41,8 +41,8 @@ namespace adapter {
 
 using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
 using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
-/*
 using ControlCommandAdapter = Adapter<control::ControlCommand>;
+/*
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
 using RawImuAdapter = Adapter<jmc_auto::drivers::gnss::Imu>;

@@ -5,6 +5,7 @@ package jmc_auto.control;
 import "modules/control/proto/gain_scheduler_conf.proto";
 import "modules/control/proto/steer_torque_calibration.proto";
 import "modules/control/proto/pid_conf.proto";
+import "modules/control/proto/leadlag_conf.proto";
 // simple optimal steer control param
 message LatControllerConf {
   optional double ts = 1;            // sample time (dt) 0.01 now, configurable
@@ -27,4 +28,10 @@ message LatControllerConf {
   optional jmc_auto.control.GainScheduler heading_err_gain_scheduler = 16;
   optional steertorquecalibration.Steer_Torque_CalibrationTable steer_calibration_table = 17;
   optional PidConf steering_pid_conf =18;
+  repeated double reverse_matrix_q = 19 ;
+  optional LeadlagConf reverse_leadlag_conf = 20;
+  optional bool enable_reverse_leadlag_compensation = 21 [default = false];
+  optional bool enable_look_ahead_back_control = 22 [default = false];
+  optional double lookahead_station = 23 [default = 0.0];
+  optional double lookback_station = 24 [default = 0.0];
 }

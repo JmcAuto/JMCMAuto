@@ -28,6 +28,7 @@
 
 #include "modules/common/proto/pnc_point.pb.h"
 #include "modules/common/vehicle_state/vehicle_state_provider.h"
+#include "modules/common/math/vec2d.h"
 
 /**
  * @namespace jmc_auto::control
@@ -121,7 +122,20 @@ class TrajectoryAnalyzer {
                          const double v, const common::PathPoint &matched_point,
                          double *ptr_s, double *ptr_s_dot, double *ptr_d,
                          double *ptr_d_dot) const;
-
+                         
+  /*将规划轨迹点由后轴中心转化到质心*/
+  void TrajectoryTransformToCOM(const double rear_to_com_distance);
+/**
+   * @brief Compute the position of center of mass(COM) of the vehicle,
+   *        given the distance from rear wheels to the center of mass.
+   * @param rear_to_com_distance Distance from rear wheels to
+   *        the vehicle's center of mass.
+   * @param path_point PathPoint along the published planning trajectory.
+   * @return The position of the vehicle's center of mass.
+   */
+  common::math::Vec2d ComputeCOMPosition(
+      const double rear_to_com_distance,
+      const common::PathPoint &path_point) const;
   /**
    * @brief get all points of the trajectory
    * @return a vector of trajectory points

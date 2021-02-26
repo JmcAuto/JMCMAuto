@@ -1,6 +1,3 @@
-load("//tools:cpplint.bzl", "cpplint")
-
-package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "control_gflags",
@@ -66,6 +63,19 @@ cc_library(
         "//modules/control/proto:control_proto",
     ],
 )
+cc_library(
+    name = "pid_increment",
+    srcs = [
+        "pid_increment.cc",
+    ],
+    hdrs = [
+        "pid_increment.h",
+    ],
+    deps = [
+        "//modules/common:log",
+        "//modules/control/proto:control_proto",
+    ],
+)
 
 cc_library(
     name = "trajectory_analyzer",
@@ -94,7 +104,7 @@ cc_library(
         ":interpolation_2d",
         ":pid_controller",
         ":trajectory_analyzer",
+        ":pid_increment",
     ],
 )
 
-cpplint()

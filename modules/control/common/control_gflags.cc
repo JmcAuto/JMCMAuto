@@ -30,7 +30,7 @@ DEFINE_double(control_test_duration, -1.0,
               "Control testing duration in seconds. This number is will not "
               "take effect if negative");
 //DEFINE_bool(use_preview_speed_for_table, false,
- //           "True to use preview speed for table lookup");
+  //          "True to use preview speed for table lookup");
 
 DEFINE_bool(enable_input_timestamp_check, true,
             "True to enable input timestamp delay check");
@@ -68,3 +68,31 @@ DEFINE_double(max_abs_speed_when_stopped, 0.01, "Stop speed");
 DEFINE_double(stop_path_remain, 0.5, "Stop path remain");
 DEFINE_double(steering_angle_change_rate_coeff , 0.5, "Steering change rate influence steering torque");
 DEFINE_bool(enable_use_steering_pid , false , "True to use pid control to compensate steering torque,false to use coeff compensation") ;
+DEFINE_bool(use_preview_point,true,"True to use new preview methed");
+DEFINE_bool(reverse_heading_control, true, "test vehicle reverse control");
+
+DEFINE_bool(
+    trajectory_transform_to_com_reverse, true,
+    "Enable planning trajectory coordinate transformation from center of "
+    "rear-axis to center of mass, during reverse driving");
+DEFINE_bool(
+    trajectory_transform_to_com_drive, true,
+    "Enable planning trajectory coordinate transformation from center of "
+    "rear-axis to center of mass, during forward driving");
+
+DEFINE_bool(enable_maximum_steer_rate_limit, false,
+            "Enable steer rate limit obtained from vehicle_param.pb.txt");
+
+DEFINE_bool(query_time_nearest_point_only, false,
+            "only use the trajectory point at nearest time as target point");
+
+DEFINE_bool(query_forward_time_point_only, false,
+            "only use the trajectory point in future");
+
+DEFINE_bool(enable_feedback_augment_on_high_speed, false,
+            "Enable augmented control on lateral error on high speed");
+
+DEFINE_bool(
+    enable_gear_drive_negative_speed_protection, false,
+    "Enable estop to prevent following negative speed during gear drive");
+

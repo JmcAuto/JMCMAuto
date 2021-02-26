@@ -1,0 +1,69 @@
+include_directories(.)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(controller_interface INTERFACE)
+target_link_libraries(controller_interface INTERFACE
+  )
+add_library(lat_controller
+  lat_controller.cc
+  lat_controller.h)
+target_link_libraries(lat_controller
+  controller_interface
+  jmcauto_log
+  vehicle_config_helper
+  digital_filter
+  digital_filter_coefficients
+  mean_filter
+  euler_angles_zxy
+  geometry
+  lqr
+  common_proto
+  status
+  time
+  control_gflags
+  interpolation_1d
+  interpolation_2d
+  trajectory_analyzer
+  control_proto
+  pid_controller
+  eigen)
+add_library(lon_controller
+  lon_controller.cc
+  lon_controller.h)
+target_link_libraries(lon_controller
+  controller_interface
+  jmcauto_log
+  vehicle_config_helper
+  digital_filter
+  digital_filter_coefficients
+  mean_filter
+  status
+  time
+  vehicle_state_provider
+  control_gflags
+  interpolation_2d
+  pid_controller
+  trajectory_analyzer
+  localization_common)
+add_library(controller INTERFACE)
+target_link_libraries(controller INTERFACE
+  controller_agent
+  controller_interface
+  lat_controller
+  lon_controller
+  eigen)
+add_library(controller_agent
+  controller_agent.cc
+  controller_agent.h)
+target_link_libraries(controller_agent
+  controller_interface
+  lat_controller
+  lon_controller
+  canbus_proto
+  jmcauto_log
+  time
+  factory
+  control_proto
+  planning_proto)
+
+

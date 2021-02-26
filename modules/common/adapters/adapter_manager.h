@@ -36,8 +36,6 @@
 
 //#include "modules/common/transform_listener/transform_listener.h"
 
-//#include "ros/include/ros/ros.h"
-
 /**
  * @namespace jmc_auto::common::adapter
  * @brief jmc_auto::common::adapter
@@ -284,8 +282,8 @@ class AdapterManager {
     /// The following code registered all the adapters of interest.
     REGISTER_ADAPTER(Chassis);
     // REGISTER_ADAPTER(ChassisDetail);
-    /*
     REGISTER_ADAPTER(ControlCommand);
+    /*
     REGISTER_ADAPTER(Gps);
     REGISTER_ADAPTER(Imu);
     REGISTER_ADAPTER(RawImu);

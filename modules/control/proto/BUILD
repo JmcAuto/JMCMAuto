@@ -1,4 +1,3 @@
-package(default_visibility = ["//visibility:public"])
 
 cc_proto_library(
     name = "control_proto",
@@ -19,6 +18,7 @@ proto_library(
         "pad_msg.proto",
         "pid_conf.proto",
         "steer_torque_calibration.proto",
+        "leadlag_conf.proto",
     ],
     deps = [
         "//modules/canbus/proto:canbus_proto_lib",

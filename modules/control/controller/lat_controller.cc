@@ -30,7 +30,7 @@
 #include "modules/common/math/linear_quadratic_regulator.h"
 #include "modules/common/math/math_utils.h"
 #include "modules/common/math/quaternion.h"
-#include "modules/common/time/jmcauto_time.h"
+#include "modules/common/time/time.h"
 #include "modules/common/util/string_util.h"
 #include "modules/control/common/control_gflags.h"
 #include "modules/common/configs/config_gflags.h"
@@ -169,6 +169,7 @@ void LatController::InitializeFilters(const ControlConf *control_conf) {
 }
 
 Status LatController::Init(const ControlConf *control_conf) {
+  control_conf_ = control_conf;
   if (!LoadControlConf(control_conf)) {
     AERROR << "failed to load control conf";
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR,
@@ -212,8 +213,8 @@ Status LatController::Init(const ControlConf *control_conf) {
   InitializeFilters(control_conf);
   auto &lat_controller_conf = control_conf->lat_controller_conf();
   LoadLatGainScheduler(lat_controller_conf);
-  LoadSteerCalibrationTable(lat_controller_conf);
-  steering_pid_controller_.Init(lat_controller_conf.steering_pid_conf()) ;
+//  LoadSteerCalibrationTable(lat_controller_conf);
+//  steering_pid_controller_.Init(lat_controller_conf.steering_pid_conf()) ;
   AINFO << "LAT PID coeff " << lat_controller_conf.steering_pid_conf().kp() ;
   LogInitParameters();
   AINFO << "Lat init succeed!";
@@ -260,22 +261,75 @@ Status LatController::ComputeControlCommand(
     const canbus::Chassis *chassis,
     const planning::ADCTrajectory *planning_published_trajectory,
     ControlCommand *cmd) {
-  if(!steer_torque_interpolation_){
-      AERROR << "Fail to initialize steer calibration table ." ;
-      return Status(ErrorCode::CONTROL_COMPUTE_ERROR,"Fail to initialize steer calibration table .") ;
-  } 
-  VehicleStateProvider::instance()->set_linear_velocity(chassis->speed_mps());
+  // if(!steer_torque_interpolation_){
+  //     AERROR << "Fail to initialize steer calibration table ." ;
+  //     return Status(ErrorCode::CONTROL_COMPUTE_ERROR,"Fail to initialize steer calibration table .") ;
+  // } 
+  auto vehicle_state = VehicleStateProvider::instance() ;
+  vehicle_state->set_linear_velocity(chassis->speed_mps());
 //planning发布的轨迹
    trajectory_analyzer_ =
       std::move(TrajectoryAnalyzer(planning_published_trajectory)); 
 
    SimpleLateralDebug *debug = cmd->mutable_debug()->mutable_simple_lat_debug();
   debug->Clear();
+  //将planning轨迹点由后轴中心转化为车辆质心
+  if ((FLAGS_trajectory_transform_to_com_reverse && vehicle_state->gear()==canbus::Chassis::GEAR_REVERSE)||
+       FLAGS_trajectory_transform_to_com_drive && vehicle_state->gear()==canbus::Chassis::GEAR_DRIVE){
+    trajectory_analyzer_.TrajectoryTransformToCOM(lr_);
+  }
+
+  //判断档位,根据档位设置模型参数
+   if (vehicle_state->gear() == canbus::Chassis::GEAR_REVERSE) {
+    /*
+    A matrix (Gear Reverse)
+    [0.0, 0.0, 1.0 * v 0.0;
+     0.0, (-(c_f + c_r) / m) / v, (c_f + c_r) / m,
+     (l_r * c_r - l_f * c_f) / m / v;
+     0.0, 0.0, 0.0, 1.0;
+     0.0, ((lr * cr - lf * cf) / i_z) / v, (l_f * c_f - l_r * c_r) / i_z,
+     (-1.0 * (l_f^2 * c_f + l_r^2 * c_r) / i_z) / v;]
+    */
+    cf_ = -control_conf_->lat_controller_conf().cf();
+    cr_ = -control_conf_->lat_controller_conf().cr();
+    matrix_a_(0, 1) = 0.0;
+    matrix_a_coeff_(0, 2) = 1.0;
+  } else {
+    /*
+    A matrix (Gear Drive)
+    [0.0, 1.0, 0.0, 0.0;
+     0.0, (-(c_f + c_r) / m) / v, (c_f + c_r) / m,
+     (l_r * c_r - l_f * c_f) / m / v;
+     0.0, 0.0, 0.0, 1.0;
+     0.0, ((lr * cr - lf * cf) / i_z) / v, (l_f * c_f - l_r * c_r) / i_z,
+     (-1.0 * (l_f^2 * c_f + l_r^2 * c_r) / i_z) / v;]
+    */
+    cf_ = control_conf_->lat_controller_conf().cf();
+    cr_ = control_conf_->lat_controller_conf().cr();
+    matrix_a_(0, 1) = 1.0;
+    matrix_a_coeff_(0, 2) = 0.0;
+  }
+  //更新R档下的航向，航向角在原基础上增加派
+  UpdateDrivingOrientation();
   // Update state = [Lateral Error, Lateral Error Rate, Heading Error, Heading
   // Error Rate, preview lateral error1 , preview lateral error2, ...]
   UpdateState(debug);    //state matrix X
   UpdateMatrix();    //获取系数矩阵A，  matrix_a_，采用离散化公式获得matrix_ad_
   UpdateMatrixCompound(); //道路预览模型复合化离散矩阵 matrix_adc_
+
+  //R档下更新q
+  if (VehicleStateProvider::instance()->gear() ==
+      canbus::Chassis::GEAR_REVERSE) {
+    for (int i = 0; i < 4; ++i) {
+      matrix_q_(i, i) =
+          control_conf_->lat_controller_conf().reverse_matrix_q(i);
+    }
+  } else {
+    for (int i = 0; i < 4; ++i) {
+      matrix_q_(i, i) = control_conf_->lat_controller_conf().matrix_q(i);
+    }
+  }
+
   // Add gain sheduler for higher speed steering增加增益sheduler以实现更高的转向速度，
   //在原来的q矩阵的基础上乘以系数，速度越大，系数越小
   if (FLAGS_enable_gain_scheduler) {
@@ -287,25 +341,29 @@ Status LatController::ComputeControlCommand(
         matrix_q_(2, 2) *
         heading_err_interpolation_->Interpolate(
             VehicleStateProvider::instance()->linear_velocity());
-    ADEBUG<< "Q(0) = " << matrix_q_updated_(0, 0) ;
-    ADEBUG << "Q(2) = " << matrix_q_updated_(2, 2) ;
+    AINFO << "Q(0) = " << matrix_q_updated_(0, 0) ;
+    AINFO << "Q(2) = " << matrix_q_updated_(2, 2) ;
     common::math::SolveLQRProblem(matrix_adc_, matrix_bdc_, matrix_q_updated_,
                                   matrix_r_, lqr_eps_, lqr_max_iteration_,
                                   &matrix_k_);
   } else {
-    ADEBUG << "Q(0) = " << matrix_q_updated_(0, 0) ;
-    ADEBUG << "Q(2) = " << matrix_q_updated_(2, 2) ;
+    AINFO << "Q(0) = " << matrix_q_updated_(0, 0) ;
+    AINFO << "Q(2) = " << matrix_q_updated_(2, 2) ;
     common::math::SolveLQRProblem(matrix_adc_, matrix_bdc_, matrix_q_,
                                   matrix_r_, lqr_eps_, lqr_max_iteration_,
                                   &matrix_k_);
   }
-  ADEBUG << "Solve LQR succeed!" ;
+  AINFO << "Solve LQR succeed!" ;
   // feedback = - K * state
   // Convert vehicle steer angle from rad to degree and then to steering degree
   // then to 100% ratio
-  const double steer_angle_feedback = -(matrix_k_ * matrix_state_)(0, 0) * 180 /
+  double steer_angle_feedback = -(matrix_k_ * matrix_state_)(0, 0) * 180 /
                                       M_PI * steer_transmission_ratio_ /
                                       steer_single_direction_max_degree_ * 100;
+  double steer_angle_feedback_diff = steer_angle_feedback - previous_steer_angle_feedback ;
+  steer_angle_feedback_diff = common::math::Clamp(steer_angle_feedback_diff,-4.0,4.0);
+  steer_angle_feedback = previous_steer_angle_feedback + steer_angle_feedback_diff ;
+  previous_steer_angle_feedback = steer_angle_feedback ;
   AINFO << "steer_angle_feedback = " << steer_angle_feedback ;
   //计算前馈
   const double steer_angle_feedforward = ComputeFeedForward(debug->curvature());
@@ -313,26 +371,25 @@ Status LatController::ComputeControlCommand(
   // Clamp the steer angle to -100.0 to 100.0
   double steer_angle = common::math::Clamp(
       steer_angle_feedback + steer_angle_feedforward, -100.0, 100.0);
-   AINFO << "steer_angle = " << steer_angle <<"%";
+   AINFO << "steer_angle = " << steer_angle ;
   if (FLAGS_set_steer_limit) {
-    
+    AINFO << "Limited steer angle according to vehicle speed";
     const double steer_limit =
         std::atan(max_lat_acc_ * wheelbase_ /
                   (VehicleStateProvider::instance()->linear_velocity() *
                    VehicleStateProvider::instance()->linear_velocity())) *
         steer_transmission_ratio_ * 180 / M_PI /
         steer_single_direction_max_degree_ * 100;//根据车速限制车轮最大转向角
+
     // Clamp the steer angle
     double steer_angle_limited =
         common::math::Clamp(steer_angle, -steer_limit, steer_limit);//将计算出的车轮转角限制在最大转向角内
     steer_angle_limited = digital_filter_.Filter(steer_angle_limited);//数字滤波，滤去高频信号
     steer_angle = steer_angle_limited;
     debug->set_steer_angle_limited(steer_angle_limited);
-    AINFO << "Limited steer angle according to vehicle speed " << steer_angle_limited;
   } else {
     steer_angle = digital_filter_.Filter(steer_angle);
   }
-
 //车速<锁轮速度且D档且完全自动驾驶
   if (VehicleStateProvider::instance()->linear_velocity() <
           FLAGS_lock_steer_speed &&
@@ -342,56 +399,61 @@ Status LatController::ComputeControlCommand(
     AINFO << "vehicle speed <lock_steer_speed, Use pre_steer_angle!" ;
   }
   pre_steer_angle_ = steer_angle;
-
-  double steer_angle_diff = steer_angle - previous_steer_angle ; //前后两次计算的转角百分比的差值
-  steer_angle_diff = common::math::Clamp(steer_angle_diff,-10.0,10.0);
-  steer_angle = previous_steer_angle + steer_angle_diff ;
-  previous_steer_angle = steer_angle ;
-  //将转角百分比转化到角度
-  double steering_angle_ = steer_angle * steer_single_direction_max_degree_ / 100 ;
+ double steering_angle_ = steer_angle * steer_single_direction_max_degree_ / 100 ;
+  //xian zhi liangcijisuande zhuanjiao chazhi
+  ADEBUG << "oringin steering_angle " << steering_angle_ ;
+  double steering_angle_diff = steering_angle_ - previous_steering_angle ;
+  ADEBUG << "previous_steer_angle " << previous_steering_angle ;
+  ADEBUG << "steering_angle_diff " << steering_angle_diff ;
+  steering_angle_diff = common::math::Clamp(steering_angle_diff,-89.9,89.9);
+  steering_angle_ = previous_steering_angle + steering_angle_diff ;
+  previous_steering_angle = steering_angle_ ;
+  ADEBUG << "final steering_angle " << steering_angle_ ;
+  //将前轮转角百分比转化到方向盘角度
+ // double steering_angle_ = steer_angle * steer_single_direction_max_degree_ / 100 ;
  // double steer_calibration = 0.0 ;
-  ADEBUG << "Vehicle speed is :" << VehicleStateProvider::instance()->linear_velocity() ;
-  AINFO << "CALIBRATION angle is :" << steering_angle_ ;
+  // AINFO << "CALIRABTION speed is :" << VehicleStateProvider::instance()->linear_velocity() ;
+  // AINFO << "CALIBRATION angle is :" << steering_angle_ ;
   //插值求转矩
-  double steer_calibration = steer_torque_interpolation_->Interpolate(steering_angle_) ;
-  AINFO << "Steering calibration value = " << steer_calibration ;
-  if (!FLAGS_enable_use_steering_pid){
-     AINFO << "Not use steering PID" ;
-     steer_calibration  =  VehicleStateProvider::instance()->linear_velocity() * FLAGS_steering_calibration_coeff * steer_calibration ;
-     const auto preview_point = traje ctory_analyzer_.QueryNearestPointByRelativeTime(2*ts_*preview_window_);
-     const auto matched_point = trajectory_analyzer_.QueryNearestPointByPosition(vehicle_x , vehicle_y);
-     double linear_v = VehicleStateProvider::instance()->linear_velocity() ;
-     if(linear_v !=0){
-        auto matched_to_preview_time_t =std::fabs((preview_point.path_point().s()-matched_point.path_point().s()) / linear_v);
-        AINFO << "preview s :" << preview_point.path_point().s() << ", matched s" << matched_point.path_point().s();
-        if(matched_to_preview_time_t !=0){
-           //auto steering_angle_change_rate = (steering_angle_ - chassis->steering_percentage())/matched_to_preview_time_t ;
-          auto steering_angle_change_rate = (common::math::NormalizeAngle(preview_point.path_point().theta()-VehicleStateProvider::instance()->heading()))/matched_to_preview_time_t ;
-          AINFO << "matched_to_preview_time_t = " << matched_to_preview_time_t ;
-            // AINFO << "DETA THETA  = " << steering_angle_ - chassis->steering_percentage() ;
-          AINFO << "Heading error  = " << common::math::NormalizeAngle(preview_point.path_point().theta()-VehicleStateProvider::instance()->heading());
-          AINFO << "heading_error_change_rate  = " << steering_angle_change_rate ;
-          steer_calibration = steer_calibration + steering_angle_change_rate * FLAGS_steering_angle_change_rate_coeff ;
-          AINFO << "steering_angle_change_rate influence torque  = " <<  steering_angle_change_rate * FLAGS_steering_angle_change_rate_coeff << ",the coeff is" << FLAGS_steering_angle_change_rate_coeff;
-        }
-     }
-  } else{
-    AINFO << "Use steering PID";
-    auto steering_angle_error = steering_angle_ - chassis->steering_percentage();
-    AINFO << "steering_angle_error  = " << (steering_angle_ - chassis->steering_percentage()) ;
-    auto steering_torque_offset = steering_pid_controller_.Control(steering_angle_error , ts_) ;
-    steer_calibration = steer_calibration + steering_torque_offset ;
-    AINFO << "steering_torque_offset = " << steering_torque_offset ;
-  }
-  steer_calibration = common::math::Clamp(steer_calibration , -3.0 , 3.0) ;
-  cmd->set_steering_torque(steer_calibration);
-  //USING PID
-  AINFO << "Steering torque is " << cmd->steering_torque();
+//double steer_calibration = steer_torque_interpolation_->Interpolate(steering_angle_) ;
+//  AINFO << "Steering calibration value = " << steer_calibration ;
+  // if (!FLAGS_enable_use_steering_pid){
+  //    AINFO << "Not use steering PID" ;
+  //    steer_calibration  =  VehicleStateProvider::instance()->linear_velocity() * FLAGS_steering_calibration_coeff * steer_calibration ;
+  //    const auto preview_point = trajectory_analyzer_.QueryNearestPointByRelativeTime(2*ts_*preview_window_);
+  //    const auto matched_point = trajectory_analyzer_.QueryNearestPointByPosition(vehicle_x , vehicle_y);
+  //    double linear_v = VehicleStateProvider::instance()->linear_velocity() ;
+  //    if(linear_v !=0){
+  //       auto matched_to_preview_time_t =std::fabs((preview_point.path_point().s()-matched_point.path_point().s()) / linear_v);
+  //       AINFO << "preview s :" << preview_point.path_point().s() << ", matched s" << matched_point.path_point().s();
+  //       if(matched_to_preview_time_t !=0){
+  //          //auto steering_angle_change_rate = (steering_angle_ - chassis->steering_percentage())/matched_to_preview_time_t ;
+  //         auto steering_angle_change_rate = (common::math::NormalizeAngle(preview_point.path_point().theta()-VehicleStateProvider::instance()->heading()))/matched_to_preview_time_t ;
+  //         AINFO << "matched_to_preview_time_t = " << matched_to_preview_time_t ;
+  //           // AINFO << "DETA THETA  = " << steering_angle_ - chassis->steering_percentage() ;
+  //         AINFO << "Heading error  = " << common::math::NormalizeAngle(preview_point.path_point().theta()-VehicleStateProvider::instance()->heading());
+  //         AINFO << "heading_error_change_rate  = " << steering_angle_change_rate ;
+  //         steer_calibration = steer_calibration + steering_angle_change_rate * FLAGS_steering_angle_change_rate_coeff ;
+  //         AINFO << "steering_angle_change_rate influence torque  = " <<  steering_angle_change_rate * FLAGS_steering_angle_change_rate_coeff << ",the coeff is" << FLAGS_steering_angle_change_rate_coeff;
+  //       }
+  //    }
+  // } else{
+  //   AINFO << "Use steering PID";
+  //   auto steering_angle_error = steering_angle_ - chassis->steering_percentage();
+  //   steering_angle_error = common::math::Clamp(steering_angle_error,-18.0,18.0);
+  //   AINFO << "steering_angle_error  = " << steering_angle_error ;
+  //   auto steering_torque_offset = steering_pid_controller_.Control(steering_angle_error , ts_) ;
+  //   steering_torque_offset = common::math::Clamp(steering_torque_offset,-2.0,2.0);
+  //   steer_calibration = steer_calibration + steering_torque_offset ;
+  //   AINFO << "steering_torque_offset = " << steering_torque_offset ;
+  // }
+  // steer_calibration = common::math::Clamp(steer_calibration , -3.0 , 3.0) ;
+  // cmd->set_steering_torque(steer_calibration);
+  // AINFO << "Steering torque is " << cmd->steering_torque();
+  cmd->set_steering_angle(steering_angle_);
   cmd->set_steering_rate(FLAGS_steer_angle_rate);
-
   debug->set_heading(VehicleStateProvider::instance()->heading());
-  debug->set_steer_angle(steering_angle_);
-  debug->set_steering_torque(steer_calibration) ;
+ // debug->set_steer_angle(steering_angle_);
   debug->set_steer_angle_feedforward(steer_angle_feedforward);
   debug->set_steer_angle_feedback(steer_angle_feedback);
   debug->set_steering_position(chassis->steering_percentage());
@@ -407,29 +469,35 @@ Status LatController::Reset() {
 }
 //更新状态矩阵
 void LatController::UpdateState(SimpleLateralDebug *debug) {
-    const auto &com = VehicleStateProvider::instance()->ComputeCOMPosition(lr_);
-    vehicle_x = com.x() ; 
+  auto vehicle_state = VehicleStateProvider::instance();
+    const auto &com = vehicle_state->ComputeCOMPosition(lr_);
+    vehicle_x = com.x() ;
     vehicle_y = com.y() ;
-   // vehicle_x = VehicleStateProvider::instance()->x() ;
-   // vehicle_y = VehicleStateProvider::instance()->y();
      ComputeLateralErrors(vehicle_x,vehicle_y,
-                         VehicleStateProvider::instance()->heading(),
-                         VehicleStateProvider::instance()->linear_velocity(),
-                         VehicleStateProvider::instance()->angular_velocity(),
+                         driving_orientation_,
+                         vehicle_state->linear_velocity(),
+                         vehicle_state->angular_velocity(),
+                         vehicle_state->linear_acceleration(),
                          trajectory_analyzer_, debug);
-  // Reverse heading error if vehicle is going in reverse
-  if (VehicleStateProvider::instance()->gear() ==
-      canbus::Chassis::GEAR_REVERSE) {
-    debug->set_heading_error(-debug->heading_error());
-    AINFO << "vehicle is going in reverse!" ;
+  // // Reverse heading error if vehicle is going in reverse
+  // if (VehicleStateProvider::instance()->gear() ==
+  //     canbus::Chassis::GEAR_REVERSE) {
+  //   debug->set_heading_error(-debug->heading_error());
+  //   AINFO << "vehicle is going in reverse!" ;
+  // }
+// State matrix update;
+  // First four elements are fixed;
+  if (control_conf_->lat_controller_conf().enable_look_ahead_back_control()) {
+    matrix_state_(0, 0) = debug->lateral_error_feedback();
+    matrix_state_(2, 0) = debug->heading_error_feedback();
+  } else {
+    matrix_state_(0, 0) = debug->lateral_error();
+    matrix_state_(2, 0) = debug->heading_error();
   }
-  // State matrix update;First four elements are fixed;
-  AINFO << "Lateral error is :" << debug->lateral_error() ;
-  AINFO << "Heading error is :" << debug->heading_error() ;
-  matrix_state_(0, 0) = debug->lateral_error();
   matrix_state_(1, 0) = debug->lateral_error_rate();
-  matrix_state_(2, 0) = debug->heading_error();
   matrix_state_(3, 0) = debug->heading_error_rate();
+  if(!FLAGS_use_preview_point){
+   //用apollo原始的预瞄方法FLAGS_use_preview_point = false
   // Next elements are depending on preview window size;后四个元素取决于预瞄窗口的大小，设置的preview_window=0 ;
   for (int i = 0; i < preview_window_; ++i) {
   //  AINFO << "lat use preview_window, lat preview_window size is :" << preview_window_ ;
@@ -453,12 +521,23 @@ void LatController::UpdateState(SimpleLateralDebug *debug) {
         cos_matched_theta * dy - sin_matched_theta * dx;//预瞄横向误差
     matrix_state_(basic_state_size_ + i, 0) = preview_d_error;//在X的下一行增加预瞄横向误差
   }
+  }
   AINFO << "Update state X succeed!";
 }
 
 void LatController::UpdateMatrix() {
-  const double v = std::max(VehicleStateProvider::instance()->linear_velocity(),
-                            minimum_speed_protection_);
+  // 倒车模式下，用运动模型替代动力学模型
+   double v = 0.0 ;
+    if (VehicleStateProvider::instance()->gear() ==
+      canbus::Chassis::GEAR_REVERSE) {
+    v = std::min(VehicleStateProvider::instance()->linear_velocity(),
+                 -minimum_speed_protection_);
+    matrix_a_(0, 2) = matrix_a_coeff_(0, 2) * v;
+  } else {
+    v = std::max(VehicleStateProvider::instance()->linear_velocity(),
+                 minimum_speed_protection_);
+    matrix_a_(0, 2) = 0.0;
+  }
   matrix_a_(1, 1) = matrix_a_coeff_(1, 1) / v;
   matrix_a_(1, 3) = matrix_a_coeff_(1, 3) / v;
   matrix_a_(3, 1) = matrix_a_coeff_(3, 1) / v;
@@ -473,12 +552,14 @@ void LatController::UpdateMatrixCompound() {
   // Initialize preview matrix
   matrix_adc_.block(0, 0, basic_state_size_, basic_state_size_) = matrix_ad_;
   matrix_bdc_.block(0, 0, basic_state_size_, 1) = matrix_bd_;
-  if (preview_window_ > 0) {
+  if(!FLAGS_use_preview_point){
+      if (preview_window_ > 0) {
     matrix_bdc_(matrix_bdc_.rows() - 1, 0) = 1;
     // Update A matrix;
     for (int i = 0; i < preview_window_ - 1; ++i) {
       matrix_adc_(basic_state_size_ + i, basic_state_size_ + 1 + i) = 1;
     }
+  }
   }
   AINFO << "UpdateMatrixCompound succeed!" ;
 }
@@ -502,9 +583,43 @@ double LatController::ComputeFeedForward(double ref_curvature) const {
 
 void LatController::ComputeLateralErrors(
     const double x, const double y, const double theta, const double linear_v,
-    const double angular_v, const TrajectoryAnalyzer &trajectory_analyzer,
+    const double angular_v,const double linear_a, const TrajectoryAnalyzer &trajectory_analyzer,
     SimpleLateralDebug *debug) {
-  TrajectoryPoint target_point = trajectory_analyzer.QueryNearestPointByPosition(x, y);
+   double heading_error = 0.0 ;
+   double lateral_error = 0.0 ;
+   double heading_error_rate = 0.0 ;
+   double lateral_error_rate = 0.0 ;
+ TrajectoryPoint target_point = trajectory_analyzer.QueryNearestPointByPosition(x, y);
+  if(FLAGS_use_preview_point){
+      ADEBUG << "use preview point methed";
+      const auto &preview_xy = VehicleStateProvider::instance()->EstimateFuturePosition(ts_*preview_window_);
+      auto d_theta = linear_v * std::tan(debug->steering_position()) / wheelbase_ ;
+      auto preview_theta = theta + d_theta * ts_ * preview_window_ ;
+      target_point = trajectory_analyzer.QueryNearestPointByPosition(preview_xy.x(), preview_xy.y());
+      const double dx = preview_xy.x() - target_point.path_point().x();
+      const double dy = preview_xy.y() - target_point.path_point().y(); 
+      const double cos_target_heading = std::cos(target_point.path_point().theta());
+      const double sin_target_heading = std::sin(target_point.path_point().theta());
+      const double es = dx * cos_target_heading + dy * sin_target_heading ;
+      lateral_error =cos_target_heading * dy - sin_target_heading * dx;
+      AINFO << "cos_target_heading =" << cos_target_heading << ",sin_target_heading = " << sin_target_heading ;
+      AINFO << "dx = " << dx << ",dy = " << dy << ",lateral_error =" << lateral_error ;
+      debug->set_lateral_error(lateral_error);
+      // heading error
+       heading_error = common::math::NormalizeAngle(preview_theta - (target_point.path_point().theta()+target_point.path_point().kappa()*es));
+      debug->set_heading_error(heading_error);
+      //横向误差变化率
+       lateral_error_rate = linear_v * std::sin(heading_error);
+      debug->set_lateral_error_rate(lateral_error_rate);
+      //heading error rate
+       heading_error_rate = angular_v - target_point.path_point().kappa() * target_point.v() ;
+      debug->set_heading_error_rate(heading_error_rate);
+
+      debug->set_ref_heading(target_point.path_point().theta());//参考航向
+      debug->set_curvature(target_point.path_point().kappa());//参考曲率
+  } else {
+  ADEBUG << "use origin methed" ;
+  target_point = trajectory_analyzer.QueryNearestPointByPosition(x, y);
   const double dx = x - target_point.path_point().x();
   const double dy = y - target_point.path_point().y();
 
@@ -513,24 +628,99 @@ void LatController::ComputeLateralErrors(
 
   const double cos_target_heading = std::cos(target_point.path_point().theta());
   const double sin_target_heading = std::sin(target_point.path_point().theta());
-
-  const double lateral_error =cos_target_heading * dy - sin_target_heading * dx;
+  const double es = dx * cos_target_heading + dy * sin_target_heading ;
+  lateral_error =cos_target_heading * dy - sin_target_heading * dx;
   AINFO << "cos_target_heading =" << cos_target_heading << ",sin_target_heading = " << sin_target_heading ;
   AINFO << "dx = " << dx << ",dy = " << dy << ",lateral_error =" << lateral_error ;
   debug->set_lateral_error(lateral_error);
 
-  const double heading_error = common::math::NormalizeAngle(theta - target_point.path_point().theta());
-  AINFO << "cos_target_heading =" << cos_target_heading << ",sin_target_heading = " << sin_target_heading ;
-  AINFO << "dx = " << dx << ",dy = " << dy << ",lateral_error =" << lateral_error ;
+  heading_error = common::math::NormalizeAngle(theta - (target_point.path_point().theta()+target_point.path_point().kappa()*es));
   debug->set_heading_error(heading_error);
-  auto lateral_error_rate = linear_v * std::sin(heading_error);
+  lateral_error_rate = linear_v * std::sin(heading_error);
   debug->set_lateral_error_rate(lateral_error_rate);//横向误差变化率
 
-  auto heading_error_rate = angular_v - target_point.path_point().kappa() * target_point.v() ;
+  heading_error_rate = angular_v - target_point.path_point().kappa() * target_point.v() ;
   debug->set_heading_error_rate(heading_error_rate);//航向误差率
 
   debug->set_ref_heading(target_point.path_point().theta());//参考航向
   debug->set_curvature(target_point.path_point().kappa());//参考曲率
+}
+// Estimate the heading error with look-ahead/look-back windows as feedback
+  // signal for special driving scenarios
+  double heading_error_feedback;
+  if (VehicleStateProvider::instance()->gear() ==
+      canbus::Chassis::GEAR_REVERSE) {
+    heading_error_feedback = debug->heading_error();
+  } else {
+    auto lookahead_point = trajectory_analyzer.QueryNearestPointByRelativeTime(
+        target_point.relative_time() +
+        lookahead_station_ /
+            (std::max(std::fabs(linear_v), 0.1) * std::cos(debug->heading_error())));
+    heading_error_feedback = common::math::NormalizeAngle(
+        debug->heading_error() + target_point.path_point().theta() -
+        lookahead_point.path_point().theta());
+  }
+  debug->set_heading_error_feedback(heading_error_feedback);
+
+  // Estimate the lateral error with look-ahead/look-back windows as feedback
+  // signal for special driving scenarios
+  double lateral_error_feedback;
+  if (VehicleStateProvider::instance()->gear() ==
+      canbus::Chassis::GEAR_REVERSE) {
+    lateral_error_feedback =
+        debug->lateral_error() - lookback_station_ * std::sin(debug->heading_error());
+  } else {
+    lateral_error_feedback =
+        debug->lateral_error() + lookahead_station_ * std::sin(heading_error);
+  }
+  debug->set_lateral_error_feedback(lateral_error_feedback);
+
+  auto lateral_error_dot = linear_v * std::sin(debug->heading_error());
+  auto lateral_error_dot_dot = linear_a * std::sin(debug->heading_error());
+  if (FLAGS_reverse_heading_control) {
+    if (VehicleStateProvider::instance()->gear() ==
+        canbus::Chassis::GEAR_REVERSE) {
+      lateral_error_dot = -lateral_error_dot;
+      lateral_error_dot_dot = -lateral_error_dot_dot;
+    }
+  }
+  debug->set_lateral_error_rate(lateral_error_dot);
+  debug->set_lateral_acceleration(lateral_error_dot_dot);
+  debug->set_lateral_jerk(
+      (debug->lateral_acceleration() - previous_lateral_acceleration_) / ts_);
+  previous_lateral_acceleration_ = debug->lateral_acceleration();
+
+  if (VehicleStateProvider::instance()->gear() ==
+      canbus::Chassis::GEAR_REVERSE) {
+    debug->set_heading_rate(-angular_v);
+  } else {
+    debug->set_heading_rate(angular_v);
+  }
+  debug->set_ref_heading_rate(target_point.path_point().kappa() *
+                              target_point.v());
+  debug->set_heading_error_rate(debug->heading_rate() -
+                                debug->ref_heading_rate());
+
+  debug->set_heading_acceleration(
+      (debug->heading_rate() - previous_heading_rate_) / ts_);
+  debug->set_ref_heading_acceleration(
+      (debug->ref_heading_rate() - previous_ref_heading_rate_) / ts_);
+  debug->set_heading_error_acceleration(debug->heading_acceleration() -
+                                        debug->ref_heading_acceleration());
+  previous_heading_rate_ = debug->heading_rate();
+  previous_ref_heading_rate_ = debug->ref_heading_rate();
+
+  debug->set_heading_jerk(
+      (debug->heading_acceleration() - previous_heading_acceleration_) / ts_);
+  debug->set_ref_heading_jerk(
+      (debug->ref_heading_acceleration() - previous_ref_heading_acceleration_) /
+      ts_);
+  debug->set_heading_error_jerk(debug->heading_jerk() -
+                                debug->ref_heading_jerk());
+  previous_heading_acceleration_ = debug->heading_acceleration();
+  previous_ref_heading_acceleration_ = debug->ref_heading_acceleration();
+
+  debug->set_curvature(target_point.path_point().kappa());
 }
 
 //load steer_torque calibration
@@ -547,7 +737,21 @@ void LatController::LoadSteerCalibrationTable(const LatControllerConf &lat_contr
   CHECK(steer_torque_interpolation_->Init(xy))<<"Fail to init steer_torque_interpolation"  ;
    AINFO << "Load Lateral control steering-torque calibration succeed!";
 }
-
+void LatController::UpdateDrivingOrientation() {
+  auto vehicle_state = VehicleStateProvider::instance();
+  driving_orientation_ = vehicle_state->heading();
+  matrix_bd_ = matrix_b_ * ts_;
+  // Reverse the driving direction if the vehicle is in reverse mode
+  if (FLAGS_reverse_heading_control) {
+    if (vehicle_state->gear() == canbus::Chassis::GEAR_REVERSE) {
+      driving_orientation_ =
+          common::math::NormalizeAngle(driving_orientation_ + M_PI);
+      // Update Matrix_b for reverse mode
+      matrix_bd_ = -matrix_b_ * ts_;
+      ADEBUG << "Matrix_b changed due to gear direction";
+    }
+  }
+}
 
 }  // namespace control
 }  // namespace jmc_auto

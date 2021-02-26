@@ -24,6 +24,7 @@
 #include "modules/common/math/linear_interpolation.h"
 #include "modules/common/math/math_utils.h"
 #include "modules/common/math/search.h"
+#include "Eigen/Core"
 
 namespace math = jmc_auto::common::math;
 using jmc_auto::common::PathPoint;
@@ -140,7 +141,7 @@ void TrajectoryAnalyzer::ToTrajectoryFrame(const double x, const double y,
     one_minus_kappa_r_d = 0.01;
   }
 
-  *ptr_s_dot = v * cos_delta_theta / one_minus_kappa_r_d;
+  *ptr_s_dot = v * cos_delta_theta / one_minus_kappa_r_d;//S方向速度
 }
 
 TrajectoryPoint TrajectoryAnalyzer::QueryNearestPointByAbsoluteTime(
@@ -225,6 +226,34 @@ PathPoint TrajectoryAnalyzer::FindMinDistancePoint(const TrajectoryPoint &p0,
                          p1.path_point().kappa(), p1.path_point().s(), s));
   return p;
 }
+
+///*将规划轨迹点由后轴中心转化到质心*/
+void TrajectoryAnalyzer::TrajectoryTransformToCOM(const double rear_to_com_distance) {
+  CHECK_GT(trajectory_points_.size(), 0);
+  for (size_t i = 0; i < trajectory_points_.size(); ++i) {
+    auto com = ComputeCOMPosition(rear_to_com_distance,
+                                  trajectory_points_[i].path_point());
+    trajectory_points_[i].mutable_path_point()->set_x(com.x());
+    trajectory_points_[i].mutable_path_point()->set_y(com.y());
+  }
+}
+common::math::Vec2d TrajectoryAnalyzer::ComputeCOMPosition(
+    const double rear_to_com_distance, const PathPoint &path_point) const {
+  // Initialize the vector for coordinate transformation of the position
+  // reference point
+  Eigen::Vector3d v;
+  const double cos_heading = std::cos(path_point.theta());
+  const double sin_heading = std::sin(path_point.theta());
+  v << rear_to_com_distance * cos_heading, rear_to_com_distance * sin_heading,
+      0.0;
+  // Original position reference point at center of rear-axis
+  Eigen::Vector3d pos_vec(path_point.x(), path_point.y(), path_point.z());
+  // Transform original position with vector v
+  Eigen::Vector3d com_pos_3d = v + pos_vec;
+  // Return transfromed x and y
+  return common::math::Vec2d(com_pos_3d[0], com_pos_3d[1]);
+}
+
 
 }  // namespace control
 }  // namespace jmc_auto

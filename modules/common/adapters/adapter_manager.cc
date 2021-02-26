@@ -62,6 +62,9 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
         // case AdapterConfig::CHASSIS_DETAIL:
         //    EnableChassisDetail(FLAGS_chassis_detail_instance_id, config);
         //    break;
+        case AdapterConfig::CONTROL_COMMAND:
+            EnableChassis(FLAGS_control_command_instance_id, config);
+            break;
         default:
             AERROR << "Unknown adapter config type!";
             break;

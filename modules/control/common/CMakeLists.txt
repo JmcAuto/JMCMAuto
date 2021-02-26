@@ -1,0 +1,54 @@
+include_directories(.)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(control_gflags
+  control_gflags.cc
+  control_gflags.h)
+target_link_libraries(control_gflags
+  gflags)
+add_library(hysteresis_filter
+  hysteresis_filter.cc
+  hysteresis_filter.h)
+add_library(interpolation_1d
+  interpolation_1d.cc
+  interpolation_1d.h)
+target_link_libraries(interpolation_1d
+  jmcauto_log
+  eigen)
+add_library(interpolation_2d
+  interpolation_2d.cc
+  interpolation_2d.h)
+target_link_libraries(interpolation_2d
+  jmcauto_log
+  eigen)
+add_library(pid_controller
+  pid_controller.cc
+  pid_controller.h)
+target_link_libraries(pid_controller
+  jmcauto_log
+  control_proto)
+add_library(pid_increment
+  pid_increment.cc
+  pid_increment.h)
+target_link_libraries(pid_increment
+  jmcauto_log
+  control_proto)
+add_library(trajectory_analyzer
+  trajectory_analyzer.cc
+  trajectory_analyzer.h)
+target_link_libraries(trajectory_analyzer
+  jmcauto_log
+  linear_interpolation
+  search
+  pnc_point_proto
+  vehicle_state_provider
+  planning_proto)
+add_library(control_common INTERFACE)
+target_link_libraries(control_common INTERFACE
+  control_gflags
+  hysteresis_filter
+  interpolation_1d
+  interpolation_2d
+  pid_controller
+  trajectory_analyzer
+  pid_increment)

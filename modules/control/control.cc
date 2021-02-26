@@ -4,10 +4,10 @@
 #include "modules/control/control.h"
 #include <iomanip>
 #include <string>
-#include "ros/include/std_msgs/String.h"
+//#include "ros/include/std_msgs/String.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/log.h"
-#include "modules/common/time/jmcauto_time.h"
+#include "modules/common/time/time.h"
 #include "modules/common/vehicle_state/vehicle_state_provider.h"
 #include "modules/control/common/control_gflags.h"
 
@@ -65,11 +65,39 @@ Status Control::Start() {
   AINFO << "Control default driving action is "
         << DrivingAction_Name(control_conf_.action());
   pad_msg_.set_action(control_conf_.action());
-  timer_ = AdapterManager::CreateTimer(
-      ros::Duration(control_conf_.control_period()), &Control::OnTimer, this);
+  //timer_ = AdapterManager::CreateTimer(
+  //    ros::Duration(control_conf_.control_period()), &Control::OnTimer, this);
   AINFO << "Control init done!";
-  common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+  //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   buffer.INFO("control started");
+
+while (1)  {
+  double start_timestamp = Clock::NowInSeconds();
+  ControlCommand control_command;
+  Status status = ProduceControlCommand(&control_command);
+  AERROR_IF(!status.ok()) << "Failed to produce control command:"
+                          << status.error_message();
+
+  double end_timestamp = Clock::NowInSeconds();
+  if (pad_received_) {
+    control_command.mutable_pad_msg()->CopyFrom(pad_msg_);
+    pad_received_ = false;
+  }//pad
+  const double time_diff_ms = (end_timestamp - start_timestamp) * 1000;
+  control_command.mutable_latency_stats()->set_total_time_ms(time_diff_ms);
+  control_command.mutable_latency_stats()->set_total_time_exceeded(
+      time_diff_ms < control_conf_.control_period());
+  AINFO << "control cycle time is: " << time_diff_ms << " ms.";
+  status.Save(control_command.mutable_header()->mutable_status());
+  if (estop_)
+    {
+      control_command.mutable_header()->mutable_status()->set_msg(estop_reason_);
+      estop_ = false ;
+      AINFO << "Reset estop to false" ;
+    }
+    SendCmd(&control_command);
+    usleep(control_conf_.control_period());
+}
   return Status::OK();
 }
 
@@ -85,6 +113,7 @@ void Control::OnPad(const PadMessage &pad) {
   }
   pad_received_ = true;
 }
+/*
 void Control::OnMonitor(
     const common::monitor::MonitorMessage &monitor_message) {
   for (const auto &item : monitor_message.item()) {
@@ -94,6 +123,7 @@ void Control::OnMonitor(
     }
   }
 }
+*/
 
 void Control::OnTimer(const ros::TimerEvent &) {
   double start_timestamp = Clock::NowInSeconds();
@@ -204,6 +234,8 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
     // set Estop command
     control_command->set_steering_torque(0);
     control_command->set_acceleration(control_conf_.soft_estop_brake_acceleration());
+    control_command->set_speed(0);
+    control_command->set_pam_esp_stop_distance(0);
     control_command->set_gear_location(Chassis::GEAR_DRIVE);
    // AINFO << control_command->ShortDebugString() ;
   }

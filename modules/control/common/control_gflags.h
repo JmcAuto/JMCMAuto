@@ -58,4 +58,22 @@ DECLARE_double(max_abs_speed_when_stopped);
 DECLARE_double(stop_path_remain);
 DECLARE_double(steering_angle_change_rate_coeff);
 DECLARE_bool(enable_use_steering_pid) ;
+DECLARE_bool(use_preview_point);
+//5.5
+DECLARE_bool(reverse_heading_control);
+DECLARE_bool(trajectory_transform_to_com_reverse);
+DECLARE_bool(trajectory_transform_to_com_drive);
+
+DECLARE_bool(enable_maximum_steer_rate_limit);
+
+DECLARE_bool(query_time_nearest_point_only);
+DECLARE_bool(query_forward_time_point_only);
+
+DECLARE_bool(enable_feedback_augment_on_high_speed);
+
+DECLARE_bool(enable_gear_drive_negative_speed_protection);
+
+DECLARE_bool(use_osqp_solver);
+
+
 #endif  // MODULES_CONTROL_COMMON_CONTROL_GFLAGS_H_
