@@ -33,14 +33,15 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/.cmakes/ubuntu_common.cmake)
 
 #用户可在此添加头文件路径
 include_directories(${COMMON_INCLUDE} include ${PROJECT_SOURCE_DIR})
-
+#仅测试用
+include_directories(/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot/usr/local/include/eigen3)
 #用户可在此添加库文件路径
 link_directories(${COMMON_LINK_DIR} lib)
 add_subdirectory(modules/common)
 add_subdirectory(modules/canbus)
 add_subdirectory(modules/drivers/canbus)
 add_subdirectory(modules/control)
-
+#add_subdirectory(modules/planning/proto)
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
 

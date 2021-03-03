@@ -11,7 +11,7 @@
 #include "modules/control/proto/control_cmd.pb.h"
 #include "modules/control/proto/control_conf.pb.h"
 #include "modules/control/proto/pad_msg.pb.h"
-//#include "modules/planning/proto/planning.pb.h"
+#include "modules/planning/proto/planning.pb.h"
 
 #include "modules/common/jmc_auto_app.h"
 #include "modules/common/util/util.h"
@@ -85,7 +85,7 @@ class Control : public jmc_auto::common::JmcAutoApp {
   PadMessage pad_msg_;
   ControllerAgent controller_agent_;
   ControlConf control_conf_;
-  jmc_auto::common::monitor::MonitorLogger monitor_logger_;
+  //jmc_auto::common::monitor::MonitorLogger monitor_logger_;
   bool estop_ = false;
   std::string estop_reason_;
   bool pad_received_ = false;

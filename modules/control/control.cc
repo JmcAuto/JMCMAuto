@@ -7,7 +7,7 @@
 //#include "ros/include/std_msgs/String.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/log.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/common/vehicle_state/vehicle_state_provider.h"
 #include "modules/control/common/control_gflags.h"
 
@@ -24,7 +24,7 @@ using jmc_auto::common::adapter::AdapterManager;
 using jmc_auto::common::monitor::MonitorMessageItem;
 using jmc_auto::common::time::Clock;
 using jmc_auto::localization::LocalizationEstimate;
-using jmc_auto::planning::ADCTrajectory;
+//using jmc_auto::planning::ADCTrajectory;
 
 std::string Control::Name() const { return FLAGS_control_node_name; }
 
@@ -44,14 +44,14 @@ Status Control::Init() {
     return Status(ErrorCode::CONTROL_INIT_ERROR, error_msg);
   }//注册控制器，目前只支持LON/LAN/MPC
   // lock it in case for after sub, init_vehicle not ready, but msg trigger
-  CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
+  //CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
   CHECK(AdapterManager::GetChassis()) << "Chassis is not initialized.";
-  CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
-  CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
-  CHECK(AdapterManager::GetMonitor()) << "Monitor is not initialized.";
+  //CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
+  //CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
+  //CHECK(AdapterManager::GetMonitor()) << "Monitor is not initialized.";
   CHECK(AdapterManager::GetControlCommand())<< "ControlCommand publisher is not initialized.";
-  AdapterManager::AddPadCallback(&Control::OnPad, this);
-  AdapterManager::AddMonitorCallback(&Control::OnMonitor, this);
+  //AdapterManager::AddPadCallback(&Control::OnPad, this);
+  //AdapterManager::AddMonitorCallback(&Control::OnMonitor, this);
   return Status::OK();
 }
 
@@ -124,7 +124,7 @@ void Control::OnMonitor(
   }
 }
 */
-
+/*
 void Control::OnTimer(const ros::TimerEvent &) {
   double start_timestamp = Clock::NowInSeconds();
   if (FLAGS_is_control_test_mode && FLAGS_control_test_duration > 0 &&
@@ -156,7 +156,7 @@ void Control::OnTimer(const ros::TimerEvent &) {
     }
     SendCmd(&control_command);
 }
-
+*/
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
 
@@ -250,6 +250,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
 
 Status Control::CheckInput() {
   AdapterManager::Observe();
+  /*
   auto localization_adapter = AdapterManager::GetLocalization();
   if (localization_adapter->Empty())
   {
@@ -259,7 +260,7 @@ Status Control::CheckInput() {
   }
   localization_ = localization_adapter->GetLatestObserved();//返回观察队列最新数据，调用之前需调用Empty()确定是否有数据
   AINFO << "Received localization:" << localization_.ShortDebugString();//定位数据
-
+*/
   auto chassis_adapter = AdapterManager::GetChassis();
   if (chassis_adapter->Empty())
   {
@@ -269,7 +270,7 @@ Status Control::CheckInput() {
   }
   chassis_ = chassis_adapter->GetLatestObserved();//底盘数据
   AINFO << "Received chassis:" << chassis_.ShortDebugString();
-
+/*
   auto trajectory_adapter = AdapterManager::GetPlanning();
   if (trajectory_adapter->Empty())
   {
@@ -299,6 +300,7 @@ Status Control::CheckInput() {
     }
     
   VehicleStateProvider::instance()->Update(localization_, chassis_);
+  */
   AINFO << "Input no problem!" ;
   return Status::OK();
   }
