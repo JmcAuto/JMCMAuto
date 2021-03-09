@@ -93,8 +93,7 @@ namespace adapter {
         return instance()->name##_->PopCallback();                             \
     }                                                                          \
                                                                                \
-  private:                                                                     \
-    unsigned int msg_limit = 40;                                               \
+  private:                                                                     \                                              \
     std::unique_ptr<name##Adapter> name##_;                                    \
     std::unique_ptr<jmc_auto::skeleton::name##ServiceInterfaceSkeleton>        \
         name##skeleton = nullptr;                                              \
@@ -104,7 +103,6 @@ namespace adapter {
     AdapterConfig name##config_;                                               \
     void InternalEnable##name(const unsigned int &instance_id,                 \
                               const AdapterConfig &config) {                   \
-        msg_limit = config.message_history_limit();                            \
         name##_.reset(new name##Adapter(#name, instance_id,                    \
                                         config.message_history_limit()));      \
         if (config.mode() != AdapterConfig::PUBLISH_ONLY) {                    \
@@ -115,7 +113,8 @@ namespace adapter {
                            handles,                                            \
                        ara::com::FindServiceHandle handler) {                  \
                     instance()->ServiceAvailabilityCallback##name(             \
-                        std::move(handles), handler);                          \
+                        std::move(handles), handler,                           \
+						config.message_history_limit());                       \
                 },                                                             \
                 instance_id);                                                  \
         }                                                                      \
@@ -132,7 +131,7 @@ namespace adapter {
         ara::com::ServiceHandleContainer<                                      \
             jmc_auto::proxy::name##ServiceInterfaceProxy::HandleType>          \
             handles,                                                           \
-        ara::com::FindServiceHandle handler) {                                 \
+        ara::com::FindServiceHandle handler, unsigned int msg_limit) {         \
         if (handles.size() > 0) {                                              \
             for (unsigned int i = 0; i < handles.size(); i++) {                \
                 if (name##proxy == nullptr) {                                  \

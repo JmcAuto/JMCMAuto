@@ -20,6 +20,8 @@
 //#include "impl_type_chassisdetail.h"
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
+#include "modules/control/proto/control_cmd.pb.h"
+#include "modules/control/proto/pad_msg.pb.h"
 
 #include "modules/common/adapters/adapter.h"
 
@@ -27,7 +29,10 @@
 #include "impl_type_controlcommand.h"
 
 #include "jmc_auto/chassisserviceinterface_common.h"
+#include "jmc_auto/chassisserviceinterface_proxy.h"
+#include "jmc_auto/chassisserviceinterface_skeleton.h"
 #include "jmc_auto/controlcommandserviceinterface_common.h"
+#include "jmc_auto/controlcommandserviceinterface_skeleton.h"
 
 /**
  * @file message_adapters.h
@@ -41,7 +46,7 @@ namespace adapter {
 
 using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
 using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
-using ControlCommandAdapter = Adapter<control::ControlCommand>;
+using ControlCommandAdapter = Adapter<::jmc_auto::control::ControlCommand>;
 /*
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
