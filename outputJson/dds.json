@@ -1,3 +1,118 @@
 {
-  "services": []
+  "applicationName": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
+  "services": [
+    {
+      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "serviceId": 1009,
+      "protocolIdUsed": false,
+      "events": [
+        {
+          "event": "ControlCommandEvent",
+          "id": 57416,
+          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "topicName": "ControlCommandDdsEvent"
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "shortName": "/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
+          "instance": 109,
+          "domainId": 0,
+          "isClient": false,
+          "fastSerialize": true,
+          "qosProfile": "/var/domainqos.xml",
+          "events": [
+            {
+              "id": 57416,
+              "qosProfile": "/var/eventsqos.xml"
+            }
+          ],
+          "fields": [],
+          "methods": []
+        },
+        {
+          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance",
+          "instance": 109,
+          "domainId": 0,
+          "isClient": true,
+          "fastSerialize": true,
+          "qosProfile": "",
+          "events": [
+            {
+              "id": 57416,
+              "qosProfile": "/var/eventsqos.xml"
+            }
+          ],
+          "fields": [],
+          "methods": []
+        },
+        {
+          "shortName": "/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
+          "instance": 109,
+          "domainId": 0,
+          "isClient": false,
+          "fastSerialize": true,
+          "qosProfile": "/var/domainqos.xml",
+          "events": [
+            {
+              "id": 57416,
+              "qosProfile": "/var/eventsqos.xml"
+            }
+          ],
+          "fields": [],
+          "methods": []
+        },
+        {
+          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance",
+          "instance": 109,
+          "domainId": 0,
+          "isClient": true,
+          "fastSerialize": true,
+          "qosProfile": "",
+          "events": [
+            {
+              "id": 57416,
+              "qosProfile": "/var/eventsqos.xml"
+            }
+          ],
+          "fields": [],
+          "methods": []
+        }
+      ]
+    },
+    {
+      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "serviceId": 1009,
+      "protocolIdUsed": false,
+      "events": [
+        {
+          "event": "ControlCommandEvent",
+          "id": 57416,
+          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "topicName": "ControlCommandDdsEvent"
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    },
+    {
+      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "serviceId": 1009,
+      "protocolIdUsed": false,
+      "events": [
+        {
+          "event": "ControlCommandEvent",
+          "id": 57416,
+          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "topicName": "ControlCommandDdsEvent"
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    }
+  ]
 }

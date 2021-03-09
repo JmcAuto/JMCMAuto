@@ -10,15 +10,16 @@
 
 
 #include "impl_type_double.h"
-#include "impl_type_wheelspeedtype.h"
+#include "impl_type_quaternion.h"
+#include "impl_type_point3d.h"
 
 
 struct Sonar {
     ::Double range;
     
-    ::WheelSpeedType translation;
+    ::Point3D translation;
     
-    ::Double rotation;
+    ::Quaternion rotation;
     
 
     static bool IsPlane()

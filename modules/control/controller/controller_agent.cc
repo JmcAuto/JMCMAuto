@@ -18,7 +18,7 @@
 #include <utility>
 
 #include "modules/common/log.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/control/common/control_gflags.h"
 #include "modules/control/controller/lat_controller.h"
 #include "modules/control/controller/lon_controller.h"

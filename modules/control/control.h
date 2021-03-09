@@ -7,7 +7,7 @@
 #include <mutex>
 #include <string>
 #include "modules/canbus/proto/chassis.pb.h"
-#include "modules/common/monitor_log/monitor_log_buffer.h"
+//#include "modules/common/monitor_log/monitor_log_buffer.h"
 #include "modules/control/proto/control_cmd.pb.h"
 #include "modules/control/proto/control_conf.pb.h"
 #include "modules/control/proto/pad_msg.pb.h"

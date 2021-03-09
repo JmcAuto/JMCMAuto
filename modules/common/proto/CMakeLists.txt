@@ -45,7 +45,7 @@ add_library(drive_event_proto
 target_link_libraries(drive_event_proto
   ${COMMON_LIB}
   header_proto
-  #pose_proto
+  pose_proto
   protobuf)
 
 add_library(drive_state_proto

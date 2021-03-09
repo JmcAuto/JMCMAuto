@@ -11,8 +11,8 @@
 
 
 
-#include "impl_type_turnsignal.h"
 #include "impl_type_bool.h"
+#include "impl_type_turnsignal.h"
 
 
 struct Signal {

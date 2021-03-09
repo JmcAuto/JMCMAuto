@@ -1,0 +1,51 @@
+[
+  {
+    "key": "PORTS",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 1521547141
+  },
+  {
+    "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 1682640375
+  },
+  {
+    "key": "PERSISTENCY-FILE-PROXY-INTERFACES",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 3306044900
+  },
+  {
+    "key": "PERSISTENCY-FILE-ARRAYS",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 4118803285
+  },
+  {
+    "key": "PERSISTENCY-PORT-PROTOTYPE-TO-KEY-VALUE-DATABASE-MAPPINGS",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 1367275226
+  },
+  {
+    "key": "PERSISTENCY-KEY-VALUE-DATABASE-INTERFACES",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 1302984111
+  },
+  {
+    "key": "PERSISTENCY-KEY-VALUE-DATABASES",
+    "value": {
+      "object[]": []
+    },
+    "checksum": 2835702833
+  }
+]

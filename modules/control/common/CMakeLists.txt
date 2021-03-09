@@ -14,13 +14,15 @@ add_library(interpolation_1d
   interpolation_1d.h)
 target_link_libraries(interpolation_1d
   jmcauto_log
-  eigen)
+  #eigen
+  )
 add_library(interpolation_2d
   interpolation_2d.cc
   interpolation_2d.h)
 target_link_libraries(interpolation_2d
   jmcauto_log
-  eigen)
+  #eigen
+  )
 add_library(pid_controller
   pid_controller.cc
   pid_controller.h)

@@ -52,6 +52,48 @@
             "object[]": []
           },
           "checksum": "870226170"
+        },
+        {
+          "key": "Restart",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Shutdown",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Startup",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Restart",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Shutdown",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Startup",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
         }
       ]
     },
@@ -65,6 +107,20 @@
           "key": "LidarMode",
           "value": {
             "object[]": [
+              {
+                "key": "initial_state",
+                "value": {
+                  "string": "LowSpeed"
+                },
+                "checksum": "1261147759"
+              },
+              {
+                "key": "initial_state",
+                "value": {
+                  "string": "LowSpeed"
+                },
+                "checksum": "1261147759"
+              },
               {
                 "key": "initial_state",
                 "value": {

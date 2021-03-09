@@ -9,15 +9,15 @@
 
 
 
-#include "impl_type_comheader.h"
+#include "impl_type_header.h"
 
 
 struct InputDebug {
-    ::ComHeader localization_header;
+    ::Header localization_header;
     
-    ::ComHeader canbus_header;
+    ::Header canbus_header;
     
-    ::ComHeader trajectory_header;
+    ::Header trajectory_header;
     
 
     static bool IsPlane()

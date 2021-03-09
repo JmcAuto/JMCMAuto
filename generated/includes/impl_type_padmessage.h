@@ -10,12 +10,12 @@
 
 
 #include "impl_type_drivingaction.h"
+#include "impl_type_header.h"
 #include "impl_type_drivingmode.h"
-#include "impl_type_comheader.h"
 
 
 struct PadMessage {
-    ::ComHeader header;
+    ::Header header;
     
     ::DrivingMode driving_mode;
     

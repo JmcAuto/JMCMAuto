@@ -26,18 +26,22 @@
 
 
 
-#include "impl_type_double.h"
-#include "impl_type_string.h"
 #include "impl_type_bool.h"
+#include "impl_type_latencystats.h"
+#include "impl_type_gearposition.h"
+#include "impl_type_double.h"
 #include "impl_type_turnsignal.h"
 #include "impl_type_int32.h"
-#include "impl_type_latencystats.h"
-#include "impl_type_comheader.h"
+#include "impl_type_padmessage.h"
+#include "impl_type_header.h"
+#include "impl_type_drivingmode.h"
+#include "impl_type_engageadvice.h"
 #include "impl_type_debug.h"
+#include "impl_type_vehiclesignal.h"
 
 
 struct ControlCommand {
-    ::ComHeader header;
+    ::Header header;
     
     ::Double steering_target;
     
@@ -53,19 +57,19 @@ struct ControlCommand {
     
     ::Double trajectory_fraction;
     
-    ::Double driving_mode;
+    ::DrivingMode driving_mode;
     
-    ::Double gear_location;
+    ::GearPosition gear_location;
     
     ::Debug debug;
     
-    ::Double signal;
+    ::VehicleSignal signal;
     
     ::LatencyStats latency_stats;
     
-    ::String pad_msg;
+    ::PadMessage pad_msg;
     
-    ::String engage_advice;
+    ::EngageAdvice engage_advice;
     
     ::Bool is_in_safe_mode;
     

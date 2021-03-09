@@ -33,7 +33,7 @@ using jmc_auto::common::ErrorCode;
 using jmc_auto::common::Status;
 using jmc_auto::common::adapter::AdapterManager;
 using jmc_auto::common::time::Clock;
-// using jmc_auto::control::ControlCommand;
+using jmc_auto::control::ControlCommand;
 using jmc_auto::drivers::canbus::CanClientFactory;
 
 std::string Canbus::Name() const { return FLAGS_canbus_module_name; }
@@ -110,14 +110,14 @@ Status Canbus::Init() {
     // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
     // initialized.";
     // TODO(QiL) : depreacte this
-    if (!FLAGS_receive_guardian) {
+    //if (!FLAGS_receive_guardian) {
         AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
                                                   this);
         //AdapterManager::AddRemoteControlCallback(
         //    &Canbus::OnRemoteControlCommand, this);
-    } else {
-        AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
-    }
+    //} else {
+    //    AdapterManager::AddGuardianCallback(&Canbus::OnGuardianCommand, this);
+    //}
 
     return Status::OK();
 }
@@ -313,8 +313,8 @@ void Canbus::OnControlCommand(const ControlCommand &control_command) {
                             vehicle_controller_->chassis().driving_mode() ==
                                 Chassis::AUTO_SPEED_ONLY)) {
         if (vehicle_controller_->Update(control_command) != ErrorCode::OK) {
-            AERROR << "Failed to process callback function OnControlCommand
-                      because " " vehicle_controller_->Update error."; return;
+            AERROR << "Failed to process callback function OnControlCommand because "
+            		  " vehicle_controller_->Update error."; return;
         }
 
         can_sender_.Update();

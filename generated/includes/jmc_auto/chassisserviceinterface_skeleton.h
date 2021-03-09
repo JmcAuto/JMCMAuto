@@ -10,14 +10,14 @@
 #include "ara/com/internal/skeleton/EventAdapter.h"
 #include "ara/com/internal/skeleton/FieldAdapter.h"
 #include "jmc_auto/chassisserviceinterface_common.h"
-#include "impl_type_chassismsg.h"
+#include "impl_type_chassis.h"
 #include <cstdint>
 
 namespace jmc_auto {
 namespace skeleton {
 namespace events
 {
-    using ChassisEvent = ara::com::internal::skeleton::event::EventAdapter<::ChassisMsg>;
+    using ChassisEvent = ara::com::internal::skeleton::event::EventAdapter<::Chassis>;
     static constexpr ara::com::internal::EntityId ChassisEventId = 32374; //ChassisEvent_event_hash
 }
 

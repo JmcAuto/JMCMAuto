@@ -27,7 +27,8 @@ target_link_libraries(lat_controller
   trajectory_analyzer
   control_proto
   pid_controller
-  eigen)
+  #eigen
+  )
 add_library(lon_controller
   lon_controller.cc
   lon_controller.h)
@@ -45,14 +46,16 @@ target_link_libraries(lon_controller
   interpolation_2d
   pid_controller
   trajectory_analyzer
-  localization_common)
+  localization_common
+  )
 add_library(controller INTERFACE)
 target_link_libraries(controller INTERFACE
   controller_agent
   controller_interface
   lat_controller
   lon_controller
-  eigen)
+  #eigen
+  )
 add_library(controller_agent
   controller_agent.cc
   controller_agent.h)

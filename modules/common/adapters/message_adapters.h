@@ -29,10 +29,11 @@
 #include "impl_type_controlcommand.h"
 
 #include "jmc_auto/chassisserviceinterface_common.h"
-#include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
+#include "jmc_auto/chassisserviceinterface_proxy.h"
 #include "jmc_auto/controlcommandserviceinterface_common.h"
 #include "jmc_auto/controlcommandserviceinterface_skeleton.h"
+#include "jmc_auto/controlcommandserviceinterface_proxy.h"
 
 /**
  * @file message_adapters.h

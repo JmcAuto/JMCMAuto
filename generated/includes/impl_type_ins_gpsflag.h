@@ -6,9 +6,9 @@
 #ifndef impl_type_ins_gpsflag_h
 #define impl_type_ins_gpsflag_h
 
-#include "impl_type_uint32.h"
+#include "impl_type_uint8.h"
 
-enum class INS_GpsFlag : UInt32
+enum class INS_GpsFlag : UInt8
 {
     NONE = 0,
     FIXEDPOS = 1,
@@ -16,9 +16,8 @@ enum class INS_GpsFlag : UInt32
     DOPPLER_VELOCITY = 8,
     SINGLE = 16,
     PSRDIFF = 17,
-    SBAS,
+    SBAS = 18,
     L1_FLOAT = 32,
-    IONOFREE_FLOAT = 33,
     IONOFREE_FLOAT = 33,
     NARROW_FLOAT = 34,
     L1_INT = 48,

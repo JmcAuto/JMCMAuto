@@ -21,7 +21,7 @@ using jmc_auto::common::ErrorCode;
 using jmc_auto::common::Status;
 using jmc_auto::common::VehicleStateProvider;
 using jmc_auto::common::adapter::AdapterManager;
-using jmc_auto::common::monitor::MonitorMessageItem;
+//using jmc_auto::common::monitor::MonitorMessageItem;
 using jmc_auto::common::time::Clock;
 using jmc_auto::localization::LocalizationEstimate;
 //using jmc_auto::planning::ADCTrajectory;
@@ -35,11 +35,11 @@ Status Control::Init() {
       << "Unable to load control conf file: " + FLAGS_control_conf_file;  //读控制配置文件lincoln.pb.txt
   AINFO << "Conf file: " << FLAGS_control_conf_file << " is loaded.";
   AdapterManager::Init(FLAGS_control_adapter_config_filename);//读message消息类别，adapter.conf
-  common::monitor::MonitorLogBuffer buffer(&monitor_logger_); //
+  //common::monitor::MonitorLogBuffer buffer(&monitor_logger_); //
   // set controller
   if (!controller_agent_.Init(&control_conf_).ok()) {
     std::string error_msg = "Control init controller failed! Stopping...";
-    buffer.ERROR(error_msg);
+    //buffer.ERROR(error_msg);
     AINFO << error_msg;
     return Status(ErrorCode::CONTROL_INIT_ERROR, error_msg);
   }//注册控制器，目前只支持LON/LAN/MPC
@@ -69,7 +69,7 @@ Status Control::Start() {
   //    ros::Duration(control_conf_.control_period()), &Control::OnTimer, this);
   AINFO << "Control init done!";
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
-  buffer.INFO("control started");
+  //buffer.INFO("control started");
 
 while (1)  {
   double start_timestamp = Clock::NowInSeconds();
@@ -304,8 +304,7 @@ Status Control::CheckInput() {
   AINFO << "Input no problem!" ;
   return Status::OK();
   }
-}
-}
+
 Status Control::CheckTimestamp()
 {
   if (!FLAGS_enable_input_timestamp_check || FLAGS_is_control_test_mode)
@@ -321,8 +320,8 @@ Status Control::CheckTimestamp()
   {
     AERROR << "Localization msg lost for " << std::setprecision(6)
            << localization_diff << "s";
-    common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
-    buffer.ERROR("Localization msg lost");
+    //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+    //buffer.ERROR("Localization msg lost");
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "Localization msg timeout");
   }
   else
@@ -333,8 +332,8 @@ Status Control::CheckTimestamp()
   double chassis_diff = current_timestamp - chassis_.header().timestamp_sec();
   if (chassis_diff >(FLAGS_max_chassis_miss_num * control_conf_.chassis_period())) {
     AERROR << "Chassis msg lost for " << std::setprecision(6) << chassis_diff << "s";
-    common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
-    buffer.ERROR("Chassis msg lost");
+    //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+    //buffer.ERROR("Chassis msg lost");
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "Chassis msg timeout");
   }
   else
@@ -347,8 +346,8 @@ Status Control::CheckTimestamp()
   {
     AERROR << "Trajectory msg lost for " << std::setprecision(6)
            << trajectory_diff << "s";
-    common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
-    buffer.ERROR("Trajectory msg lost");
+    //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+    //buffer.ERROR("Trajectory msg lost");
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "Trajectory msg timeout");
   }
    else

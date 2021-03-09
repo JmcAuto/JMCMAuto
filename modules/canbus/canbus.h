@@ -38,9 +38,6 @@
 #include "modules/drivers/canbus/can_comm/message_manager.h"
 #include "modules/drivers/canbus/proto/can_card_parameter.pb.h"
 
-#include "jmc_auto/chassisserviceinterface_common.h"
-#include "jmc_auto/chassisserviceinterface_proxy.h"
-#include "jmc_auto/chassisserviceinterface_skeleton.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
 
 //#include "modules/remotecontrol/proto/remote_control.pb.h"

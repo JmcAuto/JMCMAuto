@@ -11,13 +11,13 @@
 #include "ara/com/internal/proxy/FieldAdapter.h"
 #include "ara/com/internal/proxy/MethodAdapter.h"
 #include "jmc_auto/chassisserviceinterface_common.h"
-#include "impl_type_chassismsg.h"
+#include "impl_type_chassis.h"
 #include <string>
 
 namespace jmc_auto {
 namespace proxy {
 namespace events {
-    using ChassisEvent = ara::com::internal::proxy::event::EventAdapter<::ChassisMsg>;
+    using ChassisEvent = ara::com::internal::proxy::event::EventAdapter<::Chassis>;
     static constexpr ara::com::internal::EntityId ChassisEventId = 32374; //ChassisEvent_event_hash
 }
 

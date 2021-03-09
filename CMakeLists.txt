@@ -39,9 +39,16 @@ include_directories(/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot/usr/loc
 link_directories(${COMMON_LINK_DIR} lib)
 add_subdirectory(modules/common)
 add_subdirectory(modules/canbus)
-add_subdirectory(modules/drivers/canbus)
 add_subdirectory(modules/control)
-#add_subdirectory(modules/planning/proto)
+add_subdirectory(modules/data/proto)
+add_subdirectory(modules/dreamview/proto)
+add_subdirectory(modules/drivers/canbus)
+add_subdirectory(modules/localization/proto)
+add_subdirectory(modules/map/proto)
+add_subdirectory(modules/perception/proto)
+add_subdirectory(modules/planning/proto)
+add_subdirectory(modules/prediction/proto)
+add_subdirectory(modules/routing/proto)
 #用户可在此添加宏
 add_definitions(${COMMON_DEFINITIONS})
 
