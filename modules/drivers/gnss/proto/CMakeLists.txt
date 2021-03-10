@@ -9,7 +9,7 @@ target_link_libraries(gnss_proto
   gnss_raw_observation_proto
   gnss_best_pose_proto
   gnss_config_proto
-  imu_proto
+  gnss_imu_proto
   gnss_status_proto
   protobuf)
 
@@ -17,7 +17,9 @@ add_library(ins_proto
   ins.pb.cc
   ins.pb.h)
 target_link_libraries(ins_proto
-imu
+  common_proto
+  error_code_proto
+  header_proto
   protobuf)
 
 add_library(gnss_raw_observation_proto
@@ -44,10 +46,10 @@ add_library(gnss_config_proto
 target_link_libraries(gnss_config_proto
   protobuf)
 
-add_library(imu_proto
+add_library(gnss_imu_proto
   imu.pb.cc
   imu.pb.h)
-target_link_libraries(imu_proto
+target_link_libraries(gnss_imu_proto
   common_proto
   error_code_proto
   header_proto

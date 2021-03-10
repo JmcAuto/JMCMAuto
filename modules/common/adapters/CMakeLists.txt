@@ -35,10 +35,30 @@ target_link_libraries(adapter INTERFACE
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
   adapter
+  relative_odometry_proto
   canbus_proto
   #monitor_log_proto
   drive_event_proto
   control_proto
+  static_info_proto
+  gnss_best_pose_proto
+  gnss_raw_observation_proto
+  gnss_status_proto
+  gnss_imu_proto
+  ins_proto
+  #sensor_proto
+  gps_proto
+  imu_proto
+  heading_proto
+  gnss_proto
+  localization_proto
+  sins_pva_proto
+  navigation_proto
+  system_status_proto
+  perception_proto
+  planning_proto
+  prediction_proto
+  routing_proto
   glog)
 
 
