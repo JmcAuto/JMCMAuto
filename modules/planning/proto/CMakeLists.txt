@@ -299,12 +299,6 @@ target_link_libraries(open_space_trajectory_provider_config_proto
   planner_open_space_config_proto
   protobuf)
 
-add_library(open_space_trajectory_provider_config_proto
-  open_space_trajectory_provider_config.pb.cc
-  open_space_trajectory_provider_config.pb.h)
-target_link_libraries(open_space_trajectory_provider_config_proto
-  protobuf)
-
 add_library(open_space_trajectory_partition_config_proto
   open_space_trajectory_partition_config.pb.cc
   open_space_trajectory_partition_config.pb.h)
