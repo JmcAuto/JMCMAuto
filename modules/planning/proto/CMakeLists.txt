@@ -182,7 +182,7 @@ target_link_libraries(path_bounds_decider_config_proto
 add_library(path_decider_config_proto
   path_decider_config.pb.cc
   path_decider_config.pb.h)
-target_link_libraries(path_decider_config
+target_link_libraries(path_decider_config_proto
   protobuf)
 
 add_library(path_assessment_decider_config_proto
