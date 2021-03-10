@@ -5,5 +5,4 @@ add_library(canbus_common
   canbus_gflags.cc
   canbus_gflags.h)
 target_link_libraries(canbus_common
-  ${COMMON_LIB}
   gflags)

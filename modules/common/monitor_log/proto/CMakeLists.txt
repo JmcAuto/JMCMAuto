@@ -5,7 +5,6 @@ add_library(monitor_log_proto
   monitor_log.pb.cc
   monitor_log.pb.h)
 target_link_libraries(monitor_log_proto
-  ${COMMON_LIB}
   common_proto
   header_proto
   protobuf)

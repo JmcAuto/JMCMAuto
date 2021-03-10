@@ -5,7 +5,6 @@ add_library(vehicle_model_config_proto
   vehicle_model_config.pb.cc
   vehicle_model_config.pb.h)
 target_link_libraries(vehicle_model_config_proto
-  ${COMMON_LIB}
   common_proto
   header_proto
   protobuf)

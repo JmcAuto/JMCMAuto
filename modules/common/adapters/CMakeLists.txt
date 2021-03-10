@@ -8,7 +8,6 @@ add_library(adapter_gflags
   adapter_gflags.cc
   adapter_gflags.h)
 target_link_libraries(adapter_gflags
-  ${COMMON_LIB}
   gflags)
 add_library(adapter_manager
   adapter_manager.cc
@@ -16,7 +15,6 @@ add_library(adapter_manager
   ${GENERATED_SOURCE}
   )
 target_link_libraries(adapter_manager
-  ${COMMON_LIB}
   adapter_gflags
   message_adapters
   common
@@ -28,7 +26,6 @@ target_link_libraries(adapter_manager
   pb_convertor)
 add_library(adapter INTERFACE)
 target_link_libraries(adapter INTERFACE
-  ${COMMON_LIB}
   adapter_gflags
   common_proto
   time
@@ -37,7 +34,6 @@ target_link_libraries(adapter INTERFACE
   glog)
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
-  ${COMMON_LIB}
   adapter
   canbus_proto
   #monitor_log_proto

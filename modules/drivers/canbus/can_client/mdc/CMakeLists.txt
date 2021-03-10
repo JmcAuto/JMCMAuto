@@ -8,5 +8,4 @@ add_library(mdc_can_client
   ${PROJECT_SOURCE_DIR}/generated/cantxserviceinterface_common.cpp
   )
 target_link_libraries(mdc_can_client
-  ${COMMON_LIB}
   can_client)

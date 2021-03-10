@@ -7,7 +7,6 @@ add_library(time
   time_util.h
   timer.h)
 target_link_libraries(time
-  ${COMMON_LIB}
-jmcauto_log
+  jmcauto_log
   macro
   config_gflags)

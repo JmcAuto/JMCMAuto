@@ -1,0 +1,40 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(map_proto
+  map.pb.cc
+  map.pb.h
+  map_clear_area.pb.cc
+  map_clear_area.pb.h
+  map_crosswalk.pb.cc
+  map_crosswalk.pb.h
+  map_geometry.pb.cc
+  map_geometry.pb.h
+  map_id.pb.cc
+  map_id.pb.h
+  map_junction.pb.cc
+  map_junction.pb.h
+  map_pnc_junction.pb.cc
+  map_pnc_junction.pb.h
+  map_lane.pb.cc
+  map_lane.pb.h
+  map_overlap.pb.cc
+  map_overlap.pb.h
+  map_parking_space.pb.cc
+  map_parking_space.pb.h
+  map_road.pb.cc
+  map_road.pb.h
+  map_signal.pb.cc
+  map_signal.pb.h
+  map_speed_bump.pb.cc
+  map_speed_bump.pb.h
+  map_speed_control.pb.cc
+  map_speed_control.pb.h
+  map_stop_sign.pb.cc
+  map_stop_sign.pb.h
+  map_yield_sign.pb.cc
+  map_yield_sign.pb.h
+  )
+target_link_libraries(map_proto
+  common_proto
+  protobuf)

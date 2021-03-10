@@ -8,7 +8,6 @@ add_library(drivers_canbus_proto
   sensor_canbus_conf.pb.cc
   sensor_canbus_conf.pb.h)
 target_link_libraries(drivers_canbus_proto
-  ${COMMON_LIB}
   common_proto
   header_proto
   protobuf)

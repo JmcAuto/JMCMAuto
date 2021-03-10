@@ -7,8 +7,7 @@ add_library(vehicle_state_provider
   vehicle_state_provider.cc
   vehicle_state_provider.h)
 target_link_libraries(vehicle_state_provider
-  ${COMMON_LIB}
-jmcauto_log
+  jmcauto_log
   macro
   config_gflags
   geometry

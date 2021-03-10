@@ -6,7 +6,6 @@ file(GLOB_RECURSE  canbus_cx75_protocol_lib *.cc *.h)
 add_library(canbus_cx75_protocol
   ${canbus_cx75_protocol_lib})
 target_link_libraries(canbus_cx75_protocol
-  ${COMMON_LIB}
   canbus_common
   canbus_proto
   message_manager_base)

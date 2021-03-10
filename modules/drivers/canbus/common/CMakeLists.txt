@@ -7,5 +7,4 @@ add_library(drivers_canbus_common
   byte.h
   canbus_consts.h)
 target_link_libraries(drivers_canbus_common
-  ${COMMON_LIB}
   )

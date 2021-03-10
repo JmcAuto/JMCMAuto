@@ -10,5 +10,4 @@ add_library(sensor_gflags
   sensor_gflags.cc
   sensor_gflags.h)
 target_link_libraries(sensor_gflags
-  ${COMMON_LIB}
   gflags)

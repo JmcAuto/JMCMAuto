@@ -19,7 +19,6 @@ add_library(canbus_proto
   vehicle_parameter.pb.cc
   vehicle_parameter.pb.h)
 target_link_libraries(canbus_proto
-  ${COMMON_LIB}
   common_proto
   drive_state_proto
   header_proto

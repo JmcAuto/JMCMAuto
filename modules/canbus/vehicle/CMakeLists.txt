@@ -7,7 +7,6 @@ add_library(vehicle_controller_base
   vehicle_controller.cc
   vehicle_controller.h)
 target_link_libraries(vehicle_controller_base
-  ${COMMON_LIB}
   canbus_proto
   vehicle_config_helper
   error_code_proto
@@ -20,7 +19,6 @@ add_library(abstract_vehicle_factory
   abstract_vehicle_factory.cc
   abstract_vehicle_factory.h)
 target_link_libraries(abstract_vehicle_factory
-  ${COMMON_LIB}
   canbus_proto
   vehicle_controller_base
   message_manager_base
@@ -29,7 +27,6 @@ add_library(vehicle_factory
   vehicle_factory.cc
   vehicle_factory.h)
 target_link_libraries(vehicle_factory
-  ${COMMON_LIB}
   #ch_vehicle_factory
   #teshun_vehicle_factory
   cx75_vehicle_factory
