@@ -15,6 +15,7 @@ add_library(adapter_manager
   ${GENERATED_SOURCE}
   )
 target_link_libraries(adapter_manager
+  ${COMMON_LIB}
   adapter_gflags
   message_adapters
   common
@@ -26,6 +27,7 @@ target_link_libraries(adapter_manager
   pb_convertor)
 add_library(adapter INTERFACE)
 target_link_libraries(adapter INTERFACE
+  ${COMMON_LIB}
   adapter_gflags
   common_proto
   time
@@ -34,6 +36,7 @@ target_link_libraries(adapter INTERFACE
   glog)
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
+  ${COMMON_LIB}
   adapter
   #relative_odometry_proto
   canbus_proto
@@ -60,5 +63,3 @@ target_link_libraries(message_adapters INTERFACE
   prediction_proto
   routing_proto
   glog)
-
-

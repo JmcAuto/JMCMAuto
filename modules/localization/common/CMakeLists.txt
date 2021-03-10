@@ -6,6 +6,6 @@ add_library(localization_common
   localization_gflags.h)
 target_link_libraries(localization_common
   jmcauto_log
-  vehicle_manager
+  #vehicle_manager
   localization_proto
   gflags)
