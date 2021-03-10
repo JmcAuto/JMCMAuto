@@ -32,7 +32,7 @@ target_link_libraries(lane_graph_proto
 add_library(feature_proto
   feature.pb.cc
   feature.pb.h)
-target_link_libraries(common_proto
+target_link_libraries(feature_proto
   common_proto
   perception_proto
   lane_graph_proto
