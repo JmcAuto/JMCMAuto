@@ -35,7 +35,7 @@ target_link_libraries(adapter INTERFACE
 add_library(message_adapters INTERFACE)
 target_link_libraries(message_adapters INTERFACE
   adapter
-  relative_odometry_proto
+  #relative_odometry_proto
   canbus_proto
   #monitor_log_proto
   drive_event_proto
@@ -54,7 +54,7 @@ target_link_libraries(message_adapters INTERFACE
   localization_proto
   sins_pva_proto
   navigation_proto
-  system_status_proto
+  #system_status_proto
   perception_proto
   planning_proto
   prediction_proto
