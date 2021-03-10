@@ -217,3 +217,139 @@ add_library(spiral_curve_config_proto
 target_link_libraries(spiral_curve_config_proto
   protobuf)
 
+add_library(planning_status_proto
+  planning_status.pb.cc
+  planning_status.pb.h)
+target_link_libraries(planning_status_proto
+  planning_config_proto
+  drive_state_proto
+  common_proto
+  pnc_point_proto
+  routing_proto
+  protobuf)
+
+add_library(lattice_sampling_config_proto
+  lattice_sampling_config.pb.cc
+  lattice_sampling_config.pb.h)
+target_link_libraries(lattice_sampling_config_proto
+  pnc_point_proto
+  protobuf)
+
+add_library(lattice_structure_proto
+  lattice_structure.pb.cc
+  lattice_structure.pb.h)
+target_link_libraries(lattice_structure_proto
+  lattice_sampling_config_proto
+  pnc_point_proto
+  protobuf)
+
+add_library(planner_open_space_config_proto
+  planner_open_space_config.pb.cc
+  planner_open_space_config.pb.h)
+target_link_libraries(planner_open_space_config_proto
+  protobuf)
+
+add_library(auto_tuning_raw_feature_proto
+  auto_tuning_raw_feature.pb.cc
+  auto_tuning_raw_feature.pb.h)
+target_link_libraries(auto_tuning_raw_feature_proto
+  pnc_point_proto
+  protobuf)
+
+add_library(auto_tuning_model_input_proto
+  auto_tuning_model_input.pb.cc
+  auto_tuning_model_input.pb.h)
+target_link_libraries(auto_tuning_model_input_proto
+  protobuf)
+
+add_library(qp_problem_proto
+  qp_problem.pb.cc
+  qp_problem.pb.h)
+target_link_libraries(qp_problem_proto
+  protobuf)
+
+add_library(speed_bounds_decider_config_proto
+  speed_bounds_decider_config.pb.cc
+  speed_bounds_decider_config.pb.h)
+target_link_libraries(speed_bounds_decider_config_proto
+  protobuf)
+
+add_library(st_bounds_decider_config_proto
+  st_bounds_decider_config.pb.cc
+  st_bounds_decider_config.pb.h)
+target_link_libraries(st_bounds_decider_config_proto
+  protobuf)
+
+add_library(open_space_fallback_decider_config_proto
+  open_space_fallback_decider_config.pb.cc
+  open_space_fallback_decider_config.pb.h)
+target_link_libraries(open_space_fallback_decider_config_proto
+  protobuf)
+
+add_library(open_space_roi_decider_config_proto
+  open_space_roi_decider_config.pb.cc
+  open_space_roi_decider_config.pb.h)
+target_link_libraries(open_space_roi_decider_config_proto
+  protobuf)
+
+add_library(open_space_trajectory_provider_config_proto
+  open_space_trajectory_provider_config.pb.cc
+  open_space_trajectory_provider_config.pb.h)
+target_link_libraries(open_space_trajectory_provider_config_proto
+  planner_open_space_config_proto
+  protobuf)
+
+add_library(open_space_trajectory_provider_config_proto
+  open_space_trajectory_provider_config.pb.cc
+  open_space_trajectory_provider_config.pb.h)
+target_link_libraries(open_space_trajectory_provider_config_proto
+  protobuf)
+
+add_library(open_space_trajectory_partition_config_proto
+  open_space_trajectory_partition_config.pb.cc
+  open_space_trajectory_partition_config.pb.h)
+target_link_libraries(open_space_trajectory_partition_config_proto
+  protobuf)
+
+add_library(open_space_pre_stop_decider_config_proto
+  open_space_pre_stop_decider_config.pb.cc
+  open_space_pre_stop_decider_config.pb.h)
+target_link_libraries(open_space_pre_stop_decider_config_proto
+  protobuf)
+
+add_library(rule_based_stop_decider_config_proto
+  rule_based_stop_decider_config.pb.cc
+  rule_based_stop_decider_config.pb.h)
+target_link_libraries(rule_based_stop_decider_config_proto
+  protobuf)
+
+add_library(cos_theta_smoother_config_proto
+  cos_theta_smoother_config.pb.cc
+  cos_theta_smoother_config.pb.h)
+target_link_libraries(cos_theta_smoother_config_proto
+  protobuf)
+
+add_library(fem_pos_deviation_smoother_config_proto
+  fem_pos_deviation_smoother_config.pb.cc
+  fem_pos_deviation_smoother_config.pb.h)
+target_link_libraries(fem_pos_deviation_smoother_config_proto
+  protobuf)
+
+add_library(ipopt_return_status_proto
+  ipopt_return_status.pb.cc
+  ipopt_return_status.pb.h)
+target_link_libraries(ipopt_return_status_proto
+  protobuf)
+
+add_library(learning_data_proto
+  learning_data.pb.cc
+  learning_data.pb.h)
+target_link_libraries(learning_data_proto
+  canbus_proto
+  common_proto
+  pnc_point_proto
+  map_proto
+  perception_proto
+  feature_proto
+  prediction_proto
+  protobuf)
