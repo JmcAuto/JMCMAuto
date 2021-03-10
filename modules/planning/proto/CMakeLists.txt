@@ -210,9 +210,9 @@ add_library(lane_change_decider_config_proto
 target_link_libraries(lane_change_decider_config_proto
   protobuf)
 
-add_library(lane_change_decider_config_proto
-  lane_change_decider_config.pb.cc
-  lane_change_decider_config.pb.h)
-target_link_libraries(lane_change_decider_config_proto
+add_library(spiral_curve_config_proto
+  spiral_curve_config.pb.cc
+  spiral_curve_config.pb.h)
+target_link_libraries(spiral_curve_config_proto
   protobuf)
 
