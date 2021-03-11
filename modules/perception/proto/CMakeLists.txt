@@ -1,5 +1,6 @@
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_compile_options(-fPIC)
 
 add_library(perception_proto
   perception_obstacle.pb.cc

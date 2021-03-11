@@ -9,6 +9,7 @@ add_library(planning_proto
 target_link_libraries(planning_proto
   decision_proto
   planning_mode_config_proto
+  planning_internal_proto
   canbus_proto
   drive_state_proto
   common_proto
