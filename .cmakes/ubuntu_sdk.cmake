@@ -4,6 +4,7 @@
 
 set(SDK_INCLUDE 
     "${TOOL_CHAIN_SYSROOT}/usr/local/include"
+	"${TOOL_CHAIN_SYSROOT}/usr/local/include/viz"
 	"${TOOL_CHAIN_SYSROOT}/usr/local/include/RT-DDS"
 	"${TOOL_CHAIN_SYSROOT}/usr/local/include/someip"
 	"${TOOL_CHAIN_SYSROOT}/usr/local/include/vrtf")
@@ -42,7 +43,8 @@ set(SDK_LIB
 	vcc_ddsdriver
 	vcc_someipdriver
 	yaml-cpp
-	ara_visual)
+	ara_visual
+	pcie_trans)
 
 
 

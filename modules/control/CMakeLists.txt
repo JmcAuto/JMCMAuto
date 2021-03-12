@@ -6,6 +6,12 @@ add_subdirectory(common)
 add_subdirectory(proto)
 add_subdirectory(controller)
 
+add_executable(control main.cc)
+target_link_libraries(control
+  ${COMMON_LIB}
+  control_lib
+  common)
+
 add_library(lib_pad_terminal INTERFACE)
 target_link_libraries(lib_pad_terminal INTERFACE
   control_common)

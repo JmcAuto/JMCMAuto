@@ -7,6 +7,14 @@ add_subdirectory(proto)
 add_subdirectory(vehicle)
 add_subdirectory(tools)
 
+add_executable(canbus main.cc)
+target_link_libraries(canbus
+  ${COMMON_LIB}
+  canbus_lib
+  can_client
+  drivers_canbus_common
+  -lpthread)
+
 add_library(canbus_lib
   canbus.cc
   canbus.h)

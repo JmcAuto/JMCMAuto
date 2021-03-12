@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>HuaweiMDC</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Platform</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanTxServiceInterface</SHORT-NAME>
+              <ELEMENTS>
+                <SERVICE-INTERFACE>
+                  <SHORT-NAME>CanTxServiceInterface</SHORT-NAME>
+                  <IS-SERVICE>true</IS-SERVICE>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>mdc</SHORT-NAME>
+                      <SYMBOL>mdc</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sensor</SHORT-NAME>
+                      <SYMBOL>sensor</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <EVENTS>
+                    <VARIABLE-DATA-PROTOTYPE>
+                      <SHORT-NAME>CanDataTxEvent</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/Platform/CanMsgDataType/CanBusDataParam</TYPE-TREF>
+                    </VARIABLE-DATA-PROTOTYPE>
+                  </EVENTS>
+                </SERVICE-INTERFACE>
+                <SOMEIP-SERVICE-INTERFACE-DEPLOYMENT UUID="">
+                  <SHORT-NAME>CanTxSomeipServiceInterfaceDeployment</SHORT-NAME>
+                  <EVENT-DEPLOYMENTS>
+                    <SOMEIP-EVENT-DEPLOYMENT>
+                      <SHORT-NAME>CanDataTxEvent00</SHORT-NAME>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface/CanDataTxEvent</EVENT-REF>
+                      <EVENT-ID>32769</EVENT-ID>
+                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                    </SOMEIP-EVENT-DEPLOYMENT>
+                  </EVENT-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface</SERVICE-INTERFACE-REF>
+                  <EVENT-GROUPS>
+                    <SOMEIP-EVENT-GROUP>
+                      <SHORT-NAME>CanDataTxEventGroup</SHORT-NAME>
+                      <EVENT-GROUP-ID>16</EVENT-GROUP-ID>
+                      <EVENT-REFS>
+                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/HuaweiMDC/Platform/CanTxServiceInterface/CanTxSomeipServiceInterfaceDeployment/CanDataTxEvent00</EVENT-REF>
+                      </EVENT-REFS>
+                    </SOMEIP-EVENT-GROUP>
+                  </EVENT-GROUPS>
+                  <SERVICE-INTERFACE-ID>209</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-VERSION>
+                    <MAJOR-VERSION>1</MAJOR-VERSION>
+                    <MINOR-VERSION>1</MINOR-VERSION>
+                  </SERVICE-INTERFACE-VERSION>
+                </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

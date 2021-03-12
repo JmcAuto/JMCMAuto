@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_Functional_ControlApplication_ControlApplicationSwComponent_ControlProcess"
+      "ident": "someip_HuaweiMDC_PlatformServices_McuSensorsAbstractApplication_McuSensorsAbstractApplicationSwComponent_McuSensorsAbstractProcess"
     },
     "dlt": "false"
   },
@@ -17,20 +17,12 @@
   "netmask": "255.255.255.0",
   "applications": [
     {
-      "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
-      "id": "35574"
-    },
-    {
-      "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
-      "id": "35574"
-    },
-    {
       "name": "/HuaweiMDC/PlatformServices/McuSensorsAbstractApplication/McuSensorsAbstractApplicationSwComponent/McuSensorsAbstractProcess",
       "id": "44416"
     },
     {
-      "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
-      "id": "48028"
+      "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
+      "id": "35574"
     },
     {
       "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
@@ -38,19 +30,6 @@
     }
   ],
   "services": [
-    {
-      "service": "1004",
-      "instance": "104",
-      "unreliable": "6000",
-      "events": [
-        {
-          "event": "32769",
-          "is_field": "false",
-          "is_reliable": "false"
-        }
-      ],
-      "eventgroups": []
-    },
     {
       "service": "209",
       "instance": "1",
@@ -306,13 +285,6 @@
     }
   ],
   "clients": [
-    {
-      "service": "1004",
-      "instance": "104",
-      "unreliable": [
-        "5000"
-      ]
-    },
     {
       "service": "208",
       "instance": "1",

@@ -1,0 +1,21 @@
+<RT_DDS>
+    <DomainId>any</DomainId>
+    <General>
+        <AllowMulticast>true</AllowMulticast>
+    </General>
+    <SharedMemory>
+        <EnableSharedMemory>true</EnableSharedMemory>
+        <ShmOnly>true</ShmOnly>
+        <FragSize>2048</FragSize>
+        <ListSize>256</ListSize>
+        <Topics>
+            <Topic TopicName="ControlCommandDdsEvent_1009_109" FragSize="2048" ListSize="256"/>
+        </Topics>
+    </SharedMemory>
+    <Tracing>
+        <Verbosity>ERROR</Verbosity>
+        <DebugOutputFile>rt_dds_debug.log</DebugOutputFile>
+        <LogOutputFile>rt_dds.log</LogOutputFile>
+        <AppendToFile>true</AppendToFile>
+    </Tracing>
+</RT_DDS>

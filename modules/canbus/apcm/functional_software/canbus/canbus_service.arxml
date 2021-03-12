@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="b83e4045-80af-4da0-8285-99df993561c6">
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>PlatFormServices</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusConsumerToApp</SHORT-NAME>
+              <ELEMENTS>
+                <DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>CanbusRecvServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/ControlCommandRPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusProviderToApp</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>6000</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>CanbusAbstractServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/ChassisPPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusServiceConsumer</SHORT-NAME>
+              <ELEMENTS>
+                <DDS-REQUIRED-SERVICE-INSTANCE>
+                  <SHORT-NAME>ControlCommandRequiredDdsServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <EVENT-QOS-PROPSS>
+                    <DDS-EVENT-QOS-PROPS>
+                      <QOS-PROFILE>/var/eventsqos.xml</QOS-PROFILE>
+                      <EVENT-REF DEST="DDS-EVENT-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment/ControlCommandDdsEventDeployment</EVENT-REF>
+                    </DDS-EVENT-QOS-PROPS>
+                  </EVENT-QOS-PROPSS>
+                  <REQUIRED-SERVICE-INSTANCE-ID>109</REQUIRED-SERVICE-INSTANCE-ID>
+                </DDS-REQUIRED-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>CanbusServiceProvider</SHORT-NAME>
+              <ELEMENTS>
+                <PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>ChassisProvidedSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <EVENT-PROPSS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                  </EVENT-PROPSS>
+                  <SERVICE-INSTANCE-ID>104</SERVICE-INSTANCE-ID>
+                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

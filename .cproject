@@ -25,6 +25,7 @@
 								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1131599628" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.max" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.1030755916" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -43,6 +44,7 @@
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1111911325" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -89,6 +91,7 @@
 									<listOptionValue builtIn="false" value="vcc_someipdriver"/>
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
+									<listOptionValue builtIn="false" value="pcie_trans"/>
 								</option>
 								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.1996414153" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -129,6 +132,7 @@
 								<option id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level.1343285142" name="Debug Level" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="com.huawei.ide.managedbuilder.mdc.c.compiler.debug.level.none" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.713437252" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -147,6 +151,7 @@
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.1401643724" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -193,6 +198,7 @@
 									<listOptionValue builtIn="false" value="vcc_someipdriver"/>
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
+									<listOptionValue builtIn="false" value="pcie_trans"/>
 								</option>
 								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.234406341" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -231,6 +237,7 @@
 							<tool id="com.huawei.ide.managedbuilder.mdc.c.compiler.exe.test.302924240" name="MDC C Compiler" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.exe.test">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths.567569616" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -245,6 +252,7 @@
 							<tool id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.exe.test.42687831" name="MDC C++ Compiler" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.exe.test">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths.496625759" name="Include paths (-I)" superClass="com.huawei.ide.managedbuilder.mdc.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include"/>
+									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/viz"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/RT-DDS"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/someip"/>
 									<listOptionValue builtIn="false" value="${UBUNTU_SDK_HOME}/usr/local/include/vrtf"/>
@@ -295,6 +303,7 @@
 									<listOptionValue builtIn="false" value="vcc_someipdriver"/>
 									<listOptionValue builtIn="false" value="yaml-cpp"/>
 									<listOptionValue builtIn="false" value="ara_visual"/>
+									<listOptionValue builtIn="false" value="pcie_trans"/>
 								</option>
 								<inputType id="com.huawei.ide.managedbuilder.mdc.cpp.linker.input.2144726144" superClass="com.huawei.ide.managedbuilder.mdc.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

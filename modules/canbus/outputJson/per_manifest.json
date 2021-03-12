@@ -2,9 +2,54 @@
   {
     "key": "PORTS",
     "value": {
-      "object[]": []
+      "object[]": [
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ChassisPPort"
+                },
+                "checksum": 3763312475
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                },
+                "checksum": 2021491952
+              }
+            ]
+          },
+          "checksum": 2745714547
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ControlCommandRPort"
+                },
+                "checksum": 816279098
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface"
+                },
+                "checksum": 2734886095
+              }
+            ]
+          },
+          "checksum": 1167802667
+        }
+      ]
     },
-    "checksum": 1521547141
+    "checksum": 4267693623
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

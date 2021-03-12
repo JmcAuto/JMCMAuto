@@ -1,0 +1,40 @@
+{
+  "logging": {
+    "level": "info",
+    "console": "false",
+    "file": {
+      "enable": "false",
+      "path": "/var/log/vsomeip.log"
+    },
+    "syslog": {
+      "enable": "true",
+      "ident": "someip_jmc_auto_Functional_ControlApplication_ControlApplicationSwComponent_ControlProcess"
+    },
+    "dlt": "false"
+  },
+  "routing": "someipd",
+  "unicast": "192.168.1.6",
+  "netmask": "255.255.255.0",
+  "applications": [
+    {
+      "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
+      "id": "48028"
+    }
+  ],
+  "services": [],
+  "clients": [
+    {
+      "service": "1004",
+      "instance": "104",
+      "unreliable": [
+        "5000"
+      ]
+    }
+  ],
+  "service-discovery": {
+    "enable": "true",
+    "multicast": "239.192.255.251",
+    "port": "30491",
+    "protocol": "udp"
+  }
+}

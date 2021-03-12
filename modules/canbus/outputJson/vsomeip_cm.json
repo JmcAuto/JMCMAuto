@@ -1,0 +1,84 @@
+{
+  "applicationName": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
+  "services": [
+    {
+      "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
+      "serviceId": 208,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "CanDataRxEvent",
+          "id": 10384,
+          "dataType": "/HuaweiMDC/Platform/CanMsgDataType/CanBusDataParam",
+          "eventId": 32769,
+          "eventGroup": [
+            16
+          ],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [
+        {
+          "method": "CanDataSetMethod",
+          "id": 41040,
+          "isFireAndForget": false,
+          "methodId": 1,
+          "reliable": false
+        }
+      ],
+      "instances": []
+    },
+    {
+      "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
+      "serviceId": 209,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 1,
+      "events": [
+        {
+          "event": "CanDataTxEvent",
+          "id": 26928,
+          "dataType": "/HuaweiMDC/Platform/CanMsgDataType/CanBusDataParam",
+          "eventId": 32769,
+          "eventGroup": [
+            16
+          ],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    },
+    {
+      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "serviceId": 1004,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "ChassisEvent",
+          "id": 32374,
+          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "eventId": 32769,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "instance": 104,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
+          "unreliable": 6000
+        }
+      ]
+    }
+  ]
+}
