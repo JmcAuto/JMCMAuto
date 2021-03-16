@@ -49,7 +49,7 @@ Status Control::Init() {
   //CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
   //CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
   //CHECK(AdapterManager::GetMonitor()) << "Monitor is not initialized.";
-  CHECK(AdapterManager::GetControlCommand())<< "ControlCommand publisher is not initialized.";
+  //CHECK(AdapterManager::GetControlCommand())<< "ControlCommand publisher is not initialized.";
   //AdapterManager::AddPadCallback(&Control::OnPad, this);
   //AdapterManager::AddMonitorCallback(&Control::OnMonitor, this);
   return Status::OK();
@@ -279,7 +279,7 @@ Status Control::CheckInput() {
   }
   trajectory_ = trajectory_adapter->GetLatestObserved();//planning轨迹点
   AINFO << "Received trajectory" ;
-  
+
   if (!trajectory_.estop().is_estop() &&
       trajectory_.trajectory_point_size() == 0) {
     AERROR_EVERY(100) << "planning has no trajectory point. ";
@@ -298,7 +298,7 @@ Status Control::CheckInput() {
       trajectory_point.set_a(0.0);
       AINFO << "There are trajectroy points with velocity zero!";
     }
-    
+
   VehicleStateProvider::instance()->Update(localization_, chassis_);
   */
   AINFO << "Input no problem!" ;
@@ -362,7 +362,7 @@ void Control::SendCmd(ControlCommand *control_command) {
   AdapterManager::FillControlCommandHeader(Name(), control_command);
 
  AdapterManager::PublishControlCommand(*control_command);
- AINFO << "Control command pubilsh succeed! Control command msg:" 
+ AINFO << "Control command pubilsh succeed! Control command msg:"
        << control_command->ShortDebugString();
 }
 
