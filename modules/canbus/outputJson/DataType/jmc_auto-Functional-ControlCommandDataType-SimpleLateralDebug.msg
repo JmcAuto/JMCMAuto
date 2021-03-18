@@ -86,6 +86,22 @@
     {
       "Name": "steering_torque",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "lateral_acceleration",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "lateral_jerk",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "ref_heading_rate",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_rate",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
     }
   ],
   "IsPlane": "true"

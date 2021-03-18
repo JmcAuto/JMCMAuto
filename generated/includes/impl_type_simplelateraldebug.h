@@ -25,6 +25,10 @@
 
 
 
+
+
+
+
 #include "impl_type_double.h"
 
 
@@ -67,6 +71,14 @@ struct SimpleLateralDebug {
     
     ::Double steering_torque;
     
+    ::Double lateral_acceleration;
+    
+    ::Double lateral_jerk;
+    
+    ::Double ref_heading_rate;
+    
+    ::Double heading_rate;
+    
 
     static bool IsPlane()
     {
@@ -96,6 +108,10 @@ struct SimpleLateralDebug {
         fun(steer_angle_limited);
         fun(steer_targe_position_error);
         fun(steering_torque);
+        fun(lateral_acceleration);
+        fun(lateral_jerk);
+        fun(ref_heading_rate);
+        fun(heading_rate);
     }
 
     template<typename F>
@@ -120,10 +136,14 @@ struct SimpleLateralDebug {
         fun(steer_angle_limited);
         fun(steer_targe_position_error);
         fun(steering_torque);
+        fun(lateral_acceleration);
+        fun(lateral_jerk);
+        fun(ref_heading_rate);
+        fun(heading_rate);
     }
 
     bool operator == (const ::SimpleLateralDebug& t) const {
-        return (lateral_error == t.lateral_error) && (lateral_error_rate == t.lateral_error_rate) && (heading_error == t.heading_error) && (heading_error_rate == t.heading_error_rate) && (ref_heading == t.ref_heading) && (heading == t.heading) && (curvature == t.curvature) && (steer_angle == t.steer_angle) && (steer_angle_feedforward == t.steer_angle_feedforward) && (steer_angle_feedback == t.steer_angle_feedback) && (steer_angle_lateral_contribution == t.steer_angle_lateral_contribution) && (steer_angle_lateral_rate_contribution == t.steer_angle_lateral_rate_contribution) && (steer_angle_heading_contribution == t.steer_angle_heading_contribution) && (steer_angle_heading_rate_contribution == t.steer_angle_heading_rate_contribution) && (steering_position == t.steering_position) && (ref_speed == t.ref_speed) && (steer_angle_limited == t.steer_angle_limited) && (steer_targe_position_error == t.steer_targe_position_error) && (steering_torque == t.steering_torque);
+        return (lateral_error == t.lateral_error) && (lateral_error_rate == t.lateral_error_rate) && (heading_error == t.heading_error) && (heading_error_rate == t.heading_error_rate) && (ref_heading == t.ref_heading) && (heading == t.heading) && (curvature == t.curvature) && (steer_angle == t.steer_angle) && (steer_angle_feedforward == t.steer_angle_feedforward) && (steer_angle_feedback == t.steer_angle_feedback) && (steer_angle_lateral_contribution == t.steer_angle_lateral_contribution) && (steer_angle_lateral_rate_contribution == t.steer_angle_lateral_rate_contribution) && (steer_angle_heading_contribution == t.steer_angle_heading_contribution) && (steer_angle_heading_rate_contribution == t.steer_angle_heading_rate_contribution) && (steering_position == t.steering_position) && (ref_speed == t.ref_speed) && (steer_angle_limited == t.steer_angle_limited) && (steer_targe_position_error == t.steer_targe_position_error) && (steering_torque == t.steering_torque) && (lateral_acceleration == t.lateral_acceleration) && (lateral_jerk == t.lateral_jerk) && (ref_heading_rate == t.ref_heading_rate) && (heading_rate == t.heading_rate);
     }
 };
 

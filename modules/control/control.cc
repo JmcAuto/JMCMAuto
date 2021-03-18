@@ -13,6 +13,8 @@
 
 #include "modules/localization/proto/localization.pb.h"
 
+#include <stdio.h>
+
 namespace jmc_auto {
 namespace control {
 
@@ -24,7 +26,7 @@ using jmc_auto::common::adapter::AdapterManager;
 //using jmc_auto::common::monitor::MonitorMessageItem;
 using jmc_auto::common::time::Clock;
 using jmc_auto::localization::LocalizationEstimate;
-//using jmc_auto::planning::ADCTrajectory;
+using jmc_auto::planning::ADCTrajectory;
 
 std::string Control::Name() const { return FLAGS_control_node_name; }
 
@@ -75,8 +77,8 @@ while (1)  {
   double start_timestamp = Clock::NowInSeconds();
   ControlCommand control_command;
   Status status = ProduceControlCommand(&control_command);
-  AERROR_IF(!status.ok()) << "Failed to produce control command:"
-                          << status.error_message();
+  //AERROR_IF(!status.ok()) << "Failed to produce control command:"
+  //                        << status.error_message();
 
   double end_timestamp = Clock::NowInSeconds();
   if (pad_received_) {
@@ -95,8 +97,12 @@ while (1)  {
       estop_ = false ;
       AINFO << "Reset estop to false" ;
     }
-    SendCmd(&control_command);
-    usleep(control_conf_.control_period());
+    //SendCmd(&control_command);
+  //AdapterManager::FillControlCommandHeader(FLAGS_control_node_name, &control_command);
+  AdapterManager::PublishControlCommand(control_command);
+  AINFO << "Control command publish succeed! Control command msg:"
+        << control_command.ShortDebugString();
+  usleep(control_conf_.control_period());
 }
   return Status::OK();
 }
@@ -359,10 +365,10 @@ Status Control::CheckTimestamp()
 
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
-  AdapterManager::FillControlCommandHeader(Name(), control_command);
+  //AdapterManager::FillControlCommandHeader(Name(), control_command);
 
- AdapterManager::PublishControlCommand(*control_command);
- AINFO << "Control command pubilsh succeed! Control command msg:"
+ //AdapterManager::PublishControlCommand(*control_command);
+ AINFO << "Control command publish succeed! Control command msg:"
        << control_command->ShortDebugString();
 }
 

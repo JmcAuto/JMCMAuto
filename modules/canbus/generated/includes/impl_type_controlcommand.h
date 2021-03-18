@@ -26,6 +26,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 #include "impl_type_bool.h"
 #include "impl_type_latencystats.h"
 #include "impl_type_gearposition.h"
@@ -75,11 +85,31 @@ struct ControlCommand {
     
     ::Double steering_torque;
     
-    ::Int32 pam_esp_stop_distance;
+    ::Int32 PAM_ESP_Target_Gear_Request;
     
     ::Bool ACC_StandstillReq;
     
-    ::TurnSignal TurnSignal;
+    ::TurnSignal turnsignal;
+    
+    ::Double throttle;
+    
+    ::Double brake;
+    
+    ::Double steering_rate;
+    
+    ::Bool left_turn;
+    
+    ::Bool right_turn;
+    
+    ::Bool high_beam;
+    
+    ::Bool low_beam;
+    
+    ::Bool horn;
+    
+    ::Double steering_angle;
+    
+    ::Int32 pam_esp_stop_distance;
     
 
     static bool IsPlane()
@@ -108,9 +138,19 @@ struct ControlCommand {
         fun(engage_advice);
         fun(is_in_safe_mode);
         fun(steering_torque);
-        fun(pam_esp_stop_distance);
+        fun(PAM_ESP_Target_Gear_Request);
         fun(ACC_StandstillReq);
-        fun(TurnSignal);
+        fun(turnsignal);
+        fun(throttle);
+        fun(brake);
+        fun(steering_rate);
+        fun(left_turn);
+        fun(right_turn);
+        fun(high_beam);
+        fun(low_beam);
+        fun(horn);
+        fun(steering_angle);
+        fun(pam_esp_stop_distance);
     }
 
     template<typename F>
@@ -133,13 +173,23 @@ struct ControlCommand {
         fun(engage_advice);
         fun(is_in_safe_mode);
         fun(steering_torque);
-        fun(pam_esp_stop_distance);
+        fun(PAM_ESP_Target_Gear_Request);
         fun(ACC_StandstillReq);
-        fun(TurnSignal);
+        fun(turnsignal);
+        fun(throttle);
+        fun(brake);
+        fun(steering_rate);
+        fun(left_turn);
+        fun(right_turn);
+        fun(high_beam);
+        fun(low_beam);
+        fun(horn);
+        fun(steering_angle);
+        fun(pam_esp_stop_distance);
     }
 
     bool operator == (const ::ControlCommand& t) const {
-        return (header == t.header) && (steering_target == t.steering_target) && (parking_brake == t.parking_brake) && (speed == t.speed) && (acceleration == t.acceleration) && (reset_model == t.reset_model) && (engine_on_off == t.engine_on_off) && (trajectory_fraction == t.trajectory_fraction) && (driving_mode == t.driving_mode) && (gear_location == t.gear_location) && (debug == t.debug) && (signal == t.signal) && (latency_stats == t.latency_stats) && (pad_msg == t.pad_msg) && (engage_advice == t.engage_advice) && (is_in_safe_mode == t.is_in_safe_mode) && (steering_torque == t.steering_torque) && (pam_esp_stop_distance == t.pam_esp_stop_distance) && (ACC_StandstillReq == t.ACC_StandstillReq) && (TurnSignal == t.TurnSignal);
+        return (header == t.header) && (steering_target == t.steering_target) && (parking_brake == t.parking_brake) && (speed == t.speed) && (acceleration == t.acceleration) && (reset_model == t.reset_model) && (engine_on_off == t.engine_on_off) && (trajectory_fraction == t.trajectory_fraction) && (driving_mode == t.driving_mode) && (gear_location == t.gear_location) && (debug == t.debug) && (signal == t.signal) && (latency_stats == t.latency_stats) && (pad_msg == t.pad_msg) && (engage_advice == t.engage_advice) && (is_in_safe_mode == t.is_in_safe_mode) && (steering_torque == t.steering_torque) && (PAM_ESP_Target_Gear_Request == t.PAM_ESP_Target_Gear_Request) && (ACC_StandstillReq == t.ACC_StandstillReq) && (turnsignal == t.turnsignal) && (throttle == t.throttle) && (brake == t.brake) && (steering_rate == t.steering_rate) && (left_turn == t.left_turn) && (right_turn == t.right_turn) && (high_beam == t.high_beam) && (low_beam == t.low_beam) && (horn == t.horn) && (steering_angle == t.steering_angle) && (pam_esp_stop_distance == t.pam_esp_stop_distance);
     }
 };
 

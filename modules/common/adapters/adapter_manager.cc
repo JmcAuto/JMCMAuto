@@ -53,16 +53,17 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
     }
 
     instance()->initialized_ = true;
-    // AINFO << "start to enable";
     for (const auto &config : configs.config()) {
         switch (config.type()) {
         case AdapterConfig::CHASSIS:
+        	AINFO << "start to enable CHASSIS";
             EnableChassis(FLAGS_chassis_instance_id, config);
             break;
         // case AdapterConfig::CHASSIS_DETAIL:
         //    EnableChassisDetail(FLAGS_chassis_detail_instance_id, config);
         //    break;
         case AdapterConfig::CONTROL_COMMAND:
+        	AINFO << "start to enable CONTROL_COMMAND";
             EnableChassis(FLAGS_control_command_instance_id, config);
             break;
         default:

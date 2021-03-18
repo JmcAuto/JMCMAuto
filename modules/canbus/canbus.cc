@@ -106,7 +106,7 @@ Status Canbus::Init() {
     }
     AINFO << "The vehicle controller is successfully initialized.";
 
-    CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
+    //CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
     // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
     // initialized.";
     // TODO(QiL) : depreacte this

@@ -104,12 +104,10 @@ namespace adapter {
     AdapterConfig name##config_;                                               \
     void InternalEnable##name(const unsigned int &instance_id,                 \
                               const AdapterConfig &config) {                   \
-        AINFO << "start to enable " << config.type();           \
     	name##_msg_limit = config.message_history_limit();                     \
     	name##_.reset(new name##Adapter(#name, instance_id,                    \
                                         config.message_history_limit()));      \
         if (config.mode() != AdapterConfig::PUBLISH_ONLY) {                    \
-            AINFO << "enable receiver";\
             jmc_auto::proxy::name##ServiceInterfaceProxy::StartFindService(    \
                 [this](ara::com::ServiceHandleContainer<                       \
                            jmc_auto::proxy::name##ServiceInterfaceProxy::      \
@@ -122,7 +120,6 @@ namespace adapter {
                 instance_id);                                                  \
         }                                                                      \
         if (config.mode() != AdapterConfig::RECEIVE_ONLY) {                    \
-            AINFO << "enable publisher";\
             name##skeleton = std::make_unique<                                 \
                 jmc_auto::skeleton::name##ServiceInterfaceSkeleton>(           \
                 ara::com::InstanceIdentifier(instance_id),                     \
@@ -136,7 +133,6 @@ namespace adapter {
             jmc_auto::proxy::name##ServiceInterfaceProxy::HandleType>          \
             handles,                                                           \
         ara::com::FindServiceHandle handler) {                                 \
-        AINFO << "ServiceAvailabilityCallback";   \
         if (handles.size() > 0) {                                              \
             for (unsigned int i = 0; i < handles.size(); i++) {                \
                 if (name##proxy == nullptr) {                                  \
@@ -168,7 +164,7 @@ namespace adapter {
                 (const char *&)strData, &pbData);                              \
             name##_->SetLatestPublished(pbData);                               \
         }                                                                      \
-        name##proxy->name##Event.Cleanup();                                    \
+		name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
     name##Adapter *InternalGet##name() { return name##_.get(); }               \
     /*name##Adapter *InternalGet##name() {                                     \
