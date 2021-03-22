@@ -172,6 +172,7 @@ Status LonController::ComputeControlCommand(
     AERROR << error_msg;
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, error_msg);
   }
+    
   // 计算纵向误差
   ComputeLongitudinalErrors(trajectory_analyzer_.get(), preview_time, debug);
 
@@ -185,40 +186,35 @@ Status LonController::ComputeControlCommand(
     station_error_limited = common::math::Clamp(
         debug->station_error(), -station_error_limit, station_error_limit);
   }
-  double station_error_diff = station_error_limited - previous_station_error ;
-  previous_station_error = station_error_limited ;
-//     if(station_error_limited < 1.0 && station_error_diff < 0){
-//         station_pid_controller_.SetPID(lon_controller_conf.high_speed_pid_conf()) ;
-//     }
-//  ADEBUG << "station error" << station_error_limited << " PID coeff "<< lon_controller_conf.high_speed_pid_conf().kp() ;
 if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
-    station_pid_controller_.SetPID(
-        lon_controller_conf.reverse_station_pid_conf());
+    station_pid_controller_.SetPID(lon_controller_conf.reverse_station_pid_conf());
     speed_pid_controller_.SetPID(lon_controller_conf.reverse_speed_pid_conf());
 }
   double speed_offset =
       station_pid_controller_.Control(station_error_limited, ts);
   ADEBUG << "Station PID speed_offset = " << speed_offset ;
-  double speed_cmd =speed_offset + debug->preview_speed_reference();
 
-  // double speed_controller_input = 0.0;
-  // double speed_controller_input_limit =
-  //     lon_controller_conf.speed_controller_input_limit();
-  // double speed_controller_input_limited = 0.0;
-  // if (FLAGS_enable_speed_station_preview) {
-  //   speed_controller_input = speed_offset + debug->preview_speed_error();
-  // } else {
-  //   speed_controller_input = speed_offset + debug->speed_error();
-  // }
-  // speed_controller_input_limited =
-  //     common::math::Clamp(speed_controller_input, -speed_controller_input_limit,
-  //                         speed_controller_input_limit);
-  //    if(speed_controller_input_limited < 0.2){
-  //        speed_controller_input_limited = 0 ;
-  //    }
-  // AINFO << "speed_controller_input_limited: "<< speed_controller_input_limited;
-
-  // double acceleration_cmd_closeloop = 0.0;
+   double speed_controller_input = 0.0;
+   double speed_controller_input_limit =
+       lon_controller_conf.speed_controller_input_limit();
+   double speed_controller_input_limited = 0.0;
+   if (FLAGS_enable_speed_station_preview) {
+     speed_controller_input = speed_offset + debug->preview_speed_error();
+   } else {
+     speed_controller_input = speed_offset + debug->speed_error();
+   }
+   speed_controller_input_limited =
+       common::math::Clamp(speed_controller_input, -speed_controller_input_limit,
+                           speed_controller_input_limit);
+   ADEBUG << "speed_controller_input_limited: "<< speed_controller_input_limited;
+   double speed_controller_offset = 0.0 ;
+   speed_controller_offset = speed_pid_controller_.Control(speed_controller_input_limited, ts);
+   AINFO << "speed_controller_offset = "<< speed_controller_offset ;
+    double speed_cmd =speed_controller_offset + debug->preview_speed_reference();
+    if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
+    speed_cmd = common::math::Clamp(speed_cmd,0.0,2.0);
+}
+  //double acceleration_cmd_closeloop = 0.0;
   //   AINFO << "Vehicle speed:" << VehicleStateProvider::instance()->linear_velocity() ; 
   //   speed_pid_controller_.SetPID(lon_controller_conf.low_speed_pid_conf());
   //   acceleration_cmd_closeloop =
@@ -239,26 +235,34 @@ if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
   // AINFO << "acceleration_cmd_closeloop = " << acceleration_cmd_closeloop ;
   // AINFO << "match_acceleration_reference = " << debug->match_acceleration_reference();
   debug->set_is_full_stop(false);
-  //TODO
-  if (speed_cmd < 3 && (debug->preview_kappa() > 0.03 || debug->preview_kappa() < -0.02) )
-  {
-    //acceleration_cmd = 0.25 * acceleration_cmd ;
-    AINFO << "Turnning ,speed_cmd = " << speed_cmd ;
-  }
   GetPathRemain(debug);
+  ADEBUG << "path remain " << debug->path_remain() ;
+//??
+  ADEBUG << "preview speed "<< debug->preview_speed_reference();
   if (std::fabs(debug->preview_speed_reference()) <=
            FLAGS_max_abs_speed_when_stopped ||
-      (std::fabs(debug->path_remain()) < FLAGS_stop_path_remain)) {
-    speed_cmd = 0 ;
+      debug->path_remain() < FLAGS_stop_path_remain) {
+    speed_cmd = 0.0 ;
+    debug->set_path_remain(0);
     AINFO << "Stop location reached";
     debug->set_is_full_stop(true);
   } else {
-     AINFO << "NOT reached Stop location" ;
-    // speed_cmd = common::math::Clamp(speed_cmd,-0.3,3.0);
+    AINFO << "NOT reached Stop location" ;
+    debug->set_path_remain(1000);
+    speed_cmd =speed_controller_offset + debug->preview_speed_reference();
+       //TODO
+    if (speed_cmd < 3 && (debug->preview_kappa() > 0.03 || debug->preview_kappa() < -0.02) ){
+    //acceleration_cmd = 0.25 * acceleration_cmd ;
+    AINFO << "Turnning ,speed_cmd = " << speed_cmd ;
+   }
   }
-    //  if(debug->preview_station_error < -2.0 && station_error_diff < 0){
-    //     acceleration_cmd = 0.5 * acceleration_cmd ;
-//}
+  if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
+    speed_cmd = common::math::Clamp(speed_cmd,0.0,1.0);
+ } else
+ {
+   speed_cmd = common::math::Clamp(speed_cmd,0.0,2.0);
+ }
+ 
 //  if(FLAGS_enable_csv_debug && speed_log_file_ != nullptr) {
 //    fprintf(speed_log_file_,
 //            "%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f,"
@@ -273,22 +277,33 @@ if (trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE) {
 //            debug->speed_real(), debug->is_full_stop());
 //  }
 //  speed_cmd = lon_acc_filter_.Update(speed_cmd) ;
-
-  //档位控制，只有停车状态或者空档状态下才能换档
+//LJXCU3CB4LTP71792
+//档位控制，只有停车状态或者空档状态下才能换档
+if (chassis->gear_location() != trajectory_message_->gear()){
+  ADEBUG << "Planning change gear,send stop command!";
+  speed_cmd = 0;
+  debug->set_path_remain(0);
+}
+  ADEBUG << "car speed"<<VehicleStateProvider::instance()->linear_velocity();
   if (std::fabs(VehicleStateProvider::instance()->linear_velocity()) <=FLAGS_max_abs_speed_when_stopped ||
       chassis->gear_location() == trajectory_message_->gear() ||
       chassis->gear_location() == canbus::Chassis::GEAR_NEUTRAL) {
     cmd->set_gear_location(trajectory_message_->gear());
-    ADEBUG <<"换档" ;
+    ADEBUG <<"gear change";
   } else {
     cmd->set_gear_location(chassis->gear_location());
-    ADEBUG << "保持档位" ;
+    ADEBUG << "keep gear" ;
   }
+  ADEBUG << "planning gear " << trajectory_message_->gear() ;
+  ADEBUG << "chassis gear " << chassis->gear_location();
+  ADEBUG << "control gear " <<cmd->gear_location() ; 
+  previous_speed_cmd = speed_cmd ;
   cmd->set_speed(speed_cmd*3.6);
-  cmd->set_pam_esp_stop_distance(debug->path_remain()*100);
+  cmd->set_pam_esp_stop_distance(debug->path_remain());
   AINFO << "PPPPlanning speed is :" << debug->preview_speed_reference() ;
  // AINFO << "PPPPlanning acceleration is :" << debug->preview_acceleration_reference();
   AINFO << "speed command is :" << speed_cmd ;
+  AINFO << "Distance command" << cmd->pam_esp_stop_distance();
   debug->set_speed_offset(speed_offset);
   debug->set_speed_real(chassis_->speed_mps());
   return Status::OK();
@@ -362,15 +377,18 @@ void LonController::SetDigitalFilter(double ts, double cutoff_freq,
 
 void LonController::GetPathRemain(SimpleLongitudinalDebug *debug) {
     int stop_index = 0;
-  static constexpr double kSpeedThreshold = 1e-3;
-  static constexpr double kForwardAccThreshold = -1e-2;
-  static constexpr double kBackwardAccThreshold = 1e-1;
+  static constexpr double kSpeedThreshold = 0.001;
+  static constexpr double kForwardAccThreshold = -0.01;
+  static constexpr double kBackwardAccThreshold = 0.0001;
   static constexpr double kParkingSpeed = 0.1;
 
   if (trajectory_message_->gear() == canbus::Chassis::GEAR_DRIVE) {
+    ADEBUG << "Planning gear location D" ;
     while (stop_index < trajectory_message_->trajectory_point_size()) {
       auto &current_trajectory_point =
           trajectory_message_->trajectory_point(stop_index);
+    //  ADEBUG << "current_trajectory_point.v() = " << current_trajectory_point.v() ;
+    //  ADEBUG << "current_trajectory_point.a() = " << current_trajectory_point.a() ;
       if (fabs(current_trajectory_point.v()) < kSpeedThreshold &&
           current_trajectory_point.a() > kForwardAccThreshold &&
           current_trajectory_point.a() < 0.0) {
@@ -378,31 +396,60 @@ void LonController::GetPathRemain(SimpleLongitudinalDebug *debug) {
       }
       ++stop_index;
     }
-  } else {
-    while (stop_index < trajectory_message_->trajectory_point_size()) {
+  } else if(trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE){
+    ADEBUG << "Planning gear location R" ;
+   ADEBUG << "trajectory point size" << trajectory_message_->trajectory_point_size() ;
+    while (stop_index < trajectory_message_->trajectory_point_size()-1) {
       auto &current_trajectory_point =
           trajectory_message_->trajectory_point(stop_index);
-      if (current_trajectory_point.v() < kSpeedThreshold &&
+      auto &next_trajectory_point =
+          trajectory_message_->trajectory_point(stop_index+1);
+    //  ADEBUG << "current_trajectory_point.v() = " << current_trajectory_point.v() ;
+    //  ADEBUG << "current_trajectory_point.a() = " << current_trajectory_point.a() ;
+      if ((current_trajectory_point.v() < kSpeedThreshold&&
           current_trajectory_point.a() < kBackwardAccThreshold &&
-          current_trajectory_point.a() > 0.0) {
-        break;
-      }
+          current_trajectory_point.a() > 0.0 )&&
+          (next_trajectory_point.v() < kSpeedThreshold&&
+          next_trajectory_point.a() < kBackwardAccThreshold &&
+          next_trajectory_point.a() > 0.0)) {
+            //0<a<0.0001
+               break;
+           }
       ++stop_index;
     }
-  }
+    } else {
+      stop_index = 0 ;
+    }
   if (stop_index == trajectory_message_->trajectory_point_size()) {
     --stop_index;
     if (fabs(trajectory_message_->trajectory_point(stop_index).v()) <
         kParkingSpeed) {
       ADEBUG << "the last point is selected as parking point";
+      debug->set_path_remain(
+      trajectory_message_->trajectory_point(stop_index).path_point().s() -
+      debug->current_station());
+      return ;
     } else {
       ADEBUG << "the last point found in path and speed > speed_deadzone";
       debug->set_path_remain(10000);
+      return ;
     }
+  } else if (stop_index == 0)
+  {
+    debug->set_path_remain(0);
+    ADEBUG << "Planning start point is stop point" ;
+    return ;
   }
+  
   debug->set_path_remain(
       trajectory_message_->trajectory_point(stop_index).path_point().s() -
       debug->current_station());
+  ADEBUG << "stop index " << stop_index ; 
+  ADEBUG << "trajectory station " << trajectory_message_->trajectory_point(stop_index).path_point().s() ;
+ ADEBUG << "current station " << debug->current_station() ;
+  if(trajectory_message_->gear() == canbus::Chassis::GEAR_REVERSE && stop_index>0){
+  debug->set_path_remain(100);
+}
 }
 
 }  // namespace control

@@ -1,3 +1,6 @@
+load("//tools:cpplint.bzl", "cpplint")
+
+package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "controller_interface",
@@ -98,3 +101,4 @@ cc_library(
     ],
 )
 
+cpplint()

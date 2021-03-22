@@ -34,8 +34,8 @@ class Control : public jmc_auto::common::JmcAutoApp {
   friend class ControlTestBase;
 
  public:
-  //Control()
-  //   : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::CONTROL) {}
+//  Control()
+//      : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::CONTROL) {}
 
   /**
    * @brief module name
@@ -68,10 +68,10 @@ class Control : public jmc_auto::common::JmcAutoApp {
   // Upon receiving pad message
   void OnPad(const jmc_auto::control::PadMessage &pad);
   // Upon receiving monitor message
-  //void OnMonitor(
-  //    const jmc_auto::common::monitor::MonitorMessage &monitor_message);
+//  void OnMonitor(
+//      const jmc_auto::common::monitor::MonitorMessage &monitor_message);
   // Watch dog timer
-  //void OnTimer(const ros::TimerEvent &);
+  void OnTimer();
   common::Status ProduceControlCommand(ControlCommand *control_command);
   common::Status CheckInput();
   common::Status CheckTimestamp();
@@ -85,11 +85,11 @@ class Control : public jmc_auto::common::JmcAutoApp {
   PadMessage pad_msg_;
   ControllerAgent controller_agent_;
   ControlConf control_conf_;
-  //jmc_auto::common::monitor::MonitorLogger monitor_logger_;
+//  jmc_auto::common::monitor::MonitorLogger monitor_logger_;
   bool estop_ = false;
   std::string estop_reason_;
   bool pad_received_ = false;
-  //ros::Timer timer_;
+//  ros::Timer timer_;
 };
 
 }  // namespace control

@@ -45,7 +45,7 @@ DEFINE_int32(max_planning_miss_num, 20,
 DEFINE_double(max_acceleration_when_stopped, 0.01,
               "max acceleration can be observed when vehicle is stopped");
 
-DEFINE_double(steer_angle_rate, 100.0,
+DEFINE_double(steer_angle_rate, 200.0,
               "Steer angle change rate in percentage.");
 DEFINE_bool(enable_gain_scheduler, false,
             "Enable gain scheduler for higher vehicle speed");
@@ -53,7 +53,7 @@ DEFINE_bool(set_steer_limit, false, "Set steer limit");
 
 DEFINE_bool(enable_slope_offset, false, "Enable slope offset compensation");
 
-DEFINE_double(lock_steer_speed, 0.081,
+DEFINE_double(lock_steer_speed, 0.05,
               "Minimum speed to lock the steer, in m/s");
 
 //DEFINE_bool(enable_navigation_mode_handlilng, false,
@@ -62,21 +62,21 @@ DEFINE_double(lock_steer_speed, 0.081,
 DEFINE_bool(enable_persistent_estop, false,
             "True to persistent keep estop status, "
             "pad reset can reset the estop status.");
-DEFINE_bool(enable_steering_calibration_compensate,true,"true to compensate steeing calibration") ;
+DEFINE_bool(enable_steering_calibration_compensate,false,"true to compensate steeing calibration") ;
 DEFINE_double(steering_calibration_coeff, 1.0, "the coeff of steering calibration");
 DEFINE_double(max_abs_speed_when_stopped, 0.01, "Stop speed");
-DEFINE_double(stop_path_remain, 0.5, "Stop path remain");
+DEFINE_double(stop_path_remain, 0.1, "Stop path remain");
 DEFINE_double(steering_angle_change_rate_coeff , 0.5, "Steering change rate influence steering torque");
-DEFINE_bool(enable_use_steering_pid , false , "True to use pid control to compensate steering torque,false to use coeff compensation") ;
-DEFINE_bool(use_preview_point,true,"True to use new preview methed");
-DEFINE_bool(reverse_heading_control, true, "test vehicle reverse control");
+DEFINE_bool(enable_use_steering_pid , true , "True to use pid control to compensate steering torque,false to use coeff compensation") ;
+DEFINE_bool(use_preview_point,false,"True to use new preview methed");
+DEFINE_bool(reverse_heading_control,true, "test vehicle reverse control");
 
 DEFINE_bool(
-    trajectory_transform_to_com_reverse, true,
+    trajectory_transform_to_com_reverse, false,
     "Enable planning trajectory coordinate transformation from center of "
     "rear-axis to center of mass, during reverse driving");
 DEFINE_bool(
-    trajectory_transform_to_com_drive, true,
+    trajectory_transform_to_com_drive,false,
     "Enable planning trajectory coordinate transformation from center of "
     "rear-axis to center of mass, during forward driving");
 

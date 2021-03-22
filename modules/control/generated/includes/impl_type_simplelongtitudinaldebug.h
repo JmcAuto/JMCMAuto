@@ -28,6 +28,8 @@
 
 
 
+
+#include "impl_type_gearposition.h"
 #include "impl_type_double.h"
 #include "impl_type_bool.h"
 
@@ -77,6 +79,8 @@ struct SimpleLongtitudinalDebug {
     
     ::Double speed_offset;
     
+    ::GearPosition gear_location;
+    
 
     static bool IsPlane()
     {
@@ -109,6 +113,7 @@ struct SimpleLongtitudinalDebug {
         fun(prew_kappa);
         fun(match_acceleration_reference);
         fun(speed_offset);
+        fun(gear_location);
     }
 
     template<typename F>
@@ -136,10 +141,11 @@ struct SimpleLongtitudinalDebug {
         fun(prew_kappa);
         fun(match_acceleration_reference);
         fun(speed_offset);
+        fun(gear_location);
     }
 
     bool operator == (const ::SimpleLongtitudinalDebug& t) const {
-        return (station_reference == t.station_reference) && (station_error == t.station_error) && (station_error_limited == t.station_error_limited) && (preview_station_error == t.preview_station_error) && (speed_reference == t.speed_reference) && (speed_real == t.speed_real) && (speed_error == t.speed_error) && (speed_controller_input_limited == t.speed_controller_input_limited) && (preview_speed_reference == t.preview_speed_reference) && (preview_speed_error == t.preview_speed_error) && (preview_acceleration_reference == t.preview_acceleration_reference) && (acceleration_cmd_closeloop == t.acceleration_cmd_closeloop) && (acceleration_cmd == t.acceleration_cmd) && (is_full_stop == t.is_full_stop) && (slope_offset_compensation == t.slope_offset_compensation) && (current_station == t.current_station) && (path_remain == t.path_remain) && (acceleration_lookup == t.acceleration_lookup) && (calibration_value == t.calibration_value) && (prew_kappa == t.prew_kappa) && (match_acceleration_reference == t.match_acceleration_reference) && (speed_offset == t.speed_offset);
+        return (station_reference == t.station_reference) && (station_error == t.station_error) && (station_error_limited == t.station_error_limited) && (preview_station_error == t.preview_station_error) && (speed_reference == t.speed_reference) && (speed_real == t.speed_real) && (speed_error == t.speed_error) && (speed_controller_input_limited == t.speed_controller_input_limited) && (preview_speed_reference == t.preview_speed_reference) && (preview_speed_error == t.preview_speed_error) && (preview_acceleration_reference == t.preview_acceleration_reference) && (acceleration_cmd_closeloop == t.acceleration_cmd_closeloop) && (acceleration_cmd == t.acceleration_cmd) && (is_full_stop == t.is_full_stop) && (slope_offset_compensation == t.slope_offset_compensation) && (current_station == t.current_station) && (path_remain == t.path_remain) && (acceleration_lookup == t.acceleration_lookup) && (calibration_value == t.calibration_value) && (prew_kappa == t.prew_kappa) && (match_acceleration_reference == t.match_acceleration_reference) && (speed_offset == t.speed_offset) && (gear_location == t.gear_location);
     }
 };
 

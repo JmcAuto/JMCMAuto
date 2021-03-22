@@ -136,6 +136,7 @@ class LonController : public Controller {
   common::MeanFilter lon_acc_filter_ ;
   const ControlConf *control_conf_ = nullptr;
   double previous_station_error = 0.0 ;
+  double previous_speed_cmd = 0.0 ;
   // vehicle parameter
   common::VehicleParam vehicle_param_;
 };

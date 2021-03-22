@@ -1,3 +1,4 @@
+package(default_visibility = ["//visibility:public"])
 
 cc_proto_library(
     name = "control_proto",
@@ -28,3 +29,4 @@ proto_library(
         "//modules/common/proto:vehicle_signal_proto_lib",
     ],
 )
+

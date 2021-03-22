@@ -28,10 +28,8 @@ message ControlCommand {
   optional double steering_rate = 6;
   // target steering angle, in percentage of full scale [-100, 100]
   optional double steering_target = 7;//方向盘目标角度
-
   // target speed, in m/s
   optional double speed = 9;
-
   // target acceleration in m`s^-2
   optional double acceleration = 10;
  // optional double planning_acceleration = 32 ;
@@ -50,14 +48,12 @@ message ControlCommand {
   optional double trajectory_fraction = 18;
   optional jmc_auto.canbus.Chassis.DrivingMode driving_mode = 19 [deprecated = true];
   optional jmc_auto.canbus.Chassis.GearPosition gear_location = 20;
-
   optional Debug debug = 22;
   optional jmc_auto.common.VehicleSignal signal = 23;
   optional LatencyStats latency_stats = 24;
   optional PadMessage pad_msg = 25;
   optional jmc_auto.common.EngageAdvice engage_advice = 26;
   optional bool is_in_safe_mode = 27 [default = false];
- 
    //CX75
   optional double steering_torque=28;
   optional int32 pam_esp_stop_distance=29;
@@ -94,6 +90,7 @@ message SimpleLongitudinalDebug {
   optional double preview_kappa = 22;
   optional double match_acceleration_reference = 23 ;
   optional double speed_offset = 24 ;
+  optional jmc_auto.canbus.Chassis.GearPosition gear_location = 25;
 }
 
 message SimpleLateralDebug {

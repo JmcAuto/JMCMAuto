@@ -20,8 +20,8 @@ limitations under the License.
 #include <utility>
 #include <vector>
 
-#include "eigen3/Eigen/Core"
-#include "eigen3/unsupported/Eigen/Splines"
+#include "Eigen/Core"
+#include "unsupported/Eigen/Splines"
 
 namespace jmc_auto {
 namespace control {

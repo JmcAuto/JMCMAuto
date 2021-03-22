@@ -13,8 +13,6 @@
 
 #include "modules/localization/proto/localization.pb.h"
 
-#include <stdio.h>
-
 namespace jmc_auto {
 namespace control {
 
@@ -31,11 +29,11 @@ using jmc_auto::planning::ADCTrajectory;
 std::string Control::Name() const { return FLAGS_control_node_name; }
 
 Status Control::Init() {
-  init_time_ = Clock::NowInSeconds();//当前时间，单位秒
   AINFO << "Control init, starting ...";
+  init_time_ = Clock::NowInSeconds();//当前时间，单位秒
   CHECK(common::util::GetProtoFromFile(FLAGS_control_conf_file, &control_conf_))
       << "Unable to load control conf file: " + FLAGS_control_conf_file;  //读控制配置文件lincoln.pb.txt
-  AINFO << "Conf file: " << FLAGS_control_conf_file << " is loaded.";
+  ADEBUG << "Conf file: " << FLAGS_control_conf_file << " is loaded.";
   AdapterManager::Init(FLAGS_control_adapter_config_filename);//读message消息类别，adapter.conf
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_); //
   // set controller
@@ -51,7 +49,7 @@ Status Control::Init() {
   //CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
   //CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
   //CHECK(AdapterManager::GetMonitor()) << "Monitor is not initialized.";
-  //CHECK(AdapterManager::GetControlCommand())<< "ControlCommand publisher is not initialized.";
+  CHECK(AdapterManager::GetControlCommand())<< "ControlCommand publisher is not initialized.";
   //AdapterManager::AddPadCallback(&Control::OnPad, this);
   //AdapterManager::AddMonitorCallback(&Control::OnMonitor, this);
   return Status::OK();
@@ -66,44 +64,13 @@ Status Control::Start() {
   // should init_vehicle first, let car enter work status, then use status msg trigger control触发控制
   AINFO << "Control default driving action is "
         << DrivingAction_Name(control_conf_.action());
-  pad_msg_.set_action(control_conf_.action());
+//  pad_msg_.set_actionDrivingAction_NameDrivingAction_NameDrivingAction_NameDrivingAction_NameDrivingAction_Nameon(control_conf_.action());
+ pad_msg_.set_action(control_conf_.action());
   //timer_ = AdapterManager::CreateTimer(
   //    ros::Duration(control_conf_.control_period()), &Control::OnTimer, this);
   AINFO << "Control init done!";
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   //buffer.INFO("control started");
-
-while (1)  {
-  double start_timestamp = Clock::NowInSeconds();
-  ControlCommand control_command;
-  Status status = ProduceControlCommand(&control_command);
-  //AERROR_IF(!status.ok()) << "Failed to produce control command:"
-  //                        << status.error_message();
-
-  double end_timestamp = Clock::NowInSeconds();
-  if (pad_received_) {
-    control_command.mutable_pad_msg()->CopyFrom(pad_msg_);
-    pad_received_ = false;
-  }//pad
-  const double time_diff_ms = (end_timestamp - start_timestamp) * 1000;
-  control_command.mutable_latency_stats()->set_total_time_ms(time_diff_ms);
-  control_command.mutable_latency_stats()->set_total_time_exceeded(
-      time_diff_ms < control_conf_.control_period());
-  AINFO << "control cycle time is: " << time_diff_ms << " ms.";
-  status.Save(control_command.mutable_header()->mutable_status());
-  if (estop_)
-    {
-      control_command.mutable_header()->mutable_status()->set_msg(estop_reason_);
-      estop_ = false ;
-      AINFO << "Reset estop to false" ;
-    }
-    //SendCmd(&control_command);
-  //AdapterManager::FillControlCommandHeader(FLAGS_control_node_name, &control_command);
-  AdapterManager::PublishControlCommand(control_command);
-  AINFO << "Control command publish succeed! Control command msg:"
-        << control_command.ShortDebugString();
-  usleep(control_conf_.control_period());
-}
   return Status::OK();
 }
 
@@ -130,13 +97,12 @@ void Control::OnMonitor(
   }
 }
 */
-/*
-void Control::OnTimer(const ros::TimerEvent &) {
+void Control::OnTimer() {
   double start_timestamp = Clock::NowInSeconds();
   if (FLAGS_is_control_test_mode && FLAGS_control_test_duration > 0 &&
       (start_timestamp - init_time_) > FLAGS_control_test_duration) {
     AERROR << "Control finished testing. exit";
-    ros::shutdown();
+    //ros::shutdown();
   }
   ControlCommand control_command;
   Status status = ProduceControlCommand(&control_command);
@@ -146,6 +112,7 @@ void Control::OnTimer(const ros::TimerEvent &) {
   double end_timestamp = Clock::NowInSeconds();
   if (pad_received_) {
     control_command.mutable_pad_msg()->CopyFrom(pad_msg_);
+    control_command.set_steering_angle(chassis_.steering_percentage());
     pad_received_ = false;
   }//pad
   const double time_diff_ms = (end_timestamp - start_timestamp) * 1000;
@@ -154,19 +121,16 @@ void Control::OnTimer(const ros::TimerEvent &) {
       time_diff_ms < control_conf_.control_period());
   AINFO << "control cycle time is: " << time_diff_ms << " ms.";
   status.Save(control_command.mutable_header()->mutable_status());
-  if (estop_)
-    {
+  if (estop_){
       control_command.mutable_header()->mutable_status()->set_msg(estop_reason_);
       estop_ = false ;
       AINFO << "Reset estop to false" ;
     }
     SendCmd(&control_command);
 }
-*/
+
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
-
-  // check data
   if (!status.ok()) {
     AERROR_EVERY(10) << "Control input data failed: "
                       << status.error_message();//ERROR消息发布频率100hz
@@ -176,12 +140,9 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
         status.error_message());   //???
     estop_ = true;
     estop_reason_ = status.error_message();
-  }
-  else
-  {
+  }else{
     Status status_ts = CheckTimestamp();
-    if (!status_ts.ok())
-    {
+    if (!status_ts.ok()){
       AERROR << "Input messages timeout";
       estop_ = true;
       status = status_ts;
@@ -194,9 +155,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
             status.error_message());
             AINFO << "chassis_.driving_mode() != jmc_auto::canbus::Chassis::COMPLETE_AUTO_DRIVE";
       }
-    }
-    else
-    {
+    }else{
       control_command->mutable_engage_advice()->set_advice(
           jmc_auto::common::EngageAdvice::READY_TO_ENGAGE);
     }
@@ -228,21 +187,20 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
       estop_reason_ = status_compute.error_message();
       status = status_compute;
     }
-  }
-  else
-  {
-  //急停模式
+  }else{
+     //急停模式
     if (trajectory_.estop().is_estop()) {
     estop_reason_ = "estop from planning";
     AINFO << estop_reason_ ;
     }
     AWARN_EVERY(100) << "Estop triggered! No control core method executed!";
     // set Estop command
-    control_command->set_steering_torque(0);
-    control_command->set_acceleration(control_conf_.soft_estop_brake_acceleration());
+  //  control_command->set_steering_torque(0);
+  //  control_command->set_acceleration(control_conf_.soft_estop_brake_acceleration());
     control_command->set_speed(0);
     control_command->set_pam_esp_stop_distance(0);
-    control_command->set_gear_location(Chassis::GEAR_DRIVE);
+    control_command->set_steering_angle(0);
+    control_command->set_gear_location(Chassis::GEAR_NEUTRAL);
    // AINFO << control_command->ShortDebugString() ;
   }
   // check signal
@@ -285,7 +243,7 @@ Status Control::CheckInput() {
   }
   trajectory_ = trajectory_adapter->GetLatestObserved();//planning轨迹点
   AINFO << "Received trajectory" ;
-
+  */
   if (!trajectory_.estop().is_estop() &&
       trajectory_.trajectory_point_size() == 0) {
     AERROR_EVERY(100) << "planning has no trajectory point. ";
@@ -304,13 +262,13 @@ Status Control::CheckInput() {
       trajectory_point.set_a(0.0);
       AINFO << "There are trajectroy points with velocity zero!";
     }
-
+    
   VehicleStateProvider::instance()->Update(localization_, chassis_);
-  */
   AINFO << "Input no problem!" ;
   return Status::OK();
   }
-
+}
+}
 Status Control::CheckTimestamp()
 {
   if (!FLAGS_enable_input_timestamp_check || FLAGS_is_control_test_mode)
@@ -365,10 +323,10 @@ Status Control::CheckTimestamp()
 
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
-  //AdapterManager::FillControlCommandHeader(Name(), control_command);
+  AdapterManager::FillControlCommandHeader(Name(), control_command);
 
- //AdapterManager::PublishControlCommand(*control_command);
- AINFO << "Control command publish succeed! Control command msg:"
+ AdapterManager::PublishControlCommand(*control_command);
+ AINFO << "Control command pubilsh succeed! Control command msg:" 
        << control_command->ShortDebugString();
 }
 
