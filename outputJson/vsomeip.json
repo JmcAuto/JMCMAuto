@@ -19,14 +19,6 @@
     {
       "name": "/HuaweiMDC/PlatformServices/McuSensorsAbstractApplication/McuSensorsAbstractApplicationSwComponent/McuSensorsAbstractProcess",
       "id": "44416"
-    },
-    {
-      "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
-      "id": "35574"
-    },
-    {
-      "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
-      "id": "48028"
     }
   ],
   "services": [
@@ -269,19 +261,6 @@
           ]
         }
       ]
-    },
-    {
-      "service": "1004",
-      "instance": "104",
-      "unreliable": "6000",
-      "events": [
-        {
-          "event": "32769",
-          "is_field": "false",
-          "is_reliable": "false"
-        }
-      ],
-      "eventgroups": []
     }
   ],
   "clients": [
@@ -367,13 +346,6 @@
       "instance": "12",
       "unreliable": [
         "5011"
-      ]
-    },
-    {
-      "service": "1004",
-      "instance": "104",
-      "unreliable": [
-        "5000"
       ]
     }
   ],

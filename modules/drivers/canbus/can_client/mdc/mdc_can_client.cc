@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <stdio.h>
 
 namespace jmc_auto {
 namespace drivers {
@@ -104,15 +105,15 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     for (const auto &sample : canMsgSamples) {
         // 接收转入CAN帧处理回调函数
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
-            cf.id = (*sample).elementList[i].canId;
-            cf.len = (*sample).elementList[i].validLen;
-            // printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId,
-            // sample->elementList[i].validLen);
+            //cf.id = (*sample).elementList[i].canId;
+            //cf.len = (*sample).elementList[i].validLen;
+             printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId,
+             sample->elementList[i].validLen);
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-                cf.data[j] = (*sample).elementList[i].data[j];
-                // printf("%x ", sample->elementList[i].data[j]);
+                //cf.data[j] = (*sample).elementList[i].data[j];
+                printf("%x ", sample->elementList[i].data[j]);
             }
-            // printf("\n");
+             printf("\n");
         }
     }
     // 解锁
@@ -163,9 +164,9 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
     frames->resize(*frame_num);
-    for (size_t i = 0; i < frames->size(); ++i) {
-        (*frames)[i] = cf;
-    }
+    //for (size_t i = 0; i < frames->size(); ++i) {
+    //    (*frames)[i] = cf;
+    //}
     return ErrorCode::OK;
 }
 

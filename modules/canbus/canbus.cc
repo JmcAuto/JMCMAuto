@@ -111,8 +111,8 @@ Status Canbus::Init() {
     // initialized.";
     // TODO(QiL) : depreacte this
     //if (!FLAGS_receive_guardian) {
-        AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-                                                  this);
+        //AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
+          //                                        this);
         //AdapterManager::AddRemoteControlCallback(
         //    &Canbus::OnRemoteControlCommand, this);
     //} else {
@@ -152,16 +152,20 @@ Status Canbus::Start() {
     // 5. set timer to triger publish info periodly
     const double duration = 1.0 / FLAGS_chassis_freq;
     while (1) {
-        Canbus::PublishChassis();
-        sleep(duration);
+        //Canbus::PublishChassis();
+        sleep(10);
     }
 
     return Status::OK();
 }
 
 void Canbus::PublishChassis() {
-    // jmc_auto::canbus::Chassis chassis;
-    jmc_auto::canbus::Chassis chassis = vehicle_controller_->chassis();
+     jmc_auto::canbus::Chassis chassis;
+    //jmc_auto::canbus::Chassis chassis = vehicle_controller_->chassis();
+
+    //test
+    //chassis.set_brake_percentage(20);
+
     AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
     // AdapterManager::PublishChassis(chassis);
 

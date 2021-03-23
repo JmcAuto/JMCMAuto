@@ -151,7 +151,7 @@ namespace adapter {
     }                                                                          \
     void name##PublishEventCallback() {                                        \
         const name *strData;                                                   \
-        name##Adapter::DataType pbData;                                        \
+        /*name##Adapter::DataType pbData;                                        \
         if (name##proxy == nullptr) {                                          \
             return;                                                            \
         }                                                                      \
@@ -164,7 +164,7 @@ namespace adapter {
                 (const char *&)strData, &pbData);                              \
             name##_->SetLatestPublished(pbData);                               \
         }                                                                      \
-		name##proxy->name##Event.Cleanup();                                    \
+		name##proxy->name##Event.Cleanup();*/                                    \
     }                                                                          \
     name##Adapter *InternalGet##name() { return name##_.get(); }               \
     /*name##Adapter *InternalGet##name() {                                     \
@@ -172,14 +172,14 @@ namespace adapter {
         return name##_.get(); }*/                                              \
     void InternalPublish##name(const name##Adapter::DataType &pbdata) {        \
         jmc_auto::common::util::PbConvertor::MemTree stru;                     \
-        jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
+        /*jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
         name *data = (name *)stru.pMem;                                        \
         stru.release();                                                        \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
         name##skeleton->name##Event.Send(*data);                               \
-        name##_->SetLatestPublished(pbdata);                                   \
+        name##_->SetLatestPublished(pbdata); */                                  \
     }
 
 /**

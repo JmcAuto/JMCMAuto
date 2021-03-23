@@ -223,20 +223,7 @@
       ],
       "fields": [],
       "methods": [],
-      "instances": [
-        {
-          "instance": 104,
-          "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
-          "unreliable": 6000
-        },
-        {
-          "instance": 104,
-          "isClient": true,
-          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
-          "unreliable": 5000
-        }
-      ]
+      "instances": []
     }
   ]
 }

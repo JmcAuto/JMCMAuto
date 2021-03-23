@@ -1,5 +1,4 @@
 {
-  "applicationName": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
   "services": [
     {
       "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
@@ -15,40 +14,7 @@
       ],
       "fields": [],
       "methods": [],
-      "instances": [
-        {
-          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance",
-          "instance": 109,
-          "domainId": 0,
-          "isClient": true,
-          "fastSerialize": true,
-          "qosProfile": "",
-          "events": [
-            {
-              "id": 57416,
-              "qosProfile": "/var/eventsqos.xml"
-            }
-          ],
-          "fields": [],
-          "methods": []
-        },
-        {
-          "shortName": "/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
-          "instance": 109,
-          "domainId": 0,
-          "isClient": false,
-          "fastSerialize": true,
-          "qosProfile": "/var/domainqos.xml",
-          "events": [
-            {
-              "id": 57416,
-              "qosProfile": "/var/eventsqos.xml"
-            }
-          ],
-          "fields": [],
-          "methods": []
-        }
-      ]
+      "instances": []
     }
   ]
 }

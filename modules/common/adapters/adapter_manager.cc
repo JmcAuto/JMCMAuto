@@ -64,7 +64,7 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
         //    break;
         case AdapterConfig::CONTROL_COMMAND:
         	AINFO << "start to enable CONTROL_COMMAND";
-            EnableChassis(FLAGS_control_command_instance_id, config);
+            EnableControlCommand(FLAGS_control_command_instance_id, config);
             break;
         default:
             AERROR << "Unknown adapter config type!";

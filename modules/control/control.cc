@@ -69,6 +69,10 @@ Status Control::Start() {
   //timer_ = AdapterManager::CreateTimer(
   //    ros::Duration(control_conf_.control_period()), &Control::OnTimer, this);
   AINFO << "Control init done!";
+  while (1) {
+      Control::OnTimer();
+      sleep(control_conf_.control_period());
+  }
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   //buffer.INFO("control started");
   return Status::OK();
@@ -204,11 +208,13 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
    // AINFO << control_command->ShortDebugString() ;
   }
   // check signal
+  /*
   if (trajectory_.decision().has_vehicle_signal())
   {
     control_command->mutable_signal()->CopyFrom(
         trajectory_.decision().vehicle_signal());
   }
+  */
   return status;
 }
 
@@ -244,6 +250,7 @@ Status Control::CheckInput() {
   trajectory_ = trajectory_adapter->GetLatestObserved();//planning轨迹点
   AINFO << "Received trajectory" ;
   */
+  /*
   if (!trajectory_.estop().is_estop() &&
       trajectory_.trajectory_point_size() == 0) {
     AERROR_EVERY(100) << "planning has no trajectory point. ";
@@ -262,12 +269,13 @@ Status Control::CheckInput() {
       trajectory_point.set_a(0.0);
       AINFO << "There are trajectroy points with velocity zero!";
     }
-    
   VehicleStateProvider::instance()->Update(localization_, chassis_);
+
   AINFO << "Input no problem!" ;
   return Status::OK();
   }
-}
+
+}*/
 }
 Status Control::CheckTimestamp()
 {
@@ -277,6 +285,7 @@ Status Control::CheckTimestamp()
     return Status::OK();
   }
   double current_timestamp = Clock::NowInSeconds();
+  /*
   double localization_diff =
       current_timestamp - localization_.header().timestamp_sec();
   if (localization_diff >
@@ -292,7 +301,7 @@ Status Control::CheckTimestamp()
   {
     AINFO << "Localization msg timestamp is normal!" ;
   }
-
+*/
   double chassis_diff = current_timestamp - chassis_.header().timestamp_sec();
   if (chassis_diff >(FLAGS_max_chassis_miss_num * control_conf_.chassis_period())) {
     AERROR << "Chassis msg lost for " << std::setprecision(6) << chassis_diff << "s";
@@ -304,7 +313,7 @@ Status Control::CheckTimestamp()
   {
     AINFO << "Chassis msg timestamp is normal!" ;
   }
-
+/*
   double trajectory_diff = current_timestamp - trajectory_.header().timestamp_sec();
   if (trajectory_diff > (FLAGS_max_planning_miss_num * control_conf_.trajectory_period()))
   {
@@ -318,12 +327,13 @@ Status Control::CheckTimestamp()
   {
     AINFO << "Trajectory msg timestamp is normal!" ;
   }
+  */
   return Status::OK();
 }
 
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
-  AdapterManager::FillControlCommandHeader(Name(), control_command);
+ AdapterManager::FillControlCommandHeader(Name(), control_command);
 
  AdapterManager::PublishControlCommand(*control_command);
  AINFO << "Control command pubilsh succeed! Control command msg:" 
