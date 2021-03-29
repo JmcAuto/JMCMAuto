@@ -106,13 +106,12 @@ Status Canbus::Init() {
     }
     AINFO << "The vehicle controller is successfully initialized.";
 
-    //CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
-    // CHECK(AdapterManager::GetGuardian()) << "Guardian is not
+    CHECK(AdapterManager::GetControlCommand()) << "Control is not initialized.";
+    //CHECK(AdapterManager::GetGuardian()) << "Guardian is not
     // initialized.";
     // TODO(QiL) : depreacte this
     //if (!FLAGS_receive_guardian) {
-        //AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand,
-          //                                        this);
+        AdapterManager::AddControlCommandCallback(&Canbus::OnControlCommand, this);
         //AdapterManager::AddRemoteControlCallback(
         //    &Canbus::OnRemoteControlCommand, this);
     //} else {
@@ -164,10 +163,10 @@ void Canbus::PublishChassis() {
     jmc_auto::canbus::Chassis chassis = vehicle_controller_->chassis();
 
     //test
-    //chassis.set_brake_percentage(20);
+    chassis.set_brake_percentage(20);
 
     AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
-    //AdapterManager::PublishChassis(chassis);
+    AdapterManager::PublishChassis(chassis);
 
     AINFO << chassis.DebugString();
     // ADEBUG << chassis.ShortDebugString();

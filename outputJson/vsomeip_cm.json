@@ -204,6 +204,39 @@
           "unreliable": 6011
         }
       ]
+    },
+    {
+      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "serviceId": 1004,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "ChassisEvent",
+          "id": 32374,
+          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "eventId": 32769,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "instance": 104,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
+          "unreliable": 6000
+        },
+        {
+          "instance": 104,
+          "isClient": true,
+          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
+          "unreliable": 5000
+        }
+      ]
     }
   ]
 }

@@ -11,11 +11,13 @@
 
 
 
-#include "impl_type_bool.h"
 #include "impl_type_turnsignal.h"
+#include "impl_type_bool.h"
 
 
 struct VehicleSignal {
+    ::TurnSignal turn_signal;
+    
     ::Bool high_beam;
     
     ::Bool low_beam;
@@ -23,8 +25,6 @@ struct VehicleSignal {
     ::Bool horn;
     
     ::Bool emergency_light;
-    
-    ::TurnSignal turn_signal;
     
 
     static bool IsPlane()
@@ -36,25 +36,25 @@ struct VehicleSignal {
     template<typename F>
     void enumerate(F& fun)
     {
+        fun(turn_signal);
         fun(high_beam);
         fun(low_beam);
         fun(horn);
         fun(emergency_light);
-        fun(turn_signal);
     }
 
     template<typename F>
     void enumerate(F& fun) const
     {
+        fun(turn_signal);
         fun(high_beam);
         fun(low_beam);
         fun(horn);
         fun(emergency_light);
-        fun(turn_signal);
     }
 
     bool operator == (const ::VehicleSignal& t) const {
-        return (high_beam == t.high_beam) && (low_beam == t.low_beam) && (horn == t.horn) && (emergency_light == t.emergency_light) && (turn_signal == t.turn_signal);
+        return (turn_signal == t.turn_signal) && (high_beam == t.high_beam) && (low_beam == t.low_beam) && (horn == t.horn) && (emergency_light == t.emergency_light);
     }
 };
 

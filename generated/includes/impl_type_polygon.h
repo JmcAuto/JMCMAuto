@@ -11,7 +11,7 @@
 
 
 struct Polygon {
-    ::Point3D c;
+    ::Point3D point;
     
 
     static bool IsPlane()
@@ -23,17 +23,17 @@ struct Polygon {
     template<typename F>
     void enumerate(F& fun)
     {
-        fun(c);
+        fun(point);
     }
 
     template<typename F>
     void enumerate(F& fun) const
     {
-        fun(c);
+        fun(point);
     }
 
     bool operator == (const ::Polygon& t) const {
-        return (c == t.c);
+        return (point == t.point);
     }
 };
 

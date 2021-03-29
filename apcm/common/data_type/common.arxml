@@ -1321,7 +1321,7 @@
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>c</SHORT-NAME>
+                  <SHORT-NAME>point</SHORT-NAME>
                   <CATEGORY>VECTOR</CATEGORY>
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
@@ -3234,6 +3234,17 @@
               <CATEGORY>STRUCTURE</CATEGORY>
               <SUB-ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>turn_signal</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_signal/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   <SHORT-NAME>high_beam</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SW-DATA-DEF-PROPS>
@@ -3273,17 +3284,6 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>turn_signal</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_signal/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>

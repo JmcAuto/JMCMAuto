@@ -136,8 +136,8 @@ void Control::OnTimer() {
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
   if (!status.ok()) {
-    AERROR_EVERY(10) << "Control input data failed: "
-                      << status.error_message();//ERROR消息发布频率100hz
+    AERROR << "Control input data failed: "
+           << status.error_message();//ERROR消息发布频率100hz
     control_command->mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
     control_command->mutable_engage_advice()->set_reason(
@@ -172,7 +172,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
     //estop_ = false
     if (chassis_.driving_mode() == Chassis::COMPLETE_MANUAL) {
       controller_agent_.Reset();//
-      AINFO_EVERY(10) << "Reset Controllers in Manual Mode";//手动模式下重置控制器
+      AINFO << "Reset Controllers in Manual Mode";//手动模式下重置控制器
     }
     auto debug = control_command->mutable_debug()->mutable_input_debug();
     debug->mutable_localization_header()->CopyFrom(localization_.header());
@@ -197,7 +197,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
     estop_reason_ = "estop from planning";
     AINFO << estop_reason_ ;
     }
-    AWARN_EVERY(100) << "Estop triggered! No control core method executed!";
+    AWARN << "Estop triggered! No control core method executed!";
     // set Estop command
   //  control_command->set_steering_torque(0);
   //  control_command->set_acceleration(control_conf_.soft_estop_brake_acceleration());
@@ -224,7 +224,7 @@ Status Control::CheckInput() {
   auto localization_adapter = AdapterManager::GetLocalization();
   if (localization_adapter->Empty())
   {
-    AERROR_EVERY(100) << "No Localization msg yet. ";
+    AERROR << "No Localization msg yet. ";
     //AINFO << localization_adapter.ShortDebugString();
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No localization msg");
   }
@@ -234,7 +234,7 @@ Status Control::CheckInput() {
   auto chassis_adapter = AdapterManager::GetChassis();
   if (chassis_adapter->Empty())
   {
-    AERROR_EVERY(100) << "No Chassis msg yet. ";
+    //AERROR << "No Chassis msg yet. ";
     //AINFO << chassis_adapter.ShortDebugString();
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No chassis msg");
   }
@@ -244,7 +244,7 @@ Status Control::CheckInput() {
   auto trajectory_adapter = AdapterManager::GetPlanning();
   if (trajectory_adapter->Empty())
   {
-    AERROR_EVERY(100) << "No planning msg yet. ";
+    AERROR << "No planning msg yet. ";
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No planning msg");
   }
   trajectory_ = trajectory_adapter->GetLatestObserved();//planning轨迹点
@@ -253,7 +253,7 @@ Status Control::CheckInput() {
   /*
   if (!trajectory_.estop().is_estop() &&
       trajectory_.trajectory_point_size() == 0) {
-    AERROR_EVERY(100) << "planning has no trajectory point. ";
+    AERROR << "planning has no trajectory point. ";
     AERROR << "trajectory_: " << trajectory_.ShortDebugString();
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR,
                   "planning has no trajectory point.");

@@ -314,6 +314,42 @@
     {
       "Name": "ins_std_heading",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "eps_lkacontrolstatus",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_vlc_active",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_vlc_available",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_apa_gearboxenable",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_vlc_apactive",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_vlcapa_available",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "eps_epspamsts",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "eps_epspaminh",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "esp_epbstatus",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
     }
   ],
   "IsPlane": "false"
