@@ -1,5 +1,5 @@
 {
-  "applicationName": "/HuaweiMDC/PlatformServices/McuSensorsAbstractApplication/McuSensorsAbstractApplicationSwComponent/McuSensorsAbstractProcess",
+  "applicationName": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
   "services": [
     {
       "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
@@ -33,80 +33,26 @@
         {
           "instance": 1,
           "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance",
           "unreliable": 5000
         },
         {
           "instance": 2,
           "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance",
           "unreliable": 5001
         },
         {
           "instance": 3,
           "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance",
           "unreliable": 5002
         },
         {
           "instance": 4,
           "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
           "unreliable": 5003
-        },
-        {
-          "instance": 5,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus04RxSomeipServiceInstance",
-          "unreliable": 5004
-        },
-        {
-          "instance": 6,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus05RxSomeipServiceInstance",
-          "unreliable": 5005
-        },
-        {
-          "instance": 7,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus06RxSomeipServiceInstance",
-          "unreliable": 5006
-        },
-        {
-          "instance": 8,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus07RxSomeipServiceInstance",
-          "unreliable": 5007
-        },
-        {
-          "instance": 9,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus08RxSomeipServiceInstance",
-          "unreliable": 5008
-        },
-        {
-          "instance": 10,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus09RxSomeipServiceInstance",
-          "unreliable": 5009
-        },
-        {
-          "instance": 11,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus10RxSomeipServiceInstance",
-          "unreliable": 5010
-        },
-        {
-          "instance": 12,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBus11RxSomeipServiceInstance",
-          "unreliable": 5011
-        },
-        {
-          "instance": 65535,
-          "isClient": true,
-          "shortName": "/HuaweiMDC/PlatformServices/CanRxServiceConsumer/CanBusANYRxSomeipServiceInstance",
-          "unreliable": 5011
         }
       ]
     },
@@ -134,74 +80,26 @@
         {
           "instance": 1,
           "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance",
           "unreliable": 6000
         },
         {
           "instance": 2,
           "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance",
           "unreliable": 6001
         },
         {
           "instance": 3,
           "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance",
           "unreliable": 6002
         },
         {
           "instance": 4,
           "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
           "unreliable": 6003
-        },
-        {
-          "instance": 5,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus04TxSomeipServiceInstance",
-          "unreliable": 6004
-        },
-        {
-          "instance": 6,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus05TxSomeipServiceInstance",
-          "unreliable": 6005
-        },
-        {
-          "instance": 7,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus06TxSomeipServiceInstance",
-          "unreliable": 6006
-        },
-        {
-          "instance": 8,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus07TxSomeipServiceInstance",
-          "unreliable": 6007
-        },
-        {
-          "instance": 9,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus08TxSomeipServiceInstance",
-          "unreliable": 6008
-        },
-        {
-          "instance": 10,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus09TxSomeipServiceInstance",
-          "unreliable": 6009
-        },
-        {
-          "instance": 11,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus10TxSomeipServiceInstance",
-          "unreliable": 6010
-        },
-        {
-          "instance": 12,
-          "isClient": false,
-          "shortName": "/HuaweiMDC/PlatformServices/CanTxServiceProvider/CanBus11TxSomeipServiceInstance",
-          "unreliable": 6011
         }
       ]
     },

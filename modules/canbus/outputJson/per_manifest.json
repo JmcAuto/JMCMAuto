@@ -46,10 +46,54 @@
             ]
           },
           "checksum": 1167802667
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "CanRxPort"
+                },
+                "checksum": 3524509000
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface"
+                },
+                "checksum": 1368699532
+              }
+            ]
+          },
+          "checksum": 910830540
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "CanTxPort"
+                },
+                "checksum": 2701771970
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface"
+                },
+                "checksum": 3311466626
+              }
+            ]
+          },
+          "checksum": 3140611265
         }
       ]
     },
-    "checksum": 4267693623
+    "checksum": 2980746357
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

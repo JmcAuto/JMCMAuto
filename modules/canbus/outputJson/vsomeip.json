@@ -34,9 +34,118 @@
         }
       ],
       "eventgroups": []
+    },
+    {
+      "service": "209",
+      "instance": "1",
+      "unreliable": "6000",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "2",
+      "unreliable": "6001",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "3",
+      "unreliable": "6002",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "209",
+      "instance": "4",
+      "unreliable": "6003",
+      "events": [
+        {
+          "event": "32769",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": [
+        {
+          "eventgroup": "16",
+          "events": [
+            "32769"
+          ]
+        }
+      ]
     }
   ],
-  "clients": [],
+  "clients": [
+    {
+      "service": "208",
+      "instance": "1",
+      "unreliable": [
+        "5000"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "2",
+      "unreliable": [
+        "5001"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "3",
+      "unreliable": [
+        "5002"
+      ]
+    },
+    {
+      "service": "208",
+      "instance": "4",
+      "unreliable": [
+        "5003"
+      ]
+    }
+  ],
   "service-discovery": {
     "enable": "true",
     "multicast": "239.192.255.251",

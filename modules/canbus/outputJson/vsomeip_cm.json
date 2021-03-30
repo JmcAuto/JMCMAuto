@@ -29,7 +29,32 @@
           "reliable": false
         }
       ],
-      "instances": []
+      "instances": [
+        {
+          "instance": 1,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance",
+          "unreliable": 5000
+        },
+        {
+          "instance": 2,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance",
+          "unreliable": 5001
+        },
+        {
+          "instance": 3,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance",
+          "unreliable": 5002
+        },
+        {
+          "instance": 4,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
+          "unreliable": 5003
+        }
+      ]
     },
     {
       "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
@@ -51,7 +76,32 @@
       ],
       "fields": [],
       "methods": [],
-      "instances": []
+      "instances": [
+        {
+          "instance": 1,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance",
+          "unreliable": 6000
+        },
+        {
+          "instance": 2,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance",
+          "unreliable": 6001
+        },
+        {
+          "instance": 3,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance",
+          "unreliable": 6002
+        },
+        {
+          "instance": 4,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
+          "unreliable": 6003
+        }
+      ]
     },
     {
       "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",

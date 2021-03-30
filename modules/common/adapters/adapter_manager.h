@@ -171,7 +171,6 @@ namespace adapter {
         jmc_auto::common::util::PbConvertor::MemTree stru;                     \
         jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
         name *data = (name *)stru.pMem;                                        \
-        AINFO << data->header->sequence_num  ;                                \
         stru.release();                                                        \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \

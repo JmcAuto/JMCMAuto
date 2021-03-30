@@ -21,6 +21,14 @@
                       <SHORT-NAME>ControlCommandRPort</SHORT-NAME>
                       <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface</REQUIRED-INTERFACE-TREF>
                     </R-PORT-PROTOTYPE>
+                    <R-PORT-PROTOTYPE>
+                      <SHORT-NAME>CanRxPort</SHORT-NAME>
+                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface</REQUIRED-INTERFACE-TREF>
+                    </R-PORT-PROTOTYPE>
+                    <P-PORT-PROTOTYPE>
+                      <SHORT-NAME>CanTxPort</SHORT-NAME>
+                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface</PROVIDED-INTERFACE-TREF>
+                    </P-PORT-PROTOTYPE>
                   </PORTS>
                 </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
               </ELEMENTS>

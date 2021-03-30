@@ -4,50 +4,6 @@
     "value": {
       "object[]": [
         {
-          "key": "R-PORT-PROTOTYPE",
-          "value": {
-            "object[]": [
-              {
-                "key": "SHORT-NAME",
-                "value": {
-                  "string": "CanRxPort"
-                },
-                "checksum": 3524509000
-              },
-              {
-                "key": "REQUIRED-INTERFACE-TREF",
-                "value": {
-                  "string": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface"
-                },
-                "checksum": 1368699532
-              }
-            ]
-          },
-          "checksum": 910830540
-        },
-        {
-          "key": "P-PORT-PROTOTYPE",
-          "value": {
-            "object[]": [
-              {
-                "key": "SHORT-NAME",
-                "value": {
-                  "string": "CanTxPort"
-                },
-                "checksum": 2701771970
-              },
-              {
-                "key": "PROVIDED-INTERFACE-TREF",
-                "value": {
-                  "string": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface"
-                },
-                "checksum": 3311466626
-              }
-            ]
-          },
-          "checksum": 3140611265
-        },
-        {
           "key": "P-PORT-PROTOTYPE",
           "value": {
             "object[]": [
@@ -98,6 +54,50 @@
               {
                 "key": "SHORT-NAME",
                 "value": {
+                  "string": "CanRxPort"
+                },
+                "checksum": 3524509000
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface"
+                },
+                "checksum": 1368699532
+              }
+            ]
+          },
+          "checksum": 910830540
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "CanTxPort"
+                },
+                "checksum": 2701771970
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface"
+                },
+                "checksum": 3311466626
+              }
+            ]
+          },
+          "checksum": 3140611265
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
                   "string": "ChassisRPort"
                 },
                 "checksum": 2724892710
@@ -137,7 +137,7 @@
         }
       ]
     },
-    "checksum": 2281502246
+    "checksum": 1596475313
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",
