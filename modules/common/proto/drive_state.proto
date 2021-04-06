@@ -14,5 +14,5 @@ message EngageAdvice {
     }
 
     optional Advice advice = 1 [default = DISALLOW_ENGAGE];
-    optional string reason = 2;
+    //optional string reason = 2;
 }

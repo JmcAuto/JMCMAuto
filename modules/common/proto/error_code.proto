@@ -66,5 +66,5 @@ enum ErrorCode {
 
 message StatusPb {
 	optional ErrorCode error_code = 1 [default = OK];
-	optional string msg = 2;
+	//optional string msg = 2;
 }

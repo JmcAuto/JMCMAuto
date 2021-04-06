@@ -338,12 +338,12 @@ typename std::shared_ptr<T> to_std(typename boost::shared_ptr<T const> const& p)
    * @brief fills the fields module_name, current timestamp and
    * sequence_num in the header.
    */
-  void FillHeader(const std::string& module_name, D* data) {
+  void FillHeader(D* data) {
     static_assert(std::is_base_of<google::protobuf::Message, D>::value,
                   "Can only fill header to proto messages!");
     auto* header = data->mutable_header();
     double timestamp = jmc_auto::common::time::Clock::NowInSeconds();
-    header->set_module_name(module_name);
+    //header->set_module_name(module_name);
     header->set_timestamp_sec(timestamp);
     header->set_sequence_num(++seq_num_);
   }

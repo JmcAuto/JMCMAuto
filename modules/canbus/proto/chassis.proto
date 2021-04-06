@@ -125,7 +125,7 @@ message Chassis {
   optional Surround surround = 31;
 
   // Vehicle registration information
-  optional License license = 32;  
+  //optional License license = 32;  
  //CX756
   optional float lon_acc=33;
    

@@ -120,9 +120,9 @@ class Status {
       return;
     }
     status_pb->set_error_code(code_);
-    if (!msg_.empty()) {
-      status_pb->set_msg(msg_);
-    }
+    //if (!msg_.empty()) {
+    //  status_pb->set_msg(msg_);
+    //}
   }
 
  private:

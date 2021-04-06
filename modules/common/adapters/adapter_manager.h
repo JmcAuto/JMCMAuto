@@ -68,10 +68,10 @@ namespace adapter {
         instance()->InternalPublish##name(pbdata);                             \
     }                                                                          \
     template <typename T>                                                      \
-    static void Fill##name##Header(const std::string &module_name, T *data) {  \
+    static void Fill##name##Header(T *data) {  \
         static_assert(std::is_same<name##Adapter::DataType, T>::value,         \
                       "Data type must be the same with adapter's type!");      \
-        instance()->name##_->FillHeader(module_name, data);                    \
+        instance()->name##_->FillHeader(data);                    \
     }                                                                          \
     static void Add##name##Callback(name##Adapter::Callback callback) {        \
         CHECK(instance()->name##_)                                             \
