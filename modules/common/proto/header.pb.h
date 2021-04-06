@@ -133,21 +133,6 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
-  // optional string module_name = 2;
-  bool has_module_name() const;
-  void clear_module_name();
-  static const int kModuleNameFieldNumber = 2;
-  const ::std::string& module_name() const;
-  void set_module_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_module_name(::std::string&& value);
-  #endif
-  void set_module_name(const char* value);
-  void set_module_name(const char* value, size_t size);
-  ::std::string* mutable_module_name();
-  ::std::string* release_module_name();
-  void set_allocated_module_name(::std::string* module_name);
-
   // optional .jmc_auto.common.StatusPb status = 8;
   bool has_status() const;
   void clear_status();
@@ -203,8 +188,6 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
  private:
   void set_has_timestamp_sec();
   void clear_has_timestamp_sec();
-  void set_has_module_name();
-  void clear_has_module_name();
   void set_has_sequence_num();
   void clear_has_sequence_num();
   void set_has_lidar_timestamp();
@@ -221,7 +204,6 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr module_name_;
   ::jmc_auto::common::StatusPb* status_;
   double timestamp_sec_;
   ::google::protobuf::uint64 lidar_timestamp_;
@@ -241,13 +223,13 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
 // optional double timestamp_sec = 1;
 inline bool Header::has_timestamp_sec() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Header::set_has_timestamp_sec() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void Header::clear_has_timestamp_sec() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Header::clear_timestamp_sec() {
   timestamp_sec_ = 0;
@@ -263,78 +245,15 @@ inline void Header::set_timestamp_sec(double value) {
   // @@protoc_insertion_point(field_set:jmc_auto.common.Header.timestamp_sec)
 }
 
-// optional string module_name = 2;
-inline bool Header::has_module_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Header::set_has_module_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Header::clear_has_module_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Header::clear_module_name() {
-  module_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_module_name();
-}
-inline const ::std::string& Header::module_name() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.Header.module_name)
-  return module_name_.GetNoArena();
-}
-inline void Header::set_module_name(const ::std::string& value) {
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.Header.module_name)
-}
-#if LANG_CXX11
-inline void Header::set_module_name(::std::string&& value) {
-  set_has_module_name();
-  module_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.Header.module_name)
-}
-#endif
-inline void Header::set_module_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.Header.module_name)
-}
-inline void Header::set_module_name(const char* value, size_t size) {
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.Header.module_name)
-}
-inline ::std::string* Header::mutable_module_name() {
-  set_has_module_name();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.Header.module_name)
-  return module_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Header::release_module_name() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.Header.module_name)
-  clear_has_module_name();
-  return module_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Header::set_allocated_module_name(::std::string* module_name) {
-  if (module_name != NULL) {
-    set_has_module_name();
-  } else {
-    clear_has_module_name();
-  }
-  module_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), module_name);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.Header.module_name)
-}
-
 // optional uint32 sequence_num = 3;
 inline bool Header::has_sequence_num() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void Header::set_has_sequence_num() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void Header::clear_has_sequence_num() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void Header::clear_sequence_num() {
   sequence_num_ = 0u;
@@ -352,13 +271,13 @@ inline void Header::set_sequence_num(::google::protobuf::uint32 value) {
 
 // optional uint64 lidar_timestamp = 4;
 inline bool Header::has_lidar_timestamp() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Header::set_has_lidar_timestamp() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Header::clear_has_lidar_timestamp() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Header::clear_lidar_timestamp() {
   lidar_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -376,13 +295,13 @@ inline void Header::set_lidar_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint64 camera_timestamp = 5;
 inline bool Header::has_camera_timestamp() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Header::set_has_camera_timestamp() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Header::clear_has_camera_timestamp() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Header::clear_camera_timestamp() {
   camera_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -400,13 +319,13 @@ inline void Header::set_camera_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint64 radar_timestamp = 6;
 inline bool Header::has_radar_timestamp() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void Header::set_has_radar_timestamp() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void Header::clear_has_radar_timestamp() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void Header::clear_radar_timestamp() {
   radar_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -424,13 +343,13 @@ inline void Header::set_radar_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint32 version = 7 [default = 1];
 inline bool Header::has_version() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void Header::set_has_version() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void Header::clear_has_version() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Header::clear_version() {
   version_ = 1u;
@@ -448,13 +367,13 @@ inline void Header::set_version(::google::protobuf::uint32 value) {
 
 // optional .jmc_auto.common.StatusPb status = 8;
 inline bool Header::has_status() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void Header::set_has_status() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void Header::clear_has_status() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void Header::clear_status() {
   if (status_ != NULL) status_->::jmc_auto::common::StatusPb::Clear();

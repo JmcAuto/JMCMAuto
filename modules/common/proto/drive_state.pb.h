@@ -184,21 +184,6 @@ class EngageAdvice : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // optional string reason = 2;
-  bool has_reason() const;
-  void clear_reason();
-  static const int kReasonFieldNumber = 2;
-  const ::std::string& reason() const;
-  void set_reason(const ::std::string& value);
-  #if LANG_CXX11
-  void set_reason(::std::string&& value);
-  #endif
-  void set_reason(const char* value);
-  void set_reason(const char* value, size_t size);
-  ::std::string* mutable_reason();
-  ::std::string* release_reason();
-  void set_allocated_reason(::std::string* reason);
-
   // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
   bool has_advice() const;
   void clear_advice();
@@ -210,13 +195,10 @@ class EngageAdvice : public ::google::protobuf::Message /* @@protoc_insertion_po
  private:
   void set_has_advice();
   void clear_has_advice();
-  void set_has_reason();
-  void clear_has_reason();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr reason_;
   int advice_;
   friend struct protobuf_modules_2fcommon_2fproto_2fdrive_5fstate_2eproto::TableStruct;
 };
@@ -230,13 +212,13 @@ class EngageAdvice : public ::google::protobuf::Message /* @@protoc_insertion_po
 
 // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
 inline bool EngageAdvice::has_advice() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void EngageAdvice::set_has_advice() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void EngageAdvice::clear_has_advice() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void EngageAdvice::clear_advice() {
   advice_ = 1;
@@ -251,69 +233,6 @@ inline void EngageAdvice::set_advice(::jmc_auto::common::EngageAdvice_Advice val
   set_has_advice();
   advice_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.common.EngageAdvice.advice)
-}
-
-// optional string reason = 2;
-inline bool EngageAdvice::has_reason() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void EngageAdvice::set_has_reason() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void EngageAdvice::clear_has_reason() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void EngageAdvice::clear_reason() {
-  reason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_reason();
-}
-inline const ::std::string& EngageAdvice::reason() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.EngageAdvice.reason)
-  return reason_.GetNoArena();
-}
-inline void EngageAdvice::set_reason(const ::std::string& value) {
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.EngageAdvice.reason)
-}
-#if LANG_CXX11
-inline void EngageAdvice::set_reason(::std::string&& value) {
-  set_has_reason();
-  reason_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.EngageAdvice.reason)
-}
-#endif
-inline void EngageAdvice::set_reason(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.EngageAdvice.reason)
-}
-inline void EngageAdvice::set_reason(const char* value, size_t size) {
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.EngageAdvice.reason)
-}
-inline ::std::string* EngageAdvice::mutable_reason() {
-  set_has_reason();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.EngageAdvice.reason)
-  return reason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* EngageAdvice::release_reason() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.EngageAdvice.reason)
-  clear_has_reason();
-  return reason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void EngageAdvice::set_allocated_reason(::std::string* reason) {
-  if (reason != NULL) {
-    set_has_reason();
-  } else {
-    clear_has_reason();
-  }
-  reason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), reason);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.EngageAdvice.reason)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

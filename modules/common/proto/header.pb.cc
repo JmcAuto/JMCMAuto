@@ -52,25 +52,23 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, timestamp_sec_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, module_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, sequence_num_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, lidar_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, camera_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, radar_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, version_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, status_),
+  1,
+  5,
   2,
-  0,
-  6,
   3,
   4,
-  5,
-  7,
-  1,
+  6,
+  0,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, 13, sizeof(Header)},
+  { 0, 12, sizeof(Header)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -124,15 +122,15 @@ void AddDescriptorsImpl() {
   static const char descriptor[] = {
       "\n!modules/common/proto/header.proto\022\017jmc"
       "_auto.common\032%modules/common/proto/error"
-      "_code.proto\"\325\001\n\006Header\022\025\n\rtimestamp_sec\030"
-      "\001 \001(\001\022\023\n\013module_name\030\002 \001(\t\022\024\n\014sequence_n"
-      "um\030\003 \001(\r\022\027\n\017lidar_timestamp\030\004 \001(\004\022\030\n\020cam"
-      "era_timestamp\030\005 \001(\004\022\027\n\017radar_timestamp\030\006"
-      " \001(\004\022\022\n\007version\030\007 \001(\r:\0011\022)\n\006status\030\010 \001(\013"
-      "2\031.jmc_auto.common.StatusPb"
+      "_code.proto\"\300\001\n\006Header\022\025\n\rtimestamp_sec\030"
+      "\001 \001(\001\022\024\n\014sequence_num\030\003 \001(\r\022\027\n\017lidar_tim"
+      "estamp\030\004 \001(\004\022\030\n\020camera_timestamp\030\005 \001(\004\022\027"
+      "\n\017radar_timestamp\030\006 \001(\004\022\022\n\007version\030\007 \001(\r"
+      ":\0011\022)\n\006status\030\010 \001(\0132\031.jmc_auto.common.St"
+      "atusPb"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 307);
+      descriptor, 286);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/common/proto/header.proto", &protobuf_RegisterTypes);
   ::jmc_auto::common::protobuf_modules_2fcommon_2fproto_2ferror_5fcode_2eproto::AddDescriptors();
@@ -157,7 +155,6 @@ struct StaticDescriptorInitializer {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Header::kTimestampSecFieldNumber;
-const int Header::kModuleNameFieldNumber;
 const int Header::kSequenceNumFieldNumber;
 const int Header::kLidarTimestampFieldNumber;
 const int Header::kCameraTimestampFieldNumber;
@@ -180,10 +177,6 @@ Header::Header(const Header& from)
       _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  module_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_module_name()) {
-    module_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.module_name_);
-  }
   if (from.has_status()) {
     status_ = new ::jmc_auto::common::StatusPb(*from.status_);
   } else {
@@ -197,7 +190,6 @@ Header::Header(const Header& from)
 
 void Header::SharedCtor() {
   _cached_size_ = 0;
-  module_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&status_, 0, reinterpret_cast<char*>(&sequence_num_) -
     reinterpret_cast<char*>(&status_) + sizeof(sequence_num_));
   version_ = 1u;
@@ -209,7 +201,6 @@ Header::~Header() {
 }
 
 void Header::SharedDtor() {
-  module_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) {
     delete status_;
   }
@@ -240,17 +231,11 @@ Header* Header::New(::google::protobuf::Arena* arena) const {
 
 void Header::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.common.Header)
-  if (_has_bits_[0 / 32] & 3u) {
-    if (has_module_name()) {
-      GOOGLE_DCHECK(!module_name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-      (*module_name_.UnsafeRawStringPointer())->clear();
-    }
-    if (has_status()) {
-      GOOGLE_DCHECK(status_ != NULL);
-      status_->::jmc_auto::common::StatusPb::Clear();
-    }
+  if (has_status()) {
+    GOOGLE_DCHECK(status_ != NULL);
+    status_->::jmc_auto::common::StatusPb::Clear();
   }
-  if (_has_bits_[0 / 32] & 252u) {
+  if (_has_bits_[0 / 32] & 126u) {
     ::memset(&timestamp_sec_, 0, reinterpret_cast<char*>(&sequence_num_) -
       reinterpret_cast<char*>(&timestamp_sec_) + sizeof(sequence_num_));
     version_ = 1u;
@@ -277,22 +262,6 @@ bool Header::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &timestamp_sec_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional string module_name = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_module_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->module_name().data(), this->module_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "jmc_auto.common.Header.module_name");
         } else {
           goto handle_unusual;
         }
@@ -411,47 +380,37 @@ void Header::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional double timestamp_sec = 1;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->timestamp_sec(), output);
   }
 
-  // optional string module_name = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->module_name().data(), this->module_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.Header.module_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->module_name(), output);
-  }
-
   // optional uint32 sequence_num = 3;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->sequence_num(), output);
   }
 
   // optional uint64 lidar_timestamp = 4;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->lidar_timestamp(), output);
   }
 
   // optional uint64 camera_timestamp = 5;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(5, this->camera_timestamp(), output);
   }
 
   // optional uint64 radar_timestamp = 6;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->radar_timestamp(), output);
   }
 
   // optional uint32 version = 7 [default = 1];
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->version(), output);
   }
 
   // optional .jmc_auto.common.StatusPb status = 8;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, *this->status_, output);
   }
@@ -471,48 +430,37 @@ void Header::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional double timestamp_sec = 1;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->timestamp_sec(), target);
   }
 
-  // optional string module_name = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->module_name().data(), this->module_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.Header.module_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->module_name(), target);
-  }
-
   // optional uint32 sequence_num = 3;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->sequence_num(), target);
   }
 
   // optional uint64 lidar_timestamp = 4;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->lidar_timestamp(), target);
   }
 
   // optional uint64 camera_timestamp = 5;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(5, this->camera_timestamp(), target);
   }
 
   // optional uint64 radar_timestamp = 6;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->radar_timestamp(), target);
   }
 
   // optional uint32 version = 7 [default = 1];
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->version(), target);
   }
 
   // optional .jmc_auto.common.StatusPb status = 8;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         8, *this->status_, deterministic, target);
@@ -535,14 +483,7 @@ size_t Header::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 255u) {
-    // optional string module_name = 2;
-    if (has_module_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->module_name());
-    }
-
+  if (_has_bits_[0 / 32] & 127u) {
     // optional .jmc_auto.common.StatusPb status = 8;
     if (has_status()) {
       total_size += 1 +
@@ -621,30 +562,26 @@ void Header::MergeFrom(const Header& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 127u) {
     if (cached_has_bits & 0x00000001u) {
-      set_has_module_name();
-      module_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.module_name_);
-    }
-    if (cached_has_bits & 0x00000002u) {
       mutable_status()->::jmc_auto::common::StatusPb::MergeFrom(from.status());
     }
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000002u) {
       timestamp_sec_ = from.timestamp_sec_;
     }
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000004u) {
       lidar_timestamp_ = from.lidar_timestamp_;
     }
-    if (cached_has_bits & 0x00000010u) {
+    if (cached_has_bits & 0x00000008u) {
       camera_timestamp_ = from.camera_timestamp_;
     }
-    if (cached_has_bits & 0x00000020u) {
+    if (cached_has_bits & 0x00000010u) {
       radar_timestamp_ = from.radar_timestamp_;
     }
-    if (cached_has_bits & 0x00000040u) {
+    if (cached_has_bits & 0x00000020u) {
       sequence_num_ = from.sequence_num_;
     }
-    if (cached_has_bits & 0x00000080u) {
+    if (cached_has_bits & 0x00000040u) {
       version_ = from.version_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -674,7 +611,6 @@ void Header::Swap(Header* other) {
   InternalSwap(other);
 }
 void Header::InternalSwap(Header* other) {
-  module_name_.Swap(&other->module_name_);
   std::swap(status_, other->status_);
   std::swap(timestamp_sec_, other->timestamp_sec_);
   std::swap(lidar_timestamp_, other->lidar_timestamp_);
@@ -697,13 +633,13 @@ void Header::InternalSwap(Header* other) {
 
 // optional double timestamp_sec = 1;
 bool Header::has_timestamp_sec() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 void Header::set_has_timestamp_sec() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 void Header::clear_has_timestamp_sec() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 void Header::clear_timestamp_sec() {
   timestamp_sec_ = 0;
@@ -719,78 +655,15 @@ void Header::set_timestamp_sec(double value) {
   // @@protoc_insertion_point(field_set:jmc_auto.common.Header.timestamp_sec)
 }
 
-// optional string module_name = 2;
-bool Header::has_module_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void Header::set_has_module_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void Header::clear_has_module_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void Header::clear_module_name() {
-  module_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_module_name();
-}
-const ::std::string& Header::module_name() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.Header.module_name)
-  return module_name_.GetNoArena();
-}
-void Header::set_module_name(const ::std::string& value) {
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.Header.module_name)
-}
-#if LANG_CXX11
-void Header::set_module_name(::std::string&& value) {
-  set_has_module_name();
-  module_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.Header.module_name)
-}
-#endif
-void Header::set_module_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.Header.module_name)
-}
-void Header::set_module_name(const char* value, size_t size) {
-  set_has_module_name();
-  module_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.Header.module_name)
-}
-::std::string* Header::mutable_module_name() {
-  set_has_module_name();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.Header.module_name)
-  return module_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* Header::release_module_name() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.Header.module_name)
-  clear_has_module_name();
-  return module_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void Header::set_allocated_module_name(::std::string* module_name) {
-  if (module_name != NULL) {
-    set_has_module_name();
-  } else {
-    clear_has_module_name();
-  }
-  module_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), module_name);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.Header.module_name)
-}
-
 // optional uint32 sequence_num = 3;
 bool Header::has_sequence_num() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 void Header::set_has_sequence_num() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 void Header::clear_has_sequence_num() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 void Header::clear_sequence_num() {
   sequence_num_ = 0u;
@@ -808,13 +681,13 @@ void Header::set_sequence_num(::google::protobuf::uint32 value) {
 
 // optional uint64 lidar_timestamp = 4;
 bool Header::has_lidar_timestamp() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 void Header::set_has_lidar_timestamp() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 void Header::clear_has_lidar_timestamp() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 void Header::clear_lidar_timestamp() {
   lidar_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -832,13 +705,13 @@ void Header::set_lidar_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint64 camera_timestamp = 5;
 bool Header::has_camera_timestamp() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 void Header::set_has_camera_timestamp() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 void Header::clear_has_camera_timestamp() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 void Header::clear_camera_timestamp() {
   camera_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -856,13 +729,13 @@ void Header::set_camera_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint64 radar_timestamp = 6;
 bool Header::has_radar_timestamp() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 void Header::set_has_radar_timestamp() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 void Header::clear_has_radar_timestamp() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 void Header::clear_radar_timestamp() {
   radar_timestamp_ = GOOGLE_ULONGLONG(0);
@@ -880,13 +753,13 @@ void Header::set_radar_timestamp(::google::protobuf::uint64 value) {
 
 // optional uint32 version = 7 [default = 1];
 bool Header::has_version() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 void Header::set_has_version() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 void Header::clear_has_version() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 void Header::clear_version() {
   version_ = 1u;
@@ -904,13 +777,13 @@ void Header::set_version(::google::protobuf::uint32 value) {
 
 // optional .jmc_auto.common.StatusPb status = 8;
 bool Header::has_status() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 void Header::set_has_status() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 void Header::clear_has_status() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 void Header::clear_status() {
   if (status_ != NULL) status_->::jmc_auto::common::StatusPb::Clear();

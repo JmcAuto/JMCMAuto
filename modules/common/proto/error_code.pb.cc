@@ -53,13 +53,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatusPb, error_code_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatusPb, msg_),
-  1,
   0,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, 7, sizeof(StatusPb)},
+  { 0, 6, sizeof(StatusPb)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -109,34 +107,34 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
       "\n%modules/common/proto/error_code.proto\022"
-      "\017jmc_auto.common\"K\n\010StatusPb\0222\n\nerror_co"
+      "\017jmc_auto.common\">\n\010StatusPb\0222\n\nerror_co"
       "de\030\001 \001(\0162\032.jmc_auto.common.ErrorCode:\002OK"
-      "\022\013\n\003msg\030\002 \001(\t*\360\006\n\tErrorCode\022\006\n\002OK\020\000\022\022\n\rC"
-      "ONTROL_ERROR\020\350\007\022\027\n\022CONTROL_INIT_ERROR\020\351\007"
-      "\022\032\n\025CONTROL_COMPUTE_ERROR\020\352\007\022\021\n\014CANBUS_E"
-      "RROR\020\320\017\022\032\n\025CAN_CLIENT_ERROR_BASE\020\264\020\022(\n#C"
-      "AN_CLIENT_ERROR_OPEN_DEVICE_FAILED\020\265\020\022\037\n"
-      "\032CAN_CLIENT_ERROR_FRAME_NUM\020\266\020\022!\n\034CAN_CL"
-      "IENT_ERROR_SEND_FAILED\020\267\020\022!\n\034CAN_CLIENT_"
-      "ERROR_RECV_FAILED\020\270\020\022\027\n\022LOCALIZATION_ERR"
-      "OR\020\270\027\022\033\n\026LOCALIZATION_ERROR_MSG\020\234\030\022\035\n\030LO"
-      "CALIZATION_ERROR_LIDAR\020\200\031\022\035\n\030LOCALIZATIO"
-      "N_ERROR_INTEG\020\344\031\022\034\n\027LOCALIZATION_ERROR_G"
-      "NSS\020\310\032\022\025\n\020PERCEPTION_ERROR\020\240\037\022\030\n\023PERCEPT"
-      "ION_ERROR_TF\020\241\037\022\035\n\030PERCEPTION_ERROR_PROC"
-      "ESS\020\242\037\022\025\n\020PERCEPTION_FATAL\020\243\037\022\025\n\020PREDICT"
-      "ION_ERROR\020\210\'\022\023\n\016PLANNING_ERROR\020\360.\022\025\n\020HDM"
-      "AP_DATA_ERROR\020\3306\022\022\n\rROUTING_ERROR\020\300>\022\032\n\025"
-      "ROUTING_ERROR_REQUEST\020\301>\022\033\n\026ROUTING_ERRO"
-      "R_RESPONSE\020\302>\022\034\n\027ROUTING_ERROR_NOT_READY"
-      "\020\303>\022\021\n\014END_OF_INPUT\020\250F\022\025\n\020HTTP_LOGIC_ERR"
-      "OR\020\220N\022\027\n\022HTTP_RUNTIME_ERROR\020\221N\022\027\n\022RELATI"
-      "VE_MAP_ERROR\020\370U\022\033\n\026RELATIVE_MAP_NOT_READ"
-      "Y\020\371U\022\026\n\021DRIVER_ERROR_GNSS\020\340]\022\032\n\025DRIVER_E"
-      "RROR_VELODYNE\020\310e"
+      "*\360\006\n\tErrorCode\022\006\n\002OK\020\000\022\022\n\rCONTROL_ERROR\020"
+      "\350\007\022\027\n\022CONTROL_INIT_ERROR\020\351\007\022\032\n\025CONTROL_C"
+      "OMPUTE_ERROR\020\352\007\022\021\n\014CANBUS_ERROR\020\320\017\022\032\n\025CA"
+      "N_CLIENT_ERROR_BASE\020\264\020\022(\n#CAN_CLIENT_ERR"
+      "OR_OPEN_DEVICE_FAILED\020\265\020\022\037\n\032CAN_CLIENT_E"
+      "RROR_FRAME_NUM\020\266\020\022!\n\034CAN_CLIENT_ERROR_SE"
+      "ND_FAILED\020\267\020\022!\n\034CAN_CLIENT_ERROR_RECV_FA"
+      "ILED\020\270\020\022\027\n\022LOCALIZATION_ERROR\020\270\027\022\033\n\026LOCA"
+      "LIZATION_ERROR_MSG\020\234\030\022\035\n\030LOCALIZATION_ER"
+      "ROR_LIDAR\020\200\031\022\035\n\030LOCALIZATION_ERROR_INTEG"
+      "\020\344\031\022\034\n\027LOCALIZATION_ERROR_GNSS\020\310\032\022\025\n\020PER"
+      "CEPTION_ERROR\020\240\037\022\030\n\023PERCEPTION_ERROR_TF\020"
+      "\241\037\022\035\n\030PERCEPTION_ERROR_PROCESS\020\242\037\022\025\n\020PER"
+      "CEPTION_FATAL\020\243\037\022\025\n\020PREDICTION_ERROR\020\210\'\022"
+      "\023\n\016PLANNING_ERROR\020\360.\022\025\n\020HDMAP_DATA_ERROR"
+      "\020\3306\022\022\n\rROUTING_ERROR\020\300>\022\032\n\025ROUTING_ERROR"
+      "_REQUEST\020\301>\022\033\n\026ROUTING_ERROR_RESPONSE\020\302>"
+      "\022\034\n\027ROUTING_ERROR_NOT_READY\020\303>\022\021\n\014END_OF"
+      "_INPUT\020\250F\022\025\n\020HTTP_LOGIC_ERROR\020\220N\022\027\n\022HTTP"
+      "_RUNTIME_ERROR\020\221N\022\027\n\022RELATIVE_MAP_ERROR\020"
+      "\370U\022\033\n\026RELATIVE_MAP_NOT_READY\020\371U\022\026\n\021DRIVE"
+      "R_ERROR_GNSS\020\340]\022\032\n\025DRIVER_ERROR_VELODYNE"
+      "\020\310e"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1016);
+      descriptor, 1003);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/common/proto/error_code.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -205,7 +203,6 @@ bool ErrorCode_IsValid(int value) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int StatusPb::kErrorCodeFieldNumber;
-const int StatusPb::kMsgFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 StatusPb::StatusPb()
@@ -222,17 +219,12 @@ StatusPb::StatusPb(const StatusPb& from)
       _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_msg()) {
-    msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
-  }
   error_code_ = from.error_code_;
   // @@protoc_insertion_point(copy_constructor:jmc_auto.common.StatusPb)
 }
 
 void StatusPb::SharedCtor() {
   _cached_size_ = 0;
-  msg_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   error_code_ = 0;
 }
 
@@ -242,7 +234,6 @@ StatusPb::~StatusPb() {
 }
 
 void StatusPb::SharedDtor() {
-  msg_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void StatusPb::SetCachedSize(int size) const {
@@ -270,10 +261,6 @@ StatusPb* StatusPb::New(::google::protobuf::Arena* arena) const {
 
 void StatusPb::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.common.StatusPb)
-  if (has_msg()) {
-    GOOGLE_DCHECK(!msg_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-    (*msg_.UnsafeRawStringPointer())->clear();
-  }
   error_code_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -302,22 +289,6 @@ bool StatusPb::MergePartialFromCodedStream(
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional string msg = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_msg()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->msg().data(), this->msg().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "jmc_auto.common.StatusPb.msg");
         } else {
           goto handle_unusual;
         }
@@ -354,19 +325,9 @@ void StatusPb::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->error_code(), output);
-  }
-
-  // optional string msg = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->msg().data(), this->msg().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.StatusPb.msg");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->msg(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -384,20 +345,9 @@ void StatusPb::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->error_code(), target);
-  }
-
-  // optional string msg = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->msg().data(), this->msg().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.StatusPb.msg");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->msg(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -417,21 +367,12 @@ size_t StatusPb::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 3u) {
-    // optional string msg = 2;
-    if (has_msg()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->msg());
-    }
-
-    // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
-    if (has_error_code()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->error_code());
-    }
-
+  // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
+  if (has_error_code()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->error_code());
   }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -461,16 +402,8 @@ void StatusPb::MergeFrom(const StatusPb& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
-    if (cached_has_bits & 0x00000001u) {
-      set_has_msg();
-      msg_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msg_);
-    }
-    if (cached_has_bits & 0x00000002u) {
-      error_code_ = from.error_code_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from.has_error_code()) {
+    set_error_code(from.error_code());
   }
 }
 
@@ -497,7 +430,6 @@ void StatusPb::Swap(StatusPb* other) {
   InternalSwap(other);
 }
 void StatusPb::InternalSwap(StatusPb* other) {
-  msg_.Swap(&other->msg_);
   std::swap(error_code_, other->error_code_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -514,13 +446,13 @@ void StatusPb::InternalSwap(StatusPb* other) {
 
 // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
 bool StatusPb::has_error_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 void StatusPb::set_has_error_code() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 void StatusPb::clear_has_error_code() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 void StatusPb::clear_error_code() {
   error_code_ = 0;
@@ -535,69 +467,6 @@ void StatusPb::set_error_code(::jmc_auto::common::ErrorCode value) {
   set_has_error_code();
   error_code_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.common.StatusPb.error_code)
-}
-
-// optional string msg = 2;
-bool StatusPb::has_msg() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StatusPb::set_has_msg() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StatusPb::clear_has_msg() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void StatusPb::clear_msg() {
-  msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_msg();
-}
-const ::std::string& StatusPb::msg() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.StatusPb.msg)
-  return msg_.GetNoArena();
-}
-void StatusPb::set_msg(const ::std::string& value) {
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.StatusPb.msg)
-}
-#if LANG_CXX11
-void StatusPb::set_msg(::std::string&& value) {
-  set_has_msg();
-  msg_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.StatusPb.msg)
-}
-#endif
-void StatusPb::set_msg(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.StatusPb.msg)
-}
-void StatusPb::set_msg(const char* value, size_t size) {
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.StatusPb.msg)
-}
-::std::string* StatusPb::mutable_msg() {
-  set_has_msg();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.StatusPb.msg)
-  return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* StatusPb::release_msg() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.StatusPb.msg)
-  clear_has_msg();
-  return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void StatusPb::set_allocated_msg(::std::string* msg) {
-  if (msg != NULL) {
-    set_has_msg();
-  } else {
-    clear_has_msg();
-  }
-  msg_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msg);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.StatusPb.msg)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -685,15 +685,6 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::jmc_auto::canbus::Surround* release_surround();
   void set_allocated_surround(::jmc_auto::canbus::Surround* surround);
 
-  // optional .jmc_auto.canbus.License license = 32;
-  bool has_license() const;
-  void clear_license();
-  static const int kLicenseFieldNumber = 32;
-  const ::jmc_auto::canbus::License& license() const;
-  ::jmc_auto::canbus::License* mutable_license();
-  ::jmc_auto::canbus::License* release_license();
-  void set_allocated_license(::jmc_auto::canbus::License* license);
-
   // optional int32 fuel_range_m = 7;
   bool has_fuel_range_m() const;
   void clear_fuel_range_m();
@@ -1298,8 +1289,6 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void clear_has_wheel_speed();
   void set_has_surround();
   void clear_has_surround();
-  void set_has_license();
-  void clear_has_license();
   void set_has_lon_acc();
   void clear_has_lon_acc();
   void set_has_steer_wheel_rot_spd();
@@ -1422,7 +1411,6 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::jmc_auto::common::EngageAdvice* engage_advice_;
   ::jmc_auto::canbus::WheelSpeed* wheel_speed_;
   ::jmc_auto::canbus::Surround* surround_;
-  ::jmc_auto::canbus::License* license_;
   ::google::protobuf::int32 fuel_range_m_;
   bool engine_started_;
   bool parking_brake_;
@@ -2696,13 +2684,13 @@ inline void Signal::set_emergency_light(bool value) {
 
 // optional bool engine_started = 3;
 inline bool Chassis::has_engine_started() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void Chassis::set_has_engine_started() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void Chassis::clear_has_engine_started() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void Chassis::clear_engine_started() {
   engine_started_ = false;
@@ -2720,13 +2708,13 @@ inline void Chassis::set_engine_started(bool value) {
 
 // optional float engine_rpm = 4 [default = nan];
 inline bool Chassis::has_engine_rpm() const {
-  return (_has_bits_[2] & 0x00008000u) != 0;
+  return (_has_bits_[2] & 0x00004000u) != 0;
 }
 inline void Chassis::set_has_engine_rpm() {
-  _has_bits_[2] |= 0x00008000u;
+  _has_bits_[2] |= 0x00004000u;
 }
 inline void Chassis::clear_has_engine_rpm() {
-  _has_bits_[2] &= ~0x00008000u;
+  _has_bits_[2] &= ~0x00004000u;
 }
 inline void Chassis::clear_engine_rpm() {
   engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2744,13 +2732,13 @@ inline void Chassis::set_engine_rpm(float value) {
 
 // optional float speed_mps = 5 [default = nan];
 inline bool Chassis::has_speed_mps() const {
-  return (_has_bits_[2] & 0x00010000u) != 0;
+  return (_has_bits_[2] & 0x00008000u) != 0;
 }
 inline void Chassis::set_has_speed_mps() {
-  _has_bits_[2] |= 0x00010000u;
+  _has_bits_[2] |= 0x00008000u;
 }
 inline void Chassis::clear_has_speed_mps() {
-  _has_bits_[2] &= ~0x00010000u;
+  _has_bits_[2] &= ~0x00008000u;
 }
 inline void Chassis::clear_speed_mps() {
   speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2768,13 +2756,13 @@ inline void Chassis::set_speed_mps(float value) {
 
 // optional float odometer_m = 6 [default = nan];
 inline bool Chassis::has_odometer_m() const {
-  return (_has_bits_[2] & 0x00020000u) != 0;
+  return (_has_bits_[2] & 0x00010000u) != 0;
 }
 inline void Chassis::set_has_odometer_m() {
-  _has_bits_[2] |= 0x00020000u;
+  _has_bits_[2] |= 0x00010000u;
 }
 inline void Chassis::clear_has_odometer_m() {
-  _has_bits_[2] &= ~0x00020000u;
+  _has_bits_[2] &= ~0x00010000u;
 }
 inline void Chassis::clear_odometer_m() {
   odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2792,13 +2780,13 @@ inline void Chassis::set_odometer_m(float value) {
 
 // optional int32 fuel_range_m = 7;
 inline bool Chassis::has_fuel_range_m() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void Chassis::set_has_fuel_range_m() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void Chassis::clear_has_fuel_range_m() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Chassis::clear_fuel_range_m() {
   fuel_range_m_ = 0;
@@ -2816,13 +2804,13 @@ inline void Chassis::set_fuel_range_m(::google::protobuf::int32 value) {
 
 // optional float throttle_percentage = 8 [default = nan];
 inline bool Chassis::has_throttle_percentage() const {
-  return (_has_bits_[2] & 0x00040000u) != 0;
+  return (_has_bits_[2] & 0x00020000u) != 0;
 }
 inline void Chassis::set_has_throttle_percentage() {
-  _has_bits_[2] |= 0x00040000u;
+  _has_bits_[2] |= 0x00020000u;
 }
 inline void Chassis::clear_has_throttle_percentage() {
-  _has_bits_[2] &= ~0x00040000u;
+  _has_bits_[2] &= ~0x00020000u;
 }
 inline void Chassis::clear_throttle_percentage() {
   throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2840,13 +2828,13 @@ inline void Chassis::set_throttle_percentage(float value) {
 
 // optional float brake_percentage = 9 [default = nan];
 inline bool Chassis::has_brake_percentage() const {
-  return (_has_bits_[2] & 0x00080000u) != 0;
+  return (_has_bits_[2] & 0x00040000u) != 0;
 }
 inline void Chassis::set_has_brake_percentage() {
-  _has_bits_[2] |= 0x00080000u;
+  _has_bits_[2] |= 0x00040000u;
 }
 inline void Chassis::clear_has_brake_percentage() {
-  _has_bits_[2] &= ~0x00080000u;
+  _has_bits_[2] &= ~0x00040000u;
 }
 inline void Chassis::clear_brake_percentage() {
   brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2864,13 +2852,13 @@ inline void Chassis::set_brake_percentage(float value) {
 
 // optional float steering_percentage = 11 [default = nan];
 inline bool Chassis::has_steering_percentage() const {
-  return (_has_bits_[2] & 0x00100000u) != 0;
+  return (_has_bits_[2] & 0x00080000u) != 0;
 }
 inline void Chassis::set_has_steering_percentage() {
-  _has_bits_[2] |= 0x00100000u;
+  _has_bits_[2] |= 0x00080000u;
 }
 inline void Chassis::clear_has_steering_percentage() {
-  _has_bits_[2] &= ~0x00100000u;
+  _has_bits_[2] &= ~0x00080000u;
 }
 inline void Chassis::clear_steering_percentage() {
   steering_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2888,13 +2876,13 @@ inline void Chassis::set_steering_percentage(float value) {
 
 // optional float steering_torque_nm = 12 [default = nan];
 inline bool Chassis::has_steering_torque_nm() const {
-  return (_has_bits_[2] & 0x00004000u) != 0;
+  return (_has_bits_[2] & 0x00002000u) != 0;
 }
 inline void Chassis::set_has_steering_torque_nm() {
-  _has_bits_[2] |= 0x00004000u;
+  _has_bits_[2] |= 0x00002000u;
 }
 inline void Chassis::clear_has_steering_torque_nm() {
-  _has_bits_[2] &= ~0x00004000u;
+  _has_bits_[2] &= ~0x00002000u;
 }
 inline void Chassis::clear_steering_torque_nm() {
   steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2912,13 +2900,13 @@ inline void Chassis::set_steering_torque_nm(float value) {
 
 // optional bool parking_brake = 13;
 inline bool Chassis::has_parking_brake() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void Chassis::set_has_parking_brake() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void Chassis::clear_has_parking_brake() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Chassis::clear_parking_brake() {
   parking_brake_ = false;
@@ -2936,13 +2924,13 @@ inline void Chassis::set_parking_brake(bool value) {
 
 // optional bool high_beam_signal = 14 [deprecated = true];
 inline bool Chassis::has_high_beam_signal() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void Chassis::set_has_high_beam_signal() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void Chassis::clear_has_high_beam_signal() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void Chassis::clear_high_beam_signal() {
   high_beam_signal_ = false;
@@ -2960,13 +2948,13 @@ inline void Chassis::set_high_beam_signal(bool value) {
 
 // optional bool low_beam_signal = 15 [deprecated = true];
 inline bool Chassis::has_low_beam_signal() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void Chassis::set_has_low_beam_signal() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void Chassis::clear_has_low_beam_signal() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void Chassis::clear_low_beam_signal() {
   low_beam_signal_ = false;
@@ -2984,13 +2972,13 @@ inline void Chassis::set_low_beam_signal(bool value) {
 
 // optional bool left_turn_signal = 16 [deprecated = true];
 inline bool Chassis::has_left_turn_signal() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void Chassis::set_has_left_turn_signal() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void Chassis::clear_has_left_turn_signal() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void Chassis::clear_left_turn_signal() {
   left_turn_signal_ = false;
@@ -3008,13 +2996,13 @@ inline void Chassis::set_left_turn_signal(bool value) {
 
 // optional bool right_turn_signal = 17 [deprecated = true];
 inline bool Chassis::has_right_turn_signal() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void Chassis::set_has_right_turn_signal() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void Chassis::clear_has_right_turn_signal() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void Chassis::clear_right_turn_signal() {
   right_turn_signal_ = false;
@@ -3032,13 +3020,13 @@ inline void Chassis::set_right_turn_signal(bool value) {
 
 // optional bool horn = 18 [deprecated = true];
 inline bool Chassis::has_horn() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void Chassis::set_has_horn() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void Chassis::clear_has_horn() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void Chassis::clear_horn() {
   horn_ = false;
@@ -3056,13 +3044,13 @@ inline void Chassis::set_horn(bool value) {
 
 // optional bool wiper = 19;
 inline bool Chassis::has_wiper() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void Chassis::set_has_wiper() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void Chassis::clear_has_wiper() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void Chassis::clear_wiper() {
   wiper_ = false;
@@ -3080,13 +3068,13 @@ inline void Chassis::set_wiper(bool value) {
 
 // optional bool disengage_status = 20 [deprecated = true];
 inline bool Chassis::has_disengage_status() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void Chassis::set_has_disengage_status() {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00100000u;
 }
 inline void Chassis::clear_has_disengage_status() {
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline void Chassis::clear_disengage_status() {
   disengage_status_ = false;
@@ -3104,13 +3092,13 @@ inline void Chassis::set_disengage_status(bool value) {
 
 // optional .jmc_auto.canbus.Chassis.DrivingMode driving_mode = 21 [default = COMPLETE_MANUAL];
 inline bool Chassis::has_driving_mode() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void Chassis::set_has_driving_mode() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void Chassis::clear_has_driving_mode() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void Chassis::clear_driving_mode() {
   driving_mode_ = 0;
@@ -3129,13 +3117,13 @@ inline void Chassis::set_driving_mode(::jmc_auto::canbus::Chassis_DrivingMode va
 
 // optional .jmc_auto.canbus.Chassis.ErrorCode error_code = 22 [default = NO_ERROR];
 inline bool Chassis::has_error_code() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void Chassis::set_has_error_code() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void Chassis::clear_has_error_code() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void Chassis::clear_error_code() {
   error_code_ = 0;
@@ -3154,13 +3142,13 @@ inline void Chassis::set_error_code(::jmc_auto::canbus::Chassis_ErrorCode value)
 
 // optional .jmc_auto.canbus.Chassis.GearPosition gear_location = 23;
 inline bool Chassis::has_gear_location() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void Chassis::set_has_gear_location() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void Chassis::clear_has_gear_location() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void Chassis::clear_gear_location() {
   gear_location_ = 0;
@@ -3179,13 +3167,13 @@ inline void Chassis::set_gear_location(::jmc_auto::canbus::Chassis_GearPosition 
 
 // optional double steering_timestamp = 24;
 inline bool Chassis::has_steering_timestamp() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void Chassis::set_has_steering_timestamp() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void Chassis::clear_has_steering_timestamp() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void Chassis::clear_steering_timestamp() {
   steering_timestamp_ = 0;
@@ -3248,13 +3236,13 @@ inline void Chassis::set_allocated_header(::jmc_auto::common::Header* header) {
 
 // optional int32 chassis_error_mask = 26 [default = 0];
 inline bool Chassis::has_chassis_error_mask() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void Chassis::set_has_chassis_error_mask() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 inline void Chassis::clear_has_chassis_error_mask() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void Chassis::clear_chassis_error_mask() {
   chassis_error_mask_ = 0;
@@ -3495,60 +3483,15 @@ inline void Chassis::set_allocated_surround(::jmc_auto::canbus::Surround* surrou
   // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.Chassis.surround)
 }
 
-// optional .jmc_auto.canbus.License license = 32;
-inline bool Chassis::has_license() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void Chassis::set_has_license() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void Chassis::clear_has_license() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void Chassis::clear_license() {
-  if (license_ != NULL) license_->::jmc_auto::canbus::License::Clear();
-  clear_has_license();
-}
-inline const ::jmc_auto::canbus::License& Chassis::license() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.license)
-  return license_ != NULL ? *license_
-                         : *::jmc_auto::canbus::License::internal_default_instance();
-}
-inline ::jmc_auto::canbus::License* Chassis::mutable_license() {
-  set_has_license();
-  if (license_ == NULL) {
-    license_ = new ::jmc_auto::canbus::License;
-  }
-  // @@protoc_insertion_point(field_mutable:jmc_auto.canbus.Chassis.license)
-  return license_;
-}
-inline ::jmc_auto::canbus::License* Chassis::release_license() {
-  // @@protoc_insertion_point(field_release:jmc_auto.canbus.Chassis.license)
-  clear_has_license();
-  ::jmc_auto::canbus::License* temp = license_;
-  license_ = NULL;
-  return temp;
-}
-inline void Chassis::set_allocated_license(::jmc_auto::canbus::License* license) {
-  delete license_;
-  license_ = license;
-  if (license) {
-    set_has_license();
-  } else {
-    clear_has_license();
-  }
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.Chassis.license)
-}
-
 // optional float lon_acc = 33;
 inline bool Chassis::has_lon_acc() const {
-  return (_has_bits_[0] & 0x02000000u) != 0;
+  return (_has_bits_[0] & 0x01000000u) != 0;
 }
 inline void Chassis::set_has_lon_acc() {
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x01000000u;
 }
 inline void Chassis::clear_has_lon_acc() {
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 inline void Chassis::clear_lon_acc() {
   lon_acc_ = 0;
@@ -3566,13 +3509,13 @@ inline void Chassis::set_lon_acc(float value) {
 
 // optional float steer_wheel_rot_spd = 34;
 inline bool Chassis::has_steer_wheel_rot_spd() const {
-  return (_has_bits_[0] & 0x04000000u) != 0;
+  return (_has_bits_[0] & 0x02000000u) != 0;
 }
 inline void Chassis::set_has_steer_wheel_rot_spd() {
-  _has_bits_[0] |= 0x04000000u;
+  _has_bits_[0] |= 0x02000000u;
 }
 inline void Chassis::clear_has_steer_wheel_rot_spd() {
-  _has_bits_[0] &= ~0x04000000u;
+  _has_bits_[0] &= ~0x02000000u;
 }
 inline void Chassis::clear_steer_wheel_rot_spd() {
   steer_wheel_rot_spd_ = 0;
@@ -3590,13 +3533,13 @@ inline void Chassis::set_steer_wheel_rot_spd(float value) {
 
 // optional bool abs_vehspdlgt_valid = 35;
 inline bool Chassis::has_abs_vehspdlgt_valid() const {
-  return (_has_bits_[0] & 0x00400000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void Chassis::set_has_abs_vehspdlgt_valid() {
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 inline void Chassis::clear_has_abs_vehspdlgt_valid() {
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline void Chassis::clear_abs_vehspdlgt_valid() {
   abs_vehspdlgt_valid_ = false;
@@ -3614,13 +3557,13 @@ inline void Chassis::set_abs_vehspdlgt_valid(bool value) {
 
 // optional bool esp_algtstatus_valid = 36;
 inline bool Chassis::has_esp_algtstatus_valid() const {
-  return (_has_bits_[0] & 0x00800000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 inline void Chassis::set_has_esp_algtstatus_valid() {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x00400000u;
 }
 inline void Chassis::clear_has_esp_algtstatus_valid() {
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline void Chassis::clear_esp_algtstatus_valid() {
   esp_algtstatus_valid_ = false;
@@ -3638,13 +3581,13 @@ inline void Chassis::set_esp_algtstatus_valid(bool value) {
 
 // optional bool sas_sasstssnsr_valid = 37;
 inline bool Chassis::has_sas_sasstssnsr_valid() const {
-  return (_has_bits_[0] & 0x01000000u) != 0;
+  return (_has_bits_[0] & 0x00800000u) != 0;
 }
 inline void Chassis::set_has_sas_sasstssnsr_valid() {
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x00800000u;
 }
 inline void Chassis::clear_has_sas_sasstssnsr_valid() {
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 inline void Chassis::clear_sas_sasstssnsr_valid() {
   sas_sasstssnsr_valid_ = false;
@@ -3662,13 +3605,13 @@ inline void Chassis::set_sas_sasstssnsr_valid(bool value) {
 
 // optional bool steerwheelrotspd_valid = 38;
 inline bool Chassis::has_steerwheelrotspd_valid() const {
-  return (_has_bits_[0] & 0x08000000u) != 0;
+  return (_has_bits_[0] & 0x04000000u) != 0;
 }
 inline void Chassis::set_has_steerwheelrotspd_valid() {
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x04000000u;
 }
 inline void Chassis::clear_has_steerwheelrotspd_valid() {
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x04000000u;
 }
 inline void Chassis::clear_steerwheelrotspd_valid() {
   steerwheelrotspd_valid_ = false;
@@ -3686,13 +3629,13 @@ inline void Chassis::set_steerwheelrotspd_valid(bool value) {
 
 // optional bool eps_lkaresponsetorque_valid = 39;
 inline bool Chassis::has_eps_lkaresponsetorque_valid() const {
-  return (_has_bits_[0] & 0x10000000u) != 0;
+  return (_has_bits_[0] & 0x08000000u) != 0;
 }
 inline void Chassis::set_has_eps_lkaresponsetorque_valid() {
-  _has_bits_[0] |= 0x10000000u;
+  _has_bits_[0] |= 0x08000000u;
 }
 inline void Chassis::clear_has_eps_lkaresponsetorque_valid() {
-  _has_bits_[0] &= ~0x10000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 inline void Chassis::clear_eps_lkaresponsetorque_valid() {
   eps_lkaresponsetorque_valid_ = false;
@@ -3710,13 +3653,13 @@ inline void Chassis::set_eps_lkaresponsetorque_valid(bool value) {
 
 // optional float eps_torsionbartorque = 40;
 inline bool Chassis::has_eps_torsionbartorque() const {
-  return (_has_bits_[0] & 0x40000000u) != 0;
+  return (_has_bits_[0] & 0x20000000u) != 0;
 }
 inline void Chassis::set_has_eps_torsionbartorque() {
-  _has_bits_[0] |= 0x40000000u;
+  _has_bits_[0] |= 0x20000000u;
 }
 inline void Chassis::clear_has_eps_torsionbartorque() {
-  _has_bits_[0] &= ~0x40000000u;
+  _has_bits_[0] &= ~0x20000000u;
 }
 inline void Chassis::clear_eps_torsionbartorque() {
   eps_torsionbartorque_ = 0;
@@ -3734,13 +3677,13 @@ inline void Chassis::set_eps_torsionbartorque(float value) {
 
 // optional bool eps_tosionbartorquevalid = 41;
 inline bool Chassis::has_eps_tosionbartorquevalid() const {
-  return (_has_bits_[0] & 0x20000000u) != 0;
+  return (_has_bits_[0] & 0x10000000u) != 0;
 }
 inline void Chassis::set_has_eps_tosionbartorquevalid() {
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x10000000u;
 }
 inline void Chassis::clear_has_eps_tosionbartorquevalid() {
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline void Chassis::clear_eps_tosionbartorquevalid() {
   eps_tosionbartorquevalid_ = false;
@@ -3758,13 +3701,13 @@ inline void Chassis::set_eps_tosionbartorquevalid(bool value) {
 
 // optional int32 abs_whlmilgfrntri = 42;
 inline bool Chassis::has_abs_whlmilgfrntri() const {
-  return (_has_bits_[0] & 0x80000000u) != 0;
+  return (_has_bits_[0] & 0x40000000u) != 0;
 }
 inline void Chassis::set_has_abs_whlmilgfrntri() {
-  _has_bits_[0] |= 0x80000000u;
+  _has_bits_[0] |= 0x40000000u;
 }
 inline void Chassis::clear_has_abs_whlmilgfrntri() {
-  _has_bits_[0] &= ~0x80000000u;
+  _has_bits_[0] &= ~0x40000000u;
 }
 inline void Chassis::clear_abs_whlmilgfrntri() {
   abs_whlmilgfrntri_ = 0;
@@ -3782,13 +3725,13 @@ inline void Chassis::set_abs_whlmilgfrntri(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgfrntle = 43;
 inline bool Chassis::has_abs_whlmilgfrntle() const {
-  return (_has_bits_[1] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x80000000u) != 0;
 }
 inline void Chassis::set_has_abs_whlmilgfrntle() {
-  _has_bits_[1] |= 0x00000001u;
+  _has_bits_[0] |= 0x80000000u;
 }
 inline void Chassis::clear_has_abs_whlmilgfrntle() {
-  _has_bits_[1] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x80000000u;
 }
 inline void Chassis::clear_abs_whlmilgfrntle() {
   abs_whlmilgfrntle_ = 0;
@@ -3806,13 +3749,13 @@ inline void Chassis::set_abs_whlmilgfrntle(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgrearre = 44;
 inline bool Chassis::has_abs_whlmilgrearre() const {
-  return (_has_bits_[1] & 0x00000002u) != 0;
+  return (_has_bits_[1] & 0x00000001u) != 0;
 }
 inline void Chassis::set_has_abs_whlmilgrearre() {
-  _has_bits_[1] |= 0x00000002u;
+  _has_bits_[1] |= 0x00000001u;
 }
 inline void Chassis::clear_has_abs_whlmilgrearre() {
-  _has_bits_[1] &= ~0x00000002u;
+  _has_bits_[1] &= ~0x00000001u;
 }
 inline void Chassis::clear_abs_whlmilgrearre() {
   abs_whlmilgrearre_ = 0;
@@ -3830,13 +3773,13 @@ inline void Chassis::set_abs_whlmilgrearre(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgrearle = 45;
 inline bool Chassis::has_abs_whlmilgrearle() const {
-  return (_has_bits_[1] & 0x00000004u) != 0;
+  return (_has_bits_[1] & 0x00000002u) != 0;
 }
 inline void Chassis::set_has_abs_whlmilgrearle() {
-  _has_bits_[1] |= 0x00000004u;
+  _has_bits_[1] |= 0x00000002u;
 }
 inline void Chassis::clear_has_abs_whlmilgrearle() {
-  _has_bits_[1] &= ~0x00000004u;
+  _has_bits_[1] &= ~0x00000002u;
 }
 inline void Chassis::clear_abs_whlmilgrearle() {
   abs_whlmilgrearle_ = 0;
@@ -3854,13 +3797,13 @@ inline void Chassis::set_abs_whlmilgrearle(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_fl = 46;
 inline bool Chassis::has_esp_wheelpulse_fl() const {
-  return (_has_bits_[1] & 0x00000008u) != 0;
+  return (_has_bits_[1] & 0x00000004u) != 0;
 }
 inline void Chassis::set_has_esp_wheelpulse_fl() {
-  _has_bits_[1] |= 0x00000008u;
+  _has_bits_[1] |= 0x00000004u;
 }
 inline void Chassis::clear_has_esp_wheelpulse_fl() {
-  _has_bits_[1] &= ~0x00000008u;
+  _has_bits_[1] &= ~0x00000004u;
 }
 inline void Chassis::clear_esp_wheelpulse_fl() {
   esp_wheelpulse_fl_ = 0;
@@ -3878,13 +3821,13 @@ inline void Chassis::set_esp_wheelpulse_fl(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_fr = 47;
 inline bool Chassis::has_esp_wheelpulse_fr() const {
-  return (_has_bits_[1] & 0x00000010u) != 0;
+  return (_has_bits_[1] & 0x00000008u) != 0;
 }
 inline void Chassis::set_has_esp_wheelpulse_fr() {
-  _has_bits_[1] |= 0x00000010u;
+  _has_bits_[1] |= 0x00000008u;
 }
 inline void Chassis::clear_has_esp_wheelpulse_fr() {
-  _has_bits_[1] &= ~0x00000010u;
+  _has_bits_[1] &= ~0x00000008u;
 }
 inline void Chassis::clear_esp_wheelpulse_fr() {
   esp_wheelpulse_fr_ = 0;
@@ -3902,13 +3845,13 @@ inline void Chassis::set_esp_wheelpulse_fr(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_rl = 48;
 inline bool Chassis::has_esp_wheelpulse_rl() const {
-  return (_has_bits_[1] & 0x00000020u) != 0;
+  return (_has_bits_[1] & 0x00000010u) != 0;
 }
 inline void Chassis::set_has_esp_wheelpulse_rl() {
-  _has_bits_[1] |= 0x00000020u;
+  _has_bits_[1] |= 0x00000010u;
 }
 inline void Chassis::clear_has_esp_wheelpulse_rl() {
-  _has_bits_[1] &= ~0x00000020u;
+  _has_bits_[1] &= ~0x00000010u;
 }
 inline void Chassis::clear_esp_wheelpulse_rl() {
   esp_wheelpulse_rl_ = 0;
@@ -3926,13 +3869,13 @@ inline void Chassis::set_esp_wheelpulse_rl(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_rr = 49;
 inline bool Chassis::has_esp_wheelpulse_rr() const {
-  return (_has_bits_[1] & 0x00000040u) != 0;
+  return (_has_bits_[1] & 0x00000020u) != 0;
 }
 inline void Chassis::set_has_esp_wheelpulse_rr() {
-  _has_bits_[1] |= 0x00000040u;
+  _has_bits_[1] |= 0x00000020u;
 }
 inline void Chassis::clear_has_esp_wheelpulse_rr() {
-  _has_bits_[1] &= ~0x00000040u;
+  _has_bits_[1] &= ~0x00000020u;
 }
 inline void Chassis::clear_esp_wheelpulse_rr() {
   esp_wheelpulse_rr_ = 0;
@@ -3950,13 +3893,13 @@ inline void Chassis::set_esp_wheelpulse_rr(::google::protobuf::int32 value) {
 
 // optional double ems_accpedalratio = 50;
 inline bool Chassis::has_ems_accpedalratio() const {
-  return (_has_bits_[1] & 0x00000080u) != 0;
+  return (_has_bits_[1] & 0x00000040u) != 0;
 }
 inline void Chassis::set_has_ems_accpedalratio() {
-  _has_bits_[1] |= 0x00000080u;
+  _has_bits_[1] |= 0x00000040u;
 }
 inline void Chassis::clear_has_ems_accpedalratio() {
-  _has_bits_[1] &= ~0x00000080u;
+  _has_bits_[1] &= ~0x00000040u;
 }
 inline void Chassis::clear_ems_accpedalratio() {
   ems_accpedalratio_ = 0;
@@ -3974,13 +3917,13 @@ inline void Chassis::set_ems_accpedalratio(double value) {
 
 // optional .jmc_auto.canbus.Chassis.BrkPedalStasus brkpedalstasus = 51;
 inline bool Chassis::has_brkpedalstasus() const {
-  return (_has_bits_[1] & 0x00040000u) != 0;
+  return (_has_bits_[1] & 0x00020000u) != 0;
 }
 inline void Chassis::set_has_brkpedalstasus() {
-  _has_bits_[1] |= 0x00040000u;
+  _has_bits_[1] |= 0x00020000u;
 }
 inline void Chassis::clear_has_brkpedalstasus() {
-  _has_bits_[1] &= ~0x00040000u;
+  _has_bits_[1] &= ~0x00020000u;
 }
 inline void Chassis::clear_brkpedalstasus() {
   brkpedalstasus_ = 0;
@@ -3999,13 +3942,13 @@ inline void Chassis::set_brkpedalstasus(::jmc_auto::canbus::Chassis_BrkPedalStas
 
 // optional double abs_whlspdfrntle = 52;
 inline bool Chassis::has_abs_whlspdfrntle() const {
-  return (_has_bits_[1] & 0x00000100u) != 0;
+  return (_has_bits_[1] & 0x00000080u) != 0;
 }
 inline void Chassis::set_has_abs_whlspdfrntle() {
-  _has_bits_[1] |= 0x00000100u;
+  _has_bits_[1] |= 0x00000080u;
 }
 inline void Chassis::clear_has_abs_whlspdfrntle() {
-  _has_bits_[1] &= ~0x00000100u;
+  _has_bits_[1] &= ~0x00000080u;
 }
 inline void Chassis::clear_abs_whlspdfrntle() {
   abs_whlspdfrntle_ = 0;
@@ -4023,13 +3966,13 @@ inline void Chassis::set_abs_whlspdfrntle(double value) {
 
 // optional double abs_whlspdfrntri = 53;
 inline bool Chassis::has_abs_whlspdfrntri() const {
-  return (_has_bits_[1] & 0x00000200u) != 0;
+  return (_has_bits_[1] & 0x00000100u) != 0;
 }
 inline void Chassis::set_has_abs_whlspdfrntri() {
-  _has_bits_[1] |= 0x00000200u;
+  _has_bits_[1] |= 0x00000100u;
 }
 inline void Chassis::clear_has_abs_whlspdfrntri() {
-  _has_bits_[1] &= ~0x00000200u;
+  _has_bits_[1] &= ~0x00000100u;
 }
 inline void Chassis::clear_abs_whlspdfrntri() {
   abs_whlspdfrntri_ = 0;
@@ -4047,13 +3990,13 @@ inline void Chassis::set_abs_whlspdfrntri(double value) {
 
 // optional double abs_whlspdrele = 54;
 inline bool Chassis::has_abs_whlspdrele() const {
-  return (_has_bits_[1] & 0x00000400u) != 0;
+  return (_has_bits_[1] & 0x00000200u) != 0;
 }
 inline void Chassis::set_has_abs_whlspdrele() {
-  _has_bits_[1] |= 0x00000400u;
+  _has_bits_[1] |= 0x00000200u;
 }
 inline void Chassis::clear_has_abs_whlspdrele() {
-  _has_bits_[1] &= ~0x00000400u;
+  _has_bits_[1] &= ~0x00000200u;
 }
 inline void Chassis::clear_abs_whlspdrele() {
   abs_whlspdrele_ = 0;
@@ -4071,13 +4014,13 @@ inline void Chassis::set_abs_whlspdrele(double value) {
 
 // optional double abs_whlspdreri = 55;
 inline bool Chassis::has_abs_whlspdreri() const {
-  return (_has_bits_[1] & 0x00000800u) != 0;
+  return (_has_bits_[1] & 0x00000400u) != 0;
 }
 inline void Chassis::set_has_abs_whlspdreri() {
-  _has_bits_[1] |= 0x00000800u;
+  _has_bits_[1] |= 0x00000400u;
 }
 inline void Chassis::clear_has_abs_whlspdreri() {
-  _has_bits_[1] &= ~0x00000800u;
+  _has_bits_[1] &= ~0x00000400u;
 }
 inline void Chassis::clear_abs_whlspdreri() {
   abs_whlspdreri_ = 0;
@@ -4095,13 +4038,13 @@ inline void Chassis::set_abs_whlspdreri(double value) {
 
 // optional double acc_x = 56;
 inline bool Chassis::has_acc_x() const {
-  return (_has_bits_[1] & 0x00001000u) != 0;
+  return (_has_bits_[1] & 0x00000800u) != 0;
 }
 inline void Chassis::set_has_acc_x() {
-  _has_bits_[1] |= 0x00001000u;
+  _has_bits_[1] |= 0x00000800u;
 }
 inline void Chassis::clear_has_acc_x() {
-  _has_bits_[1] &= ~0x00001000u;
+  _has_bits_[1] &= ~0x00000800u;
 }
 inline void Chassis::clear_acc_x() {
   acc_x_ = 0;
@@ -4119,13 +4062,13 @@ inline void Chassis::set_acc_x(double value) {
 
 // optional double acc_y = 57;
 inline bool Chassis::has_acc_y() const {
-  return (_has_bits_[1] & 0x00002000u) != 0;
+  return (_has_bits_[1] & 0x00001000u) != 0;
 }
 inline void Chassis::set_has_acc_y() {
-  _has_bits_[1] |= 0x00002000u;
+  _has_bits_[1] |= 0x00001000u;
 }
 inline void Chassis::clear_has_acc_y() {
-  _has_bits_[1] &= ~0x00002000u;
+  _has_bits_[1] &= ~0x00001000u;
 }
 inline void Chassis::clear_acc_y() {
   acc_y_ = 0;
@@ -4143,13 +4086,13 @@ inline void Chassis::set_acc_y(double value) {
 
 // optional double acc_z = 58;
 inline bool Chassis::has_acc_z() const {
-  return (_has_bits_[1] & 0x00004000u) != 0;
+  return (_has_bits_[1] & 0x00002000u) != 0;
 }
 inline void Chassis::set_has_acc_z() {
-  _has_bits_[1] |= 0x00004000u;
+  _has_bits_[1] |= 0x00002000u;
 }
 inline void Chassis::clear_has_acc_z() {
-  _has_bits_[1] &= ~0x00004000u;
+  _has_bits_[1] &= ~0x00002000u;
 }
 inline void Chassis::clear_acc_z() {
   acc_z_ = 0;
@@ -4167,13 +4110,13 @@ inline void Chassis::set_acc_z(double value) {
 
 // optional double gyro_x = 59;
 inline bool Chassis::has_gyro_x() const {
-  return (_has_bits_[1] & 0x00008000u) != 0;
+  return (_has_bits_[1] & 0x00004000u) != 0;
 }
 inline void Chassis::set_has_gyro_x() {
-  _has_bits_[1] |= 0x00008000u;
+  _has_bits_[1] |= 0x00004000u;
 }
 inline void Chassis::clear_has_gyro_x() {
-  _has_bits_[1] &= ~0x00008000u;
+  _has_bits_[1] &= ~0x00004000u;
 }
 inline void Chassis::clear_gyro_x() {
   gyro_x_ = 0;
@@ -4191,13 +4134,13 @@ inline void Chassis::set_gyro_x(double value) {
 
 // optional double gyro_y = 60;
 inline bool Chassis::has_gyro_y() const {
-  return (_has_bits_[1] & 0x00010000u) != 0;
+  return (_has_bits_[1] & 0x00008000u) != 0;
 }
 inline void Chassis::set_has_gyro_y() {
-  _has_bits_[1] |= 0x00010000u;
+  _has_bits_[1] |= 0x00008000u;
 }
 inline void Chassis::clear_has_gyro_y() {
-  _has_bits_[1] &= ~0x00010000u;
+  _has_bits_[1] &= ~0x00008000u;
 }
 inline void Chassis::clear_gyro_y() {
   gyro_y_ = 0;
@@ -4215,13 +4158,13 @@ inline void Chassis::set_gyro_y(double value) {
 
 // optional double gyro_z = 61;
 inline bool Chassis::has_gyro_z() const {
-  return (_has_bits_[1] & 0x00020000u) != 0;
+  return (_has_bits_[1] & 0x00010000u) != 0;
 }
 inline void Chassis::set_has_gyro_z() {
-  _has_bits_[1] |= 0x00020000u;
+  _has_bits_[1] |= 0x00010000u;
 }
 inline void Chassis::clear_has_gyro_z() {
-  _has_bits_[1] &= ~0x00020000u;
+  _has_bits_[1] &= ~0x00010000u;
 }
 inline void Chassis::clear_gyro_z() {
   gyro_z_ = 0;
@@ -4239,13 +4182,13 @@ inline void Chassis::set_gyro_z(double value) {
 
 // optional double ins_pitchangle = 62;
 inline bool Chassis::has_ins_pitchangle() const {
-  return (_has_bits_[1] & 0x00100000u) != 0;
+  return (_has_bits_[1] & 0x00080000u) != 0;
 }
 inline void Chassis::set_has_ins_pitchangle() {
-  _has_bits_[1] |= 0x00100000u;
+  _has_bits_[1] |= 0x00080000u;
 }
 inline void Chassis::clear_has_ins_pitchangle() {
-  _has_bits_[1] &= ~0x00100000u;
+  _has_bits_[1] &= ~0x00080000u;
 }
 inline void Chassis::clear_ins_pitchangle() {
   ins_pitchangle_ = 0;
@@ -4263,13 +4206,13 @@ inline void Chassis::set_ins_pitchangle(double value) {
 
 // optional double ins_rollangle = 63;
 inline bool Chassis::has_ins_rollangle() const {
-  return (_has_bits_[1] & 0x00200000u) != 0;
+  return (_has_bits_[1] & 0x00100000u) != 0;
 }
 inline void Chassis::set_has_ins_rollangle() {
-  _has_bits_[1] |= 0x00200000u;
+  _has_bits_[1] |= 0x00100000u;
 }
 inline void Chassis::clear_has_ins_rollangle() {
-  _has_bits_[1] &= ~0x00200000u;
+  _has_bits_[1] &= ~0x00100000u;
 }
 inline void Chassis::clear_ins_rollangle() {
   ins_rollangle_ = 0;
@@ -4287,13 +4230,13 @@ inline void Chassis::set_ins_rollangle(double value) {
 
 // optional double ins_headingangle = 64;
 inline bool Chassis::has_ins_headingangle() const {
-  return (_has_bits_[1] & 0x00400000u) != 0;
+  return (_has_bits_[1] & 0x00200000u) != 0;
 }
 inline void Chassis::set_has_ins_headingangle() {
-  _has_bits_[1] |= 0x00400000u;
+  _has_bits_[1] |= 0x00200000u;
 }
 inline void Chassis::clear_has_ins_headingangle() {
-  _has_bits_[1] &= ~0x00400000u;
+  _has_bits_[1] &= ~0x00200000u;
 }
 inline void Chassis::clear_ins_headingangle() {
   ins_headingangle_ = 0;
@@ -4311,13 +4254,13 @@ inline void Chassis::set_ins_headingangle(double value) {
 
 // optional double ins_locatheight = 65;
 inline bool Chassis::has_ins_locatheight() const {
-  return (_has_bits_[1] & 0x00800000u) != 0;
+  return (_has_bits_[1] & 0x00400000u) != 0;
 }
 inline void Chassis::set_has_ins_locatheight() {
-  _has_bits_[1] |= 0x00800000u;
+  _has_bits_[1] |= 0x00400000u;
 }
 inline void Chassis::clear_has_ins_locatheight() {
-  _has_bits_[1] &= ~0x00800000u;
+  _has_bits_[1] &= ~0x00400000u;
 }
 inline void Chassis::clear_ins_locatheight() {
   ins_locatheight_ = 0;
@@ -4335,13 +4278,13 @@ inline void Chassis::set_ins_locatheight(double value) {
 
 // optional double ins_time = 66;
 inline bool Chassis::has_ins_time() const {
-  return (_has_bits_[1] & 0x01000000u) != 0;
+  return (_has_bits_[1] & 0x00800000u) != 0;
 }
 inline void Chassis::set_has_ins_time() {
-  _has_bits_[1] |= 0x01000000u;
+  _has_bits_[1] |= 0x00800000u;
 }
 inline void Chassis::clear_has_ins_time() {
-  _has_bits_[1] &= ~0x01000000u;
+  _has_bits_[1] &= ~0x00800000u;
 }
 inline void Chassis::clear_ins_time() {
   ins_time_ = 0;
@@ -4359,13 +4302,13 @@ inline void Chassis::set_ins_time(double value) {
 
 // optional double ins_latitude = 67;
 inline bool Chassis::has_ins_latitude() const {
-  return (_has_bits_[1] & 0x02000000u) != 0;
+  return (_has_bits_[1] & 0x01000000u) != 0;
 }
 inline void Chassis::set_has_ins_latitude() {
-  _has_bits_[1] |= 0x02000000u;
+  _has_bits_[1] |= 0x01000000u;
 }
 inline void Chassis::clear_has_ins_latitude() {
-  _has_bits_[1] &= ~0x02000000u;
+  _has_bits_[1] &= ~0x01000000u;
 }
 inline void Chassis::clear_ins_latitude() {
   ins_latitude_ = 0;
@@ -4383,13 +4326,13 @@ inline void Chassis::set_ins_latitude(double value) {
 
 // optional double ins_longitude = 68;
 inline bool Chassis::has_ins_longitude() const {
-  return (_has_bits_[1] & 0x04000000u) != 0;
+  return (_has_bits_[1] & 0x02000000u) != 0;
 }
 inline void Chassis::set_has_ins_longitude() {
-  _has_bits_[1] |= 0x04000000u;
+  _has_bits_[1] |= 0x02000000u;
 }
 inline void Chassis::clear_has_ins_longitude() {
-  _has_bits_[1] &= ~0x04000000u;
+  _has_bits_[1] &= ~0x02000000u;
 }
 inline void Chassis::clear_ins_longitude() {
   ins_longitude_ = 0;
@@ -4407,13 +4350,13 @@ inline void Chassis::set_ins_longitude(double value) {
 
 // optional double ins_northspd = 69;
 inline bool Chassis::has_ins_northspd() const {
-  return (_has_bits_[1] & 0x08000000u) != 0;
+  return (_has_bits_[1] & 0x04000000u) != 0;
 }
 inline void Chassis::set_has_ins_northspd() {
-  _has_bits_[1] |= 0x08000000u;
+  _has_bits_[1] |= 0x04000000u;
 }
 inline void Chassis::clear_has_ins_northspd() {
-  _has_bits_[1] &= ~0x08000000u;
+  _has_bits_[1] &= ~0x04000000u;
 }
 inline void Chassis::clear_ins_northspd() {
   ins_northspd_ = 0;
@@ -4431,13 +4374,13 @@ inline void Chassis::set_ins_northspd(double value) {
 
 // optional double ins_eastspd = 70;
 inline bool Chassis::has_ins_eastspd() const {
-  return (_has_bits_[1] & 0x10000000u) != 0;
+  return (_has_bits_[1] & 0x08000000u) != 0;
 }
 inline void Chassis::set_has_ins_eastspd() {
-  _has_bits_[1] |= 0x10000000u;
+  _has_bits_[1] |= 0x08000000u;
 }
 inline void Chassis::clear_has_ins_eastspd() {
-  _has_bits_[1] &= ~0x10000000u;
+  _has_bits_[1] &= ~0x08000000u;
 }
 inline void Chassis::clear_ins_eastspd() {
   ins_eastspd_ = 0;
@@ -4455,13 +4398,13 @@ inline void Chassis::set_ins_eastspd(double value) {
 
 // optional double ins_togroundspd = 71;
 inline bool Chassis::has_ins_togroundspd() const {
-  return (_has_bits_[1] & 0x20000000u) != 0;
+  return (_has_bits_[1] & 0x10000000u) != 0;
 }
 inline void Chassis::set_has_ins_togroundspd() {
-  _has_bits_[1] |= 0x20000000u;
+  _has_bits_[1] |= 0x10000000u;
 }
 inline void Chassis::clear_has_ins_togroundspd() {
-  _has_bits_[1] &= ~0x20000000u;
+  _has_bits_[1] &= ~0x10000000u;
 }
 inline void Chassis::clear_ins_togroundspd() {
   ins_togroundspd_ = 0;
@@ -4479,13 +4422,13 @@ inline void Chassis::set_ins_togroundspd(double value) {
 
 // optional int32 ins_gpsflag_pos = 72;
 inline bool Chassis::has_ins_gpsflag_pos() const {
-  return (_has_bits_[1] & 0x00080000u) != 0;
+  return (_has_bits_[1] & 0x00040000u) != 0;
 }
 inline void Chassis::set_has_ins_gpsflag_pos() {
-  _has_bits_[1] |= 0x00080000u;
+  _has_bits_[1] |= 0x00040000u;
 }
 inline void Chassis::clear_has_ins_gpsflag_pos() {
-  _has_bits_[1] &= ~0x00080000u;
+  _has_bits_[1] &= ~0x00040000u;
 }
 inline void Chassis::clear_ins_gpsflag_pos() {
   ins_gpsflag_pos_ = 0;
@@ -4503,13 +4446,13 @@ inline void Chassis::set_ins_gpsflag_pos(::google::protobuf::int32 value) {
 
 // optional int32 ins_numsv = 73;
 inline bool Chassis::has_ins_numsv() const {
-  return (_has_bits_[1] & 0x40000000u) != 0;
+  return (_has_bits_[1] & 0x20000000u) != 0;
 }
 inline void Chassis::set_has_ins_numsv() {
-  _has_bits_[1] |= 0x40000000u;
+  _has_bits_[1] |= 0x20000000u;
 }
 inline void Chassis::clear_has_ins_numsv() {
-  _has_bits_[1] &= ~0x40000000u;
+  _has_bits_[1] &= ~0x20000000u;
 }
 inline void Chassis::clear_ins_numsv() {
   ins_numsv_ = 0;
@@ -4527,13 +4470,13 @@ inline void Chassis::set_ins_numsv(::google::protobuf::int32 value) {
 
 // optional int32 ins_gpsflag_heading = 74;
 inline bool Chassis::has_ins_gpsflag_heading() const {
-  return (_has_bits_[1] & 0x80000000u) != 0;
+  return (_has_bits_[1] & 0x40000000u) != 0;
 }
 inline void Chassis::set_has_ins_gpsflag_heading() {
-  _has_bits_[1] |= 0x80000000u;
+  _has_bits_[1] |= 0x40000000u;
 }
 inline void Chassis::clear_has_ins_gpsflag_heading() {
-  _has_bits_[1] &= ~0x80000000u;
+  _has_bits_[1] &= ~0x40000000u;
 }
 inline void Chassis::clear_ins_gpsflag_heading() {
   ins_gpsflag_heading_ = 0;
@@ -4551,13 +4494,13 @@ inline void Chassis::set_ins_gpsflag_heading(::google::protobuf::int32 value) {
 
 // optional int32 ins_gps_age = 75;
 inline bool Chassis::has_ins_gps_age() const {
-  return (_has_bits_[2] & 0x00000001u) != 0;
+  return (_has_bits_[1] & 0x80000000u) != 0;
 }
 inline void Chassis::set_has_ins_gps_age() {
-  _has_bits_[2] |= 0x00000001u;
+  _has_bits_[1] |= 0x80000000u;
 }
 inline void Chassis::clear_has_ins_gps_age() {
-  _has_bits_[2] &= ~0x00000001u;
+  _has_bits_[1] &= ~0x80000000u;
 }
 inline void Chassis::clear_ins_gps_age() {
   ins_gps_age_ = 0;
@@ -4575,13 +4518,13 @@ inline void Chassis::set_ins_gps_age(::google::protobuf::int32 value) {
 
 // optional int32 ins_car_status = 76;
 inline bool Chassis::has_ins_car_status() const {
-  return (_has_bits_[2] & 0x00000002u) != 0;
+  return (_has_bits_[2] & 0x00000001u) != 0;
 }
 inline void Chassis::set_has_ins_car_status() {
-  _has_bits_[2] |= 0x00000002u;
+  _has_bits_[2] |= 0x00000001u;
 }
 inline void Chassis::clear_has_ins_car_status() {
-  _has_bits_[2] &= ~0x00000002u;
+  _has_bits_[2] &= ~0x00000001u;
 }
 inline void Chassis::clear_ins_car_status() {
   ins_car_status_ = 0;
@@ -4599,13 +4542,13 @@ inline void Chassis::set_ins_car_status(::google::protobuf::int32 value) {
 
 // optional int32 ins_status = 77;
 inline bool Chassis::has_ins_status() const {
-  return (_has_bits_[2] & 0x00000010u) != 0;
+  return (_has_bits_[2] & 0x00000008u) != 0;
 }
 inline void Chassis::set_has_ins_status() {
-  _has_bits_[2] |= 0x00000010u;
+  _has_bits_[2] |= 0x00000008u;
 }
 inline void Chassis::clear_has_ins_status() {
-  _has_bits_[2] &= ~0x00000010u;
+  _has_bits_[2] &= ~0x00000008u;
 }
 inline void Chassis::clear_ins_status() {
   ins_status_ = 0;
@@ -4623,13 +4566,13 @@ inline void Chassis::set_ins_status(::google::protobuf::int32 value) {
 
 // optional double ins_std_lat = 78;
 inline bool Chassis::has_ins_std_lat() const {
-  return (_has_bits_[2] & 0x00000004u) != 0;
+  return (_has_bits_[2] & 0x00000002u) != 0;
 }
 inline void Chassis::set_has_ins_std_lat() {
-  _has_bits_[2] |= 0x00000004u;
+  _has_bits_[2] |= 0x00000002u;
 }
 inline void Chassis::clear_has_ins_std_lat() {
-  _has_bits_[2] &= ~0x00000004u;
+  _has_bits_[2] &= ~0x00000002u;
 }
 inline void Chassis::clear_ins_std_lat() {
   ins_std_lat_ = 0;
@@ -4647,13 +4590,13 @@ inline void Chassis::set_ins_std_lat(double value) {
 
 // optional double ins_std_lon = 79;
 inline bool Chassis::has_ins_std_lon() const {
-  return (_has_bits_[2] & 0x00000008u) != 0;
+  return (_has_bits_[2] & 0x00000004u) != 0;
 }
 inline void Chassis::set_has_ins_std_lon() {
-  _has_bits_[2] |= 0x00000008u;
+  _has_bits_[2] |= 0x00000004u;
 }
 inline void Chassis::clear_has_ins_std_lon() {
-  _has_bits_[2] &= ~0x00000008u;
+  _has_bits_[2] &= ~0x00000004u;
 }
 inline void Chassis::clear_ins_std_lon() {
   ins_std_lon_ = 0;
@@ -4671,13 +4614,13 @@ inline void Chassis::set_ins_std_lon(double value) {
 
 // optional double ins_std_locat_height = 80;
 inline bool Chassis::has_ins_std_locat_height() const {
-  return (_has_bits_[2] & 0x00000040u) != 0;
+  return (_has_bits_[2] & 0x00000020u) != 0;
 }
 inline void Chassis::set_has_ins_std_locat_height() {
-  _has_bits_[2] |= 0x00000040u;
+  _has_bits_[2] |= 0x00000020u;
 }
 inline void Chassis::clear_has_ins_std_locat_height() {
-  _has_bits_[2] &= ~0x00000040u;
+  _has_bits_[2] &= ~0x00000020u;
 }
 inline void Chassis::clear_ins_std_locat_height() {
   ins_std_locat_height_ = 0;
@@ -4695,13 +4638,13 @@ inline void Chassis::set_ins_std_locat_height(double value) {
 
 // optional double ins_std_heading = 81;
 inline bool Chassis::has_ins_std_heading() const {
-  return (_has_bits_[2] & 0x00000080u) != 0;
+  return (_has_bits_[2] & 0x00000040u) != 0;
 }
 inline void Chassis::set_has_ins_std_heading() {
-  _has_bits_[2] |= 0x00000080u;
+  _has_bits_[2] |= 0x00000040u;
 }
 inline void Chassis::clear_has_ins_std_heading() {
-  _has_bits_[2] &= ~0x00000080u;
+  _has_bits_[2] &= ~0x00000040u;
 }
 inline void Chassis::clear_ins_std_heading() {
   ins_std_heading_ = 0;
@@ -4719,13 +4662,13 @@ inline void Chassis::set_ins_std_heading(double value) {
 
 // optional int32 eps_lkacontrolstatus = 82;
 inline bool Chassis::has_eps_lkacontrolstatus() const {
-  return (_has_bits_[2] & 0x00000020u) != 0;
+  return (_has_bits_[2] & 0x00000010u) != 0;
 }
 inline void Chassis::set_has_eps_lkacontrolstatus() {
-  _has_bits_[2] |= 0x00000020u;
+  _has_bits_[2] |= 0x00000010u;
 }
 inline void Chassis::clear_has_eps_lkacontrolstatus() {
-  _has_bits_[2] &= ~0x00000020u;
+  _has_bits_[2] &= ~0x00000010u;
 }
 inline void Chassis::clear_eps_lkacontrolstatus() {
   eps_lkacontrolstatus_ = 0;
@@ -4743,13 +4686,13 @@ inline void Chassis::set_eps_lkacontrolstatus(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlc_active = 83;
 inline bool Chassis::has_esp_vlc_active() const {
-  return (_has_bits_[2] & 0x00000100u) != 0;
+  return (_has_bits_[2] & 0x00000080u) != 0;
 }
 inline void Chassis::set_has_esp_vlc_active() {
-  _has_bits_[2] |= 0x00000100u;
+  _has_bits_[2] |= 0x00000080u;
 }
 inline void Chassis::clear_has_esp_vlc_active() {
-  _has_bits_[2] &= ~0x00000100u;
+  _has_bits_[2] &= ~0x00000080u;
 }
 inline void Chassis::clear_esp_vlc_active() {
   esp_vlc_active_ = 0;
@@ -4767,13 +4710,13 @@ inline void Chassis::set_esp_vlc_active(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlc_available = 84;
 inline bool Chassis::has_esp_vlc_available() const {
-  return (_has_bits_[2] & 0x00000200u) != 0;
+  return (_has_bits_[2] & 0x00000100u) != 0;
 }
 inline void Chassis::set_has_esp_vlc_available() {
-  _has_bits_[2] |= 0x00000200u;
+  _has_bits_[2] |= 0x00000100u;
 }
 inline void Chassis::clear_has_esp_vlc_available() {
-  _has_bits_[2] &= ~0x00000200u;
+  _has_bits_[2] &= ~0x00000100u;
 }
 inline void Chassis::clear_esp_vlc_available() {
   esp_vlc_available_ = 0;
@@ -4791,13 +4734,13 @@ inline void Chassis::set_esp_vlc_available(::google::protobuf::int32 value) {
 
 // optional int32 esp_apa_gearboxenable = 85;
 inline bool Chassis::has_esp_apa_gearboxenable() const {
-  return (_has_bits_[2] & 0x00000400u) != 0;
+  return (_has_bits_[2] & 0x00000200u) != 0;
 }
 inline void Chassis::set_has_esp_apa_gearboxenable() {
-  _has_bits_[2] |= 0x00000400u;
+  _has_bits_[2] |= 0x00000200u;
 }
 inline void Chassis::clear_has_esp_apa_gearboxenable() {
-  _has_bits_[2] &= ~0x00000400u;
+  _has_bits_[2] &= ~0x00000200u;
 }
 inline void Chassis::clear_esp_apa_gearboxenable() {
   esp_apa_gearboxenable_ = 0;
@@ -4815,13 +4758,13 @@ inline void Chassis::set_esp_apa_gearboxenable(::google::protobuf::int32 value) 
 
 // optional int32 esp_vlc_apactive = 86;
 inline bool Chassis::has_esp_vlc_apactive() const {
-  return (_has_bits_[2] & 0x00000800u) != 0;
+  return (_has_bits_[2] & 0x00000400u) != 0;
 }
 inline void Chassis::set_has_esp_vlc_apactive() {
-  _has_bits_[2] |= 0x00000800u;
+  _has_bits_[2] |= 0x00000400u;
 }
 inline void Chassis::clear_has_esp_vlc_apactive() {
-  _has_bits_[2] &= ~0x00000800u;
+  _has_bits_[2] &= ~0x00000400u;
 }
 inline void Chassis::clear_esp_vlc_apactive() {
   esp_vlc_apactive_ = 0;
@@ -4839,13 +4782,13 @@ inline void Chassis::set_esp_vlc_apactive(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlcapa_available = 87;
 inline bool Chassis::has_esp_vlcapa_available() const {
-  return (_has_bits_[2] & 0x00001000u) != 0;
+  return (_has_bits_[2] & 0x00000800u) != 0;
 }
 inline void Chassis::set_has_esp_vlcapa_available() {
-  _has_bits_[2] |= 0x00001000u;
+  _has_bits_[2] |= 0x00000800u;
 }
 inline void Chassis::clear_has_esp_vlcapa_available() {
-  _has_bits_[2] &= ~0x00001000u;
+  _has_bits_[2] &= ~0x00000800u;
 }
 inline void Chassis::clear_esp_vlcapa_available() {
   esp_vlcapa_available_ = 0;
@@ -4863,13 +4806,13 @@ inline void Chassis::set_esp_vlcapa_available(::google::protobuf::int32 value) {
 
 // optional int32 esp_epbstatus = 88;
 inline bool Chassis::has_esp_epbstatus() const {
-  return (_has_bits_[2] & 0x00002000u) != 0;
+  return (_has_bits_[2] & 0x00001000u) != 0;
 }
 inline void Chassis::set_has_esp_epbstatus() {
-  _has_bits_[2] |= 0x00002000u;
+  _has_bits_[2] |= 0x00001000u;
 }
 inline void Chassis::clear_has_esp_epbstatus() {
-  _has_bits_[2] &= ~0x00002000u;
+  _has_bits_[2] &= ~0x00001000u;
 }
 inline void Chassis::clear_esp_epbstatus() {
   esp_epbstatus_ = 0;

@@ -113,7 +113,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, engage_advice_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, wheel_speed_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, surround_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, license_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, lon_acc_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, steer_wheel_rot_spd_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, abs_vehspdlgt_valid_),
@@ -170,44 +169,44 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_vlc_apactive_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_vlcapa_available_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_epbstatus_),
-  8,
+  7,
+  78,
   79,
   80,
+  6,
   81,
-  7,
   82,
   83,
-  84,
-  78,
+  77,
+  8,
   9,
   10,
   11,
   12,
   13,
   14,
+  20,
   15,
-  21,
   16,
   17,
   18,
-  19,
   0,
-  20,
+  19,
   1,
   2,
   3,
   4,
   5,
-  6,
+  24,
   25,
-  26,
+  21,
   22,
   23,
-  24,
+  26,
   27,
+  29,
   28,
   30,
-  29,
   31,
   32,
   33,
@@ -216,8 +215,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   36,
   37,
   38,
+  49,
   39,
-  50,
   40,
   41,
   42,
@@ -227,7 +226,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   46,
   47,
   48,
-  49,
+  51,
   52,
   53,
   54,
@@ -237,24 +236,23 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   58,
   59,
   60,
+  50,
   61,
-  51,
   62,
   63,
   64,
-  65,
-  68,
-  66,
   67,
-  70,
-  71,
+  65,
+  66,
   69,
+  70,
+  68,
+  71,
   72,
   73,
   74,
   75,
   76,
-  77,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChassisGPS, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChassisGPS, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -404,12 +402,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, 10, sizeof(Signal)},
-  { 15, 105, sizeof(Chassis)},
-  { 190, 215, sizeof(ChassisGPS)},
-  { 235, 252, sizeof(WheelSpeed)},
-  { 264, 272, sizeof(Sonar)},
-  { 275, 304, sizeof(Surround)},
-  { 328, 334, sizeof(License)},
+  { 15, 104, sizeof(Chassis)},
+  { 188, 213, sizeof(ChassisGPS)},
+  { 233, 250, sizeof(WheelSpeed)},
+  { 262, 270, sizeof(Sonar)},
+  { 273, 302, sizeof(Surround)},
+  { 326, 332, sizeof(License)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -489,8 +487,6 @@ void TableStruct::InitDefaultsImpl() {
       ::jmc_auto::canbus::WheelSpeed::internal_default_instance());
   _Chassis_default_instance_.get_mutable()->surround_ = const_cast< ::jmc_auto::canbus::Surround*>(
       ::jmc_auto::canbus::Surround::internal_default_instance());
-  _Chassis_default_instance_.get_mutable()->license_ = const_cast< ::jmc_auto::canbus::License*>(
-      ::jmc_auto::canbus::License::internal_default_instance());
   _Sonar_default_instance_.get_mutable()->translation_ = const_cast< ::jmc_auto::common::Point3D*>(
       ::jmc_auto::common::Point3D::internal_default_instance());
   _Sonar_default_instance_.get_mutable()->rotation_ = const_cast< ::jmc_auto::common::Quaternion*>(
@@ -514,7 +510,7 @@ void AddDescriptorsImpl() {
       "high_beam\030\002 \001(\010\022\020\n\010low_beam\030\003 \001(\010\022\014\n\004hor"
       "n\030\004 \001(\010\022\027\n\017emergency_light\030\005 \001(\010\":\n\nTurn"
       "Signal\022\r\n\tTURN_NONE\020\000\022\r\n\tTURN_LEFT\020\001\022\016\n\n"
-      "TURN_RIGHT\020\002\"\262\027\n\007Chassis\022\026\n\016engine_start"
+      "TURN_RIGHT\020\002\"\207\027\n\007Chassis\022\026\n\016engine_start"
       "ed\030\003 \001(\010\022\027\n\nengine_rpm\030\004 \001(\002:\003nan\022\026\n\tspe"
       "ed_mps\030\005 \001(\002:\003nan\022\027\n\nodometer_m\030\006 \001(\002:\003n"
       "an\022\024\n\014fuel_range_m\030\007 \001(\005\022 \n\023throttle_per"
@@ -539,107 +535,106 @@ void AddDescriptorsImpl() {
       "isGPS\0224\n\rengage_advice\030\035 \001(\0132\035.jmc_auto."
       "common.EngageAdvice\0220\n\013wheel_speed\030\036 \001(\013"
       "2\033.jmc_auto.canbus.WheelSpeed\022+\n\010surroun"
-      "d\030\037 \001(\0132\031.jmc_auto.canbus.Surround\022)\n\007li"
-      "cense\030  \001(\0132\030.jmc_auto.canbus.License\022\017\n"
-      "\007lon_acc\030! \001(\002\022\033\n\023steer_wheel_rot_spd\030\" "
-      "\001(\002\022\033\n\023abs_vehspdlgt_valid\030# \001(\010\022\034\n\024esp_"
-      "algtstatus_valid\030$ \001(\010\022\034\n\024sas_sasstssnsr"
-      "_valid\030% \001(\010\022\036\n\026steerwheelrotspd_valid\030&"
-      " \001(\010\022#\n\033eps_lkaresponsetorque_valid\030\' \001("
-      "\010\022\034\n\024eps_torsionbartorque\030( \001(\002\022 \n\030eps_t"
-      "osionbartorquevalid\030) \001(\010\022\031\n\021abs_whlmilg"
-      "frntri\030* \001(\005\022\031\n\021abs_whlmilgfrntle\030+ \001(\005\022"
-      "\031\n\021abs_whlmilgrearre\030, \001(\005\022\031\n\021abs_whlmil"
-      "grearle\030- \001(\005\022\031\n\021esp_wheelpulse_fl\030. \001(\005"
-      "\022\031\n\021esp_wheelpulse_fr\030/ \001(\005\022\031\n\021esp_wheel"
-      "pulse_rl\0300 \001(\005\022\031\n\021esp_wheelpulse_rr\0301 \001("
-      "\005\022\031\n\021ems_accpedalratio\0302 \001(\001\022\?\n\016brkpedal"
-      "stasus\0303 \001(\0162\'.jmc_auto.canbus.Chassis.B"
-      "rkPedalStasus\022\030\n\020abs_whlspdfrntle\0304 \001(\001\022"
-      "\030\n\020abs_whlspdfrntri\0305 \001(\001\022\026\n\016abs_whlspdr"
-      "ele\0306 \001(\001\022\026\n\016abs_whlspdreri\0307 \001(\001\022\r\n\005acc"
-      "_x\0308 \001(\001\022\r\n\005acc_y\0309 \001(\001\022\r\n\005acc_z\030: \001(\001\022\016"
-      "\n\006gyro_x\030; \001(\001\022\016\n\006gyro_y\030< \001(\001\022\016\n\006gyro_z"
-      "\030= \001(\001\022\026\n\016ins_pitchangle\030> \001(\001\022\025\n\rins_ro"
-      "llangle\030\? \001(\001\022\030\n\020ins_headingangle\030@ \001(\001\022"
-      "\027\n\017ins_locatheight\030A \001(\001\022\020\n\010ins_time\030B \001"
-      "(\001\022\024\n\014ins_latitude\030C \001(\001\022\025\n\rins_longitud"
-      "e\030D \001(\001\022\024\n\014ins_northspd\030E \001(\001\022\023\n\013ins_eas"
-      "tspd\030F \001(\001\022\027\n\017ins_togroundspd\030G \001(\001\022\027\n\017i"
-      "ns_gpsflag_pos\030H \001(\005\022\021\n\tins_numsv\030I \001(\005\022"
-      "\033\n\023ins_gpsflag_heading\030J \001(\005\022\023\n\013ins_gps_"
-      "age\030K \001(\005\022\026\n\016ins_car_status\030L \001(\005\022\022\n\nins"
-      "_status\030M \001(\005\022\023\n\013ins_std_lat\030N \001(\001\022\023\n\013in"
-      "s_std_lon\030O \001(\001\022\034\n\024ins_std_locat_height\030"
-      "P \001(\001\022\027\n\017ins_std_heading\030Q \001(\001\022\034\n\024eps_lk"
-      "acontrolstatus\030R \001(\005\022\026\n\016esp_vlc_active\030S"
-      " \001(\005\022\031\n\021esp_vlc_available\030T \001(\005\022\035\n\025esp_a"
-      "pa_gearboxenable\030U \001(\005\022\030\n\020esp_vlc_apacti"
-      "ve\030V \001(\005\022\034\n\024esp_vlcapa_available\030W \001(\005\022\025"
-      "\n\resp_epbstatus\030X \001(\005\"\230\001\n\013DrivingMode\022\023\n"
-      "\017COMPLETE_MANUAL\020\000\022\027\n\023COMPLETE_AUTO_DRIV"
-      "E\020\001\022\023\n\017AUTO_STEER_ONLY\020\002\022\023\n\017AUTO_SPEED_O"
-      "NLY\020\003\022\022\n\016EMERGENCY_MODE\020\004\022\017\n\013REMOTE_MODE"
-      "\020\005\022\014\n\010APA_MODE\020\006\"\216\001\n\tErrorCode\022\014\n\010NO_ERR"
-      "OR\020\000\022\025\n\021CMD_NOT_IN_PERIOD\020\001\022\021\n\rCHASSIS_E"
-      "RROR\020\002\022\027\n\023MANUAL_INTERVENTION\020\003\022\035\n\031CHASS"
-      "IS_CAN_NOT_IN_PERIOD\020\004\022\021\n\rUNKNOWN_ERROR\020"
-      "\005\"\203\001\n\014GearPosition\022\020\n\014GEAR_NEUTRAL\020\000\022\016\n\n"
-      "GEAR_DRIVE\020\001\022\020\n\014GEAR_REVERSE\020\002\022\020\n\014GEAR_P"
-      "ARKING\020\003\022\014\n\010GEAR_LOW\020\004\022\020\n\014GEAR_INVALID\020\005"
-      "\022\r\n\tGEAR_NONE\020\006\"H\n\016BrkPedalStasus\022\017\n\013NOT"
-      "_PRESSED\020\000\022\013\n\007PRESSED\020\001\022\r\n\tRESERRVED\020\002\022\t"
-      "\n\005ERROR\020\003\"\213\003\n\nChassisGPS\022\020\n\010latitude\030\001 \001"
-      "(\001\022\021\n\tlongitude\030\002 \001(\001\022\021\n\tgps_valid\030\003 \001(\010"
-      "\022\014\n\004year\030\004 \001(\005\022\r\n\005month\030\005 \001(\005\022\013\n\003day\030\006 \001"
-      "(\005\022\r\n\005hours\030\007 \001(\005\022\017\n\007minutes\030\010 \001(\005\022\017\n\007se"
-      "conds\030\t \001(\005\022\031\n\021compass_direction\030\n \001(\001\022\014"
-      "\n\004pdop\030\013 \001(\001\022\024\n\014is_gps_fault\030\014 \001(\010\022\023\n\013is"
-      "_inferred\030\r \001(\010\022\020\n\010altitude\030\016 \001(\001\022\017\n\007hea"
-      "ding\030\017 \001(\001\022\014\n\004hdop\030\020 \001(\001\022\014\n\004vdop\030\021 \001(\001\022,"
-      "\n\007quality\030\022 \001(\0162\033.jmc_auto.canbus.GpsQua"
-      "lity\022\026\n\016num_satellites\030\023 \001(\005\022\021\n\tgps_spee"
-      "d\030\024 \001(\001\"\226\005\n\nWheelSpeed\022$\n\025is_wheel_spd_r"
-      "r_valid\030\001 \001(\010:\005false\022O\n\022wheel_direction_"
-      "rr\030\002 \001(\0162*.jmc_auto.canbus.WheelSpeed.Wh"
-      "eelSpeedType:\007INVALID\022\027\n\014wheel_spd_rr\030\003 "
-      "\001(\001:\0010\022$\n\025is_wheel_spd_rl_valid\030\004 \001(\010:\005f"
-      "alse\022O\n\022wheel_direction_rl\030\005 \001(\0162*.jmc_a"
-      "uto.canbus.WheelSpeed.WheelSpeedType:\007IN"
-      "VALID\022\027\n\014wheel_spd_rl\030\006 \001(\001:\0010\022$\n\025is_whe"
-      "el_spd_fr_valid\030\007 \001(\010:\005false\022O\n\022wheel_di"
-      "rection_fr\030\010 \001(\0162*.jmc_auto.canbus.Wheel"
-      "Speed.WheelSpeedType:\007INVALID\022\027\n\014wheel_s"
-      "pd_fr\030\t \001(\001:\0010\022$\n\025is_wheel_spd_fl_valid\030"
-      "\n \001(\010:\005false\022O\n\022wheel_direction_fl\030\013 \001(\016"
-      "2*.jmc_auto.canbus.WheelSpeed.WheelSpeed"
-      "Type:\007INVALID\022\027\n\014wheel_spd_fl\030\014 \001(\001:\0010\"H"
-      "\n\016WheelSpeedType\022\013\n\007FORWARD\020\000\022\014\n\010BACKWAR"
-      "D\020\001\022\016\n\nSTANDSTILL\020\002\022\013\n\007INVALID\020\003\"t\n\005Sona"
-      "r\022\r\n\005range\030\001 \001(\001\022-\n\013translation\030\002 \001(\0132\030."
-      "jmc_auto.common.Point3D\022-\n\010rotation\030\003 \001("
-      "\0132\033.jmc_auto.common.Quaternion\"\346\004\n\010Surro"
-      "und\022 \n\030cross_traffic_alert_left\030\001 \001(\010\022(\n"
-      " cross_traffic_alert_left_enabled\030\002 \001(\010\022"
-      "\035\n\025blind_spot_left_alert\030\003 \001(\010\022%\n\035blind_"
-      "spot_left_alert_enabled\030\004 \001(\010\022!\n\031cross_t"
-      "raffic_alert_right\030\005 \001(\010\022)\n!cross_traffi"
-      "c_alert_right_enabled\030\006 \001(\010\022\036\n\026blind_spo"
-      "t_right_alert\030\007 \001(\010\022&\n\036blind_spot_right_"
-      "alert_enabled\030\010 \001(\010\022\017\n\007sonar00\030\t \001(\001\022\017\n\007"
-      "sonar01\030\n \001(\001\022\017\n\007sonar02\030\013 \001(\001\022\017\n\007sonar0"
-      "3\030\014 \001(\001\022\017\n\007sonar04\030\r \001(\001\022\017\n\007sonar05\030\016 \001("
-      "\001\022\017\n\007sonar06\030\017 \001(\001\022\017\n\007sonar07\030\020 \001(\001\022\017\n\007s"
-      "onar08\030\021 \001(\001\022\017\n\007sonar09\030\022 \001(\001\022\017\n\007sonar10"
-      "\030\023 \001(\001\022\017\n\007sonar11\030\024 \001(\001\022\025\n\rsonar_enabled"
-      "\030\025 \001(\010\022\023\n\013sonar_fault\030\026 \001(\010\022\023\n\013sonar_ran"
-      "ge\030\027 \003(\001\022%\n\005sonar\030\030 \003(\0132\026.jmc_auto.canbu"
-      "s.Sonar\"\026\n\007License\022\013\n\003vin\030\001 \001(\t*A\n\nGpsQu"
-      "ality\022\n\n\006FIX_NO\020\000\022\n\n\006FIX_2D\020\001\022\n\n\006FIX_3D\020"
-      "\002\022\017\n\013FIX_INVALID\020\003"
+      "d\030\037 \001(\0132\031.jmc_auto.canbus.Surround\022\017\n\007lo"
+      "n_acc\030! \001(\002\022\033\n\023steer_wheel_rot_spd\030\" \001(\002"
+      "\022\033\n\023abs_vehspdlgt_valid\030# \001(\010\022\034\n\024esp_alg"
+      "tstatus_valid\030$ \001(\010\022\034\n\024sas_sasstssnsr_va"
+      "lid\030% \001(\010\022\036\n\026steerwheelrotspd_valid\030& \001("
+      "\010\022#\n\033eps_lkaresponsetorque_valid\030\' \001(\010\022\034"
+      "\n\024eps_torsionbartorque\030( \001(\002\022 \n\030eps_tosi"
+      "onbartorquevalid\030) \001(\010\022\031\n\021abs_whlmilgfrn"
+      "tri\030* \001(\005\022\031\n\021abs_whlmilgfrntle\030+ \001(\005\022\031\n\021"
+      "abs_whlmilgrearre\030, \001(\005\022\031\n\021abs_whlmilgre"
+      "arle\030- \001(\005\022\031\n\021esp_wheelpulse_fl\030. \001(\005\022\031\n"
+      "\021esp_wheelpulse_fr\030/ \001(\005\022\031\n\021esp_wheelpul"
+      "se_rl\0300 \001(\005\022\031\n\021esp_wheelpulse_rr\0301 \001(\005\022\031"
+      "\n\021ems_accpedalratio\0302 \001(\001\022\?\n\016brkpedalsta"
+      "sus\0303 \001(\0162\'.jmc_auto.canbus.Chassis.BrkP"
+      "edalStasus\022\030\n\020abs_whlspdfrntle\0304 \001(\001\022\030\n\020"
+      "abs_whlspdfrntri\0305 \001(\001\022\026\n\016abs_whlspdrele"
+      "\0306 \001(\001\022\026\n\016abs_whlspdreri\0307 \001(\001\022\r\n\005acc_x\030"
+      "8 \001(\001\022\r\n\005acc_y\0309 \001(\001\022\r\n\005acc_z\030: \001(\001\022\016\n\006g"
+      "yro_x\030; \001(\001\022\016\n\006gyro_y\030< \001(\001\022\016\n\006gyro_z\030= "
+      "\001(\001\022\026\n\016ins_pitchangle\030> \001(\001\022\025\n\rins_rolla"
+      "ngle\030\? \001(\001\022\030\n\020ins_headingangle\030@ \001(\001\022\027\n\017"
+      "ins_locatheight\030A \001(\001\022\020\n\010ins_time\030B \001(\001\022"
+      "\024\n\014ins_latitude\030C \001(\001\022\025\n\rins_longitude\030D"
+      " \001(\001\022\024\n\014ins_northspd\030E \001(\001\022\023\n\013ins_eastsp"
+      "d\030F \001(\001\022\027\n\017ins_togroundspd\030G \001(\001\022\027\n\017ins_"
+      "gpsflag_pos\030H \001(\005\022\021\n\tins_numsv\030I \001(\005\022\033\n\023"
+      "ins_gpsflag_heading\030J \001(\005\022\023\n\013ins_gps_age"
+      "\030K \001(\005\022\026\n\016ins_car_status\030L \001(\005\022\022\n\nins_st"
+      "atus\030M \001(\005\022\023\n\013ins_std_lat\030N \001(\001\022\023\n\013ins_s"
+      "td_lon\030O \001(\001\022\034\n\024ins_std_locat_height\030P \001"
+      "(\001\022\027\n\017ins_std_heading\030Q \001(\001\022\034\n\024eps_lkaco"
+      "ntrolstatus\030R \001(\005\022\026\n\016esp_vlc_active\030S \001("
+      "\005\022\031\n\021esp_vlc_available\030T \001(\005\022\035\n\025esp_apa_"
+      "gearboxenable\030U \001(\005\022\030\n\020esp_vlc_apactive\030"
+      "V \001(\005\022\034\n\024esp_vlcapa_available\030W \001(\005\022\025\n\re"
+      "sp_epbstatus\030X \001(\005\"\230\001\n\013DrivingMode\022\023\n\017CO"
+      "MPLETE_MANUAL\020\000\022\027\n\023COMPLETE_AUTO_DRIVE\020\001"
+      "\022\023\n\017AUTO_STEER_ONLY\020\002\022\023\n\017AUTO_SPEED_ONLY"
+      "\020\003\022\022\n\016EMERGENCY_MODE\020\004\022\017\n\013REMOTE_MODE\020\005\022"
+      "\014\n\010APA_MODE\020\006\"\216\001\n\tErrorCode\022\014\n\010NO_ERROR\020"
+      "\000\022\025\n\021CMD_NOT_IN_PERIOD\020\001\022\021\n\rCHASSIS_ERRO"
+      "R\020\002\022\027\n\023MANUAL_INTERVENTION\020\003\022\035\n\031CHASSIS_"
+      "CAN_NOT_IN_PERIOD\020\004\022\021\n\rUNKNOWN_ERROR\020\005\"\203"
+      "\001\n\014GearPosition\022\020\n\014GEAR_NEUTRAL\020\000\022\016\n\nGEA"
+      "R_DRIVE\020\001\022\020\n\014GEAR_REVERSE\020\002\022\020\n\014GEAR_PARK"
+      "ING\020\003\022\014\n\010GEAR_LOW\020\004\022\020\n\014GEAR_INVALID\020\005\022\r\n"
+      "\tGEAR_NONE\020\006\"H\n\016BrkPedalStasus\022\017\n\013NOT_PR"
+      "ESSED\020\000\022\013\n\007PRESSED\020\001\022\r\n\tRESERRVED\020\002\022\t\n\005E"
+      "RROR\020\003\"\213\003\n\nChassisGPS\022\020\n\010latitude\030\001 \001(\001\022"
+      "\021\n\tlongitude\030\002 \001(\001\022\021\n\tgps_valid\030\003 \001(\010\022\014\n"
+      "\004year\030\004 \001(\005\022\r\n\005month\030\005 \001(\005\022\013\n\003day\030\006 \001(\005\022"
+      "\r\n\005hours\030\007 \001(\005\022\017\n\007minutes\030\010 \001(\005\022\017\n\007secon"
+      "ds\030\t \001(\005\022\031\n\021compass_direction\030\n \001(\001\022\014\n\004p"
+      "dop\030\013 \001(\001\022\024\n\014is_gps_fault\030\014 \001(\010\022\023\n\013is_in"
+      "ferred\030\r \001(\010\022\020\n\010altitude\030\016 \001(\001\022\017\n\007headin"
+      "g\030\017 \001(\001\022\014\n\004hdop\030\020 \001(\001\022\014\n\004vdop\030\021 \001(\001\022,\n\007q"
+      "uality\030\022 \001(\0162\033.jmc_auto.canbus.GpsQualit"
+      "y\022\026\n\016num_satellites\030\023 \001(\005\022\021\n\tgps_speed\030\024"
+      " \001(\001\"\226\005\n\nWheelSpeed\022$\n\025is_wheel_spd_rr_v"
+      "alid\030\001 \001(\010:\005false\022O\n\022wheel_direction_rr\030"
+      "\002 \001(\0162*.jmc_auto.canbus.WheelSpeed.Wheel"
+      "SpeedType:\007INVALID\022\027\n\014wheel_spd_rr\030\003 \001(\001"
+      ":\0010\022$\n\025is_wheel_spd_rl_valid\030\004 \001(\010:\005fals"
+      "e\022O\n\022wheel_direction_rl\030\005 \001(\0162*.jmc_auto"
+      ".canbus.WheelSpeed.WheelSpeedType:\007INVAL"
+      "ID\022\027\n\014wheel_spd_rl\030\006 \001(\001:\0010\022$\n\025is_wheel_"
+      "spd_fr_valid\030\007 \001(\010:\005false\022O\n\022wheel_direc"
+      "tion_fr\030\010 \001(\0162*.jmc_auto.canbus.WheelSpe"
+      "ed.WheelSpeedType:\007INVALID\022\027\n\014wheel_spd_"
+      "fr\030\t \001(\001:\0010\022$\n\025is_wheel_spd_fl_valid\030\n \001"
+      "(\010:\005false\022O\n\022wheel_direction_fl\030\013 \001(\0162*."
+      "jmc_auto.canbus.WheelSpeed.WheelSpeedTyp"
+      "e:\007INVALID\022\027\n\014wheel_spd_fl\030\014 \001(\001:\0010\"H\n\016W"
+      "heelSpeedType\022\013\n\007FORWARD\020\000\022\014\n\010BACKWARD\020\001"
+      "\022\016\n\nSTANDSTILL\020\002\022\013\n\007INVALID\020\003\"t\n\005Sonar\022\r"
+      "\n\005range\030\001 \001(\001\022-\n\013translation\030\002 \001(\0132\030.jmc"
+      "_auto.common.Point3D\022-\n\010rotation\030\003 \001(\0132\033"
+      ".jmc_auto.common.Quaternion\"\346\004\n\010Surround"
+      "\022 \n\030cross_traffic_alert_left\030\001 \001(\010\022(\n cr"
+      "oss_traffic_alert_left_enabled\030\002 \001(\010\022\035\n\025"
+      "blind_spot_left_alert\030\003 \001(\010\022%\n\035blind_spo"
+      "t_left_alert_enabled\030\004 \001(\010\022!\n\031cross_traf"
+      "fic_alert_right\030\005 \001(\010\022)\n!cross_traffic_a"
+      "lert_right_enabled\030\006 \001(\010\022\036\n\026blind_spot_r"
+      "ight_alert\030\007 \001(\010\022&\n\036blind_spot_right_ale"
+      "rt_enabled\030\010 \001(\010\022\017\n\007sonar00\030\t \001(\001\022\017\n\007son"
+      "ar01\030\n \001(\001\022\017\n\007sonar02\030\013 \001(\001\022\017\n\007sonar03\030\014"
+      " \001(\001\022\017\n\007sonar04\030\r \001(\001\022\017\n\007sonar05\030\016 \001(\001\022\017"
+      "\n\007sonar06\030\017 \001(\001\022\017\n\007sonar07\030\020 \001(\001\022\017\n\007sona"
+      "r08\030\021 \001(\001\022\017\n\007sonar09\030\022 \001(\001\022\017\n\007sonar10\030\023 "
+      "\001(\001\022\017\n\007sonar11\030\024 \001(\001\022\025\n\rsonar_enabled\030\025 "
+      "\001(\010\022\023\n\013sonar_fault\030\026 \001(\010\022\023\n\013sonar_range\030"
+      "\027 \003(\001\022%\n\005sonar\030\030 \003(\0132\026.jmc_auto.canbus.S"
+      "onar\"\026\n\007License\022\013\n\003vin\030\001 \001(\t*A\n\nGpsQuali"
+      "ty\022\n\n\006FIX_NO\020\000\022\n\n\006FIX_2D\020\001\022\n\n\006FIX_3D\020\002\022\017"
+      "\n\013FIX_INVALID\020\003"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 5298);
+      descriptor, 5255);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/canbus/proto/chassis.proto", &protobuf_RegisterTypes);
   ::jmc_auto::common::protobuf_modules_2fcommon_2fproto_2fheader_2eproto::AddDescriptors();
@@ -1390,7 +1385,6 @@ const int Chassis::kChassisGpsFieldNumber;
 const int Chassis::kEngageAdviceFieldNumber;
 const int Chassis::kWheelSpeedFieldNumber;
 const int Chassis::kSurroundFieldNumber;
-const int Chassis::kLicenseFieldNumber;
 const int Chassis::kLonAccFieldNumber;
 const int Chassis::kSteerWheelRotSpdFieldNumber;
 const int Chassis::kAbsVehspdlgtValidFieldNumber;
@@ -1493,11 +1487,6 @@ Chassis::Chassis(const Chassis& from)
   } else {
     surround_ = NULL;
   }
-  if (from.has_license()) {
-    license_ = new ::jmc_auto::canbus::License(*from.license_);
-  } else {
-    license_ = NULL;
-  }
   ::memcpy(&fuel_range_m_, &from.fuel_range_m_,
     reinterpret_cast<char*>(&steering_percentage_) -
     reinterpret_cast<char*>(&fuel_range_m_) + sizeof(steering_percentage_));
@@ -1541,9 +1530,6 @@ void Chassis::SharedDtor() {
   if (this != internal_default_instance()) {
     delete surround_;
   }
-  if (this != internal_default_instance()) {
-    delete license_;
-  }
 }
 
 void Chassis::SetCachedSize(int size) const {
@@ -1571,7 +1557,7 @@ Chassis* Chassis::New(::google::protobuf::Arena* arena) const {
 
 void Chassis::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.canbus.Chassis)
-  if (_has_bits_[0 / 32] & 127u) {
+  if (_has_bits_[0 / 32] & 63u) {
     if (has_header()) {
       GOOGLE_DCHECK(header_ != NULL);
       header_->::jmc_auto::common::Header::Clear();
@@ -1596,52 +1582,51 @@ void Chassis::Clear() {
       GOOGLE_DCHECK(surround_ != NULL);
       surround_->::jmc_auto::canbus::Surround::Clear();
     }
-    if (has_license()) {
-      GOOGLE_DCHECK(license_ != NULL);
-      license_->::jmc_auto::canbus::License::Clear();
-    }
   }
-  fuel_range_m_ = 0;
+  if (_has_bits_[0 / 32] & 192u) {
+    ::memset(&fuel_range_m_, 0, reinterpret_cast<char*>(&engine_started_) -
+      reinterpret_cast<char*>(&fuel_range_m_) + sizeof(engine_started_));
+  }
   if (_has_bits_[8 / 32] & 65280u) {
-    ::memset(&engine_started_, 0, reinterpret_cast<char*>(&wiper_) -
-      reinterpret_cast<char*>(&engine_started_) + sizeof(wiper_));
+    ::memset(&parking_brake_, 0, reinterpret_cast<char*>(&driving_mode_) -
+      reinterpret_cast<char*>(&parking_brake_) + sizeof(driving_mode_));
   }
   if (_has_bits_[16 / 32] & 16711680u) {
-    ::memset(&driving_mode_, 0, reinterpret_cast<char*>(&esp_algtstatus_valid_) -
-      reinterpret_cast<char*>(&driving_mode_) + sizeof(esp_algtstatus_valid_));
+    ::memset(&error_code_, 0, reinterpret_cast<char*>(&sas_sasstssnsr_valid_) -
+      reinterpret_cast<char*>(&error_code_) + sizeof(sas_sasstssnsr_valid_));
   }
   if (_has_bits_[24 / 32] & 4278190080u) {
-    ::memset(&sas_sasstssnsr_valid_, 0, reinterpret_cast<char*>(&abs_whlmilgfrntri_) -
-      reinterpret_cast<char*>(&sas_sasstssnsr_valid_) + sizeof(abs_whlmilgfrntri_));
+    ::memset(&lon_acc_, 0, reinterpret_cast<char*>(&abs_whlmilgfrntle_) -
+      reinterpret_cast<char*>(&lon_acc_) + sizeof(abs_whlmilgfrntle_));
   }
   if (_has_bits_[32 / 32] & 255u) {
-    ::memset(&abs_whlmilgfrntle_, 0, reinterpret_cast<char*>(&ems_accpedalratio_) -
-      reinterpret_cast<char*>(&abs_whlmilgfrntle_) + sizeof(ems_accpedalratio_));
+    ::memset(&abs_whlmilgrearre_, 0, reinterpret_cast<char*>(&abs_whlspdfrntle_) -
+      reinterpret_cast<char*>(&abs_whlmilgrearre_) + sizeof(abs_whlspdfrntle_));
   }
   if (_has_bits_[40 / 32] & 65280u) {
-    ::memset(&abs_whlspdfrntle_, 0, reinterpret_cast<char*>(&gyro_x_) -
-      reinterpret_cast<char*>(&abs_whlspdfrntle_) + sizeof(gyro_x_));
+    ::memset(&abs_whlspdfrntri_, 0, reinterpret_cast<char*>(&gyro_y_) -
+      reinterpret_cast<char*>(&abs_whlspdfrntri_) + sizeof(gyro_y_));
   }
   if (_has_bits_[48 / 32] & 16711680u) {
-    ::memset(&gyro_y_, 0, reinterpret_cast<char*>(&ins_locatheight_) -
-      reinterpret_cast<char*>(&gyro_y_) + sizeof(ins_locatheight_));
+    ::memset(&gyro_z_, 0, reinterpret_cast<char*>(&ins_time_) -
+      reinterpret_cast<char*>(&gyro_z_) + sizeof(ins_time_));
   }
   if (_has_bits_[56 / 32] & 4278190080u) {
-    ::memset(&ins_time_, 0, reinterpret_cast<char*>(&ins_gpsflag_heading_) -
-      reinterpret_cast<char*>(&ins_time_) + sizeof(ins_gpsflag_heading_));
+    ::memset(&ins_latitude_, 0, reinterpret_cast<char*>(&ins_gps_age_) -
+      reinterpret_cast<char*>(&ins_latitude_) + sizeof(ins_gps_age_));
   }
   if (_has_bits_[64 / 32] & 255u) {
-    ::memset(&ins_gps_age_, 0, reinterpret_cast<char*>(&ins_std_heading_) -
-      reinterpret_cast<char*>(&ins_gps_age_) + sizeof(ins_std_heading_));
+    ::memset(&ins_car_status_, 0, reinterpret_cast<char*>(&esp_vlc_active_) -
+      reinterpret_cast<char*>(&ins_car_status_) + sizeof(esp_vlc_active_));
   }
   if (_has_bits_[72 / 32] & 65280u) {
-    ::memset(&esp_vlc_active_, 0, reinterpret_cast<char*>(&esp_epbstatus_) -
-      reinterpret_cast<char*>(&esp_vlc_active_) + sizeof(esp_epbstatus_));
+    ::memset(&esp_vlc_available_, 0, reinterpret_cast<char*>(&esp_epbstatus_) -
+      reinterpret_cast<char*>(&esp_vlc_available_) + sizeof(esp_epbstatus_));
     steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
     engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
-  }
-  if (_has_bits_[80 / 32] & 2031616u) {
     speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
+  }
+  if (_has_bits_[80 / 32] & 983040u) {
     odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
     throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
     brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2050,18 +2035,6 @@ bool Chassis::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(250u)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_surround()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional .jmc_auto.canbus.License license = 32;
-      case 32: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(258u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_license()));
         } else {
           goto handle_unusual;
         }
@@ -2887,114 +2860,114 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional bool engine_started = 3;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->engine_started(), output);
   }
 
   cached_has_bits = _has_bits_[2];
   // optional float engine_rpm = 4 [default = nan];
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->engine_rpm(), output);
   }
 
   // optional float speed_mps = 5 [default = nan];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->speed_mps(), output);
   }
 
   // optional float odometer_m = 6 [default = nan];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->odometer_m(), output);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional int32 fuel_range_m = 7;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->fuel_range_m(), output);
   }
 
   cached_has_bits = _has_bits_[2];
   // optional float throttle_percentage = 8 [default = nan];
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->throttle_percentage(), output);
   }
 
   // optional float brake_percentage = 9 [default = nan];
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->brake_percentage(), output);
   }
 
   // optional float steering_percentage = 11 [default = nan];
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(11, this->steering_percentage(), output);
   }
 
   // optional float steering_torque_nm = 12 [default = nan];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(12, this->steering_torque_nm(), output);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional bool parking_brake = 13;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(13, this->parking_brake(), output);
   }
 
   // optional bool high_beam_signal = 14 [deprecated = true];
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(14, this->high_beam_signal(), output);
   }
 
   // optional bool low_beam_signal = 15 [deprecated = true];
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(15, this->low_beam_signal(), output);
   }
 
   // optional bool left_turn_signal = 16 [deprecated = true];
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(16, this->left_turn_signal(), output);
   }
 
   // optional bool right_turn_signal = 17 [deprecated = true];
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(17, this->right_turn_signal(), output);
   }
 
   // optional bool horn = 18 [deprecated = true];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(18, this->horn(), output);
   }
 
   // optional bool wiper = 19;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(19, this->wiper(), output);
   }
 
   // optional bool disengage_status = 20 [deprecated = true];
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00100000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(20, this->disengage_status(), output);
   }
 
   // optional .jmc_auto.canbus.Chassis.DrivingMode driving_mode = 21 [default = COMPLETE_MANUAL];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       21, this->driving_mode(), output);
   }
 
   // optional .jmc_auto.canbus.Chassis.ErrorCode error_code = 22 [default = NO_ERROR];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       22, this->error_code(), output);
   }
 
   // optional .jmc_auto.canbus.Chassis.GearPosition gear_location = 23;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       23, this->gear_location(), output);
   }
 
   // optional double steering_timestamp = 24;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(24, this->steering_timestamp(), output);
   }
 
@@ -3005,7 +2978,7 @@ void Chassis::SerializeWithCachedSizes(
   }
 
   // optional int32 chassis_error_mask = 26 [default = 0];
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(26, this->chassis_error_mask(), output);
   }
 
@@ -3039,292 +3012,286 @@ void Chassis::SerializeWithCachedSizes(
       31, *this->surround_, output);
   }
 
-  // optional .jmc_auto.canbus.License license = 32;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      32, *this->license_, output);
-  }
-
   // optional float lon_acc = 33;
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x01000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(33, this->lon_acc(), output);
   }
 
   // optional float steer_wheel_rot_spd = 34;
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x02000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(34, this->steer_wheel_rot_spd(), output);
   }
 
   // optional bool abs_vehspdlgt_valid = 35;
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00200000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(35, this->abs_vehspdlgt_valid(), output);
   }
 
   // optional bool esp_algtstatus_valid = 36;
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x00400000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(36, this->esp_algtstatus_valid(), output);
   }
 
   // optional bool sas_sasstssnsr_valid = 37;
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x00800000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(37, this->sas_sasstssnsr_valid(), output);
   }
 
   // optional bool steerwheelrotspd_valid = 38;
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x04000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(38, this->steerwheelrotspd_valid(), output);
   }
 
   // optional bool eps_lkaresponsetorque_valid = 39;
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x08000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(39, this->eps_lkaresponsetorque_valid(), output);
   }
 
   // optional float eps_torsionbartorque = 40;
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x20000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(40, this->eps_torsionbartorque(), output);
   }
 
   // optional bool eps_tosionbartorquevalid = 41;
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(41, this->eps_tosionbartorquevalid(), output);
   }
 
   // optional int32 abs_whlmilgfrntri = 42;
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x40000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(42, this->abs_whlmilgfrntri(), output);
   }
 
-  cached_has_bits = _has_bits_[1];
   // optional int32 abs_whlmilgfrntle = 43;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x80000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(43, this->abs_whlmilgfrntle(), output);
   }
 
+  cached_has_bits = _has_bits_[1];
   // optional int32 abs_whlmilgrearre = 44;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(44, this->abs_whlmilgrearre(), output);
   }
 
   // optional int32 abs_whlmilgrearle = 45;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(45, this->abs_whlmilgrearle(), output);
   }
 
   // optional int32 esp_wheelpulse_fl = 46;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(46, this->esp_wheelpulse_fl(), output);
   }
 
   // optional int32 esp_wheelpulse_fr = 47;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(47, this->esp_wheelpulse_fr(), output);
   }
 
   // optional int32 esp_wheelpulse_rl = 48;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(48, this->esp_wheelpulse_rl(), output);
   }
 
   // optional int32 esp_wheelpulse_rr = 49;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(49, this->esp_wheelpulse_rr(), output);
   }
 
   // optional double ems_accpedalratio = 50;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(50, this->ems_accpedalratio(), output);
   }
 
   // optional .jmc_auto.canbus.Chassis.BrkPedalStasus brkpedalstasus = 51;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       51, this->brkpedalstasus(), output);
   }
 
   // optional double abs_whlspdfrntle = 52;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(52, this->abs_whlspdfrntle(), output);
   }
 
   // optional double abs_whlspdfrntri = 53;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(53, this->abs_whlspdfrntri(), output);
   }
 
   // optional double abs_whlspdrele = 54;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(54, this->abs_whlspdrele(), output);
   }
 
   // optional double abs_whlspdreri = 55;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(55, this->abs_whlspdreri(), output);
   }
 
   // optional double acc_x = 56;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(56, this->acc_x(), output);
   }
 
   // optional double acc_y = 57;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(57, this->acc_y(), output);
   }
 
   // optional double acc_z = 58;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(58, this->acc_z(), output);
   }
 
   // optional double gyro_x = 59;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(59, this->gyro_x(), output);
   }
 
   // optional double gyro_y = 60;
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(60, this->gyro_y(), output);
   }
 
   // optional double gyro_z = 61;
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(61, this->gyro_z(), output);
   }
 
   // optional double ins_pitchangle = 62;
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(62, this->ins_pitchangle(), output);
   }
 
   // optional double ins_rollangle = 63;
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00100000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(63, this->ins_rollangle(), output);
   }
 
   // optional double ins_headingangle = 64;
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00200000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(64, this->ins_headingangle(), output);
   }
 
   // optional double ins_locatheight = 65;
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x00400000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(65, this->ins_locatheight(), output);
   }
 
   // optional double ins_time = 66;
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x00800000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(66, this->ins_time(), output);
   }
 
   // optional double ins_latitude = 67;
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x01000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(67, this->ins_latitude(), output);
   }
 
   // optional double ins_longitude = 68;
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x02000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(68, this->ins_longitude(), output);
   }
 
   // optional double ins_northspd = 69;
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x04000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(69, this->ins_northspd(), output);
   }
 
   // optional double ins_eastspd = 70;
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x08000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(70, this->ins_eastspd(), output);
   }
 
   // optional double ins_togroundspd = 71;
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(71, this->ins_togroundspd(), output);
   }
 
   // optional int32 ins_gpsflag_pos = 72;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(72, this->ins_gpsflag_pos(), output);
   }
 
   // optional int32 ins_numsv = 73;
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x20000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(73, this->ins_numsv(), output);
   }
 
   // optional int32 ins_gpsflag_heading = 74;
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x40000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(74, this->ins_gpsflag_heading(), output);
   }
 
-  cached_has_bits = _has_bits_[2];
   // optional int32 ins_gps_age = 75;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x80000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(75, this->ins_gps_age(), output);
   }
 
+  cached_has_bits = _has_bits_[2];
   // optional int32 ins_car_status = 76;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(76, this->ins_car_status(), output);
   }
 
   // optional int32 ins_status = 77;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(77, this->ins_status(), output);
   }
 
   // optional double ins_std_lat = 78;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(78, this->ins_std_lat(), output);
   }
 
   // optional double ins_std_lon = 79;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(79, this->ins_std_lon(), output);
   }
 
   // optional double ins_std_locat_height = 80;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(80, this->ins_std_locat_height(), output);
   }
 
   // optional double ins_std_heading = 81;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(81, this->ins_std_heading(), output);
   }
 
   // optional int32 eps_lkacontrolstatus = 82;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(82, this->eps_lkacontrolstatus(), output);
   }
 
   // optional int32 esp_vlc_active = 83;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(83, this->esp_vlc_active(), output);
   }
 
   // optional int32 esp_vlc_available = 84;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(84, this->esp_vlc_available(), output);
   }
 
   // optional int32 esp_apa_gearboxenable = 85;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(85, this->esp_apa_gearboxenable(), output);
   }
 
   // optional int32 esp_vlc_apactive = 86;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(86, this->esp_vlc_apactive(), output);
   }
 
   // optional int32 esp_vlcapa_available = 87;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(87, this->esp_vlcapa_available(), output);
   }
 
   // optional int32 esp_epbstatus = 88;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(88, this->esp_epbstatus(), output);
   }
 
@@ -3343,114 +3310,114 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional bool engine_started = 3;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->engine_started(), target);
   }
 
   cached_has_bits = _has_bits_[2];
   // optional float engine_rpm = 4 [default = nan];
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->engine_rpm(), target);
   }
 
   // optional float speed_mps = 5 [default = nan];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->speed_mps(), target);
   }
 
   // optional float odometer_m = 6 [default = nan];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->odometer_m(), target);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional int32 fuel_range_m = 7;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->fuel_range_m(), target);
   }
 
   cached_has_bits = _has_bits_[2];
   // optional float throttle_percentage = 8 [default = nan];
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->throttle_percentage(), target);
   }
 
   // optional float brake_percentage = 9 [default = nan];
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->brake_percentage(), target);
   }
 
   // optional float steering_percentage = 11 [default = nan];
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(11, this->steering_percentage(), target);
   }
 
   // optional float steering_torque_nm = 12 [default = nan];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(12, this->steering_torque_nm(), target);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional bool parking_brake = 13;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(13, this->parking_brake(), target);
   }
 
   // optional bool high_beam_signal = 14 [deprecated = true];
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(14, this->high_beam_signal(), target);
   }
 
   // optional bool low_beam_signal = 15 [deprecated = true];
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(15, this->low_beam_signal(), target);
   }
 
   // optional bool left_turn_signal = 16 [deprecated = true];
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(16, this->left_turn_signal(), target);
   }
 
   // optional bool right_turn_signal = 17 [deprecated = true];
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(17, this->right_turn_signal(), target);
   }
 
   // optional bool horn = 18 [deprecated = true];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(18, this->horn(), target);
   }
 
   // optional bool wiper = 19;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(19, this->wiper(), target);
   }
 
   // optional bool disengage_status = 20 [deprecated = true];
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00100000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(20, this->disengage_status(), target);
   }
 
   // optional .jmc_auto.canbus.Chassis.DrivingMode driving_mode = 21 [default = COMPLETE_MANUAL];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       21, this->driving_mode(), target);
   }
 
   // optional .jmc_auto.canbus.Chassis.ErrorCode error_code = 22 [default = NO_ERROR];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       22, this->error_code(), target);
   }
 
   // optional .jmc_auto.canbus.Chassis.GearPosition gear_location = 23;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       23, this->gear_location(), target);
   }
 
   // optional double steering_timestamp = 24;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(24, this->steering_timestamp(), target);
   }
 
@@ -3462,7 +3429,7 @@ void Chassis::SerializeWithCachedSizes(
   }
 
   // optional int32 chassis_error_mask = 26 [default = 0];
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(26, this->chassis_error_mask(), target);
   }
 
@@ -3501,293 +3468,286 @@ void Chassis::SerializeWithCachedSizes(
         31, *this->surround_, deterministic, target);
   }
 
-  // optional .jmc_auto.canbus.License license = 32;
-  if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        32, *this->license_, deterministic, target);
-  }
-
   // optional float lon_acc = 33;
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x01000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(33, this->lon_acc(), target);
   }
 
   // optional float steer_wheel_rot_spd = 34;
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x02000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(34, this->steer_wheel_rot_spd(), target);
   }
 
   // optional bool abs_vehspdlgt_valid = 35;
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00200000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(35, this->abs_vehspdlgt_valid(), target);
   }
 
   // optional bool esp_algtstatus_valid = 36;
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x00400000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(36, this->esp_algtstatus_valid(), target);
   }
 
   // optional bool sas_sasstssnsr_valid = 37;
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x00800000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(37, this->sas_sasstssnsr_valid(), target);
   }
 
   // optional bool steerwheelrotspd_valid = 38;
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x04000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(38, this->steerwheelrotspd_valid(), target);
   }
 
   // optional bool eps_lkaresponsetorque_valid = 39;
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x08000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(39, this->eps_lkaresponsetorque_valid(), target);
   }
 
   // optional float eps_torsionbartorque = 40;
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x20000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(40, this->eps_torsionbartorque(), target);
   }
 
   // optional bool eps_tosionbartorquevalid = 41;
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(41, this->eps_tosionbartorquevalid(), target);
   }
 
   // optional int32 abs_whlmilgfrntri = 42;
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x40000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(42, this->abs_whlmilgfrntri(), target);
   }
 
-  cached_has_bits = _has_bits_[1];
   // optional int32 abs_whlmilgfrntle = 43;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x80000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(43, this->abs_whlmilgfrntle(), target);
   }
 
+  cached_has_bits = _has_bits_[1];
   // optional int32 abs_whlmilgrearre = 44;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(44, this->abs_whlmilgrearre(), target);
   }
 
   // optional int32 abs_whlmilgrearle = 45;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(45, this->abs_whlmilgrearle(), target);
   }
 
   // optional int32 esp_wheelpulse_fl = 46;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(46, this->esp_wheelpulse_fl(), target);
   }
 
   // optional int32 esp_wheelpulse_fr = 47;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(47, this->esp_wheelpulse_fr(), target);
   }
 
   // optional int32 esp_wheelpulse_rl = 48;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(48, this->esp_wheelpulse_rl(), target);
   }
 
   // optional int32 esp_wheelpulse_rr = 49;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(49, this->esp_wheelpulse_rr(), target);
   }
 
   // optional double ems_accpedalratio = 50;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(50, this->ems_accpedalratio(), target);
   }
 
   // optional .jmc_auto.canbus.Chassis.BrkPedalStasus brkpedalstasus = 51;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       51, this->brkpedalstasus(), target);
   }
 
   // optional double abs_whlspdfrntle = 52;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(52, this->abs_whlspdfrntle(), target);
   }
 
   // optional double abs_whlspdfrntri = 53;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(53, this->abs_whlspdfrntri(), target);
   }
 
   // optional double abs_whlspdrele = 54;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(54, this->abs_whlspdrele(), target);
   }
 
   // optional double abs_whlspdreri = 55;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(55, this->abs_whlspdreri(), target);
   }
 
   // optional double acc_x = 56;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(56, this->acc_x(), target);
   }
 
   // optional double acc_y = 57;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(57, this->acc_y(), target);
   }
 
   // optional double acc_z = 58;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00002000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(58, this->acc_z(), target);
   }
 
   // optional double gyro_x = 59;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(59, this->gyro_x(), target);
   }
 
   // optional double gyro_y = 60;
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(60, this->gyro_y(), target);
   }
 
   // optional double gyro_z = 61;
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(61, this->gyro_z(), target);
   }
 
   // optional double ins_pitchangle = 62;
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(62, this->ins_pitchangle(), target);
   }
 
   // optional double ins_rollangle = 63;
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00100000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(63, this->ins_rollangle(), target);
   }
 
   // optional double ins_headingangle = 64;
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00200000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(64, this->ins_headingangle(), target);
   }
 
   // optional double ins_locatheight = 65;
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x00400000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(65, this->ins_locatheight(), target);
   }
 
   // optional double ins_time = 66;
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x00800000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(66, this->ins_time(), target);
   }
 
   // optional double ins_latitude = 67;
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x01000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(67, this->ins_latitude(), target);
   }
 
   // optional double ins_longitude = 68;
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x02000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(68, this->ins_longitude(), target);
   }
 
   // optional double ins_northspd = 69;
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x04000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(69, this->ins_northspd(), target);
   }
 
   // optional double ins_eastspd = 70;
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x08000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(70, this->ins_eastspd(), target);
   }
 
   // optional double ins_togroundspd = 71;
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(71, this->ins_togroundspd(), target);
   }
 
   // optional int32 ins_gpsflag_pos = 72;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(72, this->ins_gpsflag_pos(), target);
   }
 
   // optional int32 ins_numsv = 73;
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x20000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(73, this->ins_numsv(), target);
   }
 
   // optional int32 ins_gpsflag_heading = 74;
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x40000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(74, this->ins_gpsflag_heading(), target);
   }
 
-  cached_has_bits = _has_bits_[2];
   // optional int32 ins_gps_age = 75;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x80000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(75, this->ins_gps_age(), target);
   }
 
+  cached_has_bits = _has_bits_[2];
   // optional int32 ins_car_status = 76;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(76, this->ins_car_status(), target);
   }
 
   // optional int32 ins_status = 77;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(77, this->ins_status(), target);
   }
 
   // optional double ins_std_lat = 78;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(78, this->ins_std_lat(), target);
   }
 
   // optional double ins_std_lon = 79;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(79, this->ins_std_lon(), target);
   }
 
   // optional double ins_std_locat_height = 80;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(80, this->ins_std_locat_height(), target);
   }
 
   // optional double ins_std_heading = 81;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(81, this->ins_std_heading(), target);
   }
 
   // optional int32 eps_lkacontrolstatus = 82;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(82, this->eps_lkacontrolstatus(), target);
   }
 
   // optional int32 esp_vlc_active = 83;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000080u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(83, this->esp_vlc_active(), target);
   }
 
   // optional int32 esp_vlc_available = 84;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000100u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(84, this->esp_vlc_available(), target);
   }
 
   // optional int32 esp_apa_gearboxenable = 85;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000200u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(85, this->esp_apa_gearboxenable(), target);
   }
 
   // optional int32 esp_vlc_apactive = 86;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00000400u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(86, this->esp_vlc_apactive(), target);
   }
 
   // optional int32 esp_vlcapa_available = 87;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00000800u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(87, this->esp_vlcapa_available(), target);
   }
 
   // optional int32 esp_epbstatus = 88;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00001000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(88, this->esp_epbstatus(), target);
   }
 
@@ -3851,13 +3811,6 @@ size_t Chassis::ByteSizeLong() const {
           *this->surround_);
     }
 
-    // optional .jmc_auto.canbus.License license = 32;
-    if (has_license()) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->license_);
-    }
-
     // optional int32 fuel_range_m = 7;
     if (has_fuel_range_m()) {
       total_size += 1 +
@@ -3865,13 +3818,13 @@ size_t Chassis::ByteSizeLong() const {
           this->fuel_range_m());
     }
 
-  }
-  if (_has_bits_[8 / 32] & 65280u) {
     // optional bool engine_started = 3;
     if (has_engine_started()) {
       total_size += 1 + 1;
     }
 
+  }
+  if (_has_bits_[8 / 32] & 65280u) {
     // optional bool parking_brake = 13;
     if (has_parking_brake()) {
       total_size += 1 + 1;
@@ -3907,14 +3860,14 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 1;
     }
 
-  }
-  if (_has_bits_[16 / 32] & 16711680u) {
     // optional .jmc_auto.canbus.Chassis.DrivingMode driving_mode = 21 [default = COMPLETE_MANUAL];
     if (has_driving_mode()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->driving_mode());
     }
 
+  }
+  if (_has_bits_[16 / 32] & 16711680u) {
     // optional .jmc_auto.canbus.Chassis.ErrorCode error_code = 22 [default = NO_ERROR];
     if (has_error_code()) {
       total_size += 2 +
@@ -3954,13 +3907,13 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 1;
     }
 
-  }
-  if (_has_bits_[24 / 32] & 4278190080u) {
     // optional bool sas_sasstssnsr_valid = 37;
     if (has_sas_sasstssnsr_valid()) {
       total_size += 2 + 1;
     }
 
+  }
+  if (_has_bits_[24 / 32] & 4278190080u) {
     // optional float lon_acc = 33;
     if (has_lon_acc()) {
       total_size += 2 + 4;
@@ -3998,8 +3951,6 @@ size_t Chassis::ByteSizeLong() const {
           this->abs_whlmilgfrntri());
     }
 
-  }
-  if (_has_bits_[32 / 32] & 255u) {
     // optional int32 abs_whlmilgfrntle = 43;
     if (has_abs_whlmilgfrntle()) {
       total_size += 2 +
@@ -4007,6 +3958,8 @@ size_t Chassis::ByteSizeLong() const {
           this->abs_whlmilgfrntle());
     }
 
+  }
+  if (_has_bits_[32 / 32] & 255u) {
     // optional int32 abs_whlmilgrearre = 44;
     if (has_abs_whlmilgrearre()) {
       total_size += 2 +
@@ -4054,13 +4007,13 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 8;
     }
 
-  }
-  if (_has_bits_[40 / 32] & 65280u) {
     // optional double abs_whlspdfrntle = 52;
     if (has_abs_whlspdfrntle()) {
       total_size += 2 + 8;
     }
 
+  }
+  if (_has_bits_[40 / 32] & 65280u) {
     // optional double abs_whlspdfrntri = 53;
     if (has_abs_whlspdfrntri()) {
       total_size += 2 + 8;
@@ -4096,13 +4049,13 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 8;
     }
 
-  }
-  if (_has_bits_[48 / 32] & 16711680u) {
     // optional double gyro_y = 60;
     if (has_gyro_y()) {
       total_size += 2 + 8;
     }
 
+  }
+  if (_has_bits_[48 / 32] & 16711680u) {
     // optional double gyro_z = 61;
     if (has_gyro_z()) {
       total_size += 2 + 8;
@@ -4141,13 +4094,13 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 8;
     }
 
-  }
-  if (_has_bits_[56 / 32] & 4278190080u) {
     // optional double ins_time = 66;
     if (has_ins_time()) {
       total_size += 2 + 8;
     }
 
+  }
+  if (_has_bits_[56 / 32] & 4278190080u) {
     // optional double ins_latitude = 67;
     if (has_ins_latitude()) {
       total_size += 2 + 8;
@@ -4187,8 +4140,6 @@ size_t Chassis::ByteSizeLong() const {
           this->ins_gpsflag_heading());
     }
 
-  }
-  if (_has_bits_[64 / 32] & 255u) {
     // optional int32 ins_gps_age = 75;
     if (has_ins_gps_age()) {
       total_size += 2 +
@@ -4196,6 +4147,8 @@ size_t Chassis::ByteSizeLong() const {
           this->ins_gps_age());
     }
 
+  }
+  if (_has_bits_[64 / 32] & 255u) {
     // optional int32 ins_car_status = 76;
     if (has_ins_car_status()) {
       total_size += 2 +
@@ -4237,8 +4190,6 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 2 + 8;
     }
 
-  }
-  if (_has_bits_[72 / 32] & 65280u) {
     // optional int32 esp_vlc_active = 83;
     if (has_esp_vlc_active()) {
       total_size += 2 +
@@ -4246,6 +4197,8 @@ size_t Chassis::ByteSizeLong() const {
           this->esp_vlc_active());
     }
 
+  }
+  if (_has_bits_[72 / 32] & 65280u) {
     // optional int32 esp_vlc_available = 84;
     if (has_esp_vlc_available()) {
       total_size += 2 +
@@ -4291,13 +4244,13 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 1 + 4;
     }
 
-  }
-  if (_has_bits_[80 / 32] & 2031616u) {
     // optional float speed_mps = 5 [default = nan];
     if (has_speed_mps()) {
       total_size += 1 + 4;
     }
 
+  }
+  if (_has_bits_[80 / 32] & 983040u) {
     // optional float odometer_m = 6 [default = nan];
     if (has_odometer_m()) {
       total_size += 1 + 4;
@@ -4369,272 +4322,269 @@ void Chassis::MergeFrom(const Chassis& from) {
       mutable_surround()->::jmc_auto::canbus::Surround::MergeFrom(from.surround());
     }
     if (cached_has_bits & 0x00000040u) {
-      mutable_license()->::jmc_auto::canbus::License::MergeFrom(from.license());
+      fuel_range_m_ = from.fuel_range_m_;
     }
     if (cached_has_bits & 0x00000080u) {
-      fuel_range_m_ = from.fuel_range_m_;
+      engine_started_ = from.engine_started_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 65280u) {
     if (cached_has_bits & 0x00000100u) {
-      engine_started_ = from.engine_started_;
-    }
-    if (cached_has_bits & 0x00000200u) {
       parking_brake_ = from.parking_brake_;
     }
-    if (cached_has_bits & 0x00000400u) {
+    if (cached_has_bits & 0x00000200u) {
       high_beam_signal_ = from.high_beam_signal_;
     }
-    if (cached_has_bits & 0x00000800u) {
+    if (cached_has_bits & 0x00000400u) {
       low_beam_signal_ = from.low_beam_signal_;
     }
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00000800u) {
       left_turn_signal_ = from.left_turn_signal_;
     }
-    if (cached_has_bits & 0x00002000u) {
+    if (cached_has_bits & 0x00001000u) {
       right_turn_signal_ = from.right_turn_signal_;
     }
-    if (cached_has_bits & 0x00004000u) {
+    if (cached_has_bits & 0x00002000u) {
       horn_ = from.horn_;
     }
-    if (cached_has_bits & 0x00008000u) {
+    if (cached_has_bits & 0x00004000u) {
       wiper_ = from.wiper_;
+    }
+    if (cached_has_bits & 0x00008000u) {
+      driving_mode_ = from.driving_mode_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 16711680u) {
     if (cached_has_bits & 0x00010000u) {
-      driving_mode_ = from.driving_mode_;
-    }
-    if (cached_has_bits & 0x00020000u) {
       error_code_ = from.error_code_;
     }
-    if (cached_has_bits & 0x00040000u) {
+    if (cached_has_bits & 0x00020000u) {
       gear_location_ = from.gear_location_;
     }
-    if (cached_has_bits & 0x00080000u) {
+    if (cached_has_bits & 0x00040000u) {
       steering_timestamp_ = from.steering_timestamp_;
     }
-    if (cached_has_bits & 0x00100000u) {
+    if (cached_has_bits & 0x00080000u) {
       chassis_error_mask_ = from.chassis_error_mask_;
     }
-    if (cached_has_bits & 0x00200000u) {
+    if (cached_has_bits & 0x00100000u) {
       disengage_status_ = from.disengage_status_;
     }
-    if (cached_has_bits & 0x00400000u) {
+    if (cached_has_bits & 0x00200000u) {
       abs_vehspdlgt_valid_ = from.abs_vehspdlgt_valid_;
     }
-    if (cached_has_bits & 0x00800000u) {
+    if (cached_has_bits & 0x00400000u) {
       esp_algtstatus_valid_ = from.esp_algtstatus_valid_;
+    }
+    if (cached_has_bits & 0x00800000u) {
+      sas_sasstssnsr_valid_ = from.sas_sasstssnsr_valid_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 4278190080u) {
     if (cached_has_bits & 0x01000000u) {
-      sas_sasstssnsr_valid_ = from.sas_sasstssnsr_valid_;
-    }
-    if (cached_has_bits & 0x02000000u) {
       lon_acc_ = from.lon_acc_;
     }
-    if (cached_has_bits & 0x04000000u) {
+    if (cached_has_bits & 0x02000000u) {
       steer_wheel_rot_spd_ = from.steer_wheel_rot_spd_;
     }
-    if (cached_has_bits & 0x08000000u) {
+    if (cached_has_bits & 0x04000000u) {
       steerwheelrotspd_valid_ = from.steerwheelrotspd_valid_;
     }
-    if (cached_has_bits & 0x10000000u) {
+    if (cached_has_bits & 0x08000000u) {
       eps_lkaresponsetorque_valid_ = from.eps_lkaresponsetorque_valid_;
     }
-    if (cached_has_bits & 0x20000000u) {
+    if (cached_has_bits & 0x10000000u) {
       eps_tosionbartorquevalid_ = from.eps_tosionbartorquevalid_;
     }
-    if (cached_has_bits & 0x40000000u) {
+    if (cached_has_bits & 0x20000000u) {
       eps_torsionbartorque_ = from.eps_torsionbartorque_;
     }
-    if (cached_has_bits & 0x80000000u) {
+    if (cached_has_bits & 0x40000000u) {
       abs_whlmilgfrntri_ = from.abs_whlmilgfrntri_;
+    }
+    if (cached_has_bits & 0x80000000u) {
+      abs_whlmilgfrntle_ = from.abs_whlmilgfrntle_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   cached_has_bits = from._has_bits_[1];
   if (cached_has_bits & 255u) {
     if (cached_has_bits & 0x00000001u) {
-      abs_whlmilgfrntle_ = from.abs_whlmilgfrntle_;
-    }
-    if (cached_has_bits & 0x00000002u) {
       abs_whlmilgrearre_ = from.abs_whlmilgrearre_;
     }
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000002u) {
       abs_whlmilgrearle_ = from.abs_whlmilgrearle_;
     }
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000004u) {
       esp_wheelpulse_fl_ = from.esp_wheelpulse_fl_;
     }
-    if (cached_has_bits & 0x00000010u) {
+    if (cached_has_bits & 0x00000008u) {
       esp_wheelpulse_fr_ = from.esp_wheelpulse_fr_;
     }
-    if (cached_has_bits & 0x00000020u) {
+    if (cached_has_bits & 0x00000010u) {
       esp_wheelpulse_rl_ = from.esp_wheelpulse_rl_;
     }
-    if (cached_has_bits & 0x00000040u) {
+    if (cached_has_bits & 0x00000020u) {
       esp_wheelpulse_rr_ = from.esp_wheelpulse_rr_;
     }
-    if (cached_has_bits & 0x00000080u) {
+    if (cached_has_bits & 0x00000040u) {
       ems_accpedalratio_ = from.ems_accpedalratio_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      abs_whlspdfrntle_ = from.abs_whlspdfrntle_;
     }
     _has_bits_[1] |= cached_has_bits;
   }
   if (cached_has_bits & 65280u) {
     if (cached_has_bits & 0x00000100u) {
-      abs_whlspdfrntle_ = from.abs_whlspdfrntle_;
-    }
-    if (cached_has_bits & 0x00000200u) {
       abs_whlspdfrntri_ = from.abs_whlspdfrntri_;
     }
-    if (cached_has_bits & 0x00000400u) {
+    if (cached_has_bits & 0x00000200u) {
       abs_whlspdrele_ = from.abs_whlspdrele_;
     }
-    if (cached_has_bits & 0x00000800u) {
+    if (cached_has_bits & 0x00000400u) {
       abs_whlspdreri_ = from.abs_whlspdreri_;
     }
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00000800u) {
       acc_x_ = from.acc_x_;
     }
-    if (cached_has_bits & 0x00002000u) {
+    if (cached_has_bits & 0x00001000u) {
       acc_y_ = from.acc_y_;
     }
-    if (cached_has_bits & 0x00004000u) {
+    if (cached_has_bits & 0x00002000u) {
       acc_z_ = from.acc_z_;
     }
-    if (cached_has_bits & 0x00008000u) {
+    if (cached_has_bits & 0x00004000u) {
       gyro_x_ = from.gyro_x_;
+    }
+    if (cached_has_bits & 0x00008000u) {
+      gyro_y_ = from.gyro_y_;
     }
     _has_bits_[1] |= cached_has_bits;
   }
   if (cached_has_bits & 16711680u) {
     if (cached_has_bits & 0x00010000u) {
-      gyro_y_ = from.gyro_y_;
-    }
-    if (cached_has_bits & 0x00020000u) {
       gyro_z_ = from.gyro_z_;
     }
-    if (cached_has_bits & 0x00040000u) {
+    if (cached_has_bits & 0x00020000u) {
       brkpedalstasus_ = from.brkpedalstasus_;
     }
-    if (cached_has_bits & 0x00080000u) {
+    if (cached_has_bits & 0x00040000u) {
       ins_gpsflag_pos_ = from.ins_gpsflag_pos_;
     }
-    if (cached_has_bits & 0x00100000u) {
+    if (cached_has_bits & 0x00080000u) {
       ins_pitchangle_ = from.ins_pitchangle_;
     }
-    if (cached_has_bits & 0x00200000u) {
+    if (cached_has_bits & 0x00100000u) {
       ins_rollangle_ = from.ins_rollangle_;
     }
-    if (cached_has_bits & 0x00400000u) {
+    if (cached_has_bits & 0x00200000u) {
       ins_headingangle_ = from.ins_headingangle_;
     }
-    if (cached_has_bits & 0x00800000u) {
+    if (cached_has_bits & 0x00400000u) {
       ins_locatheight_ = from.ins_locatheight_;
+    }
+    if (cached_has_bits & 0x00800000u) {
+      ins_time_ = from.ins_time_;
     }
     _has_bits_[1] |= cached_has_bits;
   }
   if (cached_has_bits & 4278190080u) {
     if (cached_has_bits & 0x01000000u) {
-      ins_time_ = from.ins_time_;
-    }
-    if (cached_has_bits & 0x02000000u) {
       ins_latitude_ = from.ins_latitude_;
     }
-    if (cached_has_bits & 0x04000000u) {
+    if (cached_has_bits & 0x02000000u) {
       ins_longitude_ = from.ins_longitude_;
     }
-    if (cached_has_bits & 0x08000000u) {
+    if (cached_has_bits & 0x04000000u) {
       ins_northspd_ = from.ins_northspd_;
     }
-    if (cached_has_bits & 0x10000000u) {
+    if (cached_has_bits & 0x08000000u) {
       ins_eastspd_ = from.ins_eastspd_;
     }
-    if (cached_has_bits & 0x20000000u) {
+    if (cached_has_bits & 0x10000000u) {
       ins_togroundspd_ = from.ins_togroundspd_;
     }
-    if (cached_has_bits & 0x40000000u) {
+    if (cached_has_bits & 0x20000000u) {
       ins_numsv_ = from.ins_numsv_;
     }
-    if (cached_has_bits & 0x80000000u) {
+    if (cached_has_bits & 0x40000000u) {
       ins_gpsflag_heading_ = from.ins_gpsflag_heading_;
+    }
+    if (cached_has_bits & 0x80000000u) {
+      ins_gps_age_ = from.ins_gps_age_;
     }
     _has_bits_[1] |= cached_has_bits;
   }
   cached_has_bits = from._has_bits_[2];
   if (cached_has_bits & 255u) {
     if (cached_has_bits & 0x00000001u) {
-      ins_gps_age_ = from.ins_gps_age_;
-    }
-    if (cached_has_bits & 0x00000002u) {
       ins_car_status_ = from.ins_car_status_;
     }
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000002u) {
       ins_std_lat_ = from.ins_std_lat_;
     }
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000004u) {
       ins_std_lon_ = from.ins_std_lon_;
     }
-    if (cached_has_bits & 0x00000010u) {
+    if (cached_has_bits & 0x00000008u) {
       ins_status_ = from.ins_status_;
     }
-    if (cached_has_bits & 0x00000020u) {
+    if (cached_has_bits & 0x00000010u) {
       eps_lkacontrolstatus_ = from.eps_lkacontrolstatus_;
     }
-    if (cached_has_bits & 0x00000040u) {
+    if (cached_has_bits & 0x00000020u) {
       ins_std_locat_height_ = from.ins_std_locat_height_;
     }
-    if (cached_has_bits & 0x00000080u) {
+    if (cached_has_bits & 0x00000040u) {
       ins_std_heading_ = from.ins_std_heading_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      esp_vlc_active_ = from.esp_vlc_active_;
     }
     _has_bits_[2] |= cached_has_bits;
   }
   if (cached_has_bits & 65280u) {
     if (cached_has_bits & 0x00000100u) {
-      esp_vlc_active_ = from.esp_vlc_active_;
-    }
-    if (cached_has_bits & 0x00000200u) {
       esp_vlc_available_ = from.esp_vlc_available_;
     }
-    if (cached_has_bits & 0x00000400u) {
+    if (cached_has_bits & 0x00000200u) {
       esp_apa_gearboxenable_ = from.esp_apa_gearboxenable_;
     }
-    if (cached_has_bits & 0x00000800u) {
+    if (cached_has_bits & 0x00000400u) {
       esp_vlc_apactive_ = from.esp_vlc_apactive_;
     }
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00000800u) {
       esp_vlcapa_available_ = from.esp_vlcapa_available_;
     }
-    if (cached_has_bits & 0x00002000u) {
+    if (cached_has_bits & 0x00001000u) {
       esp_epbstatus_ = from.esp_epbstatus_;
     }
-    if (cached_has_bits & 0x00004000u) {
+    if (cached_has_bits & 0x00002000u) {
       steering_torque_nm_ = from.steering_torque_nm_;
     }
-    if (cached_has_bits & 0x00008000u) {
+    if (cached_has_bits & 0x00004000u) {
       engine_rpm_ = from.engine_rpm_;
+    }
+    if (cached_has_bits & 0x00008000u) {
+      speed_mps_ = from.speed_mps_;
     }
     _has_bits_[2] |= cached_has_bits;
   }
-  if (cached_has_bits & 2031616u) {
+  if (cached_has_bits & 983040u) {
     if (cached_has_bits & 0x00010000u) {
-      speed_mps_ = from.speed_mps_;
-    }
-    if (cached_has_bits & 0x00020000u) {
       odometer_m_ = from.odometer_m_;
     }
-    if (cached_has_bits & 0x00040000u) {
+    if (cached_has_bits & 0x00020000u) {
       throttle_percentage_ = from.throttle_percentage_;
     }
-    if (cached_has_bits & 0x00080000u) {
+    if (cached_has_bits & 0x00040000u) {
       brake_percentage_ = from.brake_percentage_;
     }
-    if (cached_has_bits & 0x00100000u) {
+    if (cached_has_bits & 0x00080000u) {
       steering_percentage_ = from.steering_percentage_;
     }
     _has_bits_[2] |= cached_has_bits;
@@ -4670,7 +4620,6 @@ void Chassis::InternalSwap(Chassis* other) {
   std::swap(engage_advice_, other->engage_advice_);
   std::swap(wheel_speed_, other->wheel_speed_);
   std::swap(surround_, other->surround_);
-  std::swap(license_, other->license_);
   std::swap(fuel_range_m_, other->fuel_range_m_);
   std::swap(engine_started_, other->engine_started_);
   std::swap(parking_brake_, other->parking_brake_);
@@ -4766,13 +4715,13 @@ void Chassis::InternalSwap(Chassis* other) {
 
 // optional bool engine_started = 3;
 bool Chassis::has_engine_started() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 void Chassis::set_has_engine_started() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 void Chassis::clear_has_engine_started() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 void Chassis::clear_engine_started() {
   engine_started_ = false;
@@ -4790,13 +4739,13 @@ void Chassis::set_engine_started(bool value) {
 
 // optional float engine_rpm = 4 [default = nan];
 bool Chassis::has_engine_rpm() const {
-  return (_has_bits_[2] & 0x00008000u) != 0;
+  return (_has_bits_[2] & 0x00004000u) != 0;
 }
 void Chassis::set_has_engine_rpm() {
-  _has_bits_[2] |= 0x00008000u;
+  _has_bits_[2] |= 0x00004000u;
 }
 void Chassis::clear_has_engine_rpm() {
-  _has_bits_[2] &= ~0x00008000u;
+  _has_bits_[2] &= ~0x00004000u;
 }
 void Chassis::clear_engine_rpm() {
   engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4814,13 +4763,13 @@ void Chassis::set_engine_rpm(float value) {
 
 // optional float speed_mps = 5 [default = nan];
 bool Chassis::has_speed_mps() const {
-  return (_has_bits_[2] & 0x00010000u) != 0;
+  return (_has_bits_[2] & 0x00008000u) != 0;
 }
 void Chassis::set_has_speed_mps() {
-  _has_bits_[2] |= 0x00010000u;
+  _has_bits_[2] |= 0x00008000u;
 }
 void Chassis::clear_has_speed_mps() {
-  _has_bits_[2] &= ~0x00010000u;
+  _has_bits_[2] &= ~0x00008000u;
 }
 void Chassis::clear_speed_mps() {
   speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4838,13 +4787,13 @@ void Chassis::set_speed_mps(float value) {
 
 // optional float odometer_m = 6 [default = nan];
 bool Chassis::has_odometer_m() const {
-  return (_has_bits_[2] & 0x00020000u) != 0;
+  return (_has_bits_[2] & 0x00010000u) != 0;
 }
 void Chassis::set_has_odometer_m() {
-  _has_bits_[2] |= 0x00020000u;
+  _has_bits_[2] |= 0x00010000u;
 }
 void Chassis::clear_has_odometer_m() {
-  _has_bits_[2] &= ~0x00020000u;
+  _has_bits_[2] &= ~0x00010000u;
 }
 void Chassis::clear_odometer_m() {
   odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4862,13 +4811,13 @@ void Chassis::set_odometer_m(float value) {
 
 // optional int32 fuel_range_m = 7;
 bool Chassis::has_fuel_range_m() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 void Chassis::set_has_fuel_range_m() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 void Chassis::clear_has_fuel_range_m() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 void Chassis::clear_fuel_range_m() {
   fuel_range_m_ = 0;
@@ -4886,13 +4835,13 @@ void Chassis::set_fuel_range_m(::google::protobuf::int32 value) {
 
 // optional float throttle_percentage = 8 [default = nan];
 bool Chassis::has_throttle_percentage() const {
-  return (_has_bits_[2] & 0x00040000u) != 0;
+  return (_has_bits_[2] & 0x00020000u) != 0;
 }
 void Chassis::set_has_throttle_percentage() {
-  _has_bits_[2] |= 0x00040000u;
+  _has_bits_[2] |= 0x00020000u;
 }
 void Chassis::clear_has_throttle_percentage() {
-  _has_bits_[2] &= ~0x00040000u;
+  _has_bits_[2] &= ~0x00020000u;
 }
 void Chassis::clear_throttle_percentage() {
   throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4910,13 +4859,13 @@ void Chassis::set_throttle_percentage(float value) {
 
 // optional float brake_percentage = 9 [default = nan];
 bool Chassis::has_brake_percentage() const {
-  return (_has_bits_[2] & 0x00080000u) != 0;
+  return (_has_bits_[2] & 0x00040000u) != 0;
 }
 void Chassis::set_has_brake_percentage() {
-  _has_bits_[2] |= 0x00080000u;
+  _has_bits_[2] |= 0x00040000u;
 }
 void Chassis::clear_has_brake_percentage() {
-  _has_bits_[2] &= ~0x00080000u;
+  _has_bits_[2] &= ~0x00040000u;
 }
 void Chassis::clear_brake_percentage() {
   brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4934,13 +4883,13 @@ void Chassis::set_brake_percentage(float value) {
 
 // optional float steering_percentage = 11 [default = nan];
 bool Chassis::has_steering_percentage() const {
-  return (_has_bits_[2] & 0x00100000u) != 0;
+  return (_has_bits_[2] & 0x00080000u) != 0;
 }
 void Chassis::set_has_steering_percentage() {
-  _has_bits_[2] |= 0x00100000u;
+  _has_bits_[2] |= 0x00080000u;
 }
 void Chassis::clear_has_steering_percentage() {
-  _has_bits_[2] &= ~0x00100000u;
+  _has_bits_[2] &= ~0x00080000u;
 }
 void Chassis::clear_steering_percentage() {
   steering_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4958,13 +4907,13 @@ void Chassis::set_steering_percentage(float value) {
 
 // optional float steering_torque_nm = 12 [default = nan];
 bool Chassis::has_steering_torque_nm() const {
-  return (_has_bits_[2] & 0x00004000u) != 0;
+  return (_has_bits_[2] & 0x00002000u) != 0;
 }
 void Chassis::set_has_steering_torque_nm() {
-  _has_bits_[2] |= 0x00004000u;
+  _has_bits_[2] |= 0x00002000u;
 }
 void Chassis::clear_has_steering_torque_nm() {
-  _has_bits_[2] &= ~0x00004000u;
+  _has_bits_[2] &= ~0x00002000u;
 }
 void Chassis::clear_steering_torque_nm() {
   steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4982,13 +4931,13 @@ void Chassis::set_steering_torque_nm(float value) {
 
 // optional bool parking_brake = 13;
 bool Chassis::has_parking_brake() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 void Chassis::set_has_parking_brake() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 void Chassis::clear_has_parking_brake() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 void Chassis::clear_parking_brake() {
   parking_brake_ = false;
@@ -5006,13 +4955,13 @@ void Chassis::set_parking_brake(bool value) {
 
 // optional bool high_beam_signal = 14 [deprecated = true];
 bool Chassis::has_high_beam_signal() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 void Chassis::set_has_high_beam_signal() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 void Chassis::clear_has_high_beam_signal() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 void Chassis::clear_high_beam_signal() {
   high_beam_signal_ = false;
@@ -5030,13 +4979,13 @@ void Chassis::set_high_beam_signal(bool value) {
 
 // optional bool low_beam_signal = 15 [deprecated = true];
 bool Chassis::has_low_beam_signal() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 void Chassis::set_has_low_beam_signal() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 void Chassis::clear_has_low_beam_signal() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 void Chassis::clear_low_beam_signal() {
   low_beam_signal_ = false;
@@ -5054,13 +5003,13 @@ void Chassis::set_low_beam_signal(bool value) {
 
 // optional bool left_turn_signal = 16 [deprecated = true];
 bool Chassis::has_left_turn_signal() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 void Chassis::set_has_left_turn_signal() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 void Chassis::clear_has_left_turn_signal() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 void Chassis::clear_left_turn_signal() {
   left_turn_signal_ = false;
@@ -5078,13 +5027,13 @@ void Chassis::set_left_turn_signal(bool value) {
 
 // optional bool right_turn_signal = 17 [deprecated = true];
 bool Chassis::has_right_turn_signal() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 void Chassis::set_has_right_turn_signal() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 void Chassis::clear_has_right_turn_signal() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 void Chassis::clear_right_turn_signal() {
   right_turn_signal_ = false;
@@ -5102,13 +5051,13 @@ void Chassis::set_right_turn_signal(bool value) {
 
 // optional bool horn = 18 [deprecated = true];
 bool Chassis::has_horn() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 void Chassis::set_has_horn() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 void Chassis::clear_has_horn() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 void Chassis::clear_horn() {
   horn_ = false;
@@ -5126,13 +5075,13 @@ void Chassis::set_horn(bool value) {
 
 // optional bool wiper = 19;
 bool Chassis::has_wiper() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 void Chassis::set_has_wiper() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 void Chassis::clear_has_wiper() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 void Chassis::clear_wiper() {
   wiper_ = false;
@@ -5150,13 +5099,13 @@ void Chassis::set_wiper(bool value) {
 
 // optional bool disengage_status = 20 [deprecated = true];
 bool Chassis::has_disengage_status() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 void Chassis::set_has_disengage_status() {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00100000u;
 }
 void Chassis::clear_has_disengage_status() {
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 void Chassis::clear_disengage_status() {
   disengage_status_ = false;
@@ -5174,13 +5123,13 @@ void Chassis::set_disengage_status(bool value) {
 
 // optional .jmc_auto.canbus.Chassis.DrivingMode driving_mode = 21 [default = COMPLETE_MANUAL];
 bool Chassis::has_driving_mode() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 void Chassis::set_has_driving_mode() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 void Chassis::clear_has_driving_mode() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 void Chassis::clear_driving_mode() {
   driving_mode_ = 0;
@@ -5199,13 +5148,13 @@ void Chassis::set_driving_mode(::jmc_auto::canbus::Chassis_DrivingMode value) {
 
 // optional .jmc_auto.canbus.Chassis.ErrorCode error_code = 22 [default = NO_ERROR];
 bool Chassis::has_error_code() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 void Chassis::set_has_error_code() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 void Chassis::clear_has_error_code() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 void Chassis::clear_error_code() {
   error_code_ = 0;
@@ -5224,13 +5173,13 @@ void Chassis::set_error_code(::jmc_auto::canbus::Chassis_ErrorCode value) {
 
 // optional .jmc_auto.canbus.Chassis.GearPosition gear_location = 23;
 bool Chassis::has_gear_location() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 void Chassis::set_has_gear_location() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 void Chassis::clear_has_gear_location() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 void Chassis::clear_gear_location() {
   gear_location_ = 0;
@@ -5249,13 +5198,13 @@ void Chassis::set_gear_location(::jmc_auto::canbus::Chassis_GearPosition value) 
 
 // optional double steering_timestamp = 24;
 bool Chassis::has_steering_timestamp() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 void Chassis::set_has_steering_timestamp() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 void Chassis::clear_has_steering_timestamp() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 void Chassis::clear_steering_timestamp() {
   steering_timestamp_ = 0;
@@ -5318,13 +5267,13 @@ void Chassis::set_allocated_header(::jmc_auto::common::Header* header) {
 
 // optional int32 chassis_error_mask = 26 [default = 0];
 bool Chassis::has_chassis_error_mask() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 void Chassis::set_has_chassis_error_mask() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 void Chassis::clear_has_chassis_error_mask() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 void Chassis::clear_chassis_error_mask() {
   chassis_error_mask_ = 0;
@@ -5565,60 +5514,15 @@ void Chassis::set_allocated_surround(::jmc_auto::canbus::Surround* surround) {
   // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.Chassis.surround)
 }
 
-// optional .jmc_auto.canbus.License license = 32;
-bool Chassis::has_license() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-void Chassis::set_has_license() {
-  _has_bits_[0] |= 0x00000040u;
-}
-void Chassis::clear_has_license() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-void Chassis::clear_license() {
-  if (license_ != NULL) license_->::jmc_auto::canbus::License::Clear();
-  clear_has_license();
-}
-const ::jmc_auto::canbus::License& Chassis::license() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.license)
-  return license_ != NULL ? *license_
-                         : *::jmc_auto::canbus::License::internal_default_instance();
-}
-::jmc_auto::canbus::License* Chassis::mutable_license() {
-  set_has_license();
-  if (license_ == NULL) {
-    license_ = new ::jmc_auto::canbus::License;
-  }
-  // @@protoc_insertion_point(field_mutable:jmc_auto.canbus.Chassis.license)
-  return license_;
-}
-::jmc_auto::canbus::License* Chassis::release_license() {
-  // @@protoc_insertion_point(field_release:jmc_auto.canbus.Chassis.license)
-  clear_has_license();
-  ::jmc_auto::canbus::License* temp = license_;
-  license_ = NULL;
-  return temp;
-}
-void Chassis::set_allocated_license(::jmc_auto::canbus::License* license) {
-  delete license_;
-  license_ = license;
-  if (license) {
-    set_has_license();
-  } else {
-    clear_has_license();
-  }
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.canbus.Chassis.license)
-}
-
 // optional float lon_acc = 33;
 bool Chassis::has_lon_acc() const {
-  return (_has_bits_[0] & 0x02000000u) != 0;
+  return (_has_bits_[0] & 0x01000000u) != 0;
 }
 void Chassis::set_has_lon_acc() {
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x01000000u;
 }
 void Chassis::clear_has_lon_acc() {
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 void Chassis::clear_lon_acc() {
   lon_acc_ = 0;
@@ -5636,13 +5540,13 @@ void Chassis::set_lon_acc(float value) {
 
 // optional float steer_wheel_rot_spd = 34;
 bool Chassis::has_steer_wheel_rot_spd() const {
-  return (_has_bits_[0] & 0x04000000u) != 0;
+  return (_has_bits_[0] & 0x02000000u) != 0;
 }
 void Chassis::set_has_steer_wheel_rot_spd() {
-  _has_bits_[0] |= 0x04000000u;
+  _has_bits_[0] |= 0x02000000u;
 }
 void Chassis::clear_has_steer_wheel_rot_spd() {
-  _has_bits_[0] &= ~0x04000000u;
+  _has_bits_[0] &= ~0x02000000u;
 }
 void Chassis::clear_steer_wheel_rot_spd() {
   steer_wheel_rot_spd_ = 0;
@@ -5660,13 +5564,13 @@ void Chassis::set_steer_wheel_rot_spd(float value) {
 
 // optional bool abs_vehspdlgt_valid = 35;
 bool Chassis::has_abs_vehspdlgt_valid() const {
-  return (_has_bits_[0] & 0x00400000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 void Chassis::set_has_abs_vehspdlgt_valid() {
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 void Chassis::clear_has_abs_vehspdlgt_valid() {
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 void Chassis::clear_abs_vehspdlgt_valid() {
   abs_vehspdlgt_valid_ = false;
@@ -5684,13 +5588,13 @@ void Chassis::set_abs_vehspdlgt_valid(bool value) {
 
 // optional bool esp_algtstatus_valid = 36;
 bool Chassis::has_esp_algtstatus_valid() const {
-  return (_has_bits_[0] & 0x00800000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 void Chassis::set_has_esp_algtstatus_valid() {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x00400000u;
 }
 void Chassis::clear_has_esp_algtstatus_valid() {
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 void Chassis::clear_esp_algtstatus_valid() {
   esp_algtstatus_valid_ = false;
@@ -5708,13 +5612,13 @@ void Chassis::set_esp_algtstatus_valid(bool value) {
 
 // optional bool sas_sasstssnsr_valid = 37;
 bool Chassis::has_sas_sasstssnsr_valid() const {
-  return (_has_bits_[0] & 0x01000000u) != 0;
+  return (_has_bits_[0] & 0x00800000u) != 0;
 }
 void Chassis::set_has_sas_sasstssnsr_valid() {
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x00800000u;
 }
 void Chassis::clear_has_sas_sasstssnsr_valid() {
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 void Chassis::clear_sas_sasstssnsr_valid() {
   sas_sasstssnsr_valid_ = false;
@@ -5732,13 +5636,13 @@ void Chassis::set_sas_sasstssnsr_valid(bool value) {
 
 // optional bool steerwheelrotspd_valid = 38;
 bool Chassis::has_steerwheelrotspd_valid() const {
-  return (_has_bits_[0] & 0x08000000u) != 0;
+  return (_has_bits_[0] & 0x04000000u) != 0;
 }
 void Chassis::set_has_steerwheelrotspd_valid() {
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x04000000u;
 }
 void Chassis::clear_has_steerwheelrotspd_valid() {
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x04000000u;
 }
 void Chassis::clear_steerwheelrotspd_valid() {
   steerwheelrotspd_valid_ = false;
@@ -5756,13 +5660,13 @@ void Chassis::set_steerwheelrotspd_valid(bool value) {
 
 // optional bool eps_lkaresponsetorque_valid = 39;
 bool Chassis::has_eps_lkaresponsetorque_valid() const {
-  return (_has_bits_[0] & 0x10000000u) != 0;
+  return (_has_bits_[0] & 0x08000000u) != 0;
 }
 void Chassis::set_has_eps_lkaresponsetorque_valid() {
-  _has_bits_[0] |= 0x10000000u;
+  _has_bits_[0] |= 0x08000000u;
 }
 void Chassis::clear_has_eps_lkaresponsetorque_valid() {
-  _has_bits_[0] &= ~0x10000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 void Chassis::clear_eps_lkaresponsetorque_valid() {
   eps_lkaresponsetorque_valid_ = false;
@@ -5780,13 +5684,13 @@ void Chassis::set_eps_lkaresponsetorque_valid(bool value) {
 
 // optional float eps_torsionbartorque = 40;
 bool Chassis::has_eps_torsionbartorque() const {
-  return (_has_bits_[0] & 0x40000000u) != 0;
+  return (_has_bits_[0] & 0x20000000u) != 0;
 }
 void Chassis::set_has_eps_torsionbartorque() {
-  _has_bits_[0] |= 0x40000000u;
+  _has_bits_[0] |= 0x20000000u;
 }
 void Chassis::clear_has_eps_torsionbartorque() {
-  _has_bits_[0] &= ~0x40000000u;
+  _has_bits_[0] &= ~0x20000000u;
 }
 void Chassis::clear_eps_torsionbartorque() {
   eps_torsionbartorque_ = 0;
@@ -5804,13 +5708,13 @@ void Chassis::set_eps_torsionbartorque(float value) {
 
 // optional bool eps_tosionbartorquevalid = 41;
 bool Chassis::has_eps_tosionbartorquevalid() const {
-  return (_has_bits_[0] & 0x20000000u) != 0;
+  return (_has_bits_[0] & 0x10000000u) != 0;
 }
 void Chassis::set_has_eps_tosionbartorquevalid() {
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x10000000u;
 }
 void Chassis::clear_has_eps_tosionbartorquevalid() {
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 void Chassis::clear_eps_tosionbartorquevalid() {
   eps_tosionbartorquevalid_ = false;
@@ -5828,13 +5732,13 @@ void Chassis::set_eps_tosionbartorquevalid(bool value) {
 
 // optional int32 abs_whlmilgfrntri = 42;
 bool Chassis::has_abs_whlmilgfrntri() const {
-  return (_has_bits_[0] & 0x80000000u) != 0;
+  return (_has_bits_[0] & 0x40000000u) != 0;
 }
 void Chassis::set_has_abs_whlmilgfrntri() {
-  _has_bits_[0] |= 0x80000000u;
+  _has_bits_[0] |= 0x40000000u;
 }
 void Chassis::clear_has_abs_whlmilgfrntri() {
-  _has_bits_[0] &= ~0x80000000u;
+  _has_bits_[0] &= ~0x40000000u;
 }
 void Chassis::clear_abs_whlmilgfrntri() {
   abs_whlmilgfrntri_ = 0;
@@ -5852,13 +5756,13 @@ void Chassis::set_abs_whlmilgfrntri(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgfrntle = 43;
 bool Chassis::has_abs_whlmilgfrntle() const {
-  return (_has_bits_[1] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x80000000u) != 0;
 }
 void Chassis::set_has_abs_whlmilgfrntle() {
-  _has_bits_[1] |= 0x00000001u;
+  _has_bits_[0] |= 0x80000000u;
 }
 void Chassis::clear_has_abs_whlmilgfrntle() {
-  _has_bits_[1] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x80000000u;
 }
 void Chassis::clear_abs_whlmilgfrntle() {
   abs_whlmilgfrntle_ = 0;
@@ -5876,13 +5780,13 @@ void Chassis::set_abs_whlmilgfrntle(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgrearre = 44;
 bool Chassis::has_abs_whlmilgrearre() const {
-  return (_has_bits_[1] & 0x00000002u) != 0;
+  return (_has_bits_[1] & 0x00000001u) != 0;
 }
 void Chassis::set_has_abs_whlmilgrearre() {
-  _has_bits_[1] |= 0x00000002u;
+  _has_bits_[1] |= 0x00000001u;
 }
 void Chassis::clear_has_abs_whlmilgrearre() {
-  _has_bits_[1] &= ~0x00000002u;
+  _has_bits_[1] &= ~0x00000001u;
 }
 void Chassis::clear_abs_whlmilgrearre() {
   abs_whlmilgrearre_ = 0;
@@ -5900,13 +5804,13 @@ void Chassis::set_abs_whlmilgrearre(::google::protobuf::int32 value) {
 
 // optional int32 abs_whlmilgrearle = 45;
 bool Chassis::has_abs_whlmilgrearle() const {
-  return (_has_bits_[1] & 0x00000004u) != 0;
+  return (_has_bits_[1] & 0x00000002u) != 0;
 }
 void Chassis::set_has_abs_whlmilgrearle() {
-  _has_bits_[1] |= 0x00000004u;
+  _has_bits_[1] |= 0x00000002u;
 }
 void Chassis::clear_has_abs_whlmilgrearle() {
-  _has_bits_[1] &= ~0x00000004u;
+  _has_bits_[1] &= ~0x00000002u;
 }
 void Chassis::clear_abs_whlmilgrearle() {
   abs_whlmilgrearle_ = 0;
@@ -5924,13 +5828,13 @@ void Chassis::set_abs_whlmilgrearle(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_fl = 46;
 bool Chassis::has_esp_wheelpulse_fl() const {
-  return (_has_bits_[1] & 0x00000008u) != 0;
+  return (_has_bits_[1] & 0x00000004u) != 0;
 }
 void Chassis::set_has_esp_wheelpulse_fl() {
-  _has_bits_[1] |= 0x00000008u;
+  _has_bits_[1] |= 0x00000004u;
 }
 void Chassis::clear_has_esp_wheelpulse_fl() {
-  _has_bits_[1] &= ~0x00000008u;
+  _has_bits_[1] &= ~0x00000004u;
 }
 void Chassis::clear_esp_wheelpulse_fl() {
   esp_wheelpulse_fl_ = 0;
@@ -5948,13 +5852,13 @@ void Chassis::set_esp_wheelpulse_fl(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_fr = 47;
 bool Chassis::has_esp_wheelpulse_fr() const {
-  return (_has_bits_[1] & 0x00000010u) != 0;
+  return (_has_bits_[1] & 0x00000008u) != 0;
 }
 void Chassis::set_has_esp_wheelpulse_fr() {
-  _has_bits_[1] |= 0x00000010u;
+  _has_bits_[1] |= 0x00000008u;
 }
 void Chassis::clear_has_esp_wheelpulse_fr() {
-  _has_bits_[1] &= ~0x00000010u;
+  _has_bits_[1] &= ~0x00000008u;
 }
 void Chassis::clear_esp_wheelpulse_fr() {
   esp_wheelpulse_fr_ = 0;
@@ -5972,13 +5876,13 @@ void Chassis::set_esp_wheelpulse_fr(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_rl = 48;
 bool Chassis::has_esp_wheelpulse_rl() const {
-  return (_has_bits_[1] & 0x00000020u) != 0;
+  return (_has_bits_[1] & 0x00000010u) != 0;
 }
 void Chassis::set_has_esp_wheelpulse_rl() {
-  _has_bits_[1] |= 0x00000020u;
+  _has_bits_[1] |= 0x00000010u;
 }
 void Chassis::clear_has_esp_wheelpulse_rl() {
-  _has_bits_[1] &= ~0x00000020u;
+  _has_bits_[1] &= ~0x00000010u;
 }
 void Chassis::clear_esp_wheelpulse_rl() {
   esp_wheelpulse_rl_ = 0;
@@ -5996,13 +5900,13 @@ void Chassis::set_esp_wheelpulse_rl(::google::protobuf::int32 value) {
 
 // optional int32 esp_wheelpulse_rr = 49;
 bool Chassis::has_esp_wheelpulse_rr() const {
-  return (_has_bits_[1] & 0x00000040u) != 0;
+  return (_has_bits_[1] & 0x00000020u) != 0;
 }
 void Chassis::set_has_esp_wheelpulse_rr() {
-  _has_bits_[1] |= 0x00000040u;
+  _has_bits_[1] |= 0x00000020u;
 }
 void Chassis::clear_has_esp_wheelpulse_rr() {
-  _has_bits_[1] &= ~0x00000040u;
+  _has_bits_[1] &= ~0x00000020u;
 }
 void Chassis::clear_esp_wheelpulse_rr() {
   esp_wheelpulse_rr_ = 0;
@@ -6020,13 +5924,13 @@ void Chassis::set_esp_wheelpulse_rr(::google::protobuf::int32 value) {
 
 // optional double ems_accpedalratio = 50;
 bool Chassis::has_ems_accpedalratio() const {
-  return (_has_bits_[1] & 0x00000080u) != 0;
+  return (_has_bits_[1] & 0x00000040u) != 0;
 }
 void Chassis::set_has_ems_accpedalratio() {
-  _has_bits_[1] |= 0x00000080u;
+  _has_bits_[1] |= 0x00000040u;
 }
 void Chassis::clear_has_ems_accpedalratio() {
-  _has_bits_[1] &= ~0x00000080u;
+  _has_bits_[1] &= ~0x00000040u;
 }
 void Chassis::clear_ems_accpedalratio() {
   ems_accpedalratio_ = 0;
@@ -6044,13 +5948,13 @@ void Chassis::set_ems_accpedalratio(double value) {
 
 // optional .jmc_auto.canbus.Chassis.BrkPedalStasus brkpedalstasus = 51;
 bool Chassis::has_brkpedalstasus() const {
-  return (_has_bits_[1] & 0x00040000u) != 0;
+  return (_has_bits_[1] & 0x00020000u) != 0;
 }
 void Chassis::set_has_brkpedalstasus() {
-  _has_bits_[1] |= 0x00040000u;
+  _has_bits_[1] |= 0x00020000u;
 }
 void Chassis::clear_has_brkpedalstasus() {
-  _has_bits_[1] &= ~0x00040000u;
+  _has_bits_[1] &= ~0x00020000u;
 }
 void Chassis::clear_brkpedalstasus() {
   brkpedalstasus_ = 0;
@@ -6069,13 +5973,13 @@ void Chassis::set_brkpedalstasus(::jmc_auto::canbus::Chassis_BrkPedalStasus valu
 
 // optional double abs_whlspdfrntle = 52;
 bool Chassis::has_abs_whlspdfrntle() const {
-  return (_has_bits_[1] & 0x00000100u) != 0;
+  return (_has_bits_[1] & 0x00000080u) != 0;
 }
 void Chassis::set_has_abs_whlspdfrntle() {
-  _has_bits_[1] |= 0x00000100u;
+  _has_bits_[1] |= 0x00000080u;
 }
 void Chassis::clear_has_abs_whlspdfrntle() {
-  _has_bits_[1] &= ~0x00000100u;
+  _has_bits_[1] &= ~0x00000080u;
 }
 void Chassis::clear_abs_whlspdfrntle() {
   abs_whlspdfrntle_ = 0;
@@ -6093,13 +5997,13 @@ void Chassis::set_abs_whlspdfrntle(double value) {
 
 // optional double abs_whlspdfrntri = 53;
 bool Chassis::has_abs_whlspdfrntri() const {
-  return (_has_bits_[1] & 0x00000200u) != 0;
+  return (_has_bits_[1] & 0x00000100u) != 0;
 }
 void Chassis::set_has_abs_whlspdfrntri() {
-  _has_bits_[1] |= 0x00000200u;
+  _has_bits_[1] |= 0x00000100u;
 }
 void Chassis::clear_has_abs_whlspdfrntri() {
-  _has_bits_[1] &= ~0x00000200u;
+  _has_bits_[1] &= ~0x00000100u;
 }
 void Chassis::clear_abs_whlspdfrntri() {
   abs_whlspdfrntri_ = 0;
@@ -6117,13 +6021,13 @@ void Chassis::set_abs_whlspdfrntri(double value) {
 
 // optional double abs_whlspdrele = 54;
 bool Chassis::has_abs_whlspdrele() const {
-  return (_has_bits_[1] & 0x00000400u) != 0;
+  return (_has_bits_[1] & 0x00000200u) != 0;
 }
 void Chassis::set_has_abs_whlspdrele() {
-  _has_bits_[1] |= 0x00000400u;
+  _has_bits_[1] |= 0x00000200u;
 }
 void Chassis::clear_has_abs_whlspdrele() {
-  _has_bits_[1] &= ~0x00000400u;
+  _has_bits_[1] &= ~0x00000200u;
 }
 void Chassis::clear_abs_whlspdrele() {
   abs_whlspdrele_ = 0;
@@ -6141,13 +6045,13 @@ void Chassis::set_abs_whlspdrele(double value) {
 
 // optional double abs_whlspdreri = 55;
 bool Chassis::has_abs_whlspdreri() const {
-  return (_has_bits_[1] & 0x00000800u) != 0;
+  return (_has_bits_[1] & 0x00000400u) != 0;
 }
 void Chassis::set_has_abs_whlspdreri() {
-  _has_bits_[1] |= 0x00000800u;
+  _has_bits_[1] |= 0x00000400u;
 }
 void Chassis::clear_has_abs_whlspdreri() {
-  _has_bits_[1] &= ~0x00000800u;
+  _has_bits_[1] &= ~0x00000400u;
 }
 void Chassis::clear_abs_whlspdreri() {
   abs_whlspdreri_ = 0;
@@ -6165,13 +6069,13 @@ void Chassis::set_abs_whlspdreri(double value) {
 
 // optional double acc_x = 56;
 bool Chassis::has_acc_x() const {
-  return (_has_bits_[1] & 0x00001000u) != 0;
+  return (_has_bits_[1] & 0x00000800u) != 0;
 }
 void Chassis::set_has_acc_x() {
-  _has_bits_[1] |= 0x00001000u;
+  _has_bits_[1] |= 0x00000800u;
 }
 void Chassis::clear_has_acc_x() {
-  _has_bits_[1] &= ~0x00001000u;
+  _has_bits_[1] &= ~0x00000800u;
 }
 void Chassis::clear_acc_x() {
   acc_x_ = 0;
@@ -6189,13 +6093,13 @@ void Chassis::set_acc_x(double value) {
 
 // optional double acc_y = 57;
 bool Chassis::has_acc_y() const {
-  return (_has_bits_[1] & 0x00002000u) != 0;
+  return (_has_bits_[1] & 0x00001000u) != 0;
 }
 void Chassis::set_has_acc_y() {
-  _has_bits_[1] |= 0x00002000u;
+  _has_bits_[1] |= 0x00001000u;
 }
 void Chassis::clear_has_acc_y() {
-  _has_bits_[1] &= ~0x00002000u;
+  _has_bits_[1] &= ~0x00001000u;
 }
 void Chassis::clear_acc_y() {
   acc_y_ = 0;
@@ -6213,13 +6117,13 @@ void Chassis::set_acc_y(double value) {
 
 // optional double acc_z = 58;
 bool Chassis::has_acc_z() const {
-  return (_has_bits_[1] & 0x00004000u) != 0;
+  return (_has_bits_[1] & 0x00002000u) != 0;
 }
 void Chassis::set_has_acc_z() {
-  _has_bits_[1] |= 0x00004000u;
+  _has_bits_[1] |= 0x00002000u;
 }
 void Chassis::clear_has_acc_z() {
-  _has_bits_[1] &= ~0x00004000u;
+  _has_bits_[1] &= ~0x00002000u;
 }
 void Chassis::clear_acc_z() {
   acc_z_ = 0;
@@ -6237,13 +6141,13 @@ void Chassis::set_acc_z(double value) {
 
 // optional double gyro_x = 59;
 bool Chassis::has_gyro_x() const {
-  return (_has_bits_[1] & 0x00008000u) != 0;
+  return (_has_bits_[1] & 0x00004000u) != 0;
 }
 void Chassis::set_has_gyro_x() {
-  _has_bits_[1] |= 0x00008000u;
+  _has_bits_[1] |= 0x00004000u;
 }
 void Chassis::clear_has_gyro_x() {
-  _has_bits_[1] &= ~0x00008000u;
+  _has_bits_[1] &= ~0x00004000u;
 }
 void Chassis::clear_gyro_x() {
   gyro_x_ = 0;
@@ -6261,13 +6165,13 @@ void Chassis::set_gyro_x(double value) {
 
 // optional double gyro_y = 60;
 bool Chassis::has_gyro_y() const {
-  return (_has_bits_[1] & 0x00010000u) != 0;
+  return (_has_bits_[1] & 0x00008000u) != 0;
 }
 void Chassis::set_has_gyro_y() {
-  _has_bits_[1] |= 0x00010000u;
+  _has_bits_[1] |= 0x00008000u;
 }
 void Chassis::clear_has_gyro_y() {
-  _has_bits_[1] &= ~0x00010000u;
+  _has_bits_[1] &= ~0x00008000u;
 }
 void Chassis::clear_gyro_y() {
   gyro_y_ = 0;
@@ -6285,13 +6189,13 @@ void Chassis::set_gyro_y(double value) {
 
 // optional double gyro_z = 61;
 bool Chassis::has_gyro_z() const {
-  return (_has_bits_[1] & 0x00020000u) != 0;
+  return (_has_bits_[1] & 0x00010000u) != 0;
 }
 void Chassis::set_has_gyro_z() {
-  _has_bits_[1] |= 0x00020000u;
+  _has_bits_[1] |= 0x00010000u;
 }
 void Chassis::clear_has_gyro_z() {
-  _has_bits_[1] &= ~0x00020000u;
+  _has_bits_[1] &= ~0x00010000u;
 }
 void Chassis::clear_gyro_z() {
   gyro_z_ = 0;
@@ -6309,13 +6213,13 @@ void Chassis::set_gyro_z(double value) {
 
 // optional double ins_pitchangle = 62;
 bool Chassis::has_ins_pitchangle() const {
-  return (_has_bits_[1] & 0x00100000u) != 0;
+  return (_has_bits_[1] & 0x00080000u) != 0;
 }
 void Chassis::set_has_ins_pitchangle() {
-  _has_bits_[1] |= 0x00100000u;
+  _has_bits_[1] |= 0x00080000u;
 }
 void Chassis::clear_has_ins_pitchangle() {
-  _has_bits_[1] &= ~0x00100000u;
+  _has_bits_[1] &= ~0x00080000u;
 }
 void Chassis::clear_ins_pitchangle() {
   ins_pitchangle_ = 0;
@@ -6333,13 +6237,13 @@ void Chassis::set_ins_pitchangle(double value) {
 
 // optional double ins_rollangle = 63;
 bool Chassis::has_ins_rollangle() const {
-  return (_has_bits_[1] & 0x00200000u) != 0;
+  return (_has_bits_[1] & 0x00100000u) != 0;
 }
 void Chassis::set_has_ins_rollangle() {
-  _has_bits_[1] |= 0x00200000u;
+  _has_bits_[1] |= 0x00100000u;
 }
 void Chassis::clear_has_ins_rollangle() {
-  _has_bits_[1] &= ~0x00200000u;
+  _has_bits_[1] &= ~0x00100000u;
 }
 void Chassis::clear_ins_rollangle() {
   ins_rollangle_ = 0;
@@ -6357,13 +6261,13 @@ void Chassis::set_ins_rollangle(double value) {
 
 // optional double ins_headingangle = 64;
 bool Chassis::has_ins_headingangle() const {
-  return (_has_bits_[1] & 0x00400000u) != 0;
+  return (_has_bits_[1] & 0x00200000u) != 0;
 }
 void Chassis::set_has_ins_headingangle() {
-  _has_bits_[1] |= 0x00400000u;
+  _has_bits_[1] |= 0x00200000u;
 }
 void Chassis::clear_has_ins_headingangle() {
-  _has_bits_[1] &= ~0x00400000u;
+  _has_bits_[1] &= ~0x00200000u;
 }
 void Chassis::clear_ins_headingangle() {
   ins_headingangle_ = 0;
@@ -6381,13 +6285,13 @@ void Chassis::set_ins_headingangle(double value) {
 
 // optional double ins_locatheight = 65;
 bool Chassis::has_ins_locatheight() const {
-  return (_has_bits_[1] & 0x00800000u) != 0;
+  return (_has_bits_[1] & 0x00400000u) != 0;
 }
 void Chassis::set_has_ins_locatheight() {
-  _has_bits_[1] |= 0x00800000u;
+  _has_bits_[1] |= 0x00400000u;
 }
 void Chassis::clear_has_ins_locatheight() {
-  _has_bits_[1] &= ~0x00800000u;
+  _has_bits_[1] &= ~0x00400000u;
 }
 void Chassis::clear_ins_locatheight() {
   ins_locatheight_ = 0;
@@ -6405,13 +6309,13 @@ void Chassis::set_ins_locatheight(double value) {
 
 // optional double ins_time = 66;
 bool Chassis::has_ins_time() const {
-  return (_has_bits_[1] & 0x01000000u) != 0;
+  return (_has_bits_[1] & 0x00800000u) != 0;
 }
 void Chassis::set_has_ins_time() {
-  _has_bits_[1] |= 0x01000000u;
+  _has_bits_[1] |= 0x00800000u;
 }
 void Chassis::clear_has_ins_time() {
-  _has_bits_[1] &= ~0x01000000u;
+  _has_bits_[1] &= ~0x00800000u;
 }
 void Chassis::clear_ins_time() {
   ins_time_ = 0;
@@ -6429,13 +6333,13 @@ void Chassis::set_ins_time(double value) {
 
 // optional double ins_latitude = 67;
 bool Chassis::has_ins_latitude() const {
-  return (_has_bits_[1] & 0x02000000u) != 0;
+  return (_has_bits_[1] & 0x01000000u) != 0;
 }
 void Chassis::set_has_ins_latitude() {
-  _has_bits_[1] |= 0x02000000u;
+  _has_bits_[1] |= 0x01000000u;
 }
 void Chassis::clear_has_ins_latitude() {
-  _has_bits_[1] &= ~0x02000000u;
+  _has_bits_[1] &= ~0x01000000u;
 }
 void Chassis::clear_ins_latitude() {
   ins_latitude_ = 0;
@@ -6453,13 +6357,13 @@ void Chassis::set_ins_latitude(double value) {
 
 // optional double ins_longitude = 68;
 bool Chassis::has_ins_longitude() const {
-  return (_has_bits_[1] & 0x04000000u) != 0;
+  return (_has_bits_[1] & 0x02000000u) != 0;
 }
 void Chassis::set_has_ins_longitude() {
-  _has_bits_[1] |= 0x04000000u;
+  _has_bits_[1] |= 0x02000000u;
 }
 void Chassis::clear_has_ins_longitude() {
-  _has_bits_[1] &= ~0x04000000u;
+  _has_bits_[1] &= ~0x02000000u;
 }
 void Chassis::clear_ins_longitude() {
   ins_longitude_ = 0;
@@ -6477,13 +6381,13 @@ void Chassis::set_ins_longitude(double value) {
 
 // optional double ins_northspd = 69;
 bool Chassis::has_ins_northspd() const {
-  return (_has_bits_[1] & 0x08000000u) != 0;
+  return (_has_bits_[1] & 0x04000000u) != 0;
 }
 void Chassis::set_has_ins_northspd() {
-  _has_bits_[1] |= 0x08000000u;
+  _has_bits_[1] |= 0x04000000u;
 }
 void Chassis::clear_has_ins_northspd() {
-  _has_bits_[1] &= ~0x08000000u;
+  _has_bits_[1] &= ~0x04000000u;
 }
 void Chassis::clear_ins_northspd() {
   ins_northspd_ = 0;
@@ -6501,13 +6405,13 @@ void Chassis::set_ins_northspd(double value) {
 
 // optional double ins_eastspd = 70;
 bool Chassis::has_ins_eastspd() const {
-  return (_has_bits_[1] & 0x10000000u) != 0;
+  return (_has_bits_[1] & 0x08000000u) != 0;
 }
 void Chassis::set_has_ins_eastspd() {
-  _has_bits_[1] |= 0x10000000u;
+  _has_bits_[1] |= 0x08000000u;
 }
 void Chassis::clear_has_ins_eastspd() {
-  _has_bits_[1] &= ~0x10000000u;
+  _has_bits_[1] &= ~0x08000000u;
 }
 void Chassis::clear_ins_eastspd() {
   ins_eastspd_ = 0;
@@ -6525,13 +6429,13 @@ void Chassis::set_ins_eastspd(double value) {
 
 // optional double ins_togroundspd = 71;
 bool Chassis::has_ins_togroundspd() const {
-  return (_has_bits_[1] & 0x20000000u) != 0;
+  return (_has_bits_[1] & 0x10000000u) != 0;
 }
 void Chassis::set_has_ins_togroundspd() {
-  _has_bits_[1] |= 0x20000000u;
+  _has_bits_[1] |= 0x10000000u;
 }
 void Chassis::clear_has_ins_togroundspd() {
-  _has_bits_[1] &= ~0x20000000u;
+  _has_bits_[1] &= ~0x10000000u;
 }
 void Chassis::clear_ins_togroundspd() {
   ins_togroundspd_ = 0;
@@ -6549,13 +6453,13 @@ void Chassis::set_ins_togroundspd(double value) {
 
 // optional int32 ins_gpsflag_pos = 72;
 bool Chassis::has_ins_gpsflag_pos() const {
-  return (_has_bits_[1] & 0x00080000u) != 0;
+  return (_has_bits_[1] & 0x00040000u) != 0;
 }
 void Chassis::set_has_ins_gpsflag_pos() {
-  _has_bits_[1] |= 0x00080000u;
+  _has_bits_[1] |= 0x00040000u;
 }
 void Chassis::clear_has_ins_gpsflag_pos() {
-  _has_bits_[1] &= ~0x00080000u;
+  _has_bits_[1] &= ~0x00040000u;
 }
 void Chassis::clear_ins_gpsflag_pos() {
   ins_gpsflag_pos_ = 0;
@@ -6573,13 +6477,13 @@ void Chassis::set_ins_gpsflag_pos(::google::protobuf::int32 value) {
 
 // optional int32 ins_numsv = 73;
 bool Chassis::has_ins_numsv() const {
-  return (_has_bits_[1] & 0x40000000u) != 0;
+  return (_has_bits_[1] & 0x20000000u) != 0;
 }
 void Chassis::set_has_ins_numsv() {
-  _has_bits_[1] |= 0x40000000u;
+  _has_bits_[1] |= 0x20000000u;
 }
 void Chassis::clear_has_ins_numsv() {
-  _has_bits_[1] &= ~0x40000000u;
+  _has_bits_[1] &= ~0x20000000u;
 }
 void Chassis::clear_ins_numsv() {
   ins_numsv_ = 0;
@@ -6597,13 +6501,13 @@ void Chassis::set_ins_numsv(::google::protobuf::int32 value) {
 
 // optional int32 ins_gpsflag_heading = 74;
 bool Chassis::has_ins_gpsflag_heading() const {
-  return (_has_bits_[1] & 0x80000000u) != 0;
+  return (_has_bits_[1] & 0x40000000u) != 0;
 }
 void Chassis::set_has_ins_gpsflag_heading() {
-  _has_bits_[1] |= 0x80000000u;
+  _has_bits_[1] |= 0x40000000u;
 }
 void Chassis::clear_has_ins_gpsflag_heading() {
-  _has_bits_[1] &= ~0x80000000u;
+  _has_bits_[1] &= ~0x40000000u;
 }
 void Chassis::clear_ins_gpsflag_heading() {
   ins_gpsflag_heading_ = 0;
@@ -6621,13 +6525,13 @@ void Chassis::set_ins_gpsflag_heading(::google::protobuf::int32 value) {
 
 // optional int32 ins_gps_age = 75;
 bool Chassis::has_ins_gps_age() const {
-  return (_has_bits_[2] & 0x00000001u) != 0;
+  return (_has_bits_[1] & 0x80000000u) != 0;
 }
 void Chassis::set_has_ins_gps_age() {
-  _has_bits_[2] |= 0x00000001u;
+  _has_bits_[1] |= 0x80000000u;
 }
 void Chassis::clear_has_ins_gps_age() {
-  _has_bits_[2] &= ~0x00000001u;
+  _has_bits_[1] &= ~0x80000000u;
 }
 void Chassis::clear_ins_gps_age() {
   ins_gps_age_ = 0;
@@ -6645,13 +6549,13 @@ void Chassis::set_ins_gps_age(::google::protobuf::int32 value) {
 
 // optional int32 ins_car_status = 76;
 bool Chassis::has_ins_car_status() const {
-  return (_has_bits_[2] & 0x00000002u) != 0;
+  return (_has_bits_[2] & 0x00000001u) != 0;
 }
 void Chassis::set_has_ins_car_status() {
-  _has_bits_[2] |= 0x00000002u;
+  _has_bits_[2] |= 0x00000001u;
 }
 void Chassis::clear_has_ins_car_status() {
-  _has_bits_[2] &= ~0x00000002u;
+  _has_bits_[2] &= ~0x00000001u;
 }
 void Chassis::clear_ins_car_status() {
   ins_car_status_ = 0;
@@ -6669,13 +6573,13 @@ void Chassis::set_ins_car_status(::google::protobuf::int32 value) {
 
 // optional int32 ins_status = 77;
 bool Chassis::has_ins_status() const {
-  return (_has_bits_[2] & 0x00000010u) != 0;
+  return (_has_bits_[2] & 0x00000008u) != 0;
 }
 void Chassis::set_has_ins_status() {
-  _has_bits_[2] |= 0x00000010u;
+  _has_bits_[2] |= 0x00000008u;
 }
 void Chassis::clear_has_ins_status() {
-  _has_bits_[2] &= ~0x00000010u;
+  _has_bits_[2] &= ~0x00000008u;
 }
 void Chassis::clear_ins_status() {
   ins_status_ = 0;
@@ -6693,13 +6597,13 @@ void Chassis::set_ins_status(::google::protobuf::int32 value) {
 
 // optional double ins_std_lat = 78;
 bool Chassis::has_ins_std_lat() const {
-  return (_has_bits_[2] & 0x00000004u) != 0;
+  return (_has_bits_[2] & 0x00000002u) != 0;
 }
 void Chassis::set_has_ins_std_lat() {
-  _has_bits_[2] |= 0x00000004u;
+  _has_bits_[2] |= 0x00000002u;
 }
 void Chassis::clear_has_ins_std_lat() {
-  _has_bits_[2] &= ~0x00000004u;
+  _has_bits_[2] &= ~0x00000002u;
 }
 void Chassis::clear_ins_std_lat() {
   ins_std_lat_ = 0;
@@ -6717,13 +6621,13 @@ void Chassis::set_ins_std_lat(double value) {
 
 // optional double ins_std_lon = 79;
 bool Chassis::has_ins_std_lon() const {
-  return (_has_bits_[2] & 0x00000008u) != 0;
+  return (_has_bits_[2] & 0x00000004u) != 0;
 }
 void Chassis::set_has_ins_std_lon() {
-  _has_bits_[2] |= 0x00000008u;
+  _has_bits_[2] |= 0x00000004u;
 }
 void Chassis::clear_has_ins_std_lon() {
-  _has_bits_[2] &= ~0x00000008u;
+  _has_bits_[2] &= ~0x00000004u;
 }
 void Chassis::clear_ins_std_lon() {
   ins_std_lon_ = 0;
@@ -6741,13 +6645,13 @@ void Chassis::set_ins_std_lon(double value) {
 
 // optional double ins_std_locat_height = 80;
 bool Chassis::has_ins_std_locat_height() const {
-  return (_has_bits_[2] & 0x00000040u) != 0;
+  return (_has_bits_[2] & 0x00000020u) != 0;
 }
 void Chassis::set_has_ins_std_locat_height() {
-  _has_bits_[2] |= 0x00000040u;
+  _has_bits_[2] |= 0x00000020u;
 }
 void Chassis::clear_has_ins_std_locat_height() {
-  _has_bits_[2] &= ~0x00000040u;
+  _has_bits_[2] &= ~0x00000020u;
 }
 void Chassis::clear_ins_std_locat_height() {
   ins_std_locat_height_ = 0;
@@ -6765,13 +6669,13 @@ void Chassis::set_ins_std_locat_height(double value) {
 
 // optional double ins_std_heading = 81;
 bool Chassis::has_ins_std_heading() const {
-  return (_has_bits_[2] & 0x00000080u) != 0;
+  return (_has_bits_[2] & 0x00000040u) != 0;
 }
 void Chassis::set_has_ins_std_heading() {
-  _has_bits_[2] |= 0x00000080u;
+  _has_bits_[2] |= 0x00000040u;
 }
 void Chassis::clear_has_ins_std_heading() {
-  _has_bits_[2] &= ~0x00000080u;
+  _has_bits_[2] &= ~0x00000040u;
 }
 void Chassis::clear_ins_std_heading() {
   ins_std_heading_ = 0;
@@ -6789,13 +6693,13 @@ void Chassis::set_ins_std_heading(double value) {
 
 // optional int32 eps_lkacontrolstatus = 82;
 bool Chassis::has_eps_lkacontrolstatus() const {
-  return (_has_bits_[2] & 0x00000020u) != 0;
+  return (_has_bits_[2] & 0x00000010u) != 0;
 }
 void Chassis::set_has_eps_lkacontrolstatus() {
-  _has_bits_[2] |= 0x00000020u;
+  _has_bits_[2] |= 0x00000010u;
 }
 void Chassis::clear_has_eps_lkacontrolstatus() {
-  _has_bits_[2] &= ~0x00000020u;
+  _has_bits_[2] &= ~0x00000010u;
 }
 void Chassis::clear_eps_lkacontrolstatus() {
   eps_lkacontrolstatus_ = 0;
@@ -6813,13 +6717,13 @@ void Chassis::set_eps_lkacontrolstatus(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlc_active = 83;
 bool Chassis::has_esp_vlc_active() const {
-  return (_has_bits_[2] & 0x00000100u) != 0;
+  return (_has_bits_[2] & 0x00000080u) != 0;
 }
 void Chassis::set_has_esp_vlc_active() {
-  _has_bits_[2] |= 0x00000100u;
+  _has_bits_[2] |= 0x00000080u;
 }
 void Chassis::clear_has_esp_vlc_active() {
-  _has_bits_[2] &= ~0x00000100u;
+  _has_bits_[2] &= ~0x00000080u;
 }
 void Chassis::clear_esp_vlc_active() {
   esp_vlc_active_ = 0;
@@ -6837,13 +6741,13 @@ void Chassis::set_esp_vlc_active(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlc_available = 84;
 bool Chassis::has_esp_vlc_available() const {
-  return (_has_bits_[2] & 0x00000200u) != 0;
+  return (_has_bits_[2] & 0x00000100u) != 0;
 }
 void Chassis::set_has_esp_vlc_available() {
-  _has_bits_[2] |= 0x00000200u;
+  _has_bits_[2] |= 0x00000100u;
 }
 void Chassis::clear_has_esp_vlc_available() {
-  _has_bits_[2] &= ~0x00000200u;
+  _has_bits_[2] &= ~0x00000100u;
 }
 void Chassis::clear_esp_vlc_available() {
   esp_vlc_available_ = 0;
@@ -6861,13 +6765,13 @@ void Chassis::set_esp_vlc_available(::google::protobuf::int32 value) {
 
 // optional int32 esp_apa_gearboxenable = 85;
 bool Chassis::has_esp_apa_gearboxenable() const {
-  return (_has_bits_[2] & 0x00000400u) != 0;
+  return (_has_bits_[2] & 0x00000200u) != 0;
 }
 void Chassis::set_has_esp_apa_gearboxenable() {
-  _has_bits_[2] |= 0x00000400u;
+  _has_bits_[2] |= 0x00000200u;
 }
 void Chassis::clear_has_esp_apa_gearboxenable() {
-  _has_bits_[2] &= ~0x00000400u;
+  _has_bits_[2] &= ~0x00000200u;
 }
 void Chassis::clear_esp_apa_gearboxenable() {
   esp_apa_gearboxenable_ = 0;
@@ -6885,13 +6789,13 @@ void Chassis::set_esp_apa_gearboxenable(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlc_apactive = 86;
 bool Chassis::has_esp_vlc_apactive() const {
-  return (_has_bits_[2] & 0x00000800u) != 0;
+  return (_has_bits_[2] & 0x00000400u) != 0;
 }
 void Chassis::set_has_esp_vlc_apactive() {
-  _has_bits_[2] |= 0x00000800u;
+  _has_bits_[2] |= 0x00000400u;
 }
 void Chassis::clear_has_esp_vlc_apactive() {
-  _has_bits_[2] &= ~0x00000800u;
+  _has_bits_[2] &= ~0x00000400u;
 }
 void Chassis::clear_esp_vlc_apactive() {
   esp_vlc_apactive_ = 0;
@@ -6909,13 +6813,13 @@ void Chassis::set_esp_vlc_apactive(::google::protobuf::int32 value) {
 
 // optional int32 esp_vlcapa_available = 87;
 bool Chassis::has_esp_vlcapa_available() const {
-  return (_has_bits_[2] & 0x00001000u) != 0;
+  return (_has_bits_[2] & 0x00000800u) != 0;
 }
 void Chassis::set_has_esp_vlcapa_available() {
-  _has_bits_[2] |= 0x00001000u;
+  _has_bits_[2] |= 0x00000800u;
 }
 void Chassis::clear_has_esp_vlcapa_available() {
-  _has_bits_[2] &= ~0x00001000u;
+  _has_bits_[2] &= ~0x00000800u;
 }
 void Chassis::clear_esp_vlcapa_available() {
   esp_vlcapa_available_ = 0;
@@ -6933,13 +6837,13 @@ void Chassis::set_esp_vlcapa_available(::google::protobuf::int32 value) {
 
 // optional int32 esp_epbstatus = 88;
 bool Chassis::has_esp_epbstatus() const {
-  return (_has_bits_[2] & 0x00002000u) != 0;
+  return (_has_bits_[2] & 0x00001000u) != 0;
 }
 void Chassis::set_has_esp_epbstatus() {
-  _has_bits_[2] |= 0x00002000u;
+  _has_bits_[2] |= 0x00001000u;
 }
 void Chassis::clear_has_esp_epbstatus() {
-  _has_bits_[2] &= ~0x00002000u;
+  _has_bits_[2] &= ~0x00001000u;
 }
 void Chassis::clear_esp_epbstatus() {
   esp_epbstatus_ = 0;

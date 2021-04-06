@@ -180,21 +180,6 @@ class StatusPb : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
-  // optional string msg = 2;
-  bool has_msg() const;
-  void clear_msg();
-  static const int kMsgFieldNumber = 2;
-  const ::std::string& msg() const;
-  void set_msg(const ::std::string& value);
-  #if LANG_CXX11
-  void set_msg(::std::string&& value);
-  #endif
-  void set_msg(const char* value);
-  void set_msg(const char* value, size_t size);
-  ::std::string* mutable_msg();
-  ::std::string* release_msg();
-  void set_allocated_msg(::std::string* msg);
-
   // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
   bool has_error_code() const;
   void clear_error_code();
@@ -206,13 +191,10 @@ class StatusPb : public ::google::protobuf::Message /* @@protoc_insertion_point(
  private:
   void set_has_error_code();
   void clear_has_error_code();
-  void set_has_msg();
-  void clear_has_msg();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr msg_;
   int error_code_;
   friend struct protobuf_modules_2fcommon_2fproto_2ferror_5fcode_2eproto::TableStruct;
 };
@@ -226,13 +208,13 @@ class StatusPb : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
 // optional .jmc_auto.common.ErrorCode error_code = 1 [default = OK];
 inline bool StatusPb::has_error_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void StatusPb::set_has_error_code() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void StatusPb::clear_has_error_code() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void StatusPb::clear_error_code() {
   error_code_ = 0;
@@ -247,69 +229,6 @@ inline void StatusPb::set_error_code(::jmc_auto::common::ErrorCode value) {
   set_has_error_code();
   error_code_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.common.StatusPb.error_code)
-}
-
-// optional string msg = 2;
-inline bool StatusPb::has_msg() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StatusPb::set_has_msg() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StatusPb::clear_has_msg() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void StatusPb::clear_msg() {
-  msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_msg();
-}
-inline const ::std::string& StatusPb::msg() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.StatusPb.msg)
-  return msg_.GetNoArena();
-}
-inline void StatusPb::set_msg(const ::std::string& value) {
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.StatusPb.msg)
-}
-#if LANG_CXX11
-inline void StatusPb::set_msg(::std::string&& value) {
-  set_has_msg();
-  msg_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.StatusPb.msg)
-}
-#endif
-inline void StatusPb::set_msg(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.StatusPb.msg)
-}
-inline void StatusPb::set_msg(const char* value, size_t size) {
-  set_has_msg();
-  msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.StatusPb.msg)
-}
-inline ::std::string* StatusPb::mutable_msg() {
-  set_has_msg();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.StatusPb.msg)
-  return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* StatusPb::release_msg() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.StatusPb.msg)
-  clear_has_msg();
-  return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void StatusPb::set_allocated_msg(::std::string* msg) {
-  if (msg != NULL) {
-    set_has_msg();
-  } else {
-    clear_has_msg();
-  }
-  msg_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msg);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.StatusPb.msg)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

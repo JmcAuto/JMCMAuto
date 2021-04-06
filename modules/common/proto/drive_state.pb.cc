@@ -53,13 +53,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EngageAdvice, advice_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EngageAdvice, reason_),
-  1,
   0,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, 7, sizeof(EngageAdvice)},
+  { 0, 6, sizeof(EngageAdvice)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -109,15 +107,15 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
       "\n&modules/common/proto/drive_state.proto"
-      "\022\017jmc_auto.common\"\317\001\n\014EngageAdvice\022E\n\006ad"
+      "\022\017jmc_auto.common\"\277\001\n\014EngageAdvice\022E\n\006ad"
       "vice\030\001 \001(\0162$.jmc_auto.common.EngageAdvic"
-      "e.Advice:\017DISALLOW_ENGAGE\022\016\n\006reason\030\002 \001("
-      "\t\"h\n\006Advice\022\013\n\007UNKNOWN\020\000\022\023\n\017DISALLOW_ENG"
-      "AGE\020\001\022\023\n\017READY_TO_ENGAGE\020\002\022\020\n\014KEEP_ENGAG"
-      "ED\020\003\022\025\n\021PREPARE_DISENGAGE\020\004"
+      "e.Advice:\017DISALLOW_ENGAGE\"h\n\006Advice\022\013\n\007U"
+      "NKNOWN\020\000\022\023\n\017DISALLOW_ENGAGE\020\001\022\023\n\017READY_T"
+      "O_ENGAGE\020\002\022\020\n\014KEEP_ENGAGED\020\003\022\025\n\021PREPARE_"
+      "DISENGAGE\020\004"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 267);
+      descriptor, 251);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/common/proto/drive_state.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -168,7 +166,6 @@ const int EngageAdvice::Advice_ARRAYSIZE;
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int EngageAdvice::kAdviceFieldNumber;
-const int EngageAdvice::kReasonFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 EngageAdvice::EngageAdvice()
@@ -185,17 +182,12 @@ EngageAdvice::EngageAdvice(const EngageAdvice& from)
       _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  reason_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_reason()) {
-    reason_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.reason_);
-  }
   advice_ = from.advice_;
   // @@protoc_insertion_point(copy_constructor:jmc_auto.common.EngageAdvice)
 }
 
 void EngageAdvice::SharedCtor() {
   _cached_size_ = 0;
-  reason_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   advice_ = 1;
 }
 
@@ -205,7 +197,6 @@ EngageAdvice::~EngageAdvice() {
 }
 
 void EngageAdvice::SharedDtor() {
-  reason_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void EngageAdvice::SetCachedSize(int size) const {
@@ -233,13 +224,7 @@ EngageAdvice* EngageAdvice::New(::google::protobuf::Arena* arena) const {
 
 void EngageAdvice::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.common.EngageAdvice)
-  if (_has_bits_[0 / 32] & 3u) {
-    if (has_reason()) {
-      GOOGLE_DCHECK(!reason_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-      (*reason_.UnsafeRawStringPointer())->clear();
-    }
-    advice_ = 1;
-  }
+  advice_ = 1;
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -267,22 +252,6 @@ bool EngageAdvice::MergePartialFromCodedStream(
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional string reason = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_reason()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->reason().data(), this->reason().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "jmc_auto.common.EngageAdvice.reason");
         } else {
           goto handle_unusual;
         }
@@ -319,19 +288,9 @@ void EngageAdvice::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->advice(), output);
-  }
-
-  // optional string reason = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->reason().data(), this->reason().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.EngageAdvice.reason");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->reason(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -349,20 +308,9 @@ void EngageAdvice::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->advice(), target);
-  }
-
-  // optional string reason = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->reason().data(), this->reason().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "jmc_auto.common.EngageAdvice.reason");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->reason(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -382,21 +330,12 @@ size_t EngageAdvice::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 3u) {
-    // optional string reason = 2;
-    if (has_reason()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->reason());
-    }
-
-    // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
-    if (has_advice()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->advice());
-    }
-
+  // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
+  if (has_advice()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->advice());
   }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -426,16 +365,8 @@ void EngageAdvice::MergeFrom(const EngageAdvice& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
-    if (cached_has_bits & 0x00000001u) {
-      set_has_reason();
-      reason_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.reason_);
-    }
-    if (cached_has_bits & 0x00000002u) {
-      advice_ = from.advice_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from.has_advice()) {
+    set_advice(from.advice());
   }
 }
 
@@ -462,7 +393,6 @@ void EngageAdvice::Swap(EngageAdvice* other) {
   InternalSwap(other);
 }
 void EngageAdvice::InternalSwap(EngageAdvice* other) {
-  reason_.Swap(&other->reason_);
   std::swap(advice_, other->advice_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -479,13 +409,13 @@ void EngageAdvice::InternalSwap(EngageAdvice* other) {
 
 // optional .jmc_auto.common.EngageAdvice.Advice advice = 1 [default = DISALLOW_ENGAGE];
 bool EngageAdvice::has_advice() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 void EngageAdvice::set_has_advice() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 void EngageAdvice::clear_has_advice() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 void EngageAdvice::clear_advice() {
   advice_ = 1;
@@ -500,69 +430,6 @@ void EngageAdvice::set_advice(::jmc_auto::common::EngageAdvice_Advice value) {
   set_has_advice();
   advice_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.common.EngageAdvice.advice)
-}
-
-// optional string reason = 2;
-bool EngageAdvice::has_reason() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void EngageAdvice::set_has_reason() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void EngageAdvice::clear_has_reason() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void EngageAdvice::clear_reason() {
-  reason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_reason();
-}
-const ::std::string& EngageAdvice::reason() const {
-  // @@protoc_insertion_point(field_get:jmc_auto.common.EngageAdvice.reason)
-  return reason_.GetNoArena();
-}
-void EngageAdvice::set_reason(const ::std::string& value) {
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:jmc_auto.common.EngageAdvice.reason)
-}
-#if LANG_CXX11
-void EngageAdvice::set_reason(::std::string&& value) {
-  set_has_reason();
-  reason_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:jmc_auto.common.EngageAdvice.reason)
-}
-#endif
-void EngageAdvice::set_reason(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:jmc_auto.common.EngageAdvice.reason)
-}
-void EngageAdvice::set_reason(const char* value, size_t size) {
-  set_has_reason();
-  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:jmc_auto.common.EngageAdvice.reason)
-}
-::std::string* EngageAdvice::mutable_reason() {
-  set_has_reason();
-  // @@protoc_insertion_point(field_mutable:jmc_auto.common.EngageAdvice.reason)
-  return reason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* EngageAdvice::release_reason() {
-  // @@protoc_insertion_point(field_release:jmc_auto.common.EngageAdvice.reason)
-  clear_has_reason();
-  return reason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void EngageAdvice::set_allocated_reason(::std::string* reason) {
-  if (reason != NULL) {
-    set_has_reason();
-  } else {
-    clear_has_reason();
-  }
-  reason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), reason);
-  // @@protoc_insertion_point(field_set_allocated:jmc_auto.common.EngageAdvice.reason)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
