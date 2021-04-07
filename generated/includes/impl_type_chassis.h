@@ -7,8 +7,7 @@
 #define impl_type_chassis_h
 
 
-
-
+#pragma pack(1)
 
 
 
@@ -105,7 +104,6 @@
 #include "impl_type_drivingmode.h"
 #include "impl_type_engageadvice.h"
 #include "impl_type_chassisgps.h"
-#include "impl_type_license.h"
 #include "impl_type_surround.h"
 #include "impl_type_vehiclesignal.h"
 
@@ -166,8 +164,6 @@ struct Chassis {
     ::WheelSpeed wheel_speed;
     
     ::Surround surround;
-    
-    ::License license;
     
     ::Float lon_acc;
     
@@ -288,7 +284,7 @@ struct Chassis {
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -323,7 +319,6 @@ struct Chassis {
         fun(engage_advice);
         fun(wheel_speed);
         fun(surround);
-        fun(license);
         fun(lon_acc);
         fun(steer_wheel_rot_spd);
         fun(abs_vehspdlgt_valid);
@@ -415,7 +410,6 @@ struct Chassis {
         fun(engage_advice);
         fun(wheel_speed);
         fun(surround);
-        fun(license);
         fun(lon_acc);
         fun(steer_wheel_rot_spd);
         fun(abs_vehspdlgt_valid);
@@ -477,9 +471,9 @@ struct Chassis {
     }
 
     bool operator == (const ::Chassis& t) const {
-        return (engine_started == t.engine_started) && (engine_rpm == t.engine_rpm) && (speed_mps == t.speed_mps) && (odometer_m == t.odometer_m) && (fuel_range_m == t.fuel_range_m) && (throttle_percentage == t.throttle_percentage) && (brake_percentage == t.brake_percentage) && (steering_percentage == t.steering_percentage) && (steering_torque_nm == t.steering_torque_nm) && (parking_brake == t.parking_brake) && (high_beam_signal == t.high_beam_signal) && (low_beam_signal == t.low_beam_signal) && (left_turn_signal == t.left_turn_signal) && (right_turn_signal == t.right_turn_signal) && (horn == t.horn) && (wiper == t.wiper) && (disengage_status == t.disengage_status) && (driving_mode == t.driving_mode) && (error_code == t.error_code) && (gear_location == t.gear_location) && (steering_timestamp == t.steering_timestamp) && (header == t.header) && (chassis_error_mask == t.chassis_error_mask) && (signal == t.signal) && (chassis_gps == t.chassis_gps) && (engage_advice == t.engage_advice) && (wheel_speed == t.wheel_speed) && (surround == t.surround) && (license == t.license) && (lon_acc == t.lon_acc) && (steer_wheel_rot_spd == t.steer_wheel_rot_spd) && (abs_vehspdlgt_valid == t.abs_vehspdlgt_valid) && (esp_algtstatus_valid == t.esp_algtstatus_valid) && (sas_sasstssnsr_valid == t.sas_sasstssnsr_valid) && (steerwheelrotspd_valid == t.steerwheelrotspd_valid) && (eps_lkaresponsetorque_valid == t.eps_lkaresponsetorque_valid) && (eps_torsionbartorque == t.eps_torsionbartorque) && (eps_tosionbartorquevalid == t.eps_tosionbartorquevalid) && (abs_whlmilgfrntri == t.abs_whlmilgfrntri) && (abs_whlmilgfrntle == t.abs_whlmilgfrntle) && (abs_whlmilgrearre == t.abs_whlmilgrearre) && (abs_whlmilgrearle == t.abs_whlmilgrearle) && (esp_wheelpulse_fl == t.esp_wheelpulse_fl) && (esp_wheelpulse_fr == t.esp_wheelpulse_fr) && (esp_wheelpulse_rl == t.esp_wheelpulse_rl) && (esp_wheelpulse_rr == t.esp_wheelpulse_rr) && (ems_accpedalratio == t.ems_accpedalratio) && (brkpedalstasus == t.brkpedalstasus) && (abs_whlspdfrntle == t.abs_whlspdfrntle) && (abs_whlspdfrntri == t.abs_whlspdfrntri) && (abs_whlspdrele == t.abs_whlspdrele) && (abs_whlspdreri == t.abs_whlspdreri) && (acc_x == t.acc_x) && (acc_y == t.acc_y) && (acc_z == t.acc_z) && (gyro_x == t.gyro_x) && (gyro_y == t.gyro_y) && (gyro_z == t.gyro_z) && (ins_pitchangle == t.ins_pitchangle) && (ins_rollangle == t.ins_rollangle) && (ins_headingangle == t.ins_headingangle) && (ins_locatheight == t.ins_locatheight) && (ins_time == t.ins_time) && (ins_latitude == t.ins_latitude) && (ins_longitude == t.ins_longitude) && (ins_northspd == t.ins_northspd) && (ins_eastspd == t.ins_eastspd) && (ins_togroundspd == t.ins_togroundspd) && (ins_gpsflag_pos == t.ins_gpsflag_pos) && (ins_numsv == t.ins_numsv) && (ins_gpsflag_heading == t.ins_gpsflag_heading) && (ins_gps_age == t.ins_gps_age) && (ins_car_status == t.ins_car_status) && (ins_status == t.ins_status) && (ins_std_lat == t.ins_std_lat) && (ins_std_lon == t.ins_std_lon) && (ins_std_locat_height == t.ins_std_locat_height) && (ins_std_heading == t.ins_std_heading) && (eps_lkacontrolstatus == t.eps_lkacontrolstatus) && (esp_vlc_active == t.esp_vlc_active) && (esp_vlc_available == t.esp_vlc_available) && (esp_apa_gearboxenable == t.esp_apa_gearboxenable) && (esp_vlc_apactive == t.esp_vlc_apactive) && (esp_vlcapa_available == t.esp_vlcapa_available) && (eps_epspamsts == t.eps_epspamsts) && (eps_epspaminh == t.eps_epspaminh) && (esp_epbstatus == t.esp_epbstatus);
+        return (engine_started == t.engine_started) && (engine_rpm == t.engine_rpm) && (speed_mps == t.speed_mps) && (odometer_m == t.odometer_m) && (fuel_range_m == t.fuel_range_m) && (throttle_percentage == t.throttle_percentage) && (brake_percentage == t.brake_percentage) && (steering_percentage == t.steering_percentage) && (steering_torque_nm == t.steering_torque_nm) && (parking_brake == t.parking_brake) && (high_beam_signal == t.high_beam_signal) && (low_beam_signal == t.low_beam_signal) && (left_turn_signal == t.left_turn_signal) && (right_turn_signal == t.right_turn_signal) && (horn == t.horn) && (wiper == t.wiper) && (disengage_status == t.disengage_status) && (driving_mode == t.driving_mode) && (error_code == t.error_code) && (gear_location == t.gear_location) && (steering_timestamp == t.steering_timestamp) && (header == t.header) && (chassis_error_mask == t.chassis_error_mask) && (signal == t.signal) && (chassis_gps == t.chassis_gps) && (engage_advice == t.engage_advice) && (wheel_speed == t.wheel_speed) && (surround == t.surround) && (lon_acc == t.lon_acc) && (steer_wheel_rot_spd == t.steer_wheel_rot_spd) && (abs_vehspdlgt_valid == t.abs_vehspdlgt_valid) && (esp_algtstatus_valid == t.esp_algtstatus_valid) && (sas_sasstssnsr_valid == t.sas_sasstssnsr_valid) && (steerwheelrotspd_valid == t.steerwheelrotspd_valid) && (eps_lkaresponsetorque_valid == t.eps_lkaresponsetorque_valid) && (eps_torsionbartorque == t.eps_torsionbartorque) && (eps_tosionbartorquevalid == t.eps_tosionbartorquevalid) && (abs_whlmilgfrntri == t.abs_whlmilgfrntri) && (abs_whlmilgfrntle == t.abs_whlmilgfrntle) && (abs_whlmilgrearre == t.abs_whlmilgrearre) && (abs_whlmilgrearle == t.abs_whlmilgrearle) && (esp_wheelpulse_fl == t.esp_wheelpulse_fl) && (esp_wheelpulse_fr == t.esp_wheelpulse_fr) && (esp_wheelpulse_rl == t.esp_wheelpulse_rl) && (esp_wheelpulse_rr == t.esp_wheelpulse_rr) && (ems_accpedalratio == t.ems_accpedalratio) && (brkpedalstasus == t.brkpedalstasus) && (abs_whlspdfrntle == t.abs_whlspdfrntle) && (abs_whlspdfrntri == t.abs_whlspdfrntri) && (abs_whlspdrele == t.abs_whlspdrele) && (abs_whlspdreri == t.abs_whlspdreri) && (acc_x == t.acc_x) && (acc_y == t.acc_y) && (acc_z == t.acc_z) && (gyro_x == t.gyro_x) && (gyro_y == t.gyro_y) && (gyro_z == t.gyro_z) && (ins_pitchangle == t.ins_pitchangle) && (ins_rollangle == t.ins_rollangle) && (ins_headingangle == t.ins_headingangle) && (ins_locatheight == t.ins_locatheight) && (ins_time == t.ins_time) && (ins_latitude == t.ins_latitude) && (ins_longitude == t.ins_longitude) && (ins_northspd == t.ins_northspd) && (ins_eastspd == t.ins_eastspd) && (ins_togroundspd == t.ins_togroundspd) && (ins_gpsflag_pos == t.ins_gpsflag_pos) && (ins_numsv == t.ins_numsv) && (ins_gpsflag_heading == t.ins_gpsflag_heading) && (ins_gps_age == t.ins_gps_age) && (ins_car_status == t.ins_car_status) && (ins_status == t.ins_status) && (ins_std_lat == t.ins_std_lat) && (ins_std_lon == t.ins_std_lon) && (ins_std_locat_height == t.ins_std_locat_height) && (ins_std_heading == t.ins_std_heading) && (eps_lkacontrolstatus == t.eps_lkacontrolstatus) && (esp_vlc_active == t.esp_vlc_active) && (esp_vlc_available == t.esp_vlc_available) && (esp_apa_gearboxenable == t.esp_apa_gearboxenable) && (esp_vlc_apactive == t.esp_vlc_apactive) && (esp_vlcapa_available == t.esp_vlcapa_available) && (eps_epspamsts == t.eps_epspamsts) && (eps_epspaminh == t.eps_epspaminh) && (esp_epbstatus == t.esp_epbstatus);
     }
 };
-
+#pragma pack()
 
 #endif // impl_type_chassis_h

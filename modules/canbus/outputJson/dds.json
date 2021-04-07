@@ -31,6 +31,22 @@
           ],
           "fields": [],
           "methods": []
+        },
+        {
+          "shortName": "/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
+          "instance": 109,
+          "domainId": 0,
+          "isClient": false,
+          "fastSerialize": true,
+          "qosProfile": "/var/domainqos.xml",
+          "events": [
+            {
+              "id": 57416,
+              "qosProfile": "/var/eventsqos.xml"
+            }
+          ],
+          "fields": [],
+          "methods": []
         }
       ]
     }

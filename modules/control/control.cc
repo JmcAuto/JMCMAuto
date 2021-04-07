@@ -126,7 +126,7 @@ void Control::OnTimer() {
   AINFO << "control cycle time is: " << time_diff_ms << " ms.";
   status.Save(control_command.mutable_header()->mutable_status());
   if (estop_){
-      control_command.mutable_header()->mutable_status()->set_msg(estop_reason_);
+      //control_command.mutable_header()->mutable_status()->set_msg(estop_reason_);
       estop_ = false ;
       AINFO << "Reset estop to false" ;
     }
@@ -140,8 +140,8 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
            << status.error_message();//ERROR消息发布频率100hz
     control_command->mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-    control_command->mutable_engage_advice()->set_reason(
-        status.error_message());   //???
+    //control_command->mutable_engage_advice()->set_reason(
+    //    status.error_message());   //???
     estop_ = true;
     estop_reason_ = status.error_message();
   }else{
@@ -155,8 +155,8 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
       {
         control_command->mutable_engage_advice()->set_advice(
             jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-        control_command->mutable_engage_advice()->set_reason(
-            status.error_message());
+        //control_command->mutable_engage_advice()->set_reason(
+        //    status.error_message());
             AINFO << "chassis_.driving_mode() != jmc_auto::canbus::Chassis::COMPLETE_AUTO_DRIVE";
       }
     }else{
@@ -333,7 +333,7 @@ Status Control::CheckTimestamp()
 
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
- AdapterManager::FillControlCommandHeader(Name(), control_command);
+ AdapterManager::FillControlCommandHeader(control_command);
 
  AdapterManager::PublishControlCommand(*control_command);
  AINFO << "Control command pubilsh succeed! Control command msg:" 

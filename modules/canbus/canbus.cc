@@ -165,7 +165,7 @@ void Canbus::PublishChassis() {
     //test
     chassis.set_brake_percentage(20);
 
-    AdapterManager::FillChassisHeader(FLAGS_canbus_node_name, &chassis);
+    AdapterManager::FillChassisHeader(&chassis);
     AdapterManager::PublishChassis(chassis);
 
     AINFO << chassis.DebugString();

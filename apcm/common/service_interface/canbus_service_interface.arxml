@@ -371,17 +371,6 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>license</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/License</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>lon_acc</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>

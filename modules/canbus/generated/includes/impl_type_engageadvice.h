@@ -7,20 +7,16 @@
 #define impl_type_engageadvice_h
 
 
-
 #include "impl_type_advice.h"
-#include "impl_type_string.h"
 
 
 struct EngageAdvice {
     ::Advice Advice;
     
-    ::String reason;
-    
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -28,18 +24,16 @@ struct EngageAdvice {
     void enumerate(F& fun)
     {
         fun(Advice);
-        fun(reason);
     }
 
     template<typename F>
     void enumerate(F& fun) const
     {
         fun(Advice);
-        fun(reason);
     }
 
     bool operator == (const ::EngageAdvice& t) const {
-        return (Advice == t.Advice) && (reason == t.reason);
+        return (Advice == t.Advice);
     }
 };
 

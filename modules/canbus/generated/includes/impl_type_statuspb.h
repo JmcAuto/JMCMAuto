@@ -7,20 +7,16 @@
 #define impl_type_statuspb_h
 
 
-
-#include "impl_type_string.h"
 #include "impl_type_errorcode.h"
 
 
 struct StatusPb {
     ::ErrorCode error_code;
     
-    ::String msg;
-    
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -28,18 +24,16 @@ struct StatusPb {
     void enumerate(F& fun)
     {
         fun(error_code);
-        fun(msg);
     }
 
     template<typename F>
     void enumerate(F& fun) const
     {
         fun(error_code);
-        fun(msg);
     }
 
     bool operator == (const ::StatusPb& t) const {
-        return (error_code == t.error_code) && (msg == t.msg);
+        return (error_code == t.error_code);
     }
 };
 

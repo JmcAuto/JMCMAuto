@@ -13,8 +13,9 @@
     },
     {
       "Name": "action",
-      "Type": "/jmc_auto/Functional/ControlCommandDataType/DrivingAction"
+      "Type": "/jmc_auto/Functional/ControlCommandDataType/DrivingAction",
+      "Padding": "5"
     }
   ],
-  "IsPlane": "false"
+  "IsPlane": "true"
 }

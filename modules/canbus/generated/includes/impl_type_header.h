@@ -13,18 +13,14 @@
 
 
 
-
 #include "impl_type_uint64.h"
 #include "impl_type_double.h"
 #include "impl_type_uint32.h"
-#include "impl_type_string.h"
 #include "impl_type_statuspb.h"
 
 
 struct Header {
     ::Double timestamp_sec;
-    
-    ::String module_name;
     
     ::UInt32 sequence_num;
     
@@ -41,7 +37,7 @@ struct Header {
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -49,7 +45,6 @@ struct Header {
     void enumerate(F& fun)
     {
         fun(timestamp_sec);
-        fun(module_name);
         fun(sequence_num);
         fun(lidar_timestamp);
         fun(camera_timestamp);
@@ -62,7 +57,6 @@ struct Header {
     void enumerate(F& fun) const
     {
         fun(timestamp_sec);
-        fun(module_name);
         fun(sequence_num);
         fun(lidar_timestamp);
         fun(camera_timestamp);
@@ -72,7 +66,7 @@ struct Header {
     }
 
     bool operator == (const ::Header& t) const {
-        return (timestamp_sec == t.timestamp_sec) && (module_name == t.module_name) && (sequence_num == t.sequence_num) && (lidar_timestamp == t.lidar_timestamp) && (camera_timestamp == t.camera_timestamp) && (radar_timestamp == t.radar_timestamp) && (version == t.version) && (status == t.status);
+        return (timestamp_sec == t.timestamp_sec) && (sequence_num == t.sequence_num) && (lidar_timestamp == t.lidar_timestamp) && (camera_timestamp == t.camera_timestamp) && (radar_timestamp == t.radar_timestamp) && (version == t.version) && (status == t.status);
     }
 };
 

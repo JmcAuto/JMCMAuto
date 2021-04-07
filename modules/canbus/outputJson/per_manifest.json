@@ -90,10 +90,54 @@
             ]
           },
           "checksum": 3140611265
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ChassisRPort"
+                },
+                "checksum": 2724892710
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                },
+                "checksum": 2841392543
+              }
+            ]
+          },
+          "checksum": 1024342877
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ControlCommandPPort"
+                },
+                "checksum": 1921149255
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface"
+                },
+                "checksum": 191774397
+              }
+            ]
+          },
+          "checksum": 1696595063
         }
       ]
     },
-    "checksum": 2980746357
+    "checksum": 1596475313
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

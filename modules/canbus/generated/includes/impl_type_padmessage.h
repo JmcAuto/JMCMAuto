@@ -24,7 +24,7 @@ struct PadMessage {
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;

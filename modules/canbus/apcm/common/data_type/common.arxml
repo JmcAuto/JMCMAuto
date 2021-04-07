@@ -871,16 +871,6 @@
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
                 </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>reason</SHORT-NAME>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/String</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
               </SUB-ELEMENTS>
             </IMPLEMENTATION-DATA-TYPE>
           </ELEMENTS>
@@ -1153,17 +1143,6 @@
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
                 </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>msg</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/String</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
               </SUB-ELEMENTS>
             </IMPLEMENTATION-DATA-TYPE>
           </ELEMENTS>
@@ -1399,17 +1378,6 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                  <SHORT-NAME>module_name</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/String</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>

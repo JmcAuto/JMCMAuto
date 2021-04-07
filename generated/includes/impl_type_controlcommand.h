@@ -6,7 +6,7 @@
 #ifndef impl_type_controlcommand_h
 #define impl_type_controlcommand_h
 
-
+#pragma pack(1)
 
 
 
@@ -114,7 +114,7 @@ struct ControlCommand {
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -193,5 +193,5 @@ struct ControlCommand {
     }
 };
 
-
+#pragma pack()
 #endif // impl_type_controlcommand_h

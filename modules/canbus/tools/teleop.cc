@@ -363,7 +363,7 @@ class Teleop {
  
   
   void Send() {
-    AdapterManager::FillControlCommandHeader("control", &control_command_);
+    AdapterManager::FillControlCommandHeader(&control_command_);
     AdapterManager::PublishControlCommand(control_command_);
     ADEBUG << "Control Command send OK:" << control_command_.ShortDebugString();
   }

@@ -175,7 +175,7 @@ namespace adapter {
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
-        /*name##skeleton->name##Event.Send(*data);*/                           \
+        name##skeleton->name##Event.Send(*data);                               \
         name##_->SetLatestPublished(pbdata);                                   \
     }
 

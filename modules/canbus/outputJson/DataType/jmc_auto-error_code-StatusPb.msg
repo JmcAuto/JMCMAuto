@@ -6,11 +6,7 @@
     {
       "Name": "error_code",
       "Type": "/jmc_auto/error_code/ErrorCode"
-    },
-    {
-      "Name": "msg",
-      "Type": "/HuaweiMDC/ImplementationDataType/String"
     }
   ],
-  "IsPlane": "false"
+  "IsPlane": "true"
 }

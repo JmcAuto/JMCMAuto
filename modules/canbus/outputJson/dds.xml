@@ -5,7 +5,7 @@
     </General>
     <SharedMemory>
         <EnableSharedMemory>true</EnableSharedMemory>
-        <ShmOnly>false</ShmOnly>
+        <ShmOnly>true</ShmOnly>
         <FragSize>2048</FragSize>
         <ListSize>256</ListSize>
         <Topics>

@@ -19,6 +19,10 @@
     {
       "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
       "id": "35574"
+    },
+    {
+      "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
+      "id": "48028"
     }
   ],
   "services": [
@@ -143,6 +147,13 @@
       "instance": "4",
       "unreliable": [
         "5003"
+      ]
+    },
+    {
+      "service": "1004",
+      "instance": "104",
+      "unreliable": [
+        "5000"
       ]
     }
   ],
