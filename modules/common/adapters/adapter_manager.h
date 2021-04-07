@@ -171,12 +171,12 @@ namespace adapter {
         jmc_auto::common::util::PbConvertor::MemTree stru;                     \
         jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
         name *data = (name *)stru.pMem;                                        \
-        stru.release();                                                        \
         if (name##skeleton == nullptr) {                                       \
             return;                                                            \
         }                                                                      \
         name##skeleton->name##Event.Send(*data);                               \
         name##_->SetLatestPublished(pbdata);                                   \
+        stru.release();                                                        \
     }
 
 /**
