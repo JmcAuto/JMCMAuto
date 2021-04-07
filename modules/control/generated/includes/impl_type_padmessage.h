@@ -8,23 +8,19 @@
 
 
 
-
 #include "impl_type_drivingaction.h"
 #include "impl_type_header.h"
-#include "impl_type_drivingmode.h"
 
 
 struct PadMessage {
     ::Header header;
-    
-    ::DrivingMode driving_mode;
     
     ::DrivingAction action;
     
 
     static bool IsPlane()
     {
-        return false;
+        return true;
     }
 
     using IsEnumerableTag = void;
@@ -32,7 +28,6 @@ struct PadMessage {
     void enumerate(F& fun)
     {
         fun(header);
-        fun(driving_mode);
         fun(action);
     }
 
@@ -40,12 +35,11 @@ struct PadMessage {
     void enumerate(F& fun) const
     {
         fun(header);
-        fun(driving_mode);
         fun(action);
     }
 
     bool operator == (const ::PadMessage& t) const {
-        return (header == t.header) && (driving_mode == t.driving_mode) && (action == t.action);
+        return (header == t.header) && (action == t.action);
     }
 };
 

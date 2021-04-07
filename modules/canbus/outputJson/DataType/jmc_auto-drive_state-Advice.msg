@@ -2,7 +2,7 @@
   "ShortName": "/jmc_auto/drive_state/Advice",
   "Namespace": "::",
   "Type": "ENUMERATION",
-  "DataType": "/HuaweiMDC/ImplementationDataType/UInt8",
+  "DataType": "/HuaweiMDC/ImplementationDataType/UInt16",
   "value": [
     {
       "Label": "UNKNOW",

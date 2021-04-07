@@ -8,12 +8,9 @@
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
-      "Name": "module_name",
-      "Type": "/HuaweiMDC/ImplementationDataType/String"
-    },
-    {
       "Name": "sequence_num",
-      "Type": "/HuaweiMDC/ImplementationDataType/UInt32"
+      "Type": "/HuaweiMDC/ImplementationDataType/UInt32",
+      "Padding": "4"
     },
     {
       "Name": "lidar_timestamp",
@@ -36,5 +33,5 @@
       "Type": "/jmc_auto/error_code/StatusPb"
     }
   ],
-  "IsPlane": "false"
+  "IsPlane": "true"
 }

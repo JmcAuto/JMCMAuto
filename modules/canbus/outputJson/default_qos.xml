@@ -46,50 +46,6 @@
                 <mask>DDS_TRANSPORT_UDP</mask>
             </transport>
         </datareader>
-        <datawriter name="1009_109_ControlCommandDdsEvent_writer">
-            <durability>
-                <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
-            </durability>
-            <durability_service>
-                <service_cleanup_delay>
-                    <sec>0</sec>
-                    <nanosec>0</nanosec>
-                </service_cleanup_delay>
-                <history_kind>KEEP_LAST_HISTORY_QOS</history_kind>
-                <history_depth>100</history_depth>
-                <max_samples>LENGTH_UNLIMITED</max_samples>
-                <max_instances>LENGTH_UNLIMITED</max_instances>
-                <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
-            </durability_service>
-            <reliability>
-                <kind>RELIABLE_RELIABILITY_QOS</kind>
-                <max_blocking_time>
-                    <sec>0</sec>
-                    <nanosec>100000000</nanosec>
-                </max_blocking_time>
-            </reliability>
-            <destination_order>
-                <kind>BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS</kind>
-            </destination_order>
-            <history>
-                <kind>KEEP_LAST_HISTORY_QOS</kind>
-                <depth>1</depth>
-            </history>
-            <resource_limits>
-                <max_samples>LENGTH_UNLIMITED</max_samples>
-                <max_instances>LENGTH_UNLIMITED</max_instances>
-                <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
-            </resource_limits>
-            <transport_priority>
-                <value>DDS_HIGH_PRIORITY_QOS</value>
-            </transport_priority>
-            <ownership>
-                <kind>SHARED_OWNERSHIP_QOS</kind>
-            </ownership>
-            <transport>
-                <mask>DDS_TRANSPORT_UDP</mask>
-            </transport>
-        </datawriter>
         <topic name="MyTopicQos">
             <transport_priority>
                 <value>DDS_MIDDLE_PRIORITY_QOS</value>

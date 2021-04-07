@@ -49,7 +49,7 @@ ErrorCode ChController::Init(
   // vehicle_params_.CopyFrom(
   //     common::VehicleConfigHelper::instance()->GetConfig().vehicle_param());
       vehicle_params_.set_max_steer_angle(0.52359877559);
-     
+
   params_.CopyFrom(params);
   if (!params_.has_driving_mode()) {
     AERROR << "Vehicle conf pb not set driving_mode.";
@@ -243,8 +243,8 @@ Chassis ChController::chassis() {
   } else {
     chassis_.mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-    chassis_.mutable_engage_advice()->set_reason(
-        "CANBUS not ready, firmware error or emergency button pressed!");
+    //chassis_.mutable_engage_advice()->set_reason(
+    //    "CANBUS not ready, firmware error or emergency button pressed!");
   }
 
   return chassis_;
@@ -333,7 +333,7 @@ ErrorCode ChController::EnableSpeedOnlyMode() {
     set_driving_mode(Chassis::AUTO_SPEED_ONLY);
     AINFO << "Switch to SpeedOnlyMode OK!";
     return ErrorCode::OK;
-    }    
+    }
 }
 ErrorCode ChController::EnableRemoteMode() {
 if (driving_mode() == Chassis::REMOTE_MODE) {
@@ -367,7 +367,7 @@ if (driving_mode() == Chassis::REMOTE_MODE) {
     AINFO << "Switch to REMOTE_MODE OK!";
     return ErrorCode::OK;
   }
-  
+
 }
 // NEUTRAL, REVERSE, DRIVE
 void ChController::Gear(Chassis::GearPosition gear_position) {
@@ -405,7 +405,7 @@ void ChController::Gear(Chassis::GearPosition gear_position) {
       gear_command_114_->set_gear_cmd(Gear_command_114::GEAR_CMD_NEUTRAL);
       break;
     }
-   
+
   }
    AINFO << "gear_command_114_."<<gear_position;
 }
@@ -425,7 +425,7 @@ void ChController::Brake(double pedal) {
   // ADD YOUR OWN CAR CHASSIS OPERATION
   brake_command_111_->set_brake_pedal_cmd(static_cast<int>(pedal));
   AINFO << "The current drive mode does not need to set acceleration.";
-  
+
 }
 
 // drive with old acceleration
@@ -620,7 +620,7 @@ void ChController::SecurityDogThreadFunc()
 			// }
 			// else
 			// {
-				if (EnableSpeedOnlyMode() == ErrorCode::OK) 
+				if (EnableSpeedOnlyMode() == ErrorCode::OK)
 				{
 					emergency_mode = false;
 					if (chassis_detail.ch().ecu_status_1_515().speed() == 0)
@@ -637,7 +637,7 @@ void ChController::SecurityDogThreadFunc()
 
 					}
 				}
-				
+
 			// }
 		}
 

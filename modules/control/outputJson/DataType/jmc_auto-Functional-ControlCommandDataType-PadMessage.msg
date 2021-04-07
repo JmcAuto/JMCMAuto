@@ -8,13 +8,10 @@
       "Type": "/jmc_auto/header/Header"
     },
     {
-      "Name": "driving_mode",
-      "Type": "/jmc_auto/Platform/ChassisDateType/DrivingMode"
-    },
-    {
       "Name": "action",
-      "Type": "/jmc_auto/Functional/ControlCommandDataType/DrivingAction"
+      "Type": "/jmc_auto/Functional/ControlCommandDataType/DrivingAction",
+      "Padding": "6"
     }
   ],
-  "IsPlane": "false"
+  "IsPlane": "true"
 }

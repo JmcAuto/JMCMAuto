@@ -179,7 +179,7 @@ if (chassis_detail.teshun().has_ibc_status_0x122_122() &&
   } else {
     chassis_.set_brake_percentage(0);
   }
-  
+
 ///////////gear
 if (chassis_detail.teshun().has_gw_scu_shiftersts_0xc8_c8() &&
       chassis_detail.teshun().gw_scu_shiftersts_0xc8_c8().has_shifterposition()) {
@@ -232,8 +232,8 @@ if (chassis_error_mask_) {
   } else {
     chassis_.mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-    chassis_.mutable_engage_advice()->set_reason(
-        "CANBUS not ready, firmware error or emergency button pressed!");
+    //chassis_.mutable_engage_advice()->set_reason(
+    //    "CANBUS not ready, firmware error or emergency button pressed!");
   }
 
   return chassis_;
@@ -257,7 +257,7 @@ ErrorCode TeshunController::EnableAutoMode() {
       Adu_controldrive_0x120_120::ADU_CONTROTORQUE_ENABLE_ENABLE);
   adu_controldrive_0x120_120_->set_adu_targetgear_enable(
       Adu_controldrive_0x120_120::ADU_TARGETGEAR_ENABLE_ENABLE);
-  
+
   AINFO << "\n\n\n set enable \n\n\n";
   can_sender_->Update();
   const int32_t flag =
@@ -272,7 +272,7 @@ ErrorCode TeshunController::EnableAutoMode() {
     AINFO << "Switch to COMPLETE_AUTO_DRIVE mode ok.";
     return ErrorCode::OK;
   }
-  
+
 }
 
 ErrorCode TeshunController::DisableAutoMode() {
@@ -407,7 +407,7 @@ void TeshunController::Gear(Chassis::GearPosition gear_position) {
       break;
     }
   }
-  
+
 }
 
 // brake with new acceleration
@@ -463,7 +463,7 @@ void TeshunController::Steer(double angle) {
    const double real_angle = vehicle_params_.max_steer_angle() * angle / 100.0;
   // reverse sign
   adu_controleps2_0x100_100_->set_adu_controsteeringwheelangle(real_angle);
- 
+
 }
 
 // steering with new angle speed
@@ -491,7 +491,7 @@ void TeshunController::Steer(double angle, double angle_spd) {
       //{
       //  ADU_100h_MessageCounter=0;
       //}
-      
+
       //adu_controleps2_0x100_100_->set_adu_100h_messagecounter(ADU_100h_MessageCounter);
 }
 
@@ -555,7 +555,7 @@ bool TeshunController::CheckChassisError() {
     if (Eps2_status_0x112_112::EPS_SASFAILURESTS_SENSOR_INFORMATION_INVALID__AN_INTERNAL_SENSOR_FAULT_OCCURRED ==
         teshun.eps2_status_0x112_112().eps_sasfailurests()) {
       return true;
-    } 
+    }
     }
     // drive error
 

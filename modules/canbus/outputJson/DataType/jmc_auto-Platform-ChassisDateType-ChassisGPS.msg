@@ -112,7 +112,7 @@
     {
       "Name": "engage_advice",
       "Type": "/jmc_auto/drive_state/EngageAdvice",
-      "Padding": "7"
+      "Padding": "6"
     },
     {
       "Name": "wheel_speed",
@@ -340,14 +340,6 @@
     },
     {
       "Name": "esp_vlcapa_available",
-      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
-    },
-    {
-      "Name": "eps_epspamsts",
-      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
-    },
-    {
-      "Name": "eps_epspaminh",
       "Type": "/HuaweiMDC/ImplementationDataType/Int32"
     },
     {

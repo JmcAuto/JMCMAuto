@@ -8,5 +8,5 @@
       "Type": "/jmc_auto/drive_state/Advice"
     }
   ],
-  "IsPlane": "false"
+  "IsPlane": "true"
 }
