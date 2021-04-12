@@ -26,7 +26,7 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steering_target</SHORT-NAME>
+                      <SHORT-NAME>throttle</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -37,12 +37,34 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>parking_brake</SHORT-NAME>
+                      <SHORT-NAME>brake</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steering_rate</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steering_target</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -65,6 +87,72 @@
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
                             <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>left_turn</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>right_turn</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>high_beam</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>low_beam</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>horn</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>turnsignal</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -202,7 +290,7 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>PAM_ESP_Target_Gear_Request</SHORT-NAME>
+                      <SHORT-NAME>pam_esp_stop_distance</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -224,105 +312,6 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>turnsignal</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>throttle</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>brake</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steering_rate</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>left_turn</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>right_turn</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>high_beam</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>low_beam</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>horn</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>steering_angle</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
@@ -334,7 +323,18 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>pam_esp_stop_distance</SHORT-NAME>
+                      <SHORT-NAME>parking_brake</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>PAM_ESP_Target_Gear_Request</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -441,7 +441,7 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME> controller_time_ms</SHORT-NAME>
-                      <CATEGORY>VECTOR</CATEGORY>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>

@@ -2,7 +2,7 @@
   "ShortName": "/jmc_auto/Platform/ChassisDateType/DrivingMode",
   "Namespace": "::",
   "Type": "ENUMERATION",
-  "DataType": "/HuaweiMDC/ImplementationDataType/UInt8",
+  "DataType": "/HuaweiMDC/ImplementationDataType/UInt16",
   "value": [
     {
       "Label": "COMPLETE_MANUAL",

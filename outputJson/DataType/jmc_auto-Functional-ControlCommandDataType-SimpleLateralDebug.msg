@@ -1,16 +1,8 @@
 {
-  "ShortName": "/jmc_auto/Functional/ControlCommandDataType/jmc_auto/Functional/ControlCommandDataType/LatencyStats/SimpleLateralDebug",
+  "ShortName": "/jmc_auto/Functional/ControlCommandDataType/SimpleLateralDebug",
   "Namespace": "::",
   "Type": "STRUCTURE",
   "Subelements": [
-    {
-      "Name": "total_time_ms",
-      "Type": "/HuaweiMDC/ImplementationDataType/Double"
-    },
-    {
-      "Name": "total_time_exceeded",
-      "Type": "/HuaweiMDC/ImplementationDataType/Bool"
-    },
     {
       "Name": "lateral_error",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"

@@ -1,4 +1,6 @@
 #include "PbConvertor.h"
+#include <iostream>
+#include <typeinfo>
 
 namespace jmc_auto {
 namespace common {
@@ -50,7 +52,10 @@ bool PbConvertor::struct2Pb(const char *&pStruct, google::protobuf::Message *pPb
                 else \
                 { \
                     if (google::protobuf::FieldDescriptor::CPPTYPE_STRING != pFieldDescriptor->cpp_type() || NULL != *(type *)pStruct) \
-                        pReflection->setMethod(pPb, pFieldDescriptor, *(type *)pStruct); \
+                        { \
+        					pReflection->setMethod(pPb, pFieldDescriptor, *(type *)pStruct); \
+        					std::cout << "str2pb,type: " << typeid(type).name() << "value: " << *(type *)pStruct << std::endl;\
+                        } \
                     pStruct += sizeof(type); \
                 } \
                 break; \
@@ -199,6 +204,7 @@ bool PbConvertor::pb2struct(const google::protobuf::Message *pPb, MemTree &stru)
                     if (NULL == p) \
                         return false; \
                     *(type *)(p + stru.memSize) = pReflection->getMethod(*pPb, pFieldDescriptor); \
+                    std::cout << "pb2str,name: " << pFieldDescriptor->name() << "type: " << typeid(type).name() << "value: " << pReflection->getMethod(*pPb, pFieldDescriptor) << std::endl;\
                     stru.pMem = (char *)p; \
                     stru.memSize = newMemSize; \
                 } \
