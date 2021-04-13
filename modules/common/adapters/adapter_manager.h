@@ -26,7 +26,7 @@
 #include <string>
 #include <type_traits>
 #include <vector>
-#include <iostream>
+//#include <iostream>
 
 #include "modules/common/adapters/adapter.h"
 #include "modules/common/adapters/message_adapters.h"
@@ -127,6 +127,7 @@ namespace adapter {
                 ara::com::MethodCallProcessingMode::kPoll);                    \
             name##skeleton->OfferService();                                    \
         }                                                                      \
+		observers_.push_back([this]() {name##_->Observe();});                  \
         name##config_ = config;                                                \
     }                                                                          \
     void ServiceAvailabilityCallback##name(                                    \
@@ -161,17 +162,17 @@ namespace adapter {
             name##proxy->name##Event.GetCachedSamples();                       \
         for (const auto &testdata : name##MsgSamples) {                        \
             strData = testdata.get();                                          \
-            std::cout << "------start to struct2pb------" << std::endl;\
+            /*std::cout << "------start to struct2pb------" << std::endl;*/    \
             jmc_auto::common::util::PbConvertor::struct2Pb(                    \
                 (const char *&)strData, &pbData);                              \
-            /*name##_->SetLatestPublished(pbData); BUG here*/                              \
+            name##_->OnReceive(pbData);                                        \
         }                                                                      \
 		name##proxy->name##Event.Cleanup();                                    \
     }                                                                          \
     name##Adapter *InternalGet##name() { return name##_.get(); }               \
     void InternalPublish##name(const name##Adapter::DataType &pbdata) {        \
         jmc_auto::common::util::PbConvertor::MemTree stru;                     \
-        std::cout << "======start to pb2struct======" << std::endl;\
+        /*std::cout << "======start to pb2struct======" << std::endl;*/        \
         jmc_auto::common::util::PbConvertor::pb2struct(&pbdata, stru);         \
         name *data = (name *)stru.pMem;                                        \
         if (name##skeleton == nullptr) {                                       \

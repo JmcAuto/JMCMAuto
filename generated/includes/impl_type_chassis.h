@@ -6,7 +6,7 @@
 #ifndef impl_type_chassis_h
 #define impl_type_chassis_h
 
-
+#pragma pack(1)
 
 
 
@@ -465,5 +465,5 @@ struct Chassis {
     }
 };
 
-
+#pragma pack()
 #endif // impl_type_chassis_h

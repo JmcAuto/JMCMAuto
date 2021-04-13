@@ -232,6 +232,7 @@ Status Control::CheckInput() {
   AINFO << "Received localization:" << localization_.ShortDebugString();//定位数据
 */
   auto chassis_adapter = AdapterManager::GetChassis();
+  //AINFO << "chassis: brake: " << chassis_adapter->GetLatestObserved().brake_percentage();
   if (chassis_adapter->Empty())
   {
     //AERROR << "No Chassis msg yet. ";
@@ -270,13 +271,11 @@ Status Control::CheckInput() {
       AINFO << "There are trajectroy points with velocity zero!";
     }
   VehicleStateProvider::instance()->Update(localization_, chassis_);
-
+*/
   AINFO << "Input no problem!" ;
   return Status::OK();
-  }
-
-}*/
 }
+
 Status Control::CheckTimestamp()
 {
   if (!FLAGS_enable_input_timestamp_check || FLAGS_is_control_test_mode)

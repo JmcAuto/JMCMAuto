@@ -8,7 +8,11 @@
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
-      "Name": "lateral_error_rate",
+      "Name": "ref_heading",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
@@ -20,11 +24,7 @@
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
-      "Name": "ref_heading",
-      "Type": "/HuaweiMDC/ImplementationDataType/Double"
-    },
-    {
-      "Name": "heading",
+      "Name": "lateral_error_rate",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
@@ -37,10 +37,6 @@
     },
     {
       "Name": "steer_angle_feedforward",
-      "Type": "/HuaweiMDC/ImplementationDataType/Double"
-    },
-    {
-      "Name": "steer_angle_feedback",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
@@ -57,6 +53,10 @@
     },
     {
       "Name": "steer_angle_heading_rate_contribution",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "steer_angle_feedback",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
@@ -93,6 +93,42 @@
     },
     {
       "Name": "heading_rate",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "ref_heading_acceleration",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_acceleration",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_error_acceleration",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "ref_heading_jerk",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_jerk",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_error_jerk",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "lateral_error_feedback",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "heading_error_feedback",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "steer_angle_feedback_augment",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     }
   ],
