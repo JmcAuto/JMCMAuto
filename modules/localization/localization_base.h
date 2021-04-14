@@ -24,7 +24,7 @@
 
 #include <memory>
 
-#include "tf2_ros/transform_broadcaster.h"
+//#include "tf2_ros/transform_broadcaster.h"
 
 #include "modules/localization/proto/localization.pb.h"
 
@@ -60,8 +60,8 @@ class LocalizationBase {
 
   void PublishPoseBroadcastTF(const LocalizationEstimate &localization);
 
- protected:
-  std::unique_ptr<tf2_ros::TransformBroadcaster> tf2_broadcaster_;
+ //protected:
+  //std::unique_ptr<tf2_ros::TransformBroadcaster> tf2_broadcaster_;
 };
 
 }  // namespace localization

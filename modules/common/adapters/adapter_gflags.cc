@@ -22,7 +22,9 @@ DEFINE_bool(enable_adapter_dump, false,
 DEFINE_uint32(gps_instance_id, 102, "GPS instance_id");
 DEFINE_uint32(imu_instance_id, 103, "IMU instance_id");
 DEFINE_uint32(chassis_instance_id, 104, "chassis instance_id");
+DEFINE_uint32(localization_instance_id, 105, "localization instance id");
 DEFINE_uint32(control_command_instance_id, 109, "control command instance_id");
 DEFINE_uint32(chassis_detail_instance_id, 113,"chassis detail instance_id");
+
 
 DEFINE_uint32(remote_control_instance_id, 148, "REMOTE CONTROL topic name");

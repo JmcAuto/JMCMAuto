@@ -27,7 +27,7 @@
 #include <utility>
 #include <vector>
 
-#include "ros/include/ros/ros.h"
+//#include "ros/include/ros/ros.h"
 
 // #include "modules/localization/proto/gps.pb.h"
 // #include "modules/localization/proto/imu.pb.h"
@@ -73,7 +73,7 @@ class RTKLocalization : public LocalizationBase {
   jmc_auto::common::Status Stop() override;
 
  private:
-  void OnTimer(const ros::TimerEvent &event);
+  void OnTimer();
   // void OnChassis(const jmc_auto::canbus::Chassis &Chassis);
   void PublishLocalization();
   void RunWatchDog(LocalizationEstimate *localization);
@@ -89,8 +89,8 @@ class RTKLocalization : public LocalizationBase {
   // T InterpolateXYZ(const T &p1, const T &p2, const double frac1);
 
  private:
-  ros::Timer timer_;
-  jmc_auto::common::monitor::MonitorLogger monitor_logger_;
+  //ros::Timer timer_;
+  //jmc_auto::common::monitor::MonitorLogger monitor_logger_;
   const std::vector<double> map_offset_;
   double last_received_timestamp_sec_ = 0.0;
   double last_reported_timestamp_sec_ = 0.0;

@@ -66,6 +66,10 @@ void AdapterManager::Init(const AdapterManagerConfig &configs) {
         	AINFO << "start to enable CONTROL_COMMAND";
             EnableControlCommand(FLAGS_control_command_instance_id, config);
             break;
+        case AdapterConfig::CONTROL_COMMAND:
+        	AINFO << "start to enable LOCALIZATION_COMMAND";
+            EnableLocalizationCommand(FLAGS_localization_instance_id, config);
+            break;
         default:
             AERROR << "Unknown adapter config type!";
             break;

@@ -5,6 +5,7 @@ add_library(rtk_localization
   rtk_localization.cc
   rtk_localization.h)
 target_link_libraries(rtk_localization
+  ${COMMON_LIB}
   adapter_manager
   common_proto
   status

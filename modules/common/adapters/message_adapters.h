@@ -17,11 +17,12 @@
 #ifndef MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 #define MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 
-//#include "impl_type_chassisdetail.h"
+
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
 #include "modules/control/proto/control_cmd.pb.h"
 #include "modules/control/proto/pad_msg.pb.h"
+#include "modules/localization/proto/localization.pb.h"
 
 #include "modules/common/adapters/adapter.h"
 
@@ -48,13 +49,13 @@ namespace adapter {
 using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
 using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
 using ControlCommandAdapter = Adapter<::jmc_auto::control::ControlCommand>;
+using LocalizationAdapter = Adapter<jmc_auto::localization::LocalizationEstimate>;
+using PadAdapter = Adapter<control::PadMessage>;
 /*
+using MonitorAdapter = Adapter<jmc_auto::common::monitor::MonitorMessage>;
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
 using RawImuAdapter = Adapter<jmc_auto::drivers::gnss::Imu>;
-using LocalizationAdapter = Adapter<jmc_auto::localization::LocalizationEstimate>;
-using MonitorAdapter = Adapter<jmc_auto::common::monitor::MonitorMessage>;
-using PadAdapter = Adapter<control::PadMessage>;
 using PerceptionObstaclesAdapter = Adapter<perception::PerceptionObstacles>;
 using PlanningAdapter = Adapter<planning::ADCTrajectory>;
 using PointCloudAdapter = Adapter<::sensor_msgs::PointCloud2>;

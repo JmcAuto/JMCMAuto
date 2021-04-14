@@ -284,11 +284,12 @@ class AdapterManager {
     REGISTER_ADAPTER(Chassis);
     // REGISTER_ADAPTER(ChassisDetail);
     REGISTER_ADAPTER(ControlCommand);
+    REGISTER_ADAPTER(Localization);
     /*
     REGISTER_ADAPTER(Gps);
     REGISTER_ADAPTER(Imu);
     REGISTER_ADAPTER(RawImu);
-    REGISTER_ADAPTER(Localization);
+
     REGISTER_ADAPTER(Monitor);
     REGISTER_ADAPTER(Pad);
     REGISTER_ADAPTER(PerceptionObstacles);
