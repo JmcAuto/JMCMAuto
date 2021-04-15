@@ -2,7 +2,7 @@
   "ShortName": "/jmc_auto/Platform/ChassisDateType/GearPosition",
   "Namespace": "::",
   "Type": "ENUMERATION",
-  "DataType": "/HuaweiMDC/ImplementationDataType/UInt8",
+  "DataType": "/HuaweiMDC/ImplementationDataType/UInt16",
   "value": [
     {
       "Label": "GEAR_NEUTRAL",

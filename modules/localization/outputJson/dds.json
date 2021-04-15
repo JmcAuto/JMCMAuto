@@ -1,0 +1,20 @@
+{
+  "services": [
+    {
+      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "serviceId": 1009,
+      "protocolIdUsed": false,
+      "events": [
+        {
+          "event": "ControlCommandEvent",
+          "id": 57416,
+          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "topicName": "ControlCommandDdsEvent"
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    }
+  ]
+}

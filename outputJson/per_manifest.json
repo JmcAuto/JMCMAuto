@@ -4,6 +4,50 @@
     "value": {
       "object[]": [
         {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ChassisRPort"
+                },
+                "checksum": 2724892710
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                },
+                "checksum": 2841392543
+              }
+            ]
+          },
+          "checksum": 1024342877
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "LocalizationPPort"
+                },
+                "checksum": 2654763860
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface"
+                },
+                "checksum": 1017229255
+              }
+            ]
+          },
+          "checksum": 780403539
+        },
+        {
           "key": "P-PORT-PROTOTYPE",
           "value": {
             "object[]": [
@@ -137,7 +181,7 @@
         }
       ]
     },
-    "checksum": 1596475313
+    "checksum": 353520977
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

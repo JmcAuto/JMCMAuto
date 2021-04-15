@@ -16,6 +16,8 @@ modules/canbus/apcm
 modules/canbus/generated
 modules/control/apcm
 modules/control/generated
+modules/localization/apcm
+modules/localization/generated
 
 #generated
 #outputJson
