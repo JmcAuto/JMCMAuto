@@ -56,7 +56,7 @@
                   <SERVICE-INSTANCE-REFS>
                     <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
-                  <UDP-PORT>5000</UDP-PORT>
+                  <UDP-PORT>7001</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
