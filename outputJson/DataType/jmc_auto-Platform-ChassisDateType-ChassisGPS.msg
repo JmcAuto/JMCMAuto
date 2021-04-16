@@ -103,7 +103,7 @@
     {
       "Name": "signal",
       "Type": "/jmc_auto/vehicle_signal/VehicleSignal",
-      "Padding": "2"
+      "Padding": "3"
     },
     {
       "Name": "chassis_gps",
@@ -112,7 +112,7 @@
     {
       "Name": "engage_advice",
       "Type": "/jmc_auto/drive_state/EngageAdvice",
-      "Padding": "6"
+      "Padding": "7"
     },
     {
       "Name": "wheel_speed",

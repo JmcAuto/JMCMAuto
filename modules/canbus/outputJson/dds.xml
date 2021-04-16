@@ -9,7 +9,7 @@
         <FragSize>2048</FragSize>
         <ListSize>256</ListSize>
         <Topics>
-            <Topic TopicName="ControlCommandDdsEvent_1009_109" FragSize="2048" ListSize="256"/>
+            <Topic TopicName="ControlCommandDdsEvent_12809_109" FragSize="2048" ListSize="256"/>
         </Topics>
     </SharedMemory>
     <Tracing>

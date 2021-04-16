@@ -25,7 +25,7 @@
                   <SERVICE-INSTANCE-REFS>
                     <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
-                  <UDP-PORT>7002</UDP-PORT>
+                  <UDP-PORT>7004</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
@@ -38,7 +38,7 @@
                   <SERVICE-INSTANCE-REFS>
                     <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
-                  <UDP-PORT>7010</UDP-PORT>
+                  <UDP-PORT>7005</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>LocalizationServiceInstanceToPort</SHORT-NAME>

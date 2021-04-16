@@ -38,8 +38,7 @@ using ::Eigen::Vector3d;
 // RTKLocalization::RTKLocalization()
 //     : monitor_logger_(MonitorMessageItem::LOCALIZATION),
 //       map_offset_{FLAGS_map_offset_x, FLAGS_map_offset_y, FLAGS_map_offset_z} {}
-//RTKLocalization::RTKLocalization()
-//    : monitor_logger_(MonitorMessageItem::LOCALIZATION){}
+RTKLocalization::RTKLocalization() {}
 
 RTKLocalization::~RTKLocalization() {}
 
@@ -51,12 +50,12 @@ Status RTKLocalization::Start() {
   //timer_ = AdapterManager::CreateTimer(ros::Duration(duration),
   //                                     &RTKLocalization::OnTimer, this);
   while (1) {
-	  RTKLocalization::Ontimer();
+	  RTKLocalization::OnTimer();
 	  sleep(duration);
   }
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   if (!AdapterManager::GetChassis()) {
-    AERROR() << "chassis input not initialized. Check file "
+    AERROR << "chassis input not initialized. Check file "
                    << FLAGS_rtk_adapter_config_file;
     return Status(common::LOCALIZATION_ERROR, "no chassis_ins adapter");
   }
@@ -79,7 +78,7 @@ void RTKLocalization::OnTimer() {
   AdapterManager::Observe();
   //  chassis_ = AdapterManager::GetChassis()->GetLatestObserved();
   if (AdapterManager::GetChassis()->Empty()) {
-    AERROR << "No Chassis msg yet. ";
+    //AERROR << "No Chassis msg yet. ";
     return;
   }
   chassis_ = AdapterManager::GetChassis()->GetLatestObserved();
@@ -89,7 +88,7 @@ void RTKLocalization::OnTimer() {
 
   if (FLAGS_enable_gps_timestamp &&
       time_delay > FLAGS_gps_time_delay_tolerance) {
-    AERROR() << "GPS message time delay: " << time_delay;
+    AERROR << "GPS message time delay: " << time_delay;
   }
    //PrepareLocalizationMsg(&localization);
  
@@ -110,7 +109,7 @@ void RTKLocalization::PublishLocalization() {
      
    // publish localization messages
    AdapterManager::PublishLocalization(localization);
-   PublishPoseBroadcastTF(localization);
+   //PublishPoseBroadcastTF(localization);
    ADEBUG << "[OnTimer]: Localization message publish success!";
   // RunWatchDog(&localization);
 
@@ -208,8 +207,7 @@ void RTKLocalization::PrepareLocalizationMsg(LocalizationEstimate *localization_
          localization_dy->mutable_pose()->mutable_euler_angles()->set_z(-chassis_.ins_headingangle()* DEG_TO_RAD_LOCAL);
 
          //localization_dy->mutable_pose()->mutable_uncertainty()->mutable_position_std_dev()->set_x(ins_std_lat);
-         AdapterManager::FillLocalizationHeader("localization_dy",
-                                            localization_dy);
+         AdapterManager::FillLocalizationHeader(localization_dy);
          localization_dy->set_measurement_time(common::time::TimeUtil::Gps2unix(chassis_.ins_time()));
 }
 

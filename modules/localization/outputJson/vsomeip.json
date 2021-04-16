@@ -23,12 +23,12 @@
   ],
   "services": [
     {
-      "service": "1005",
+      "service": "12805",
       "instance": "105",
-      "unreliable": "7010",
+      "unreliable": "7005",
       "events": [
         {
-          "event": "32771",
+          "event": "1005",
           "is_field": "false",
           "is_reliable": "false"
         }
@@ -38,10 +38,10 @@
   ],
   "clients": [
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
       "unreliable": [
-        "7002"
+        "7004"
       ]
     }
   ],

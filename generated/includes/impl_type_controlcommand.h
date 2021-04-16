@@ -52,65 +52,65 @@
 
 struct ControlCommand {
     ::Header header;
-    
+
     ::Double throttle;
-    
+
     ::Double brake;
-    
+
     ::Double steering_rate;
-    
+
     ::Double steering_target;
-    
+
     ::Double speed;
-    
+
     ::Double acceleration;
-    
+
     ::Bool left_turn;
-    
+
     ::Bool right_turn;
-    
+
     ::Bool high_beam;
-    
+
     ::Bool low_beam;
-    
+
     ::Bool horn;
-    
+
     ::TurnSignal turnsignal;
-    
+
     ::Bool reset_model;
-    
+
     ::Bool engine_on_off;
-    
+
     ::Double trajectory_fraction;
-    
+
     ::DrivingMode driving_mode;
-    
+
     ::GearPosition gear_location;
-    
+
     ::Debug debug;
-    
+
     ::VehicleSignal signal;
-    
+
     ::LatencyStats latency_stats;
-    
+
     ::PadMessage pad_msg;
-    
+
     ::EngageAdvice engage_advice;
-    
+
     ::Bool is_in_safe_mode;
-    
+
     ::Double steering_torque;
-    
+
     ::Int32 pam_esp_stop_distance;
-    
+
     ::Bool ACC_StandstillReq;
-    
+
     ::Double steering_angle;
-    
+
     ::Bool parking_brake;
-    
+
     ::Int32 PAM_ESP_Target_Gear_Request;
-    
+
 
     static bool IsPlane()
     {

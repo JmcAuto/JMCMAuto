@@ -994,7 +994,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/ErrorCodeEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/ChassisErrorCodeEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1233,7 +1233,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/DrivingModeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1296,7 +1296,7 @@
                   </COMPU-INTERNAL-TO-PHYS>
                 </COMPU-METHOD>
                 <COMPU-METHOD>
-                  <SHORT-NAME>ErrorCodeEnum</SHORT-NAME>
+                  <SHORT-NAME>ChassisErrorCodeEnum</SHORT-NAME>
                   <CATEGORY>TEXTTABLE</CATEGORY>
                   <COMPU-INTERNAL-TO-PHYS>
                     <COMPU-SCALES>
@@ -1352,7 +1352,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/GearPositionEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -2187,7 +2187,7 @@
                     <SOMEIP-EVENT-DEPLOYMENT>
                       <SHORT-NAME>ChassisEventDeployment</SHORT-NAME>
                       <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
-                      <EVENT-ID>32770</EVENT-ID>
+                      <EVENT-ID>32769</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>

@@ -1,5 +1,6 @@
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_compile_options(-fPIC)
 
 add_subdirectory(common)
 add_subdirectory(proto)
@@ -27,11 +28,10 @@ add_library(localization_lib
   localization.h)
 target_link_libraries(localization_lib
   ${COMMON_LIB}
-  gflags
   jmc_auto_app
   util
   factory
   #localization_base
-  gnss_pnt_result_proto
+  #gnss_pnt_result_proto
   measure_proto
   rtk_localization)

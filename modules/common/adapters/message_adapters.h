@@ -28,6 +28,7 @@
 
 #include "impl_type_chassis.h"
 #include "impl_type_controlcommand.h"
+#include "impl_type_localization.h"
 
 #include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
@@ -35,6 +36,9 @@
 #include "jmc_auto/controlcommandserviceinterface_common.h"
 #include "jmc_auto/controlcommandserviceinterface_skeleton.h"
 #include "jmc_auto/controlcommandserviceinterface_proxy.h"
+#include "jmc_auto/localizationserviceinterface_common.h"
+#include "jmc_auto/localizationserviceinterface_skeleton.h"
+#include "jmc_auto/localizationserviceinterface_proxy.h"
 
 /**
  * @file message_adapters.h

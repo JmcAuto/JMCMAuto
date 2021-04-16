@@ -61,8 +61,7 @@
     },
     {
       "Name": "engine_on_off",
-      "Type": "/HuaweiMDC/ImplementationDataType/Bool",
-      "Padding": "7"
+      "Type": "/HuaweiMDC/ImplementationDataType/Bool"
     },
     {
       "Name": "trajectory_fraction",
@@ -75,7 +74,7 @@
     {
       "Name": "gear_location",
       "Type": "/jmc_auto/Platform/ChassisDateType/GearPosition",
-      "Padding": "4"
+      "Padding": "6"
     },
     {
       "Name": "debug",

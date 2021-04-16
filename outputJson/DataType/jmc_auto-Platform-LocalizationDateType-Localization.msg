@@ -1,5 +1,5 @@
 {
-  "ShortName": "/jmc_auto/Platform/LocalizationDateType/LocalizationEstimate",
+  "ShortName": "/jmc_auto/Platform/LocalizationDateType/Localization",
   "Namespace": "::",
   "Type": "STRUCTURE",
   "Subelements": [

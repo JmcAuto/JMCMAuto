@@ -10,9 +10,10 @@ target_link_libraries(rtk_localization
   common_proto
   status
   time
-  localization_base
+  #localization_base
   localization_common
   localization_config_proto
   localization_proto
   canbus_proto
-  proj4)
+  -lproj
+  )

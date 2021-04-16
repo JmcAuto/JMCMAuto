@@ -44,7 +44,7 @@ Status Control::Init() {
     return Status(ErrorCode::CONTROL_INIT_ERROR, error_msg);
   }//注册控制器，目前只支持LON/LAN/MPC
   // lock it in case for after sub, init_vehicle not ready, but msg trigger
-  //CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
+  CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
   CHECK(AdapterManager::GetChassis()) << "Chassis is not initialized.";
   //CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
   //CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
@@ -220,7 +220,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
 
 Status Control::CheckInput() {
   AdapterManager::Observe();
-  /*
+
   auto localization_adapter = AdapterManager::GetLocalization();
   if (localization_adapter->Empty())
   {
@@ -230,7 +230,7 @@ Status Control::CheckInput() {
   }
   localization_ = localization_adapter->GetLatestObserved();//返回观察队列最新数据，调用之前需调用Empty()确定是否有数据
   AINFO << "Received localization:" << localization_.ShortDebugString();//定位数据
-*/
+
   auto chassis_adapter = AdapterManager::GetChassis();
   //AINFO << "chassis: brake: " << chassis_adapter->GetLatestObserved().brake_percentage();
   if (chassis_adapter->Empty())
@@ -284,7 +284,7 @@ Status Control::CheckTimestamp()
     return Status::OK();
   }
   double current_timestamp = Clock::NowInSeconds();
-  /*
+
   double localization_diff =
       current_timestamp - localization_.header().timestamp_sec();
   if (localization_diff >
@@ -300,7 +300,7 @@ Status Control::CheckTimestamp()
   {
     AINFO << "Localization msg timestamp is normal!" ;
   }
-*/
+
   double chassis_diff = current_timestamp - chassis_.header().timestamp_sec();
   if (chassis_diff >(FLAGS_max_chassis_miss_num * control_conf_.chassis_period())) {
     AERROR << "Chassis msg lost for " << std::setprecision(6) << chassis_diff << "s";

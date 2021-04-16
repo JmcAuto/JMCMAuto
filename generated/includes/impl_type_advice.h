@@ -6,9 +6,9 @@
 #ifndef impl_type_advice_h
 #define impl_type_advice_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class Advice : UInt16
+enum class Advice : UInt8
 {
     UNKNOW = 0,
     DISALLOW_ENGAGE = 1,

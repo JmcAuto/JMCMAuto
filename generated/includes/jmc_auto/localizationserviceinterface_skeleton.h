@@ -10,14 +10,14 @@
 #include "ara/com/internal/skeleton/EventAdapter.h"
 #include "ara/com/internal/skeleton/FieldAdapter.h"
 #include "jmc_auto/localizationserviceinterface_common.h"
-#include "impl_type_localizationestimate.h"
+#include "impl_type_localization.h"
 #include <cstdint>
 
 namespace jmc_auto {
 namespace skeleton {
 namespace events
 {
-    using LocalizationEvent = ara::com::internal::skeleton::event::EventAdapter<::LocalizationEstimate>;
+    using LocalizationEvent = ara::com::internal::skeleton::event::EventAdapter<::Localization>;
     static constexpr ara::com::internal::EntityId LocalizationEventId = 63490; //LocalizationEvent_event_hash
 }
 

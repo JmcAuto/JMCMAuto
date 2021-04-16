@@ -178,10 +178,32 @@
             ]
           },
           "checksum": 1696595063
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "LocalizationRPort"
+                },
+                "checksum": 3692657705
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface"
+                },
+                "checksum": 2067418845
+              }
+            ]
+          },
+          "checksum": 425117141
         }
       ]
     },
-    "checksum": 353520977
+    "checksum": 2267531060
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

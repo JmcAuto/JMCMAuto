@@ -1087,7 +1087,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Functional/ControlCommandDataType/TurnSignalEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1128,7 +1128,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Functional/ControlCommandDataType/DrivingActionEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1204,7 +1204,7 @@
                     </DDS-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>
                   <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface</SERVICE-INTERFACE-REF>
-                  <SERVICE-INTERFACE-ID>1009</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-ID>12809</SERVICE-INTERFACE-ID>
                 </DDS-SERVICE-INTERFACE-DEPLOYMENT>
                 <SERVICE-INTERFACE>
                   <SHORT-NAME>ControlCommandServiceInterface</SHORT-NAME>

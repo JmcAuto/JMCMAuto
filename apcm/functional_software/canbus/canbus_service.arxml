@@ -36,7 +36,7 @@
                   <SERVICE-INSTANCE-REFS>
                     <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
-                  <UDP-PORT>7000</UDP-PORT>
+                  <UDP-PORT>6000</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>CanbusAbstractServiceInstanceToPort</SHORT-NAME>

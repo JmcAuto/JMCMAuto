@@ -33,7 +33,7 @@
     },
     {
       "service": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface",
-      "serviceId": 1005,
+      "serviceId": 12805,
       "protocolIdUsed": true,
       "majorVersion": 1,
       "minorVersion": 0,
@@ -41,15 +41,22 @@
         {
           "event": "LocalizationEvent",
           "id": 63490,
-          "dataType": "/jmc_auto/Platform/LocalizationDateType/LocalizationEstimate",
-          "eventId": 32771,
+          "dataType": "/jmc_auto/Platform/LocalizationDateType/Localization",
+          "eventId": 1005,
           "eventGroup": [],
           "reliable": false
         }
       ],
       "fields": [],
       "methods": [],
-      "instances": []
+      "instances": [
+        {
+          "instance": 105,
+          "isClient": true,
+          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance",
+          "unreliable": 7004
+        }
+      ]
     },
     {
       "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
@@ -75,7 +82,7 @@
     },
     {
       "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
-      "serviceId": 1004,
+      "serviceId": 12804,
       "protocolIdUsed": true,
       "majorVersion": 1,
       "minorVersion": 0,
@@ -84,7 +91,7 @@
           "event": "ChassisEvent",
           "id": 32374,
           "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
-          "eventId": 32770,
+          "eventId": 1004,
           "eventGroup": [],
           "reliable": false
         }
@@ -96,7 +103,7 @@
           "instance": 104,
           "isClient": true,
           "shortName": "/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
-          "unreliable": 7001
+          "unreliable": 7004
         }
       ]
     }

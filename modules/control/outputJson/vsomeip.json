@@ -24,10 +24,17 @@
   "services": [],
   "clients": [
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
       "unreliable": [
-        "7001"
+        "7004"
+      ]
+    },
+    {
+      "service": "12805",
+      "instance": "105",
+      "unreliable": [
+        "7004"
       ]
     }
   ],

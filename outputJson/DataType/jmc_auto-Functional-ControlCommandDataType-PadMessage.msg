@@ -10,7 +10,7 @@
     {
       "Name": "action",
       "Type": "/jmc_auto/Functional/ControlCommandDataType/DrivingAction",
-      "Padding": "6"
+      "Padding": "7"
     }
   ],
   "IsPlane": "true"

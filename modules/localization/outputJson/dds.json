@@ -2,7 +2,7 @@
   "services": [
     {
       "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
-      "serviceId": 1009,
+      "serviceId": 12809,
       "protocolIdUsed": false,
       "events": [
         {

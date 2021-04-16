@@ -11,7 +11,7 @@
               <SHORT-NAME>LocalizationDateType</SHORT-NAME>
               <ELEMENTS>
                 <IMPLEMENTATION-DATA-TYPE>
-                  <SHORT-NAME>LocalizationEstimate</SHORT-NAME>
+                  <SHORT-NAME>Localization</SHORT-NAME>
                   <CATEGORY>STRUCTURE</CATEGORY>
                   <SUB-ELEMENTS>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
@@ -254,7 +254,7 @@
                   <EVENTS>
                     <VARIABLE-DATA-PROTOTYPE>
                       <SHORT-NAME>LocalizationEvent</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/LocalizationDateType/LocalizationEstimate</TYPE-TREF>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/LocalizationDateType/Localization</TYPE-TREF>
                     </VARIABLE-DATA-PROTOTYPE>
                   </EVENTS>
                 </SERVICE-INTERFACE>
@@ -264,12 +264,12 @@
                     <SOMEIP-EVENT-DEPLOYMENT>
                       <SHORT-NAME>LocalizationEventDeployment</SHORT-NAME>
                       <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface/LocalizationEvent</EVENT-REF>
-                      <EVENT-ID>32771</EVENT-ID>
+                      <EVENT-ID>1005</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>
                   <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface</SERVICE-INTERFACE-REF>
-                  <SERVICE-INTERFACE-ID>1005</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-ID>12805</SERVICE-INTERFACE-ID>
                   <SERVICE-INTERFACE-VERSION>
                     <MAJOR-VERSION>1</MAJOR-VERSION>
                     <MINOR-VERSION>0</MINOR-VERSION>
