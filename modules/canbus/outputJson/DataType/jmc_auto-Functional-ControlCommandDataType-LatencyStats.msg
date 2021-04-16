@@ -2,6 +2,20 @@
   "ShortName": "/jmc_auto/Functional/ControlCommandDataType/LatencyStats",
   "Namespace": "::",
   "Type": "STRUCTURE",
-  "Subelements": [],
+  "Subelements": [
+    {
+      "Name": "total_time_ms",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": " controller_time_ms",
+      "Type": "/HuaweiMDC/ImplementationDataType/Double"
+    },
+    {
+      "Name": "total_time_exceeded",
+      "Type": "/HuaweiMDC/ImplementationDataType/Bool",
+      "Padding": "7"
+    }
+  ],
   "IsPlane": "true"
 }

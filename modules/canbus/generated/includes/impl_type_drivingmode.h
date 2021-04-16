@@ -6,9 +6,9 @@
 #ifndef impl_type_drivingmode_h
 #define impl_type_drivingmode_h
 
-#include "impl_type_uint8.h"
+#include "impl_type_uint16.h"
 
-enum class DrivingMode : UInt8
+enum class DrivingMode : UInt16
 {
     COMPLETE_MANUAL = 0,
     COMPLETE_AUTO_DRIVE = 1,
