@@ -85,7 +85,7 @@
           "instance": 105,
           "isClient": true,
           "shortName": "/jmc_auto/Functional/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance",
-          "unreliable": 7004
+          "unreliable": 7005
         }
       ]
     },
@@ -138,7 +138,7 @@
     },
     {
       "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
-      "serviceId": 1004,
+      "serviceId": 12804,
       "protocolIdUsed": true,
       "majorVersion": 1,
       "minorVersion": 0,
@@ -147,7 +147,7 @@
           "event": "ChassisEvent",
           "id": 32374,
           "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
-          "eventId": 32769,
+          "eventId": 1004,
           "eventGroup": [],
           "reliable": false
         }
@@ -165,7 +165,7 @@
           "instance": 104,
           "isClient": false,
           "shortName": "/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
-          "unreliable": 6000
+          "unreliable": 7004
         },
         {
           "instance": 104,

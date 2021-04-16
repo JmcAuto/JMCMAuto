@@ -2,7 +2,7 @@
   "ShortName": "/jmc_auto/adapters/adapter_config/Mode",
   "Namespace": "::",
   "Type": "ENUMERATION",
-  "DataType": "/HuaweiMDC/ImplementationDataType/UInt16",
+  "DataType": "/HuaweiMDC/ImplementationDataType/UInt8",
   "value": [
     {
       "Label": "RECEIVE_ONLY",

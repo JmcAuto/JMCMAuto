@@ -44,12 +44,12 @@
       "eventgroups": []
     },
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
-      "unreliable": "6000",
+      "unreliable": "7004",
       "events": [
         {
-          "event": "32769",
+          "event": "1004",
           "is_field": "false",
           "is_reliable": "false"
         }
@@ -139,7 +139,7 @@
   ],
   "clients": [
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
       "unreliable": [
         "7004"
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
       "unreliable": [
         "7004"
@@ -184,7 +184,7 @@
       "service": "12805",
       "instance": "105",
       "unreliable": [
-        "7004"
+        "7005"
       ]
     }
   ],

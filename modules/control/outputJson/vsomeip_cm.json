@@ -54,7 +54,7 @@
           "instance": 105,
           "isClient": true,
           "shortName": "/jmc_auto/Functional/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance",
-          "unreliable": 7004
+          "unreliable": 7005
         }
       ]
     },

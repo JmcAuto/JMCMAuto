@@ -2187,12 +2187,12 @@
                     <SOMEIP-EVENT-DEPLOYMENT>
                       <SHORT-NAME>ChassisEventDeployment</SHORT-NAME>
                       <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
-                      <EVENT-ID>32769</EVENT-ID>
+                      <EVENT-ID>1004</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>
                   <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</SERVICE-INTERFACE-REF>
-                  <SERVICE-INTERFACE-ID>1004</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-ID>12804</SERVICE-INTERFACE-ID>
                   <SERVICE-INTERFACE-VERSION>
                     <MAJOR-VERSION>1</MAJOR-VERSION>
                     <MINOR-VERSION>0</MINOR-VERSION>
