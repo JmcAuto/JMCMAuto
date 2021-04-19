@@ -440,7 +440,7 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME> controller_time_ms</SHORT-NAME>
+                      <SHORT-NAME>controller_time_ms</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>

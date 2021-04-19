@@ -8,7 +8,7 @@
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
-      "Name": " controller_time_ms",
+      "Name": "controller_time_ms",
       "Type": "/HuaweiMDC/ImplementationDataType/Double"
     },
     {
