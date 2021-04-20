@@ -1,15 +1,15 @@
 {
-  "applicationName": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
+  "applicationName": "/jmc_auto/ModuleServices/Control/ControlSwComponent/ControlProcess",
   "services": [
     {
-      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
-      "serviceId": 1009,
+      "service": "/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "serviceId": 12809,
       "protocolIdUsed": false,
       "events": [
         {
           "event": "ControlCommandEvent",
           "id": 57416,
-          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "dataType": "/jmc_auto/Modules/ControlCommandDataType/ControlCommand",
           "topicName": "ControlCommandDdsEvent"
         }
       ],
@@ -17,7 +17,7 @@
       "methods": [],
       "instances": [
         {
-          "shortName": "/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance",
           "instance": 109,
           "domainId": 0,
           "isClient": false,

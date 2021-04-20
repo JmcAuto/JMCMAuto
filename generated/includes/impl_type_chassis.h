@@ -108,173 +108,173 @@
 
 struct Chassis {
     ::Bool engine_started;
-    
+
     ::Float engine_rpm;
-    
+
     ::Float speed_mps;
-    
+
     ::Float odometer_m;
-    
+
     ::Int32 fuel_range_m;
-    
+
     ::Float throttle_percentage;
-    
+
     ::Float brake_percentage;
-    
+
     ::Float steering_percentage;
-    
+
     ::Float steering_torque_nm;
-    
+
     ::Bool parking_brake;
-    
+
     ::Bool high_beam_signal;
-    
+
     ::Bool low_beam_signal;
-    
+
     ::Bool left_turn_signal;
-    
+
     ::Bool right_turn_signal;
-    
+
     ::Bool horn;
-    
+
     ::Bool wiper;
-    
+
     ::Bool disengage_status;
-    
+
     ::DrivingMode driving_mode;
-    
+
     ::ChassisErrorCode error_code;
-    
+
     ::GearPosition gear_location;
-    
+
     ::Double steering_timestamp;
-    
+
     ::Header header;
-    
+
     ::Int32 chassis_error_mask;
-    
+
     ::VehicleSignal signal;
-    
+
     ::ChassisGPS chassis_gps;
-    
+
     ::EngageAdvice engage_advice;
-    
+
     ::WheelSpeed wheel_speed;
-    
+
     ::Surround surround;
-    
+
     ::Float lon_acc;
-    
+
     ::Float steer_wheel_rot_spd;
-    
+
     ::Bool abs_vehspdlgt_valid;
-    
+
     ::Bool esp_algtstatus_valid;
-    
+
     ::Bool sas_sasstssnsr_valid;
-    
+
     ::Bool steerwheelrotspd_valid;
-    
+
     ::Bool eps_lkaresponsetorque_valid;
-    
+
     ::Float eps_torsionbartorque;
-    
+
     ::Bool eps_tosionbartorquevalid;
-    
+
     ::Int32 abs_whlmilgfrntri;
-    
+
     ::Int32 abs_whlmilgfrntle;
-    
+
     ::Int32 abs_whlmilgrearre;
-    
+
     ::Int32 abs_whlmilgrearle;
-    
+
     ::Int32 esp_wheelpulse_fl;
-    
+
     ::Int32 esp_wheelpulse_fr;
-    
+
     ::Int32 esp_wheelpulse_rl;
-    
+
     ::Int32 esp_wheelpulse_rr;
-    
+
     ::Double ems_accpedalratio;
-    
+
     ::BrkPedalStasus brkpedalstasus;
-    
+
     ::Double abs_whlspdfrntle;
-    
+
     ::Double abs_whlspdfrntri;
-    
+
     ::Double abs_whlspdrele;
-    
+
     ::Double abs_whlspdreri;
-    
+
     ::Double acc_x;
-    
+
     ::Double acc_y;
-    
+
     ::Double acc_z;
-    
+
     ::Double gyro_x;
-    
+
     ::Double gyro_y;
-    
+
     ::Double gyro_z;
-    
+
     ::Double ins_pitchangle;
-    
+
     ::Double ins_rollangle;
-    
+
     ::Double ins_headingangle;
-    
+
     ::Double ins_locatheight;
-    
+
     ::Double ins_time;
-    
+
     ::Double ins_latitude;
-    
+
     ::Double ins_longitude;
-    
+
     ::Double ins_northspd;
-    
+
     ::Double ins_eastspd;
-    
+
     ::Double ins_togroundspd;
-    
+
     ::Int32 ins_gpsflag_pos;
-    
+
     ::Int32 ins_numsv;
-    
+
     ::Int32 ins_gpsflag_heading;
-    
+
     ::Int32 ins_gps_age;
-    
+
     ::Int32 ins_car_status;
-    
+
     ::Int32 ins_status;
-    
+
     ::Double ins_std_lat;
-    
+
     ::Double ins_std_lon;
-    
+
     ::Double ins_std_locat_height;
-    
+
     ::Double ins_std_heading;
-    
+
     ::Int32 eps_lkacontrolstatus;
-    
+
     ::Int32 esp_vlc_active;
-    
+
     ::Int32 esp_vlc_available;
-    
+
     ::Int32 esp_apa_gearboxenable;
-    
+
     ::Int32 esp_vlc_apactive;
-    
+
     ::Int32 esp_vlcapa_available;
-    
+
     ::Int32 esp_epbstatus;
-    
+
 
     static bool IsPlane()
     {

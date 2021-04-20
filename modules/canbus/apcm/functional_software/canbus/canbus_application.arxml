@@ -5,7 +5,7 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>PlatformServices</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>CanbusApplication</SHORT-NAME>
@@ -15,11 +15,11 @@
                   <PORTS>
                     <P-PORT-PROTOTYPE>
                       <SHORT-NAME>ChassisPPort</SHORT-NAME>
-                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</PROVIDED-INTERFACE-TREF>
+                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface</PROVIDED-INTERFACE-TREF>
                     </P-PORT-PROTOTYPE>
                     <R-PORT-PROTOTYPE>
                       <SHORT-NAME>ControlCommandRPort</SHORT-NAME>
-                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface</REQUIRED-INTERFACE-TREF>
+                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface</REQUIRED-INTERFACE-TREF>
                     </R-PORT-PROTOTYPE>
                     <R-PORT-PROTOTYPE>
                       <SHORT-NAME>CanRxPort</SHORT-NAME>
@@ -40,7 +40,7 @@
                   <SHORT-NAME>CanbusExecutable</SHORT-NAME>
                   <ROOT-SW-COMPONENT-PROTOTYPE>
                     <SHORT-NAME>CanbusRootSwComponent</SHORT-NAME>
-                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent</APPLICATION-TYPE-TREF>
+                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent</APPLICATION-TYPE-TREF>
                   </ROOT-SW-COMPONENT-PROTOTYPE>
                 </EXECUTABLE>
               </ELEMENTS>

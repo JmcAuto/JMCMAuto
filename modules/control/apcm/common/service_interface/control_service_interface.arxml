@@ -5,7 +5,7 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>Functional</SHORT-NAME>
+          <SHORT-NAME>Modules</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>ControlCommandDataType</SHORT-NAME>
@@ -21,215 +21,6 @@
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
                             <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/header/Header</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steering_target</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>parking_brake</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>speed</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>acceleration</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>reset_model</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>engine_on_off</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>trajectory_fraction</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>driving_mode</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>gear_location</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>debug</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/Debug</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>signal</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_signal/VehicleSignal</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>latency_stats</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/LatencyStats</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>pad_msg</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/PadMessage</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>engage_advice</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/drive_state/EngageAdvice</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>is_in_safe_mode</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steering_torque</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>PAM_ESP_Target_Gear_Request</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Int32</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>ACC_StandstillReq</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>turnsignal</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -258,6 +49,39 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>steering_rate</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steering_target</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>speed</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>acceleration</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -323,7 +147,139 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steering_angle</SHORT-NAME>
+                      <SHORT-NAME>turnsignal</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_signal/TurnSignal</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>reset_model</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>engine_on_off</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>trajectory_fraction</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>driving_mode</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>gear_location</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>debug</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/Debug</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>signal</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/vehicle_signal/VehicleSignal</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>latency_stats</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/LatencyStats</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>pad_msg</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/PadMessage</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>engage_advice</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/drive_state/EngageAdvice</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>is_in_safe_mode</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steering_torque</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -335,6 +291,50 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>pam_esp_stop_distance</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Int32</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>ACC_StandstillReq</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steering_angle</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>parking_brake</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Bool</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>PAM_ESP_Target_Gear_Request</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -356,7 +356,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/SimpleLongtitudinalDebug</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/SimpleLongtitudinalDebug</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -367,7 +367,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/SimpleLateralDebug</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/SimpleLateralDebug</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -378,7 +378,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/InputDebug</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/InputDebug</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -440,8 +440,8 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME> controller_time_ms</SHORT-NAME>
-                      <CATEGORY>VECTOR</CATEGORY>
+                      <SHORT-NAME>controller_time_ms</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
@@ -479,7 +479,18 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>lateral_error_rate</SHORT-NAME>
+                      <SHORT-NAME>ref_heading</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -512,18 +523,7 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>ref_heading</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>heading</SHORT-NAME>
+                      <SHORT-NAME>lateral_error_rate</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -557,17 +557,6 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>steer_angle_feedforward</SHORT-NAME>
-                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>steer_angle_feedback</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -612,6 +601,17 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>steer_angle_heading_rate_contribution</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steer_angle_feedback</SHORT-NAME>
                       <CATEGORY>TYPE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -720,6 +720,105 @@
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>ref_heading_acceleration</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading_acceleration</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading_error_acceleration</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>ref_heading_jerk</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading_jerk</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading_error_jerk</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>lateral_error_feedback</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>heading_error_feedback</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>steer_angle_feedback_augment</SHORT-NAME>
+                      <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                   </SUB-ELEMENTS>
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
@@ -772,17 +871,6 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>speed_reference</SHORT-NAME>
-                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>speed_real</SHORT-NAME>
                       <CATEGORY>TYRE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -848,6 +936,17 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>acceleration_cmd</SHORT-NAME>
+                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>acceleration_cmd_closeloop</SHORT-NAME>
                       <CATEGORY>TYRE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
@@ -859,7 +958,29 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>acceleration_cmd</SHORT-NAME>
+                      <SHORT-NAME>acceleration_lookup</SHORT-NAME>
+                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>speed_real</SHORT-NAME>
+                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                      <SHORT-NAME>calibration_value</SHORT-NAME>
                       <CATEGORY>TYRE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
@@ -914,28 +1035,6 @@
                       </SW-DATA-DEF-PROPS>
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>acceleration_lookup</SHORT-NAME>
-                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                      <SHORT-NAME>calibration_value</SHORT-NAME>
-                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
-                      <SW-DATA-DEF-PROPS>
-                        <SW-DATA-DEF-PROPS-VARIANTS>
-                          <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/Double</IMPLEMENTATION-DATA-TYPE-REF>
-                          </SW-DATA-DEF-PROPS-CONDITIONAL>
-                        </SW-DATA-DEF-PROPS-VARIANTS>
-                      </SW-DATA-DEF-PROPS>
-                    </IMPLEMENTATION-DATA-TYPE-ELEMENT>
-                    <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>prew_kappa</SHORT-NAME>
                       <CATEGORY>TYRE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
@@ -970,10 +1069,11 @@
                     </IMPLEMENTATION-DATA-TYPE-ELEMENT>
                     <IMPLEMENTATION-DATA-TYPE-ELEMENT>
                       <SHORT-NAME>gear_location</SHORT-NAME>
+                      <CATEGORY>TYRE_REFERENCE</CATEGORY>
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -981,54 +1081,13 @@
                   </SUB-ELEMENTS>
                 </IMPLEMENTATION-DATA-TYPE>
                 <IMPLEMENTATION-DATA-TYPE>
-                  <SHORT-NAME>TurnSignal</SHORT-NAME>
-                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
-                  <SW-DATA-DEF-PROPS>
-                    <SW-DATA-DEF-PROPS-VARIANTS>
-                      <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Functional/ControlCommandDataType/TurnSignalEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
-                      </SW-DATA-DEF-PROPS-CONDITIONAL>
-                    </SW-DATA-DEF-PROPS-VARIANTS>
-                  </SW-DATA-DEF-PROPS>
-                </IMPLEMENTATION-DATA-TYPE>
-                <COMPU-METHOD>
-                  <SHORT-NAME>TurnSignalEnum</SHORT-NAME>
-                  <CATEGORY>TEXTTABLE</CATEGORY>
-                  <COMPU-INTERNAL-TO-PHYS>
-                    <COMPU-SCALES>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>0</LOWER-LIMIT>
-                        <UPPER-LIMIT>0</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>TURN_NONE</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>1</LOWER-LIMIT>
-                        <UPPER-LIMIT>1</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>TURN_LEFT</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                      <COMPU-SCALE>
-                        <LOWER-LIMIT>2</LOWER-LIMIT>
-                        <UPPER-LIMIT>2</UPPER-LIMIT>
-                        <COMPU-CONST>
-                          <VT>TURN_RIGHT</VT>
-                        </COMPU-CONST>
-                      </COMPU-SCALE>
-                    </COMPU-SCALES>
-                  </COMPU-INTERNAL-TO-PHYS>
-                </COMPU-METHOD>
-                <IMPLEMENTATION-DATA-TYPE>
                   <SHORT-NAME>DrivingAction</SHORT-NAME>
                   <CATEGORY>TYPE_REFERENCE</CATEGORY>
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Functional/ControlCommandDataType/DrivingActionEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ControlCommandDataType/DrivingActionEnum</COMPU-METHOD-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1082,7 +1141,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/DrivingAction</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/DrivingAction</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -1099,12 +1158,12 @@
                   <EVENT-DEPLOYMENTS>
                     <DDS-EVENT-DEPLOYMENT UUID="">
                       <SHORT-NAME>ControlCommandDdsEventDeployment</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface/ControlCommandEvent</EVENT-REF>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface/ControlCommandEvent</EVENT-REF>
                       <TOPIC-NAME>ControlCommandDdsEvent</TOPIC-NAME>
                     </DDS-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface</SERVICE-INTERFACE-REF>
-                  <SERVICE-INTERFACE-ID>1009</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-ID>12809</SERVICE-INTERFACE-ID>
                 </DDS-SERVICE-INTERFACE-DEPLOYMENT>
                 <SERVICE-INTERFACE>
                   <SHORT-NAME>ControlCommandServiceInterface</SHORT-NAME>
@@ -1118,7 +1177,7 @@
                   <EVENTS>
                     <VARIABLE-DATA-PROTOTYPE>
                       <SHORT-NAME>ControlCommandEvent</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Functional/ControlCommandDataType/ControlCommand</TYPE-TREF>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ControlCommandDataType/ControlCommand</TYPE-TREF>
                     </VARIABLE-DATA-PROTOTYPE>
                   </EVENTS>
                 </SERVICE-INTERFACE>

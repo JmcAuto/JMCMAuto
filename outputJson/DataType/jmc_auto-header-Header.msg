@@ -30,7 +30,8 @@
     },
     {
       "Name": "status",
-      "Type": "/jmc_auto/error_code/StatusPb"
+      "Type": "/jmc_auto/error_code/StatusPb",
+      "Padding": "2"
     }
   ],
   "IsPlane": "true"

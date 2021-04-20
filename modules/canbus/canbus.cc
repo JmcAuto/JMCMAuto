@@ -163,13 +163,13 @@ void Canbus::PublishChassis() {
     jmc_auto::canbus::Chassis chassis = vehicle_controller_->chassis();
 
     //test
-    //chassis.set_brake_percentage(20);
+    chassis.set_brake_percentage(20);
 
     AdapterManager::FillChassisHeader(&chassis);
     AdapterManager::PublishChassis(chassis);
 
-    AINFO << chassis.DebugString();
-    // ADEBUG << chassis.ShortDebugString();
+    //AINFO << chassis.DebugString();
+    ADEBUG << chassis.ShortDebugString();
 }
 
 /*

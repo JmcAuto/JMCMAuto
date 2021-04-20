@@ -6,9 +6,9 @@
 #ifndef impl_type_drivingaction_h
 #define impl_type_drivingaction_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class DrivingAction : UInt16
+enum class DrivingAction : UInt8
 {
     STOP = 0,
     START = 1,

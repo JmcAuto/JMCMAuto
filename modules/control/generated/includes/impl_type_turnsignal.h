@@ -6,9 +6,9 @@
 #ifndef impl_type_turnsignal_h
 #define impl_type_turnsignal_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class TurnSignal : UInt16
+enum class TurnSignal : UInt8
 {
     TURN_NONE = 0,
     TURN_LEFT = 1,

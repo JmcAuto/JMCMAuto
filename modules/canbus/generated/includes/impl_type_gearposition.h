@@ -6,9 +6,9 @@
 #ifndef impl_type_gearposition_h
 #define impl_type_gearposition_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class GearPosition : UInt16
+enum class GearPosition : UInt8
 {
     GEAR_NEUTRAL = 0,
     GEAR_DRIVE = 1,

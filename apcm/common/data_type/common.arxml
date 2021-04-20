@@ -95,7 +95,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/adapters/adapter_config/MessageTypeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -451,7 +451,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/adapters/adapter_config/ModeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -808,7 +808,7 @@
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
                     <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/drive_state/AdviceEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </SW-DATA-DEF-PROPS>
@@ -885,7 +885,7 @@
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
                     <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/error_code/ErrorCodeEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </SW-DATA-DEF-PROPS>
@@ -3090,7 +3090,7 @@
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
                         <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_model/vehicle_model_config/ModelTypeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt32</IMPLEMENTATION-DATA-TYPE-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -3265,7 +3265,7 @@
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
                     <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/vehicle_signal/TurnSignalEnum</COMPU-METHOD-REF>
-                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </SW-DATA-DEF-PROPS>

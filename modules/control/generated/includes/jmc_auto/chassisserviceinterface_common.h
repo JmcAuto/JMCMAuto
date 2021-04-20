@@ -15,7 +15,7 @@ namespace jmc_auto {
 class ChassisServiceInterface {
 public:
     constexpr ChassisServiceInterface() = default;
-    constexpr static ara::com::ServiceIdentifierType ServiceIdentifier = ara::com::ServiceIdentifierType("/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface");
+    constexpr static ara::com::ServiceIdentifierType ServiceIdentifier = ara::com::ServiceIdentifierType("/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface");
     constexpr static ara::com::ServiceVersionType ServiceVersion = ara::com::ServiceVersionType("1.1");
 };
 } // namespace jmc_auto

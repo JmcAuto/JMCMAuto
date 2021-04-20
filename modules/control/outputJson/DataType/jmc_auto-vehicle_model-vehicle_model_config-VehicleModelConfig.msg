@@ -6,7 +6,7 @@
     {
       "Name": "model_type",
       "Type": "/jmc_auto/vehicle_model/vehicle_model_config/ModelType",
-      "Padding": "4"
+      "Padding": "7"
     },
     {
       "Name": "rc_kinematic_bicycle_model",

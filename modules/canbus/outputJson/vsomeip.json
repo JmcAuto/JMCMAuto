@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_PlatformServices_CanbusApplication_CanbusSwComponent_CanbusProcess"
+      "ident": "someip_jmc_auto_ModuleServices_CanbusApplication_CanbusSwComponent_CanbusProcess"
     },
     "dlt": "false"
   },
@@ -17,18 +17,18 @@
   "netmask": "255.255.255.0",
   "applications": [
     {
-      "name": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
-      "id": "35574"
+      "name": "/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
+      "id": "25903"
     }
   ],
   "services": [
     {
-      "service": "1004",
+      "service": "12804",
       "instance": "104",
-      "unreliable": "6000",
+      "unreliable": "7004",
       "events": [
         {
-          "event": "32769",
+          "event": "1004",
           "is_field": "false",
           "is_reliable": "false"
         }

@@ -15,7 +15,7 @@ namespace jmc_auto {
 class ControlCommandServiceInterface {
 public:
     constexpr ControlCommandServiceInterface() = default;
-    constexpr static ara::com::ServiceIdentifierType ServiceIdentifier = ara::com::ServiceIdentifierType("/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface");
+    constexpr static ara::com::ServiceIdentifierType ServiceIdentifier = ara::com::ServiceIdentifierType("/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface");
     constexpr static ara::com::ServiceVersionType ServiceVersion = ara::com::ServiceVersionType("1.1");
 };
 } // namespace jmc_auto

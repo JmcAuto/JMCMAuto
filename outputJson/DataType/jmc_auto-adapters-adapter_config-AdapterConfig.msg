@@ -9,7 +9,8 @@
     },
     {
       "Name": "mode",
-      "Type": "/jmc_auto/adapters/adapter_config/Mode"
+      "Type": "/jmc_auto/adapters/adapter_config/Mode",
+      "Padding": "2"
     },
     {
       "Name": "message_history_limit",

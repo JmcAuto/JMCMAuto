@@ -6,9 +6,9 @@
 #ifndef impl_type_errorcode_h
 #define impl_type_errorcode_h
 
-#include "impl_type_uint32.h"
+#include "impl_type_uint16.h"
 
-enum class ErrorCode : UInt32
+enum class ErrorCode : UInt16
 {
     OK = 0,
     CONTROL_ERROR = 1000,

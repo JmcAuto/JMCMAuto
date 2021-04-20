@@ -5,7 +5,7 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>Platform</SHORT-NAME>
+          <SHORT-NAME>Modules</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>ChassisDateType</SHORT-NAME>
@@ -16,7 +16,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/BrkPedalStasusEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/BrkPedalStasusEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -255,7 +255,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -266,7 +266,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/ChassisErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/ChassisErrorCode</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -277,7 +277,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -332,7 +332,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/ChassisGPS</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/ChassisGPS</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -354,7 +354,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/WheelSpeed</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/WheelSpeed</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -365,7 +365,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/Surround</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/Surround</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -574,7 +574,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/BrkPedalStasus</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/BrkPedalStasus</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -994,7 +994,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/ErrorCodeEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/ChassisErrorCodeEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1197,7 +1197,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/GpsQuality</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GpsQuality</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -1232,8 +1232,8 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/DrivingModeEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/DrivingModeEnum</COMPU-METHOD-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1296,7 +1296,7 @@
                   </COMPU-INTERNAL-TO-PHYS>
                 </COMPU-METHOD>
                 <COMPU-METHOD>
-                  <SHORT-NAME>ErrorCodeEnum</SHORT-NAME>
+                  <SHORT-NAME>ChassisErrorCodeEnum</SHORT-NAME>
                   <CATEGORY>TEXTTABLE</CATEGORY>
                   <COMPU-INTERNAL-TO-PHYS>
                     <COMPU-SCALES>
@@ -1351,8 +1351,8 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/GearPositionEnum</COMPU-METHOD-REF>
-                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt16</IMPLEMENTATION-DATA-TYPE-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/GearPositionEnum</COMPU-METHOD-REF>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
                   </SW-DATA-DEF-PROPS>
@@ -1420,7 +1420,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/GpsQualityEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/GpsQualityEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1468,7 +1468,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/INS_Car_StatusEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/INS_Car_StatusEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1502,7 +1502,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/INS_GpsFlagEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/INS_GpsFlagEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1613,7 +1613,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/INS_StatusEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/INS_StatusEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -1967,7 +1967,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/Sonar</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/Sonar</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -1995,7 +1995,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -2028,7 +2028,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -2061,7 +2061,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -2094,7 +2094,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/WheelSpeedType</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -2118,7 +2118,7 @@
                   <SW-DATA-DEF-PROPS>
                     <SW-DATA-DEF-PROPS-VARIANTS>
                       <SW-DATA-DEF-PROPS-CONDITIONAL>
-                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Platform/ChassisDateType/WheelSpeedTypeEnum</COMPU-METHOD-REF>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/jmc_auto/Modules/ChassisDateType/WheelSpeedTypeEnum</COMPU-METHOD-REF>
                         <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/HuaweiMDC/ImplementationDataType/UInt8</IMPLEMENTATION-DATA-TYPE-REF>
                       </SW-DATA-DEF-PROPS-CONDITIONAL>
                     </SW-DATA-DEF-PROPS-VARIANTS>
@@ -2177,7 +2177,7 @@
                   <EVENTS>
                     <VARIABLE-DATA-PROTOTYPE>
                       <SHORT-NAME>ChassisEvent</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Platform/ChassisDateType/Chassis</TYPE-TREF>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/Chassis</TYPE-TREF>
                     </VARIABLE-DATA-PROTOTYPE>
                   </EVENTS>
                 </SERVICE-INTERFACE>
@@ -2186,13 +2186,13 @@
                   <EVENT-DEPLOYMENTS>
                     <SOMEIP-EVENT-DEPLOYMENT>
                       <SHORT-NAME>ChassisEventDeployment</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
-                      <EVENT-ID>32769</EVENT-ID>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface/ChassisEvent</EVENT-REF>
+                      <EVENT-ID>1004</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
                   </EVENT-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</SERVICE-INTERFACE-REF>
-                  <SERVICE-INTERFACE-ID>1004</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-ID>12804</SERVICE-INTERFACE-ID>
                   <SERVICE-INTERFACE-VERSION>
                     <MAJOR-VERSION>1</MAJOR-VERSION>
                     <MINOR-VERSION>0</MINOR-VERSION>

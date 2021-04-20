@@ -5,14 +5,14 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>Functional</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>ControlServiceConsumer</SHORT-NAME>
               <ELEMENTS>
                 <REQUIRED-SOMEIP-SERVICE-INSTANCE>
                   <SHORT-NAME>ChassisRequiredSomeipServiceInstance</SHORT-NAME>
-                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
                   <REQUIRED-SERVICE-INSTANCE-ID>104</REQUIRED-SERVICE-INSTANCE-ID>
                 </REQUIRED-SOMEIP-SERVICE-INSTANCE>
               </ELEMENTS>
@@ -22,7 +22,7 @@
               <ELEMENTS>
                 <DDS-PROVIDED-SERVICE-INSTANCE>
                   <SHORT-NAME>ControlCommandProvidedDdsServiceInstance</SHORT-NAME>
-                  <SERVICE-INTERFACE-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment</SERVICE-INTERFACE-REF>
                   <QOS-PROFILE>/var/domainqos.xml</QOS-PROFILE>
                   <DOMAIN-ID>0</DOMAIN-ID>
                   <TRANSPORT-PLUGINS>
@@ -31,7 +31,7 @@
                   <EVENT-QOS-PROPSS>
                     <DDS-EVENT-QOS-PROPS>
                       <QOS-PROFILE>/var/eventsqos.xml</QOS-PROFILE>
-                      <EVENT-REF DEST="DDS-EVENT-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment/ControlCommandDdsEventDeployment</EVENT-REF>
+                      <EVENT-REF DEST="DDS-EVENT-DEPLOYMENT">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment/ControlCommandDdsEventDeployment</EVENT-REF>
                     </DDS-EVENT-QOS-PROPS>
                   </EVENT-QOS-PROPSS>
                   <SERVICE-INSTANCE-ID>109</SERVICE-INSTANCE-ID>
@@ -42,21 +42,21 @@
               <SHORT-NAME>ControlServiceConsumerMapping</SHORT-NAME>
               <ELEMENTS>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-                  <SHORT-NAME>ControlRecvServiceInstanceToPort</SHORT-NAME>
+                  <SHORT-NAME>ChassisRequiredServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/Functional/ControlExecutable/ControlExecutable/ControlRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ChassisRPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/ControlExecutable/ControlExecutable/ControlRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/Control/ControlSwComponent/ChassisRPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/Functional/ControlProcess/ControlProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/ControlProcess/ControlProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                  <SHORT-NAME>ControlServiceInstanceToMachine</SHORT-NAME>
+                  <SHORT-NAME>ChassisRequiredSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
-                  <UDP-PORT>5000</UDP-PORT>
+                  <UDP-PORT>7004</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
@@ -64,20 +64,20 @@
               <SHORT-NAME>ControlServiceProviderMapping</SHORT-NAME>
               <ELEMENTS>
                 <DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="">
-                  <SHORT-NAME>ControlProvidedDdsServiceInstanceToMachine</SHORT-NAME>
+                  <SHORT-NAME>ControlCommandProvidedDdsServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                 </DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-                  <SHORT-NAME>ControlProvidedServiceInstanceToPort</SHORT-NAME>
+                  <SHORT-NAME>ControlCommandProvidedServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/Functional/ControlExecutable/ControlExecutable/ControlRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlCommandPPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/ControlExecutable/ControlExecutable/ControlRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/Control/ControlSwComponent/ControlCommandPPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/Functional/ControlProcess/ControlProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/jmc_auto/Functional/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/ControlProcess/ControlProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceProvider/ControlCommandProvidedDdsServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>

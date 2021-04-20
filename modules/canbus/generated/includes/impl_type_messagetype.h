@@ -6,9 +6,9 @@
 #ifndef impl_type_messagetype_h
 #define impl_type_messagetype_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class MessageType : UInt16
+enum class MessageType : UInt8
 {
     POINT_CLOUD = 1,
     GPS = 2,

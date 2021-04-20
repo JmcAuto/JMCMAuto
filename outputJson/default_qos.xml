@@ -7,7 +7,7 @@
         </domain_participant>
         <publisher name="MyPublisherQos"/>
         <subscriber name="MySubscriberQos"/>
-        <datareader name="1009_109_ControlCommandDdsEvent_reader">
+        <datareader name="12809_109_ControlCommandDdsEvent_reader">
             <durability>
                 <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
             </durability>
@@ -46,7 +46,7 @@
                 <mask>DDS_TRANSPORT_UDP</mask>
             </transport>
         </datareader>
-        <datawriter name="1009_109_ControlCommandDdsEvent_writer">
+        <datawriter name="12809_109_ControlCommandDdsEvent_writer">
             <durability>
                 <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
             </durability>

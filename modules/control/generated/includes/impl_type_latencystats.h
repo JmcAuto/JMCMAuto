@@ -16,7 +16,7 @@
 struct LatencyStats {
     ::Double total_time_ms;
     
-    ::Double  controller_time_ms;
+    ::Double controller_time_ms;
     
     ::Bool total_time_exceeded;
     
@@ -31,7 +31,7 @@ struct LatencyStats {
     void enumerate(F& fun)
     {
         fun(total_time_ms);
-        fun( controller_time_ms);
+        fun(controller_time_ms);
         fun(total_time_exceeded);
     }
 
@@ -39,12 +39,12 @@ struct LatencyStats {
     void enumerate(F& fun) const
     {
         fun(total_time_ms);
-        fun( controller_time_ms);
+        fun(controller_time_ms);
         fun(total_time_exceeded);
     }
 
     bool operator == (const ::LatencyStats& t) const {
-        return (total_time_ms == t.total_time_ms) && ( controller_time_ms == t. controller_time_ms) && (total_time_exceeded == t.total_time_exceeded);
+        return (total_time_ms == t.total_time_ms) && (controller_time_ms == t.controller_time_ms) && (total_time_exceeded == t.total_time_exceeded);
     }
 };
 

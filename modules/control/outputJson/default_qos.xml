@@ -7,7 +7,7 @@
         </domain_participant>
         <publisher name="MyPublisherQos"/>
         <subscriber name="MySubscriberQos"/>
-        <datawriter name="1009_109_ControlCommandDdsEvent_writer">
+        <datawriter name="12809_109_ControlCommandDdsEvent_writer">
             <durability>
                 <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
             </durability>

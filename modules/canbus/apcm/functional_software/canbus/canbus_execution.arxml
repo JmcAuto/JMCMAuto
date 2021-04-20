@@ -5,14 +5,14 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>PlatformServices</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>CanbusProcess</SHORT-NAME>
               <ELEMENTS>
                 <PROCESS>
                   <SHORT-NAME>CanbusProcess</SHORT-NAME>
-                  <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable</EXECUTABLE-REF>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable</EXECUTABLE-REF>
                   <MODE-DEPENDENT-STARTUP-CONFIGS>
                     <MODE-DEPENDENT-STARTUP-CONFIG>
                       <FUNCTION-GROUP-MODE-IREFS>
@@ -32,7 +32,7 @@
                         </MACHINE-MODE-IREF>
                       </MACHINE-MODE-IREFS>
                       <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/HuaweiMDC/Machine/Dmini0Machine/Dmini0_OS/Dmini0ResourceLimitationGroup1</RESOURCE-GROUP-REF>
-                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/jmc_auto/PlatformServices/CanbusStartupConfig/CanbusStartupConfigSet/CanbusStartupConfig</STARTUP-CONFIG-REF>
+                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/jmc_auto/ModuleServices/CanbusStartupConfig/CanbusStartupConfigSet/CanbusStartupConfig</STARTUP-CONFIG-REF>
                     </MODE-DEPENDENT-STARTUP-CONFIG>
                   </MODE-DEPENDENT-STARTUP-CONFIGS>
                 </PROCESS>

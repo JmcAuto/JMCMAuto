@@ -6,9 +6,9 @@
 #ifndef impl_type_mode_h
 #define impl_type_mode_h
 
-#include "impl_type_uint16.h"
+#include "impl_type_uint8.h"
 
-enum class Mode : UInt16
+enum class Mode : UInt8
 {
     RECEIVE_ONLY = 0,
     PUBLISH_ONLY = 1,

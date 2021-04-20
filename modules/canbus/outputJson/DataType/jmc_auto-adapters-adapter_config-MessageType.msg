@@ -2,7 +2,7 @@
   "ShortName": "/jmc_auto/adapters/adapter_config/MessageType",
   "Namespace": "::",
   "Type": "ENUMERATION",
-  "DataType": "/HuaweiMDC/ImplementationDataType/UInt16",
+  "DataType": "/HuaweiMDC/ImplementationDataType/UInt8",
   "value": [
     {
       "Label": "POINT_CLOUD",
