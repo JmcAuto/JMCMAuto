@@ -11,7 +11,7 @@
 
 
 struct EngageAdvice {
-    ::Advice Advice;
+    ::Advice advice;
     
 
     static bool IsPlane()
@@ -23,17 +23,17 @@ struct EngageAdvice {
     template<typename F>
     void enumerate(F& fun)
     {
-        fun(Advice);
+        fun(advice);
     }
 
     template<typename F>
     void enumerate(F& fun) const
     {
-        fun(Advice);
+        fun(advice);
     }
 
     bool operator == (const ::EngageAdvice& t) const {
-        return (Advice == t.Advice);
+        return (advice == t.advice);
     }
 };
 

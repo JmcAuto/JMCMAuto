@@ -4,7 +4,7 @@
   "Type": "STRUCTURE",
   "Subelements": [
     {
-      "Name": "Advice",
+      "Name": "advice",
       "Type": "/jmc_auto/drive_state/Advice"
     }
   ],

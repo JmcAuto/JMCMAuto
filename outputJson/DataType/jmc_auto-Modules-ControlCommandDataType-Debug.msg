@@ -1,5 +1,5 @@
 {
-  "ShortName": "/jmc_auto/Modules/ControlCommandDataType/jmc_auto/Modules/ControlCommandDataType/ControlCommand/Debug",
+  "ShortName": "/jmc_auto/Modules/ControlCommandDataType/Debug",
   "Namespace": "::",
   "Type": "STRUCTURE",
   "Subelements": [],
