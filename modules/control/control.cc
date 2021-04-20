@@ -13,7 +13,6 @@
 
 #include "modules/localization/proto/localization.pb.h"
 
-#include <iostream>
 
 namespace jmc_auto {
 namespace control {
@@ -132,12 +131,13 @@ void Control::OnTimer() {
       estop_ = false ;
       AINFO << "Reset estop to false" ;
     }
-  std::cout << "sendcmd";
     SendCmd(&control_command);
 }
 
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
+  //test
+  status = Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No localization msg");
   if (!status.ok()) {
     AERROR << "Control input data failed: "
            << status.error_message();//ERROR消息发布频率100hz
@@ -148,8 +148,6 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
     estop_ = true;
     estop_reason_ = status.error_message();
   }else{
-    AINFO << "CheckTimestamp";
-    std::cout << "CheckTimestamp";
     Status status_ts = CheckTimestamp();
     if (!status_ts.ok()){
       AERROR << "Input messages timeout";
@@ -165,7 +163,6 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
             AINFO << "chassis_.driving_mode() != jmc_auto::canbus::Chassis::COMPLETE_AUTO_DRIVE";
       }
     }else{
-        std::cout << "set EngageAdvice";
       control_command->mutable_engage_advice()->set_advice(
           jmc_auto::common::EngageAdvice::READY_TO_ENGAGE);
     }
@@ -226,7 +223,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
 
 Status Control::CheckInput() {
   AdapterManager::Observe();
-  /*
+/*
   auto localization_adapter = AdapterManager::GetLocalization();
   if (localization_adapter->Empty())
   {
@@ -339,7 +336,6 @@ Status Control::CheckTimestamp()
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
  AdapterManager::FillControlCommandHeader(control_command);
- std::cout << "PublishControlCommand";
  AdapterManager::PublishControlCommand(*control_command);
  AINFO << "Control command pubilsh succeed! Control command msg:"
        << control_command->ShortDebugString();
