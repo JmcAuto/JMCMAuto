@@ -4,7 +4,6 @@
 #include "modules/control/control.h"
 #include <iomanip>
 #include <string>
-//#include "ros/include/std_msgs/String.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/log.h"
 #include "modules/common/time/jmcauto_time.h"
@@ -12,6 +11,7 @@
 #include "modules/control/common/control_gflags.h"
 
 #include "modules/localization/proto/localization.pb.h"
+
 
 namespace jmc_auto {
 namespace control {
@@ -135,12 +135,13 @@ void Control::OnTimer() {
 
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
+  //mdc test
+  status = Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No localization msg");
   if (!status.ok()) {
     AERROR << "Control input data failed: "
            << status.error_message();//ERROR消息发布频率100hz
     control_command->mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-    //control_command->mutable_engage_advice()->set_reason(
     //    status.error_message());   //???
     estop_ = true;
     estop_reason_ = status.error_message();
@@ -155,7 +156,6 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
       {
         control_command->mutable_engage_advice()->set_advice(
             jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-        //control_command->mutable_engage_advice()->set_reason(
         //    status.error_message());
             AINFO << "chassis_.driving_mode() != jmc_auto::canbus::Chassis::COMPLETE_AUTO_DRIVE";
       }
@@ -235,7 +235,7 @@ Status Control::CheckInput() {
   //AINFO << "chassis: brake: " << chassis_adapter->GetLatestObserved().brake_percentage();
   if (chassis_adapter->Empty())
   {
-    //AERROR << "No Chassis msg yet. ";
+    AERROR << "No Chassis msg yet. ";
     //AINFO << chassis_adapter.ShortDebugString();
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No chassis msg");
   }
@@ -333,9 +333,8 @@ Status Control::CheckTimestamp()
 void Control::SendCmd(ControlCommand *control_command) {
   // set header
  AdapterManager::FillControlCommandHeader(control_command);
-
  AdapterManager::PublishControlCommand(*control_command);
- AINFO << "Control command pubilsh succeed! Control command msg:" 
+ AINFO << "Control command pubilsh succeed! Control command msg:"
        << control_command->ShortDebugString();
 }
 

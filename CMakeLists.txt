@@ -66,15 +66,6 @@ add_compile_options(-fPIC)
 #add_executable(control modules/control/main.cc)
 
 #用户可在此添加链接库
-#target_link_libraries(canbus
-#  ${COMMON_LIB}
-#  canbus_lib
-#  canbus_common
-#  jmcauto_log
-#  #monitor_log
-#  can_client
-#  drivers_canbus_common
-#  -lpthread)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})

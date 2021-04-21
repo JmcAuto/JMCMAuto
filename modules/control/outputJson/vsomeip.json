@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_Functional_ControlApplication_ControlApplicationSwComponent_ControlProcess"
+      "ident": "someip_jmc_auto_ModuleServices_Control_ControlSwComponent_ControlProcess"
     },
     "dlt": "false"
   },
@@ -17,8 +17,8 @@
   "netmask": "255.255.255.0",
   "applications": [
     {
-      "name": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
-      "id": "48028"
+      "name": "/jmc_auto/ModuleServices/Control/ControlSwComponent/ControlProcess",
+      "id": "29470"
     }
   ],
   "services": [],
@@ -28,13 +28,6 @@
       "instance": "104",
       "unreliable": [
         "7004"
-      ]
-    },
-    {
-      "service": "12805",
-      "instance": "105",
-      "unreliable": [
-        "7005"
       ]
     }
   ],

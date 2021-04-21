@@ -17,13 +17,13 @@
               {
                 "key": "PROVIDED-INTERFACE-TREF",
                 "value": {
-                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                  "string": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface"
                 },
-                "checksum": 2021491952
+                "checksum": 1685325883
               }
             ]
           },
-          "checksum": 2745714547
+          "checksum": 3385583449
         },
         {
           "key": "R-PORT-PROTOTYPE",
@@ -39,13 +39,13 @@
               {
                 "key": "REQUIRED-INTERFACE-TREF",
                 "value": {
-                  "string": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface"
+                  "string": "/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface"
                 },
-                "checksum": 2734886095
+                "checksum": 3181522735
               }
             ]
           },
-          "checksum": 1167802667
+          "checksum": 733180489
         },
         {
           "key": "R-PORT-PROTOTYPE",
@@ -93,7 +93,7 @@
         }
       ]
     },
-    "checksum": 2980746357
+    "checksum": 2455860600
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

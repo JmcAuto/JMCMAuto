@@ -17,7 +17,6 @@
 #ifndef MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 #define MODULES_ADAPTERS_MESSAGE_ADAPTERS_H_
 
-
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/canbus/proto/chassis_detail.pb.h"
 #include "modules/control/proto/control_cmd.pb.h"
@@ -27,8 +26,8 @@
 #include "modules/common/adapters/adapter.h"
 
 #include "impl_type_chassis.h"
-#include "impl_type_controlcommand.h"
 #include "impl_type_localization.h"
+#include "impl_type_controlcommand.h"
 
 #include "jmc_auto/chassisserviceinterface_common.h"
 #include "jmc_auto/chassisserviceinterface_skeleton.h"
@@ -52,14 +51,14 @@ namespace adapter {
 
 using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
 using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
-using ControlCommandAdapter = Adapter<::jmc_auto::control::ControlCommand>;
 using LocalizationAdapter = Adapter<jmc_auto::localization::LocalizationEstimate>;
-using PadAdapter = Adapter<control::PadMessage>;
+using ControlCommandAdapter = Adapter<::jmc_auto::control::ControlCommand>;
 /*
-using MonitorAdapter = Adapter<jmc_auto::common::monitor::MonitorMessage>;
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
 using RawImuAdapter = Adapter<jmc_auto::drivers::gnss::Imu>;
+using MonitorAdapter = Adapter<jmc_auto::common::monitor::MonitorMessage>;
+using PadAdapter = Adapter<control::PadMessage>;
 using PerceptionObstaclesAdapter = Adapter<perception::PerceptionObstacles>;
 using PlanningAdapter = Adapter<planning::ADCTrajectory>;
 using PointCloudAdapter = Adapter<::sensor_msgs::PointCloud2>;
@@ -123,7 +122,7 @@ using PointCloudRaw0Adapter = Adapter<::sensor_msgs::PointCloud2>;
 using PointCloudRaw1Adapter = Adapter<::sensor_msgs::PointCloud2>;
 using PointCloudFusionAdapter = Adapter<::sensor_msgs::PointCloud2>;
 //for remotecontrol
-using RemoteControlAdapter = Adapter<::jmc_auto::remote::RemoteControl>;   
+using RemoteControlAdapter = Adapter<::jmc_auto::remote::RemoteControl>;
 
 using LocalizationdyAdapter = Adapter<jmc_auto::localization_dy::LocalizationEstimate>;
 */

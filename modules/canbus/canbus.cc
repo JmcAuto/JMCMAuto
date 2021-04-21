@@ -168,8 +168,8 @@ void Canbus::PublishChassis() {
     AdapterManager::FillChassisHeader(&chassis);
     AdapterManager::PublishChassis(chassis);
 
-    AINFO << chassis.DebugString();
-    // ADEBUG << chassis.ShortDebugString();
+    //AINFO << chassis.DebugString();
+    ADEBUG << chassis.ShortDebugString();
 }
 
 /*

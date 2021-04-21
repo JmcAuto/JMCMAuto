@@ -1,5 +1,5 @@
 {
-  "applicationName": "/jmc_auto/PlatformServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
+  "applicationName": "/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
   "services": [
     {
       "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
@@ -33,59 +33,26 @@
         {
           "instance": 1,
           "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance",
           "unreliable": 5000
         },
         {
           "instance": 2,
           "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance",
           "unreliable": 5001
         },
         {
           "instance": 3,
           "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance",
           "unreliable": 5002
         },
         {
           "instance": 4,
           "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
           "unreliable": 5003
-        }
-      ]
-    },
-    {
-      "service": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface",
-      "serviceId": 12805,
-      "protocolIdUsed": true,
-      "majorVersion": 1,
-      "minorVersion": 0,
-      "events": [
-        {
-          "event": "LocalizationEvent",
-          "id": 63490,
-          "dataType": "/jmc_auto/Platform/LocalizationDateType/Localization",
-          "eventId": 1005,
-          "eventGroup": [],
-          "reliable": false
-        }
-      ],
-      "fields": [],
-      "methods": [],
-      "instances": [
-        {
-          "instance": 105,
-          "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance",
-          "unreliable": 7005
-        },
-        {
-          "instance": 105,
-          "isClient": true,
-          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance",
-          "unreliable": 7005
         }
       ]
     },
@@ -113,31 +80,31 @@
         {
           "instance": 1,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance",
           "unreliable": 6000
         },
         {
           "instance": 2,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance",
           "unreliable": 6001
         },
         {
           "instance": 3,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance",
           "unreliable": 6002
         },
         {
           "instance": 4,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
           "unreliable": 6003
         }
       ]
     },
     {
-      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "service": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface",
       "serviceId": 12804,
       "protocolIdUsed": true,
       "majorVersion": 1,
@@ -146,7 +113,7 @@
         {
           "event": "ChassisEvent",
           "id": 32374,
-          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "dataType": "/jmc_auto/Modules/ChassisDateType/Chassis",
           "eventId": 1004,
           "eventGroup": [],
           "reliable": false
@@ -157,20 +124,14 @@
       "instances": [
         {
           "instance": 104,
-          "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance",
-          "unreliable": 7004
-        },
-        {
-          "instance": 104,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance",
           "unreliable": 7004
         },
         {
           "instance": 104,
           "isClient": true,
-          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
           "unreliable": 7004
         }
       ]

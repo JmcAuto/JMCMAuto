@@ -5,48 +5,48 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>PlatFormServices</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
-              <SHORT-NAME>CanbusConsumerToApp</SHORT-NAME>
+              <SHORT-NAME>CanbusConsumerMapping</SHORT-NAME>
               <ELEMENTS>
                 <DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>ControlCommandRequiredDdsServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                 </DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>ControlCommandRequiredServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/ControlCommandRPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/ControlCommandRPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE>
-              <SHORT-NAME>CanbusProviderToApp</SHORT-NAME>
+              <SHORT-NAME>CanbusProviderMapping</SHORT-NAME>
               <ELEMENTS>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>ChassisProvidedSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>7004</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>ChassisProvidedServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/ChassisPPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/ChassisPPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanbusServiceProvider/ChassisProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
@@ -55,11 +55,11 @@
               <ELEMENTS>
                 <DDS-REQUIRED-SERVICE-INSTANCE>
                   <SHORT-NAME>ControlCommandRequiredDdsServiceInstance</SHORT-NAME>
-                  <SERVICE-INTERFACE-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment</SERVICE-INTERFACE-REF>
                   <EVENT-QOS-PROPSS>
                     <DDS-EVENT-QOS-PROPS>
                       <QOS-PROFILE>/var/eventsqos.xml</QOS-PROFILE>
-                      <EVENT-REF DEST="DDS-EVENT-DEPLOYMENT">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment/ControlCommandDdsEventDeployment</EVENT-REF>
+                      <EVENT-REF DEST="DDS-EVENT-DEPLOYMENT">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandDdsServiceInterfaceDeployment/ControlCommandDdsEventDeployment</EVENT-REF>
                     </DDS-EVENT-QOS-PROPS>
                   </EVENT-QOS-PROPSS>
                   <REQUIRED-SERVICE-INSTANCE-ID>109</REQUIRED-SERVICE-INSTANCE-ID>
@@ -71,10 +71,10 @@
               <ELEMENTS>
                 <PROVIDED-SOMEIP-SERVICE-INSTANCE>
                   <SHORT-NAME>ChassisProvidedSomeipServiceInstance</SHORT-NAME>
-                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
                   <EVENT-PROPSS>
                     <SOMEIP-EVENT-PROPS>
-                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Platform/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Modules/ChassisServiceInterface/ChassisSomeipInterfaceDeployment/ChassisEventDeployment</EVENT-REF>
                     </SOMEIP-EVENT-PROPS>
                   </EVENT-PROPSS>
                   <SERVICE-INSTANCE-ID>104</SERVICE-INSTANCE-ID>
@@ -87,68 +87,68 @@
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can00RxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can00RxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus00RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>5000</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can01RxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can01RxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus01RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>5001</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can02RxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can02RxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus02RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>5002</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can03RxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanRxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can03RxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>5003</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
@@ -209,68 +209,68 @@
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can00TxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can00TxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus00TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>6000</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can01TxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can01TxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus01TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>6001</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can02TxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can02TxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus02TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>6002</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                 <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                   <SHORT-NAME>Can03TxServiceInstanceToPort</SHORT-NAME>
                   <PORT-PROTOTYPE-IREF>
-                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusExecutable/CanbusExecutable/CanbusRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanTxPort</TARGET-PORT-PROTOTYPE-REF>
                   </PORT-PROTOTYPE-IREF>
-                  <PROCESS-REF DEST="PROCESS">/jmc_auto/PlatformServices/CanbusProcess/CanbusProcess</PROCESS-REF>
-                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/CanbusProcess/CanbusProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                 </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>Can03TxSomeipServiceInstanceToMachine</SHORT-NAME>
                   <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
                   <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/PlatFormServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>6003</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>

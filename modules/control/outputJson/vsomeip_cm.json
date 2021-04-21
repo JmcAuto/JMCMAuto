@@ -1,5 +1,5 @@
 {
-  "applicationName": "/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent/ControlProcess",
+  "applicationName": "/jmc_auto/ModuleServices/Control/ControlSwComponent/ControlProcess",
   "services": [
     {
       "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
@@ -32,33 +32,6 @@
       "instances": []
     },
     {
-      "service": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface",
-      "serviceId": 12805,
-      "protocolIdUsed": true,
-      "majorVersion": 1,
-      "minorVersion": 0,
-      "events": [
-        {
-          "event": "LocalizationEvent",
-          "id": 63490,
-          "dataType": "/jmc_auto/Platform/LocalizationDateType/Localization",
-          "eventId": 1005,
-          "eventGroup": [],
-          "reliable": false
-        }
-      ],
-      "fields": [],
-      "methods": [],
-      "instances": [
-        {
-          "instance": 105,
-          "isClient": true,
-          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance",
-          "unreliable": 7005
-        }
-      ]
-    },
-    {
       "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
       "serviceId": 209,
       "protocolIdUsed": true,
@@ -81,7 +54,7 @@
       "instances": []
     },
     {
-      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "service": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface",
       "serviceId": 12804,
       "protocolIdUsed": true,
       "majorVersion": 1,
@@ -90,7 +63,7 @@
         {
           "event": "ChassisEvent",
           "id": 32374,
-          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "dataType": "/jmc_auto/Modules/ChassisDateType/Chassis",
           "eventId": 1004,
           "eventGroup": [],
           "reliable": false
@@ -102,7 +75,7 @@
         {
           "instance": 104,
           "isClient": true,
-          "shortName": "/jmc_auto/Functional/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance",
           "unreliable": 7004
         }
       ]

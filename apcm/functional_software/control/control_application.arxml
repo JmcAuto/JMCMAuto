@@ -5,21 +5,21 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>Functional</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
-              <SHORT-NAME>ControlApplication</SHORT-NAME>
+              <SHORT-NAME>Control</SHORT-NAME>
               <ELEMENTS>
                 <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="">
-                  <SHORT-NAME>ControlApplicationSwComponent</SHORT-NAME>
+                  <SHORT-NAME>ControlSwComponent</SHORT-NAME>
                   <PORTS>
                     <R-PORT-PROTOTYPE>
                       <SHORT-NAME>ChassisRPort</SHORT-NAME>
-                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface</REQUIRED-INTERFACE-TREF>
+                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface</REQUIRED-INTERFACE-TREF>
                     </R-PORT-PROTOTYPE>
                     <P-PORT-PROTOTYPE>
                       <SHORT-NAME>ControlCommandPPort</SHORT-NAME>
-                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface</PROVIDED-INTERFACE-TREF>
+                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface</PROVIDED-INTERFACE-TREF>
                     </P-PORT-PROTOTYPE>
                     <R-PORT-PROTOTYPE>
                       <SHORT-NAME>LocalizationRPort</SHORT-NAME>
@@ -36,7 +36,7 @@
                   <SHORT-NAME>ControlExecutable</SHORT-NAME>
                   <ROOT-SW-COMPONENT-PROTOTYPE>
                     <SHORT-NAME>ControlRootSwComponent</SHORT-NAME>
-                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/Functional/ControlApplication/ControlApplicationSwComponent</APPLICATION-TYPE-TREF>
+                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/ModuleServices/Control/ControlSwComponent</APPLICATION-TYPE-TREF>
                   </ROOT-SW-COMPONENT-PROTOTYPE>
                 </EXECUTABLE>
               </ELEMENTS>

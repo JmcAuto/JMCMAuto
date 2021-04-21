@@ -114,7 +114,7 @@ struct ControlCommand {
 
     static bool IsPlane()
     {
-        return true;
+        return false;
     }
 
     using IsEnumerableTag = void;

@@ -5,14 +5,14 @@
       <SHORT-NAME>jmc_auto</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
-          <SHORT-NAME>Functional</SHORT-NAME>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
               <SHORT-NAME>ControlProcess</SHORT-NAME>
               <ELEMENTS>
                 <PROCESS>
                   <SHORT-NAME>ControlProcess</SHORT-NAME>
-                  <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/Functional/ControlExecutable/ControlExecutable</EXECUTABLE-REF>
+                  <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/ModuleServices/ControlExecutable/ControlExecutable</EXECUTABLE-REF>
                   <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
                   <MODE-DEPENDENT-STARTUP-CONFIGS>
                     <MODE-DEPENDENT-STARTUP-CONFIG>
@@ -33,7 +33,7 @@
                         </MACHINE-MODE-IREF>
                       </MACHINE-MODE-IREFS>
                       <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/HuaweiMDC/Machine/Dmini0Machine/Dmini0_OS/Dmini0ResourceLimitationGroup1</RESOURCE-GROUP-REF>
-                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/jmc_auto/Functional/ControlProcessStartupConfig/ControlStartupConfigSet/ControlStartupConfig</STARTUP-CONFIG-REF>
+                      <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/jmc_auto/ModuleServices/ControlProcessStartupConfig/ControlStartupConfigSet/ControlStartupConfig</STARTUP-CONFIG-REF>
                     </MODE-DEPENDENT-STARTUP-CONFIG>
                   </MODE-DEPENDENT-STARTUP-CONFIGS>
                 </PROCESS>

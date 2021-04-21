@@ -11,19 +11,20 @@
 
 #include "impl_type_double.h"
 #include "impl_type_bool.h"
+#include "impl_type_controllertimems.h"
 
 
 struct LatencyStats {
     ::Double total_time_ms;
     
-    ::Double controller_time_ms;
+    ::ControllerTimeMs controller_time_ms;
     
     ::Bool total_time_exceeded;
     
 
     static bool IsPlane()
     {
-        return true;
+        return false;
     }
 
     using IsEnumerableTag = void;

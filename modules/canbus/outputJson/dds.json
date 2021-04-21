@@ -1,15 +1,15 @@
 {
-  "applicationName": "/jmc_auto/PlatformServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
+  "applicationName": "/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
   "services": [
     {
-      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "service": "/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface",
       "serviceId": 12809,
       "protocolIdUsed": false,
       "events": [
         {
           "event": "ControlCommandEvent",
           "id": 57416,
-          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "dataType": "/jmc_auto/Modules/ControlCommandDataType/ControlCommand",
           "topicName": "ControlCommandDdsEvent"
         }
       ],
@@ -17,7 +17,7 @@
       "methods": [],
       "instances": [
         {
-          "shortName": "/jmc_auto/PlatFormServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/CanbusServiceConsumer/ControlCommandRequiredDdsServiceInstance",
           "instance": 109,
           "domainId": 0,
           "isClient": true,
