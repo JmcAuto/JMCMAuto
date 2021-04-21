@@ -1,0 +1,11 @@
+<qos>
+    <profile name="DDSQosProfile">
+        <publisher name="MyPublisherQos"/>
+        <subscriber name="MySubscriberQos"/>
+        <topic name="MyTopicQos">
+            <transport_priority>
+                <value>DDS_MIDDLE_PRIORITY_QOS</value>
+            </transport_priority>
+        </topic>
+    </profile>
+</qos>

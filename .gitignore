@@ -12,6 +12,13 @@ Includes
 include
 lib
 share
+modules/canbus/apcm
+modules/canbus/generated
+modules/control/apcm
+modules/control/generated
+modules/localization/apcm
+modules/localization/generated
+
 #generated
 #outputJson
 .settings/org.eclipse.cdt.managedbuilder.core.prefs

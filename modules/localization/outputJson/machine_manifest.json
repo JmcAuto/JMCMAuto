@@ -1,0 +1,141 @@
+[
+  {
+    "key": "default_application_timeout",
+    "value": {
+      "object[]": [
+        {
+          "key": "enter_timeout_ns",
+          "value": {
+            "uint32": 1000001
+          },
+          "checksum": "1261147759"
+        },
+        {
+          "key": "exit_timeout_ns",
+          "value": {
+            "uint32": 1000002
+          },
+          "checksum": "1405615546"
+        }
+      ]
+    },
+    "checksum": "1297314509"
+  },
+  {
+    "key": "environment",
+    "value": {
+      "string[]": []
+    },
+    "checksum": "1297314509"
+  },
+  {
+    "key": "states",
+    "value": {
+      "object[]": [
+        {
+          "key": "Restart",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Shutdown",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        },
+        {
+          "key": "Startup",
+          "value": {
+            "object[]": []
+          },
+          "checksum": "870226170"
+        }
+      ]
+    },
+    "checksum": "1297314509"
+  },
+  {
+    "key": "function_groups",
+    "value": {
+      "object[]": [
+        {
+          "key": "LidarMode",
+          "value": {
+            "object[]": [
+              {
+                "key": "initial_state",
+                "value": {
+                  "string": "LowSpeed"
+                },
+                "checksum": "1261147759"
+              },
+              {
+                "key": "states",
+                "value": {
+                  "object[]": [
+                    {
+                      "key": "HighSpeed",
+                      "value": {},
+                      "checksum": "870226170"
+                    },
+                    {
+                      "key": "LowSpeed",
+                      "value": {},
+                      "checksum": "870226170"
+                    },
+                    {
+                      "key": "MiddleSpeed",
+                      "value": {},
+                      "checksum": "870226170"
+                    }
+                  ]
+                },
+                "checksum": "870226170"
+              }
+            ]
+          },
+          "checksum": "870226170"
+        }
+      ]
+    },
+    "checksum": "1297314509"
+  },
+  {
+    "key": "resource_groups",
+    "value": {
+      "object[]": [
+        {
+          "key": "Dmini0ResourceLimitationGroup1",
+          "value": {
+            "object[]": [
+              {
+                "key": "cpu_usage",
+                "value": {
+                  "uint8": 80
+                },
+                "checksum": "1261147759"
+              },
+              {
+                "key": "mem_usage",
+                "value": {
+                  "uint64": 67108864
+                },
+                "checksum": "1261147759"
+              },
+              {
+                "key": "kern_mem_usage",
+                "value": {},
+                "checksum": "1405615546"
+              }
+            ]
+          },
+          "checksum": "1261147759"
+        }
+      ]
+    },
+    "checksum": "1297314509"
+  }
+]

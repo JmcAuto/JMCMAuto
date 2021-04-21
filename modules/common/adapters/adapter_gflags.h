@@ -23,6 +23,7 @@ DECLARE_bool(enable_adapter_dump);
 DECLARE_uint32(gps_instance_id);
 DECLARE_uint32(imu_instance_id);
 DECLARE_uint32(chassis_instance_id);
+DECLARE_uint32(localization_instance_id);
 DECLARE_uint32(control_command_instance_id);
 DECLARE_uint32(chassis_detail_instance_id);
 

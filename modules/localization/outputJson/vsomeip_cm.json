@@ -1,0 +1,111 @@
+{
+  "applicationName": "/jmc_auto/PlatformServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
+  "services": [
+    {
+      "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
+      "serviceId": 208,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "CanDataRxEvent",
+          "id": 10384,
+          "dataType": "/HuaweiMDC/Platform/CanMsgDataType/CanBusDataParam",
+          "eventId": 32769,
+          "eventGroup": [
+            16
+          ],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [
+        {
+          "method": "CanDataSetMethod",
+          "id": 41040,
+          "isFireAndForget": false,
+          "methodId": 1,
+          "reliable": false
+        }
+      ],
+      "instances": []
+    },
+    {
+      "service": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface",
+      "serviceId": 12805,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "LocalizationEvent",
+          "id": 63490,
+          "dataType": "/jmc_auto/Platform/LocalizationDateType/Localization",
+          "eventId": 1005,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "instance": 105,
+          "isClient": false,
+          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance",
+          "unreliable": 7005
+        }
+      ]
+    },
+    {
+      "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
+      "serviceId": 209,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 1,
+      "events": [
+        {
+          "event": "CanDataTxEvent",
+          "id": 26928,
+          "dataType": "/HuaweiMDC/Platform/CanMsgDataType/CanBusDataParam",
+          "eventId": 32769,
+          "eventGroup": [
+            16
+          ],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    },
+    {
+      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "serviceId": 12804,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "ChassisEvent",
+          "id": 32374,
+          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "eventId": 1004,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": [
+        {
+          "instance": 104,
+          "isClient": true,
+          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance",
+          "unreliable": 7004
+        }
+      ]
+    }
+  ]
+}

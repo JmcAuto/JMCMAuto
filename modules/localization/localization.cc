@@ -23,7 +23,7 @@
 // #include "modules/localization/msf/msf_localization.h"
 // #endif
 #include "modules/localization/rtk/rtk_localization.h"
-#include "modules/localization/vins/vins_localization.h"
+//#include "modules/localization/vins/vins_localization.h"
 
 namespace jmc_auto {
 namespace localization {
@@ -46,9 +46,9 @@ void Localization::RegisterLocalizationMethods() {
 //       LocalizationConfig::MSF,
 //       []() -> LocalizationBase* { return new MSFLocalization(); });
 // #endif
-  localization_factory_.Register(
-      LocalizationConfig::VINS,
-      []() -> LocalizationBase* { return new VINSLocalization(); });
+  //localization_factory_.Register(
+  //    LocalizationConfig::VINS,
+  //    []() -> LocalizationBase* { return new VINSLocalization(); });
 
 }
 

@@ -18,7 +18,7 @@
 
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/math/quaternion.h"
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/common/time/time_util.h"
 #include "modules/localization/common/localization_gflags.h"
 
@@ -27,8 +27,8 @@ namespace localization {
 
 using jmc_auto::common::Status;
 using jmc_auto::common::adapter::AdapterManager;
-using jmc_auto::common::adapter::ImuAdapter;
-using jmc_auto::common::monitor::MonitorMessageItem;
+//using jmc_auto::common::adapter::ImuAdapter;
+//using jmc_auto::common::monitor::MonitorMessageItem;
 using jmc_auto::common::time::Clock;
 using ::Eigen::Vector3d;
 
@@ -38,8 +38,7 @@ using ::Eigen::Vector3d;
 // RTKLocalization::RTKLocalization()
 //     : monitor_logger_(MonitorMessageItem::LOCALIZATION),
 //       map_offset_{FLAGS_map_offset_x, FLAGS_map_offset_y, FLAGS_map_offset_z} {}
-RTKLocalization::RTKLocalization()
-    : monitor_logger_(MonitorMessageItem::LOCALIZATION){}
+RTKLocalization::RTKLocalization() {}
 
 RTKLocalization::~RTKLocalization() {}
 
@@ -48,47 +47,48 @@ Status RTKLocalization::Start() {
 
   // start ROS timer, one-shot = false, auto-start = true
   const double duration = 1.0 / FLAGS_localization_publish_freq;
-  timer_ = AdapterManager::CreateTimer(ros::Duration(duration),
-                                       &RTKLocalization::OnTimer, this);
-  
-  common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+  //timer_ = AdapterManager::CreateTimer(ros::Duration(duration),
+  //                                     &RTKLocalization::OnTimer, this);
+  while (1) {
+	  RTKLocalization::OnTimer();
+	  sleep(duration);
+  }
+  //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   if (!AdapterManager::GetChassis()) {
-    buffer.ERROR() << "chassis input not initialized. Check file "
+    AERROR << "chassis input not initialized. Check file "
                    << FLAGS_rtk_adapter_config_file;
-    buffer.PrintLog();
     return Status(common::LOCALIZATION_ERROR, "no chassis_ins adapter");
   }
 
   wgs84pj_source_ = pj_init_plus(WGS84_TEXT);
   utm_target_ = pj_init_plus(FLAGS_proj4_text.c_str());
 
-  tf2_broadcaster_.reset(new tf2_ros::TransformBroadcaster);
+  //tf2_broadcaster_.reset(new tf2_ros::TransformBroadcaster);
 
   return Status::OK();
 }
 
 Status RTKLocalization::Stop() {
-  timer_.stop();
+  //timer_.stop();
   return Status::OK();
 }
 
-void RTKLocalization::OnTimer(const ros::TimerEvent &event) {
+void RTKLocalization::OnTimer() {
   LocalizationEstimate localization;
   AdapterManager::Observe();
   //  chassis_ = AdapterManager::GetChassis()->GetLatestObserved();
   if (AdapterManager::GetChassis()->Empty()) {
-    AERROR << "No Chassis msg yet. ";
+    //AERROR << "No Chassis msg yet. ";
     return;
   }
   chassis_ = AdapterManager::GetChassis()->GetLatestObserved();
   double time_delay =
       common::time::ToSecond(Clock::Now()) - last_received_timestamp_sec_;
-  common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
+  //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
 
   if (FLAGS_enable_gps_timestamp &&
       time_delay > FLAGS_gps_time_delay_tolerance) {
-    buffer.ERROR() << "GPS message time delay: " << time_delay;
-    buffer.PrintLog();
+    AERROR << "GPS message time delay: " << time_delay;
   }
    //PrepareLocalizationMsg(&localization);
  
@@ -109,7 +109,7 @@ void RTKLocalization::PublishLocalization() {
      
    // publish localization messages
    AdapterManager::PublishLocalization(localization);
-   PublishPoseBroadcastTF(localization);
+   //PublishPoseBroadcastTF(localization);
    ADEBUG << "[OnTimer]: Localization message publish success!";
   // RunWatchDog(&localization);
 
@@ -207,8 +207,7 @@ void RTKLocalization::PrepareLocalizationMsg(LocalizationEstimate *localization_
          localization_dy->mutable_pose()->mutable_euler_angles()->set_z(-chassis_.ins_headingangle()* DEG_TO_RAD_LOCAL);
 
          //localization_dy->mutable_pose()->mutable_uncertainty()->mutable_position_std_dev()->set_x(ins_std_lat);
-         AdapterManager::FillLocalizationHeader("localization_dy",
-                                            localization_dy);
+         AdapterManager::FillLocalizationHeader(localization_dy);
          localization_dy->set_measurement_time(common::time::TimeUtil::Gps2unix(chassis_.ins_time()));
 }
 

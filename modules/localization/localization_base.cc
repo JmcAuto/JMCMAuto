@@ -70,8 +70,8 @@ void LocalizationBase::PublishPoseBroadcastTF(
   tf1_msg.transform.rotation.w = localization.pose().orientation().qw();
    
 
-  tf2_broadcaster_->sendTransform(tf1_msg);
-  tf2_broadcaster_->sendTransform(tf2_msg);
+  //tf2_broadcaster_->sendTransform(tf1_msg);
+  //tf2_broadcaster_->sendTransform(tf2_msg);
 }
 
 }  // namespace localization

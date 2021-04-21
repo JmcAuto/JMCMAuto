@@ -1,0 +1,19 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(rtk_localization
+  rtk_localization.cc
+  rtk_localization.h)
+target_link_libraries(rtk_localization
+  ${COMMON_LIB}
+  adapter_manager
+  common_proto
+  status
+  time
+  #localization_base
+  localization_common
+  localization_config_proto
+  localization_proto
+  canbus_proto
+  -lproj
+  )

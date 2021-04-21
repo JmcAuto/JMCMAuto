@@ -4,7 +4,6 @@
 #include "modules/control/control.h"
 #include <iomanip>
 #include <string>
-//#include "ros/include/std_msgs/String.h"
 #include "modules/common/adapters/adapter_manager.h"
 #include "modules/common/log.h"
 #include "modules/common/time/jmcauto_time.h"
@@ -45,7 +44,7 @@ Status Control::Init() {
     return Status(ErrorCode::CONTROL_INIT_ERROR, error_msg);
   }//注册控制器，目前只支持LON/LAN/MPC
   // lock it in case for after sub, init_vehicle not ready, but msg trigger
-  //CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
+  CHECK(AdapterManager::GetLocalization())<< "Localization is not initialized.";
   CHECK(AdapterManager::GetChassis()) << "Chassis is not initialized.";
   //CHECK(AdapterManager::GetPlanning()) << "Planning is not initialized.";
   //CHECK(AdapterManager::GetPad()) << "Pad is not initialized.";
@@ -136,14 +135,13 @@ void Control::OnTimer() {
 
 Status Control::ProduceControlCommand(ControlCommand *control_command) {
   Status status = CheckInput();
-  //test
+  //mdc test
   status = Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No localization msg");
   if (!status.ok()) {
     AERROR << "Control input data failed: "
            << status.error_message();//ERROR消息发布频率100hz
     control_command->mutable_engage_advice()->set_advice(
         jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-    //control_command->mutable_engage_advice()->set_reason(
     //    status.error_message());   //???
     estop_ = true;
     estop_reason_ = status.error_message();
@@ -158,7 +156,6 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
       {
         control_command->mutable_engage_advice()->set_advice(
             jmc_auto::common::EngageAdvice::DISALLOW_ENGAGE);
-        //control_command->mutable_engage_advice()->set_reason(
         //    status.error_message());
             AINFO << "chassis_.driving_mode() != jmc_auto::canbus::Chassis::COMPLETE_AUTO_DRIVE";
       }
@@ -223,7 +220,7 @@ Status Control::ProduceControlCommand(ControlCommand *control_command) {
 
 Status Control::CheckInput() {
   AdapterManager::Observe();
-/*
+
   auto localization_adapter = AdapterManager::GetLocalization();
   if (localization_adapter->Empty())
   {
@@ -233,12 +230,12 @@ Status Control::CheckInput() {
   }
   localization_ = localization_adapter->GetLatestObserved();//返回观察队列最新数据，调用之前需调用Empty()确定是否有数据
   AINFO << "Received localization:" << localization_.ShortDebugString();//定位数据
-*/
+
   auto chassis_adapter = AdapterManager::GetChassis();
   //AINFO << "chassis: brake: " << chassis_adapter->GetLatestObserved().brake_percentage();
   if (chassis_adapter->Empty())
   {
-    //AERROR << "No Chassis msg yet. ";
+    AERROR << "No Chassis msg yet. ";
     //AINFO << chassis_adapter.ShortDebugString();
     return Status(ErrorCode::CONTROL_COMPUTE_ERROR, "No chassis msg");
   }
@@ -287,7 +284,7 @@ Status Control::CheckTimestamp()
     return Status::OK();
   }
   double current_timestamp = Clock::NowInSeconds();
-  /*
+
   double localization_diff =
       current_timestamp - localization_.header().timestamp_sec();
   if (localization_diff >
@@ -303,7 +300,7 @@ Status Control::CheckTimestamp()
   {
     AINFO << "Localization msg timestamp is normal!" ;
   }
-*/
+
   double chassis_diff = current_timestamp - chassis_.header().timestamp_sec();
   if (chassis_diff >(FLAGS_max_chassis_miss_num * control_conf_.chassis_period())) {
     AERROR << "Chassis msg lost for " << std::setprecision(6) << chassis_diff << "s";

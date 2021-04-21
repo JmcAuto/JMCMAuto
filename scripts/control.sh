@@ -10,5 +10,5 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "${DIR}/.."
 
-export CM_CONFIG_FILE_PATH=${DIR}/modules/control/outputJson/
+export CM_CONFIG_FILE_PATH=${DIR}/../modules/control/outputJson/
 ./Debug/modules/control/control --flagfile=modules/control/conf/control.conf --log_dir=data/log/

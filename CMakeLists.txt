@@ -44,8 +44,7 @@ add_subdirectory(modules/data/proto)
 add_subdirectory(modules/dreamview/proto)
 add_subdirectory(modules/drivers/canbus)
 add_subdirectory(modules/drivers/gnss/proto)
-add_subdirectory(modules/localization/proto)
-add_subdirectory(modules/localization/common)
+add_subdirectory(modules/localization)
 add_subdirectory(modules/map/proto)
 add_subdirectory(modules/map/relative_map/proto)
 add_subdirectory(modules/perception/proto)
@@ -67,21 +66,8 @@ add_compile_options(-fPIC)
 #add_executable(control modules/control/main.cc)
 
 #用户可在此添加链接库
-#target_link_libraries(canbus
-#  ${COMMON_LIB}
-#  canbus_lib
-#  canbus_common
-#  jmcauto_log
-#  #monitor_log
-#  can_client
-#  drivers_canbus_common
-#  -lpthread)
-#target_link_libraries(control
-#  ${COMMON_LIB}
-#  control_lib
-#  common
-#  gflags)
 
 #用户可在此添加链接参数
 set_target_properties(canbus PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
 set_target_properties(control PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
+set_target_properties(localization PROPERTIES LINK_FLAGS ${COMMON_LINK_FLAG})
