@@ -21,10 +21,6 @@
                       <SHORT-NAME>ControlCommandPPort</SHORT-NAME>
                       <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface</PROVIDED-INTERFACE-TREF>
                     </P-PORT-PROTOTYPE>
-                    <R-PORT-PROTOTYPE>
-                      <SHORT-NAME>LocalizationRPort</SHORT-NAME>
-                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface</REQUIRED-INTERFACE-TREF>
-                    </R-PORT-PROTOTYPE>
                   </PORTS>
                 </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
               </ELEMENTS>
