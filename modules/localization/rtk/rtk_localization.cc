@@ -49,10 +49,10 @@ Status RTKLocalization::Start() {
   const double duration = 1.0 / FLAGS_localization_publish_freq;
   //timer_ = AdapterManager::CreateTimer(ros::Duration(duration),
   //                                     &RTKLocalization::OnTimer, this);
-  while (1) {
-	  RTKLocalization::OnTimer();
-	  sleep(duration);
-  }
+  //while (1) {
+	 // RTKLocalization::OnTimer();
+	 // sleep(duration);
+  //}
   //common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   if (!AdapterManager::GetChassis()) {
     AERROR << "chassis input not initialized. Check file "
@@ -63,6 +63,10 @@ Status RTKLocalization::Start() {
   wgs84pj_source_ = pj_init_plus(WGS84_TEXT);
   utm_target_ = pj_init_plus(FLAGS_proj4_text.c_str());
 
+  while (1) {
+	  RTKLocalization::OnTimer();
+	  sleep(duration);
+  }
   //tf2_broadcaster_.reset(new tf2_ros::TransformBroadcaster);
 
   return Status::OK();
@@ -91,12 +95,12 @@ void RTKLocalization::OnTimer() {
     AERROR << "GPS message time delay: " << time_delay;
   }
    //PrepareLocalizationMsg(&localization);
- 
+
   // publish localization messages
   PublishLocalization();
   // service_started_ = true;
   // watch dog
- 
+
   last_received_timestamp_sec_ = common::time::ToSecond(Clock::Now());
 }
 
@@ -106,7 +110,7 @@ void RTKLocalization::PublishLocalization() {
    LocalizationEstimate localization;
    PrepareLocalizationMsg(&localization);
 
-     
+
    // publish localization messages
    AdapterManager::PublishLocalization(localization);
    //PublishPoseBroadcastTF(localization);
@@ -117,7 +121,7 @@ void RTKLocalization::PublishLocalization() {
 
 void RTKLocalization::PrepareLocalizationMsg(LocalizationEstimate *localization_dy)
 {
-     
+
          double x = chassis_.ins_longitude();
          double y = chassis_.ins_latitude();
          x *= DEG_TO_RAD_LOCAL;
