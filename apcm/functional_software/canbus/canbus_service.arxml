@@ -8,7 +8,7 @@
           <SHORT-NAME>ModuleServices</SHORT-NAME>
           <AR-PACKAGES>
             <AR-PACKAGE>
-              <SHORT-NAME>CanbusConsumerMapping</SHORT-NAME>
+              <SHORT-NAME>CanbusServiceConsumerMapping</SHORT-NAME>
               <ELEMENTS>
                 <DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>ControlCommandRequiredDdsServiceInstanceToMachine</SHORT-NAME>
@@ -29,7 +29,7 @@
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE>
-              <SHORT-NAME>CanbusProviderMapping</SHORT-NAME>
+              <SHORT-NAME>CanbusServiceProviderMapping</SHORT-NAME>
               <ELEMENTS>
                 <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
                   <SHORT-NAME>ChassisProvidedSomeipServiceInstanceToMachine</SHORT-NAME>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="39f630e0-938e-49e6-9293-b262f780885a">
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationServiceConsumer</SHORT-NAME>
+              <ELEMENTS>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>ChassisRequiredSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <REQUIRED-SERVICE-INSTANCE-ID>104</REQUIRED-SERVICE-INSTANCE-ID>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationServiceProvider</SHORT-NAME>
+              <ELEMENTS>
+                <PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>LocalizationProvidedSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/LocalizationServiceInterface/LocalizationSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <EVENT-PROPSS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/jmc_auto/Modules/LocalizationServiceInterface/LocalizationSomeipInterfaceDeployment/LocalizationEventDeployment</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                  </EVENT-PROPSS>
+                  <SERVICE-INSTANCE-ID>105</SERVICE-INSTANCE-ID>
+                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationServiceConsumerMapping</SHORT-NAME>
+              <ELEMENTS>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>ChassisRequiredServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/LocalizationExecutable/LocalizationExecutable/LocalizationRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent/ChassisRPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/LocalizationProcess/LocalizationProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>ChassisRequiredSomeipServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>7004</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationServiceProviderMapping</SHORT-NAME>
+              <ELEMENTS>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>LocalizationProvidedServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/LocalizationExecutable/LocalizationExecutable/LocalizationRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent/LocalizationPPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/LocalizationProcess/LocalizationProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>LocalizationProvidedSomeipServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>7005</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

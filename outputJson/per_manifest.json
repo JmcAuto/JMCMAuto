@@ -4,6 +4,50 @@
     "value": {
       "object[]": [
         {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "ChassisRPort"
+                },
+                "checksum": 2724892710
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface"
+                },
+                "checksum": 4272068255
+              }
+            ]
+          },
+          "checksum": 3888769022
+        },
+        {
+          "key": "P-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "LocalizationPPort"
+                },
+                "checksum": 2654763860
+              },
+              {
+                "key": "PROVIDED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface"
+                },
+                "checksum": 2209236059
+              }
+            ]
+          },
+          "checksum": 3665975140
+        },
+        {
           "key": "P-PORT-PROTOTYPE",
           "value": {
             "object[]": [
@@ -134,10 +178,32 @@
             ]
           },
           "checksum": 1239672268
+        },
+        {
+          "key": "R-PORT-PROTOTYPE",
+          "value": {
+            "object[]": [
+              {
+                "key": "SHORT-NAME",
+                "value": {
+                  "string": "LocalizationRPort"
+                },
+                "checksum": 3692657705
+              },
+              {
+                "key": "REQUIRED-INTERFACE-TREF",
+                "value": {
+                  "string": "/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface"
+                },
+                "checksum": 2860523957
+              }
+            ]
+          },
+          "checksum": 3126272102
         }
       ]
     },
-    "checksum": 4150778748
+    "checksum": 2504054340
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

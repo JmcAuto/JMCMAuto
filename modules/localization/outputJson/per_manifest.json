@@ -17,13 +17,13 @@
               {
                 "key": "REQUIRED-INTERFACE-TREF",
                 "value": {
-                  "string": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface"
+                  "string": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface"
                 },
-                "checksum": 2841392543
+                "checksum": 4272068255
               }
             ]
           },
-          "checksum": 1024342877
+          "checksum": 3888769022
         },
         {
           "key": "P-PORT-PROTOTYPE",
@@ -39,17 +39,17 @@
               {
                 "key": "PROVIDED-INTERFACE-TREF",
                 "value": {
-                  "string": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface"
+                  "string": "/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface"
                 },
-                "checksum": 1017229255
+                "checksum": 2209236059
               }
             ]
           },
-          "checksum": 780403539
+          "checksum": 3665975140
         }
       ]
     },
-    "checksum": 2009078956
+    "checksum": 908340539
   },
   {
     "key": "PERSISTENCY-PORT-PROTOTYPE-TO-FILE-ARRAY-MAPPINGS",

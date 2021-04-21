@@ -1,14 +1,14 @@
 {
   "services": [
     {
-      "service": "/jmc_auto/Functional/ControlCommandServiceInterface/ControlCommandServiceInterface",
+      "service": "/jmc_auto/Modules/ControlCommandServiceInterface/ControlCommandServiceInterface",
       "serviceId": 12809,
       "protocolIdUsed": false,
       "events": [
         {
           "event": "ControlCommandEvent",
           "id": 57416,
-          "dataType": "/jmc_auto/Functional/ControlCommandDataType/ControlCommand",
+          "dataType": "/jmc_auto/Modules/ControlCommandDataType/ControlCommand",
           "topicName": "ControlCommandDdsEvent"
         }
       ],

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="cddfc6fc-7d18-4796-8da9-d8ad7423c082">
+      <SHORT-NAME>jmc_auto</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>ModuleServices</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationApplication</SHORT-NAME>
+              <ELEMENTS>
+                <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+                  <SHORT-NAME>LocalizationSwComponent</SHORT-NAME>
+                  <PORTS>
+                    <R-PORT-PROTOTYPE>
+                      <SHORT-NAME>ChassisRPort</SHORT-NAME>
+                      <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface</REQUIRED-INTERFACE-TREF>
+                    </R-PORT-PROTOTYPE>
+                    <P-PORT-PROTOTYPE>
+                      <SHORT-NAME>LocalizationPPort</SHORT-NAME>
+                      <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface</PROVIDED-INTERFACE-TREF>
+                    </P-PORT-PROTOTYPE>
+                  </PORTS>
+                </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>LocalizationExecutable</SHORT-NAME>
+              <ELEMENTS>
+                <EXECUTABLE>
+                  <SHORT-NAME>LocalizationExecutable</SHORT-NAME>
+                  <ROOT-SW-COMPONENT-PROTOTYPE>
+                    <SHORT-NAME>LocalizationRootSwComponent</SHORT-NAME>
+                    <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent</APPLICATION-TYPE-TREF>
+                  </ROOT-SW-COMPONENT-PROTOTYPE>
+                </EXECUTABLE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

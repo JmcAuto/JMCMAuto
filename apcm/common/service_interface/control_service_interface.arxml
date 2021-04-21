@@ -196,7 +196,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDataType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -207,7 +207,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDataType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -1073,7 +1073,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDataType/GearPosition</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>
@@ -1141,7 +1141,7 @@
                       <SW-DATA-DEF-PROPS>
                         <SW-DATA-DEF-PROPS-VARIANTS>
                           <SW-DATA-DEF-PROPS-CONDITIONAL>
-                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDateType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/jmc_auto/Modules/ChassisDataType/DrivingMode</IMPLEMENTATION-DATA-TYPE-REF>
                           </SW-DATA-DEF-PROPS-CONDITIONAL>
                         </SW-DATA-DEF-PROPS-VARIANTS>
                       </SW-DATA-DEF-PROPS>

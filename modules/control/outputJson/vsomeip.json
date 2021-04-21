@@ -29,6 +29,13 @@
       "unreliable": [
         "7004"
       ]
+    },
+    {
+      "service": "12805",
+      "instance": "105",
+      "unreliable": [
+        "7005"
+      ]
     }
   ],
   "service-discovery": {

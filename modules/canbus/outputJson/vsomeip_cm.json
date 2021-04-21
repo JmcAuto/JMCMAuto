@@ -57,6 +57,26 @@
       ]
     },
     {
+      "service": "/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface",
+      "serviceId": 12805,
+      "protocolIdUsed": true,
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "events": [
+        {
+          "event": "LocalizationEvent",
+          "id": 63490,
+          "dataType": "/jmc_auto/Modules/LocalizationDataType/Localization",
+          "eventId": 1005,
+          "eventGroup": [],
+          "reliable": false
+        }
+      ],
+      "fields": [],
+      "methods": [],
+      "instances": []
+    },
+    {
       "service": "/HuaweiMDC/Platform/CanTxServiceInterface/CanTxServiceInterface",
       "serviceId": 209,
       "protocolIdUsed": true,
@@ -113,7 +133,7 @@
         {
           "event": "ChassisEvent",
           "id": 32374,
-          "dataType": "/jmc_auto/Modules/ChassisDateType/Chassis",
+          "dataType": "/jmc_auto/Modules/ChassisDataType/Chassis",
           "eventId": 1004,
           "eventGroup": [],
           "reliable": false

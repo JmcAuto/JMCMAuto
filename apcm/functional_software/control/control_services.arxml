@@ -15,6 +15,11 @@
                   <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/ChassisServiceInterface/ChassisSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
                   <REQUIRED-SERVICE-INSTANCE-ID>104</REQUIRED-SERVICE-INSTANCE-ID>
                 </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                  <SHORT-NAME>LocalizationRequiredSomeipServiceInstance</SHORT-NAME>
+                  <SERVICE-INTERFACE-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/jmc_auto/Modules/LocalizationServiceInterface/LocalizationSomeipInterfaceDeployment</SERVICE-INTERFACE-REF>
+                  <REQUIRED-SERVICE-INSTANCE-ID>105</REQUIRED-SERVICE-INSTANCE-ID>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE>
@@ -57,6 +62,23 @@
                     <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceConsumer/ChassisRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
                   </SERVICE-INSTANCE-REFS>
                   <UDP-PORT>7004</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                  <SHORT-NAME>LocalizationRequiredServiceInstanceToPort</SHORT-NAME>
+                  <PORT-PROTOTYPE-IREF>
+                    <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/jmc_auto/ModuleServices/ControlExecutable/ControlExecutable/ControlRootSwComponent</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                    <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/jmc_auto/ModuleServices/Control/ControlSwComponent/LocalizationRPort</TARGET-PORT-PROTOTYPE-REF>
+                  </PORT-PROTOTYPE-IREF>
+                  <PROCESS-REF DEST="PROCESS">/jmc_auto/ModuleServices/ControlProcess/ControlProcess</PROCESS-REF>
+                  <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                  <SHORT-NAME>LocalizationRequiredSomeipServiceInstanceToMachine</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/HuaweiMDC/Machine/Dmini0MachineDesign/Dmini0EthernetCommConnector</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/jmc_auto/ModuleServices/ControlServiceConsumer/LocalizationRequiredSomeipServiceInstance</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <UDP-PORT>7005</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>

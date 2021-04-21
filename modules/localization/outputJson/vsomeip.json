@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_PlatformServices_LocalizationApplication_LocalizationSwComponent_LocalizationProcess"
+      "ident": "someip_jmc_auto_ModuleServices_LocalizationApplication_LocalizationSwComponent_LocalizationProcess"
     },
     "dlt": "false"
   },
@@ -17,8 +17,8 @@
   "netmask": "255.255.255.0",
   "applications": [
     {
-      "name": "/jmc_auto/PlatformServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
-      "id": "40239"
+      "name": "/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
+      "id": "40668"
     }
   ],
   "services": [

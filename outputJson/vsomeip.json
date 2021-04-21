@@ -8,7 +8,7 @@
     },
     "syslog": {
       "enable": "true",
-      "ident": "someip_jmc_auto_ModuleServices_CanbusApplication_CanbusSwComponent_CanbusProcess"
+      "ident": "someip_jmc_auto_ModuleServices_LocalizationApplication_LocalizationSwComponent_LocalizationProcess"
     },
     "dlt": "false"
   },
@@ -16,6 +16,10 @@
   "unicast": "192.168.1.6",
   "netmask": "255.255.255.0",
   "applications": [
+    {
+      "name": "/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
+      "id": "40668"
+    },
     {
       "name": "/jmc_auto/ModuleServices/CanbusApplication/CanbusSwComponent/CanbusProcess",
       "id": "25903"
@@ -26,6 +30,19 @@
     }
   ],
   "services": [
+    {
+      "service": "12805",
+      "instance": "105",
+      "unreliable": "7005",
+      "events": [
+        {
+          "event": "1005",
+          "is_field": "false",
+          "is_reliable": "false"
+        }
+      ],
+      "eventgroups": []
+    },
     {
       "service": "12804",
       "instance": "104",
@@ -122,6 +139,13 @@
   ],
   "clients": [
     {
+      "service": "12804",
+      "instance": "104",
+      "unreliable": [
+        "7004"
+      ]
+    },
+    {
       "service": "208",
       "instance": "1",
       "unreliable": [
@@ -154,6 +178,13 @@
       "instance": "104",
       "unreliable": [
         "7004"
+      ]
+    },
+    {
+      "service": "12805",
+      "instance": "105",
+      "unreliable": [
+        "7005"
       ]
     }
   ],

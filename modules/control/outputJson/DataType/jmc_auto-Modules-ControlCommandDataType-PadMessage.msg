@@ -9,7 +9,7 @@
     },
     {
       "Name": "driving_mode",
-      "Type": "/jmc_auto/Modules/ChassisDateType/DrivingMode"
+      "Type": "/jmc_auto/Modules/ChassisDataType/DrivingMode"
     },
     {
       "Name": "action",

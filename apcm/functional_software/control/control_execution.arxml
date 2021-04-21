@@ -13,7 +13,6 @@
                 <PROCESS>
                   <SHORT-NAME>ControlProcess</SHORT-NAME>
                   <EXECUTABLE-REF DEST="EXECUTABLE">/jmc_auto/ModuleServices/ControlExecutable/ControlExecutable</EXECUTABLE-REF>
-                  <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
                   <MODE-DEPENDENT-STARTUP-CONFIGS>
                     <MODE-DEPENDENT-STARTUP-CONFIG>
                       <FUNCTION-GROUP-MODE-IREFS>

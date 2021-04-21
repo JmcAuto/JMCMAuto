@@ -1,5 +1,5 @@
 {
-  "applicationName": "/jmc_auto/PlatformServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
+  "applicationName": "/jmc_auto/ModuleServices/LocalizationApplication/LocalizationSwComponent/LocalizationProcess",
   "services": [
     {
       "service": "/HuaweiMDC/Platform/CanRxServiceInterface/CanRxServiceInterface",
@@ -32,7 +32,7 @@
       "instances": []
     },
     {
-      "service": "/jmc_auto/Platform/LocalizationServiceInterface/LocalizationServiceInterface",
+      "service": "/jmc_auto/Modules/LocalizationServiceInterface/LocalizationServiceInterface",
       "serviceId": 12805,
       "protocolIdUsed": true,
       "majorVersion": 1,
@@ -41,7 +41,7 @@
         {
           "event": "LocalizationEvent",
           "id": 63490,
-          "dataType": "/jmc_auto/Platform/LocalizationDateType/Localization",
+          "dataType": "/jmc_auto/Modules/LocalizationDataType/Localization",
           "eventId": 1005,
           "eventGroup": [],
           "reliable": false
@@ -53,7 +53,7 @@
         {
           "instance": 105,
           "isClient": false,
-          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/LocalizationServiceProvider/LocalizationProvidedSomeipServiceInstance",
           "unreliable": 7005
         }
       ]
@@ -81,7 +81,7 @@
       "instances": []
     },
     {
-      "service": "/jmc_auto/Platform/ChassisServiceInterface/ChassisServiceInterface",
+      "service": "/jmc_auto/Modules/ChassisServiceInterface/ChassisServiceInterface",
       "serviceId": 12804,
       "protocolIdUsed": true,
       "majorVersion": 1,
@@ -90,7 +90,7 @@
         {
           "event": "ChassisEvent",
           "id": 32374,
-          "dataType": "/jmc_auto/Platform/ChassisDateType/Chassis",
+          "dataType": "/jmc_auto/Modules/ChassisDataType/Chassis",
           "eventId": 1004,
           "eventGroup": [],
           "reliable": false
@@ -102,7 +102,7 @@
         {
           "instance": 104,
           "isClient": true,
-          "shortName": "/jmc_auto/PlatFormServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance",
+          "shortName": "/jmc_auto/ModuleServices/LocalizationServiceConsumer/ChassisRequiredSomeipServiceInstance",
           "unreliable": 7004
         }
       ]
