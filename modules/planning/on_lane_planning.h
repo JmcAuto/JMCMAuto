@@ -105,6 +105,7 @@ class OnLanePlanning : public PlanningBase {
   routing::RoutingResponse last_routing_;
   std::unique_ptr<ReferenceLineProvider> reference_line_provider_;
   Smoother planning_smoother_;
+  bool need_referenceline = false;
 };
 
 }  // namespace planning

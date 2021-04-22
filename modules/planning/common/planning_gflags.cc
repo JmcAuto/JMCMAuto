@@ -22,6 +22,10 @@ DEFINE_string(planning_adapter_config_filename,
               "modules/planning/conf/adapter.conf",
               "The adapter configuration file");
 
+DEFINE_string(test_parkingspace_id,
+              "1261",
+              "The id is test parkingspace id");
+
 DEFINE_bool(planning_test_mode, false, "Enable planning test mode.");
 
 DEFINE_int32(planning_loop_rate, 10, "Loop rate for planning node");
@@ -162,9 +166,9 @@ DEFINE_double(change_lane_min_length, 30.0,
               "meters. If the change lane target has longer length than this "
               "threshold, it can shortcut the default lane.");
 
-DEFINE_double(replan_lateral_distance_threshold, 1.0,
+DEFINE_double(replan_lateral_distance_threshold, 0.5,
               "The lateral distance threshold of replan");
-DEFINE_double(replan_longitudinal_distance_threshold, 2.5,
+DEFINE_double(replan_longitudinal_distance_threshold, 1.0,
               "The longitudinal distance threshold of replan");
 
 DEFINE_bool(enable_reference_line_provider_thread, true,
@@ -214,6 +218,7 @@ DEFINE_double(lateral_jerk_bound, 4.0,
               "Bound of lateral jerk; symmetric for left and right");
 
 DEFINE_double(kappa_bound, 0.1979, "The bound for trajectory curvature");
+
 
 // ST Boundary
 DEFINE_double(st_max_s, 100, "the maximum s of st boundary");
@@ -472,7 +477,7 @@ DEFINE_bool(
     enable_smoother_failsafe, false,
     "whether to use warm start result as final output when smoother fails");
 
-DEFINE_bool(use_s_curve_speed_smooth, false,
+DEFINE_bool(use_s_curve_speed_smooth, true,
             "Whether use s-curve (piecewise_jerk) for smoothing Hybrid Astar "
             "speed/acceleration.");
 
@@ -514,7 +519,7 @@ DEFINE_double(smoother_stop_distance, 10.0,
 DEFINE_bool(enable_parallel_hybrid_a, false,
             "True to enable hybrid a* parallel implementation.");
 
-DEFINE_double(open_space_standstill_acceleration, 0.0,
+DEFINE_double(open_space_standstill_acceleration, 1.0,
               "(unit: meter/sec^2) for open space stand still at destination");
 
 DEFINE_bool(enable_dp_reference_speed, true,

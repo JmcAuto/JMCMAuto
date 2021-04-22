@@ -373,7 +373,7 @@ Status PathBoundsDecider::GenerateLaneChangePathBound(
   // 2. Decide a rough boundary based on lane info and ADC's position
   std::string dummy_borrow_lane_type;
   if (!GetBoundaryFromLanesAndADC(reference_line_info,
-                                  LaneBorrowInfo::NO_BORROW, 0.1, path_bound,
+                                  LaneBorrowInfo::LEFT_BORROW, 0.1, path_bound,
                                   &dummy_borrow_lane_type)) {
     const std::string msg =
         "Failed to decide a rough boundary based on "
@@ -528,7 +528,7 @@ Status PathBoundsDecider::GenerateFallbackPathBound(
   // 2. Decide a rough boundary based on lane info and ADC's position
   std::string dummy_borrow_lane_type;
   if (!GetBoundaryFromLanesAndADC(reference_line_info,
-                                  LaneBorrowInfo::NO_BORROW, 0.5, path_bound,
+                                  LaneBorrowInfo::LEFT_BORROW, 0.1, path_bound,
                                   &dummy_borrow_lane_type)) {
     const std::string msg =
         "Failed to decide a rough fallback boundary based on "
@@ -1202,6 +1202,8 @@ bool PathBoundsDecider::GetBoundaryFromLanesAndADC(
            << ", left_lane_bound = " << curr_lane_left_width
            << ", right_lane_bound = " << curr_lane_right_width
            << ", offset = " << offset_to_map;
+   //NEW ADD
+   //curr_left_bound = 2*curr_left_bound;
 
     // 4. Update the boundary.
     if (!UpdatePathBoundaryWithBuffer(i, curr_left_bound, curr_right_bound,

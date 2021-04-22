@@ -36,6 +36,8 @@ namespace jmc_auto {
 namespace planning {
 
 using jmc_auto::hdmap::HDMapUtil;
+using jmc_auto::hdmap::ParkingSpaceInfoConstPtr;
+using jmc_auto::common::math::Vec2d;
 //using jmc_auto::perception::TrafficLightDetection;
 //using jmc_auto::relative_map::MapMsg;
 using jmc_auto::routing::RoutingRequest;
@@ -206,8 +208,7 @@ void Planning::OnTimer(const ros::TimerEvent&) {
   if (!prediction_adapter->Empty()){
     prediction_obstacles_ = prediction_adapter->GetLatestObserved();
     local_view_.prediction_obstacles = std::make_shared<prediction::PredictionObstacles>(prediction_obstacles_);
-    ADEBUG << "Prediction obstacles nums: " << local_view_.prediction_obstacles->prediction_obstacle().size();
-
+//    ADEBUG << "Prediction obstacles nums: " << local_view_.prediction_obstacles->prediction_obstacle().size();
   }
 
   
@@ -246,24 +247,57 @@ void Planning::OnTimer(const ros::TimerEvent&) {
     AERROR << "Input check failed";
     return;
   }
+  
+   count_++;
+   ADEBUG << "COUNT:" << count_;
+  if(count_ > 30){
+    CheckParkingSpace();
+  }
 
-    ADCTrajectory adc_trajectory_pb;
-    planning_base_->RunOnce(local_view_, &adc_trajectory_pb);
-    auto start_time = adc_trajectory_pb.header().timestamp_sec();
-    AdapterManager::FillPlanningHeader(Name(), &adc_trajectory_pb);
+  ADCTrajectory adc_trajectory_pb;
+  planning_base_->RunOnce(local_view_, &adc_trajectory_pb);
+  auto start_time = adc_trajectory_pb.header().timestamp_sec();
+  AdapterManager::FillPlanningHeader(Name(), &adc_trajectory_pb);
 
-    // modify trajectory relative time due to the timestamp change in header
-    const double dt = start_time - adc_trajectory_pb.header().timestamp_sec();
-    for (auto& p : *adc_trajectory_pb.mutable_trajectory_point()) {
-      p.set_relative_time(p.relative_time() + dt);
-    }
-    AdapterManager::PublishPlanning(adc_trajectory_pb);
+  // modify trajectory relative time due to the timestamp change in header
+  const double dt = start_time - adc_trajectory_pb.header().timestamp_sec();
+  for (auto& p : *adc_trajectory_pb.mutable_trajectory_point()) {
+    p.set_relative_time(p.relative_time() + dt);
+  }
+  AdapterManager::PublishPlanning(adc_trajectory_pb);
 
-    // record in history
-    auto* history = History::Instance();
-    history->Add(adc_trajectory_pb);
+  // record in history
+  auto* history = History::Instance();
+  history->Add(adc_trajectory_pb);
 //  }
 }
+
+void Planning::CheckParkingSpace(){
+//  ParkingSpaceInfoConstPtr target_parking_spot_ptr;
+  const hdmap::HDMap* hdmap = hdmap::HDMapUtil::BaseMapPtr();
+      // TODO(Jinyun) parking overlap s are wrong on map, not usable
+      // target_area_center_s =
+      //     (parking_overlap.start_s + parking_overlap.end_s) / 2.0;
+      hdmap::Id id;
+      std::string park_id = FLAGS_test_parkingspace_id;
+      //std::string park_id = "1262";
+      id.set_id(park_id);
+      //金融厂区地图
+      //Vec2d right_top_point = (hdmap->GetParkingSpaceById(id))->polygon().points().at(1);
+      //晶众厂区地图
+      Vec2d right_top_point = (hdmap->GetParkingSpaceById(id))->polygon().points().at(3);
+      AERROR << "Find ParkingSpace";
+      // Vec2d left_bottom_point =
+      //     target_parking_spot_ptr->polygon().points().at(0);
+      double distance = ((right_top_point.x() - localization_.pose().position().x())*(right_top_point.x() - localization_.pose().position().x()))
+                       + ((right_top_point.y() - localization_.pose().position().y())*(right_top_point.y() - localization_.pose().position().y()));
+      if(distance < 1000){
+        local_view_.parkingspace_id = park_id;
+      }else{
+        AERROR << "ParkingSpace too far";
+      }
+}
+
 
 //检查是否需要再routing
 void Planning::CheckRerouting() {

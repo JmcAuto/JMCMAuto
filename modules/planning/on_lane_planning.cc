@@ -257,9 +257,11 @@ void OnLanePlanning::RunOnce(const LocalView& local_view,
 
   failed_to_update_reference_line =
       (!reference_line_provider_->UpdatedReferenceLine());
-
   // early return when reference line fails to update after rerouting
-  if (failed_to_update_reference_line) {
+  if (failed_to_update_reference_line && !need_referenceline) {
+    //NEW ADD
+    //ADEBUG << "frame.is_parking_destination:" << frame_.get()->is_parking_destination();
+    //if(!frame_.get()->is_parking_destination()){
     std::string msg("Failed to updated reference line after rerouting.");
     AERROR << msg;
     ptr_trajectory_pb->mutable_decision()
@@ -271,6 +273,7 @@ void OnLanePlanning::RunOnce(const LocalView& local_view,
     FillPlanningPb(start_timestamp, ptr_trajectory_pb);
     GenerateStopTrajectory(ptr_trajectory_pb);
     return;
+   //}
   }
 
   // Update reference line provider and reset pull over if necessary
@@ -342,7 +345,9 @@ void OnLanePlanning::RunOnce(const LocalView& local_view,
             << " traffic decider failed";
     }
   }
-
+//NEW ADD
+  need_referenceline = frame_->is_parking_destination();
+  
   status = Plan(start_timestamp, stitching_trajectory, ptr_trajectory_pb);
 
   for (const auto& p : ptr_trajectory_pb->trajectory_point()) {

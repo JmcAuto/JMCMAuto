@@ -96,7 +96,7 @@ void STBoundsDecider::InitSTBoundsDecider(
          << " msec.";
 
   // Initialize Guide-Line and Driving-Limits.
-  static constexpr double desired_speed = 2.5;
+  static constexpr double desired_speed = 1.5;
   st_guide_line_.Init(desired_speed);
   static constexpr double max_acc = 2.5;
   static constexpr double max_dec = 3.0;

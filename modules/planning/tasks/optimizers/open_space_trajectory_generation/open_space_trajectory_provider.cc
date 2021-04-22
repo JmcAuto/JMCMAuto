@@ -308,6 +308,10 @@ bool OpenSpaceTrajectoryProvider::IsVehicleNearDestination(
                 (vehicle_state.y() - end_pose_to_world_frame.y()) *
                     (vehicle_state.y() - end_pose_to_world_frame.y()));
 
+ADEBUG << "end_pose_to_world_frame.(x): " << std::setprecision(9) << end_pose_to_world_frame.x();
+ADEBUG << "end_pose_to_world_frame.(y): " << std::setprecision(9) << end_pose_to_world_frame.y();
+ADEBUG << "distance_to_vehicle: " << distance_to_vehicle;
+
   double theta_to_vehicle = std::abs(common::math::AngleDiff(
       vehicle_state.heading(), end_theta_to_world_frame));
   ADEBUG << "theta_to_vehicle" << theta_to_vehicle << "end_theta_to_world_frame"
@@ -342,7 +346,7 @@ bool OpenSpaceTrajectoryProvider::IsVehicleStopDueToFallBack(
   if (!is_on_fallback) {
     return false;
   }
-  static constexpr double kEpsilon = 1.0e-1;
+  static constexpr double kEpsilon = 1.0e-1;// new add -1
   const double adc_speed = vehicle_state.linear_velocity();
   const double adc_acceleration = vehicle_state.linear_acceleration();
   if (std::abs(adc_speed) < kEpsilon && std::abs(adc_acceleration) < kEpsilon) {
@@ -360,9 +364,10 @@ void OpenSpaceTrajectoryProvider::GenerateStopTrajectory(
   static constexpr double relative_stop_time = 0.1;
   static constexpr double vEpsilon = 0.00001;
   double standstill_acceleration =
-      frame_->vehicle_state().linear_velocity() >= -vEpsilon
-          ? -FLAGS_open_space_standstill_acceleration
-          : FLAGS_open_space_standstill_acceleration;
+        frame_->vehicle_state().gear() == canbus::Chassis::GEAR_REVERSE
+//      frame_->vehicle_state().linear_velocity() >= -vEpsilon
+          ? FLAGS_open_space_standstill_acceleration
+          : -FLAGS_open_space_standstill_acceleration;
   trajectory_data->clear();
   for (size_t i = 0; i < stop_trajectory_length; i++) {
     TrajectoryPoint point;

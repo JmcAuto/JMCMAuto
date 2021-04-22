@@ -21,6 +21,7 @@
 #include "modules/planning/open_space/coarse_trajectory_generator/hybrid_a_star.h"
 
 #include "modules/planning/math/piecewise_jerk/piecewise_jerk_speed_problem.h"
+#include "modules/planning/math/discrete_points_math.h"
 
 namespace jmc_auto {
 namespace planning {
@@ -327,6 +328,26 @@ bool HybridAStar::GenerateSpeedAcceleration(HybridAStartResult* result) {
     result->a.push_back(discrete_a);
   }
 
+//  std::vector<std::pair<double, double>> xy_points;
+//  for (size_t i = 0; i < x_size; ++i) {
+//    std::pair<double, double> xy(result->x[i], result->y[i]);
+//    xy_points.push_back(xy);
+//  }
+
+  // Compute path profile
+//  std::vector<double> headings;
+//  std::vector<double> kappas;
+//  std::vector<double> dkappas;
+//  std::vector<double> accumulated_s;
+//  if (DiscretePointsMath::ComputePathProfile(
+//          xy_points, &headings, &accumulated_s, &kappas, &dkappas)) {
+//    for (size_t i = 0; i < kappas.size() - 1; ++i) {
+//      result->steer.push_back(kappas[i * 1.4]);
+//      ADEBUG << "KAPPA: " << kappas[i];
+//    }
+//    return true;
+//  }
+
   // load steering from phi
   for (size_t i = 0; i + 1 < x_size; ++i) {
     double discrete_steer = (result->phi[i + 1] - result->phi[i]) *
@@ -337,6 +358,7 @@ bool HybridAStar::GenerateSpeedAcceleration(HybridAStartResult* result) {
       discrete_steer = std::atan(-discrete_steer);
     }
     result->steer.push_back(discrete_steer);
+    ADEBUG << "I: " << i << " STEER: " << discrete_steer;
   }
   return true;
 }
@@ -383,12 +405,12 @@ bool HybridAStar::GenerateSCurveSpeedAcceleration(HybridAStartResult* result) {
 
   // minimum time speed optimization
   // TODO(Jinyun): move to confs
-  const double max_forward_v = 2.0;
-  const double max_reverse_v = 1.0;
-  const double max_forward_acc = 2.0;
-  const double max_reverse_acc = 1.0;
+  const double max_forward_v = 1.0;
+  const double max_reverse_v = 0.8;
+  const double max_forward_acc = 1.0;
+  const double max_reverse_acc = 0.8;
   const double max_acc_jerk = 0.5;
-  const double delta_t = 0.2;
+  const double delta_t = 0.1;
 
   SpeedData speed_data;
 
@@ -458,6 +480,7 @@ bool HybridAStar::GenerateSCurveSpeedAcceleration(HybridAStartResult* result) {
              << total_t;
       break;
     }
+    ADEBUG << "s:" << s[i] << " v:" << ds[i];
     speed_data.AppendSpeedPoint(s[i], delta_t * static_cast<double>(i), ds[i],
                                 dds[i], (dds[i] - dds[i - 1]) / delta_t);
     // cut the speed data when it is about to meet end condition
@@ -480,7 +503,7 @@ bool HybridAStar::GenerateSCurveSpeedAcceleration(HybridAStartResult* result) {
   HybridAStartResult combined_result;
 
   // TODO(Jinyun): move to confs
-  const double kDenseTimeResoltuion = 0.5;
+  const double kDenseTimeResoltuion = 0.1;//NEW ADD 0.5
   const double time_horizon =
       speed_data.TotalTime() + kDenseTimeResoltuion * 1.0e-6;
   if (path_data.empty()) {
@@ -505,6 +528,7 @@ bool HybridAStar::GenerateSCurveSpeedAcceleration(HybridAStartResult* result) {
     combined_result.y.push_back(path_point.y());
     combined_result.phi.push_back(path_point.theta());
     combined_result.accumulated_s.push_back(path_point.s());
+    ADEBUG << "speed_point.v:" << speed_point.v();
     if (!gear) {
       combined_result.v.push_back(-speed_point.v());
       combined_result.a.push_back(-speed_point.a());
@@ -529,6 +553,7 @@ bool HybridAStar::GenerateSCurveSpeedAcceleration(HybridAStartResult* result) {
     discrete_steer =
         gear ? std::atan(discrete_steer) : std::atan(-discrete_steer);
     combined_result.steer.push_back(discrete_steer);
+    ADEBUG << "i: " << i << " STEER:" << discrete_steer;
   }
 
   *result = combined_result;

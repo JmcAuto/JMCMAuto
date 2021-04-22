@@ -39,10 +39,20 @@ class Destination : public TrafficRule {
 
   common::Status ApplyRule(Frame* const frame,
                            ReferenceLineInfo* const reference_line_info);
+  bool CheckParkingSpotPreStop(Frame* const frame,
+                               ReferenceLineInfo* const reference_line_info,
+                               double* target_s);
+  bool SetParkingSpotStopFence(const double target_s, Frame* const frame,
+                               ReferenceLineInfo* const reference_line_info);
+  bool CheckADCStop(const Frame& frame);
 
  private:
   int MakeDecisions(Frame* const frame,
                     ReferenceLineInfo* const reference_line_info);
+  int MakeParkingDecisions(Frame* const frame,
+                    ReferenceLineInfo* const reference_line_info);
+  std::string target_parking_spot_id_;
+  //bool is_near_parking_ = false;
 };
 
 }  // namespace planning

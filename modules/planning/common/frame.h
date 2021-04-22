@@ -148,6 +148,10 @@ class Frame {
 
   const bool is_near_destination() const { return is_near_destination_; }
 
+  const bool is_parking_destination() const { return is_parking_destination_; }
+
+  void set_parking_destination(bool type){ is_parking_destination_ = type; }
+
   /**
    * @brief Adjust reference line priority according to actual road conditions
    * @id_to_priority lane id and reference line priority mapping relationship
@@ -209,6 +213,8 @@ class Frame {
   std::list<ReferenceLineInfo> reference_line_info_;
 
   bool is_near_destination_ = false;
+
+  bool is_parking_destination_ = false;
 
   /**
    * the reference line info that the vehicle finally choose to drive on

@@ -33,7 +33,7 @@
 #include "modules/planning/scenarios/lane_follow/lane_follow_scenario.h"
 // #include "modules/planning/scenarios/learning_model/test_learning_model_scenario.h"
 // #include "modules/planning/scenarios/park/pull_over/pull_over_scenario.h"
-// #include "modules/planning/scenarios/park/valet_parking/valet_parking_scenario.h"
+#include "modules/planning/scenarios/park/valet_parking/valet_parking_scenario.h"
 // #include "modules/planning/scenarios/park_and_go/park_and_go_scenario.h"
 // #include "modules/planning/scenarios/stop_sign/unprotected/stop_sign_unprotected_scenario.h"
 // #include "modules/planning/scenarios/traffic_light/protected/traffic_light_protected_scenario.h"
@@ -108,10 +108,10 @@ std::unique_ptr<Scenario> ScenarioManager::CreateScenario(
     //       new scenario::traffic_light::TrafficLightUnprotectedRightTurnScenario(
     //           config_map_[scenario_type], &scenario_context_));
     //   break;
-    // case ScenarioConfig::VALET_PARKING:
-    //   ptr.reset(new scenario::valet_parking::ValetParkingScenario(
-    //       config_map_[scenario_type], &scenario_context_));
-    //   break;
+    case ScenarioConfig::VALET_PARKING:
+      ptr.reset(new scenario::valet_parking::ValetParkingScenario(
+          config_map_[scenario_type], &scenario_context_));
+      break;
     // case ScenarioConfig::YIELD_SIGN:
     //   ptr.reset(new scenario::yield_sign::YieldSignScenario(
     //       config_map_[scenario_type], &scenario_context_));
@@ -174,9 +174,9 @@ void ScenarioManager::RegisterScenarios() {
   //     FLAGS_scenario_traffic_light_unprotected_right_turn_config_file,
   //     &config_map_[ScenarioConfig::TRAFFIC_LIGHT_UNPROTECTED_RIGHT_TURN]));
 
-  // // valet parking
-  // ACHECK(Scenario::LoadConfig(FLAGS_scenario_valet_parking_config_file,
-  //                             &config_map_[ScenarioConfig::VALET_PARKING]));
+  // valet parking
+  ACHECK(Scenario::LoadConfig(FLAGS_scenario_valet_parking_config_file,
+                              &config_map_[ScenarioConfig::VALET_PARKING]));
 
   // // yield_sign
   // ACHECK(Scenario::LoadConfig(FLAGS_scenario_yield_sign_config_file,
@@ -810,6 +810,10 @@ void ScenarioManager::ScenarioDispatch(const common::TrajectoryPoint& ego_point,
     // check current_scenario (not switchable)
     switch (current_scenario_->scenario_type()) {
       case ScenarioConfig::LANE_FOLLOW:
+        if(frame.is_parking_destination()){
+          scenario_type = ScenarioConfig::VALET_PARKING;
+        }
+        break;
       case ScenarioConfig::PULL_OVER:
         break;
       case ScenarioConfig::BARE_INTERSECTION_UNPROTECTED:
@@ -822,6 +826,13 @@ void ScenarioManager::ScenarioDispatch(const common::TrajectoryPoint& ego_point,
       case ScenarioConfig::TRAFFIC_LIGHT_UNPROTECTED_LEFT_TURN:
       case ScenarioConfig::TRAFFIC_LIGHT_UNPROTECTED_RIGHT_TURN:
       case ScenarioConfig::VALET_PARKING:
+        if(frame.is_parking_destination()){
+          scenario_type = ScenarioConfig::VALET_PARKING;
+          //scenario_type = default_scenario_type_;
+        }else{
+          scenario_type = default_scenario_type_;
+        }
+        break;
       case ScenarioConfig::YIELD_SIGN:
         // must continue until finish
         if (current_scenario_->GetStatus() !=

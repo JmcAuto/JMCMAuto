@@ -20,6 +20,8 @@
 
 DECLARE_string(planning_adapter_config_filename);
 
+DECLARE_string(test_parkingspace_id);
+
 DECLARE_bool(planning_test_mode);
 
 DECLARE_string(planning_config_file);

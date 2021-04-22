@@ -9,7 +9,8 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
@@ -65,13 +66,14 @@ Status OpenSpaceRoiDecider::Process(Frame *frame) {
 
   const auto &roi_type = config_.open_space_roi_decider_config().roi_type();
   if (roi_type == OpenSpaceRoiDeciderConfig::PARKING) {
-    const auto &routing_request =
-        frame->local_view().routing->routing_request();
+    // const auto &routing_request =
+    //     frame->local_view().routing->routing_request();
 
     // if (routing_request.has_parking_info() &&
     //     routing_request.parking_info().has_parking_space_id()) {
     //   target_parking_spot_id_ =
     //       routing_request.parking_info().parking_space_id();
+    target_parking_spot_id_ = frame->local_view().parkingspace_id;
     // } else {
     //   const std::string msg = "Failed to get parking space id from routing";
     //   AERROR << msg;
@@ -227,6 +229,7 @@ void OpenSpaceRoiDecider::SetParkingSpotEndPose(
   right_down -= origin_point;
   right_down.SelfRotate(-origin_heading);
 
+  ADEBUG << "left_down.x():" << left_down.x() << " left_down.y():" << left_down.y();
   // TODO(Jinyun): adjust end pose setting for more parking spot configurations
   double parking_spot_heading = (left_down - left_top).Angle();
   double end_x = (left_top.x() + right_top.x()) / 2.0;
@@ -239,29 +242,40 @@ void OpenSpaceRoiDecider::SetParkingSpotEndPose(
   const double top_to_down_distance = left_top.y() - left_down.y();
   if (parking_spot_heading > common::math::kMathEpsilon) {
     if (parking_inwards) {
-      end_y =
-          left_down.y() - (std::max(3.0 * -top_to_down_distance / 4.0,
-                                    vehicle_params_.front_edge_to_center()) +
-                           parking_depth_buffer);
+      end_y = left_down.y() - (vehicle_params_.front_edge_to_center() +
+                           parking_depth_buffer + 1.5);
+//NEW ADD   
+      // left_down.y() - (std::max(3.0 * -top_to_down_distance / 4.0,
+      //                              vehicle_params_.front_edge_to_center()) +
+      //                     parking_depth_buffer);
 
     } else {
-      end_y = left_down.y() - (std::max(-top_to_down_distance / 4.0,
-                                        vehicle_params_.back_edge_to_center()) +
-                               parking_depth_buffer);
+  //   end_y =  vehicle_params_.back_edge_to_center() + parking_depth_buffer + 0.8;
+//NEW ADD
+       ADEBUG << "end_Position 2";
+       end_y = left_down.y() - parking_depth_buffer;
+//(std::max(-top_to_down_distance / 4.0,
+//                                     vehicle_params_.back_edge_to_center()) +
+//                               parking_depth_buffer);
     }
   } else {
     if (parking_inwards) {
-      end_y =
-          left_down.y() + (std::max(3.0 * top_to_down_distance / 4.0,
-                                    vehicle_params_.front_edge_to_center()) +
-                           parking_depth_buffer);
+      end_y = left_down.y() + (vehicle_params_.front_edge_to_center() +
+                           parking_depth_buffer + 1.5);
+//NEW ADD
+   //       left_down.y() + (std::max(3.0 * top_to_down_distance / 4.0,
+   //                                 vehicle_params_.front_edge_to_center()) +
+   //                        parking_depth_buffer);
     } else {
-      end_y = left_down.y() + (std::max(top_to_down_distance / 4.0,
-                                        vehicle_params_.back_edge_to_center()) +
-                               parking_depth_buffer);
+      ADEBUG << "end_position 4";
+      end_y = left_down.y() + vehicle_params_.back_edge_to_center();
+//NEW ADD
+//left_down.y() + (std::max(top_to_down_distance / 4.0,
+  //                                   vehicle_params_.back_edge_to_center()) +
+  //                             parking_depth_buffer);
     }
   }
-
+  
   auto *end_pose =
       frame->mutable_open_space_info()->mutable_open_space_end_pose();
   end_pose->push_back(end_x);
@@ -273,6 +287,10 @@ void OpenSpaceRoiDecider::SetParkingSpotEndPose(
         common::math::NormalizeAngle(parking_spot_heading + M_PI));
   }
   end_pose->push_back(0.0);
+
+  ADEBUG << "end_pose:  x:" << end_x << " y:" << end_y;
+  ADEBUG << " heading:" << end_pose->at(2);
+  ADEBUG << "parking_inwards: " << config_.open_space_roi_decider_config().parking_inwards();
 }
 
 void OpenSpaceRoiDecider::SetPullOverSpotEndPose(Frame *const frame) {
@@ -1227,6 +1245,36 @@ bool OpenSpaceRoiDecider::GetParkingSpot(Frame *const frame,
       LaneSegment(nearest_lane, nearest_lane->accumulate_s().front(),
                   nearest_lane->accumulate_s().back());
   std::vector<LaneSegment> segments_vector;
+  //NEW ADD 如果车位在前继车道上则需要加上前继车道
+  double distance = vehicle_lane_s;
+  auto pre_nearest_lane = nearest_lane;
+  while(distance < 10){
+    int pre_lanes_num = pre_nearest_lane->lane().predecessor_id_size();
+    if(pre_lanes_num != 0){
+      for(int i = 0; i < pre_lanes_num; ++i){
+        auto pre_lane_id = pre_nearest_lane->lane().predecessor_id(i);
+        auto pre_lane = hdmap_->GetLaneById(pre_lane_id);
+        if(pre_lane->lane().turn() == 0){
+          LaneSegment pre_lanesegment =
+                LaneSegment(pre_lane, pre_lane->accumulate_s().front(),
+                            pre_lane->accumulate_s().back());
+          segments_vector.push_back(pre_lanesegment);
+          pre_nearest_lane = pre_lane;
+          distance +=  pre_lane->accumulate_s().back();
+          break;
+        }else if(i == pre_lanes_num -1){
+          pre_lanes_num = 0;
+        } 
+      }
+    }
+    if(pre_lanes_num == 0){
+      break;
+    }
+  }
+  if(segments_vector.size() > 1){
+    std::reverse(segments_vector.begin(), segments_vector.end());
+  }  
+
   int next_lanes_num = nearest_lane->lane().successor_id_size();
   if (next_lanes_num != 0) {
     for (int i = 0; i < next_lanes_num; ++i) {
@@ -1255,18 +1303,26 @@ bool OpenSpaceRoiDecider::GetParkingSpot(Frame *const frame,
     return false;
   }
 
-  if (!CheckDistanceToParkingSpot(*nearby_path, target_parking_spot)) {
-    AERROR << "target parking spot found, but too far, distance larger than "
-              "pre-defined distance";
-    return false;
-  }
+//NEW ADD 暂时注释
+  // if (!CheckDistanceToParkingSpot(*nearby_path, target_parking_spot)) {
+  //   AERROR << "target parking spot found, but too far, distance larger than "
+  //             "pre-defined distance";
+  //   return false;
+  // }
 
   // left or right of the parking lot is decided when viewing the parking spot
   // open upward
-  Vec2d left_top = target_parking_spot->polygon().points().at(3);
-  Vec2d left_down = target_parking_spot->polygon().points().at(0);
-  Vec2d right_down = target_parking_spot->polygon().points().at(1);
-  Vec2d right_top = target_parking_spot->polygon().points().at(2);
+  // 金融厂区地图停车位
+  //Vec2d left_top = target_parking_spot->polygon().points().at(0);
+  //Vec2d left_down = target_parking_spot->polygon().points().at(3);
+  //Vec2d right_down = target_parking_spot->polygon().points().at(2);
+  //Vec2d right_top = target_parking_spot->polygon().points().at(1);
+
+// 晶众厂区地图停车位
+   Vec2d left_top = target_parking_spot->polygon().points().at(0);
+   Vec2d left_down = target_parking_spot->polygon().points().at(1);
+   Vec2d right_down = target_parking_spot->polygon().points().at(2);
+   Vec2d right_top = target_parking_spot->polygon().points().at(3);
 
   std::array<Vec2d, 4> parking_vertices{left_top, left_down, right_down,
                                         right_top};
@@ -1340,21 +1396,34 @@ bool OpenSpaceRoiDecider::GetPullOverSpot(
 void OpenSpaceRoiDecider::SearchTargetParkingSpotOnPath(
     const hdmap::Path &nearby_path,
     ParkingSpaceInfoConstPtr *target_parking_spot) {
-  const auto &parking_space_overlaps = nearby_path.parking_space_overlaps();
-  for (const auto &parking_overlap : parking_space_overlaps) {
-    if (parking_overlap.object_id == target_parking_spot_id_) {
-      hdmap::Id id;
-      id.set_id(parking_overlap.object_id);
-      *target_parking_spot = hdmap_->GetParkingSpaceById(id);
-    }
-  }
+  // const auto &parking_space_overlaps = nearby_path.parking_space_overlaps();
+  // for (const auto &parking_overlap : parking_space_overlaps) {
+  //   if (parking_overlap.object_id == target_parking_spot_id_) {
+  //     hdmap::Id id;
+  //     id.set_id(parking_overlap.object_id);
+  //     *target_parking_spot = hdmap_->GetParkingSpaceById(id);
+  //   }
+  // }
+  hdmap::Id id;
+  id.set_id(target_parking_spot_id_);
+  *target_parking_spot = hdmap_->GetParkingSpaceById(id);
 }
 
 bool OpenSpaceRoiDecider::CheckDistanceToParkingSpot(
     const hdmap::Path &nearby_path,
     const hdmap::ParkingSpaceInfoConstPtr &target_parking_spot) {
-  Vec2d left_bottom_point = target_parking_spot->polygon().points().at(0);
-  Vec2d right_bottom_point = target_parking_spot->polygon().points().at(1);
+    // 金融厂区地图停车位
+  //Vec2d left_bottom_point = target_parking_spot->polygon().points().at(3);
+  //Vec2d right_bottom_point = target_parking_spot->polygon().points().at(2);
+
+
+// 晶众厂区地图停车位
+   Vec2d left_bottom_point = target_parking_spot->polygon().points().at(1);
+   Vec2d right_bottom_point = target_parking_spot->polygon().points().at(2);
+
+
+  // Vec2d left_bottom_point = target_parking_spot->polygon().points().at(0);
+  // Vec2d right_bottom_point = target_parking_spot->polygon().points().at(1);
   double left_bottom_point_s = 0.0;
   double left_bottom_point_l = 0.0;
   double right_bottom_point_s = 0.0;
@@ -1682,10 +1751,23 @@ void OpenSpaceRoiDecider::GetParkSpotFromMap(
     ParkingSpaceInfoConstPtr parking_lot, std::array<Vec2d, 4> *vertices) {
   // left or right of the parking lot is decided when viewing the parking spot
   // open upward
-  Vec2d left_top = parking_lot->polygon().points().at(3);
-  Vec2d left_down = parking_lot->polygon().points().at(0);
-  Vec2d right_down = parking_lot->polygon().points().at(1);
-  Vec2d right_top = parking_lot->polygon().points().at(2);
+  // 金融厂区地图停车位
+  //Vec2d left_top = parking_lot->polygon().points().at(0);
+  //Vec2d left_down = parking_lot->polygon().points().at(3);
+  //Vec2d right_down = parking_lot->polygon().points().at(2);
+  //Vec2d right_top = parking_lot->polygon().points().at(1);
+
+// 晶众厂区地图停车位
+   Vec2d left_top = parking_lot->polygon().points().at(0);
+   Vec2d left_down = parking_lot->polygon().points().at(1);
+   Vec2d right_down = parking_lot->polygon().points().at(2);
+   Vec2d right_top = parking_lot->polygon().points().at(3);
+
+
+  // Vec2d left_top = parking_lot->polygon().points().at(3);
+  // Vec2d left_down = parking_lot->polygon().points().at(0);
+  // Vec2d right_down = parking_lot->polygon().points().at(1);
+  // Vec2d right_top = parking_lot->polygon().points().at(2);
 
   std::array<Vec2d, 4> parking_vertices{left_top, left_down, right_down,
                                         right_top};

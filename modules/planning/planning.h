@@ -68,6 +68,7 @@ class Planning : public jmc_auto::common::JmcAutoApp {
  private:
   void CheckRerouting();
   bool CheckInput();
+  void CheckParkingSpace();
 
  private:
  void OnTimer(const ros::TimerEvent&);
@@ -97,8 +98,11 @@ class Planning : public jmc_auto::common::JmcAutoApp {
 
   std::unique_ptr<PlanningBase> planning_base_;
 
+//测试计数用
+  int count_ = 0;
+
   PlanningConfig config_;
-  PlanningModeConfig mode_config_;
+  //PlanningModeConfig mode_config_;
 };
 
 //CYBER_REGISTER_COMPONENT(PlanningComponent)

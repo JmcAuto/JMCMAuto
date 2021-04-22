@@ -99,6 +99,8 @@ Status OpenSpaceTrajectoryPartition::Process() {
 
   PartitionTrajectory(*interpolated_trajectory_result_ptr,
                       partitioned_trajectories);
+ 
+  ADEBUG << "partition nums:" << partitioned_trajectories->size();
 
   const auto& open_space_status =
       PlanningContext::Instance()->planning_status().open_space();

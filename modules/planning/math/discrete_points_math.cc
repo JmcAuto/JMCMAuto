@@ -160,7 +160,7 @@ bool DiscretePointsMath::ComputePathProfile(
    //if(kappa >= 0.04){
    //  kappa = 0.04;
    //}
-   //kappa = kappa*1.4;
+   //kappa = kappa*0.4;
 
     kappas->push_back(kappa);
   }
