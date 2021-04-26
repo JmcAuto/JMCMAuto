@@ -1,0 +1,49 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(cos_theta_smoother
+  cos_theta_smoother.cc
+  cos_theta_smoother.h)
+target_link_libraries(cos_theta_smoother
+  cos_theta_ipopt_interface
+  /modules/common:log
+  /modules/planning/proto:cos_theta_smoother_config_proto
+  ipopt)
+add_library(cos_theta_ipopt_interface
+  cos_theta_ipopt_interface.cc
+  cos_theta_ipopt_interface.h)
+target_link_libraries(cos_theta_ipopt_interface
+  /modules/common:log
+  adolc
+  ipopt)
+add_library(fem_pos_deviation_smoother
+  fem_pos_deviation_smoother.cc
+  fem_pos_deviation_smoother.h)
+target_link_libraries(fem_pos_deviation_smoother
+  fem_pos_deviation_ipopt_interface
+  fem_pos_deviation_osqp_interface
+  fem_pos_deviation_sqp_osqp_interface
+  /modules/common:log
+  /modules/planning/proto:fem_pos_deviation_smoother_config_proto
+  ipopt)
+add_library(fem_pos_deviation_ipopt_interface
+  fem_pos_deviation_ipopt_interface.cc
+  fem_pos_deviation_ipopt_interface.h)
+target_link_libraries(fem_pos_deviation_ipopt_interface
+  /modules/common:log
+  adolc
+  ipopt)
+add_library(fem_pos_deviation_osqp_interface
+  fem_pos_deviation_osqp_interface.cc
+  fem_pos_deviation_osqp_interface.h)
+target_link_libraries(fem_pos_deviation_osqp_interface
+  /modules/common:log
+  osqp)
+add_library(fem_pos_deviation_sqp_osqp_interface
+  fem_pos_deviation_sqp_osqp_interface.cc
+  fem_pos_deviation_sqp_osqp_interface.h)
+target_link_libraries(fem_pos_deviation_sqp_osqp_interface
+  /modules/common:log
+  osqp)
+
+

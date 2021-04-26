@@ -1,0 +1,42 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(task
+  task.cc
+  task.h)
+target_link_libraries(task
+  /modules/common/status
+  /modules/planning/common:frame
+  /modules/planning/common:reference_line_info
+  /modules/planning/common/trajectory:discretized_trajectory
+  /modules/planning/common/trajectory:publishable_trajectory
+  /modules/planning/proto:planning_config_proto)
+add_library(task_factory
+  task_factory.cc
+  task_factory.h)
+target_link_libraries(task_factory
+  task
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/tasks/deciders/creep_decider
+  /modules/planning/tasks/deciders/lane_change_decider
+  /modules/planning/tasks/deciders/open_space_decider:open_space_fallback_decider
+  /modules/planning/tasks/deciders/open_space_decider:open_space_pre_stop_decider
+  /modules/planning/tasks/deciders/open_space_decider:open_space_roi_decider
+  /modules/planning/tasks/deciders/path_assessment_decider
+  /modules/planning/tasks/deciders/path_bounds_decider
+  /modules/planning/tasks/deciders/path_decider
+  /modules/planning/tasks/deciders/path_lane_borrow_decider
+  /modules/planning/tasks/deciders/path_reuse_decider
+  /modules/planning/tasks/deciders/rss_decider
+  /modules/planning/tasks/deciders/rule_based_stop_decider
+  /modules/planning/tasks/deciders/speed_bounds_decider
+  /modules/planning/tasks/deciders/speed_decider
+  /modules/planning/tasks/deciders/st_bounds_decider
+  /modules/planning/tasks/optimizers/open_space_trajectory_generation:open_space_trajectory_provider
+  /modules/planning/tasks/optimizers/open_space_trajectory_partition
+  /modules/planning/tasks/optimizers/path_time_heuristic:path_time_heuristic_optimizer
+  /modules/planning/tasks/optimizers/piecewise_jerk_path:piecewise_jerk_path_optimizer
+  /modules/planning/tasks/optimizers/piecewise_jerk_speed:piecewise_jerk_speed_nonlinear_optimizer
+  /modules/planning/tasks/optimizers/piecewise_jerk_speed:piecewise_jerk_speed_optimizer)
+
+

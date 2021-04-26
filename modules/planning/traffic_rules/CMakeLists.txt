@@ -1,0 +1,48 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(traffic_rules
+  backside_vehicle.cc
+  crosswalk.cc
+  destination.cc
+  keep_clear.cc
+  reference_line_end.cc
+  rerouting.cc
+  stop_sign.cc
+  traffic_light.cc
+  yield_sign.cc
+  backside_vehicle.h
+  crosswalk.h
+  destination.h
+  keep_clear.h
+  reference_line_end.h
+  rerouting.h
+  stop_sign.h
+  traffic_light.h
+  traffic_rule.h
+  yield_sign.h)
+target_link_libraries(traffic_rules
+  /modules/common/util:factory
+  /modules/common/util:map_util
+  /modules/perception/proto:perception_proto
+  /modules/planning/common:frame
+  /modules/planning/common:planning_context
+  /modules/planning/common:planning_gflags
+  /modules/planning/common:reference_line_info
+  /modules/planning/common/util:common_lib
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/proto:planning_proto
+  /modules/planning/proto:traffic_rule_config_proto)
+add_library(traffic_decider
+  traffic_decider.cc
+  traffic_decider.h)
+target_link_libraries(traffic_decider
+  traffic_rules
+  /modules/common/status
+  /modules/common/vehicle_state:vehicle_state_provider
+  /modules/planning/common:frame
+  /modules/planning/common:reference_line_info
+  /modules/planning/proto:traffic_rule_config_proto
+  /modules/planning/tasks:task)
+
+

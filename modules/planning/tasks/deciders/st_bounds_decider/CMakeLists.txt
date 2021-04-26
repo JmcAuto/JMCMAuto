@@ -1,0 +1,92 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(st_bounds_decider
+  st_bounds_decider.cc
+  st_bounds_decider.h)
+target_link_libraries(st_bounds_decider
+  st_driving_limits
+  st_guide_line
+  st_obstacles_processor
+  /modules/common/status
+  /modules/planning/common:frame
+  /modules/planning/common:planning_gflags
+  /modules/planning/common:st_graph_data
+  /modules/planning/common/util:common_lib
+  /modules/planning/tasks:task
+  /modules/planning/tasks/deciders:decider_base)
+add_library(st_guide_line
+  st_guide_line.cc
+  st_guide_line.h)
+target_link_libraries(st_guide_line
+  /modules/common/configs:vehicle_config_helper
+  /modules/common/configs/proto:vehicle_config_proto
+  /modules/common/proto:pnc_point_proto
+  /modules/common/status
+  /modules/map/pnc_map
+  /modules/map/proto:map_proto
+  /modules/planning/common:frame
+  /modules/planning/common:obstacle
+  /modules/planning/common:path_decision
+  /modules/planning/common:planning_gflags
+  /modules/planning/common:speed_limit
+  /modules/planning/common/path:discretized_path
+  /modules/planning/common/path:frenet_frame_path
+  /modules/planning/common/path:path_data
+  /modules/planning/common/speed:st_boundary
+  /modules/planning/common/trajectory:discretized_trajectory
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/proto:planning_proto
+  /modules/planning/proto:speed_bounds_decider_config_proto
+  /modules/planning/reference_line)
+add_library(st_driving_limits
+  st_driving_limits.cc
+  st_driving_limits.h)
+target_link_libraries(st_driving_limits
+  /modules/common/configs:vehicle_config_helper
+  /modules/common/configs/proto:vehicle_config_proto
+  /modules/common/proto:pnc_point_proto
+  /modules/common/status
+  /modules/map/pnc_map
+  /modules/map/proto:map_proto
+  /modules/planning/common:frame
+  /modules/planning/common:obstacle
+  /modules/planning/common:path_decision
+  /modules/planning/common:planning_gflags
+  /modules/planning/common:speed_limit
+  /modules/planning/common/path:discretized_path
+  /modules/planning/common/path:frenet_frame_path
+  /modules/planning/common/path:path_data
+  /modules/planning/common/speed:st_boundary
+  /modules/planning/common/trajectory:discretized_trajectory
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/proto:planning_proto
+  /modules/planning/proto:speed_bounds_decider_config_proto
+  /modules/planning/reference_line)
+add_library(st_obstacles_processor
+  st_obstacles_processor.cc
+  st_obstacles_processor.h)
+target_link_libraries(st_obstacles_processor
+  /modules/common/configs:vehicle_config_helper
+  /modules/common/configs/proto:vehicle_config_proto
+  /modules/common/proto:pnc_point_proto
+  /modules/common/status
+  /modules/map/pnc_map
+  /modules/map/proto:map_proto
+  /modules/planning/common:frame
+  /modules/planning/common:history
+  /modules/planning/common:obstacle
+  /modules/planning/common:path_decision
+  /modules/planning/common:planning_gflags
+  /modules/planning/common:speed_limit
+  /modules/planning/common/path:discretized_path
+  /modules/planning/common/path:frenet_frame_path
+  /modules/planning/common/path:path_data
+  /modules/planning/common/speed:st_boundary
+  /modules/planning/common/trajectory:discretized_trajectory
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/proto:planning_proto
+  /modules/planning/proto:speed_bounds_decider_config_proto
+  /modules/planning/reference_line)
+
+

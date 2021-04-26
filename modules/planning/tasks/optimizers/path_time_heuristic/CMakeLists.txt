@@ -1,0 +1,55 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+add_library(st_graph_point
+  st_graph_point.cc
+  st_graph_point.h)
+target_link_libraries(st_graph_point
+  /modules/planning/common:planning_gflags
+  /modules/planning/common/speed:st_point)
+add_library(dp_st_cost
+  dp_st_cost.cc
+  dp_st_cost.h)
+target_link_libraries(dp_st_cost
+  st_graph_point
+  /modules/common/proto:pnc_point_proto
+  /modules/planning/common:frame
+  /modules/planning/common:obstacle
+  /modules/planning/common/speed:st_boundary
+  /modules/planning/proto:dp_st_speed_config_proto
+  /modules/planning/tasks/utils:st_gap_estimator)
+add_library(gridded_path_time_graph
+  gridded_path_time_graph.cc
+  gridded_path_time_graph.h)
+target_link_libraries(gridded_path_time_graph
+  dp_st_cost
+  st_graph_point
+  /modules/common:log
+  /modules/planning/common:planning_thread_pool
+  /modules/common/configs:vehicle_config_helper
+  /modules/common/configs/proto:vehicle_config_proto
+  /modules/common/proto:common_proto
+  /modules/common/proto:pnc_point_proto
+  /modules/common/status
+  /modules/planning/common:obstacle
+  /modules/planning/common:path_decision
+  /modules/planning/common:st_graph_data
+  /modules/planning/common/speed:speed_data
+  /modules/planning/proto:planning_config_proto
+  /modules/planning/proto:planning_proto)
+add_library(path_time_heuristic_optimizer
+  path_time_heuristic_optimizer.cc
+  path_time_heuristic_optimizer.h)
+target_link_libraries(path_time_heuristic_optimizer
+  dp_st_cost
+  gridded_path_time_graph
+  /modules/common/configs:vehicle_config_helper
+  /modules/common/vehicle_state:vehicle_state_provider
+  /modules/localization/proto:localization_proto
+  /modules/planning/common:st_graph_data
+  /modules/planning/proto:dp_st_speed_config_proto
+  /modules/planning/proto:planning_proto
+  /modules/planning/tasks/deciders/speed_bounds_decider:st_boundary_mapper
+  /modules/planning/tasks/optimizers:speed_optimizer)
+
+

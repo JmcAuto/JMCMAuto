@@ -60,18 +60,18 @@ enable_testing()
 
 add_library(indexed_list INTERFACE)
 target_link_libraries(indexed_list INTERFACE
-  /modules/common/util:map_util
+  map_util
   boost)
 add_library(indexed_queue INTERFACE)
 target_link_libraries(indexed_queue INTERFACE
-  /modules/common/util:map_util)
+  map_util)
 add_library(obstacle
   obstacle.cc
   obstacle.h)
 target_link_libraries(obstacle
   indexed_list
   /modules/common/configs:vehicle_config_helper
-  /modules/common/util:map_util
+  map_util
   /modules/planning/common/speed:st_boundary
   /modules/planning/proto:planning_proto
   /modules/planning/reference_line)
@@ -89,7 +89,7 @@ add_library(planning_context
   planning_context.cc
   planning_context.h)
 target_link_libraries(planning_context
-  /modules/common:macros
+  macros
   /modules/planning/common/path:path_data
   /modules/planning/proto:planning_status_proto
   eigen)
@@ -113,10 +113,10 @@ target_link_libraries(reference_line_info
   path_decision
   planning_gflags
   st_graph_data
-  /modules/common:log
+  log
   /modules/planning/common:planning_thread_pool
   /modules/common/proto:pnc_point_proto
-  /modules/common/util:point_factory
+  point_factory
   /modules/common/vehicle_state:vehicle_state_provider
   /modules/map/pnc_map
   /modules/map/proto:map_proto
@@ -157,8 +157,8 @@ target_link_libraries(frame
   obstacle
   open_space_info
   reference_line_info
-  /modules/common:log
-  /modules/common:macros
+  log
+  macros
   /modules/common/configs:vehicle_config_helper
   /modules/common/vehicle_state:vehicle_state_provider
   /modules/map/hdmap:hdmap_util
@@ -175,8 +175,8 @@ add_library(history
   history.h)
 target_link_libraries(history
   planning_gflags
-  /modules/common:log
-  /modules/common:macros
+  log
+  macros
   /modules/planning/proto:decision_proto
   /modules/planning/proto:planning_proto
   eigen)
@@ -191,11 +191,11 @@ add_library(ego_info
   ego_info.h)
 target_link_libraries(ego_info
   obstacle
-  /modules/common:macros
-  /modules/common:log
+  macros
+  log
   /modules/common/configs:vehicle_config_helper
   /modules/common/configs/proto:vehicle_config_proto
-  /modules/common/math:geometry
+  geometry
   /modules/common/vehicle_state/proto:vehicle_state_proto
   /modules/planning/reference_line
   eigen)
@@ -206,7 +206,7 @@ target_link_libraries(planning_common INTERFACE
   planning_gflags
   speed_limit
   st_graph_data
-  /modules/common:log
+  log
   /modules/localization/common:localization_common
   /modules/localization/proto:localization_proto
   eigen)
@@ -214,7 +214,7 @@ add_library(trajectory_stitcher
   trajectory_stitcher.cc
   trajectory_stitcher.h)
 target_link_libraries(trajectory_stitcher
-  /modules/common:log
+  log
   /modules/common/proto:pnc_point_proto
   /modules/common/vehicle_model
   /modules/planning/common:planning_gflags
@@ -224,7 +224,7 @@ add_library(open_space_info
   open_space_info.cc
   open_space_info.h)
 target_link_libraries(open_space_info
-  /modules/common:log
+  log
   /modules/common/configs:vehicle_config_helper
   /modules/common/vehicle_state/proto:vehicle_state_proto
   /modules/map/hdmap:hdmap_util
@@ -247,7 +247,7 @@ add_library(planning_thread_pool
   planning_thread_pool.h)
 target_link_libraries(planning_thread_pool
   planning_gflags
-  /modules/common:macro
-  /modules/common/util:ctpl_stl)
+  macro
+  ctpl_stl)
 
 
