@@ -9,12 +9,12 @@ target_link_libraries(planning_lib
   util
   jmc_auto_app
   message_util
-  /modules/common/adapters:adapter_gflags
+  adapter_gflags
   /modules/localization/proto:localization_proto
   /modules/map/relative_map/proto:navigation_proto
   /modules/perception/proto:perception_proto
-  /modules/planning/common:history
-  /modules/planning/proto:planning_proto
+  history
+  planning_proto
   /modules/prediction/proto:prediction_proto
   ros//:ros_common)
 add_library(planning_base
@@ -23,25 +23,25 @@ add_library(planning_base
 target_link_libraries(planning_base
   util
   log
-  /modules/common/configs:config_gflags
+  config_gflags
   quaternion
-  /modules/common/proto:pnc_point_proto
+  pnc_point_proto
   future
   message_util
-  /modules/common/vehicle_state:vehicle_state_provider
+  vehicle_state_provider
   /modules/localization/proto:localization_proto
   /modules/map/hdmap:hdmap_util
   /modules/perception/proto:perception_proto
-  /modules/planning/common:history
-  /modules/planning/common:planning_common
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:trajectory_stitcher
-  /modules/planning/common/smoothers:smoother
-  /modules/planning/common/util:util_lib
+  history
+  planning_common
+  planning_gflags
+  trajectory_stitcher
+  smoother
+  util_lib
   /modules/planning/planner
-  /modules/planning/planner:planner_dispatcher
-  /modules/planning/proto:planning_proto
-  /modules/planning/proto:traffic_rule_config_proto
+  planner_dispatcher
+  planning_proto
+  traffic_rule_config_proto
   /modules/planning/tasks:task_factory
   /modules/planning/traffic_rules:traffic_decider
   /modules/prediction/proto:prediction_proto)
@@ -50,6 +50,6 @@ add_library(on_lane_planning
   on_lane_planning.h)
 target_link_libraries(on_lane_planning
   planning_base
-  /modules/planning/common:planning_thread_pool)
+  planning_thread_pool)
 
 

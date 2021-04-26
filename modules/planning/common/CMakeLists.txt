@@ -70,17 +70,17 @@ add_library(obstacle
   obstacle.h)
 target_link_libraries(obstacle
   indexed_list
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   map_util
-  /modules/planning/common/speed:st_boundary
-  /modules/planning/proto:planning_proto
+  st_boundary
+  planning_proto
   /modules/planning/reference_line)
 add_library(obstacle_blocking_analyzer
   obstacle_blocking_analyzer.cc
   obstacle_blocking_analyzer.h)
 target_link_libraries(obstacle_blocking_analyzer
   frame
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/planning/reference_line)
 add_library(path_boundary
   path_boundary.cc
@@ -90,8 +90,8 @@ add_library(planning_context
   planning_context.h)
 target_link_libraries(planning_context
   macros
-  /modules/planning/common/path:path_data
-  /modules/planning/proto:planning_status_proto
+  path_data
+  planning_status_proto
   eigen)
 add_library(path_decision
   path_decision.cc
@@ -114,17 +114,17 @@ target_link_libraries(reference_line_info
   planning_gflags
   st_graph_data
   log
-  /modules/planning/common:planning_thread_pool
-  /modules/common/proto:pnc_point_proto
+  planning_thread_pool
+  pnc_point_proto
   point_factory
-  /modules/common/vehicle_state:vehicle_state_provider
+  vehicle_state_provider
   /modules/map/pnc_map
   /modules/map/proto:map_proto
-  /modules/planning/common/path:path_data
-  /modules/planning/common/speed:speed_data
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/common/trajectory:publishable_trajectory
-  /modules/planning/proto:lattice_structure_proto
+  path_data
+  speed_data
+  discretized_trajectory
+  publishable_trajectory
+  lattice_structure_proto
   /modules/planning/reference_line
   eigen)
 add_library(speed_profile_generator
@@ -133,20 +133,20 @@ add_library(speed_profile_generator
 target_link_libraries(speed_profile_generator
   frame
   reference_line_info
-  /modules/common/proto:pnc_point_proto
-  /modules/planning/common/speed:speed_data
+  pnc_point_proto
+  speed_data
   /modules/planning/math/curve1d
   /modules/planning/math/curve1d:polynomial_curve1d
   /modules/planning/math/curve1d:quartic_polynomial_curve1d
   /modules/planning/math/curve1d:quintic_polynomial_curve1d
   /modules/planning/math/piecewise_jerk:piecewise_jerk_speed_problem
-  /modules/planning/proto:planning_config_proto)
+  planning_config_proto)
 add_library(local_view INTERFACE)
 target_link_libraries(local_view INTERFACE
   /modules/localization/proto:localization_proto
   /modules/map/relative_map/proto:navigation_proto
   /modules/perception/proto:perception_proto
-  /modules/planning/proto:planning_proto
+  planning_proto
   /modules/prediction/proto:prediction_proto)
 add_library(frame
   frame.cc
@@ -159,15 +159,15 @@ target_link_libraries(frame
   reference_line_info
   log
   macros
-  /modules/common/configs:vehicle_config_helper
-  /modules/common/vehicle_state:vehicle_state_provider
+  vehicle_config_helper
+  vehicle_state_provider
   /modules/map/hdmap:hdmap_util
   /modules/map/pnc_map
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/common/trajectory:publishable_trajectory
-  /modules/planning/common/util:util_lib
-  /modules/planning/proto:planning_config_proto
-  /modules/planning/proto:planning_proto
+  discretized_trajectory
+  publishable_trajectory
+  util_lib
+  planning_config_proto
+  planning_proto
   /modules/planning/reference_line:reference_line_provider
   eigen)
 add_library(history
@@ -177,15 +177,15 @@ target_link_libraries(history
   planning_gflags
   log
   macros
-  /modules/planning/proto:decision_proto
-  /modules/planning/proto:planning_proto
+  decision_proto
+  planning_proto
   eigen)
 add_library(speed_limit
   speed_limit.cc
   speed_limit.h)
 target_link_libraries(speed_limit
   /modules/common/math
-  /modules/planning/proto:planning_proto)
+  planning_proto)
 add_library(ego_info
   ego_info.cc
   ego_info.h)
@@ -193,8 +193,8 @@ target_link_libraries(ego_info
   obstacle
   macros
   log
-  /modules/common/configs:vehicle_config_helper
-  /modules/common/configs/proto:vehicle_config_proto
+  vehicle_config_helper
+  vehicle_config_proto
   geometry
   /modules/common/vehicle_state/proto:vehicle_state_proto
   /modules/planning/reference_line
@@ -215,25 +215,25 @@ add_library(trajectory_stitcher
   trajectory_stitcher.h)
 target_link_libraries(trajectory_stitcher
   log
-  /modules/common/proto:pnc_point_proto
+  pnc_point_proto
   /modules/common/vehicle_model
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory:publishable_trajectory
+  planning_gflags
+  publishable_trajectory
   /modules/planning/reference_line)
 add_library(open_space_info
   open_space_info.cc
   open_space_info.h)
 target_link_libraries(open_space_info
   log
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/vehicle_state/proto:vehicle_state_proto
   /modules/map/hdmap:hdmap_util
   /modules/map/pnc_map
-  /modules/planning/common:indexed_queue
-  /modules/planning/common:obstacle
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/common/trajectory:publishable_trajectory
+  indexed_queue
+  obstacle
+  planning_gflags
+  discretized_trajectory
+  publishable_trajectory
   eigen)
 add_library(st_graph_data
   st_graph_data.cc
@@ -241,7 +241,7 @@ add_library(st_graph_data
 target_link_libraries(st_graph_data
   planning_gflags
   speed_limit
-  /modules/planning/common/speed:st_boundary)
+  st_boundary)
 add_library(planning_thread_pool
   planning_thread_pool.cc
   planning_thread_pool.h)

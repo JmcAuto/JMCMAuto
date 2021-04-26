@@ -7,31 +7,31 @@ add_library(reference_line
   reference_line.h
   reference_point.h)
 target_link_libraries(reference_line
-  /modules/common:log
-  /modules/common/util:util
+  log
+  util
   /modules/common/math
-  /modules/common/proto:pnc_point_proto
-  /modules/common/util:map_util
-  /modules/common/util:point_factory
+  pnc_point_proto
+  map_util
+  point_factory
   /modules/map/pnc_map:path
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planning_proto
   com_google_absl//absl/strings)
 add_library(reference_line_smoother INTERFACE)
 target_link_libraries(reference_line_smoother INTERFACE
-  /modules/planning/proto:reference_line_smoother_config_proto)
+  reference_line_smoother_config_proto)
 add_library(qp_spline_reference_line_smoother
   qp_spline_reference_line_smoother.cc
   qp_spline_reference_line_smoother.h)
 target_link_libraries(qp_spline_reference_line_smoother
   reference_line
   reference_line_smoother
-  /modules/planning/math:curve_math
-  /modules/planning/math:polynomial_xd
+  curve_math
+  polynomial_xd
   /modules/planning/math/smoothing_spline:active_set_spline_2d_solver
   /modules/planning/math/smoothing_spline:osqp_spline_2d_solver
-  /modules/planning/proto:planning_proto
-  /modules/planning/proto:reference_line_smoother_config_proto
+  planning_proto
+  reference_line_smoother_config_proto
   eigen)
 add_library(discrete_points_reference_line_smoother
   discrete_points_reference_line_smoother.cc
@@ -41,12 +41,12 @@ target_link_libraries(discrete_points_reference_line_smoother
   reference_line_smoother
   /modules/common/math
   /modules/common/time
-  /modules/planning/common:planning_gflags
-  /modules/planning/math:discrete_points_math
+  planning_gflags
+  discrete_points_math
   /modules/planning/math/discretized_points_smoothing:cos_theta_smoother
   /modules/planning/math/discretized_points_smoothing:fem_pos_deviation_smoother
-  /modules/planning/proto:planning_proto
-  /modules/planning/proto:reference_line_smoother_config_proto)
+  planning_proto
+  reference_line_smoother_config_proto)
 add_library(reference_line_provider
   reference_line_provider.cc
   reference_line_provider.h)
@@ -54,14 +54,14 @@ target_link_libraries(reference_line_provider
   discrete_points_reference_line_smoother
   qp_spline_reference_line_smoother
   reference_line
-  /modules/common/configs:vehicle_config_helper
-  /modules/common/util:factory
-  /modules/common/vehicle_state:vehicle_state_provider
+  vehicle_config_helper
+  factory
+  vehicle_state_provider
   /modules/map/pnc_map
-  /modules/planning/common:indexed_queue
-  /modules/planning/common:planning_context
-  /modules/planning/proto:planning_config_proto
-  /modules/planning/proto:planning_status_proto
+  indexed_queue
+  planning_context
+  planning_config_proto
+  planning_status_proto
   eigen)
 
 

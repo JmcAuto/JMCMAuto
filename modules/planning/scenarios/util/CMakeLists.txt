@@ -5,8 +5,8 @@ add_library(scenario_util_lib
   util.cc
   util.h)
 target_link_libraries(scenario_util_lib
-  /modules/common:log
-  /modules/common/util:map_util
-  /modules/planning/common:planning_common)
+  log
+  map_util
+  planning_common)
 
 

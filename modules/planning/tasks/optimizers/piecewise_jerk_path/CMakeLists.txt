@@ -5,28 +5,28 @@ add_library(piecewise_jerk_path_optimizer
   piecewise_jerk_path_optimizer.cc
   piecewise_jerk_path_optimizer.h)
 target_link_libraries(piecewise_jerk_path_optimizer
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
-  /modules/common/math:cartesian_frenet_conversion
+  cartesian_frenet_conversion
   /modules/common/math/qp_solver
-  /modules/common/proto:pnc_point_proto
+  pnc_point_proto
   /modules/common/util
   /modules/map/proto:map_proto
-  /modules/planning/common:obstacle
-  /modules/planning/common:path_boundary
-  /modules/planning/common:path_decision
-  /modules/planning/common:planning_context
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/path:discretized_path
-  /modules/planning/common/path:frenet_frame_path
-  /modules/planning/common/path:path_data
-  /modules/planning/common/speed:speed_data
+  obstacle
+  path_boundary
+  path_decision
+  planning_context
+  planning_gflags
+  discretized_path
+  frenet_frame_path
+  path_data
+  speed_data
   /modules/planning/lattice/trajectory_generation:trajectory1d_generator
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   /modules/planning/math/curve1d:polynomial_curve1d
   /modules/planning/math/curve1d:quintic_polynomial_curve1d
   /modules/planning/math/piecewise_jerk:piecewise_jerk_path_problem
-  /modules/planning/proto:planning_proto
+  planning_proto
   /modules/planning/reference_line
   /modules/planning/tasks/optimizers:path_optimizer
   eigen)

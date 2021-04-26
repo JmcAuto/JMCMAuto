@@ -14,12 +14,12 @@ add_library(dual_variable_warm_start_ipopt_interface
   dual_variable_warm_start_ipopt_interface.cc
   dual_variable_warm_start_ipopt_interface.h)
 target_link_libraries(dual_variable_warm_start_ipopt_interface
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -27,12 +27,12 @@ add_library(dual_variable_warm_start_ipopt_qp_interface
   dual_variable_warm_start_ipopt_qp_interface.cc
   dual_variable_warm_start_ipopt_qp_interface.h)
 target_link_libraries(dual_variable_warm_start_ipopt_qp_interface
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -40,24 +40,24 @@ add_library(dual_variable_warm_start_osqp_interface
   dual_variable_warm_start_osqp_interface.cc
   dual_variable_warm_start_osqp_interface.h)
 target_link_libraries(dual_variable_warm_start_osqp_interface
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   eigen
   osqp)
 add_library(dual_variable_warm_start_slack_osqp_interface
   dual_variable_warm_start_slack_osqp_interface.cc
   dual_variable_warm_start_slack_osqp_interface.h)
 target_link_libraries(dual_variable_warm_start_slack_osqp_interface
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   eigen
   osqp)
 add_library(distance_approach_problem
@@ -69,22 +69,22 @@ target_link_libraries(distance_approach_problem
   distance_approach_ipopt_interface
   distance_approach_ipopt_relax_end_interface
   distance_approach_ipopt_relax_end_slack_interface
-  /modules/common:log
+  log
   /modules/common/time
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto)
+  planning_gflags
+  planner_open_space_config_proto)
 add_library(distance_approach_ipopt_fixed_ts_interface
   distance_approach_ipopt_fixed_ts_interface.cc
   distance_approach_interface.h
   distance_approach_ipopt_fixed_ts_interface.h)
 target_link_libraries(distance_approach_ipopt_fixed_ts_interface
-  /modules/common:log
-  /modules/common/configs:vehicle_config_helper
+  log
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -93,13 +93,13 @@ add_library(distance_approach_ipopt_fixed_dual_interface
   distance_approach_interface.h
   distance_approach_ipopt_fixed_dual_interface.h)
 target_link_libraries(distance_approach_ipopt_fixed_dual_interface
-  /modules/common:log
-  /modules/common/configs:vehicle_config_helper
+  log
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -108,13 +108,13 @@ add_library(distance_approach_ipopt_relax_end_interface
   distance_approach_interface.h
   distance_approach_ipopt_relax_end_interface.h)
 target_link_libraries(distance_approach_ipopt_relax_end_interface
-  /modules/common:log
-  /modules/common/configs:vehicle_config_helper
+  log
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -123,13 +123,13 @@ add_library(distance_approach_ipopt_relax_end_slack_interface
   distance_approach_interface.h
   distance_approach_ipopt_relax_end_slack_interface.h)
 target_link_libraries(distance_approach_ipopt_relax_end_slack_interface
-  /modules/common:log
-  /modules/common/configs:vehicle_config_helper
+  log
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -138,13 +138,13 @@ add_library(distance_approach_ipopt_interface
   distance_approach_interface.h
   distance_approach_ipopt_interface.h)
 target_link_libraries(distance_approach_ipopt_interface
-  /modules/common:log
-  /modules/common/configs:vehicle_config_helper
+  log
+  vehicle_config_helper
   /modules/common/math
   /modules/common/util
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planner_open_space_config_proto
-  /modules/planning/proto:planning_proto
+  planning_gflags
+  planner_open_space_config_proto
+  planning_proto
   adolc
   ipopt
   eigen)
@@ -152,13 +152,13 @@ add_library(iterative_anchoring_smoother
   iterative_anchoring_smoother.cc
   iterative_anchoring_smoother.h)
 target_link_libraries(iterative_anchoring_smoother
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
-  /modules/planning/common:speed_profile_generator
-  /modules/planning/common/path:discretized_path
-  /modules/planning/common/speed:speed_data
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/math:discrete_points_math
+  speed_profile_generator
+  discretized_path
+  speed_data
+  discretized_trajectory
+  discrete_points_math
   /modules/planning/math/discretized_points_smoothing:fem_pos_deviation_smoother
   eigen)
 

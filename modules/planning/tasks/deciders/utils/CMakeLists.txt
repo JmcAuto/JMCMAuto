@@ -5,6 +5,6 @@ add_library(path_decider_obstacle_utils
   path_decider_obstacle_utils.cc
   path_decider_obstacle_utils.h)
 target_link_libraries(path_decider_obstacle_utils
-  /modules/planning/common:frame)
+  frame)
 
 

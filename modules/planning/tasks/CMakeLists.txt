@@ -6,17 +6,17 @@ add_library(task
   task.h)
 target_link_libraries(task
   /modules/common/status
-  /modules/planning/common:frame
-  /modules/planning/common:reference_line_info
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/common/trajectory:publishable_trajectory
-  /modules/planning/proto:planning_config_proto)
+  frame
+  reference_line_info
+  discretized_trajectory
+  publishable_trajectory
+  planning_config_proto)
 add_library(task_factory
   task_factory.cc
   task_factory.h)
 target_link_libraries(task_factory
   task
-  /modules/planning/proto:planning_config_proto
+  planning_config_proto
   /modules/planning/tasks/deciders/creep_decider
   /modules/planning/tasks/deciders/lane_change_decider
   /modules/planning/tasks/deciders/open_space_decider:open_space_fallback_decider

@@ -6,13 +6,13 @@ add_library(discretized_path
   discretized_path.h)
 target_link_libraries(discretized_path
   linear_interpolation
-  /modules/common/proto:pnc_point_proto)
+  pnc_point_proto)
 add_library(frenet_frame_path
   frenet_frame_path.cc
   frenet_frame_path.h)
 target_link_libraries(frenet_frame_path
   linear_interpolation
-  /modules/planning/proto:planning_proto)
+  planning_proto)
 add_library(path_data
   path_data.cc
   path_data.h)
@@ -20,7 +20,7 @@ target_link_libraries(path_data
   discretized_path
   frenet_frame_path
   cartesian_frenet_conversion
-  /modules/planning/common:planning_gflags
+  planning_gflags
   /modules/planning/reference_line)
 
 

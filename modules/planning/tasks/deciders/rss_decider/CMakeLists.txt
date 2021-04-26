@@ -6,10 +6,10 @@ add_library(rss_decider
   rss_decider.h)
 target_link_libraries(rss_decider
   /modules/common/status
-  /modules/planning/common:planning_context
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:reference_line_info
-  /modules/planning/proto:planning_proto
+  planning_context
+  planning_gflags
+  reference_line_info
+  planning_proto
   /modules/planning/tasks:task
   ad_rss_lib//:ad_rss)
 

@@ -5,18 +5,18 @@ add_library(lattice_trajectory1d
   lattice_trajectory1d.cc
   lattice_trajectory1d.h)
 target_link_libraries(lattice_trajectory1d
-  /modules/common:log
+  log
   /modules/planning/math/curve1d)
 add_library(end_condition_sampler
   end_condition_sampler.cc
   end_condition_sampler.h)
 target_link_libraries(end_condition_sampler
-  /modules/common/configs:vehicle_config_helper
-  /modules/planning/common:planning_gflags
+  vehicle_config_helper
+  planning_gflags
   /modules/planning/lattice/behavior:feasible_region
   /modules/planning/lattice/behavior:path_time_graph
   /modules/planning/lattice/behavior:prediction_querier
-  /modules/planning/proto:lattice_structure_proto)
+  lattice_structure_proto)
 add_library(trajectory1d_generator
   trajectory1d_generator.cc
   trajectory1d_generator.h)
@@ -24,37 +24,37 @@ target_link_libraries(trajectory1d_generator
   end_condition_sampler
   lateral_osqp_optimizer
   lateral_qp_optimizer
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory1d:constant_deceleration_trajectory1d
-  /modules/planning/common/trajectory1d:piecewise_acceleration_trajectory1d
-  /modules/planning/common/trajectory1d:piecewise_trajectory1d
-  /modules/planning/common/trajectory1d:standing_still_trajectory1d
+  planning_gflags
+  constant_deceleration_trajectory1d
+  piecewise_acceleration_trajectory1d
+  piecewise_trajectory1d
+  standing_still_trajectory1d
   /modules/planning/lattice/behavior:path_time_graph
   /modules/planning/lattice/behavior:prediction_querier
   /modules/planning/lattice/trajectory_generation:lattice_trajectory1d
   /modules/planning/math/curve1d:quartic_polynomial_curve1d
   /modules/planning/math/curve1d:quintic_polynomial_curve1d
-  /modules/planning/proto:lattice_sampling_config_proto
-  /modules/planning/proto:lattice_structure_proto)
+  lattice_sampling_config_proto
+  lattice_structure_proto)
 add_library(trajectory_evaluator
   trajectory_evaluator.cc
   trajectory_evaluator.h)
 target_link_libraries(trajectory_evaluator
-  /modules/common/math:path_matcher
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory1d:piecewise_acceleration_trajectory1d
+  path_matcher
+  planning_gflags
+  piecewise_acceleration_trajectory1d
   /modules/planning/constraint_checker:constraint_checker1d
   /modules/planning/lattice/behavior:path_time_graph
   /modules/planning/lattice/trajectory_generation:piecewise_braking_trajectory_generator
   /modules/planning/math/curve1d
-  /modules/planning/proto:lattice_sampling_config_proto)
+  lattice_sampling_config_proto)
 add_library(backup_trajectory_generator
   backup_trajectory_generator.cc
   backup_trajectory_generator.h)
 target_link_libraries(backup_trajectory_generator
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/common/trajectory1d:constant_deceleration_trajectory1d
+  planning_gflags
+  discretized_trajectory
+  constant_deceleration_trajectory1d
   /modules/planning/constraint_checker:collision_checker
   /modules/planning/lattice/trajectory_generation:trajectory1d_generator
   /modules/planning/lattice/trajectory_generation:trajectory_combiner
@@ -63,30 +63,30 @@ add_library(trajectory_combiner
   trajectory_combiner.cc
   trajectory_combiner.h)
 target_link_libraries(trajectory_combiner
-  /modules/common/math:cartesian_frenet_conversion
-  /modules/common/math:path_matcher
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory:discretized_trajectory
+  cartesian_frenet_conversion
+  path_matcher
+  planning_gflags
+  discretized_trajectory
   /modules/planning/math/curve1d)
 add_library(piecewise_braking_trajectory_generator
   piecewise_braking_trajectory_generator.cc
   piecewise_braking_trajectory_generator.h)
 target_link_libraries(piecewise_braking_trajectory_generator
-  /modules/planning/common/trajectory1d:piecewise_acceleration_trajectory1d
+  piecewise_acceleration_trajectory1d
   /modules/planning/math/curve1d)
 add_library(lateral_qp_optimizer
   lateral_qp_optimizer.cc
   lateral_qp_optimizer.h)
 target_link_libraries(lateral_qp_optimizer
   /modules/common/util
-  /modules/planning/common/trajectory1d:piecewise_jerk_trajectory1d)
+  piecewise_jerk_trajectory1d)
 add_library(lateral_osqp_optimizer
   lateral_osqp_optimizer.cc
   lateral_osqp_optimizer.h)
 target_link_libraries(lateral_osqp_optimizer
   lateral_qp_optimizer
-  /modules/common:log
-  /modules/planning/common/trajectory1d:piecewise_jerk_trajectory1d
+  log
+  piecewise_jerk_trajectory1d
   eigen
   osqp)
 

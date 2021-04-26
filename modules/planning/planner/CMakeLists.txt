@@ -3,11 +3,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(planner INTERFACE)
 target_link_libraries(planner INTERFACE
-  /modules/common/proto:pnc_point_proto
+  pnc_point_proto
   /modules/common/status
-  /modules/planning/common:frame
-  /modules/planning/common:reference_line_info
-  /modules/planning/proto:planning_proto
+  frame
+  reference_line_info
+  planning_proto
   /modules/planning/scenarios:scenario
   /modules/planning/scenarios:scenario_manager)
 add_library(planner_dispatcher
@@ -19,6 +19,6 @@ target_link_libraries(planner_dispatcher
   /modules/common/status
   /modules/common/util
   /modules/planning/planner/public_road:public_road_planner
-  /modules/planning/proto:planning_proto)
+  planning_proto)
 
 

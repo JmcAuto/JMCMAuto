@@ -5,35 +5,35 @@ add_library(standing_still_trajectory1d
   standing_still_trajectory1d.cc
   standing_still_trajectory1d.h)
 target_link_libraries(standing_still_trajectory1d
-  /modules/common:log
+  log
   /modules/planning/math/curve1d)
 add_library(piecewise_acceleration_trajectory1d
   piecewise_acceleration_trajectory1d.cc
   piecewise_acceleration_trajectory1d.h)
 target_link_libraries(piecewise_acceleration_trajectory1d
-  /modules/common/math:linear_interpolation
-  /modules/planning/common:planning_gflags
+  linear_interpolation
+  planning_gflags
   /modules/planning/math/curve1d
   com_google_absl//absl/strings)
 add_library(constant_deceleration_trajectory1d
   constant_deceleration_trajectory1d.cc
   constant_deceleration_trajectory1d.h)
 target_link_libraries(constant_deceleration_trajectory1d
-  /modules/common:log
-  /modules/planning/common:planning_gflags
+  log
+  planning_gflags
   /modules/planning/math/curve1d)
 add_library(piecewise_trajectory1d
   piecewise_trajectory1d.cc
   piecewise_trajectory1d.h)
 target_link_libraries(piecewise_trajectory1d
-  /modules/common/math:linear_interpolation
+  linear_interpolation
   /modules/planning/math/curve1d)
 add_library(constant_jerk_trajectory1d
   constant_jerk_trajectory1d.cc
   constant_jerk_trajectory1d.h)
 target_link_libraries(constant_jerk_trajectory1d
-  /modules/common:log
-  /modules/planning/common:planning_gflags
+  log
+  planning_gflags
   /modules/planning/math/curve1d)
 add_library(piecewise_jerk_trajectory1d
   piecewise_jerk_trajectory1d.cc

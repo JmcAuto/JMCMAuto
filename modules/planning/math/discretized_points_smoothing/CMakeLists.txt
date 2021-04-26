@@ -6,14 +6,14 @@ add_library(cos_theta_smoother
   cos_theta_smoother.h)
 target_link_libraries(cos_theta_smoother
   cos_theta_ipopt_interface
-  /modules/common:log
-  /modules/planning/proto:cos_theta_smoother_config_proto
+  log
+  cos_theta_smoother_config_proto
   ipopt)
 add_library(cos_theta_ipopt_interface
   cos_theta_ipopt_interface.cc
   cos_theta_ipopt_interface.h)
 target_link_libraries(cos_theta_ipopt_interface
-  /modules/common:log
+  log
   adolc
   ipopt)
 add_library(fem_pos_deviation_smoother
@@ -23,27 +23,27 @@ target_link_libraries(fem_pos_deviation_smoother
   fem_pos_deviation_ipopt_interface
   fem_pos_deviation_osqp_interface
   fem_pos_deviation_sqp_osqp_interface
-  /modules/common:log
-  /modules/planning/proto:fem_pos_deviation_smoother_config_proto
+  log
+  fem_pos_deviation_smoother_config_proto
   ipopt)
 add_library(fem_pos_deviation_ipopt_interface
   fem_pos_deviation_ipopt_interface.cc
   fem_pos_deviation_ipopt_interface.h)
 target_link_libraries(fem_pos_deviation_ipopt_interface
-  /modules/common:log
+  log
   adolc
   ipopt)
 add_library(fem_pos_deviation_osqp_interface
   fem_pos_deviation_osqp_interface.cc
   fem_pos_deviation_osqp_interface.h)
 target_link_libraries(fem_pos_deviation_osqp_interface
-  /modules/common:log
+  log
   osqp)
 add_library(fem_pos_deviation_sqp_osqp_interface
   fem_pos_deviation_sqp_osqp_interface.cc
   fem_pos_deviation_sqp_osqp_interface.h)
 target_link_libraries(fem_pos_deviation_sqp_osqp_interface
-  /modules/common:log
+  log
   osqp)
 
 

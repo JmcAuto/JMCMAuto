@@ -9,19 +9,19 @@ add_library(lane_follow_stage
   lane_follow_stage.cc
   lane_follow_stage.h)
 target_link_libraries(lane_follow_stage
-  /modules/common:log
-  /modules/common/proto:pnc_point_proto
+  log
+  pnc_point_proto
   /modules/common/status
   /modules/common/time
   /modules/common/util
-  /modules/common/util:factory
-  /modules/common/vehicle_state:vehicle_state_provider
+  factory
+  vehicle_state_provider
   /modules/map/hdmap
-  /modules/planning/common:planning_common
-  /modules/planning/common:speed_profile_generator
+  planning_common
+  speed_profile_generator
   /modules/planning/constraint_checker
   /modules/planning/math/curve1d:quartic_polynomial_curve1d
-  /modules/planning/proto:planning_proto
+  planning_proto
   /modules/planning/reference_line
   /modules/planning/reference_line:qp_spline_reference_line_smoother
   /modules/planning/scenarios:scenario
@@ -38,19 +38,19 @@ add_library(lane_follow_scenario
   lane_follow_scenario.h)
 target_link_libraries(lane_follow_scenario
   lane_follow_stage
-  /modules/common:log
-  /modules/common/proto:pnc_point_proto
+  log
+  pnc_point_proto
   /modules/common/status
   /modules/common/time
   /modules/common/util
-  /modules/common/util:factory
-  /modules/common/vehicle_state:vehicle_state_provider
+  factory
+  vehicle_state_provider
   /modules/map/hdmap
-  /modules/planning/common:planning_common
-  /modules/planning/common:speed_profile_generator
+  planning_common
+  speed_profile_generator
   /modules/planning/constraint_checker
   /modules/planning/math/curve1d:quartic_polynomial_curve1d
-  /modules/planning/proto:planning_proto
+  planning_proto
   /modules/planning/reference_line
   /modules/planning/reference_line:qp_spline_reference_line_smoother
   /modules/planning/scenarios:scenario

@@ -5,13 +5,13 @@ add_library(affine_constraint
   affine_constraint.cc
   affine_constraint.h)
 target_link_libraries(affine_constraint
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   eigen)
 add_library(spline_1d_seg
   spline_1d_seg.cc
   spline_1d_seg.h)
 target_link_libraries(spline_1d_seg
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   eigen)
 add_library(spline_1d
   spline_1d.cc
@@ -19,7 +19,7 @@ add_library(spline_1d
 target_link_libraries(spline_1d
   affine_constraint
   spline_1d_seg
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   eigen)
 add_library(spline_1d_constraint
   spline_1d_constraint.cc
@@ -27,14 +27,14 @@ add_library(spline_1d_constraint
 target_link_libraries(spline_1d_constraint
   affine_constraint
   spline_1d
-  /modules/common:log
+  log
   eigen)
 add_library(spline_seg_kernel
   spline_seg_kernel.cc
   spline_seg_kernel.h)
 target_link_libraries(spline_seg_kernel
-  /modules/common:log
-  /modules/common:macros
+  log
+  macros
   eigen)
 add_library(spline_1d_kernel
   spline_1d_kernel.cc
@@ -52,9 +52,9 @@ target_link_libraries(spline_1d_solver
   spline_1d_constraint
   spline_1d_kernel
   /modules/common/math/qp_solver
-  /modules/common/math/qp_solver:active_set_qp_solver
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:qp_problem_proto
+  active_set_qp_solver
+  planning_gflags
+  qp_problem_proto
   eigen)
 add_library(active_set_spline_1d_solver
   active_set_spline_1d_solver.cc
@@ -68,7 +68,7 @@ add_library(osqp_spline_1d_solver
   osqp_spline_1d_solver.h)
 target_link_libraries(osqp_spline_1d_solver
   spline_1d_solver
-  /modules/common/math:matrix_operations
+  matrix_operations
   /modules/common/time
   eigen
   osqp)
@@ -76,14 +76,14 @@ add_library(spline_2d_seg
   spline_2d_seg.cc
   spline_2d_seg.h)
 target_link_libraries(spline_2d_seg
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   eigen)
 add_library(spline_2d
   spline_2d.cc
   spline_2d.h)
 target_link_libraries(spline_2d
   spline_2d_seg
-  /modules/planning/math:polynomial_xd
+  polynomial_xd
   eigen)
 add_library(spline_2d_constraint
   spline_2d_constraint.cc
@@ -91,8 +91,8 @@ add_library(spline_2d_constraint
 target_link_libraries(spline_2d_constraint
   affine_constraint
   spline_2d
-  /modules/common/math:angle
-  /modules/common/math:geometry
+  angle
+  geometry
   eigen)
 add_library(spline_2d_kernel
   spline_2d_kernel.cc
@@ -100,19 +100,19 @@ add_library(spline_2d_kernel
 target_link_libraries(spline_2d_kernel
   spline_2d
   spline_seg_kernel
-  /modules/common/math:geometry
+  geometry
   eigen)
 add_library(spline_2d_solver INTERFACE)
 target_link_libraries(spline_2d_solver INTERFACE
   spline_2d
   spline_2d_constraint
   spline_2d_kernel
-  /modules/common/math:geometry
-  /modules/common/math:matrix_operations
+  geometry
+  matrix_operations
   /modules/common/math/qp_solver
-  /modules/common/math/qp_solver:active_set_qp_solver
+  active_set_qp_solver
   /modules/common/time
-  /modules/planning/common:planning_gflags
+  planning_gflags
   eigen
   osqp)
 add_library(active_set_spline_2d_solver
@@ -125,19 +125,19 @@ add_library(osqp_spline_2d_solver
   osqp_spline_2d_solver.h)
 target_link_libraries(osqp_spline_2d_solver
   spline_2d_solver
-  /modules/common/math:matrix_operations
+  matrix_operations
   osqp)
 add_library(piecewise_linear_constraint
   piecewise_linear_constraint.cc
   piecewise_linear_constraint.h)
 target_link_libraries(piecewise_linear_constraint
-  /modules/common:log
+  log
   eigen)
 add_library(piecewise_linear_kernel
   piecewise_linear_kernel.cc
   piecewise_linear_kernel.h)
 target_link_libraries(piecewise_linear_kernel
-  /modules/common:log
+  log
   eigen)
 add_library(piecewise_linear_generator
   piecewise_linear_generator.cc
@@ -146,7 +146,7 @@ target_link_libraries(piecewise_linear_generator
   piecewise_linear_constraint
   piecewise_linear_kernel
   /modules/common/math/qp_solver
-  /modules/common/math/qp_solver:active_set_qp_solver
+  active_set_qp_solver
   eigen)
 
 

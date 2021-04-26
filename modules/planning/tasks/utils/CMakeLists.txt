@@ -5,6 +5,6 @@ add_library(st_gap_estimator
   st_gap_estimator.cc
   st_gap_estimator.h)
 target_link_libraries(st_gap_estimator
-  /modules/planning/common:planning_gflags)
+  planning_gflags)
 
 

@@ -6,10 +6,10 @@ add_library(path_optimizer
   path_optimizer.h)
 target_link_libraries(path_optimizer
   /modules/common/status
-  /modules/planning/common:path_decision
-  /modules/planning/common:reference_line_info
-  /modules/planning/common/path:path_data
-  /modules/planning/common/speed:speed_data
+  path_decision
+  reference_line_info
+  path_data
+  speed_data
   /modules/planning/tasks:task
   eigen)
 add_library(speed_optimizer
@@ -17,13 +17,13 @@ add_library(speed_optimizer
   speed_optimizer.h)
 target_link_libraries(speed_optimizer
   /modules/common/status
-  /modules/planning/common:path_decision
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:reference_line_info
-  /modules/planning/common:speed_limit
-  /modules/planning/common:st_graph_data
-  /modules/planning/common/path:path_data
-  /modules/planning/common/speed:speed_data
+  path_decision
+  planning_gflags
+  reference_line_info
+  speed_limit
+  st_graph_data
+  path_data
+  speed_data
   /modules/planning/tasks:task
   eigen)
 add_library(trajectory_optimizer
@@ -31,8 +31,8 @@ add_library(trajectory_optimizer
   trajectory_optimizer.h)
 target_link_libraries(trajectory_optimizer
   /modules/common/status
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/trajectory:discretized_trajectory
+  planning_gflags
+  discretized_trajectory
   /modules/planning/tasks:task)
 
 

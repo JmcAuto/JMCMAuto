@@ -6,7 +6,7 @@ add_library(decider_base
   decider.h)
 target_link_libraries(decider_base
   /modules/common/status
-  /modules/planning/common:frame
+  frame
   /modules/planning/tasks:task)
 
 

@@ -7,10 +7,10 @@ add_library(speed_bounds_decider
 target_link_libraries(speed_bounds_decider
   st_boundary_mapper
   /modules/common/status
-  /modules/planning/common:frame
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:st_graph_data
-  /modules/planning/common/util:common_lib
+  frame
+  planning_gflags
+  st_graph_data
+  common_lib
   /modules/planning/tasks:task
   /modules/planning/tasks/deciders:decider_base
   /modules/planning/tasks/deciders/lane_change_decider)
@@ -20,25 +20,25 @@ add_library(st_boundary_mapper
   speed_limit_decider.h
   st_boundary_mapper.h)
 target_link_libraries(st_boundary_mapper
-  /modules/common/configs:vehicle_config_helper
-  /modules/common/configs/proto:vehicle_config_proto
-  /modules/common/proto:pnc_point_proto
+  vehicle_config_helper
+  vehicle_config_proto
+  pnc_point_proto
   /modules/common/status
   /modules/map/pnc_map
   /modules/map/proto:map_proto
-  /modules/planning/common:frame
-  /modules/planning/common:obstacle
-  /modules/planning/common:path_decision
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:speed_limit
-  /modules/planning/common/path:discretized_path
-  /modules/planning/common/path:frenet_frame_path
-  /modules/planning/common/path:path_data
-  /modules/planning/common/speed:st_boundary
-  /modules/planning/common/trajectory:discretized_trajectory
-  /modules/planning/proto:planning_config_proto
-  /modules/planning/proto:planning_proto
-  /modules/planning/proto:speed_bounds_decider_config_proto
+  frame
+  obstacle
+  path_decision
+  planning_gflags
+  speed_limit
+  discretized_path
+  frenet_frame_path
+  path_data
+  st_boundary
+  discretized_trajectory
+  planning_config_proto
+  planning_proto
+  speed_bounds_decider_config_proto
   /modules/planning/reference_line)
 
 

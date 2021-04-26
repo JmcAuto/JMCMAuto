@@ -22,27 +22,27 @@ add_library(traffic_rules
   traffic_rule.h
   yield_sign.h)
 target_link_libraries(traffic_rules
-  /modules/common/util:factory
-  /modules/common/util:map_util
+  factory
+  map_util
   /modules/perception/proto:perception_proto
-  /modules/planning/common:frame
-  /modules/planning/common:planning_context
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:reference_line_info
-  /modules/planning/common/util:common_lib
-  /modules/planning/proto:planning_config_proto
-  /modules/planning/proto:planning_proto
-  /modules/planning/proto:traffic_rule_config_proto)
+  frame
+  planning_context
+  planning_gflags
+  reference_line_info
+  common_lib
+  planning_config_proto
+  planning_proto
+  traffic_rule_config_proto)
 add_library(traffic_decider
   traffic_decider.cc
   traffic_decider.h)
 target_link_libraries(traffic_decider
   traffic_rules
   /modules/common/status
-  /modules/common/vehicle_state:vehicle_state_provider
-  /modules/planning/common:frame
-  /modules/planning/common:reference_line_info
-  /modules/planning/proto:traffic_rule_config_proto
+  vehicle_state_provider
+  frame
+  reference_line_info
+  traffic_rule_config_proto
   /modules/planning/tasks:task)
 
 

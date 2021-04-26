@@ -10,16 +10,16 @@ add_library(quartic_polynomial_curve1d
   quartic_polynomial_curve1d.h)
 target_link_libraries(quartic_polynomial_curve1d
   polynomial_curve1d
-  /modules/common:log
-  /modules/common/util:string_util
+  log
+  string_util
   com_google_absl//absl/strings)
 add_library(quintic_polynomial_curve1d
   quintic_polynomial_curve1d.cc
   quintic_polynomial_curve1d.h)
 target_link_libraries(quintic_polynomial_curve1d
   polynomial_curve1d
-  /modules/common:log
-  /modules/common/util:string_util
+  log
+  string_util
   com_google_absl//absl/strings)
 add_library(cubic_polynomial_curve1d
   cubic_polynomial_curve1d.cc
@@ -27,7 +27,7 @@ add_library(cubic_polynomial_curve1d
 target_link_libraries(cubic_polynomial_curve1d
   polynomial_curve1d
   quartic_polynomial_curve1d
-  /modules/common:log
+  log
   com_google_absl//absl/strings)
 add_library(quintic_spiral_path
   quintic_spiral_path.cc
@@ -35,7 +35,7 @@ add_library(quintic_spiral_path
   quintic_spiral_path_with_derivation.h)
 target_link_libraries(quintic_spiral_path
   quintic_polynomial_curve1d
-  /modules/common:log
+  log
   /modules/common/math
   com_google_absl//absl/strings)
 add_library(piecewise_quintic_spiral_path
@@ -43,7 +43,7 @@ add_library(piecewise_quintic_spiral_path
   piecewise_quintic_spiral_path.h)
 target_link_libraries(piecewise_quintic_spiral_path
   quintic_spiral_path
-  /modules/common:log
+  log
   /modules/common/math
   com_google_absl//absl/strings)
 

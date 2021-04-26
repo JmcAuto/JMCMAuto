@@ -5,8 +5,8 @@ add_library(piecewise_jerk_problem
   piecewise_jerk_problem.cc
   piecewise_jerk_problem.h)
 target_link_libraries(piecewise_jerk_problem
-  /modules/common:log
-  /modules/planning/common:planning_gflags
+  log
+  planning_gflags
   osqp)
 add_library(piecewise_jerk_path_problem
   piecewise_jerk_path_problem.cc

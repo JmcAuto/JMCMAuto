@@ -6,8 +6,8 @@ add_library(smoother
   smoother.h)
 target_link_libraries(smoother
   /modules/common/status
-  /modules/planning/common:frame
-  /modules/planning/common:planning_gflags
-  /modules/planning/proto:planning_proto)
+  frame
+  planning_gflags
+  planning_proto)
 
 

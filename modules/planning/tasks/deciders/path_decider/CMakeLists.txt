@@ -5,16 +5,16 @@ add_library(path_decider
   path_decider.cc
   path_decider.h)
 target_link_libraries(path_decider
-  /modules/common/configs:vehicle_config_helper
+  vehicle_config_helper
   /modules/common/math
   /modules/common/status
   /modules/map/proto:map_proto
-  /modules/planning/common:frame
-  /modules/planning/common:path_decision
-  /modules/planning/common:planning_gflags
-  /modules/planning/common:reference_line_info
-  /modules/planning/proto:planning_config_proto
-  /modules/planning/proto:planning_proto
+  frame
+  path_decision
+  planning_gflags
+  reference_line_info
+  planning_config_proto
+  planning_proto
   /modules/planning/tasks:task)
 
 

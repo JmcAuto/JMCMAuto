@@ -9,8 +9,8 @@ add_library(valet_parking
   stage_parking.h
   valet_parking_scenario.h)
 target_link_libraries(valet_parking
-  /modules/common:log
-  /modules/planning/proto:planning_proto
+  log
+  planning_proto
   /modules/planning/scenarios:scenario)
 
 

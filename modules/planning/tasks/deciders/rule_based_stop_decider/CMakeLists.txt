@@ -6,9 +6,9 @@ add_library(rule_based_stop_decider
   rule_based_stop_decider.h)
 target_link_libraries(rule_based_stop_decider
   /modules/common/status
-  /modules/planning/common:frame
-  /modules/planning/common:planning_gflags
-  /modules/planning/common/util:common_lib
+  frame
+  planning_gflags
+  common_lib
   /modules/planning/tasks:task
   /modules/planning/tasks/deciders:decider_base
   /modules/planning/tasks/deciders/lane_change_decider)
