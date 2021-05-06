@@ -17,37 +17,7 @@ using jmc_auto::common::time::Clock;
 using jmc_auto::control::ControlCommand;
 using jmc_auto::control::PadMessage;
 
-static void PrintKeycode() {
-    system("clear");
-    printf("=====================    KEYBOARD MAP   ===================\n");
-    printf("HELP:               [%c]     |\n", KEYCODE_HELP);
-    printf("Set Action      :   [%c]+Num\n", KEYCODE_MODE);
-    printf("                     0 RESET ACTION\n");
-    printf("                     1 START ACTION\n");
-    printf("\n-----------------------------------------------------------\n");
-    printf("Set Gear:           [%c]+Num\n", KEYCODE_SETG1);
-    printf("                     0 GEAR_NEUTRAL\n");
-    printf("                     1 GEAR_DRIVE\n");
-    printf("                     2 GEAR_REVERSE\n");
-    printf("                     3 GEAR_PARKING\n");
-    printf("                     4 GEAR_LOW\n");
-    printf("                     5 GEAR_INVALID\n");
-    printf("                     6 GEAR_NONE\n");
-    printf("\n-----------------------------------------------------------\n");
-    printf("Throttle/Speed up:  [%c]     |  Set Throttle:       [%c]+Num\n",
-           KEYCODE_UP1, KEYCODE_SETT1);
-    printf("Brake/Speed down:   [%c]     |  Set Brake:          [%c]+Num\n",
-           KEYCODE_DN1, KEYCODE_SETB1);
-    printf("Steer LEFT:         [%c]     |  Steer RIGHT:        [%c]\n",
-           KEYCODE_LF1, KEYCODE_RT1);
-    printf("Parkinig Brake:     [%c]     |  Emergency Stop      [%c]\n",
-           KEYCODE_PKBK, KEYCODE_ESTOP);
-    printf("\n-----------------------------------------------------------\n");
-    printf("Exit: Ctrl + C, then press enter to normal terminal\n");
-    printf("===========================================================\n");
-}
-
-void KeyboardLoopThreadFunc() {
+void Teleop::KeyboardLoopThreadFunc() {
     char c = 0;
     int32_t level = 0;
     double brake = 0;
@@ -62,7 +32,6 @@ void KeyboardLoopThreadFunc() {
     bool parking_brake = false;
     Chassis::GearPosition gear = Chassis::GEAR_INVALID;
     PadMessage pad_msg;
-    ControlCommand &control_command_ = control_command();
 
     // get the console in raw mode
     tcgetattr(kfd_, &cooked_);
@@ -75,7 +44,7 @@ void KeyboardLoopThreadFunc() {
     puts("Teleop:\nReading from keyboard now.");
     puts("---------------------------");
     puts("Use arrow keys to drive the car.");
-    while (IsRunning()) {
+    while (is_running_) {
         // get the next event from the keyboard
         if (read(kfd_, &c, 1) < 0) {
             perror("read():");
@@ -243,7 +212,7 @@ void KeyboardLoopThreadFunc() {
     return;
 } // end of keyboard loop thread
 
-Chassis::GearPosition GetGear(int32_t gear) {
+Chassis::GearPosition Teleop::GetGear(int32_t gear) {
     switch (gear) {
     case 0:
         return Chassis::GEAR_NEUTRAL;
@@ -264,7 +233,7 @@ Chassis::GearPosition GetGear(int32_t gear) {
     }
 }
 
-void GetPadMessage(PadMessage *pad_msg, int32_t int_action) {
+void Teleop::GetPadMessage(PadMessage *pad_msg, int32_t int_action) {
     jmc_auto::control::DrivingAction action =
         jmc_auto::control::DrivingAction::RESET;
     switch (int_action) {
@@ -284,7 +253,7 @@ void GetPadMessage(PadMessage *pad_msg, int32_t int_action) {
     return;
 }
 
-double GetCommand(double val, double inc, double limit) {
+double Teleop::GetCommand(double val, double inc, double limit) {
     val += inc;
     if (val > limit) {
         val = limit;
@@ -294,13 +263,13 @@ double GetCommand(double val, double inc, double limit) {
     return val;
 }
 
-void Send() {
+void Teleop::Send() {
     AdapterManager::FillControlCommandHeader(&control_command_);
     AdapterManager::PublishControlCommand(control_command_);
     ADEBUG << "Control Command send OK:" << control_command_.ShortDebugString();
 }
 
-void ResetControlCommand() {
+void Teleop::ResetControlCommand() {
     control_command_.Clear();
     control_command_.set_throttle(0.0);
     control_command_.set_brake(0.0);
@@ -317,11 +286,11 @@ void ResetControlCommand() {
         VehicleSignal::TURN_NONE);
 }
 
-void OnChassis(const Chassis &chassis) { Send(); }
+void Teleop::OnChassis(const Chassis &chassis) { Send(); }
 
-Teleop::Teleop() { ResetControlCommand(); }
+//Teleop::Teleop() { ResetControlCommand(); }
 
-void signal_handler(int32_t signal_num) {
+void Teleop::signal_handler(int32_t signal_num) {
     if (signal_num != SIGINT) {
         // only response for ctrl + c
         return;
@@ -335,11 +304,10 @@ void signal_handler(int32_t signal_num) {
     // ros::shutdown();
 }
 
-bool IsRunning() const { return is_running_; }
-
 std::string Teleop::Name() const { return FLAGS_teleop_module_name; }
 
 Status Teleop::Init() {
+    //signal(SIGINT, signal_handler);
     AdapterManager::Init(FLAGS_teleop_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";
     return Status::OK();
@@ -358,6 +326,7 @@ Status Teleop::Start() {
                       "Failed to create can client receiver thread.");
     }
     PrintKeycode();
+    while(1) {}
     return Status::OK();
 }
 

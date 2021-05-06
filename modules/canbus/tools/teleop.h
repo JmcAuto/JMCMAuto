@@ -69,7 +69,7 @@ class Teleop : public jmc_auto::common::JmcAutoApp {
      * @brief obtain module name
      * @return module name
      */
-    teleop();
+    void teleop() { ResetControlCommand(); }
 
     std::string Name() const override;
 
@@ -91,18 +91,46 @@ class Teleop : public jmc_auto::common::JmcAutoApp {
     void Stop() override;
 
   private:
-    static void PrintKeycode();
+static void PrintKeycode() {
+    system("clear");
+    printf("=====================    KEYBOARD MAP   ===================\n");
+    printf("HELP:               [%c]     |\n", KEYCODE_HELP);
+    printf("Set Action      :   [%c]+Num\n", KEYCODE_MODE);
+    printf("                     0 RESET ACTION\n");
+    printf("                     1 START ACTION\n");
+    printf("\n-----------------------------------------------------------\n");
+    printf("Set Gear:           [%c]+Num\n", KEYCODE_SETG1);
+    printf("                     0 GEAR_NEUTRAL\n");
+    printf("                     1 GEAR_DRIVE\n");
+    printf("                     2 GEAR_REVERSE\n");
+    printf("                     3 GEAR_PARKING\n");
+    printf("                     4 GEAR_LOW\n");
+    printf("                     5 GEAR_INVALID\n");
+    printf("                     6 GEAR_NONE\n");
+    printf("\n-----------------------------------------------------------\n");
+    printf("Throttle/Speed up:  [%c]     |  Set Throttle:       [%c]+Num\n",
+           KEYCODE_UP1, KEYCODE_SETT1);
+    printf("Brake/Speed down:   [%c]     |  Set Brake:          [%c]+Num\n",
+           KEYCODE_DN1, KEYCODE_SETB1);
+    printf("Steer LEFT:         [%c]     |  Steer RIGHT:        [%c]\n",
+           KEYCODE_LF1, KEYCODE_RT1);
+    printf("Parkinig Brake:     [%c]     |  Emergency Stop      [%c]\n",
+           KEYCODE_PKBK, KEYCODE_ESTOP);
+    printf("\n-----------------------------------------------------------\n");
+    printf("Exit: Ctrl + C, then press enter to normal terminal\n");
+    printf("===========================================================\n");
+}
     void KeyboardLoopThreadFunc();
-    Chassis::GearPosition GetGear(int32_t gear);
-    void GetPadMessage(PadMessage *pad_msg, int32_t int_action);
+    jmc_auto::canbus::Chassis::GearPosition GetGear(int32_t gear);
+    void GetPadMessage(jmc_auto::control::PadMessage *pad_msg, int32_t int_action);
     double GetCommand(double val, double inc, double limit);
     void Send();
     void ResetControlCommand();
-    void OnChassis(const Chassis &chassis);
+    void OnChassis(const jmc_auto::canbus::Chassis &chassis);
     void signal_handler(int32_t signal_num);
 
     std::unique_ptr<std::thread> keyboard_thread_;
-    ControlCommand control_command_;
+    jmc_auto::control::ControlCommand control_command_;
     bool is_running_ = false;
 };
 
