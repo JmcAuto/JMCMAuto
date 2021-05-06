@@ -41,8 +41,8 @@ namespace jmc_auto
         const int32_t kMaxFailAttempt = 25;
         const int32_t CHECK_RESPONSE_STEER_UNIT_FLAG = 1;
         const int32_t CHECK_RESPONSE_SPEED_UNIT_FLAG = 2;
-        const int32_t CHECK_RESPONSE_PAM_ESP_UNIT_FLAG = 3;
-        const int32_t CHECK_RESPONSE_PAM_EPS_UNIT_FLAG = 3;
+        const int32_t CHECK_RESPONSE_APA_UNIT_FLAG = 4;
+        const int32_t CHECK_RESPONSE_ESPPAM_UNIT_FLAG = 8;
       } // namespace
 
       ErrorCode Cx75Controller::Init(
@@ -154,15 +154,15 @@ namespace jmc_auto
           return ErrorCode::CANBUS_ERROR;
         }
 
-        //can_sender_->AddMessage(Pam0x270270::ID, pam_0x270_270_, false);
+        can_sender_->AddMessage(Pam0x270270::ID, pam_0x270_270_, false,6);
         //can_sender_->AddMessage(Pam0x271271::ID, pam_0x271_271_, false);
         //can_sender_->AddMessage(Pam0x272272::ID, pam_0x272_272_, false);
-        can_sender_->AddMessage(Mrr0x238238::ID, mrr_0x238_238_, false,6);
-        can_sender_->AddMessage(Mrr0x239239::ID, mrr_0x239_239_, false,6);
+        // can_sender_->AddMessage(Mrr0x238238::ID, mrr_0x238_238_, false,6);
+        // can_sender_->AddMessage(Mrr0x239239::ID, mrr_0x239_239_, false,6);
         //can_sender_->AddMessage(Mrr0x246246::ID, mrr_0x246_246_, false);
         //can_sender_->AddMessage(Mrrfrobj0x279279::ID, mrr_frobj_0x279_279_, false);
         //can_sender_->AddMessage(Mrrfrobj0x480480::ID, mrr_frobj_0x480_480_, false);
-        can_sender_->AddMessage(Ipm0x245245::ID, ipm_0x245_245_, false,6);
+        // can_sender_->AddMessage(Ipm0x245245::ID, ipm_0x245_245_, false,6);
         //can_sender_->AddMessage(Ipmleftline0x278278::ID, ipm_leftline_0x278_278_, false);
         //can_sender_->AddMessage(Ipmrightline0x490490::ID, ipm_rightline_0x490_490_, false);
 
@@ -187,6 +187,7 @@ namespace jmc_auto
         }
         const auto &update_func = [this] { SecurityDogThreadFunc(); };
         thread_.reset(new std::thread(update_func));
+
         return true;
       }
 
@@ -230,6 +231,7 @@ namespace jmc_auto
 		AINFO<<"EPS_LKAControlStatus:"<<chassis_detail.cx75().eps_advanced_0x176_176().eps_lkacontrolstatus();
 		AINFO<<"ESP_VLC_Active:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_active();
 		AINFO<<"ESP_VLC_Available:"<<chassis_detail.cx75().esp_vlc_0x223_223().esp_vlc_available();
+		AINFO<<"Eps_epspamstsType:"<<chassis_detail.cx75().eps_advanced_0x176_176().eps_epspamsts();
         //ABS_SPEED
         if (chassis_detail.cx75().has_abs_sts_0x221_221() && chassis_detail.cx75().abs_sts_0x221_221().has_abs_vehspdlgt() &&
             chassis_detail.cx75().abs_sts_0x221_221().abs_vehspdlgtstatus() == Abs_sts_0x221_221::ABS_VEHSPDLGTSTATUS_VALID)
@@ -615,10 +617,17 @@ namespace jmc_auto
         chassis_.set_esp_vlcapa_available(static_cast<int>(
                 chassis_detail.cx75().esp_vlc_0x223_223().esp_vlcapa_available()));   
       }
+	   if (chassis_detail.cx75().has_eps_advanced_0x176_176())
+      {
+        chassis_.set_eps_epspamsts(static_cast<int>(
+                chassis_detail.cx75().eps_advanced_0x176_176().eps_epspamsts()));
+      }
       if (chassis_detail.cx75().has_eps_advanced_0x176_176())
       {
         chassis_.set_eps_lkacontrolstatus(static_cast<int>(
                 chassis_detail.cx75().eps_advanced_0x176_176().eps_lkacontrolstatus())); 
+        chassis_.set_eps_epspaminh(static_cast<int>(
+                chassis_detail.cx75().eps_advanced_0x176_176().eps_epspaminh()));
       }
       if (chassis_detail.cx75().has_esp_status_0x243_243())
       {
@@ -646,23 +655,42 @@ namespace jmc_auto
           return ErrorCode::OK;
         }
 
-        if (chassis_.esp_vlc_available()==0)
+        // if (chassis_.esp_vlc_available()==0)
+        // {
+        //   AERROR<<"esp_vlc is not available,check esp ErrorCode";
+        //   return ErrorCode::CANBUS_ERROR;
+        // }
+        // if (chassis_.eps_lkacontrolstatus()==3)
+        // {
+        //   AERROR<<"eps_lka is not available,check eps ErrorCode";
+        //   return ErrorCode::CANBUS_ERROR;
+        // }
+
+        if (chassis_.esp_vlcapa_available()==0)
         {
-          AERROR<<"esp_vlc is not available,check esp ErrorCode";
+          AERROR<<"esp_vlcapa is not available,check esp ErrorCode";
           return ErrorCode::CANBUS_ERROR;
         }
-        if (chassis_.eps_lkacontrolstatus()==3)
-        {
-          AERROR<<"eps_lka is not available,check eps ErrorCode";
-          return ErrorCode::CANBUS_ERROR;
-        }
-        
-        mrr_0x239_239_->set_acc_state(Mrr_0x239_239::ACC_STATE_ACTIVE_CONTROL_MODE);
-        ipm_0x245_245_->set_ipm_laneassit_torquereqstatus(Ipm_0x245_245::IPM_LANEASSIT_TORQUEREQSTATUS_TORQUE_REQUEST);
+		//if (chassis_.eps_epspamsts()==1)
+        //{
+        //  AERROR<<"eps_epspamsts is not available,check esp ErrorCode";
+        //  return ErrorCode::CANBUS_ERROR;
+        //}
+        // mrr_0x239_239_->set_acc_state(Mrr_0x239_239::ACC_STATE_ACTIVE_CONTROL_MODE);
+        // ipm_0x245_245_->set_ipm_laneassit_torquereqstatus(Ipm_0x245_245::IPM_LANEASSIT_TORQUEREQSTATUS_TORQUE_REQUEST);
+        pam_0x270_270_->set_pam_brakemodests(Pam_0x270_270::PAM_BRAKEMODESTS_ACTIVE);
+        pam_0x270_270_->set_pam_brakefunctionmode(Pam_0x270_270::PAM_BRAKEFUNCTIONMODE_AUTOMATICPARK);//需不需要
+        //pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_EPS_CONTROL);//需不需要
+		    pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_CONTROL_EPS_REQUEST);
+        pam_0x270_270_->set_stopstartinhibit_apa(Pam_0x270_270::STOPSTARTINHIBIT_APA_TRUE);
+
+
         // mrr_0x239_239_->set_acc_driveoff(Mrr_0x239_239::ACC_DRIVEOFF_DEMAND);
         can_sender_->Update();
+        // const int32_t flag =
+        //     CHECK_RESPONSE_STEER_UNIT_FLAG | CHECK_RESPONSE_SPEED_UNIT_FLAG;
         const int32_t flag =
-            CHECK_RESPONSE_STEER_UNIT_FLAG | CHECK_RESPONSE_SPEED_UNIT_FLAG;
+            CHECK_RESPONSE_APA_UNIT_FLAG | CHECK_RESPONSE_ESPPAM_UNIT_FLAG;
         /*if (!CheckResponse(flag, true))
         {
           AERROR << "Failed to switch to COMPLETE_AUTO_DRIVE mode.";
@@ -771,7 +799,7 @@ namespace jmc_auto
 
         //can_sender_->Update();
         const int32_t flag =
-            CHECK_RESPONSE_PAM_ESP_UNIT_FLAG | CHECK_RESPONSE_PAM_EPS_UNIT_FLAG;
+            CHECK_RESPONSE_APA_UNIT_FLAG ;
         if (CheckResponse(flag, true) == false)
         {
           AERROR << "Failed to switch to APAMode mode.";
@@ -802,9 +830,9 @@ namespace jmc_auto
       void Cx75Controller::Acceleration(double acc)
       {
         if (!(driving_mode() == Chassis::COMPLETE_AUTO_DRIVE ||
-              driving_mode() == Chassis::AUTO_STEER_ONLY))
+              driving_mode() == Chassis::AUTO_SPEED_ONLY))
         {
-          AINFO << "this drive mode no need to set gear.";
+          AINFO << "this drive mode no need to set Acceleration.";
           return;
         }
         mrr_0x238_238_->set_acc_tgtax(acc);
@@ -827,12 +855,13 @@ namespace jmc_auto
       // NEUTRAL, REVERSE, DRIVE
       void Cx75Controller::Gear(Chassis::GearPosition gear_position)
       {
-        if (!driving_mode() == Chassis::APA_MODE)
+        if (!(driving_mode() == Chassis::COMPLETE_AUTO_DRIVE ||
+              driving_mode() == Chassis::AUTO_SPEED_ONLY))
         {
-          AINFO << "The current driving mode does not need to set steer angle.";
+          AINFO << "this drive mode no need to set gear.";
           return;
         }
-
+	    AERROR<<"gear_position"<<gear_position;
         switch (gear_position)
         {
         case Chassis::GEAR_NEUTRAL:
@@ -909,28 +938,48 @@ namespace jmc_auto
           AINFO << "The current driving mode does not need to set steer.";
           return;
         }
-        AINFO << "SteerTorque��" << angle;
-        ipm_0x245_245_->set_ipm_laneassit_torquereq(angle);
-        ipm_0x245_245_->set_ipm_laneassit_torquevalidity(Ipm_0x245_245::IPM_LANEASSIT_TORQUEVALIDITY_VALID);
+         AERROR << "Steerangle" << angle;
+        // ipm_0x245_245_->set_ipm_laneassit_torquereq(angle);
+        // ipm_0x245_245_->set_ipm_laneassit_torquevalidity(Ipm_0x245_245::IPM_LANEASSIT_TORQUEVALIDITY_VALID);
+		// if (chassis_.eps_epspamsts()==1)
+    //     {
+		//   AERROR<<"1";
+    //       pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_CONTROL_EPS_REQUEST);
+    //     }
+		// else if (chassis_.eps_epspamsts()==4||chassis_.eps_epspamsts()==2)
+    //     {
+		// 	AERROR<<"2and4";
+    //       pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_EPS_CONTROL);
+    //     }
+		// else 
+    //     {
+		// 	AERROR<<"eps erro";
+    //       pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_NO_REQUEST);
+    //     }
+        pam_0x270_270_->set_pam_trgtepsstrgwhlang(angle);
       }
 
       void Cx75Controller::PamStopDistance(int distance)
       {
-        if (!driving_mode() == Chassis::APA_MODE)
+        if (!(driving_mode() == Chassis::COMPLETE_AUTO_DRIVE ||
+              driving_mode() == Chassis::AUTO_SPEED_ONLY))
         {
-          AINFO << "The current driving mode does not need to set steer angle.";
+          AINFO << "this drive mode no need to set PamStopDistance.";
           return;
         }
         pam_0x270_270_->set_pam_esp_stop_distance(distance);
+		AERROR<<"distance "<<distance;
       }
 
       void Cx75Controller::SpeedTarget(float speed)
       {
-        if (!driving_mode() == Chassis::APA_MODE)
+        if (!(driving_mode() == Chassis::COMPLETE_AUTO_DRIVE ||
+              driving_mode() == Chassis::AUTO_SPEED_ONLY))
         {
-          AINFO << "The current driving mode does not need to set steer angle.";
+          AINFO << "this drive mode no need to set SpeedTarget.";
           return;
         }
+		AERROR<<"speed "<<speed;
         pam_0x270_270_->set_pam_esp_speed_target(speed);
       }
       // steering with new angle speed
@@ -1042,15 +1091,48 @@ namespace jmc_auto
         int64_t end = 0;
         while (can_sender_->IsRunning())
         {
+          
+
           start = ::jmc_auto::common::time::AsInt64<::jmc_auto::common::time::micros>(
               ::jmc_auto::common::time::Clock::Now());
           const Chassis::DrivingMode mode = driving_mode();
+          //循环验证转向状态，切换转向状态，防止EPS一直报错
+          if (mode == Chassis::COMPLETE_AUTO_DRIVE ||
+               mode == Chassis::AUTO_STEER_ONLY) 
+               {
+                 AERROR<<"EPS错误码"<<chassis_.eps_epspaminh();
+                 AERROR<<"EPS状态"<<chassis_.eps_epspamsts();
+                 if (chassis_.eps_epspamsts() == 1)
+                 {
+                   AERROR << "eps ready";
+                   pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_CONTROL_EPS_REQUEST);
+                 }
+                 else if (chassis_.eps_epspamsts() == 4)
+                 {
+                   AERROR << "eps ok";
+                   pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_EPS_CONTROL);
+                 }
+                 else if (chassis_.eps_epspamsts() == 2)
+                 {
+                   AERROR << "eps very good";
+                 }
+                 else if (chassis_.eps_epspamsts() == 3)                 
+                 {
+                   AERROR << "eps erro";
+                   pam_0x270_270_->set_pam_cmdepssts(Pam_0x270_270::PAM_CMDEPSSTS_NO_REQUEST);
+				   AERROR <<"chassis_.steering_percentage:"<<chassis_.steering_percentage();
+                 }
+               }
+
+
+         
           bool emergency_mode = false;
 
           // 1. horizontal control check
           if ((mode == Chassis::COMPLETE_AUTO_DRIVE ||
                mode == Chassis::AUTO_STEER_ONLY) &&
-              CheckResponse(CHECK_RESPONSE_STEER_UNIT_FLAG, false) == false)
+              // CheckResponse(CHECK_RESPONSE_STEER_UNIT_FLAG, false) == false)
+              CheckResponse(CHECK_RESPONSE_ESPPAM_UNIT_FLAG, false) == false)
           {
             ++horizontal_ctrl_fail;
             if (horizontal_ctrl_fail >= kMaxFailAttempt)
@@ -1068,7 +1150,8 @@ namespace jmc_auto
           // 2. vertical control check
           if ((mode == Chassis::COMPLETE_AUTO_DRIVE ||
                mode == Chassis::AUTO_SPEED_ONLY) &&
-              CheckResponse(CHECK_RESPONSE_SPEED_UNIT_FLAG, false) == false)
+              // CheckResponse(CHECK_RESPONSE_SPEED_UNIT_FLAG, false) == false)
+              CheckResponse(CHECK_RESPONSE_APA_UNIT_FLAG, false) == false)
           {
             ++vertical_ctrl_fail;
 			AINFO<<"vertical_ctrl_fail:"<<vertical_ctrl_fail;
@@ -1118,6 +1201,8 @@ namespace jmc_auto
         bool is_eps_online = false;
         bool is_vcu_online = false;
         bool is_esp_online = false;
+        bool is_apa_online=false;
+        bool is_epspam_online=false;
 
         do
         {
@@ -1146,7 +1231,21 @@ namespace jmc_auto
             // check_ok = check_ok && is_vcu_online && is_esp_online;
             check_ok = check_ok && is_esp_online;
           }
-          AINFO << "check_ok." << check_ok << "  is_vcu_online." << is_vcu_online << "  is_esp_online." << is_esp_online;
+          if (flags & CHECK_RESPONSE_APA_UNIT_FLAG){
+            is_apa_online = chassis_detail.has_check_response() &&
+                            chassis_detail.check_response().has_is_apa_online() &&
+                            chassis_detail.check_response().is_apa_online();
+            check_ok = check_ok && is_apa_online;
+          }
+          
+          if (flags & CHECK_RESPONSE_ESPPAM_UNIT_FLAG){
+            is_epspam_online = chassis_detail.has_check_response() &&
+                            chassis_detail.check_response().has_is_epspam_online() &&
+                            chassis_detail.check_response().is_epspam_online();
+            check_ok = check_ok && is_epspam_online;
+          }
+
+          AINFO << "check_ok." << check_ok << "  is_vcu_online." << is_vcu_online << "  is_esp_online." << is_esp_online<<" is_apa_online."<<is_apa_online<<"is_epspam_online."<<is_epspam_online;
           if (check_ok)
           {
 		    //CANBUS正常时，恢复正常

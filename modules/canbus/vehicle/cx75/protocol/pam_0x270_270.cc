@@ -53,10 +53,11 @@ void Pam0x270270::UpdateData(uint8_t* data) {
 
 void Pam0x270270::Reset() {
   // TODO you should check this manually
-  pam_esp_target_gear_request_ = Pam_0x270_270::PAM_ESP_TARGET_GEAR_REQUEST_NO_REQUEST;
+  pam_esp_target_gear_request_ = Pam_0x270_270::PAM_ESP_TARGET_GEAR_REQUEST_PARK;
   pam_brakefunctionmode_ = Pam_0x270_270::PAM_BRAKEFUNCTIONMODE_NO_ACTION;
   stopstartinhibit_apa_ = Pam_0x270_270::STOPSTARTINHIBIT_APA_FALSE;
   pam_apaf_ = Pam_0x270_270::PAM_APAF_NORMAL;
+  //pam_cmdepssts_ = Pam_0x270_270::PAM_CMDEPSSTS_CONTROL_EPS_REQUEST;
   pam_cmdepssts_ = Pam_0x270_270::PAM_CMDEPSSTS_NO_REQUEST;
   pam_sts_ = Pam_0x270_270::PAM_STS_OFF;
   pam_brakemodests_ = Pam_0x270_270::PAM_BRAKEMODESTS_INIT;

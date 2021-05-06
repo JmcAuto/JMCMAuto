@@ -45,6 +45,8 @@ void Epsadvanced0x176176::Parse(const std::uint8_t* bytes, int32_t length,
   chassis->mutable_cx75()->mutable_eps_advanced_0x176_176()->set_eps_torsionbartorque(eps_torsionbartorque(bytes, length));
   chassis->mutable_check_response()->set_is_eps_online(
       eps_lkacontrolstatus(bytes, length) == 1);
+  chassis->mutable_check_response()->set_is_epspam_online(
+      eps_epspamsts(bytes, length) == 2||eps_epspamsts(bytes, length) == 4);
 }
 
 // config detail: {'name': 'eps_lkaresponsetorque', 'enum': {2047: 'EPS_LKARESPONSETORQUE_INVALID'}, 'precision': 0.01, 'len': 11, 'is_signed_var': False, 'offset': -10.24, 'physical_range': '[-10.24|10.22]', 'bit': 11, 'type': 'enum', 'order': 'motorola', 'physical_unit': 'Nm'}
@@ -108,13 +110,22 @@ Eps_advanced_0x176_176::Eps_lkacontrolstatusType Epsadvanced0x176176::eps_lkacon
 }
 
 // config detail: {'name': 'eps_epspaminh', 'enum': {0: 'EPS_EPSPAMINH_NORMAL_OPERATION', 1: 'EPS_EPSPAMINH_OVER_SPEED', 2: 'EPS_EPSPAMINH_DRIVER_INTERFERENCE', 4: 'EPS_EPSPAMINH_ABNORMAL_CAN_INPUT', 16: 'EPS_EPSPAMINH_EPS_FAILURE', 8: 'EPS_EPSPAMINH_EXCESS_ANGLE_DEVIATION'}, 'precision': 1.0, 'len': 8, 'is_signed_var': False, 'offset': 0.0, 'physical_range': '[0|255]', 'bit': 39, 'type': 'enum', 'order': 'motorola', 'physical_unit': ''}
-Eps_advanced_0x176_176::Eps_epspaminhType Epsadvanced0x176176::eps_epspaminh(const std::uint8_t* bytes, int32_t length) const {
+//Eps_advanced_0x176_176::Eps_epspaminhType Epsadvanced0x176176::eps_epspaminh(const std::uint8_t* bytes, int32_t length) const {
+//  Byte t0(bytes + 4);
+//  int32_t x = t0.get_byte(0, 8);
+
+//  Eps_advanced_0x176_176::Eps_epspaminhType ret =  static_cast<Eps_advanced_0x176_176::Eps_epspaminhType>(x);
+//  return ret;
+//}
+
+int32_t Epsadvanced0x176176::eps_epspaminh(const std::uint8_t* bytes, int32_t length) const {
   Byte t0(bytes + 4);
   int32_t x = t0.get_byte(0, 8);
 
-  Eps_advanced_0x176_176::Eps_epspaminhType ret =  static_cast<Eps_advanced_0x176_176::Eps_epspaminhType>(x);
+  int32_t ret = (x);
   return ret;
 }
+
 
 // config detail: {'name': 'rolling_counter_0x176', 'offset': 0.0, 'precision': 1.0, 'len': 4, 'is_signed_var': False, 'physical_range': '[0|15]', 'bit': 51, 'type': 'int', 'order': 'motorola', 'physical_unit': ''}
 int Epsadvanced0x176176::rolling_counter_0x176(const std::uint8_t* bytes, int32_t length) const {

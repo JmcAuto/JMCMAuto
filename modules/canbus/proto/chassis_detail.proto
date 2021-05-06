@@ -44,6 +44,8 @@ message CheckResponseSignal {
   optional bool is_scu_online = 5 [default = false];   // byd:0x35C
   optional bool is_switch_online = 6 [default = false];  // byd:0x133
   optional bool is_vcu_online = 7 [default = false];     //  qirui:0x400
+  optional bool is_apa_online = 8 [default = false];     //  cx756:0x223
+  optional bool is_epspam_online = 9 [default = false];     //  cx756:0x176
 }
 
 // Battery

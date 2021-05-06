@@ -84,7 +84,7 @@ message Chassis {
   optional float brake_percentage = 9 [default = nan];
   // Real gear location.
   // optional int32 gear_location = 10; deprecated use enum replace this [id 23]
-  // Real steering location.
+  // Real steering location.is deg angle
   optional float steering_percentage = 11 [default = nan];
   // Applied steering torque in [Nm].
   optional float steering_torque_nm = 12 [default = nan];
@@ -216,6 +216,8 @@ message Chassis {
   optional int32 esp_apa_gearboxenable=85;//apa换挡使能，0无请求，1换挡请求
   optional int32 esp_vlc_apactive=86;//APA下VLC状态激活标志位，0未激活，1激活
   optional int32 esp_vlcapa_available=87;//APA下VLC是否可用，0不可用，1可用
+    optional int32 eps_epspamsts=89;//转向状态
+	optional int32 eps_epspaminh=90;//eps错误状态
   //EPB状态0x243
   optional int32 esp_epbstatus=88;//0已经放下，1已经拉起，2正在放下，3正在拉起，4不知道，5错误
 

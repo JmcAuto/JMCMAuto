@@ -47,6 +47,8 @@ void Espvlc0x223223::Parse(const std::uint8_t* bytes, int32_t length,
   chassis->mutable_cx75()->mutable_esp_vlc_0x223_223()->set_esp_vlcengtorqreq(esp_vlcengtorqreq(bytes, length));
   chassis->mutable_check_response()->set_is_esp_online(
       esp_vlc_active(bytes, length) == 1);
+    chassis->mutable_check_response()->set_is_apa_online(
+      esp_vlc_apactive(bytes, length) == 1);
 }
 
 // config detail: {'name': 'esp_vlc_internaltargetacce', 'offset': -7.0, 'precision': 0.05, 'len': 8, 'is_signed_var': False, 'physical_range': '[-7|5.75]', 'bit': 23, 'type': 'double', 'order': 'motorola', 'physical_unit': ''}

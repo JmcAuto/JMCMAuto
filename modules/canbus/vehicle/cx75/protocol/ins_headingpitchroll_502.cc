@@ -66,7 +66,7 @@ double Insheadingpitchroll502::ins_rollangle(const std::uint8_t* bytes, int32_t 
 
   //x <<= 16;
   //x >>= 16;
-AINFO<<"ins_rollangle X:"<<x;
+//AINFO<<"ins_rollangle X:"<<x;
   double ret = x * 0.010986 + -360.000000;
   return ret;
 }
@@ -83,7 +83,7 @@ double Insheadingpitchroll502::ins_headingangle(const std::uint8_t* bytes, int32
 
   //x <<= 16;
   //x >>= 16;
-AINFO<<"ins_headingangle X:"<<x;
+//AINFO<<"ins_headingangle X:"<<x;
   double ret = x * 0.010986 + -360.000000;
   return ret;
 }

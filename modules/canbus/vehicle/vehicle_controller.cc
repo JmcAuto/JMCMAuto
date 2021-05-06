@@ -173,7 +173,12 @@ ErrorCode VehicleController::Update(const ControlCommand &command)
       driving_mode_ == Chassis::AUTO_SPEED_ONLY||
       driving_mode_ == Chassis::REMOTE_MODE)
   {
-    Acceleration(control_command.acceleration());
+    // Acceleration(control_command.acceleration());
+
+    Gear(control_command.gear_location());
+    SpeedTarget(control_command.speed());
+    PamStopDistance(control_command.pam_esp_stop_distance());
+
     // SetEpbBreak(control_command);
     // SetLimits();
   }
@@ -184,7 +189,9 @@ ErrorCode VehicleController::Update(const ControlCommand &command)
       driving_mode_ == Chassis::REMOTE_MODE)
   {
 	 
-   SteerTorque(control_command.steering_torque());
+  //  SteerTorque(control_command.steering_torque());
+      Steer(control_command.steering_angle());
+
 		  
  }
 

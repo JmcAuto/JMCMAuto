@@ -53,7 +53,9 @@ class Epsadvanced0x176176 : public ::jmc_auto::drivers::canbus::ProtocolData<
   Eps_advanced_0x176_176::Eps_lkacontrolstatusType eps_lkacontrolstatus(const std::uint8_t* bytes, const int32_t length) const;
 
   // config detail: {'name': 'EPS_EPSPAMInh', 'enum': {0: 'EPS_EPSPAMINH_NORMAL_OPERATION', 1: 'EPS_EPSPAMINH_OVER_SPEED', 2: 'EPS_EPSPAMINH_DRIVER_INTERFERENCE', 4: 'EPS_EPSPAMINH_ABNORMAL_CAN_INPUT', 16: 'EPS_EPSPAMINH_EPS_FAILURE', 8: 'EPS_EPSPAMINH_EXCESS_ANGLE_DEVIATION'}, 'precision': 1.0, 'len': 8, 'is_signed_var': False, 'offset': 0.0, 'physical_range': '[0|255]', 'bit': 39, 'type': 'enum', 'order': 'motorola', 'physical_unit': ''}
-  Eps_advanced_0x176_176::Eps_epspaminhType eps_epspaminh(const std::uint8_t* bytes, const int32_t length) const;
+  //Eps_advanced_0x176_176::Eps_epspaminhType eps_epspaminh(const std::uint8_t* bytes, const int32_t length) const;
+  
+  int eps_epspaminh(const std::uint8_t* bytes, const int32_t length) const;
 
   // config detail: {'name': 'Rolling_counter_0x176', 'offset': 0.0, 'precision': 1.0, 'len': 4, 'is_signed_var': False, 'physical_range': '[0|15]', 'bit': 51, 'type': 'int', 'order': 'motorola', 'physical_unit': ''}
   int rolling_counter_0x176(const std::uint8_t* bytes, const int32_t length) const;

@@ -1164,7 +1164,8 @@ message Eps_advanced_0x176_176 {
     // [] [0|3]
     optional Eps_lkacontrolstatusType eps_lkacontrolstatus = 6;
     // [] [0|255]
-    optional Eps_epspaminhType eps_epspaminh = 7;
+    //optional Eps_epspaminhType eps_epspaminh = 7;
+	optional int32 eps_epspaminh = 7;
     // [] [0|15]
     optional int32 rolling_counter_0x176 = 8;
     // [] [0|15]
