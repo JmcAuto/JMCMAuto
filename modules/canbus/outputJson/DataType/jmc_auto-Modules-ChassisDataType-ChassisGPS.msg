@@ -343,6 +343,14 @@
       "Type": "/HuaweiMDC/ImplementationDataType/Int32"
     },
     {
+      "Name": "eps_epspamsts",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
+      "Name": "eps_epspaminh",
+      "Type": "/HuaweiMDC/ImplementationDataType/Int32"
+    },
+    {
       "Name": "esp_epbstatus",
       "Type": "/HuaweiMDC/ImplementationDataType/Int32"
     },
