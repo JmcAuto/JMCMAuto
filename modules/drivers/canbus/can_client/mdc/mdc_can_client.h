@@ -69,7 +69,7 @@ class MdcCanClient : public CanClient {
     std::string GetErrorString(const int32_t status) override;
 
   private:
-    CanFrame cf;
+    //CanFrame cf;
     std::stringstream frame_info_;
 
     // canbus_config.json中的ChannelId
@@ -85,7 +85,7 @@ class MdcCanClient : public CanClient {
     void ServiceAvailabilityCallback(
         ara::com::ServiceHandleContainer<CanRxProxy::HandleType> handles,
         ara::com::FindServiceHandle handler);
-    void CanDataEventCallback(unsigned char channelID);
+    //void CanDataEventCallback(unsigned char channelID);
 };
 
 } // namespace can
