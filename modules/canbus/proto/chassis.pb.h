@@ -1182,6 +1182,20 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::int32 esp_epbstatus() const;
   void set_esp_epbstatus(::google::protobuf::int32 value);
 
+  // optional int32 eps_epspamsts = 89;
+  bool has_eps_epspamsts() const;
+  void clear_eps_epspamsts();
+  static const int kEpsEpspamstsFieldNumber = 89;
+  ::google::protobuf::int32 eps_epspamsts() const;
+  void set_eps_epspamsts(::google::protobuf::int32 value);
+
+  // optional int32 eps_epspaminh = 90;
+  bool has_eps_epspaminh() const;
+  void clear_eps_epspaminh();
+  static const int kEpsEpspaminhFieldNumber = 90;
+  ::google::protobuf::int32 eps_epspaminh() const;
+  void set_eps_epspaminh(::google::protobuf::int32 value);
+
   // optional float steering_torque_nm = 12 [default = nan];
   bool has_steering_torque_nm() const;
   void clear_steering_torque_nm();
@@ -1399,6 +1413,10 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void clear_has_esp_vlc_apactive();
   void set_has_esp_vlcapa_available();
   void clear_has_esp_vlcapa_available();
+  void set_has_eps_epspamsts();
+  void clear_has_eps_epspamsts();
+  void set_has_eps_epspaminh();
+  void clear_has_eps_epspaminh();
   void set_has_esp_epbstatus();
   void clear_has_esp_epbstatus();
 
@@ -1482,6 +1500,8 @@ class Chassis : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::int32 esp_vlc_apactive_;
   ::google::protobuf::int32 esp_vlcapa_available_;
   ::google::protobuf::int32 esp_epbstatus_;
+  ::google::protobuf::int32 eps_epspamsts_;
+  ::google::protobuf::int32 eps_epspaminh_;
   float steering_torque_nm_;
   float engine_rpm_;
   float speed_mps_;
@@ -2708,13 +2728,13 @@ inline void Chassis::set_engine_started(bool value) {
 
 // optional float engine_rpm = 4 [default = nan];
 inline bool Chassis::has_engine_rpm() const {
-  return (_has_bits_[2] & 0x00004000u) != 0;
+  return (_has_bits_[2] & 0x00010000u) != 0;
 }
 inline void Chassis::set_has_engine_rpm() {
-  _has_bits_[2] |= 0x00004000u;
+  _has_bits_[2] |= 0x00010000u;
 }
 inline void Chassis::clear_has_engine_rpm() {
-  _has_bits_[2] &= ~0x00004000u;
+  _has_bits_[2] &= ~0x00010000u;
 }
 inline void Chassis::clear_engine_rpm() {
   engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2732,13 +2752,13 @@ inline void Chassis::set_engine_rpm(float value) {
 
 // optional float speed_mps = 5 [default = nan];
 inline bool Chassis::has_speed_mps() const {
-  return (_has_bits_[2] & 0x00008000u) != 0;
+  return (_has_bits_[2] & 0x00020000u) != 0;
 }
 inline void Chassis::set_has_speed_mps() {
-  _has_bits_[2] |= 0x00008000u;
+  _has_bits_[2] |= 0x00020000u;
 }
 inline void Chassis::clear_has_speed_mps() {
-  _has_bits_[2] &= ~0x00008000u;
+  _has_bits_[2] &= ~0x00020000u;
 }
 inline void Chassis::clear_speed_mps() {
   speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2756,13 +2776,13 @@ inline void Chassis::set_speed_mps(float value) {
 
 // optional float odometer_m = 6 [default = nan];
 inline bool Chassis::has_odometer_m() const {
-  return (_has_bits_[2] & 0x00010000u) != 0;
+  return (_has_bits_[2] & 0x00040000u) != 0;
 }
 inline void Chassis::set_has_odometer_m() {
-  _has_bits_[2] |= 0x00010000u;
+  _has_bits_[2] |= 0x00040000u;
 }
 inline void Chassis::clear_has_odometer_m() {
-  _has_bits_[2] &= ~0x00010000u;
+  _has_bits_[2] &= ~0x00040000u;
 }
 inline void Chassis::clear_odometer_m() {
   odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2804,13 +2824,13 @@ inline void Chassis::set_fuel_range_m(::google::protobuf::int32 value) {
 
 // optional float throttle_percentage = 8 [default = nan];
 inline bool Chassis::has_throttle_percentage() const {
-  return (_has_bits_[2] & 0x00020000u) != 0;
+  return (_has_bits_[2] & 0x00080000u) != 0;
 }
 inline void Chassis::set_has_throttle_percentage() {
-  _has_bits_[2] |= 0x00020000u;
+  _has_bits_[2] |= 0x00080000u;
 }
 inline void Chassis::clear_has_throttle_percentage() {
-  _has_bits_[2] &= ~0x00020000u;
+  _has_bits_[2] &= ~0x00080000u;
 }
 inline void Chassis::clear_throttle_percentage() {
   throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2828,13 +2848,13 @@ inline void Chassis::set_throttle_percentage(float value) {
 
 // optional float brake_percentage = 9 [default = nan];
 inline bool Chassis::has_brake_percentage() const {
-  return (_has_bits_[2] & 0x00040000u) != 0;
+  return (_has_bits_[2] & 0x00100000u) != 0;
 }
 inline void Chassis::set_has_brake_percentage() {
-  _has_bits_[2] |= 0x00040000u;
+  _has_bits_[2] |= 0x00100000u;
 }
 inline void Chassis::clear_has_brake_percentage() {
-  _has_bits_[2] &= ~0x00040000u;
+  _has_bits_[2] &= ~0x00100000u;
 }
 inline void Chassis::clear_brake_percentage() {
   brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2852,13 +2872,13 @@ inline void Chassis::set_brake_percentage(float value) {
 
 // optional float steering_percentage = 11 [default = nan];
 inline bool Chassis::has_steering_percentage() const {
-  return (_has_bits_[2] & 0x00080000u) != 0;
+  return (_has_bits_[2] & 0x00200000u) != 0;
 }
 inline void Chassis::set_has_steering_percentage() {
-  _has_bits_[2] |= 0x00080000u;
+  _has_bits_[2] |= 0x00200000u;
 }
 inline void Chassis::clear_has_steering_percentage() {
-  _has_bits_[2] &= ~0x00080000u;
+  _has_bits_[2] &= ~0x00200000u;
 }
 inline void Chassis::clear_steering_percentage() {
   steering_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2876,13 +2896,13 @@ inline void Chassis::set_steering_percentage(float value) {
 
 // optional float steering_torque_nm = 12 [default = nan];
 inline bool Chassis::has_steering_torque_nm() const {
-  return (_has_bits_[2] & 0x00002000u) != 0;
+  return (_has_bits_[2] & 0x00008000u) != 0;
 }
 inline void Chassis::set_has_steering_torque_nm() {
-  _has_bits_[2] |= 0x00002000u;
+  _has_bits_[2] |= 0x00008000u;
 }
 inline void Chassis::clear_has_steering_torque_nm() {
-  _has_bits_[2] &= ~0x00002000u;
+  _has_bits_[2] &= ~0x00008000u;
 }
 inline void Chassis::clear_steering_torque_nm() {
   steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4802,6 +4822,54 @@ inline void Chassis::set_esp_vlcapa_available(::google::protobuf::int32 value) {
   set_has_esp_vlcapa_available();
   esp_vlcapa_available_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.esp_vlcapa_available)
+}
+
+// optional int32 eps_epspamsts = 89;
+inline bool Chassis::has_eps_epspamsts() const {
+  return (_has_bits_[2] & 0x00002000u) != 0;
+}
+inline void Chassis::set_has_eps_epspamsts() {
+  _has_bits_[2] |= 0x00002000u;
+}
+inline void Chassis::clear_has_eps_epspamsts() {
+  _has_bits_[2] &= ~0x00002000u;
+}
+inline void Chassis::clear_eps_epspamsts() {
+  eps_epspamsts_ = 0;
+  clear_has_eps_epspamsts();
+}
+inline ::google::protobuf::int32 Chassis::eps_epspamsts() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.eps_epspamsts)
+  return eps_epspamsts_;
+}
+inline void Chassis::set_eps_epspamsts(::google::protobuf::int32 value) {
+  set_has_eps_epspamsts();
+  eps_epspamsts_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.eps_epspamsts)
+}
+
+// optional int32 eps_epspaminh = 90;
+inline bool Chassis::has_eps_epspaminh() const {
+  return (_has_bits_[2] & 0x00004000u) != 0;
+}
+inline void Chassis::set_has_eps_epspaminh() {
+  _has_bits_[2] |= 0x00004000u;
+}
+inline void Chassis::clear_has_eps_epspaminh() {
+  _has_bits_[2] &= ~0x00004000u;
+}
+inline void Chassis::clear_eps_epspaminh() {
+  eps_epspaminh_ = 0;
+  clear_has_eps_epspaminh();
+}
+inline ::google::protobuf::int32 Chassis::eps_epspaminh() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.eps_epspaminh)
+  return eps_epspaminh_;
+}
+inline void Chassis::set_eps_epspaminh(::google::protobuf::int32 value) {
+  set_has_eps_epspaminh();
+  eps_epspaminh_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.eps_epspaminh)
 }
 
 // optional int32 esp_epbstatus = 88;

@@ -1850,6 +1850,20 @@ class CheckResponseSignal : public ::google::protobuf::Message /* @@protoc_inser
   bool is_vcu_online() const;
   void set_is_vcu_online(bool value);
 
+  // optional bool is_apa_online = 8 [default = false];
+  bool has_is_apa_online() const;
+  void clear_is_apa_online();
+  static const int kIsApaOnlineFieldNumber = 8;
+  bool is_apa_online() const;
+  void set_is_apa_online(bool value);
+
+  // optional bool is_epspam_online = 9 [default = false];
+  bool has_is_epspam_online() const;
+  void clear_is_epspam_online();
+  static const int kIsEpspamOnlineFieldNumber = 9;
+  bool is_epspam_online() const;
+  void set_is_epspam_online(bool value);
+
   // @@protoc_insertion_point(class_scope:jmc_auto.canbus.CheckResponseSignal)
  private:
   void set_has_is_eps_online();
@@ -1866,6 +1880,10 @@ class CheckResponseSignal : public ::google::protobuf::Message /* @@protoc_inser
   void clear_has_is_switch_online();
   void set_has_is_vcu_online();
   void clear_has_is_vcu_online();
+  void set_has_is_apa_online();
+  void clear_has_is_apa_online();
+  void set_has_is_epspam_online();
+  void clear_has_is_epspam_online();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -1877,6 +1895,8 @@ class CheckResponseSignal : public ::google::protobuf::Message /* @@protoc_inser
   bool is_scu_online_;
   bool is_switch_online_;
   bool is_vcu_online_;
+  bool is_apa_online_;
+  bool is_epspam_online_;
   friend struct protobuf_modules_2fcanbus_2fproto_2fchassis_5fdetail_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -11138,6 +11158,54 @@ inline void CheckResponseSignal::set_is_vcu_online(bool value) {
   set_has_is_vcu_online();
   is_vcu_online_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_vcu_online)
+}
+
+// optional bool is_apa_online = 8 [default = false];
+inline bool CheckResponseSignal::has_is_apa_online() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void CheckResponseSignal::set_has_is_apa_online() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void CheckResponseSignal::clear_has_is_apa_online() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void CheckResponseSignal::clear_is_apa_online() {
+  is_apa_online_ = false;
+  clear_has_is_apa_online();
+}
+inline bool CheckResponseSignal::is_apa_online() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.CheckResponseSignal.is_apa_online)
+  return is_apa_online_;
+}
+inline void CheckResponseSignal::set_is_apa_online(bool value) {
+  set_has_is_apa_online();
+  is_apa_online_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_apa_online)
+}
+
+// optional bool is_epspam_online = 9 [default = false];
+inline bool CheckResponseSignal::has_is_epspam_online() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void CheckResponseSignal::set_has_is_epspam_online() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void CheckResponseSignal::clear_has_is_epspam_online() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void CheckResponseSignal::clear_is_epspam_online() {
+  is_epspam_online_ = false;
+  clear_has_is_epspam_online();
+}
+inline bool CheckResponseSignal::is_epspam_online() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.CheckResponseSignal.is_epspam_online)
+  return is_epspam_online_;
+}
+inline void CheckResponseSignal::set_is_epspam_online(bool value) {
+  set_has_is_epspam_online();
+  is_epspam_online_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_epspam_online)
 }
 
 // -------------------------------------------------------------------

@@ -241,6 +241,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckResponseSignal, is_scu_online_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckResponseSignal, is_switch_online_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckResponseSignal, is_vcu_online_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckResponseSignal, is_apa_online_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CheckResponseSignal, is_epspam_online_),
   0,
   1,
   2,
@@ -248,6 +250,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   4,
   5,
   6,
+  7,
+  8,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Battery, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Battery, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1126,51 +1130,51 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, 26, sizeof(ChassisDetail)},
-  { 47, 59, sizeof(CheckResponseSignal)},
-  { 66, 73, sizeof(Battery)},
-  { 75, 90, sizeof(Light)},
-  { 100, 131, sizeof(Eps)},
-  { 157, 192, sizeof(VehicleSpd)},
-  { 222, 234, sizeof(Deceleration)},
-  { 241, 276, sizeof(Brake)},
-  { 306, 315, sizeof(Epb)},
-  { 319, 344, sizeof(Gas)},
-  { 364, 380, sizeof(Esp)},
-  { 391, 407, sizeof(Ems)},
-  { 418, 428, sizeof(Gear)},
-  { 433, 461, sizeof(Safety)},
-  { 484, 528, sizeof(BasicInfo)},
-  { 567, 579, sizeof(Global_rpt_6a)},
-  { 586, 592, sizeof(Brake_cmd_6b)},
-  { 593, 602, sizeof(Brake_rpt_6c)},
-  { 606, 613, sizeof(Steering_cmd_6d)},
-  { 615, 623, sizeof(Steering_rpt_1_6e)},
-  { 626, 635, sizeof(Wheel_speed_rpt_7a)},
-  { 639, 650, sizeof(Date_time_rpt_83)},
-  { 656, 663, sizeof(Brake_motor_rpt_1_70)},
-  { 665, 673, sizeof(Headlight_rpt_77)},
-  { 676, 684, sizeof(Accel_rpt_68)},
-  { 687, 694, sizeof(Steering_motor_rpt_3_75)},
-  { 696, 702, sizeof(Turn_cmd_63)},
-  { 703, 711, sizeof(Turn_rpt_64)},
-  { 714, 720, sizeof(Shift_cmd_65)},
-  { 721, 729, sizeof(Shift_rpt_66)},
-  { 732, 738, sizeof(Accel_cmd_67)},
-  { 739, 751, sizeof(Lat_lon_heading_rpt_82)},
-  { 758, 766, sizeof(Global_cmd_69)},
-  { 769, 775, sizeof(Parking_brake_status_rpt_80)},
-  { 776, 782, sizeof(Yaw_rate_rpt_81)},
-  { 783, 791, sizeof(Horn_rpt_79)},
-  { 794, 800, sizeof(Horn_cmd_78)},
-  { 801, 809, sizeof(Wiper_rpt_91)},
-  { 812, 819, sizeof(Vehicle_speed_rpt_6f)},
-  { 821, 827, sizeof(Headlight_cmd_76)},
-  { 828, 836, sizeof(Steering_motor_rpt_2_74)},
-  { 839, 847, sizeof(Brake_motor_rpt_2_71)},
-  { 850, 857, sizeof(Steering_motor_rpt_1_73)},
-  { 859, 865, sizeof(Wiper_cmd_90)},
-  { 866, 873, sizeof(Brake_motor_rpt_3_72)},
-  { 875, 910, sizeof(Gem)},
+  { 47, 61, sizeof(CheckResponseSignal)},
+  { 70, 77, sizeof(Battery)},
+  { 79, 94, sizeof(Light)},
+  { 104, 135, sizeof(Eps)},
+  { 161, 196, sizeof(VehicleSpd)},
+  { 226, 238, sizeof(Deceleration)},
+  { 245, 280, sizeof(Brake)},
+  { 310, 319, sizeof(Epb)},
+  { 323, 348, sizeof(Gas)},
+  { 368, 384, sizeof(Esp)},
+  { 395, 411, sizeof(Ems)},
+  { 422, 432, sizeof(Gear)},
+  { 437, 465, sizeof(Safety)},
+  { 488, 532, sizeof(BasicInfo)},
+  { 571, 583, sizeof(Global_rpt_6a)},
+  { 590, 596, sizeof(Brake_cmd_6b)},
+  { 597, 606, sizeof(Brake_rpt_6c)},
+  { 610, 617, sizeof(Steering_cmd_6d)},
+  { 619, 627, sizeof(Steering_rpt_1_6e)},
+  { 630, 639, sizeof(Wheel_speed_rpt_7a)},
+  { 643, 654, sizeof(Date_time_rpt_83)},
+  { 660, 667, sizeof(Brake_motor_rpt_1_70)},
+  { 669, 677, sizeof(Headlight_rpt_77)},
+  { 680, 688, sizeof(Accel_rpt_68)},
+  { 691, 698, sizeof(Steering_motor_rpt_3_75)},
+  { 700, 706, sizeof(Turn_cmd_63)},
+  { 707, 715, sizeof(Turn_rpt_64)},
+  { 718, 724, sizeof(Shift_cmd_65)},
+  { 725, 733, sizeof(Shift_rpt_66)},
+  { 736, 742, sizeof(Accel_cmd_67)},
+  { 743, 755, sizeof(Lat_lon_heading_rpt_82)},
+  { 762, 770, sizeof(Global_cmd_69)},
+  { 773, 779, sizeof(Parking_brake_status_rpt_80)},
+  { 780, 786, sizeof(Yaw_rate_rpt_81)},
+  { 787, 795, sizeof(Horn_rpt_79)},
+  { 798, 804, sizeof(Horn_cmd_78)},
+  { 805, 813, sizeof(Wiper_rpt_91)},
+  { 816, 823, sizeof(Vehicle_speed_rpt_6f)},
+  { 825, 831, sizeof(Headlight_cmd_76)},
+  { 832, 840, sizeof(Steering_motor_rpt_2_74)},
+  { 843, 851, sizeof(Brake_motor_rpt_2_71)},
+  { 854, 861, sizeof(Steering_motor_rpt_1_73)},
+  { 863, 869, sizeof(Wiper_cmd_90)},
+  { 870, 877, sizeof(Brake_motor_rpt_3_72)},
+  { 879, 914, sizeof(Gem)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1531,441 +1535,443 @@ void AddDescriptorsImpl() {
       "bus.Ch\022\'\n\006teshun\030\024 \001(\0132\027.jmc_auto.canbus"
       ".Teshun\022#\n\004cx75\030\025 \001(\0132\025.jmc_auto.canbus."
       "Cx75\"-\n\004Type\022\017\n\013QIRUI_EQ_15\020\000\022\024\n\020CHANGAN"
-      "_RUICHENG\020\001\"\353\001\n\023CheckResponseSignal\022\034\n\ri"
+      "_RUICHENG\020\001\"\252\002\n\023CheckResponseSignal\022\034\n\ri"
       "s_eps_online\030\001 \001(\010:\005false\022\034\n\ris_epb_onli"
       "ne\030\002 \001(\010:\005false\022\034\n\ris_esp_online\030\003 \001(\010:\005"
       "false\022\035\n\016is_vtog_online\030\004 \001(\010:\005false\022\034\n\r"
       "is_scu_online\030\005 \001(\010:\005false\022\037\n\020is_switch_"
       "online\030\006 \001(\010:\005false\022\034\n\ris_vcu_online\030\007 \001"
-      "(\010:\005false\"6\n\007Battery\022\027\n\017battery_percent\030"
-      "\001 \001(\001\022\022\n\nfuel_level\030\002 \001(\001\"\273\t\n\005Light\022=\n\017t"
-      "urn_light_type\030\001 \001(\0162$.jmc_auto.canbus.L"
-      "ight.TurnLightType\022;\n\016beam_lamp_type\030\002 \001"
-      "(\0162#.jmc_auto.canbus.Light.BeamLampType\022"
-      "\030\n\020is_brake_lamp_on\030\003 \001(\010\022\025\n\ris_auto_lig"
-      "ht\030\004 \001(\010\022\022\n\nwiper_gear\030\005 \001(\005\022\023\n\013lotion_g"
-      "ear\030\006 \001(\005\022\022\n\nis_horn_on\030\007 \001(\010\022A\n\021lincoln"
-      "_lamp_type\030\010 \001(\0162&.jmc_auto.canbus.Light"
-      ".LincolnLampType\022>\n\rlincoln_wiper\030\t \001(\0162"
-      "\'.jmc_auto.canbus.Light.LincolnWiperType"
-      "\022B\n\017lincoln_ambient\030\n \001(\0162).jmc_auto.can"
-      "bus.Light.LincolnAmbientType\"[\n\rTurnLigh"
-      "tType\022\022\n\016TURN_LIGHT_OFF\020\000\022\020\n\014TURN_LEFT_O"
-      "N\020\001\022\021\n\rTURN_RIGHT_ON\020\002\022\021\n\rTURN_LIGHT_ON\020"
-      "\003\"\?\n\014BeamLampType\022\014\n\010BEAM_OFF\020\000\022\020\n\014HIGH_"
-      "BEAM_ON\020\001\022\017\n\013LOW_BEAM_ON\020\002\"Y\n\017LincolnLam"
-      "pType\022\r\n\tBEAM_NULL\020\000\022\026\n\022BEAM_FLASH_TO_PA"
-      "SS\020\001\022\r\n\tBEAM_HIGH\020\002\022\020\n\014BEAM_INVALID\020\003\"\334\002"
-      "\n\020LincolnWiperType\022\r\n\tWIPER_OFF\020\000\022\022\n\016WIP"
-      "ER_AUTO_OFF\020\001\022\024\n\020WIPER_OFF_MOVING\020\002\022\024\n\020W"
-      "IPER_MANUAL_OFF\020\003\022\023\n\017WIPER_MANUAL_ON\020\004\022\024"
-      "\n\020WIPER_MANUAL_LOW\020\005\022\025\n\021WIPER_MANUAL_HIG"
-      "H\020\006\022\024\n\020WIPER_MIST_FLICK\020\007\022\016\n\nWIPER_WASH\020"
-      "\010\022\022\n\016WIPER_AUTO_LOW\020\t\022\023\n\017WIPER_AUTO_HIGH"
-      "\020\n\022\027\n\023WIPER_COURTESY_WIPE\020\013\022\025\n\021WIPER_AUT"
-      "O_ADJUST\020\014\022\022\n\016WIPER_RESERVED\020\r\022\021\n\rWIPER_"
-      "STALLED\020\016\022\021\n\rWIPER_NO_DATA\020\017\"\250\001\n\022Lincoln"
-      "AmbientType\022\020\n\014AMBIENT_DARK\020\000\022\021\n\rAMBIENT"
-      "_LIGHT\020\001\022\024\n\020AMBIENT_TWILIGHT\020\002\022\025\n\021AMBIEN"
-      "T_TUNNEL_ON\020\003\022\026\n\022AMBIENT_TUNNEL_OFF\020\004\022\023\n"
-      "\017AMBIENT_INVALID\020\005\022\023\n\017AMBIENT_NO_DATA\020\007\""
-      "\207\006\n\003Eps\022\023\n\013is_eps_fail\030\001 \001(\010\0224\n\021eps_cont"
-      "rol_state\030\002 \001(\0162\031.jmc_auto.canbus.Eps.Ty"
-      "pe\022\034\n\024eps_driver_hand_torq\030\003 \001(\001\022\037\n\027is_s"
-      "teering_angle_valid\030\004 \001(\010\022\026\n\016steering_an"
-      "gle\030\005 \001(\001\022\032\n\022steering_angle_spd\030\006 \001(\001\022\032\n"
-      "\022is_trimming_status\030\007 \001(\010\022\035\n\025is_calibrat"
-      "ion_status\030\010 \001(\010\022\031\n\021is_failure_status\030\t "
-      "\001(\010\022#\n\033allow_enter_autonomous_mode\030\n \001(\005"
-      "\022\034\n\024current_driving_mode\030\013 \001(\005\022\032\n\022steeri"
-      "ng_angle_cmd\030\014 \001(\001\022\025\n\rvehicle_speed\030\r \001("
-      "\001\022\023\n\013epas_torque\030\016 \001(\001\022\030\n\020steering_enabl"
-      "ed\030\017 \001(\010\022\027\n\017driver_override\030\020 \001(\010\022\027\n\017dri"
-      "ver_activity\030\021 \001(\010\022\026\n\016watchdog_fault\030\022 \001"
-      "(\010\022\027\n\017channel_1_fault\030\023 \001(\010\022\027\n\017channel_2"
-      "_fault\030\024 \001(\010\022\031\n\021calibration_fault\030\025 \001(\010\022"
-      "\027\n\017connector_fault\030\026 \001(\010\022\024\n\014timestamp_65"
-      "\030\027 \001(\001\022\025\n\rmajor_version\030\030 \001(\005\022\025\n\rminor_v"
-      "ersion\030\031 \001(\005\022\024\n\014build_number\030\032 \001(\005\"=\n\004Ty"
-      "pe\022\021\n\rNOT_AVAILABLE\020\000\022\t\n\005READY\020\001\022\n\n\006ACTI"
-      "VE\020\002\022\013\n\007INVALID\020\003\"\363\006\n\nVehicleSpd\022\035\n\025is_v"
-      "ehicle_standstill\030\001 \001(\010\022\034\n\024is_vehicle_sp"
-      "d_valid\030\002 \001(\010\022\026\n\013vehicle_spd\030\003 \001(\001:\0010\022\035\n"
-      "\025is_wheel_spd_rr_valid\030\004 \001(\010\022F\n\022wheel_di"
-      "rection_rr\030\005 \001(\0162*.jmc_auto.canbus.Wheel"
-      "Speed.WheelSpeedType\022\024\n\014wheel_spd_rr\030\006 \001"
-      "(\001\022\035\n\025is_wheel_spd_rl_valid\030\007 \001(\010\022F\n\022whe"
-      "el_direction_rl\030\010 \001(\0162*.jmc_auto.canbus."
-      "WheelSpeed.WheelSpeedType\022\024\n\014wheel_spd_r"
-      "l\030\t \001(\001\022\035\n\025is_wheel_spd_fr_valid\030\n \001(\010\022F"
-      "\n\022wheel_direction_fr\030\013 \001(\0162*.jmc_auto.ca"
-      "nbus.WheelSpeed.WheelSpeedType\022\024\n\014wheel_"
-      "spd_fr\030\014 \001(\001\022\035\n\025is_wheel_spd_fl_valid\030\r "
-      "\001(\010\022F\n\022wheel_direction_fl\030\016 \001(\0162*.jmc_au"
-      "to.canbus.WheelSpeed.WheelSpeedType\022\024\n\014w"
-      "heel_spd_fl\030\017 \001(\001\022\031\n\021is_yaw_rate_valid\030\020"
-      " \001(\010\022\020\n\010yaw_rate\030\021 \001(\001\022\027\n\017yaw_rate_offse"
-      "t\030\022 \001(\001\022\023\n\013is_ax_valid\030\023 \001(\010\022\n\n\002ax\030\024 \001(\001"
-      "\022\021\n\tax_offset\030\025 \001(\001\022\023\n\013is_ay_valid\030\026 \001(\010"
-      "\022\n\n\002ay\030\027 \001(\001\022\021\n\tay_offset\030\030 \001(\001\022\017\n\007lat_a"
-      "cc\030\031 \001(\001\022\020\n\010long_acc\030\032 \001(\001\022\020\n\010vert_acc\030\033"
-      " \001(\001\022\021\n\troll_rate\030\034 \001(\001\022\017\n\007acc_est\030\035 \001(\001"
-      "\022\025\n\rtimestamp_sec\030\036 \001(\001\"\322\001\n\014Deceleration"
-      "\022!\n\031is_deceleration_available\030\001 \001(\010\022\036\n\026i"
-      "s_deceleration_active\030\002 \001(\010\022\027\n\014decelerat"
-      "ion\030\003 \001(\001:\0010\022\023\n\013is_evb_fail\030\004 \001(\001\022\027\n\014evb"
-      "_pressure\030\005 \001(\001:\0010\022\031\n\016brake_pressure\030\006 \001"
-      "(\001:\0010\022\035\n\022brake_pressure_spd\030\007 \001(\001:\0010\"\272\010\n"
-      "\005Brake\022%\n\026is_brake_pedal_pressed\030\001 \001(\010:\005"
-      "false\022\034\n\024is_brake_force_exist\030\002 \001(\010\022\032\n\022i"
-      "s_brake_over_heat\030\003 \001(\010\022\030\n\020is_hand_brake"
-      "_on\030\004 \001(\010\022\034\n\024brake_pedal_position\030\005 \001(\001\022"
-      "\026\n\016is_brake_valid\030\006 \001(\010\022\023\n\013brake_input\030\007"
-      " \001(\001\022\021\n\tbrake_cmd\030\010 \001(\001\022\024\n\014brake_output\030"
-      "\t \001(\001\022\021\n\tboo_input\030\n \001(\010\022\017\n\007boo_cmd\030\013 \001("
-      "\010\022\022\n\nboo_output\030\014 \001(\010\022 \n\030watchdog_applyi"
-      "ng_brakes\030\r \001(\010\022\027\n\017watchdog_source\030\016 \001(\005"
-      "\022\025\n\rbrake_enabled\030\017 \001(\010\022\027\n\017driver_overri"
-      "de\030\020 \001(\010\022\027\n\017driver_activity\030\021 \001(\010\022\026\n\016wat"
-      "chdog_fault\030\022 \001(\010\022\027\n\017channel_1_fault\030\023 \001"
-      "(\010\022\027\n\017channel_2_fault\030\024 \001(\010\022\021\n\tboo_fault"
-      "\030\025 \001(\010\022\027\n\017connector_fault\030\026 \001(\010\022\030\n\020brake"
-      "_torque_req\030\027 \001(\001\0228\n\nhsa_status\030\030 \001(\0162$."
-      "jmc_auto.canbus.Brake.HSAStatusType\022\030\n\020b"
-      "rake_torque_act\030\031 \001(\001\0224\n\010hsa_mode\030\032 \001(\0162"
-      "\".jmc_auto.canbus.Brake.HSAModeType\022\030\n\020w"
-      "heel_torque_act\030\033 \001(\001\022\025\n\rmajor_version\030\034"
-      " \001(\005\022\025\n\rminor_version\030\035 \001(\005\022\024\n\014build_num"
-      "ber\030\036 \001(\005\"\273\001\n\rHSAStatusType\022\020\n\014HSA_INACT"
-      "IVE\020\000\022\030\n\024HSA_FINDING_GRADIENT\020\001\022\026\n\022HSA_A"
-      "CTIVE_PRESSED\020\002\022\027\n\023HSA_ACTIVE_RELEASED\020\003"
-      "\022\024\n\020HSA_FAST_RELEASE\020\004\022\024\n\020HSA_SLOW_RELEA"
-      "SE\020\005\022\016\n\nHSA_FAILED\020\006\022\021\n\rHSA_UNDEFINED\020\007\""
-      "P\n\013HSAModeType\022\013\n\007HSA_OFF\020\000\022\014\n\010HSA_AUTO\020"
-      "\001\022\016\n\nHSA_MANUAL\020\002\022\026\n\022HSA_MODE_UNDEFINED\020"
-      "\003\"\335\001\n\003Epb\022\024\n\014is_epb_error\030\001 \001(\010\022\027\n\017is_ep"
-      "b_released\030\002 \001(\010\022\022\n\nepb_status\030\003 \001(\005\022=\n\024"
-      "parking_brake_status\030\004 \001(\0162\037.jmc_auto.ca"
-      "nbus.Epb.PBrakeType\"T\n\nPBrakeType\022\016\n\nPBR"
-      "AKE_OFF\020\000\022\025\n\021PBRAKE_TRANSITION\020\001\022\r\n\tPBRA"
-      "KE_ON\020\002\022\020\n\014PBRAKE_FAULT\020\003\"\216\004\n\003Gas\022\032\n\022is_"
-      "gas_pedal_error\030\001 \001(\010\022!\n\031is_gas_pedal_pr"
-      "essed_more\030\002 \001(\010\022\035\n\022gas_pedal_position\030\003"
-      " \001(\001:\0010\022\033\n\014is_gas_valid\030\004 \001(\010:\005false\022\026\n\016"
-      "throttle_input\030\005 \001(\001\022\024\n\014throttle_cmd\030\006 \001"
-      "(\001\022\027\n\017throttle_output\030\007 \001(\001\022\027\n\017watchdog_"
-      "source\030\010 \001(\005\022\030\n\020throttle_enabled\030\t \001(\010\022\027"
-      "\n\017driver_override\030\n \001(\010\022\027\n\017driver_activi"
-      "ty\030\013 \001(\010\022\026\n\016watchdog_fault\030\014 \001(\010\022\027\n\017chan"
-      "nel_1_fault\030\r \001(\010\022\027\n\017channel_2_fault\030\016 \001"
-      "(\010\022\027\n\017connector_fault\030\017 \001(\010\022\031\n\021accelerat"
-      "or_pedal\030\020 \001(\001\022\036\n\026accelerator_pedal_rate"
-      "\030\021 \001(\001\022\025\n\rmajor_version\030\022 \001(\005\022\025\n\rminor_v"
-      "ersion\030\023 \001(\005\022\024\n\014build_number\030\024 \001(\005\"\210\002\n\003E"
-      "sp\022\030\n\020is_esp_acc_error\030\001 \001(\010\022\021\n\tis_esp_o"
-      "n\030\002 \001(\010\022\025\n\ris_esp_active\030\003 \001(\010\022\024\n\014is_abs"
-      "_error\030\004 \001(\010\022\025\n\ris_abs_active\030\005 \001(\010\022\026\n\016i"
-      "s_tcsvdc_fail\030\006 \001(\010\022\026\n\016is_abs_enabled\030\007 "
-      "\001(\010\022\026\n\016is_stab_active\030\010 \001(\010\022\027\n\017is_stab_e"
-      "nabled\030\t \001(\010\022\026\n\016is_trac_active\030\n \001(\010\022\027\n\017"
-      "is_trac_enabled\030\013 \001(\010\"\217\003\n\003Ems\022\037\n\027is_engi"
-      "ne_acc_available\030\001 \001(\010\022\033\n\023is_engine_acc_"
-      "error\030\002 \001(\010\022/\n\014engine_state\030\003 \001(\0162\031.jmc_"
-      "auto.canbus.Ems.Type\022\037\n\027max_engine_torq_"
-      "percent\030\004 \001(\001\022\037\n\027min_engine_torq_percent"
-      "\030\005 \001(\001\022!\n\031base_engine_torq_constant\030\006 \001("
-      "\005\022\035\n\025is_engine_speed_error\030\007 \001(\010\022\024\n\014engi"
-      "ne_speed\030\010 \001(\001\022\025\n\rengine_torque\030\t \001(\005\022\035\n"
-      "\025is_over_engine_torque\030\n \001(\010\022\022\n\nengine_r"
-      "pm\030\013 \001(\001\"5\n\004Type\022\010\n\004STOP\020\000\022\t\n\005CRANK\020\001\022\013\n"
-      "\007RUNNING\020\002\022\013\n\007INVALID\020\003\"\312\001\n\004Gear\022\037\n\027is_s"
-      "hift_position_valid\030\001 \001(\010\0229\n\ngear_state\030"
-      "\002 \001(\0162%.jmc_auto.canbus.Chassis.GearPosi"
-      "tion\022\027\n\017driver_override\030\003 \001(\010\0227\n\010gear_cm"
-      "d\030\004 \001(\0162%.jmc_auto.canbus.Chassis.GearPo"
-      "sition\022\024\n\014canbus_fault\030\005 \001(\010\"\360\005\n\006Safety\022"
-      " \n\030is_driver_car_door_close\030\001 \001(\010\022\031\n\021is_"
-      "driver_buckled\030\002 \001(\010\022\030\n\020emergency_button"
-      "\030\003 \001(\005\022\030\n\thas_error\030\004 \001(\010:\005false\022\037\n\027is_m"
-      "otor_invertor_fault\030\005 \001(\010\022\027\n\017is_system_f"
-      "ault\030\006 \001(\010\022\036\n\026is_power_battery_fault\030\007 \001"
-      "(\010\022*\n\"is_motor_invertor_over_temperature"
-      "\030\010 \001(\010\022/\n\'is_small_battery_charge_discha"
-      "rge_fault\030\t \001(\010\022\024\n\014driving_mode\030\n \001(\005\022\036\n"
-      "\026is_passenger_door_open\030\013 \001(\010\022\035\n\025is_rear"
-      "left_door_open\030\014 \001(\010\022\036\n\026is_rearright_doo"
-      "r_open\030\r \001(\010\022\024\n\014is_hood_open\030\016 \001(\010\022\025\n\ris"
-      "_trunk_open\030\017 \001(\010\022\035\n\025is_passenger_detect"
-      "ed\030\020 \001(\010\022#\n\033is_passenger_airbag_enabled\030"
-      "\021 \001(\010\022\034\n\024is_passenger_buckled\030\022 \001(\010\022\035\n\025f"
-      "ront_left_tire_press\030\023 \001(\005\022\036\n\026front_righ"
-      "t_tire_press\030\024 \001(\005\022\034\n\024rear_left_tire_pre"
-      "ss\030\025 \001(\005\022\035\n\025rear_right_tire_press\030\026 \001(\005\022"
-      ">\n\020car_driving_mode\030\027 \001(\0162$.jmc_auto.can"
-      "bus.Chassis.DrivingMode\"\300\007\n\tBasicInfo\022\024\n"
-      "\014is_auto_mode\030\001 \001(\010\0224\n\013power_state\030\002 \001(\016"
-      "2\037.jmc_auto.canbus.BasicInfo.Type\022\033\n\023is_"
-      "air_bag_deployed\030\003 \001(\010\022\021\n\todo_meter\030\004 \001("
-      "\001\022\023\n\013drive_range\030\005 \001(\001\022\027\n\017is_system_erro"
-      "r\030\006 \001(\010\022\032\n\022is_human_interrupt\030\007 \001(\010\022\025\n\ra"
-      "cc_on_button\030\010 \001(\010\022\026\n\016acc_off_button\030\t \001"
-      "(\010\022\026\n\016acc_res_button\030\n \001(\010\022\031\n\021acc_cancel"
-      "_button\030\013 \001(\010\022\031\n\021acc_on_off_button\030\014 \001(\010"
-      "\022\035\n\025acc_res_cancel_button\030\r \001(\010\022\032\n\022acc_i"
-      "nc_spd_button\030\016 \001(\010\022\032\n\022acc_dec_spd_butto"
-      "n\030\017 \001(\010\022\032\n\022acc_inc_gap_button\030\020 \001(\010\022\032\n\022a"
-      "cc_dec_gap_button\030\021 \001(\010\022\022\n\nlka_button\030\022 "
-      "\001(\010\022\024\n\014canbus_fault\030\023 \001(\010\022\020\n\010latitude\030\024 "
-      "\001(\001\022\021\n\tlongitude\030\025 \001(\001\022\021\n\tgps_valid\030\026 \001("
-      "\010\022\014\n\004year\030\027 \001(\005\022\r\n\005month\030\030 \001(\005\022\013\n\003day\030\031 "
-      "\001(\005\022\r\n\005hours\030\032 \001(\005\022\017\n\007minutes\030\033 \001(\005\022\017\n\007s"
-      "econds\030\034 \001(\005\022\031\n\021compass_direction\030\035 \001(\001\022"
-      "\014\n\004pdop\030\036 \001(\001\022\024\n\014is_gps_fault\030\037 \001(\010\022\023\n\013i"
-      "s_inferred\030  \001(\010\022\020\n\010altitude\030! \001(\001\022\017\n\007he"
-      "ading\030\" \001(\001\022\014\n\004hdop\030# \001(\001\022\014\n\004vdop\030$ \001(\001\022"
-      ",\n\007quality\030% \001(\0162\033.jmc_auto.canbus.GpsQu"
-      "ality\022\026\n\016num_satellites\030& \001(\005\022\021\n\tgps_spe"
-      "ed\030\' \001(\001\"8\n\004Type\022\007\n\003OFF\020\000\022\007\n\003ACC\020\001\022\006\n\002ON"
-      "\020\002\022\t\n\005START\020\003\022\013\n\007INVALID\020\004\"\373\004\n\rGlobal_rp"
-      "t_6a\022G\n\rpacmod_status\030\001 \001(\01620.jmc_auto.c"
-      "anbus.Global_rpt_6a.Pacmod_statusType\022K\n"
-      "\017override_status\030\002 \001(\01622.jmc_auto.canbus"
-      ".Global_rpt_6a.Override_statusType\022\027\n\017ve"
-      "h_can_timeout\030\003 \001(\010\022\027\n\017str_can_timeout\030\004"
-      " \001(\010\022K\n\017brk_can_timeout\030\005 \001(\01622.jmc_auto"
-      ".canbus.Global_rpt_6a.Brk_can_timeoutTyp"
-      "e\022\027\n\017usr_can_timeout\030\006 \001(\010\022\033\n\023usr_can_re"
-      "ad_errors\030\007 \001(\005\"Z\n\021Pacmod_statusType\022\"\n\036"
-      "PACMOD_STATUS_CONTROL_DISABLED\020\000\022!\n\035PACM"
-      "OD_STATUS_CONTROL_ENABLED\020\001\"Y\n\023Override_"
-      "statusType\022\"\n\036OVERRIDE_STATUS_NOT_OVERRI"
-      "DDEN\020\000\022\036\n\032OVERRIDE_STATUS_OVERRIDDEN\020\001\"h"
-      "\n\023Brk_can_timeoutType\022)\n%BRK_CAN_TIMEOUT"
-      "_NO_ACTIVE_CAN_TIMEOUT\020\000\022&\n\"BRK_CAN_TIME"
-      "OUT_ACTIVE_CAN_TIMEOUT\020\001\"!\n\014Brake_cmd_6b"
-      "\022\021\n\tbrake_cmd\030\001 \001(\001\"\330\001\n\014Brake_rpt_6c\022\024\n\014"
-      "manual_input\030\001 \001(\001\022\027\n\017commanded_value\030\002 "
-      "\001(\001\022\024\n\014output_value\030\003 \001(\001\022D\n\014brake_on_of"
-      "f\030\004 \001(\0162..jmc_auto.canbus.Brake_rpt_6c.B"
-      "rake_on_offType\"=\n\020Brake_on_offType\022\024\n\020B"
-      "RAKE_ON_OFF_OFF\020\000\022\023\n\017BRAKE_ON_OFF_ON\020\001\">"
-      "\n\017Steering_cmd_6d\022\026\n\016position_value\030\001 \001("
-      "\001\022\023\n\013speed_limit\030\002 \001(\001\"X\n\021Steering_rpt_1"
-      "_6e\022\024\n\014manual_input\030\001 \001(\001\022\027\n\017commanded_v"
-      "alue\030\002 \001(\001\022\024\n\014output_value\030\003 \001(\001\"\214\001\n\022Whe"
-      "el_speed_rpt_7a\022\034\n\024wheel_spd_rear_right\030"
-      "\001 \001(\005\022\033\n\023wheel_spd_rear_left\030\002 \001(\005\022\035\n\025wh"
-      "eel_spd_front_right\030\003 \001(\005\022\034\n\024wheel_spd_f"
-      "ront_left\030\004 \001(\005\"\210\001\n\020Date_time_rpt_83\022\023\n\013"
-      "time_second\030\001 \001(\005\022\023\n\013time_minute\030\002 \001(\005\022\021"
-      "\n\ttime_hour\030\003 \001(\005\022\020\n\010date_day\030\004 \001(\005\022\022\n\nd"
-      "ate_month\030\005 \001(\005\022\021\n\tdate_year\030\006 \001(\005\"E\n\024Br"
-      "ake_motor_rpt_1_70\022\025\n\rmotor_current\030\001 \001("
-      "\001\022\026\n\016shaft_position\030\002 \001(\001\"\314\004\n\020Headlight_"
-      "rpt_77\022H\n\014output_value\030\001 \001(\01622.jmc_auto."
-      "canbus.Headlight_rpt_77.Output_valueType"
-      "\022H\n\014manual_input\030\002 \001(\01622.jmc_auto.canbus"
-      ".Headlight_rpt_77.Manual_inputType\022N\n\017co"
-      "mmanded_value\030\003 \001(\01625.jmc_auto.canbus.He"
-      "adlight_rpt_77.Commanded_valueType\"l\n\020Ou"
-      "tput_valueType\022\037\n\033OUTPUT_VALUE_HEADLIGHT"
-      "S_OFF\020\000\022\032\n\026OUTPUT_VALUE_LOW_BEAMS\020\001\022\033\n\027O"
-      "UTPUT_VALUE_HIGH_BEAMS\020\002\"l\n\020Manual_input"
-      "Type\022\037\n\033MANUAL_INPUT_HEADLIGHTS_OFF\020\000\022\032\n"
-      "\026MANUAL_INPUT_LOW_BEAMS\020\001\022\033\n\027MANUAL_INPU"
-      "T_HIGH_BEAMS\020\002\"x\n\023Commanded_valueType\022\"\n"
-      "\036COMMANDED_VALUE_HEADLIGHTS_OFF\020\000\022\035\n\031COM"
-      "MANDED_VALUE_LOW_BEAMS\020\001\022\036\n\032COMMANDED_VA"
-      "LUE_HIGH_BEAMS\020\002\"S\n\014Accel_rpt_68\022\024\n\014manu"
-      "al_input\030\001 \001(\001\022\027\n\017commanded_value\030\002 \001(\001\022"
-      "\024\n\014output_value\030\003 \001(\001\"F\n\027Steering_motor_"
-      "rpt_3_75\022\025\n\rtorque_output\030\001 \001(\001\022\024\n\014torqu"
-      "e_input\030\002 \001(\001\"\333\001\n\013Turn_cmd_63\022I\n\017turn_si"
-      "gnal_cmd\030\001 \001(\01620.jmc_auto.canbus.Turn_cm"
-      "d_63.Turn_signal_cmdType\"\200\001\n\023Turn_signal"
-      "_cmdType\022\031\n\025TURN_SIGNAL_CMD_RIGHT\020\000\022\030\n\024T"
-      "URN_SIGNAL_CMD_NONE\020\001\022\030\n\024TURN_SIGNAL_CMD"
-      "_LEFT\020\002\022\032\n\026TURN_SIGNAL_CMD_HAZARD\020\003\"\313\004\n\013"
-      "Turn_rpt_64\022C\n\014manual_input\030\001 \001(\0162-.jmc_"
-      "auto.canbus.Turn_rpt_64.Manual_inputType"
-      "\022I\n\017commanded_value\030\002 \001(\01620.jmc_auto.can"
-      "bus.Turn_rpt_64.Commanded_valueType\022C\n\014o"
-      "utput_value\030\003 \001(\0162-.jmc_auto.canbus.Turn"
-      "_rpt_64.Output_valueType\"q\n\020Manual_input"
-      "Type\022\026\n\022MANUAL_INPUT_RIGHT\020\000\022\025\n\021MANUAL_I"
-      "NPUT_NONE\020\001\022\025\n\021MANUAL_INPUT_LEFT\020\002\022\027\n\023MA"
-      "NUAL_INPUT_HAZARD\020\003\"\200\001\n\023Commanded_valueT"
-      "ype\022\031\n\025COMMANDED_VALUE_RIGHT\020\000\022\030\n\024COMMAN"
-      "DED_VALUE_NONE\020\001\022\030\n\024COMMANDED_VALUE_LEFT"
-      "\020\002\022\032\n\026COMMANDED_VALUE_HAZARD\020\003\"q\n\020Output"
-      "_valueType\022\026\n\022OUTPUT_VALUE_RIGHT\020\000\022\025\n\021OU"
-      "TPUT_VALUE_NONE\020\001\022\025\n\021OUTPUT_VALUE_LEFT\020\002"
-      "\022\027\n\023OUTPUT_VALUE_HAZARD\020\003\"\313\001\n\014Shift_cmd_"
-      "65\022>\n\tshift_cmd\030\001 \001(\0162+.jmc_auto.canbus."
-      "Shift_cmd_65.Shift_cmdType\"{\n\rShift_cmdT"
-      "ype\022\022\n\016SHIFT_CMD_PARK\020\000\022\025\n\021SHIFT_CMD_REV"
-      "ERSE\020\001\022\025\n\021SHIFT_CMD_NEUTRAL\020\002\022\025\n\021SHIFT_C"
-      "MD_FORWARD\020\003\022\021\n\rSHIFT_CMD_LOW\020\004\"\253\005\n\014Shif"
-      "t_rpt_66\022D\n\014manual_input\030\001 \001(\0162..jmc_aut"
-      "o.canbus.Shift_rpt_66.Manual_inputType\022J"
-      "\n\017commanded_value\030\002 \001(\01621.jmc_auto.canbu"
-      "s.Shift_rpt_66.Commanded_valueType\022D\n\014ou"
-      "tput_value\030\003 \001(\0162..jmc_auto.canbus.Shift"
-      "_rpt_66.Output_valueType\"\216\001\n\020Manual_inpu"
-      "tType\022\025\n\021MANUAL_INPUT_PARK\020\000\022\030\n\024MANUAL_I"
-      "NPUT_REVERSE\020\001\022\030\n\024MANUAL_INPUT_NEUTRAL\020\002"
-      "\022\030\n\024MANUAL_INPUT_FORWARD\020\003\022\025\n\021MANUAL_INP"
-      "UT_HIGH\020\004\"\240\001\n\023Commanded_valueType\022\030\n\024COM"
-      "MANDED_VALUE_PARK\020\000\022\033\n\027COMMANDED_VALUE_R"
-      "EVERSE\020\001\022\033\n\027COMMANDED_VALUE_NEUTRAL\020\002\022\033\n"
-      "\027COMMANDED_VALUE_FORWARD\020\003\022\030\n\024COMMANDED_"
-      "VALUE_HIGH\020\004\"\216\001\n\020Output_valueType\022\025\n\021OUT"
-      "PUT_VALUE_PARK\020\000\022\030\n\024OUTPUT_VALUE_REVERSE"
-      "\020\001\022\030\n\024OUTPUT_VALUE_NEUTRAL\020\002\022\030\n\024OUTPUT_V"
-      "ALUE_FORWARD\020\003\022\025\n\021OUTPUT_VALUE_HIGH\020\004\"!\n"
-      "\014Accel_cmd_67\022\021\n\taccel_cmd\030\001 \001(\001\"\310\001\n\026Lat"
-      "_lon_heading_rpt_82\022\017\n\007heading\030\001 \001(\001\022\031\n\021"
-      "longitude_seconds\030\002 \001(\005\022\031\n\021longitude_min"
-      "utes\030\003 \001(\005\022\031\n\021longitude_degrees\030\004 \001(\005\022\030\n"
-      "\020latitude_seconds\030\005 \001(\005\022\030\n\020latitude_minu"
-      "tes\030\006 \001(\005\022\030\n\020latitude_degrees\030\007 \001(\005\"\261\004\n\r"
-      "Global_cmd_69\022G\n\rpacmod_enable\030\001 \001(\01620.j"
-      "mc_auto.canbus.Global_cmd_69.Pacmod_enab"
-      "leType\022I\n\016clear_override\030\002 \001(\01621.jmc_aut"
-      "o.canbus.Global_cmd_69.Clear_overrideTyp"
-      "e\022K\n\017ignore_override\030\003 \001(\01622.jmc_auto.ca"
-      "nbus.Global_cmd_69.Ignore_overrideType\"Z"
-      "\n\021Pacmod_enableType\022\"\n\036PACMOD_ENABLE_CON"
-      "TROL_DISABLED\020\000\022!\n\035PACMOD_ENABLE_CONTROL"
-      "_ENABLED\020\001\"p\n\022Clear_overrideType\022/\n+CLEA"
-      "R_OVERRIDE_DON_T_CLEAR_ACTIVE_OVERRIDES\020"
-      "\000\022)\n%CLEAR_OVERRIDE_CLEAR_ACTIVE_OVERRID"
-      "ES\020\001\"q\n\023Ignore_overrideType\022/\n+IGNORE_OV"
-      "ERRIDE_DON_T_IGNORE_USER_OVERRIDES\020\000\022)\n%"
-      "IGNORE_OVERRIDE_IGNORE_USER_OVERRIDES\020\001\""
-      "\336\001\n\033Parking_brake_status_rpt_80\022e\n\025parki"
-      "ng_brake_enabled\030\001 \001(\0162F.jmc_auto.canbus"
-      ".Parking_brake_status_rpt_80.Parking_bra"
-      "ke_enabledType\"X\n\031Parking_brake_enabledT"
-      "ype\022\035\n\031PARKING_BRAKE_ENABLED_OFF\020\000\022\034\n\030PA"
-      "RKING_BRAKE_ENABLED_ON\020\001\"#\n\017Yaw_rate_rpt"
-      "_81\022\020\n\010yaw_rate\030\001 \001(\001\"\250\003\n\013Horn_rpt_79\022C\n"
-      "\014output_value\030\001 \001(\0162-.jmc_auto.canbus.Ho"
-      "rn_rpt_79.Output_valueType\022I\n\017commanded_"
-      "value\030\002 \001(\01620.jmc_auto.canbus.Horn_rpt_7"
-      "9.Commanded_valueType\022C\n\014manual_input\030\003 "
-      "\001(\0162-.jmc_auto.canbus.Horn_rpt_79.Manual"
-      "_inputType\"=\n\020Output_valueType\022\024\n\020OUTPUT"
-      "_VALUE_OFF\020\000\022\023\n\017OUTPUT_VALUE_ON\020\001\"F\n\023Com"
-      "manded_valueType\022\027\n\023COMMANDED_VALUE_OFF\020"
-      "\000\022\026\n\022COMMANDED_VALUE_ON\020\001\"=\n\020Manual_inpu"
-      "tType\022\024\n\020MANUAL_INPUT_OFF\020\000\022\023\n\017MANUAL_IN"
-      "PUT_ON\020\001\"}\n\013Horn_cmd_78\022;\n\010horn_cmd\030\001 \001("
-      "\0162).jmc_auto.canbus.Horn_cmd_78.Horn_cmd"
-      "Type\"1\n\014Horn_cmdType\022\020\n\014HORN_CMD_OFF\020\000\022\017"
-      "\n\013HORN_CMD_ON\020\001\"\215\010\n\014Wiper_rpt_91\022D\n\014outp"
-      "ut_value\030\001 \001(\0162..jmc_auto.canbus.Wiper_r"
-      "pt_91.Output_valueType\022J\n\017commanded_valu"
-      "e\030\002 \001(\01621.jmc_auto.canbus.Wiper_rpt_91.C"
-      "ommanded_valueType\022D\n\014manual_input\030\003 \001(\016"
-      "2..jmc_auto.canbus.Wiper_rpt_91.Manual_i"
-      "nputType\"\201\002\n\020Output_valueType\022\033\n\027OUTPUT_"
-      "VALUE_WIPERS_OFF\020\000\022\037\n\033OUTPUT_VALUE_INTER"
-      "MITTENT_1\020\001\022\037\n\033OUTPUT_VALUE_INTERMITTENT"
-      "_2\020\002\022\037\n\033OUTPUT_VALUE_INTERMITTENT_3\020\003\022\037\n"
-      "\033OUTPUT_VALUE_INTERMITTENT_4\020\004\022\037\n\033OUTPUT"
-      "_VALUE_INTERMITTENT_5\020\005\022\024\n\020OUTPUT_VALUE_"
-      "LOW\020\006\022\025\n\021OUTPUT_VALUE_HIGH\020\007\"\234\002\n\023Command"
-      "ed_valueType\022\036\n\032COMMANDED_VALUE_WIPERS_O"
-      "FF\020\000\022\"\n\036COMMANDED_VALUE_INTERMITTENT_1\020\001"
-      "\022\"\n\036COMMANDED_VALUE_INTERMITTENT_2\020\002\022\"\n\036"
-      "COMMANDED_VALUE_INTERMITTENT_3\020\003\022\"\n\036COMM"
-      "ANDED_VALUE_INTERMITTENT_4\020\004\022\"\n\036COMMANDE"
-      "D_VALUE_INTERMITTENT_5\020\005\022\027\n\023COMMANDED_VA"
-      "LUE_LOW\020\006\022\030\n\024COMMANDED_VALUE_HIGH\020\007\"\201\002\n\020"
-      "Manual_inputType\022\033\n\027MANUAL_INPUT_WIPERS_"
-      "OFF\020\000\022\037\n\033MANUAL_INPUT_INTERMITTENT_1\020\001\022\037"
-      "\n\033MANUAL_INPUT_INTERMITTENT_2\020\002\022\037\n\033MANUA"
-      "L_INPUT_INTERMITTENT_3\020\003\022\037\n\033MANUAL_INPUT"
-      "_INTERMITTENT_4\020\004\022\037\n\033MANUAL_INPUT_INTERM"
-      "ITTENT_5\020\005\022\024\n\020MANUAL_INPUT_LOW\020\006\022\025\n\021MANU"
-      "AL_INPUT_HIGH\020\007\"\344\001\n\024Vehicle_speed_rpt_6f"
-      "\022\025\n\rvehicle_speed\030\001 \001(\001\022Z\n\023vehicle_speed"
-      "_valid\030\002 \001(\0162=.jmc_auto.canbus.Vehicle_s"
-      "peed_rpt_6f.Vehicle_speed_validType\"Y\n\027V"
-      "ehicle_speed_validType\022\037\n\033VEHICLE_SPEED_"
-      "VALID_INVALID\020\000\022\035\n\031VEHICLE_SPEED_VALID_V"
-      "ALID\020\001\"\320\001\n\020Headlight_cmd_76\022J\n\rheadlight"
-      "_cmd\030\001 \001(\01623.jmc_auto.canbus.Headlight_c"
-      "md_76.Headlight_cmdType\"p\n\021Headlight_cmd"
-      "Type\022 \n\034HEADLIGHT_CMD_HEADLIGHTS_OFF\020\000\022\033"
-      "\n\027HEADLIGHT_CMD_LOW_BEAMS\020\001\022\034\n\030HEADLIGHT"
-      "_CMD_HIGH_BEAMS\020\002\"h\n\027Steering_motor_rpt_"
-      "2_74\022\033\n\023encoder_temperature\030\001 \001(\005\022\031\n\021mot"
-      "or_temperature\030\002 \001(\005\022\025\n\rangular_speed\030\003 "
-      "\001(\001\"e\n\024Brake_motor_rpt_2_71\022\033\n\023encoder_t"
+      "(\010:\005false\022\034\n\ris_apa_online\030\010 \001(\010:\005false\022"
+      "\037\n\020is_epspam_online\030\t \001(\010:\005false\"6\n\007Batt"
+      "ery\022\027\n\017battery_percent\030\001 \001(\001\022\022\n\nfuel_lev"
+      "el\030\002 \001(\001\"\273\t\n\005Light\022=\n\017turn_light_type\030\001 "
+      "\001(\0162$.jmc_auto.canbus.Light.TurnLightTyp"
+      "e\022;\n\016beam_lamp_type\030\002 \001(\0162#.jmc_auto.can"
+      "bus.Light.BeamLampType\022\030\n\020is_brake_lamp_"
+      "on\030\003 \001(\010\022\025\n\ris_auto_light\030\004 \001(\010\022\022\n\nwiper"
+      "_gear\030\005 \001(\005\022\023\n\013lotion_gear\030\006 \001(\005\022\022\n\nis_h"
+      "orn_on\030\007 \001(\010\022A\n\021lincoln_lamp_type\030\010 \001(\0162"
+      "&.jmc_auto.canbus.Light.LincolnLampType\022"
+      ">\n\rlincoln_wiper\030\t \001(\0162\'.jmc_auto.canbus"
+      ".Light.LincolnWiperType\022B\n\017lincoln_ambie"
+      "nt\030\n \001(\0162).jmc_auto.canbus.Light.Lincoln"
+      "AmbientType\"[\n\rTurnLightType\022\022\n\016TURN_LIG"
+      "HT_OFF\020\000\022\020\n\014TURN_LEFT_ON\020\001\022\021\n\rTURN_RIGHT"
+      "_ON\020\002\022\021\n\rTURN_LIGHT_ON\020\003\"\?\n\014BeamLampType"
+      "\022\014\n\010BEAM_OFF\020\000\022\020\n\014HIGH_BEAM_ON\020\001\022\017\n\013LOW_"
+      "BEAM_ON\020\002\"Y\n\017LincolnLampType\022\r\n\tBEAM_NUL"
+      "L\020\000\022\026\n\022BEAM_FLASH_TO_PASS\020\001\022\r\n\tBEAM_HIGH"
+      "\020\002\022\020\n\014BEAM_INVALID\020\003\"\334\002\n\020LincolnWiperTyp"
+      "e\022\r\n\tWIPER_OFF\020\000\022\022\n\016WIPER_AUTO_OFF\020\001\022\024\n\020"
+      "WIPER_OFF_MOVING\020\002\022\024\n\020WIPER_MANUAL_OFF\020\003"
+      "\022\023\n\017WIPER_MANUAL_ON\020\004\022\024\n\020WIPER_MANUAL_LO"
+      "W\020\005\022\025\n\021WIPER_MANUAL_HIGH\020\006\022\024\n\020WIPER_MIST"
+      "_FLICK\020\007\022\016\n\nWIPER_WASH\020\010\022\022\n\016WIPER_AUTO_L"
+      "OW\020\t\022\023\n\017WIPER_AUTO_HIGH\020\n\022\027\n\023WIPER_COURT"
+      "ESY_WIPE\020\013\022\025\n\021WIPER_AUTO_ADJUST\020\014\022\022\n\016WIP"
+      "ER_RESERVED\020\r\022\021\n\rWIPER_STALLED\020\016\022\021\n\rWIPE"
+      "R_NO_DATA\020\017\"\250\001\n\022LincolnAmbientType\022\020\n\014AM"
+      "BIENT_DARK\020\000\022\021\n\rAMBIENT_LIGHT\020\001\022\024\n\020AMBIE"
+      "NT_TWILIGHT\020\002\022\025\n\021AMBIENT_TUNNEL_ON\020\003\022\026\n\022"
+      "AMBIENT_TUNNEL_OFF\020\004\022\023\n\017AMBIENT_INVALID\020"
+      "\005\022\023\n\017AMBIENT_NO_DATA\020\007\"\207\006\n\003Eps\022\023\n\013is_eps"
+      "_fail\030\001 \001(\010\0224\n\021eps_control_state\030\002 \001(\0162\031"
+      ".jmc_auto.canbus.Eps.Type\022\034\n\024eps_driver_"
+      "hand_torq\030\003 \001(\001\022\037\n\027is_steering_angle_val"
+      "id\030\004 \001(\010\022\026\n\016steering_angle\030\005 \001(\001\022\032\n\022stee"
+      "ring_angle_spd\030\006 \001(\001\022\032\n\022is_trimming_stat"
+      "us\030\007 \001(\010\022\035\n\025is_calibration_status\030\010 \001(\010\022"
+      "\031\n\021is_failure_status\030\t \001(\010\022#\n\033allow_ente"
+      "r_autonomous_mode\030\n \001(\005\022\034\n\024current_drivi"
+      "ng_mode\030\013 \001(\005\022\032\n\022steering_angle_cmd\030\014 \001("
+      "\001\022\025\n\rvehicle_speed\030\r \001(\001\022\023\n\013epas_torque\030"
+      "\016 \001(\001\022\030\n\020steering_enabled\030\017 \001(\010\022\027\n\017drive"
+      "r_override\030\020 \001(\010\022\027\n\017driver_activity\030\021 \001("
+      "\010\022\026\n\016watchdog_fault\030\022 \001(\010\022\027\n\017channel_1_f"
+      "ault\030\023 \001(\010\022\027\n\017channel_2_fault\030\024 \001(\010\022\031\n\021c"
+      "alibration_fault\030\025 \001(\010\022\027\n\017connector_faul"
+      "t\030\026 \001(\010\022\024\n\014timestamp_65\030\027 \001(\001\022\025\n\rmajor_v"
+      "ersion\030\030 \001(\005\022\025\n\rminor_version\030\031 \001(\005\022\024\n\014b"
+      "uild_number\030\032 \001(\005\"=\n\004Type\022\021\n\rNOT_AVAILAB"
+      "LE\020\000\022\t\n\005READY\020\001\022\n\n\006ACTIVE\020\002\022\013\n\007INVALID\020\003"
+      "\"\363\006\n\nVehicleSpd\022\035\n\025is_vehicle_standstill"
+      "\030\001 \001(\010\022\034\n\024is_vehicle_spd_valid\030\002 \001(\010\022\026\n\013"
+      "vehicle_spd\030\003 \001(\001:\0010\022\035\n\025is_wheel_spd_rr_"
+      "valid\030\004 \001(\010\022F\n\022wheel_direction_rr\030\005 \001(\0162"
+      "*.jmc_auto.canbus.WheelSpeed.WheelSpeedT"
+      "ype\022\024\n\014wheel_spd_rr\030\006 \001(\001\022\035\n\025is_wheel_sp"
+      "d_rl_valid\030\007 \001(\010\022F\n\022wheel_direction_rl\030\010"
+      " \001(\0162*.jmc_auto.canbus.WheelSpeed.WheelS"
+      "peedType\022\024\n\014wheel_spd_rl\030\t \001(\001\022\035\n\025is_whe"
+      "el_spd_fr_valid\030\n \001(\010\022F\n\022wheel_direction"
+      "_fr\030\013 \001(\0162*.jmc_auto.canbus.WheelSpeed.W"
+      "heelSpeedType\022\024\n\014wheel_spd_fr\030\014 \001(\001\022\035\n\025i"
+      "s_wheel_spd_fl_valid\030\r \001(\010\022F\n\022wheel_dire"
+      "ction_fl\030\016 \001(\0162*.jmc_auto.canbus.WheelSp"
+      "eed.WheelSpeedType\022\024\n\014wheel_spd_fl\030\017 \001(\001"
+      "\022\031\n\021is_yaw_rate_valid\030\020 \001(\010\022\020\n\010yaw_rate\030"
+      "\021 \001(\001\022\027\n\017yaw_rate_offset\030\022 \001(\001\022\023\n\013is_ax_"
+      "valid\030\023 \001(\010\022\n\n\002ax\030\024 \001(\001\022\021\n\tax_offset\030\025 \001"
+      "(\001\022\023\n\013is_ay_valid\030\026 \001(\010\022\n\n\002ay\030\027 \001(\001\022\021\n\ta"
+      "y_offset\030\030 \001(\001\022\017\n\007lat_acc\030\031 \001(\001\022\020\n\010long_"
+      "acc\030\032 \001(\001\022\020\n\010vert_acc\030\033 \001(\001\022\021\n\troll_rate"
+      "\030\034 \001(\001\022\017\n\007acc_est\030\035 \001(\001\022\025\n\rtimestamp_sec"
+      "\030\036 \001(\001\"\322\001\n\014Deceleration\022!\n\031is_decelerati"
+      "on_available\030\001 \001(\010\022\036\n\026is_deceleration_ac"
+      "tive\030\002 \001(\010\022\027\n\014deceleration\030\003 \001(\001:\0010\022\023\n\013i"
+      "s_evb_fail\030\004 \001(\001\022\027\n\014evb_pressure\030\005 \001(\001:\001"
+      "0\022\031\n\016brake_pressure\030\006 \001(\001:\0010\022\035\n\022brake_pr"
+      "essure_spd\030\007 \001(\001:\0010\"\272\010\n\005Brake\022%\n\026is_brak"
+      "e_pedal_pressed\030\001 \001(\010:\005false\022\034\n\024is_brake"
+      "_force_exist\030\002 \001(\010\022\032\n\022is_brake_over_heat"
+      "\030\003 \001(\010\022\030\n\020is_hand_brake_on\030\004 \001(\010\022\034\n\024brak"
+      "e_pedal_position\030\005 \001(\001\022\026\n\016is_brake_valid"
+      "\030\006 \001(\010\022\023\n\013brake_input\030\007 \001(\001\022\021\n\tbrake_cmd"
+      "\030\010 \001(\001\022\024\n\014brake_output\030\t \001(\001\022\021\n\tboo_inpu"
+      "t\030\n \001(\010\022\017\n\007boo_cmd\030\013 \001(\010\022\022\n\nboo_output\030\014"
+      " \001(\010\022 \n\030watchdog_applying_brakes\030\r \001(\010\022\027"
+      "\n\017watchdog_source\030\016 \001(\005\022\025\n\rbrake_enabled"
+      "\030\017 \001(\010\022\027\n\017driver_override\030\020 \001(\010\022\027\n\017drive"
+      "r_activity\030\021 \001(\010\022\026\n\016watchdog_fault\030\022 \001(\010"
+      "\022\027\n\017channel_1_fault\030\023 \001(\010\022\027\n\017channel_2_f"
+      "ault\030\024 \001(\010\022\021\n\tboo_fault\030\025 \001(\010\022\027\n\017connect"
+      "or_fault\030\026 \001(\010\022\030\n\020brake_torque_req\030\027 \001(\001"
+      "\0228\n\nhsa_status\030\030 \001(\0162$.jmc_auto.canbus.B"
+      "rake.HSAStatusType\022\030\n\020brake_torque_act\030\031"
+      " \001(\001\0224\n\010hsa_mode\030\032 \001(\0162\".jmc_auto.canbus"
+      ".Brake.HSAModeType\022\030\n\020wheel_torque_act\030\033"
+      " \001(\001\022\025\n\rmajor_version\030\034 \001(\005\022\025\n\rminor_ver"
+      "sion\030\035 \001(\005\022\024\n\014build_number\030\036 \001(\005\"\273\001\n\rHSA"
+      "StatusType\022\020\n\014HSA_INACTIVE\020\000\022\030\n\024HSA_FIND"
+      "ING_GRADIENT\020\001\022\026\n\022HSA_ACTIVE_PRESSED\020\002\022\027"
+      "\n\023HSA_ACTIVE_RELEASED\020\003\022\024\n\020HSA_FAST_RELE"
+      "ASE\020\004\022\024\n\020HSA_SLOW_RELEASE\020\005\022\016\n\nHSA_FAILE"
+      "D\020\006\022\021\n\rHSA_UNDEFINED\020\007\"P\n\013HSAModeType\022\013\n"
+      "\007HSA_OFF\020\000\022\014\n\010HSA_AUTO\020\001\022\016\n\nHSA_MANUAL\020\002"
+      "\022\026\n\022HSA_MODE_UNDEFINED\020\003\"\335\001\n\003Epb\022\024\n\014is_e"
+      "pb_error\030\001 \001(\010\022\027\n\017is_epb_released\030\002 \001(\010\022"
+      "\022\n\nepb_status\030\003 \001(\005\022=\n\024parking_brake_sta"
+      "tus\030\004 \001(\0162\037.jmc_auto.canbus.Epb.PBrakeTy"
+      "pe\"T\n\nPBrakeType\022\016\n\nPBRAKE_OFF\020\000\022\025\n\021PBRA"
+      "KE_TRANSITION\020\001\022\r\n\tPBRAKE_ON\020\002\022\020\n\014PBRAKE"
+      "_FAULT\020\003\"\216\004\n\003Gas\022\032\n\022is_gas_pedal_error\030\001"
+      " \001(\010\022!\n\031is_gas_pedal_pressed_more\030\002 \001(\010\022"
+      "\035\n\022gas_pedal_position\030\003 \001(\001:\0010\022\033\n\014is_gas"
+      "_valid\030\004 \001(\010:\005false\022\026\n\016throttle_input\030\005 "
+      "\001(\001\022\024\n\014throttle_cmd\030\006 \001(\001\022\027\n\017throttle_ou"
+      "tput\030\007 \001(\001\022\027\n\017watchdog_source\030\010 \001(\005\022\030\n\020t"
+      "hrottle_enabled\030\t \001(\010\022\027\n\017driver_override"
+      "\030\n \001(\010\022\027\n\017driver_activity\030\013 \001(\010\022\026\n\016watch"
+      "dog_fault\030\014 \001(\010\022\027\n\017channel_1_fault\030\r \001(\010"
+      "\022\027\n\017channel_2_fault\030\016 \001(\010\022\027\n\017connector_f"
+      "ault\030\017 \001(\010\022\031\n\021accelerator_pedal\030\020 \001(\001\022\036\n"
+      "\026accelerator_pedal_rate\030\021 \001(\001\022\025\n\rmajor_v"
+      "ersion\030\022 \001(\005\022\025\n\rminor_version\030\023 \001(\005\022\024\n\014b"
+      "uild_number\030\024 \001(\005\"\210\002\n\003Esp\022\030\n\020is_esp_acc_"
+      "error\030\001 \001(\010\022\021\n\tis_esp_on\030\002 \001(\010\022\025\n\ris_esp"
+      "_active\030\003 \001(\010\022\024\n\014is_abs_error\030\004 \001(\010\022\025\n\ri"
+      "s_abs_active\030\005 \001(\010\022\026\n\016is_tcsvdc_fail\030\006 \001"
+      "(\010\022\026\n\016is_abs_enabled\030\007 \001(\010\022\026\n\016is_stab_ac"
+      "tive\030\010 \001(\010\022\027\n\017is_stab_enabled\030\t \001(\010\022\026\n\016i"
+      "s_trac_active\030\n \001(\010\022\027\n\017is_trac_enabled\030\013"
+      " \001(\010\"\217\003\n\003Ems\022\037\n\027is_engine_acc_available\030"
+      "\001 \001(\010\022\033\n\023is_engine_acc_error\030\002 \001(\010\022/\n\014en"
+      "gine_state\030\003 \001(\0162\031.jmc_auto.canbus.Ems.T"
+      "ype\022\037\n\027max_engine_torq_percent\030\004 \001(\001\022\037\n\027"
+      "min_engine_torq_percent\030\005 \001(\001\022!\n\031base_en"
+      "gine_torq_constant\030\006 \001(\005\022\035\n\025is_engine_sp"
+      "eed_error\030\007 \001(\010\022\024\n\014engine_speed\030\010 \001(\001\022\025\n"
+      "\rengine_torque\030\t \001(\005\022\035\n\025is_over_engine_t"
+      "orque\030\n \001(\010\022\022\n\nengine_rpm\030\013 \001(\001\"5\n\004Type\022"
+      "\010\n\004STOP\020\000\022\t\n\005CRANK\020\001\022\013\n\007RUNNING\020\002\022\013\n\007INV"
+      "ALID\020\003\"\312\001\n\004Gear\022\037\n\027is_shift_position_val"
+      "id\030\001 \001(\010\0229\n\ngear_state\030\002 \001(\0162%.jmc_auto."
+      "canbus.Chassis.GearPosition\022\027\n\017driver_ov"
+      "erride\030\003 \001(\010\0227\n\010gear_cmd\030\004 \001(\0162%.jmc_aut"
+      "o.canbus.Chassis.GearPosition\022\024\n\014canbus_"
+      "fault\030\005 \001(\010\"\360\005\n\006Safety\022 \n\030is_driver_car_"
+      "door_close\030\001 \001(\010\022\031\n\021is_driver_buckled\030\002 "
+      "\001(\010\022\030\n\020emergency_button\030\003 \001(\005\022\030\n\thas_err"
+      "or\030\004 \001(\010:\005false\022\037\n\027is_motor_invertor_fau"
+      "lt\030\005 \001(\010\022\027\n\017is_system_fault\030\006 \001(\010\022\036\n\026is_"
+      "power_battery_fault\030\007 \001(\010\022*\n\"is_motor_in"
+      "vertor_over_temperature\030\010 \001(\010\022/\n\'is_smal"
+      "l_battery_charge_discharge_fault\030\t \001(\010\022\024"
+      "\n\014driving_mode\030\n \001(\005\022\036\n\026is_passenger_doo"
+      "r_open\030\013 \001(\010\022\035\n\025is_rearleft_door_open\030\014 "
+      "\001(\010\022\036\n\026is_rearright_door_open\030\r \001(\010\022\024\n\014i"
+      "s_hood_open\030\016 \001(\010\022\025\n\ris_trunk_open\030\017 \001(\010"
+      "\022\035\n\025is_passenger_detected\030\020 \001(\010\022#\n\033is_pa"
+      "ssenger_airbag_enabled\030\021 \001(\010\022\034\n\024is_passe"
+      "nger_buckled\030\022 \001(\010\022\035\n\025front_left_tire_pr"
+      "ess\030\023 \001(\005\022\036\n\026front_right_tire_press\030\024 \001("
+      "\005\022\034\n\024rear_left_tire_press\030\025 \001(\005\022\035\n\025rear_"
+      "right_tire_press\030\026 \001(\005\022>\n\020car_driving_mo"
+      "de\030\027 \001(\0162$.jmc_auto.canbus.Chassis.Drivi"
+      "ngMode\"\300\007\n\tBasicInfo\022\024\n\014is_auto_mode\030\001 \001"
+      "(\010\0224\n\013power_state\030\002 \001(\0162\037.jmc_auto.canbu"
+      "s.BasicInfo.Type\022\033\n\023is_air_bag_deployed\030"
+      "\003 \001(\010\022\021\n\todo_meter\030\004 \001(\001\022\023\n\013drive_range\030"
+      "\005 \001(\001\022\027\n\017is_system_error\030\006 \001(\010\022\032\n\022is_hum"
+      "an_interrupt\030\007 \001(\010\022\025\n\racc_on_button\030\010 \001("
+      "\010\022\026\n\016acc_off_button\030\t \001(\010\022\026\n\016acc_res_but"
+      "ton\030\n \001(\010\022\031\n\021acc_cancel_button\030\013 \001(\010\022\031\n\021"
+      "acc_on_off_button\030\014 \001(\010\022\035\n\025acc_res_cance"
+      "l_button\030\r \001(\010\022\032\n\022acc_inc_spd_button\030\016 \001"
+      "(\010\022\032\n\022acc_dec_spd_button\030\017 \001(\010\022\032\n\022acc_in"
+      "c_gap_button\030\020 \001(\010\022\032\n\022acc_dec_gap_button"
+      "\030\021 \001(\010\022\022\n\nlka_button\030\022 \001(\010\022\024\n\014canbus_fau"
+      "lt\030\023 \001(\010\022\020\n\010latitude\030\024 \001(\001\022\021\n\tlongitude\030"
+      "\025 \001(\001\022\021\n\tgps_valid\030\026 \001(\010\022\014\n\004year\030\027 \001(\005\022\r"
+      "\n\005month\030\030 \001(\005\022\013\n\003day\030\031 \001(\005\022\r\n\005hours\030\032 \001("
+      "\005\022\017\n\007minutes\030\033 \001(\005\022\017\n\007seconds\030\034 \001(\005\022\031\n\021c"
+      "ompass_direction\030\035 \001(\001\022\014\n\004pdop\030\036 \001(\001\022\024\n\014"
+      "is_gps_fault\030\037 \001(\010\022\023\n\013is_inferred\030  \001(\010\022"
+      "\020\n\010altitude\030! \001(\001\022\017\n\007heading\030\" \001(\001\022\014\n\004hd"
+      "op\030# \001(\001\022\014\n\004vdop\030$ \001(\001\022,\n\007quality\030% \001(\0162"
+      "\033.jmc_auto.canbus.GpsQuality\022\026\n\016num_sate"
+      "llites\030& \001(\005\022\021\n\tgps_speed\030\' \001(\001\"8\n\004Type\022"
+      "\007\n\003OFF\020\000\022\007\n\003ACC\020\001\022\006\n\002ON\020\002\022\t\n\005START\020\003\022\013\n\007"
+      "INVALID\020\004\"\373\004\n\rGlobal_rpt_6a\022G\n\rpacmod_st"
+      "atus\030\001 \001(\01620.jmc_auto.canbus.Global_rpt_"
+      "6a.Pacmod_statusType\022K\n\017override_status\030"
+      "\002 \001(\01622.jmc_auto.canbus.Global_rpt_6a.Ov"
+      "erride_statusType\022\027\n\017veh_can_timeout\030\003 \001"
+      "(\010\022\027\n\017str_can_timeout\030\004 \001(\010\022K\n\017brk_can_t"
+      "imeout\030\005 \001(\01622.jmc_auto.canbus.Global_rp"
+      "t_6a.Brk_can_timeoutType\022\027\n\017usr_can_time"
+      "out\030\006 \001(\010\022\033\n\023usr_can_read_errors\030\007 \001(\005\"Z"
+      "\n\021Pacmod_statusType\022\"\n\036PACMOD_STATUS_CON"
+      "TROL_DISABLED\020\000\022!\n\035PACMOD_STATUS_CONTROL"
+      "_ENABLED\020\001\"Y\n\023Override_statusType\022\"\n\036OVE"
+      "RRIDE_STATUS_NOT_OVERRIDDEN\020\000\022\036\n\032OVERRID"
+      "E_STATUS_OVERRIDDEN\020\001\"h\n\023Brk_can_timeout"
+      "Type\022)\n%BRK_CAN_TIMEOUT_NO_ACTIVE_CAN_TI"
+      "MEOUT\020\000\022&\n\"BRK_CAN_TIMEOUT_ACTIVE_CAN_TI"
+      "MEOUT\020\001\"!\n\014Brake_cmd_6b\022\021\n\tbrake_cmd\030\001 \001"
+      "(\001\"\330\001\n\014Brake_rpt_6c\022\024\n\014manual_input\030\001 \001("
+      "\001\022\027\n\017commanded_value\030\002 \001(\001\022\024\n\014output_val"
+      "ue\030\003 \001(\001\022D\n\014brake_on_off\030\004 \001(\0162..jmc_aut"
+      "o.canbus.Brake_rpt_6c.Brake_on_offType\"="
+      "\n\020Brake_on_offType\022\024\n\020BRAKE_ON_OFF_OFF\020\000"
+      "\022\023\n\017BRAKE_ON_OFF_ON\020\001\">\n\017Steering_cmd_6d"
+      "\022\026\n\016position_value\030\001 \001(\001\022\023\n\013speed_limit\030"
+      "\002 \001(\001\"X\n\021Steering_rpt_1_6e\022\024\n\014manual_inp"
+      "ut\030\001 \001(\001\022\027\n\017commanded_value\030\002 \001(\001\022\024\n\014out"
+      "put_value\030\003 \001(\001\"\214\001\n\022Wheel_speed_rpt_7a\022\034"
+      "\n\024wheel_spd_rear_right\030\001 \001(\005\022\033\n\023wheel_sp"
+      "d_rear_left\030\002 \001(\005\022\035\n\025wheel_spd_front_rig"
+      "ht\030\003 \001(\005\022\034\n\024wheel_spd_front_left\030\004 \001(\005\"\210"
+      "\001\n\020Date_time_rpt_83\022\023\n\013time_second\030\001 \001(\005"
+      "\022\023\n\013time_minute\030\002 \001(\005\022\021\n\ttime_hour\030\003 \001(\005"
+      "\022\020\n\010date_day\030\004 \001(\005\022\022\n\ndate_month\030\005 \001(\005\022\021"
+      "\n\tdate_year\030\006 \001(\005\"E\n\024Brake_motor_rpt_1_7"
+      "0\022\025\n\rmotor_current\030\001 \001(\001\022\026\n\016shaft_positi"
+      "on\030\002 \001(\001\"\314\004\n\020Headlight_rpt_77\022H\n\014output_"
+      "value\030\001 \001(\01622.jmc_auto.canbus.Headlight_"
+      "rpt_77.Output_valueType\022H\n\014manual_input\030"
+      "\002 \001(\01622.jmc_auto.canbus.Headlight_rpt_77"
+      ".Manual_inputType\022N\n\017commanded_value\030\003 \001"
+      "(\01625.jmc_auto.canbus.Headlight_rpt_77.Co"
+      "mmanded_valueType\"l\n\020Output_valueType\022\037\n"
+      "\033OUTPUT_VALUE_HEADLIGHTS_OFF\020\000\022\032\n\026OUTPUT"
+      "_VALUE_LOW_BEAMS\020\001\022\033\n\027OUTPUT_VALUE_HIGH_"
+      "BEAMS\020\002\"l\n\020Manual_inputType\022\037\n\033MANUAL_IN"
+      "PUT_HEADLIGHTS_OFF\020\000\022\032\n\026MANUAL_INPUT_LOW"
+      "_BEAMS\020\001\022\033\n\027MANUAL_INPUT_HIGH_BEAMS\020\002\"x\n"
+      "\023Commanded_valueType\022\"\n\036COMMANDED_VALUE_"
+      "HEADLIGHTS_OFF\020\000\022\035\n\031COMMANDED_VALUE_LOW_"
+      "BEAMS\020\001\022\036\n\032COMMANDED_VALUE_HIGH_BEAMS\020\002\""
+      "S\n\014Accel_rpt_68\022\024\n\014manual_input\030\001 \001(\001\022\027\n"
+      "\017commanded_value\030\002 \001(\001\022\024\n\014output_value\030\003"
+      " \001(\001\"F\n\027Steering_motor_rpt_3_75\022\025\n\rtorqu"
+      "e_output\030\001 \001(\001\022\024\n\014torque_input\030\002 \001(\001\"\333\001\n"
+      "\013Turn_cmd_63\022I\n\017turn_signal_cmd\030\001 \001(\01620."
+      "jmc_auto.canbus.Turn_cmd_63.Turn_signal_"
+      "cmdType\"\200\001\n\023Turn_signal_cmdType\022\031\n\025TURN_"
+      "SIGNAL_CMD_RIGHT\020\000\022\030\n\024TURN_SIGNAL_CMD_NO"
+      "NE\020\001\022\030\n\024TURN_SIGNAL_CMD_LEFT\020\002\022\032\n\026TURN_S"
+      "IGNAL_CMD_HAZARD\020\003\"\313\004\n\013Turn_rpt_64\022C\n\014ma"
+      "nual_input\030\001 \001(\0162-.jmc_auto.canbus.Turn_"
+      "rpt_64.Manual_inputType\022I\n\017commanded_val"
+      "ue\030\002 \001(\01620.jmc_auto.canbus.Turn_rpt_64.C"
+      "ommanded_valueType\022C\n\014output_value\030\003 \001(\016"
+      "2-.jmc_auto.canbus.Turn_rpt_64.Output_va"
+      "lueType\"q\n\020Manual_inputType\022\026\n\022MANUAL_IN"
+      "PUT_RIGHT\020\000\022\025\n\021MANUAL_INPUT_NONE\020\001\022\025\n\021MA"
+      "NUAL_INPUT_LEFT\020\002\022\027\n\023MANUAL_INPUT_HAZARD"
+      "\020\003\"\200\001\n\023Commanded_valueType\022\031\n\025COMMANDED_"
+      "VALUE_RIGHT\020\000\022\030\n\024COMMANDED_VALUE_NONE\020\001\022"
+      "\030\n\024COMMANDED_VALUE_LEFT\020\002\022\032\n\026COMMANDED_V"
+      "ALUE_HAZARD\020\003\"q\n\020Output_valueType\022\026\n\022OUT"
+      "PUT_VALUE_RIGHT\020\000\022\025\n\021OUTPUT_VALUE_NONE\020\001"
+      "\022\025\n\021OUTPUT_VALUE_LEFT\020\002\022\027\n\023OUTPUT_VALUE_"
+      "HAZARD\020\003\"\313\001\n\014Shift_cmd_65\022>\n\tshift_cmd\030\001"
+      " \001(\0162+.jmc_auto.canbus.Shift_cmd_65.Shif"
+      "t_cmdType\"{\n\rShift_cmdType\022\022\n\016SHIFT_CMD_"
+      "PARK\020\000\022\025\n\021SHIFT_CMD_REVERSE\020\001\022\025\n\021SHIFT_C"
+      "MD_NEUTRAL\020\002\022\025\n\021SHIFT_CMD_FORWARD\020\003\022\021\n\rS"
+      "HIFT_CMD_LOW\020\004\"\253\005\n\014Shift_rpt_66\022D\n\014manua"
+      "l_input\030\001 \001(\0162..jmc_auto.canbus.Shift_rp"
+      "t_66.Manual_inputType\022J\n\017commanded_value"
+      "\030\002 \001(\01621.jmc_auto.canbus.Shift_rpt_66.Co"
+      "mmanded_valueType\022D\n\014output_value\030\003 \001(\0162"
+      "..jmc_auto.canbus.Shift_rpt_66.Output_va"
+      "lueType\"\216\001\n\020Manual_inputType\022\025\n\021MANUAL_I"
+      "NPUT_PARK\020\000\022\030\n\024MANUAL_INPUT_REVERSE\020\001\022\030\n"
+      "\024MANUAL_INPUT_NEUTRAL\020\002\022\030\n\024MANUAL_INPUT_"
+      "FORWARD\020\003\022\025\n\021MANUAL_INPUT_HIGH\020\004\"\240\001\n\023Com"
+      "manded_valueType\022\030\n\024COMMANDED_VALUE_PARK"
+      "\020\000\022\033\n\027COMMANDED_VALUE_REVERSE\020\001\022\033\n\027COMMA"
+      "NDED_VALUE_NEUTRAL\020\002\022\033\n\027COMMANDED_VALUE_"
+      "FORWARD\020\003\022\030\n\024COMMANDED_VALUE_HIGH\020\004\"\216\001\n\020"
+      "Output_valueType\022\025\n\021OUTPUT_VALUE_PARK\020\000\022"
+      "\030\n\024OUTPUT_VALUE_REVERSE\020\001\022\030\n\024OUTPUT_VALU"
+      "E_NEUTRAL\020\002\022\030\n\024OUTPUT_VALUE_FORWARD\020\003\022\025\n"
+      "\021OUTPUT_VALUE_HIGH\020\004\"!\n\014Accel_cmd_67\022\021\n\t"
+      "accel_cmd\030\001 \001(\001\"\310\001\n\026Lat_lon_heading_rpt_"
+      "82\022\017\n\007heading\030\001 \001(\001\022\031\n\021longitude_seconds"
+      "\030\002 \001(\005\022\031\n\021longitude_minutes\030\003 \001(\005\022\031\n\021lon"
+      "gitude_degrees\030\004 \001(\005\022\030\n\020latitude_seconds"
+      "\030\005 \001(\005\022\030\n\020latitude_minutes\030\006 \001(\005\022\030\n\020lati"
+      "tude_degrees\030\007 \001(\005\"\261\004\n\rGlobal_cmd_69\022G\n\r"
+      "pacmod_enable\030\001 \001(\01620.jmc_auto.canbus.Gl"
+      "obal_cmd_69.Pacmod_enableType\022I\n\016clear_o"
+      "verride\030\002 \001(\01621.jmc_auto.canbus.Global_c"
+      "md_69.Clear_overrideType\022K\n\017ignore_overr"
+      "ide\030\003 \001(\01622.jmc_auto.canbus.Global_cmd_6"
+      "9.Ignore_overrideType\"Z\n\021Pacmod_enableTy"
+      "pe\022\"\n\036PACMOD_ENABLE_CONTROL_DISABLED\020\000\022!"
+      "\n\035PACMOD_ENABLE_CONTROL_ENABLED\020\001\"p\n\022Cle"
+      "ar_overrideType\022/\n+CLEAR_OVERRIDE_DON_T_"
+      "CLEAR_ACTIVE_OVERRIDES\020\000\022)\n%CLEAR_OVERRI"
+      "DE_CLEAR_ACTIVE_OVERRIDES\020\001\"q\n\023Ignore_ov"
+      "errideType\022/\n+IGNORE_OVERRIDE_DON_T_IGNO"
+      "RE_USER_OVERRIDES\020\000\022)\n%IGNORE_OVERRIDE_I"
+      "GNORE_USER_OVERRIDES\020\001\"\336\001\n\033Parking_brake"
+      "_status_rpt_80\022e\n\025parking_brake_enabled\030"
+      "\001 \001(\0162F.jmc_auto.canbus.Parking_brake_st"
+      "atus_rpt_80.Parking_brake_enabledType\"X\n"
+      "\031Parking_brake_enabledType\022\035\n\031PARKING_BR"
+      "AKE_ENABLED_OFF\020\000\022\034\n\030PARKING_BRAKE_ENABL"
+      "ED_ON\020\001\"#\n\017Yaw_rate_rpt_81\022\020\n\010yaw_rate\030\001"
+      " \001(\001\"\250\003\n\013Horn_rpt_79\022C\n\014output_value\030\001 \001"
+      "(\0162-.jmc_auto.canbus.Horn_rpt_79.Output_"
+      "valueType\022I\n\017commanded_value\030\002 \001(\01620.jmc"
+      "_auto.canbus.Horn_rpt_79.Commanded_value"
+      "Type\022C\n\014manual_input\030\003 \001(\0162-.jmc_auto.ca"
+      "nbus.Horn_rpt_79.Manual_inputType\"=\n\020Out"
+      "put_valueType\022\024\n\020OUTPUT_VALUE_OFF\020\000\022\023\n\017O"
+      "UTPUT_VALUE_ON\020\001\"F\n\023Commanded_valueType\022"
+      "\027\n\023COMMANDED_VALUE_OFF\020\000\022\026\n\022COMMANDED_VA"
+      "LUE_ON\020\001\"=\n\020Manual_inputType\022\024\n\020MANUAL_I"
+      "NPUT_OFF\020\000\022\023\n\017MANUAL_INPUT_ON\020\001\"}\n\013Horn_"
+      "cmd_78\022;\n\010horn_cmd\030\001 \001(\0162).jmc_auto.canb"
+      "us.Horn_cmd_78.Horn_cmdType\"1\n\014Horn_cmdT"
+      "ype\022\020\n\014HORN_CMD_OFF\020\000\022\017\n\013HORN_CMD_ON\020\001\"\215"
+      "\010\n\014Wiper_rpt_91\022D\n\014output_value\030\001 \001(\0162.."
+      "jmc_auto.canbus.Wiper_rpt_91.Output_valu"
+      "eType\022J\n\017commanded_value\030\002 \001(\01621.jmc_aut"
+      "o.canbus.Wiper_rpt_91.Commanded_valueTyp"
+      "e\022D\n\014manual_input\030\003 \001(\0162..jmc_auto.canbu"
+      "s.Wiper_rpt_91.Manual_inputType\"\201\002\n\020Outp"
+      "ut_valueType\022\033\n\027OUTPUT_VALUE_WIPERS_OFF\020"
+      "\000\022\037\n\033OUTPUT_VALUE_INTERMITTENT_1\020\001\022\037\n\033OU"
+      "TPUT_VALUE_INTERMITTENT_2\020\002\022\037\n\033OUTPUT_VA"
+      "LUE_INTERMITTENT_3\020\003\022\037\n\033OUTPUT_VALUE_INT"
+      "ERMITTENT_4\020\004\022\037\n\033OUTPUT_VALUE_INTERMITTE"
+      "NT_5\020\005\022\024\n\020OUTPUT_VALUE_LOW\020\006\022\025\n\021OUTPUT_V"
+      "ALUE_HIGH\020\007\"\234\002\n\023Commanded_valueType\022\036\n\032C"
+      "OMMANDED_VALUE_WIPERS_OFF\020\000\022\"\n\036COMMANDED"
+      "_VALUE_INTERMITTENT_1\020\001\022\"\n\036COMMANDED_VAL"
+      "UE_INTERMITTENT_2\020\002\022\"\n\036COMMANDED_VALUE_I"
+      "NTERMITTENT_3\020\003\022\"\n\036COMMANDED_VALUE_INTER"
+      "MITTENT_4\020\004\022\"\n\036COMMANDED_VALUE_INTERMITT"
+      "ENT_5\020\005\022\027\n\023COMMANDED_VALUE_LOW\020\006\022\030\n\024COMM"
+      "ANDED_VALUE_HIGH\020\007\"\201\002\n\020Manual_inputType\022"
+      "\033\n\027MANUAL_INPUT_WIPERS_OFF\020\000\022\037\n\033MANUAL_I"
+      "NPUT_INTERMITTENT_1\020\001\022\037\n\033MANUAL_INPUT_IN"
+      "TERMITTENT_2\020\002\022\037\n\033MANUAL_INPUT_INTERMITT"
+      "ENT_3\020\003\022\037\n\033MANUAL_INPUT_INTERMITTENT_4\020\004"
+      "\022\037\n\033MANUAL_INPUT_INTERMITTENT_5\020\005\022\024\n\020MAN"
+      "UAL_INPUT_LOW\020\006\022\025\n\021MANUAL_INPUT_HIGH\020\007\"\344"
+      "\001\n\024Vehicle_speed_rpt_6f\022\025\n\rvehicle_speed"
+      "\030\001 \001(\001\022Z\n\023vehicle_speed_valid\030\002 \001(\0162=.jm"
+      "c_auto.canbus.Vehicle_speed_rpt_6f.Vehic"
+      "le_speed_validType\"Y\n\027Vehicle_speed_vali"
+      "dType\022\037\n\033VEHICLE_SPEED_VALID_INVALID\020\000\022\035"
+      "\n\031VEHICLE_SPEED_VALID_VALID\020\001\"\320\001\n\020Headli"
+      "ght_cmd_76\022J\n\rheadlight_cmd\030\001 \001(\01623.jmc_"
+      "auto.canbus.Headlight_cmd_76.Headlight_c"
+      "mdType\"p\n\021Headlight_cmdType\022 \n\034HEADLIGHT"
+      "_CMD_HEADLIGHTS_OFF\020\000\022\033\n\027HEADLIGHT_CMD_L"
+      "OW_BEAMS\020\001\022\034\n\030HEADLIGHT_CMD_HIGH_BEAMS\020\002"
+      "\"h\n\027Steering_motor_rpt_2_74\022\033\n\023encoder_t"
       "emperature\030\001 \001(\005\022\031\n\021motor_temperature\030\002 "
-      "\001(\005\022\025\n\rangular_speed\030\003 \001(\001\"H\n\027Steering_m"
-      "otor_rpt_1_73\022\025\n\rmotor_current\030\001 \001(\001\022\026\n\016"
-      "shaft_position\030\002 \001(\001\"\267\002\n\014Wiper_cmd_90\022>\n"
-      "\twiper_cmd\030\001 \001(\0162+.jmc_auto.canbus.Wiper"
-      "_cmd_90.Wiper_cmdType\"\346\001\n\rWiper_cmdType\022"
-      "\030\n\024WIPER_CMD_WIPERS_OFF\020\000\022\034\n\030WIPER_CMD_I"
-      "NTERMITTENT_1\020\001\022\034\n\030WIPER_CMD_INTERMITTEN"
-      "T_2\020\002\022\034\n\030WIPER_CMD_INTERMITTENT_3\020\003\022\034\n\030W"
-      "IPER_CMD_INTERMITTENT_4\020\004\022\034\n\030WIPER_CMD_I"
-      "NTERMITTENT_5\020\005\022\021\n\rWIPER_CMD_LOW\020\006\022\022\n\016WI"
-      "PER_CMD_HIGH\020\007\"C\n\024Brake_motor_rpt_3_72\022\025"
-      "\n\rtorque_output\030\001 \001(\001\022\024\n\014torque_input\030\002 "
-      "\001(\001\"\245\016\n\003Gem\0225\n\rglobal_rpt_6a\030\001 \001(\0132\036.jmc"
-      "_auto.canbus.Global_rpt_6a\0223\n\014brake_cmd_"
-      "6b\030\002 \001(\0132\035.jmc_auto.canbus.Brake_cmd_6b\022"
-      "3\n\014brake_rpt_6c\030\003 \001(\0132\035.jmc_auto.canbus."
-      "Brake_rpt_6c\0229\n\017steering_cmd_6d\030\004 \001(\0132 ."
-      "jmc_auto.canbus.Steering_cmd_6d\022=\n\021steer"
-      "ing_rpt_1_6e\030\005 \001(\0132\".jmc_auto.canbus.Ste"
-      "ering_rpt_1_6e\022\?\n\022wheel_speed_rpt_7a\030\006 \001"
-      "(\0132#.jmc_auto.canbus.Wheel_speed_rpt_7a\022"
-      ";\n\020date_time_rpt_83\030\007 \001(\0132!.jmc_auto.can"
-      "bus.Date_time_rpt_83\022C\n\024brake_motor_rpt_"
-      "1_70\030\010 \001(\0132%.jmc_auto.canbus.Brake_motor"
-      "_rpt_1_70\022;\n\020headlight_rpt_77\030\t \001(\0132!.jm"
-      "c_auto.canbus.Headlight_rpt_77\0223\n\014accel_"
-      "rpt_68\030\n \001(\0132\035.jmc_auto.canbus.Accel_rpt"
-      "_68\022I\n\027steering_motor_rpt_3_75\030\013 \001(\0132(.j"
-      "mc_auto.canbus.Steering_motor_rpt_3_75\0221"
-      "\n\013turn_cmd_63\030\014 \001(\0132\034.jmc_auto.canbus.Tu"
-      "rn_cmd_63\0221\n\013turn_rpt_64\030\r \001(\0132\034.jmc_aut"
-      "o.canbus.Turn_rpt_64\0223\n\014shift_cmd_65\030\016 \001"
-      "(\0132\035.jmc_auto.canbus.Shift_cmd_65\0223\n\014shi"
-      "ft_rpt_66\030\017 \001(\0132\035.jmc_auto.canbus.Shift_"
-      "rpt_66\0223\n\014accel_cmd_67\030\020 \001(\0132\035.jmc_auto."
-      "canbus.Accel_cmd_67\022G\n\026lat_lon_heading_r"
-      "pt_82\030\021 \001(\0132\'.jmc_auto.canbus.Lat_lon_he"
-      "ading_rpt_82\0225\n\rglobal_cmd_69\030\022 \001(\0132\036.jm"
-      "c_auto.canbus.Global_cmd_69\022Q\n\033parking_b"
-      "rake_status_rpt_80\030\023 \001(\0132,.jmc_auto.canb"
-      "us.Parking_brake_status_rpt_80\0229\n\017yaw_ra"
-      "te_rpt_81\030\024 \001(\0132 .jmc_auto.canbus.Yaw_ra"
-      "te_rpt_81\0221\n\013horn_rpt_79\030\025 \001(\0132\034.jmc_aut"
-      "o.canbus.Horn_rpt_79\0221\n\013horn_cmd_78\030\026 \001("
-      "\0132\034.jmc_auto.canbus.Horn_cmd_78\0223\n\014wiper"
-      "_rpt_91\030\027 \001(\0132\035.jmc_auto.canbus.Wiper_rp"
-      "t_91\022C\n\024vehicle_speed_rpt_6f\030\030 \001(\0132%.jmc"
-      "_auto.canbus.Vehicle_speed_rpt_6f\022;\n\020hea"
-      "dlight_cmd_76\030\031 \001(\0132!.jmc_auto.canbus.He"
-      "adlight_cmd_76\022I\n\027steering_motor_rpt_2_7"
-      "4\030\032 \001(\0132(.jmc_auto.canbus.Steering_motor"
-      "_rpt_2_74\022C\n\024brake_motor_rpt_2_71\030\033 \001(\0132"
-      "%.jmc_auto.canbus.Brake_motor_rpt_2_71\022I"
-      "\n\027steering_motor_rpt_1_73\030\034 \001(\0132(.jmc_au"
-      "to.canbus.Steering_motor_rpt_1_73\0223\n\014wip"
-      "er_cmd_90\030\035 \001(\0132\035.jmc_auto.canbus.Wiper_"
-      "cmd_90\022C\n\024brake_motor_rpt_3_72\030\036 \001(\0132%.j"
-      "mc_auto.canbus.Brake_motor_rpt_3_72"
+      "\001(\005\022\025\n\rangular_speed\030\003 \001(\001\"e\n\024Brake_moto"
+      "r_rpt_2_71\022\033\n\023encoder_temperature\030\001 \001(\005\022"
+      "\031\n\021motor_temperature\030\002 \001(\005\022\025\n\rangular_sp"
+      "eed\030\003 \001(\001\"H\n\027Steering_motor_rpt_1_73\022\025\n\r"
+      "motor_current\030\001 \001(\001\022\026\n\016shaft_position\030\002 "
+      "\001(\001\"\267\002\n\014Wiper_cmd_90\022>\n\twiper_cmd\030\001 \001(\0162"
+      "+.jmc_auto.canbus.Wiper_cmd_90.Wiper_cmd"
+      "Type\"\346\001\n\rWiper_cmdType\022\030\n\024WIPER_CMD_WIPE"
+      "RS_OFF\020\000\022\034\n\030WIPER_CMD_INTERMITTENT_1\020\001\022\034"
+      "\n\030WIPER_CMD_INTERMITTENT_2\020\002\022\034\n\030WIPER_CM"
+      "D_INTERMITTENT_3\020\003\022\034\n\030WIPER_CMD_INTERMIT"
+      "TENT_4\020\004\022\034\n\030WIPER_CMD_INTERMITTENT_5\020\005\022\021"
+      "\n\rWIPER_CMD_LOW\020\006\022\022\n\016WIPER_CMD_HIGH\020\007\"C\n"
+      "\024Brake_motor_rpt_3_72\022\025\n\rtorque_output\030\001"
+      " \001(\001\022\024\n\014torque_input\030\002 \001(\001\"\245\016\n\003Gem\0225\n\rgl"
+      "obal_rpt_6a\030\001 \001(\0132\036.jmc_auto.canbus.Glob"
+      "al_rpt_6a\0223\n\014brake_cmd_6b\030\002 \001(\0132\035.jmc_au"
+      "to.canbus.Brake_cmd_6b\0223\n\014brake_rpt_6c\030\003"
+      " \001(\0132\035.jmc_auto.canbus.Brake_rpt_6c\0229\n\017s"
+      "teering_cmd_6d\030\004 \001(\0132 .jmc_auto.canbus.S"
+      "teering_cmd_6d\022=\n\021steering_rpt_1_6e\030\005 \001("
+      "\0132\".jmc_auto.canbus.Steering_rpt_1_6e\022\?\n"
+      "\022wheel_speed_rpt_7a\030\006 \001(\0132#.jmc_auto.can"
+      "bus.Wheel_speed_rpt_7a\022;\n\020date_time_rpt_"
+      "83\030\007 \001(\0132!.jmc_auto.canbus.Date_time_rpt"
+      "_83\022C\n\024brake_motor_rpt_1_70\030\010 \001(\0132%.jmc_"
+      "auto.canbus.Brake_motor_rpt_1_70\022;\n\020head"
+      "light_rpt_77\030\t \001(\0132!.jmc_auto.canbus.Hea"
+      "dlight_rpt_77\0223\n\014accel_rpt_68\030\n \001(\0132\035.jm"
+      "c_auto.canbus.Accel_rpt_68\022I\n\027steering_m"
+      "otor_rpt_3_75\030\013 \001(\0132(.jmc_auto.canbus.St"
+      "eering_motor_rpt_3_75\0221\n\013turn_cmd_63\030\014 \001"
+      "(\0132\034.jmc_auto.canbus.Turn_cmd_63\0221\n\013turn"
+      "_rpt_64\030\r \001(\0132\034.jmc_auto.canbus.Turn_rpt"
+      "_64\0223\n\014shift_cmd_65\030\016 \001(\0132\035.jmc_auto.can"
+      "bus.Shift_cmd_65\0223\n\014shift_rpt_66\030\017 \001(\0132\035"
+      ".jmc_auto.canbus.Shift_rpt_66\0223\n\014accel_c"
+      "md_67\030\020 \001(\0132\035.jmc_auto.canbus.Accel_cmd_"
+      "67\022G\n\026lat_lon_heading_rpt_82\030\021 \001(\0132\'.jmc"
+      "_auto.canbus.Lat_lon_heading_rpt_82\0225\n\rg"
+      "lobal_cmd_69\030\022 \001(\0132\036.jmc_auto.canbus.Glo"
+      "bal_cmd_69\022Q\n\033parking_brake_status_rpt_8"
+      "0\030\023 \001(\0132,.jmc_auto.canbus.Parking_brake_"
+      "status_rpt_80\0229\n\017yaw_rate_rpt_81\030\024 \001(\0132 "
+      ".jmc_auto.canbus.Yaw_rate_rpt_81\0221\n\013horn"
+      "_rpt_79\030\025 \001(\0132\034.jmc_auto.canbus.Horn_rpt"
+      "_79\0221\n\013horn_cmd_78\030\026 \001(\0132\034.jmc_auto.canb"
+      "us.Horn_cmd_78\0223\n\014wiper_rpt_91\030\027 \001(\0132\035.j"
+      "mc_auto.canbus.Wiper_rpt_91\022C\n\024vehicle_s"
+      "peed_rpt_6f\030\030 \001(\0132%.jmc_auto.canbus.Vehi"
+      "cle_speed_rpt_6f\022;\n\020headlight_cmd_76\030\031 \001"
+      "(\0132!.jmc_auto.canbus.Headlight_cmd_76\022I\n"
+      "\027steering_motor_rpt_2_74\030\032 \001(\0132(.jmc_aut"
+      "o.canbus.Steering_motor_rpt_2_74\022C\n\024brak"
+      "e_motor_rpt_2_71\030\033 \001(\0132%.jmc_auto.canbus"
+      ".Brake_motor_rpt_2_71\022I\n\027steering_motor_"
+      "rpt_1_73\030\034 \001(\0132(.jmc_auto.canbus.Steerin"
+      "g_motor_rpt_1_73\0223\n\014wiper_cmd_90\030\035 \001(\0132\035"
+      ".jmc_auto.canbus.Wiper_cmd_90\022C\n\024brake_m"
+      "otor_rpt_3_72\030\036 \001(\0132%.jmc_auto.canbus.Br"
+      "ake_motor_rpt_3_72"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 18395);
+      descriptor, 18458);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/canbus/proto/chassis_detail.proto", &protobuf_RegisterTypes);
   ::jmc_auto::canbus::protobuf_modules_2fcanbus_2fproto_2fchassis_2eproto::AddDescriptors();
@@ -5211,6 +5217,8 @@ const int CheckResponseSignal::kIsVtogOnlineFieldNumber;
 const int CheckResponseSignal::kIsScuOnlineFieldNumber;
 const int CheckResponseSignal::kIsSwitchOnlineFieldNumber;
 const int CheckResponseSignal::kIsVcuOnlineFieldNumber;
+const int CheckResponseSignal::kIsApaOnlineFieldNumber;
+const int CheckResponseSignal::kIsEpspamOnlineFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CheckResponseSignal::CheckResponseSignal()
@@ -5228,15 +5236,15 @@ CheckResponseSignal::CheckResponseSignal(const CheckResponseSignal& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&is_eps_online_, &from.is_eps_online_,
-    reinterpret_cast<char*>(&is_vcu_online_) -
-    reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_vcu_online_));
+    reinterpret_cast<char*>(&is_epspam_online_) -
+    reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_epspam_online_));
   // @@protoc_insertion_point(copy_constructor:jmc_auto.canbus.CheckResponseSignal)
 }
 
 void CheckResponseSignal::SharedCtor() {
   _cached_size_ = 0;
-  ::memset(&is_eps_online_, 0, reinterpret_cast<char*>(&is_vcu_online_) -
-    reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_vcu_online_));
+  ::memset(&is_eps_online_, 0, reinterpret_cast<char*>(&is_epspam_online_) -
+    reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_epspam_online_));
 }
 
 CheckResponseSignal::~CheckResponseSignal() {
@@ -5272,10 +5280,11 @@ CheckResponseSignal* CheckResponseSignal::New(::google::protobuf::Arena* arena) 
 
 void CheckResponseSignal::Clear() {
 // @@protoc_insertion_point(message_clear_start:jmc_auto.canbus.CheckResponseSignal)
-  if (_has_bits_[0 / 32] & 127u) {
-    ::memset(&is_eps_online_, 0, reinterpret_cast<char*>(&is_vcu_online_) -
-      reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_vcu_online_));
+  if (_has_bits_[0 / 32] & 255u) {
+    ::memset(&is_eps_online_, 0, reinterpret_cast<char*>(&is_apa_online_) -
+      reinterpret_cast<char*>(&is_eps_online_) + sizeof(is_apa_online_));
   }
+  is_epspam_online_ = false;
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -5388,6 +5397,34 @@ bool CheckResponseSignal::MergePartialFromCodedStream(
         break;
       }
 
+      // optional bool is_apa_online = 8 [default = false];
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(64u)) {
+          set_has_is_apa_online();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_apa_online_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional bool is_epspam_online = 9 [default = false];
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(72u)) {
+          set_has_is_epspam_online();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_epspam_online_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0 ||
@@ -5452,6 +5489,16 @@ void CheckResponseSignal::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->is_vcu_online(), output);
   }
 
+  // optional bool is_apa_online = 8 [default = false];
+  if (cached_has_bits & 0x00000080u) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->is_apa_online(), output);
+  }
+
+  // optional bool is_epspam_online = 9 [default = false];
+  if (cached_has_bits & 0x00000100u) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(9, this->is_epspam_online(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -5501,6 +5548,16 @@ void CheckResponseSignal::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->is_vcu_online(), target);
   }
 
+  // optional bool is_apa_online = 8 [default = false];
+  if (cached_has_bits & 0x00000080u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->is_apa_online(), target);
+  }
+
+  // optional bool is_epspam_online = 9 [default = false];
+  if (cached_has_bits & 0x00000100u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(9, this->is_epspam_online(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -5518,7 +5575,7 @@ size_t CheckResponseSignal::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 127u) {
+  if (_has_bits_[0 / 32] & 255u) {
     // optional bool is_eps_online = 1 [default = false];
     if (has_is_eps_online()) {
       total_size += 1 + 1;
@@ -5554,7 +5611,17 @@ size_t CheckResponseSignal::ByteSizeLong() const {
       total_size += 1 + 1;
     }
 
+    // optional bool is_apa_online = 8 [default = false];
+    if (has_is_apa_online()) {
+      total_size += 1 + 1;
+    }
+
   }
+  // optional bool is_epspam_online = 9 [default = false];
+  if (has_is_epspam_online()) {
+    total_size += 1 + 1;
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -5585,7 +5652,7 @@ void CheckResponseSignal::MergeFrom(const CheckResponseSignal& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 127u) {
+  if (cached_has_bits & 255u) {
     if (cached_has_bits & 0x00000001u) {
       is_eps_online_ = from.is_eps_online_;
     }
@@ -5607,7 +5674,13 @@ void CheckResponseSignal::MergeFrom(const CheckResponseSignal& from) {
     if (cached_has_bits & 0x00000040u) {
       is_vcu_online_ = from.is_vcu_online_;
     }
+    if (cached_has_bits & 0x00000080u) {
+      is_apa_online_ = from.is_apa_online_;
+    }
     _has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000100u) {
+    set_is_epspam_online(from.is_epspam_online());
   }
 }
 
@@ -5641,6 +5714,8 @@ void CheckResponseSignal::InternalSwap(CheckResponseSignal* other) {
   std::swap(is_scu_online_, other->is_scu_online_);
   std::swap(is_switch_online_, other->is_switch_online_);
   std::swap(is_vcu_online_, other->is_vcu_online_);
+  std::swap(is_apa_online_, other->is_apa_online_);
+  std::swap(is_epspam_online_, other->is_epspam_online_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -5820,6 +5895,54 @@ void CheckResponseSignal::set_is_vcu_online(bool value) {
   set_has_is_vcu_online();
   is_vcu_online_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_vcu_online)
+}
+
+// optional bool is_apa_online = 8 [default = false];
+bool CheckResponseSignal::has_is_apa_online() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+void CheckResponseSignal::set_has_is_apa_online() {
+  _has_bits_[0] |= 0x00000080u;
+}
+void CheckResponseSignal::clear_has_is_apa_online() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+void CheckResponseSignal::clear_is_apa_online() {
+  is_apa_online_ = false;
+  clear_has_is_apa_online();
+}
+bool CheckResponseSignal::is_apa_online() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.CheckResponseSignal.is_apa_online)
+  return is_apa_online_;
+}
+void CheckResponseSignal::set_is_apa_online(bool value) {
+  set_has_is_apa_online();
+  is_apa_online_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_apa_online)
+}
+
+// optional bool is_epspam_online = 9 [default = false];
+bool CheckResponseSignal::has_is_epspam_online() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+void CheckResponseSignal::set_has_is_epspam_online() {
+  _has_bits_[0] |= 0x00000100u;
+}
+void CheckResponseSignal::clear_has_is_epspam_online() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+void CheckResponseSignal::clear_is_epspam_online() {
+  is_epspam_online_ = false;
+  clear_has_is_epspam_online();
+}
+bool CheckResponseSignal::is_epspam_online() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.CheckResponseSignal.is_epspam_online)
+  return is_epspam_online_;
+}
+void CheckResponseSignal::set_is_epspam_online(bool value) {
+  set_has_is_epspam_online();
+  is_epspam_online_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.CheckResponseSignal.is_epspam_online)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

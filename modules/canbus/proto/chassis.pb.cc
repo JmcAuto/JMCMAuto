@@ -168,16 +168,18 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_apa_gearboxenable_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_vlc_apactive_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_vlcapa_available_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, eps_epspamsts_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, eps_epspaminh_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Chassis, esp_epbstatus_),
   7,
-  78,
-  79,
   80,
-  6,
   81,
   82,
+  6,
   83,
-  77,
+  84,
+  85,
+  79,
   8,
   9,
   10,
@@ -252,6 +254,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   73,
   74,
   75,
+  77,
+  78,
   76,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChassisGPS, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ChassisGPS, _internal_metadata_),
@@ -402,12 +406,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, 10, sizeof(Signal)},
-  { 15, 104, sizeof(Chassis)},
-  { 188, 213, sizeof(ChassisGPS)},
-  { 233, 250, sizeof(WheelSpeed)},
-  { 262, 270, sizeof(Sonar)},
-  { 273, 302, sizeof(Surround)},
-  { 326, 332, sizeof(License)},
+  { 15, 106, sizeof(Chassis)},
+  { 192, 217, sizeof(ChassisGPS)},
+  { 237, 254, sizeof(WheelSpeed)},
+  { 266, 274, sizeof(Sonar)},
+  { 277, 306, sizeof(Surround)},
+  { 330, 336, sizeof(License)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -510,7 +514,7 @@ void AddDescriptorsImpl() {
       "high_beam\030\002 \001(\010\022\020\n\010low_beam\030\003 \001(\010\022\014\n\004hor"
       "n\030\004 \001(\010\022\027\n\017emergency_light\030\005 \001(\010\":\n\nTurn"
       "Signal\022\r\n\tTURN_NONE\020\000\022\r\n\tTURN_LEFT\020\001\022\016\n\n"
-      "TURN_RIGHT\020\002\"\207\027\n\007Chassis\022\026\n\016engine_start"
+      "TURN_RIGHT\020\002\"\265\027\n\007Chassis\022\026\n\016engine_start"
       "ed\030\003 \001(\010\022\027\n\nengine_rpm\030\004 \001(\002:\003nan\022\026\n\tspe"
       "ed_mps\030\005 \001(\002:\003nan\022\027\n\nodometer_m\030\006 \001(\002:\003n"
       "an\022\024\n\014fuel_range_m\030\007 \001(\005\022 \n\023throttle_per"
@@ -571,70 +575,71 @@ void AddDescriptorsImpl() {
       "\005\022\031\n\021esp_vlc_available\030T \001(\005\022\035\n\025esp_apa_"
       "gearboxenable\030U \001(\005\022\030\n\020esp_vlc_apactive\030"
       "V \001(\005\022\034\n\024esp_vlcapa_available\030W \001(\005\022\025\n\re"
-      "sp_epbstatus\030X \001(\005\"\230\001\n\013DrivingMode\022\023\n\017CO"
-      "MPLETE_MANUAL\020\000\022\027\n\023COMPLETE_AUTO_DRIVE\020\001"
-      "\022\023\n\017AUTO_STEER_ONLY\020\002\022\023\n\017AUTO_SPEED_ONLY"
-      "\020\003\022\022\n\016EMERGENCY_MODE\020\004\022\017\n\013REMOTE_MODE\020\005\022"
-      "\014\n\010APA_MODE\020\006\"\216\001\n\tErrorCode\022\014\n\010NO_ERROR\020"
-      "\000\022\025\n\021CMD_NOT_IN_PERIOD\020\001\022\021\n\rCHASSIS_ERRO"
-      "R\020\002\022\027\n\023MANUAL_INTERVENTION\020\003\022\035\n\031CHASSIS_"
-      "CAN_NOT_IN_PERIOD\020\004\022\021\n\rUNKNOWN_ERROR\020\005\"\203"
-      "\001\n\014GearPosition\022\020\n\014GEAR_NEUTRAL\020\000\022\016\n\nGEA"
-      "R_DRIVE\020\001\022\020\n\014GEAR_REVERSE\020\002\022\020\n\014GEAR_PARK"
-      "ING\020\003\022\014\n\010GEAR_LOW\020\004\022\020\n\014GEAR_INVALID\020\005\022\r\n"
-      "\tGEAR_NONE\020\006\"H\n\016BrkPedalStasus\022\017\n\013NOT_PR"
-      "ESSED\020\000\022\013\n\007PRESSED\020\001\022\r\n\tRESERRVED\020\002\022\t\n\005E"
-      "RROR\020\003\"\213\003\n\nChassisGPS\022\020\n\010latitude\030\001 \001(\001\022"
-      "\021\n\tlongitude\030\002 \001(\001\022\021\n\tgps_valid\030\003 \001(\010\022\014\n"
-      "\004year\030\004 \001(\005\022\r\n\005month\030\005 \001(\005\022\013\n\003day\030\006 \001(\005\022"
-      "\r\n\005hours\030\007 \001(\005\022\017\n\007minutes\030\010 \001(\005\022\017\n\007secon"
-      "ds\030\t \001(\005\022\031\n\021compass_direction\030\n \001(\001\022\014\n\004p"
-      "dop\030\013 \001(\001\022\024\n\014is_gps_fault\030\014 \001(\010\022\023\n\013is_in"
-      "ferred\030\r \001(\010\022\020\n\010altitude\030\016 \001(\001\022\017\n\007headin"
-      "g\030\017 \001(\001\022\014\n\004hdop\030\020 \001(\001\022\014\n\004vdop\030\021 \001(\001\022,\n\007q"
-      "uality\030\022 \001(\0162\033.jmc_auto.canbus.GpsQualit"
-      "y\022\026\n\016num_satellites\030\023 \001(\005\022\021\n\tgps_speed\030\024"
-      " \001(\001\"\226\005\n\nWheelSpeed\022$\n\025is_wheel_spd_rr_v"
-      "alid\030\001 \001(\010:\005false\022O\n\022wheel_direction_rr\030"
-      "\002 \001(\0162*.jmc_auto.canbus.WheelSpeed.Wheel"
-      "SpeedType:\007INVALID\022\027\n\014wheel_spd_rr\030\003 \001(\001"
-      ":\0010\022$\n\025is_wheel_spd_rl_valid\030\004 \001(\010:\005fals"
-      "e\022O\n\022wheel_direction_rl\030\005 \001(\0162*.jmc_auto"
-      ".canbus.WheelSpeed.WheelSpeedType:\007INVAL"
-      "ID\022\027\n\014wheel_spd_rl\030\006 \001(\001:\0010\022$\n\025is_wheel_"
-      "spd_fr_valid\030\007 \001(\010:\005false\022O\n\022wheel_direc"
-      "tion_fr\030\010 \001(\0162*.jmc_auto.canbus.WheelSpe"
-      "ed.WheelSpeedType:\007INVALID\022\027\n\014wheel_spd_"
-      "fr\030\t \001(\001:\0010\022$\n\025is_wheel_spd_fl_valid\030\n \001"
-      "(\010:\005false\022O\n\022wheel_direction_fl\030\013 \001(\0162*."
-      "jmc_auto.canbus.WheelSpeed.WheelSpeedTyp"
-      "e:\007INVALID\022\027\n\014wheel_spd_fl\030\014 \001(\001:\0010\"H\n\016W"
-      "heelSpeedType\022\013\n\007FORWARD\020\000\022\014\n\010BACKWARD\020\001"
-      "\022\016\n\nSTANDSTILL\020\002\022\013\n\007INVALID\020\003\"t\n\005Sonar\022\r"
-      "\n\005range\030\001 \001(\001\022-\n\013translation\030\002 \001(\0132\030.jmc"
-      "_auto.common.Point3D\022-\n\010rotation\030\003 \001(\0132\033"
-      ".jmc_auto.common.Quaternion\"\346\004\n\010Surround"
-      "\022 \n\030cross_traffic_alert_left\030\001 \001(\010\022(\n cr"
-      "oss_traffic_alert_left_enabled\030\002 \001(\010\022\035\n\025"
-      "blind_spot_left_alert\030\003 \001(\010\022%\n\035blind_spo"
-      "t_left_alert_enabled\030\004 \001(\010\022!\n\031cross_traf"
-      "fic_alert_right\030\005 \001(\010\022)\n!cross_traffic_a"
-      "lert_right_enabled\030\006 \001(\010\022\036\n\026blind_spot_r"
-      "ight_alert\030\007 \001(\010\022&\n\036blind_spot_right_ale"
-      "rt_enabled\030\010 \001(\010\022\017\n\007sonar00\030\t \001(\001\022\017\n\007son"
-      "ar01\030\n \001(\001\022\017\n\007sonar02\030\013 \001(\001\022\017\n\007sonar03\030\014"
-      " \001(\001\022\017\n\007sonar04\030\r \001(\001\022\017\n\007sonar05\030\016 \001(\001\022\017"
-      "\n\007sonar06\030\017 \001(\001\022\017\n\007sonar07\030\020 \001(\001\022\017\n\007sona"
-      "r08\030\021 \001(\001\022\017\n\007sonar09\030\022 \001(\001\022\017\n\007sonar10\030\023 "
-      "\001(\001\022\017\n\007sonar11\030\024 \001(\001\022\025\n\rsonar_enabled\030\025 "
-      "\001(\010\022\023\n\013sonar_fault\030\026 \001(\010\022\023\n\013sonar_range\030"
-      "\027 \003(\001\022%\n\005sonar\030\030 \003(\0132\026.jmc_auto.canbus.S"
-      "onar\"\026\n\007License\022\013\n\003vin\030\001 \001(\t*A\n\nGpsQuali"
-      "ty\022\n\n\006FIX_NO\020\000\022\n\n\006FIX_2D\020\001\022\n\n\006FIX_3D\020\002\022\017"
-      "\n\013FIX_INVALID\020\003"
+      "ps_epspamsts\030Y \001(\005\022\025\n\reps_epspaminh\030Z \001("
+      "\005\022\025\n\resp_epbstatus\030X \001(\005\"\230\001\n\013DrivingMode"
+      "\022\023\n\017COMPLETE_MANUAL\020\000\022\027\n\023COMPLETE_AUTO_D"
+      "RIVE\020\001\022\023\n\017AUTO_STEER_ONLY\020\002\022\023\n\017AUTO_SPEE"
+      "D_ONLY\020\003\022\022\n\016EMERGENCY_MODE\020\004\022\017\n\013REMOTE_M"
+      "ODE\020\005\022\014\n\010APA_MODE\020\006\"\216\001\n\tErrorCode\022\014\n\010NO_"
+      "ERROR\020\000\022\025\n\021CMD_NOT_IN_PERIOD\020\001\022\021\n\rCHASSI"
+      "S_ERROR\020\002\022\027\n\023MANUAL_INTERVENTION\020\003\022\035\n\031CH"
+      "ASSIS_CAN_NOT_IN_PERIOD\020\004\022\021\n\rUNKNOWN_ERR"
+      "OR\020\005\"\203\001\n\014GearPosition\022\020\n\014GEAR_NEUTRAL\020\000\022"
+      "\016\n\nGEAR_DRIVE\020\001\022\020\n\014GEAR_REVERSE\020\002\022\020\n\014GEA"
+      "R_PARKING\020\003\022\014\n\010GEAR_LOW\020\004\022\020\n\014GEAR_INVALI"
+      "D\020\005\022\r\n\tGEAR_NONE\020\006\"H\n\016BrkPedalStasus\022\017\n\013"
+      "NOT_PRESSED\020\000\022\013\n\007PRESSED\020\001\022\r\n\tRESERRVED\020"
+      "\002\022\t\n\005ERROR\020\003\"\213\003\n\nChassisGPS\022\020\n\010latitude\030"
+      "\001 \001(\001\022\021\n\tlongitude\030\002 \001(\001\022\021\n\tgps_valid\030\003 "
+      "\001(\010\022\014\n\004year\030\004 \001(\005\022\r\n\005month\030\005 \001(\005\022\013\n\003day\030"
+      "\006 \001(\005\022\r\n\005hours\030\007 \001(\005\022\017\n\007minutes\030\010 \001(\005\022\017\n"
+      "\007seconds\030\t \001(\005\022\031\n\021compass_direction\030\n \001("
+      "\001\022\014\n\004pdop\030\013 \001(\001\022\024\n\014is_gps_fault\030\014 \001(\010\022\023\n"
+      "\013is_inferred\030\r \001(\010\022\020\n\010altitude\030\016 \001(\001\022\017\n\007"
+      "heading\030\017 \001(\001\022\014\n\004hdop\030\020 \001(\001\022\014\n\004vdop\030\021 \001("
+      "\001\022,\n\007quality\030\022 \001(\0162\033.jmc_auto.canbus.Gps"
+      "Quality\022\026\n\016num_satellites\030\023 \001(\005\022\021\n\tgps_s"
+      "peed\030\024 \001(\001\"\226\005\n\nWheelSpeed\022$\n\025is_wheel_sp"
+      "d_rr_valid\030\001 \001(\010:\005false\022O\n\022wheel_directi"
+      "on_rr\030\002 \001(\0162*.jmc_auto.canbus.WheelSpeed"
+      ".WheelSpeedType:\007INVALID\022\027\n\014wheel_spd_rr"
+      "\030\003 \001(\001:\0010\022$\n\025is_wheel_spd_rl_valid\030\004 \001(\010"
+      ":\005false\022O\n\022wheel_direction_rl\030\005 \001(\0162*.jm"
+      "c_auto.canbus.WheelSpeed.WheelSpeedType:"
+      "\007INVALID\022\027\n\014wheel_spd_rl\030\006 \001(\001:\0010\022$\n\025is_"
+      "wheel_spd_fr_valid\030\007 \001(\010:\005false\022O\n\022wheel"
+      "_direction_fr\030\010 \001(\0162*.jmc_auto.canbus.Wh"
+      "eelSpeed.WheelSpeedType:\007INVALID\022\027\n\014whee"
+      "l_spd_fr\030\t \001(\001:\0010\022$\n\025is_wheel_spd_fl_val"
+      "id\030\n \001(\010:\005false\022O\n\022wheel_direction_fl\030\013 "
+      "\001(\0162*.jmc_auto.canbus.WheelSpeed.WheelSp"
+      "eedType:\007INVALID\022\027\n\014wheel_spd_fl\030\014 \001(\001:\001"
+      "0\"H\n\016WheelSpeedType\022\013\n\007FORWARD\020\000\022\014\n\010BACK"
+      "WARD\020\001\022\016\n\nSTANDSTILL\020\002\022\013\n\007INVALID\020\003\"t\n\005S"
+      "onar\022\r\n\005range\030\001 \001(\001\022-\n\013translation\030\002 \001(\013"
+      "2\030.jmc_auto.common.Point3D\022-\n\010rotation\030\003"
+      " \001(\0132\033.jmc_auto.common.Quaternion\"\346\004\n\010Su"
+      "rround\022 \n\030cross_traffic_alert_left\030\001 \001(\010"
+      "\022(\n cross_traffic_alert_left_enabled\030\002 \001"
+      "(\010\022\035\n\025blind_spot_left_alert\030\003 \001(\010\022%\n\035bli"
+      "nd_spot_left_alert_enabled\030\004 \001(\010\022!\n\031cros"
+      "s_traffic_alert_right\030\005 \001(\010\022)\n!cross_tra"
+      "ffic_alert_right_enabled\030\006 \001(\010\022\036\n\026blind_"
+      "spot_right_alert\030\007 \001(\010\022&\n\036blind_spot_rig"
+      "ht_alert_enabled\030\010 \001(\010\022\017\n\007sonar00\030\t \001(\001\022"
+      "\017\n\007sonar01\030\n \001(\001\022\017\n\007sonar02\030\013 \001(\001\022\017\n\007son"
+      "ar03\030\014 \001(\001\022\017\n\007sonar04\030\r \001(\001\022\017\n\007sonar05\030\016"
+      " \001(\001\022\017\n\007sonar06\030\017 \001(\001\022\017\n\007sonar07\030\020 \001(\001\022\017"
+      "\n\007sonar08\030\021 \001(\001\022\017\n\007sonar09\030\022 \001(\001\022\017\n\007sona"
+      "r10\030\023 \001(\001\022\017\n\007sonar11\030\024 \001(\001\022\025\n\rsonar_enab"
+      "led\030\025 \001(\010\022\023\n\013sonar_fault\030\026 \001(\010\022\023\n\013sonar_"
+      "range\030\027 \003(\001\022%\n\005sonar\030\030 \003(\0132\026.jmc_auto.ca"
+      "nbus.Sonar\"\026\n\007License\022\013\n\003vin\030\001 \001(\t*A\n\nGp"
+      "sQuality\022\n\n\006FIX_NO\020\000\022\n\n\006FIX_2D\020\001\022\n\n\006FIX_"
+      "3D\020\002\022\017\n\013FIX_INVALID\020\003"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 5255);
+      descriptor, 5301);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "modules/canbus/proto/chassis.proto", &protobuf_RegisterTypes);
   ::jmc_auto::common::protobuf_modules_2fcommon_2fproto_2fheader_2eproto::AddDescriptors();
@@ -1440,6 +1445,8 @@ const int Chassis::kEspVlcAvailableFieldNumber;
 const int Chassis::kEspApaGearboxenableFieldNumber;
 const int Chassis::kEspVlcApactiveFieldNumber;
 const int Chassis::kEspVlcapaAvailableFieldNumber;
+const int Chassis::kEpsEpspamstsFieldNumber;
+const int Chassis::kEpsEpspaminhFieldNumber;
 const int Chassis::kEspEpbstatusFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1495,8 +1502,8 @@ Chassis::Chassis(const Chassis& from)
 
 void Chassis::SharedCtor() {
   _cached_size_ = 0;
-  ::memset(&header_, 0, reinterpret_cast<char*>(&esp_epbstatus_) -
-    reinterpret_cast<char*>(&header_) + sizeof(esp_epbstatus_));
+  ::memset(&header_, 0, reinterpret_cast<char*>(&eps_epspaminh_) -
+    reinterpret_cast<char*>(&header_) + sizeof(eps_epspaminh_));
   steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
   engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
   speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -1620,13 +1627,13 @@ void Chassis::Clear() {
       reinterpret_cast<char*>(&ins_car_status_) + sizeof(esp_vlc_active_));
   }
   if (_has_bits_[72 / 32] & 65280u) {
-    ::memset(&esp_vlc_available_, 0, reinterpret_cast<char*>(&esp_epbstatus_) -
-      reinterpret_cast<char*>(&esp_vlc_available_) + sizeof(esp_epbstatus_));
+    ::memset(&esp_vlc_available_, 0, reinterpret_cast<char*>(&eps_epspaminh_) -
+      reinterpret_cast<char*>(&esp_vlc_available_) + sizeof(eps_epspaminh_));
     steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
+  }
+  if (_has_bits_[80 / 32] & 4128768u) {
     engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
     speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
-  }
-  if (_has_bits_[80 / 32] & 983040u) {
     odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
     throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
     brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -2830,6 +2837,34 @@ bool Chassis::MergePartialFromCodedStream(
         break;
       }
 
+      // optional int32 eps_epspamsts = 89;
+      case 89: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(712u)) {
+          set_has_eps_epspamsts();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &eps_epspamsts_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 eps_epspaminh = 90;
+      case 90: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(720u)) {
+          set_has_eps_epspaminh();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &eps_epspaminh_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0 ||
@@ -2866,17 +2901,17 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[2];
   // optional float engine_rpm = 4 [default = nan];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00010000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->engine_rpm(), output);
   }
 
   // optional float speed_mps = 5 [default = nan];
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00020000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->speed_mps(), output);
   }
 
   // optional float odometer_m = 6 [default = nan];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->odometer_m(), output);
   }
 
@@ -2888,22 +2923,22 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[2];
   // optional float throttle_percentage = 8 [default = nan];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->throttle_percentage(), output);
   }
 
   // optional float brake_percentage = 9 [default = nan];
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00100000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->brake_percentage(), output);
   }
 
   // optional float steering_percentage = 11 [default = nan];
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00200000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(11, this->steering_percentage(), output);
   }
 
   // optional float steering_torque_nm = 12 [default = nan];
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00008000u) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(12, this->steering_torque_nm(), output);
   }
 
@@ -3295,6 +3330,16 @@ void Chassis::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(88, this->esp_epbstatus(), output);
   }
 
+  // optional int32 eps_epspamsts = 89;
+  if (cached_has_bits & 0x00002000u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(89, this->eps_epspamsts(), output);
+  }
+
+  // optional int32 eps_epspaminh = 90;
+  if (cached_has_bits & 0x00004000u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(90, this->eps_epspaminh(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3316,17 +3361,17 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[2];
   // optional float engine_rpm = 4 [default = nan];
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->engine_rpm(), target);
   }
 
   // optional float speed_mps = 5 [default = nan];
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->speed_mps(), target);
   }
 
   // optional float odometer_m = 6 [default = nan];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->odometer_m(), target);
   }
 
@@ -3338,22 +3383,22 @@ void Chassis::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[2];
   // optional float throttle_percentage = 8 [default = nan];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->throttle_percentage(), target);
   }
 
   // optional float brake_percentage = 9 [default = nan];
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00100000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->brake_percentage(), target);
   }
 
   // optional float steering_percentage = 11 [default = nan];
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00200000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(11, this->steering_percentage(), target);
   }
 
   // optional float steering_torque_nm = 12 [default = nan];
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(12, this->steering_torque_nm(), target);
   }
 
@@ -3749,6 +3794,16 @@ void Chassis::SerializeWithCachedSizes(
   // optional int32 esp_epbstatus = 88;
   if (cached_has_bits & 0x00001000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(88, this->esp_epbstatus(), target);
+  }
+
+  // optional int32 eps_epspamsts = 89;
+  if (cached_has_bits & 0x00002000u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(89, this->eps_epspamsts(), target);
+  }
+
+  // optional int32 eps_epspaminh = 90;
+  if (cached_has_bits & 0x00004000u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(90, this->eps_epspaminh(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4234,11 +4289,27 @@ size_t Chassis::ByteSizeLong() const {
           this->esp_epbstatus());
     }
 
+    // optional int32 eps_epspamsts = 89;
+    if (has_eps_epspamsts()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->eps_epspamsts());
+    }
+
+    // optional int32 eps_epspaminh = 90;
+    if (has_eps_epspaminh()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->eps_epspaminh());
+    }
+
     // optional float steering_torque_nm = 12 [default = nan];
     if (has_steering_torque_nm()) {
       total_size += 1 + 4;
     }
 
+  }
+  if (_has_bits_[80 / 32] & 4128768u) {
     // optional float engine_rpm = 4 [default = nan];
     if (has_engine_rpm()) {
       total_size += 1 + 4;
@@ -4249,8 +4320,6 @@ size_t Chassis::ByteSizeLong() const {
       total_size += 1 + 4;
     }
 
-  }
-  if (_has_bits_[80 / 32] & 983040u) {
     // optional float odometer_m = 6 [default = nan];
     if (has_odometer_m()) {
       total_size += 1 + 4;
@@ -4564,27 +4633,33 @@ void Chassis::MergeFrom(const Chassis& from) {
       esp_epbstatus_ = from.esp_epbstatus_;
     }
     if (cached_has_bits & 0x00002000u) {
-      steering_torque_nm_ = from.steering_torque_nm_;
+      eps_epspamsts_ = from.eps_epspamsts_;
     }
     if (cached_has_bits & 0x00004000u) {
-      engine_rpm_ = from.engine_rpm_;
+      eps_epspaminh_ = from.eps_epspaminh_;
     }
     if (cached_has_bits & 0x00008000u) {
-      speed_mps_ = from.speed_mps_;
+      steering_torque_nm_ = from.steering_torque_nm_;
     }
     _has_bits_[2] |= cached_has_bits;
   }
-  if (cached_has_bits & 983040u) {
+  if (cached_has_bits & 4128768u) {
     if (cached_has_bits & 0x00010000u) {
-      odometer_m_ = from.odometer_m_;
+      engine_rpm_ = from.engine_rpm_;
     }
     if (cached_has_bits & 0x00020000u) {
-      throttle_percentage_ = from.throttle_percentage_;
+      speed_mps_ = from.speed_mps_;
     }
     if (cached_has_bits & 0x00040000u) {
-      brake_percentage_ = from.brake_percentage_;
+      odometer_m_ = from.odometer_m_;
     }
     if (cached_has_bits & 0x00080000u) {
+      throttle_percentage_ = from.throttle_percentage_;
+    }
+    if (cached_has_bits & 0x00100000u) {
+      brake_percentage_ = from.brake_percentage_;
+    }
+    if (cached_has_bits & 0x00200000u) {
       steering_percentage_ = from.steering_percentage_;
     }
     _has_bits_[2] |= cached_has_bits;
@@ -4691,6 +4766,8 @@ void Chassis::InternalSwap(Chassis* other) {
   std::swap(esp_vlc_apactive_, other->esp_vlc_apactive_);
   std::swap(esp_vlcapa_available_, other->esp_vlcapa_available_);
   std::swap(esp_epbstatus_, other->esp_epbstatus_);
+  std::swap(eps_epspamsts_, other->eps_epspamsts_);
+  std::swap(eps_epspaminh_, other->eps_epspaminh_);
   std::swap(steering_torque_nm_, other->steering_torque_nm_);
   std::swap(engine_rpm_, other->engine_rpm_);
   std::swap(speed_mps_, other->speed_mps_);
@@ -4739,13 +4816,13 @@ void Chassis::set_engine_started(bool value) {
 
 // optional float engine_rpm = 4 [default = nan];
 bool Chassis::has_engine_rpm() const {
-  return (_has_bits_[2] & 0x00004000u) != 0;
+  return (_has_bits_[2] & 0x00010000u) != 0;
 }
 void Chassis::set_has_engine_rpm() {
-  _has_bits_[2] |= 0x00004000u;
+  _has_bits_[2] |= 0x00010000u;
 }
 void Chassis::clear_has_engine_rpm() {
-  _has_bits_[2] &= ~0x00004000u;
+  _has_bits_[2] &= ~0x00010000u;
 }
 void Chassis::clear_engine_rpm() {
   engine_rpm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4763,13 +4840,13 @@ void Chassis::set_engine_rpm(float value) {
 
 // optional float speed_mps = 5 [default = nan];
 bool Chassis::has_speed_mps() const {
-  return (_has_bits_[2] & 0x00008000u) != 0;
+  return (_has_bits_[2] & 0x00020000u) != 0;
 }
 void Chassis::set_has_speed_mps() {
-  _has_bits_[2] |= 0x00008000u;
+  _has_bits_[2] |= 0x00020000u;
 }
 void Chassis::clear_has_speed_mps() {
-  _has_bits_[2] &= ~0x00008000u;
+  _has_bits_[2] &= ~0x00020000u;
 }
 void Chassis::clear_speed_mps() {
   speed_mps_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4787,13 +4864,13 @@ void Chassis::set_speed_mps(float value) {
 
 // optional float odometer_m = 6 [default = nan];
 bool Chassis::has_odometer_m() const {
-  return (_has_bits_[2] & 0x00010000u) != 0;
+  return (_has_bits_[2] & 0x00040000u) != 0;
 }
 void Chassis::set_has_odometer_m() {
-  _has_bits_[2] |= 0x00010000u;
+  _has_bits_[2] |= 0x00040000u;
 }
 void Chassis::clear_has_odometer_m() {
-  _has_bits_[2] &= ~0x00010000u;
+  _has_bits_[2] &= ~0x00040000u;
 }
 void Chassis::clear_odometer_m() {
   odometer_m_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4835,13 +4912,13 @@ void Chassis::set_fuel_range_m(::google::protobuf::int32 value) {
 
 // optional float throttle_percentage = 8 [default = nan];
 bool Chassis::has_throttle_percentage() const {
-  return (_has_bits_[2] & 0x00020000u) != 0;
+  return (_has_bits_[2] & 0x00080000u) != 0;
 }
 void Chassis::set_has_throttle_percentage() {
-  _has_bits_[2] |= 0x00020000u;
+  _has_bits_[2] |= 0x00080000u;
 }
 void Chassis::clear_has_throttle_percentage() {
-  _has_bits_[2] &= ~0x00020000u;
+  _has_bits_[2] &= ~0x00080000u;
 }
 void Chassis::clear_throttle_percentage() {
   throttle_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4859,13 +4936,13 @@ void Chassis::set_throttle_percentage(float value) {
 
 // optional float brake_percentage = 9 [default = nan];
 bool Chassis::has_brake_percentage() const {
-  return (_has_bits_[2] & 0x00040000u) != 0;
+  return (_has_bits_[2] & 0x00100000u) != 0;
 }
 void Chassis::set_has_brake_percentage() {
-  _has_bits_[2] |= 0x00040000u;
+  _has_bits_[2] |= 0x00100000u;
 }
 void Chassis::clear_has_brake_percentage() {
-  _has_bits_[2] &= ~0x00040000u;
+  _has_bits_[2] &= ~0x00100000u;
 }
 void Chassis::clear_brake_percentage() {
   brake_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4883,13 +4960,13 @@ void Chassis::set_brake_percentage(float value) {
 
 // optional float steering_percentage = 11 [default = nan];
 bool Chassis::has_steering_percentage() const {
-  return (_has_bits_[2] & 0x00080000u) != 0;
+  return (_has_bits_[2] & 0x00200000u) != 0;
 }
 void Chassis::set_has_steering_percentage() {
-  _has_bits_[2] |= 0x00080000u;
+  _has_bits_[2] |= 0x00200000u;
 }
 void Chassis::clear_has_steering_percentage() {
-  _has_bits_[2] &= ~0x00080000u;
+  _has_bits_[2] &= ~0x00200000u;
 }
 void Chassis::clear_steering_percentage() {
   steering_percentage_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -4907,13 +4984,13 @@ void Chassis::set_steering_percentage(float value) {
 
 // optional float steering_torque_nm = 12 [default = nan];
 bool Chassis::has_steering_torque_nm() const {
-  return (_has_bits_[2] & 0x00002000u) != 0;
+  return (_has_bits_[2] & 0x00008000u) != 0;
 }
 void Chassis::set_has_steering_torque_nm() {
-  _has_bits_[2] |= 0x00002000u;
+  _has_bits_[2] |= 0x00008000u;
 }
 void Chassis::clear_has_steering_torque_nm() {
-  _has_bits_[2] &= ~0x00002000u;
+  _has_bits_[2] &= ~0x00008000u;
 }
 void Chassis::clear_steering_torque_nm() {
   steering_torque_nm_ = static_cast<float>(::google::protobuf::internal::NaN());
@@ -6833,6 +6910,54 @@ void Chassis::set_esp_vlcapa_available(::google::protobuf::int32 value) {
   set_has_esp_vlcapa_available();
   esp_vlcapa_available_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.esp_vlcapa_available)
+}
+
+// optional int32 eps_epspamsts = 89;
+bool Chassis::has_eps_epspamsts() const {
+  return (_has_bits_[2] & 0x00002000u) != 0;
+}
+void Chassis::set_has_eps_epspamsts() {
+  _has_bits_[2] |= 0x00002000u;
+}
+void Chassis::clear_has_eps_epspamsts() {
+  _has_bits_[2] &= ~0x00002000u;
+}
+void Chassis::clear_eps_epspamsts() {
+  eps_epspamsts_ = 0;
+  clear_has_eps_epspamsts();
+}
+::google::protobuf::int32 Chassis::eps_epspamsts() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.eps_epspamsts)
+  return eps_epspamsts_;
+}
+void Chassis::set_eps_epspamsts(::google::protobuf::int32 value) {
+  set_has_eps_epspamsts();
+  eps_epspamsts_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.eps_epspamsts)
+}
+
+// optional int32 eps_epspaminh = 90;
+bool Chassis::has_eps_epspaminh() const {
+  return (_has_bits_[2] & 0x00004000u) != 0;
+}
+void Chassis::set_has_eps_epspaminh() {
+  _has_bits_[2] |= 0x00004000u;
+}
+void Chassis::clear_has_eps_epspaminh() {
+  _has_bits_[2] &= ~0x00004000u;
+}
+void Chassis::clear_eps_epspaminh() {
+  eps_epspaminh_ = 0;
+  clear_has_eps_epspaminh();
+}
+::google::protobuf::int32 Chassis::eps_epspaminh() const {
+  // @@protoc_insertion_point(field_get:jmc_auto.canbus.Chassis.eps_epspaminh)
+  return eps_epspaminh_;
+}
+void Chassis::set_eps_epspaminh(::google::protobuf::int32 value) {
+  set_has_eps_epspaminh();
+  eps_epspaminh_ = value;
+  // @@protoc_insertion_point(field_set:jmc_auto.canbus.Chassis.eps_epspaminh)
 }
 
 // optional int32 esp_epbstatus = 88;

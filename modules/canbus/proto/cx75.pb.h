@@ -15203,12 +15203,12 @@ class Eps_advanced_0x176_176 : public ::google::protobuf::Message /* @@protoc_in
   ::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_lkacontrolstatusType eps_lkacontrolstatus() const;
   void set_eps_lkacontrolstatus(::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_lkacontrolstatusType value);
 
-  // optional .jmc_auto.canbus.Eps_advanced_0x176_176.Eps_epspaminhType eps_epspaminh = 7;
+  // optional int32 eps_epspaminh = 7;
   bool has_eps_epspaminh() const;
   void clear_eps_epspaminh();
   static const int kEpsEpspaminhFieldNumber = 7;
-  ::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType eps_epspaminh() const;
-  void set_eps_epspaminh(::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType value);
+  ::google::protobuf::int32 eps_epspaminh() const;
+  void set_eps_epspaminh(::google::protobuf::int32 value);
 
   // optional int32 rolling_counter_0x176 = 8;
   bool has_rolling_counter_0x176() const;
@@ -15272,7 +15272,7 @@ class Eps_advanced_0x176_176 : public ::google::protobuf::Message /* @@protoc_in
   int eps_ldwcontrolstatus_;
   int eps_pam_steeringsts_reserved_;
   int eps_lkacontrolstatus_;
-  int eps_epspaminh_;
+  ::google::protobuf::int32 eps_epspaminh_;
   ::google::protobuf::int32 rolling_counter_0x176_;
   int eps_epspamsts_;
   double eps_torsionbartorque_;
@@ -36773,7 +36773,7 @@ inline void Eps_advanced_0x176_176::set_eps_lkacontrolstatus(::jmc_auto::canbus:
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.Eps_advanced_0x176_176.eps_lkacontrolstatus)
 }
 
-// optional .jmc_auto.canbus.Eps_advanced_0x176_176.Eps_epspaminhType eps_epspaminh = 7;
+// optional int32 eps_epspaminh = 7;
 inline bool Eps_advanced_0x176_176::has_eps_epspaminh() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -36787,12 +36787,11 @@ inline void Eps_advanced_0x176_176::clear_eps_epspaminh() {
   eps_epspaminh_ = 0;
   clear_has_eps_epspaminh();
 }
-inline ::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType Eps_advanced_0x176_176::eps_epspaminh() const {
+inline ::google::protobuf::int32 Eps_advanced_0x176_176::eps_epspaminh() const {
   // @@protoc_insertion_point(field_get:jmc_auto.canbus.Eps_advanced_0x176_176.eps_epspaminh)
-  return static_cast< ::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType >(eps_epspaminh_);
+  return eps_epspaminh_;
 }
-inline void Eps_advanced_0x176_176::set_eps_epspaminh(::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType value) {
-  assert(::jmc_auto::canbus::Eps_advanced_0x176_176_Eps_epspaminhType_IsValid(value));
+inline void Eps_advanced_0x176_176::set_eps_epspaminh(::google::protobuf::int32 value) {
   set_has_eps_epspaminh();
   eps_epspaminh_ = value;
   // @@protoc_insertion_point(field_set:jmc_auto.canbus.Eps_advanced_0x176_176.eps_epspaminh)

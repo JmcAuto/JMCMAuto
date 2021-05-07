@@ -106,14 +106,17 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
             cf.id = (*sample).elementList[i].canId;
             cf.len = (*sample).elementList[i].validLen;
-            // printf("canId: %x, canDLC: %u\n", sample->elementList[i].canId,
-            // sample->elementList[i].validLen);
+            printf("\ncanId: %x, canDLC: %u\n,canData: ", sample->elementList[i].canId,
+            sample->elementList[i].validLen);
             //AINFO << "cf.id:" << cf.id;
-
+            //std::cout << "cf.id: " << cf.id << std::endl;
+            //std::cout << "cf.data: ";
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
                 cf.data[j] = (*sample).elementList[i].data[j];
-                // printf("%x ", sample->elementList[i].data[j]);
+                //std::cout << cf.data[j];
+                printf("%x ", sample->elementList[i].data[j]);
             }
+            //std::cout << std::endl;
             //AINFO << "data:" << cf.data;
             // printf("\n");
         }
@@ -168,6 +171,14 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
     frames->resize(*frame_num);
     for (size_t i = 0; i < frames->size(); ++i) {
         (*frames)[i] = cf;
+        //std::cout << "id: " << (*frames)[i].id << std::endl;
+        //std::cout << "data: ";
+        printf("\nId: %x, DLC: %u\n,Data: ", (*frames)[i].id,
+            (*frames)[i].len);
+        for (int j = 0; j <(*frames)[i].len; ++j){
+            printf("%x ", (*frames)[i].data[j]);
+        }
+        std::cout << std::endl;
         //AINFO << "id:" << cf.id;
     }
     return ErrorCode::OK;
