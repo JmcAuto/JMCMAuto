@@ -286,7 +286,8 @@ void Teleop::ResetControlCommand() {
         VehicleSignal::TURN_NONE);
 }
 
-void Teleop::OnChassis(const Chassis &chassis) { Send(); }
+void Teleop::OnChassis(const Chassis &chassis) { 
+    Send(); }
 
 //Teleop::Teleop() { ResetControlCommand(); }
 
@@ -310,6 +311,8 @@ Status Teleop::Init() {
     //signal(SIGINT, signal_handler);
     AdapterManager::Init(FLAGS_teleop_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";
+    CHECK(AdapterManager::GetChassis()) << "Chassis is not initialized.";
+    AdapterManager::AddChassisCallback(&Teleop::OnChassis, this);
     return Status::OK();
 }
 
@@ -318,7 +321,7 @@ Status Teleop::Start() {
         return Status(ErrorCode::CANBUS_ERROR, "Already running.");
     }
     is_running_ = true;
-    AdapterManager::AddChassisCallback(&Teleop::OnChassis, this);
+    //AdapterManager::AddChassisCallback(&Teleop::OnChassis, this);
     keyboard_thread_.reset(
         new std::thread([this] { KeyboardLoopThreadFunc(); }));
     if (keyboard_thread_ == nullptr) {

@@ -79,7 +79,7 @@ void MdcCanClient::ServiceAvailabilityCallback(
 
                 // 开启method发送线程
                 // m_canMethodThread[channelID] = std::make_unique<std::thread>(
-                //    &MdcCanClient::Send, this, channelID);
+                //     &MdcCanClient::Send, this, channelID);
             }
         }
     }
@@ -99,24 +99,26 @@ void MdcCanClient::CanDataEventCallback(unsigned char channelID) {
     std::unique_lock<std::mutex> lockread(m_canReadMutex);
     // 接收CAN帧
     m_proxy[channelID]->CanDataRxEvent.Update();
-    canMsgSamples = m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
-    /*
-    for (const auto &sample : canMsgSamples) {
+    const auto &canMsgSamples = m_proxy[channelID]->CanDataRxEvent.GetCachedSamples();
+
+    //for (const auto &sample : canMsgSamples) {
         // 接收转入CAN帧处理回调函数
+    const auto &sample = canMsgSamples.back();
+    cfs.resize(sample->elementList.size());
         for (unsigned int i = 0; i < sample->elementList.size(); i++) {
-            cf.id = (*sample).elementList[i].canId;
-            cf.len = (*sample).elementList[i].validLen;
-            printf("\ncanId: %x, canDLC: %u\n,canData: ",
-                   sample->elementList[i].canId,
-                   sample->elementList[i].validLen);
+            cfs[i].id = (*sample).elementList[i].canId;
+            cfs[i].len = (*sample).elementList[i].validLen;
+            //printf("\n======can=======\ncanId: %x, canDLC: %u\ncanData: ",
+            //       sample->elementList[i].canId,
+            //       sample->elementList[i].validLen);
             for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-                cf.data[j] = (*sample).elementList[i].data[j];
-                printf("%x ", sample->elementList[i].data[j]);
+                cfs[i].data[j] = (*sample).elementList[i].data[j];
+                //printf("%x ", sample->elementList[i].data[j]);
+            //    printf("%x ", cfs[i].data[j]);
             }
             // printf("\n");
         }
-    }
-    */
+
     // 解锁
     lockread.unlock();
     m_proxy[channelID]->CanDataRxEvent.Cleanup();
@@ -148,12 +150,22 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
         for (int j = 0; j < CAN_VALIDLEN; i++) {
             canRawdata.data.push_back(frames[i].data[j]);
         }
-        canSendDataParm.elementList[i] = canRawdata;
+        canSendDataParm.elementList.push_back(canRawdata);
     }
+
     canSendDataParm.seq = 1;
 
-    // Method发送
-    auto handle = m_proxy[m_channelId]->CanDataSetMethod(canSendDataParm);
+    // Event发送
+    std::unique_lock<std::mutex> locksend(m_canSendMutex);
+
+    auto controlMcuMsg = m_skeleton[m_channelId]->CanDataTxEvent.Allocate();
+
+    controlMcuMsg->elementList = (canSendDataParm.elementList);
+    controlMcuMsg->seq = (canSendDataParm.seq);
+
+    m_skeleton[m_channelId]->CanDataTxEvent.Send(std::move(controlMcuMsg));
+
+    locksend.unlock();
 
     return ErrorCode::OK;
 }
@@ -165,19 +177,19 @@ ErrorCode MdcCanClient::Receive(std::vector<CanFrame> *const frames,
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
     frames->resize(*frame_num);
+    for (int32_t i = 0; i < *frame_num && i < cfs.size(); ++i) {
+        CanFrame cf;
+        cf.id = cfs[i].id;
+        cf.len = cfs[i].len;
+        std::memcpy(cf.data, cfs[i].data, cfs[i].len);
+        //printf("\n--------------cf--------------\ncfId: %x, cfDLC: %u\ncfData: ", cf.id, cf.len);
+        //for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
+        //    printf("%x ", cf.data[j]);
+        //}
+        frames->push_back(cf);
+    }
+    cfs.clear();
 
-    for (const auto &sample : canMsgSamples) {
-        for (size_t i = 0; i < frames->size() && i < sample->elementList.size(); ++i) {
-            (*frames)[i].id = (*sample).elementList[i].canId;
-            (*frames)[i].len = (*sample).elementList[i].validLen;
-            printf("\nId: %x, DLC: %u\n,Data: ", (*frames)[i].id, (*frames)[i].len);
-            for (unsigned int j = 0; j < CAN_VALIDLEN; j++) {
-                (*frames)[i].data[j] = (*sample).elementList[i].data[j];
-                printf("%x ", (*frames)[i].data[j]);
-            }
-            std::cout << std::endl;
-            m_proxy[channelID]->CanDataRxEvent.Cleanup();
-        }
     return ErrorCode::OK;
 }
 

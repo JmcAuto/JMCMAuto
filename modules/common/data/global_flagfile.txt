@@ -5,24 +5,8 @@
 # 3. To override the flag values, you must set it after this file, as all Flags
 #    are evaluated strictly in order.
 
---vehicle_config_path=/jmcauto/modules/common/data/vehicle_config.pb.txt
+--vehicle_config_path=modules/common/data/vehicle_config.pb.txt
 
 --log_dir=/jmcauto/data/log
 
 --use_navigation_mode=false
-
---map_dir=/jmcauto/modules/map/data/demo
-
---map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
-
---map_dir=/jmcauto/modules/map/data/demo
-
---map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
-
---map_dir=/jmcauto/modules/map/data/parking
-
---map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2
-
---map_dir=/jmcauto/modules/map/data/parking
-
---map_dir=/jmcauto/modules/map/data/xiaolanchangqu_test2

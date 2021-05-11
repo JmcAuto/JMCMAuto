@@ -161,6 +161,7 @@ namespace adapter {
         const auto &name##MsgSamples =                                         \
             name##proxy->name##Event.GetCachedSamples();                       \
         for (const auto &testdata : name##MsgSamples) {                        \
+        /*const auto &testdata = name##MsgSamples.back();*/                       \
             strData = testdata.get();                                          \
             /*std::cout << "------start to struct2pb------" << std::endl;*/    \
             jmc_auto::common::util::PbConvertor::struct2Pb(                    \
