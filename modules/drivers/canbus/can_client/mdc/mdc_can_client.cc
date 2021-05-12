@@ -128,7 +128,7 @@ void MdcCanClient::Stop() { return; }
 
 ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
                              int32_t *const frame_num) {
-
+    AERROR << "start send test";
     if (m_proxy[m_channelId] == nullptr) {
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
@@ -146,9 +146,12 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
         canRawdata.canId = frames[i].id;
         canRawdata.validLen = frames[i].len;
         canSendDataParm.elementList[i].data.resize(canRawdata.validLen);
-
+            printf("\n======can=======\ncanId: %x, canDLC: %u\ncanData: ",
+                   canRawdata.canId,
+                   canRawdata.validLen);
         for (int j = 0; j < CAN_VALIDLEN; i++) {
             canRawdata.data.push_back(frames[i].data[j]);
+            printf("%x ", canRawdata.data[j]);
         }
         canSendDataParm.elementList.push_back(canRawdata);
     }
