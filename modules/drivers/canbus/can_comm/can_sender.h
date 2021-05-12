@@ -134,8 +134,8 @@ namespace jmc_auto
       private:
         uint32_t message_id_ = 0;
         ProtocolData<SensorType> *protocol_data_ = nullptr;
-        
-        
+
+
         int32_t period_ = 0;
         int32_t curr_period_ = 0;
 
@@ -199,7 +199,7 @@ namespace jmc_auto
    */
         jmc_auto::common::ErrorCode Start();
         /**
-   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return 
+   * @brief 计数器的计算和赋值，校验和的计算，默认count�?~3位，crc是第8字节0~7�?   * @return
    */
         void rolling_counter(uint8_t *data, const SenderMessage<SensorType> &msg);
         /*
@@ -312,7 +312,7 @@ namespace jmc_auto
       {
         if (protocol_data_ == nullptr)
         {
-          //AERROR << "Attention: ProtocolData is nullptr!";
+          AERROR << "Attention: ProtocolData is nullptr!";
           return;
         }
         protocol_data_->UpdateData(can_frame_to_update_.data);
@@ -345,11 +345,11 @@ namespace jmc_auto
       {
         Byte to_set(data + msg.count_byte_);
         to_set.set_value(msg.rolling_count_, 0, 4);
-        //AINFO<<"rolling_count_"<<msg.rolling_count_;
+        AINFO<<"rolling_count_"<<msg.rolling_count_;
 
         Byte to_set_crc(data + 7);
         int checksum = data[0] ^ data[1] ^ data[2] ^ data[3] ^ data[4] ^ data[5] ^ data[6];
-        //AINFO<<"checksum"<<checksum;
+        AINFO<<"checksum"<<checksum;
         to_set_crc.set_value(checksum, 0, 8);
       }
 
@@ -369,7 +369,7 @@ namespace jmc_auto
         int64_t tm_end = 0;
         int64_t sleep_interval = 0;
 
-        //AINFO << "Can client sender thread starts.";
+        AINFO << "Can client sender thread starts.";
 
         while (is_running_)
         {
@@ -401,14 +401,14 @@ namespace jmc_auto
             }
 
             can_frames.push_back(can_frame);
-            /*if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
+            if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK)
             {
               AERROR << "Send msg failed:" << can_frame.CanFrameString();
             }
             if (enable_log())
             {
               ADEBUG << "send_can_frame#" << can_frame.CanFrameString();
-            }*/
+            }
           }
           delta_period = new_delta_period;
           tm_end = common::time::AsInt64<common::time::micros>(
@@ -426,7 +426,7 @@ namespace jmc_auto
                   << "us is more than minimum period: " << delta_period << "us";
           }*/
         }
-        //AINFO << "Can client sender thread stopped!";
+        AINFO << "Can client sender thread stopped!";
       }
 
       template <typename SensorType>
@@ -435,12 +435,12 @@ namespace jmc_auto
       {
         if (is_init_)
         {
-          //AERROR << "Duplicated Init request.";
+          AERROR << "Duplicated Init request.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         if (can_client == nullptr)
         {
-          //AERROR << "Invalid can client.";
+          AERROR << "Invalid can client.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         is_init_ = true;
@@ -456,12 +456,12 @@ namespace jmc_auto
       {
         if (protocol_data == nullptr)
         {
-          //AERROR << "invalid protocol data.";
+          AERROR << "invalid protocol data.";
           return;
         }
         send_messages_.emplace_back(
             SenderMessage<SensorType>(message_id, protocol_data, init_with_one));
-        //AINFO << "Add send message:" << std::hex << message_id;
+        AINFO << "Add send message:" << std::hex << message_id;
       }
 
       template <typename SensorType>
@@ -471,12 +471,12 @@ namespace jmc_auto
       {
         if (protocol_data == nullptr)
         {
-          //AERROR << "invalid protocol data.";
+          AERROR << "invalid protocol data.";
           return;
         }
         send_messages_.emplace_back(
             SenderMessage<SensorType>(message_id, protocol_data, init_with_one, count_byte));
-        //AINFO << "Add send message:" << std::hex << message_id;
+        AINFO << "Add send message:" << std::hex << message_id;
       }
 
       template <typename SensorType>
@@ -484,7 +484,7 @@ namespace jmc_auto
       {
         if (is_running_)
         {
-          //AERROR << "Cansender has already started.";
+          AERROR << "Cansender has already started.";
           return common::ErrorCode::CANBUS_ERROR;
         }
         is_running_ = true;
@@ -507,7 +507,7 @@ namespace jmc_auto
       {
         if (is_running_)
         {
-          //AINFO << "Stopping can sender ...";
+          AINFO << "Stopping can sender ...";
           is_running_ = false;
           if (thread_ != nullptr && thread_->joinable())
           {
@@ -517,10 +517,10 @@ namespace jmc_auto
         }
         else
         {
-          //AERROR << "CanSender is not running.";
+          AERROR << "CanSender is not running.";
         }
 
-        //AINFO << "Can client sender stopped [ok].";
+        AINFO << "Can client sender stopped [ok].";
       }
 
       template <typename SensorType>
