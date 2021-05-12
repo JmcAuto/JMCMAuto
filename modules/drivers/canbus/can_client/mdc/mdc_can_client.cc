@@ -5,7 +5,7 @@
 #include <cstring>
 #include <exception>
 #include <iomanip>
-#include <iostream>
+//#include <iostream>
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -146,12 +146,12 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
         canRawdata.canId = frames[i].id;
         canRawdata.validLen = frames[i].len;
         canSendDataParm.elementList[i].data.resize(canRawdata.validLen);
-            printf("\n======can=======\ncanId: %x, canDLC: %u\ncanData: ",
-                   canRawdata.canId,
-                   canRawdata.validLen);
-        for (int j = 0; j < CAN_VALIDLEN; i++) {
+        //    printf("\n======can=======\ncanId: %x, canDLC: %u\ncanData: ",
+        //           canRawdata.canId,
+        //           canRawdata.validLen);
+        for (int j = 0; j < CAN_VALIDLEN; j++) {
             canRawdata.data.push_back(frames[i].data[j]);
-            printf("%x ", canRawdata.data[j]);
+        //    printf("%x ", canRawdata.data[j]);
         }
         canSendDataParm.elementList.push_back(canRawdata);
     }
