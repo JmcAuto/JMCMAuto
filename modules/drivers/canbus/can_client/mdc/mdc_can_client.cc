@@ -128,7 +128,6 @@ void MdcCanClient::Stop() { return; }
 
 ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
                              int32_t *const frame_num) {
-    AERROR << "start send test";
     if (m_proxy[m_channelId] == nullptr) {
         return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
@@ -165,7 +164,7 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
 
     controlMcuMsg->elementList = (canSendDataParm.elementList);
     controlMcuMsg->seq = (canSendDataParm.seq);
-
+    AERROR << "start to event.send";
     m_skeleton[m_channelId]->CanDataTxEvent.Send(std::move(controlMcuMsg));
 
     locksend.unlock();

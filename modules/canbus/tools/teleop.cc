@@ -286,7 +286,7 @@ void Teleop::ResetControlCommand() {
         VehicleSignal::TURN_NONE);
 }
 
-void Teleop::OnChassis(const Chassis &chassis) { 
+void Teleop::OnChassis(const Chassis &chassis) {
     Send(); }
 
 //Teleop::Teleop() { ResetControlCommand(); }
@@ -329,7 +329,9 @@ Status Teleop::Start() {
                       "Failed to create can client receiver thread.");
     }
     PrintKeycode();
-    while(1) {}
+    while(1) {
+    sleep(1);
+    }
     return Status::OK();
 }
 
