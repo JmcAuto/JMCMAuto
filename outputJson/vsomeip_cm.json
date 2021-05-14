@@ -53,6 +53,60 @@
           "isClient": true,
           "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus03RxSomeipServiceInstance",
           "unreliable": 5003
+        },
+        {
+          "instance": 5,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus04RxSomeipServiceInstance",
+          "unreliable": 5004
+        },
+        {
+          "instance": 6,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus05RxSomeipServiceInstance",
+          "unreliable": 5005
+        },
+        {
+          "instance": 7,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus06RxSomeipServiceInstance",
+          "unreliable": 5006
+        },
+        {
+          "instance": 8,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus07RxSomeipServiceInstance",
+          "unreliable": 5007
+        },
+        {
+          "instance": 9,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus08RxSomeipServiceInstance",
+          "unreliable": 5008
+        },
+        {
+          "instance": 10,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus09RxSomeipServiceInstance",
+          "unreliable": 5009
+        },
+        {
+          "instance": 11,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus10RxSomeipServiceInstance",
+          "unreliable": 5010
+        },
+        {
+          "instance": 12,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBus11RxSomeipServiceInstance",
+          "unreliable": 5011
+        },
+        {
+          "instance": 65535,
+          "isClient": true,
+          "shortName": "/jmc_auto/ModuleServices/CanRxServiceConsumer/CanBusANYRxSomeipServiceInstance",
+          "unreliable": 5011
         }
       ]
     },
@@ -133,6 +187,54 @@
           "isClient": false,
           "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus03TxSomeipServiceInstance",
           "unreliable": 6003
+        },
+        {
+          "instance": 5,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus04TxSomeipServiceInstance",
+          "unreliable": 6004
+        },
+        {
+          "instance": 6,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus05TxSomeipServiceInstance",
+          "unreliable": 6005
+        },
+        {
+          "instance": 7,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus06TxSomeipServiceInstance",
+          "unreliable": 6006
+        },
+        {
+          "instance": 8,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus07TxSomeipServiceInstance",
+          "unreliable": 6007
+        },
+        {
+          "instance": 9,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus08TxSomeipServiceInstance",
+          "unreliable": 6008
+        },
+        {
+          "instance": 10,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus09TxSomeipServiceInstance",
+          "unreliable": 6009
+        },
+        {
+          "instance": 11,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus10TxSomeipServiceInstance",
+          "unreliable": 6010
+        },
+        {
+          "instance": 12,
+          "isClient": false,
+          "shortName": "/jmc_auto/ModuleServices/CanTxServiceProvider/CanBus11TxSomeipServiceInstance",
+          "unreliable": 6011
         }
       ]
     },

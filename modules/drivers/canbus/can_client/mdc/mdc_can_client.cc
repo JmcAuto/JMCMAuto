@@ -164,7 +164,7 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
 
     controlMcuMsg->elementList = (canSendDataParm.elementList);
     controlMcuMsg->seq = (canSendDataParm.seq);
-    AERROR << "start to event.send";
+    //AERROR << "start to event.send";
     m_skeleton[m_channelId]->CanDataTxEvent.Send(std::move(controlMcuMsg));
 
     locksend.unlock();

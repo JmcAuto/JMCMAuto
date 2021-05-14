@@ -18,7 +18,6 @@
                       <FUNCTION-GROUP-MODE-IREFS>
                         <FUNCTION-GROUP-MODE-IREF>
                           <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/HuaweiMDC/Machine/Dmini0Machine/MachineModeGroupPrototype</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/HuaweiMDC/ModeDeclaration/FunctionGroupMode/VehicleDriving</TARGET-MODE-DECLARATION-REF>
                         </FUNCTION-GROUP-MODE-IREF>
                         <FUNCTION-GROUP-MODE-IREF>
                           <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/HuaweiMDC/Machine/Dmini0Machine/MachineModeGroupPrototype</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>

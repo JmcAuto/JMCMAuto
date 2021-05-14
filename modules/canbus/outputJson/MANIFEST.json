@@ -93,7 +93,6 @@
                 "key": "function_group_states",
                 "value": {
                   "string[]": [
-                    "FunctionGroupMode.VehicleDriving",
                     "FunctionGroupMode.VehicleInActive"
                   ]
                 },
