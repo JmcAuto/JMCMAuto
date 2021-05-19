@@ -10,9 +10,10 @@
 
 enum class DrivingAction : UInt8
 {
-    STOP = 0,
-    START = 1,
-    RESET = 2
+    INVALID = 0,
+    STOP = 1,
+    START = 2,
+    RESET = 3
 };
 
 #endif // impl_type_drivingaction_h

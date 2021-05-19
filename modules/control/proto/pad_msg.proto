@@ -5,9 +5,10 @@ import "modules/common/proto/header.proto";
 import "modules/canbus/proto/chassis.proto";
 
 enum DrivingAction {
-  STOP = 0;
-  START = 1;
-  RESET = 2;
+  INVALID = 0;
+  STOP = 1;
+  START = 2;
+  RESET = 3;
 };
 
 message PadMessage {

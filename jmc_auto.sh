@@ -44,6 +44,10 @@ function jmc_auto_check_system_config() {
 
 function generate_build_files() {
     #检查apcm文件夹,并拷贝到各个模块文件夹中
+    if [ ! -e apcm ]; then
+        fail 'Missing apcm folder. Please check it.'
+    fi
+    #待补充 
 }
 
 #=================================================
@@ -52,6 +56,8 @@ function generate_build_files() {
 
 function build() {
     #编译autosar文件
+    generate_build_files
+    build_autosar
     if [ $? -ne 0 ]; then
         fail 'Build failed!'
     fi

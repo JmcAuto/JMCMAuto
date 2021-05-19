@@ -1100,19 +1100,26 @@
                         <LOWER-LIMIT>0</LOWER-LIMIT>
                         <UPPER-LIMIT>0</UPPER-LIMIT>
                         <COMPU-CONST>
-                          <VT>STOP</VT>
+                          <VT>INVALID</VT>
                         </COMPU-CONST>
                       </COMPU-SCALE>
                       <COMPU-SCALE>
                         <LOWER-LIMIT>1</LOWER-LIMIT>
                         <UPPER-LIMIT>1</UPPER-LIMIT>
                         <COMPU-CONST>
-                          <VT>START</VT>
+                          <VT>STOP</VT>
                         </COMPU-CONST>
                       </COMPU-SCALE>
                       <COMPU-SCALE>
                         <LOWER-LIMIT>2</LOWER-LIMIT>
                         <UPPER-LIMIT>2</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>START</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT>3</LOWER-LIMIT>
+                        <UPPER-LIMIT>3</UPPER-LIMIT>
                         <COMPU-CONST>
                           <VT>RESET</VT>
                         </COMPU-CONST>
