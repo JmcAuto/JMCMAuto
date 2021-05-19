@@ -58,13 +58,13 @@ ErrorCode VehicleController::SetDrivingMode(
     return ErrorCode::CANBUS_ERROR;
   }
 
- 
+
   // if current mode is same as previous, no need to set.
   if (driving_mode_ == driving_mode)
   {
     return ErrorCode::OK;
   }
- 
+
   switch (driving_mode)
   {
   case Chassis::COMPLETE_AUTO_DRIVE:
@@ -140,27 +140,29 @@ ErrorCode VehicleController::Update(const ControlCommand &command)
 
   // Execute action to transform driving mode
   if (control_command.has_pad_msg() && control_command.pad_msg().has_action()) {
-    AINFO << "Canbus received pad msg: "
-          << control_command.pad_msg().ShortDebugString();
-    Chassis::DrivingMode mode = Chassis::COMPLETE_MANUAL;
-    switch (control_command.pad_msg().action()) {
-      case control::DrivingAction::START: {
-        mode = Chassis::COMPLETE_AUTO_DRIVE;
-        break;
+    if (control_command.pad_msg().action() != control::DrivingAction::INVALID) {
+      AINFO << "Canbus received pad msg: "
+            << control_command.pad_msg().ShortDebugString();
+      Chassis::DrivingMode mode = Chassis::COMPLETE_MANUAL;
+      switch (control_command.pad_msg().action()) {
+        case control::DrivingAction::START: {
+          mode = Chassis::COMPLETE_AUTO_DRIVE;
+          break;
+        }
+        case control::DrivingAction::STOP:
+        case control::DrivingAction::RESET: {
+          // In   mode
+          break;
+        }
+        default: {
+          AERROR << "No response for this action.";
+          break;
+        }
       }
-      case control::DrivingAction::STOP:
-      case control::DrivingAction::RESET: {
-        // In   mode
-        break;
-      }
-      default: {
-        AERROR << "No response for this action.";
-        break;
-      }
+      SetDrivingMode(mode);
     }
-    SetDrivingMode(mode);
   }
-  
+
  /* if (control_command.has_driving_mode())
   {
     SetDrivingMode(control_command.driving_mode());
@@ -188,11 +190,11 @@ ErrorCode VehicleController::Update(const ControlCommand &command)
       driving_mode_ == Chassis::AUTO_SPEED_ONLY||
       driving_mode_ == Chassis::REMOTE_MODE)
   {
-	 
+
   //  SteerTorque(control_command.steering_torque());
       Steer(control_command.steering_angle());
 
-		  
+
  }
 
   if ((driving_mode_ == Chassis::COMPLETE_AUTO_DRIVE ||
