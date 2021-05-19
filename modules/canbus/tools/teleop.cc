@@ -275,6 +275,7 @@ void Teleop::ResetControlCommand() {
     control_command_.set_brake(0.0);
     control_command_.set_steering_rate(0.0);
     control_command_.set_steering_target(0.0);
+    control_command_.set_steering_angle(0.0);
     control_command_.set_parking_brake(false);
     control_command_.set_speed(0.0);
     control_command_.set_acceleration(0.0);
@@ -308,6 +309,7 @@ void Teleop::signal_handler(int32_t signal_num) {
 std::string Teleop::Name() const { return FLAGS_teleop_module_name; }
 
 Status Teleop::Init() {
+    ResetControlCommand();
     //signal(SIGINT, signal_handler);
     AdapterManager::Init(FLAGS_teleop_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";

@@ -134,25 +134,24 @@ ErrorCode MdcCanClient::Send(const std::vector<CanFrame> &frames,
 
     CanBusDataParam canDataParm;
     canDataParm.elementList.resize(*frame_num);
-    AERROR << "*frame_num: "<< *frame_num;
     for (int i = 0; i < *frame_num; ++i) {
         struct Element canRawdata;
 
         canRawdata.timeStamp.second = frames[i].timestamp.tv_sec;
         canRawdata.timeStamp.nsecond = frames[i].timestamp.tv_usec;
-        AERROR << "timeStamp: " << canRawdata.timeStamp.second << canRawdata.timeStamp.nsecond;
-        AERROR << "ori_timeStamp: " << frames[i].timestamp.tv_sec << frames[i].timestamp.tv_usec;
+        //AERROR << "timeStamp: " << canRawdata.timeStamp.second << canRawdata.timeStamp.nsecond;
+        //AERROR << "ori_timeStamp: " << frames[i].timestamp.tv_sec << frames[i].timestamp.tv_usec;
         // 下发的CAN帧，需要在canbus_config.json中配置，比如CanId、DataLength
         // 可参照canbus_config_ars408.json中 ChannelId 1 进行配置
         canRawdata.canId = frames[i].id;
         canRawdata.validLen = frames[i].len;
         canDataParm.elementList[i].data.resize(canRawdata.validLen);
-            printf("\n======canRawdata=======\ncanId: %x, canDLC: %u\ncanData: ",
-                   canRawdata.canId,
-                   canRawdata.validLen);
+            //printf("\n======canRawdata=======\ncanId: %x, canDLC: %u\ncanData: ",
+            //       canRawdata.canId,
+            //       canRawdata.validLen);
         for (int j = 0; j < CAN_VALIDLEN; ++j) {
             canRawdata.data.push_back(frames[i].data[j]);
-            printf("%x ", canRawdata.data[j]);
+            //printf("%x ", frames[i].data[j]);
         }
         //canDataParm.elementList.push_back(canRawdata);
         canDataParm.elementList[i]=canRawdata;
