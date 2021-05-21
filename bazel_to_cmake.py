@@ -157,23 +157,6 @@ class BuildFileFunctions(object):
     return arg
 
 
-class WorkspaceFileFunctions(object):
-  def __init__(self, converter):
-    self.converter = converter
-
-  def load(self, *args):
-    pass
-
-  def workspace(self, **kwargs):
-    self.converter.prelude += "project(%s)\n" % (kwargs["name"])
-
-  def http_archive(self, **kwargs):
-    pass
-
-  def git_repository(self, **kwargs):
-    pass
-
-
 class Converter(object):
   def __init__(self):
     self.prelude = ""
@@ -206,7 +189,6 @@ def GetDict(obj):
 
 globs = GetDict(converter)
 
-execfile("WORKSPACE", GetDict(WorkspaceFileFunctions(converter)))
 execfile("BUILD", GetDict(BuildFileFunctions(converter)))
 
 with open(sys.argv[1], "w") as f:

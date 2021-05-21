@@ -171,11 +171,15 @@ Status Planning::Start() {
   //   reference_line_provider_->Start();
   // }
   //start_time_ = Clock::NowInSeconds();
+  while (1) {
+    Planning:OnTimer();
+    sleep(1.0/FLAGS_planning_root_date)
+  }
   AINFO << "Planning started";
   return Status::OK();
 }
 
-void Planning::OnTimer(const ros::TimerEvent&) {
+void Planning::OnTimer() {
   AdapterManager::Observe();
   auto chassis_adapter = AdapterManager::GetChassis();
   if (chassis_adapter->Empty()){
