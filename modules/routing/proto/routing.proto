@@ -5,6 +5,7 @@ package jmc_auto.routing;
 import "modules/common/proto/header.proto";
 import "modules/common/proto/geometry.proto";
 import "modules/common/proto/error_code.proto";
+import "modules/map/proto/map_parking_space.proto";
 
 message LaneWaypoint {
   optional string id = 1;
@@ -18,6 +19,11 @@ message LaneSegment {
     optional double end_s = 3;
   }
 
+message ParkingInfo {
+  optional string parking_space_id = 1;
+  optional jmc_auto.common.PointENU parking_point = 2;
+}
+
 message RoutingRequest {
   optional jmc_auto.common.Header header = 1;
   // at least two points. The first is start point, the end is final point.
@@ -26,6 +32,8 @@ message RoutingRequest {
   repeated LaneSegment blacklisted_lane = 3;
   repeated string blacklisted_road = 4;
   optional bool broadcast = 5 [default = true];
+  optional jmc_auto.hdmap.ParkingSpace parking_space = 6 [deprecated = true];
+  optional ParkingInfo parking_info = 7;
 }
 
 message Measurement {

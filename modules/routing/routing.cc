@@ -30,8 +30,8 @@ using jmc_auto::common::ErrorCode;
 
 std::string Routing::Name() const { return FLAGS_routing_node_name; }
 
-Routing::Routing()
-    : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::ROUTING) {}
+//Routing::Routing()
+//    : monitor_logger_(jmc_auto::common::monitor::MonitorMessageItem::ROUTING) {}
 
 jmc_auto::common::Status Routing::Init() {
   const auto routing_map_file = jmc_auto::hdmap::RoutingMapFile();
@@ -58,8 +58,6 @@ jmc_auto::common::Status Routing::Start() {
   }
   AINFO << "Routing service is ready.";
 
-  jmc_auto::common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
-  buffer.INFO("Routing started");
   return jmc_auto::common::Status::OK();
 }
 
@@ -99,18 +97,16 @@ void Routing::OnRoutingRequest(const RoutingRequest& routing_request) {
   AINFO << "Get new routing request:" << routing_request.DebugString();
   RoutingResponse routing_response;
   AERROR<< "routing 1.";
-  AERROR << "outing 1";
   jmc_auto::common::monitor::MonitorLogBuffer buffer(&monitor_logger_);
   AERROR<< "routing 2.";
-  AERROR << "routing 2.";
   const auto& fixed_request = FillLaneInfoIfMissing(routing_request);
   if (!navigator_ptr_->SearchRoute(fixed_request, &routing_response)) {
     AERROR << "Failed to search route with navigator.";
 
-    buffer.WARN("Routing failed! " + routing_response.status().msg());
+    //buffer.WARN("Routing failed! " + routing_response.status().msg());
     return;
   }
-  buffer.INFO("Routing success!");
+  //buffer.INFO("Routing success!");
   AINFO << "routing_response:" << routing_response.DebugString();
   AdapterManager::PublishRoutingResponse(routing_response);
   return;

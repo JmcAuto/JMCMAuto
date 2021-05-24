@@ -172,8 +172,8 @@ Status Planning::Start() {
   // }
   //start_time_ = Clock::NowInSeconds();
   while (1) {
-    Planning::OnTimer();
-    sleep(1.0/FLAGS_planning_loop_rate);
+    Planning:OnTimer();
+    sleep(1.0/FLAGS_planning_root_date)
   }
   AINFO << "Planning started";
   return Status::OK();
@@ -215,7 +215,7 @@ void Planning::OnTimer() {
 //    ADEBUG << "Prediction obstacles nums: " << local_view_.prediction_obstacles->prediction_obstacle().size();
   }
 
-  
+
   {
     std::lock_guard<std::mutex> lock(mutex_);
     if (!local_view_.routing ||
@@ -236,7 +236,7 @@ void Planning::OnTimer() {
   // }
 
 
-  // if(local_view_.routing->waypoint().pose() == local_view_.localization_estimate->position() && 
+  // if(local_view_.routing->waypoint().pose() == local_view_.localization_estimate->position() &&
   //    local_view_.chassis->speed() <= 1e-2){
   //   if(mode_config_.parking().enabled()){
   //     //切换泊车系统
@@ -251,7 +251,7 @@ void Planning::OnTimer() {
     AERROR << "Input check failed";
     return;
   }
-  
+
    count_++;
    ADEBUG << "COUNT:" << count_;
   if(count_ > 30){
