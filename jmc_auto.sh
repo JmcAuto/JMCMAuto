@@ -52,7 +52,9 @@ function generate_build_files() {
     for ( x in $(ls -1 apcm/functional_software) ); do
         cp -r --parents apcm/common modules/${x}/
         cp -r --parents apcm/functional_software/${x} modules/${x}
-        java -jar ${MDS_HOME}/plugins/
+        java -jar ${MDS_HOME}/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
+             -nosplash -application com.huawei.mdc.commands.application gen \
+             -i modules/${x}/apcm -o modules/${x}/
     done
 
 }
@@ -92,8 +94,10 @@ function jmc_auto_build_opt() {
 
 function build_autosar() {
     #编译autosar文件并添加配置
-
-
+    java -jar ${MDS_HOME}/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
+         -nosplash -application com.huawei.mdc.commands.application gen \
+         -i ${JMC_AUTO_ROOT_DIR}/apcm -o ${JMC_AUTO_ROOT_DIR}/
+    #添加配置
 }
 
 function clean() {
