@@ -47,7 +47,14 @@ function generate_build_files() {
     if [ ! -e apcm ]; then
         fail 'Missing apcm folder. Please check it.'
     fi
-    #待补充 
+    #check_mds 待添加
+    cd ${JMC_AUTO_ROOT_DIR}/
+    for ( x in $(ls -1 apcm/functional_software) ); do
+        cp -r --parents apcm/common modules/${x}/
+        cp -r --parents apcm/functional_software/${x} modules/${x}
+        java -jar ${MDS_HOME}/plugins/
+    done
+
 }
 
 #=================================================
@@ -84,7 +91,7 @@ function jmc_auto_build_opt() {
 }
 
 function build_autosar() {
-    #编译autosar文件
+    #编译autosar文件并添加配置
 
 
 }
