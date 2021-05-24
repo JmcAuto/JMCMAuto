@@ -51,8 +51,12 @@ namespace adapter {
 
 using ChassisAdapter = Adapter<::jmc_auto::canbus::Chassis>;
 using ChassisDetailAdapter = Adapter<::jmc_auto::canbus::ChassisDetail>;
-using LocalizationAdapter = Adapter<jmc_auto::localization::LocalizationEstimate>;
+using LocalizationAdapter = Adapter< jmc_auto::localization::LocalizationEstimate>;
 using ControlCommandAdapter = Adapter<::jmc_auto::control::ControlCommand>;
+//using PlanningAdapter = Adapter<planning::ADCTrajectory>;
+//using RoutingRequestAdapter = Adapter<routing::RoutingRequest>;
+//using RoutingResponseAdapter = Adapter<routing::RoutingResponse>;
+
 /*
 using GpsAdapter = Adapter<jmc_auto::localization::Gps>;
 using ImuAdapter = Adapter<localization::CorrectedImu>;
@@ -60,7 +64,7 @@ using RawImuAdapter = Adapter<jmc_auto::drivers::gnss::Imu>;
 using MonitorAdapter = Adapter<jmc_auto::common::monitor::MonitorMessage>;
 using PadAdapter = Adapter<control::PadMessage>;
 using PerceptionObstaclesAdapter = Adapter<perception::PerceptionObstacles>;
-using PlanningAdapter = Adapter<planning::ADCTrajectory>;
+
 using PointCloudAdapter = Adapter<::sensor_msgs::PointCloud2>;
 using VLP16PointCloudAdapter = Adapter<::sensor_msgs::PointCloud2>;
 using ImageFrontAdapter = Adapter<::sensor_msgs::Image>;
@@ -70,8 +74,7 @@ using PredictionAdapter = Adapter<prediction::PredictionObstacles>;
 using DriveEventAdapter = Adapter<DriveEvent>;
 using TrafficLightDetectionAdapter = Adapter<perception::TrafficLightDetection>;
 using PerceptionLaneMaskAdapter = Adapter<::sensor_msgs::Image>;
-using RoutingRequestAdapter = Adapter<routing::RoutingRequest>;
-using RoutingResponseAdapter = Adapter<routing::RoutingResponse>;
+
 using RelativeOdometryAdapter =
     Adapter<calibration::republish_msg::RelativeOdometry>;
 using InsStatAdapter = Adapter<drivers::gnss::InsStat>;

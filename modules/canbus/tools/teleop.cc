@@ -290,7 +290,7 @@ void Teleop::ResetControlCommand() {
 void Teleop::OnChassis(const Chassis &chassis) {
     Send(); }
 
-//Teleop::Teleop() { ResetControlCommand(); }
+Teleop::Teleop() { ResetControlCommand(); }
 
 void Teleop::signal_handler(int32_t signal_num) {
     if (signal_num != SIGINT) {
@@ -309,7 +309,7 @@ void Teleop::signal_handler(int32_t signal_num) {
 std::string Teleop::Name() const { return FLAGS_teleop_module_name; }
 
 Status Teleop::Init() {
-    ResetControlCommand();
+    //ResetControlCommand();
     //signal(SIGINT, signal_handler);
     AdapterManager::Init(FLAGS_teleop_adapter_config_filename);
     AINFO << "The adapter manager is successfully initialized.";

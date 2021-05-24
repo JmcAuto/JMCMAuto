@@ -71,7 +71,7 @@ class Planning : public jmc_auto::common::JmcAutoApp {
   void CheckParkingSpace();
 
  private:
- void OnTimer(const ros::TimerEvent&);
+ void OnTimer();
 //   std::shared_ptr<cyber::Reader<perception::TrafficLightDetection>>
 //       traffic_light_reader_;
 //   std::shared_ptr<cyber::Reader<routing::RoutingResponse>> routing_reader_;
@@ -82,13 +82,13 @@ class Planning : public jmc_auto::common::JmcAutoApp {
 //   std::shared_ptr<cyber::Writer<routing::RoutingRequest>> rerouting_writer_;
 
   std::mutex mutex_;
-  ros::Timer timer_;
+  //ros::Timer timer_;
 //  perception::TrafficLightDetection traffic_light_;
   routing::RoutingResponse routing_;
   routing::RoutingRequest  routing_request_;
   canbus::Chassis          chassis_;
   localization::LocalizationEstimate localization_;
-  prediction::PredictionObstacles prediction_obstacles_;
+  //prediction::PredictionObstacles prediction_obstacles_;
 
 //  perception::ParkingSpaceDetection parkingspace_;
 //  planning::PadMessage pad_msg_;

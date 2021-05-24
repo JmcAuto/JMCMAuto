@@ -29,7 +29,7 @@
 //#include "modules/planning/navi_planning.h"
 #include "modules/planning/on_lane_planning.h"
 
-#include "modules/common/time/time.h"
+#include "modules/common/time/jmcauto_time.h"
 #include "modules/common/adapters/adapter_manager.h"
 
 namespace jmc_auto {
@@ -59,11 +59,11 @@ std::string Planning::Name() const { return "planning"; }
 
 
 Status Planning::Init() {
-  if (FLAGS_use_navigation_mode) {
+  //if (FLAGS_use_navigation_mode) {
     //planning_base_ = std::make_unique<NaviPlanning>();
-  } else {
+  //} else {
     planning_base_ = std::make_unique<OnLanePlanning>();
-  }
+  //}
 
   CHECK(jmc_auto::common::util::GetProtoFromFile(FLAGS_planning_config_file,
                                                  &config_))
@@ -135,7 +135,7 @@ Status Planning::Init() {
   CHECK_ADAPTER(Chassis);
   CHECK_ADAPTER(RoutingResponse);
   CHECK_ADAPTER(RoutingRequest);
-  CHECK_ADAPTER(Prediction);
+  //CHECK_ADAPTER(Prediction);
   //CHECK_ADAPTER(ParkingSpaceDetection);
 
   AdapterManager::AddRoutingResponseCallback(&Planning::RoutingCallback, this);
@@ -163,19 +163,23 @@ void Planning::RoutingCallback(const routing::RoutingResponse &routing){
 }
 
 Status Planning::Start() {
-  timer_ = AdapterManager::CreateTimer(
-      ros::Duration(1.0 / FLAGS_planning_loop_rate), &Planning::OnTimer, this);
+  //timer_ = AdapterManager::CreateTimer(
+  //    ros::Duration(1.0 / FLAGS_planning_loop_rate), &Planning::OnTimer, this);
   // The "reference_line_provider_" may not be created yet in navigation mode.
   // It is necessary to check its existence.
   // if (reference_line_provider_) {
   //   reference_line_provider_->Start();
   // }
   //start_time_ = Clock::NowInSeconds();
+  while (1) {
+    Planning::OnTimer();
+    sleep(1.0/FLAGS_planning_loop_rate);
+  }
   AINFO << "Planning started";
   return Status::OK();
 }
 
-void Planning::OnTimer(const ros::TimerEvent&) {
+void Planning::OnTimer() {
   AdapterManager::Observe();
   auto chassis_adapter = AdapterManager::GetChassis();
   if (chassis_adapter->Empty()){
