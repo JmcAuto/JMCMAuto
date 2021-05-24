@@ -54,7 +54,8 @@ function generate_build_files() {
         cp -r --parents apcm/functional_software/${x} modules/${x}
         java -jar ${MDS_HOME}/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
              -nosplash -application com.huawei.mdc.commands.application gen \
-             -i modules/${x}/apcm -o modules/${x}/
+             -i modules/${x}/apcm \
+             -o modules/${x}/
     done
 
 }
@@ -72,10 +73,25 @@ function build() {
     fi
 
     #编译各个模块
+    mkdir ${JMC_AUTO_ROOT_DIR}/build
+    cd ${JMC_AUTO_ROOT_DIR}/build
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE:STRING=${BUILD_CMD} \
+          -DCMAKE_SYSTEM_NAME=Linux \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
+          -DCMAKE_SYSROOT=/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot \
+          -DTOOL_CHAIN_SYSROOT=/usr/ubuntu_crossbuild_devkit/mdc_crossbuild_sysroot \
+          -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/aarch64-linux-gnu-gcc \
+          -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/aarch64-linux-gnu-g++ \
+          -DCMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make \
+          ${JMC_AUTO_ROOT_DIR}
+    if [ $? -ne 0 ]; then
+        fail 'CMAKE failed!'
+    fi
+
+    make -j4
     if [ $? -ne 0 ]; then
         fail 'Build failed!'
     fi
-
 
     if [ $? -eq 0 ]; then
         success 'Build passed!'
@@ -83,12 +99,12 @@ function build() {
 }
 
 function jmc_auto_build_dbg() {
-    BUILD_CMD="dbg"
+    BUILD_CMD="Debug"
     build $@
 }
 
 function jmc_auto_build_opt() {
-    BUILD_CMD="opt"
+    BUILD_CMD="Release"
     build $@
 }
 
@@ -96,7 +112,8 @@ function build_autosar() {
     #编译autosar文件并添加配置
     java -jar ${MDS_HOME}/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
          -nosplash -application com.huawei.mdc.commands.application gen \
-         -i ${JMC_AUTO_ROOT_DIR}/apcm -o ${JMC_AUTO_ROOT_DIR}/
+         -i ${JMC_AUTO_ROOT_DIR}/apcm \
+         -o ${JMC_AUTO_ROOT_DIR}/
     #添加配置
 }
 
