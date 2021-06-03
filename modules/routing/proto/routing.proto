@@ -48,9 +48,9 @@ enum ChangeLaneType {
 
 
 message Passage {
-   repeated LaneSegment segment = 1;
-   optional bool can_exit = 2;
-   optional ChangeLaneType change_lane_type = 3 [default = FORWARD];
+  repeated LaneSegment segment = 1;
+  optional bool can_exit = 2;
+  optional ChangeLaneType change_lane_type = 3 [default = FORWARD];
 }
 
 message RoadSegment {

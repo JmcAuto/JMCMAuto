@@ -49,7 +49,7 @@ function generate_build_files() {
     fi
     #check_mds 待添加
     cd ${JMC_AUTO_ROOT_DIR}/
-    for ( x in $(ls -1 apcm/functional_software) ); do
+    for x in $(ls -1 apcm/functional_software); do
         cp -r --parents apcm/common modules/${x}/
         cp -r --parents apcm/functional_software/${x} modules/${x}
         java -jar ${MDS_HOME}/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
@@ -115,10 +115,15 @@ function build_autosar() {
          -i ${JMC_AUTO_ROOT_DIR}/apcm \
          -o ${JMC_AUTO_ROOT_DIR}/
     #添加配置
+    #ls ${JMC_AUTO_ROOT_DIR}/generated/includes/
 }
 
 function clean() {
     #删除build文件
+    if [[ -e ${JMC_AUTO_ROOT_DIR}/build ]]; then
+         rm -rf build
+    fi
+    success "clean success"
 }
 
 function print_usage() {
