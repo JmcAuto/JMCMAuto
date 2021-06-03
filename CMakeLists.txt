@@ -60,6 +60,7 @@ add_compile_options(-fPIC)
 
 #添加第三方依赖
 #set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+set(CMAKE_EXPORT_COMPILECOMMANDS ON)
 
 #默认编译c和c++文件生成可执行文件
 #add_executable(canbus modules/canbus/main.cc)

@@ -22,8 +22,8 @@ modules/localization/generated
 #generated
 #outputJson
 .settings/org.eclipse.cdt.managedbuilder.core.prefs
-*.pb.cc
-*.pb.h
+#*.pb.cc
+#*.pb.h
 
 # temporary files
 *.swp
