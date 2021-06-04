@@ -30,6 +30,7 @@ modules/localization/generated
 *.swo
 .DS_Store
 *~
+.cache/
 
 # Logs
 *.stdout
